@@ -1,0 +1,18 @@
+<% # lecture %>
+<div class="btn-group">
+  <% if current_user %>
+
+    <% if can? :create, Course %>
+      <%= link_to("add course", new_course_path(:lecture_id => lecture.id), { :class => 'btn btn-mini btn-primary'}) %>
+    <% end %>
+
+    <% if can? :update, lecture %>
+      <%= link_to 'edit', edit_lecture_path(lecture), { :class => 'btn btn-mini btn-warning' }  %>
+    <% end %>
+
+    <% if can? :destroy, lecture %>
+      <%= link_to 'delete', lecture, confirm: 'Are you sure?', method: :delete, :class => "btn btn-mini btn-danger" %>
+    <% end %>
+
+  <% end %>
+</div>

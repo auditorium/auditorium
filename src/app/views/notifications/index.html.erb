@@ -1,0 +1,42 @@
+<h2>
+  Your Notifications
+  <%= button_to 'mark all as read', mark_all_as_read_path, :name => 'mark_all_as_read', :class => "inline-button btn btn-mini" %>
+</h2>
+
+<% if current_user.notifications.count > 0 %>
+<table class="table">
+  <thead>
+    <tr>
+      <td>When?</td>
+      <td>What?</td>
+      <td>Course</td>
+    </tr>
+  </thead>
+
+  <tbody>
+
+  <% current_user.notifications.reverse.each do |notification| %>
+    <% if notification.notifyable_type.eql? 'Post' %>
+      <% post = notification.notifyable_object %>
+      <% if not post.nil? %>
+        <% if notification.read %>
+        <tr class='read'>
+        <% else %>
+        <tr class='unread'>
+        <% end %>
+          
+          <td><%= I18n.localize(notification.created_at, :format => :short)%></td>
+          <td><%= "New #{post.post_type} by #{post.author}:" %><%= link_to "#{post.subject}", notification %></td>
+          <td><%= post.course.name_with_term %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  <% end %>
+
+
+  </tbody>
+</table>
+<% else %>
+  <div class="alert alert-info">There are no notifications for you yet.</div>
+<% end %>
+

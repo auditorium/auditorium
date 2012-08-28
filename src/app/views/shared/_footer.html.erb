@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row">
+
+    <div class="span4">
+      <dl class="dl-horizontal">
+        <dt>browse</dt>
+        <dd><em class="icon-pencil"></em> <%= link_to "Courses", courses_path %></dd>
+        <dd><em class="icon-book"></em> <%= link_to "Lectures", lectures_path %></dd>
+        <dd><em class="icon-group"></em> <%= link_to "Chairs", chairs_path %></dd>
+        <dd><em class="icon-beaker"></em> <%= link_to "Institutes", institutes_path%></dd>
+        <dd><em class="icon-home"></em> <%= link_to "Faculties", faculties_path %></dd>
+      </dl>     
+    </div>
+
+    <div class="span4">
+      <dl class="dl-horizontal">
+        <dt>navigate</dt>
+        <dd><em class="icon-home"></em> <%= link_to "Home", root_path %></dd>
+        <dd><em class="icon-search"></em> <%= link_to "Search", search_path %></dd>
+        <dd><em class="icon-thumbs-up"></em> <%= link_to "Ranking", ranking_path %></dd>
+        <% if current_user %>
+          <dd><em class="icon-envelope"></em> <%= link_to "#{current_user.unread_notifications.count} Notifications ", notifications_path %></dd>
+        <% end %>
+      </dl>
+    </div>
+
+    <% if !current_user.nil? and current_user.admin? %>
+
+    <div class="span4 ">
+      <dl class="dl-horizontal">
+        <dt>admin</dt>
+        <dd><em class="icon-user"></em> moderation</dd>
+        <dd><em class="icon-eye-open"></em> reports</dd>
+        <dd><em class="icon-twitter"></em> <%= link_to "twitter", 'http://twitter.com/_auditorium' %></dd>
+        <dd><em class="icon-github"></em> <%= link_to "github", "https://github.com/auditorium/auditorium" %></dd>
+      </dl>
+    </div>
+
+    <% else %>
+
+    <div class="span4">
+      <dl class="dl-horizontal">
+        <dt>
+        need help?
+        </dt>
+        <dd><em class="icon-twitter"></em> <%= link_to "twitter", 'http://twitter.com/_auditorium' %></dd>
+        <dd><em class="icon-github"></em> <%= link_to "github", "https://github.com/auditorium/auditorium" %></dd>
+        <dd><em class="icon-envelope"></em> <%= mail_to "auditorium@inftex.net", 'write us an email' %></dd>
+      </dl>
+    </div>
+
+    <% end %>
+
+  </div>

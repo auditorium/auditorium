@@ -1,0 +1,66 @@
+class ApplicationController < ActionController::Base
+  protect_from_forgery
+
+  helper_method :create_user
+
+  rescue_from CanCan::AccessDenied do |exception|
+    unless current_user
+      authenticate_user!
+    else
+      flash[:alert] = "Access denied."
+      redirect_to intro_path
+    end
+ end
+
+  # possible values for params: email, password, first_name, last_name, display_name, person_identifier
+  def create_user params, send_info_email = false
+    if params[:email] && !params[:email].empty?
+      email = params[:email].downcase
+    else
+      email = params[:person_identifier] + '@example.com' if params[:person_identifier]
+    end
+
+    if email && email =~ /\A[^@]+@[^@]+\z/
+      u = User.find_by_email(email)
+      email_correct = true
+    end
+    return u if u
+
+    # no existing user, create new
+    u = User.new
+    u.email = email
+
+    unless email_correct 
+      while User.find_by_email(u.email)
+        if params[:first_name] && !params[:first_name].empty? && params[:last_name] && !params[:last_name].empty?
+          identifier = params[:first_name] + '.' + params[:last_name] + SecureRandom.hex(5)
+        else
+          identifier = SecureRandom.hex(15)
+        end
+        u.email = identifier + '@example.com'
+      end
+    end
+
+    if params[:password] && !params[:password].empty?
+      pw = params[:password]
+    else
+      pw = SecureRandom.base64(5)
+    end
+    u.password = pw
+    u.password_confirmation = pw
+
+    u.first_name = params[:first_name]
+    u.last_name = params[:last_name]
+    if params[:display_name]
+      u.display_name = params
+    elsif u.first_name && u.last_name
+      u.display_name = u.first_name + ' ' + u.last_name
+    end
+
+    u.skip_confirmation! if User.respond_to? 'skip_confirmation!' # skip the confirmation email, that would be automatically sent by devise
+    AuditoriumMailer.automatically_generated_user(u.email, password).deliver if send_info_email unless u.email.include? '@example.com'
+
+    u.save
+    u
+  end
+end

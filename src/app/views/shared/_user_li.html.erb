@@ -1,0 +1,31 @@
+<% if user_signed_in? %>
+    <%= form_tag '/search', :method => 'get', :id => 'search_form', :class => 'navbar-search visible-desktop',:remote => false do %>
+    <%= text_field_tag :query, nil, :placeholder => 'Search', :id => 'searchbar' %>
+  <% end %>
+  <%= render :partial => 'shared/notifications' %>
+
+  <li class='pull-right hidden-phone <%= "admin" if current_user.admin? %>' >
+    <a href="<%= edit_user_registration_path %>">
+      <em class="icon-user"></em>
+      <span class="visible-desktop">
+      <% if current_user.username?%> <%= current_user.username%>
+      <% else %> <%= current_user.email %> <% end %>
+      </span>
+    </a>
+  </li>
+
+  <li class="pull-right">
+  <%= link_to destroy_user_session_path, :method => :delete do %> <em class="icon-off"></em>
+      <span class="visible-desktop"> Logout </span>
+      <% end %>
+  </li>
+
+<% else %>
+  <li class="pull-right">
+    <%= link_to(new_user_session_path, 'data-toggle' => 'modal') do %>
+      <em class='icon-user'></em>
+      <span class="visible-desktop">Sign in</span>
+    <% end %>
+    <%= render :partial => 'shared/modal_login' %>
+  </li>
+<% end %>

@@ -1,0 +1,5 @@
+<div id="searchbar">
+<%= form_tag "#{courses_path}/search", :method => "get" do %> 
+  <%= text_field_tag :query, params[:query], :placeholder => "Browse courses...", :class => "span8" %>
+<% end %>
+</div>

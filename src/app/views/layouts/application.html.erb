@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <title>auditorium</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body data-spy="scroll" data-target=".subnav" data-offset="50">
+    <header id="header">
+      <div class="container">
+        <%= render "shared/head" %>
+      </div>
+      <div class="container">
+        <%= render "shared/navbar" %>
+      </div>
+    </header>
+
+    <section>
+      <div class="container" id="content">
+
+        <%= render :partial => 'shared/notification_container', :locals => { :flash => flash } %>
+        <%= yield %>
+      </div>
+    </section>
+    <footer id="footer">
+      <%= render :partial => 'shared/footer' %>
+    </footer>
+
+    <%= javascript_include_tag "application" %>
+  </body>
+</html>

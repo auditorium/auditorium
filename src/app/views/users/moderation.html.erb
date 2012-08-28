@@ -1,0 +1,22 @@
+<h2>Moderation</h2>
+
+<table class="table">
+	<% @users.each do |user| %>
+		<tr>
+			<td><%= user.email %></td>
+			<% if not user.confirmed? and can? :manage, user %>
+			<td><%= button_to 'confirm', "/users/#{user.id}/confirm", :class => 'btn btn-primary' %></td>
+			<% else %>
+			<td>User has already been confirmed!</td>
+			<% end %>
+			<% if can? :destroy, user %>
+			<td><%= link_to "Delete User", destroy_user_account_path(user), 
+                        :class => "btn btn-danger", 
+                        :confirm => "Are you sure?",
+                        :title => "Delete #{user.full_name}",
+                        :method => :delete %>
+      <% end %>
+
+		</tr>
+	<% end %>
+</table>

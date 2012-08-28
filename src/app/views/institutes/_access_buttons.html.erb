@@ -1,0 +1,18 @@
+<% # institute %>
+<div class="btn-group">
+  <% if current_user %>
+
+    <% if can? :create, Chair %>
+      <%= link_to("add chair", new_chair_path(:institute_id => institute.id), { :class => 'btn btn-mini btn-primary'}) %>
+    <% end %>
+
+    <% if can? :update, institute %>
+      <%= link_to 'edit', edit_institute_path(institute), { :class => 'btn btn-mini btn-warning' }  %>
+    <% end %>
+
+    <% if can? :destroy, institute %>
+      <%= link_to 'delete', institute, confirm: 'Are you sure?', method: :delete, :class => "btn btn-mini btn-danger" %>
+    <% end %>
+
+  <% end %>
+</div>

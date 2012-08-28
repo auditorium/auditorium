@@ -1,0 +1,9 @@
+<div class="comment">
+  
+  <%= comment_markdown(comment.body) %>
+  <span class="comment-metadata"><%= "by #{comment.author_name}, #{distance_of_time_in_words(Time.now, comment.created_at)} ago" %>
+  	<% if can? :update, comment  %>
+    &middot; <%= link_to "remove", comment, :data => { :confirm => 'Are you sure that you want to remove this comment?' }, method: :delete %>
+  	<% end %>
+  </span>
+</div>

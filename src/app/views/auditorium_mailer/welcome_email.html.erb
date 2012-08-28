@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1 style="font-weight:100;">Welcome to auditorium, <%= @user.full_name %></h1>
+    <p>
+      You have successfully signed up to <%= link_to 'auditorium', @url %>.
+      You can log in with your email address: <%= @user.email %>.<br/>
+    </p>
+    <p>
+      To login to the site, just follow this link: <%= link_to 'sign in to auditorium', "#{@url}/users/sign_in" %>.
+    </p>
+    <p>Thanks for joining and have a great day!</p>
+    <em>The auditorium team</em>
+  </body>
+</html>

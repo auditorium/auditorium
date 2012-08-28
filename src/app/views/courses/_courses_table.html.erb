@@ -1,0 +1,16 @@
+<table class="table">
+    <% for course in courses %>
+    <tr>
+      <th><%= link_to course.name, course %></th>
+      <td><%= course.posts.count %></td>
+      <td>Aktuellste Frage: 
+        <% if course.posts.last %>
+          <cite><%= link_to course.posts.last.subject, "#{course_path(course)}#question-#{course.posts.last.id}" %></cite>
+        <% end %>
+      </td>
+      <td>
+        <%= render :partial => 'shared/follow_button', :locals => { :course => course } %>
+      </td>
+    </tr>
+    <% end %>
+</table>

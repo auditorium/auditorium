@@ -1,0 +1,10 @@
+<table style="width:100%;">
+  <% parent.answers.each do |child| %>
+    <%= render 'posts/post_tr', :post=>child %>
+  <tr>
+    <td colspan="8" style="padding:0;">
+      <%= render 'posts/children', :parent=>child %>
+    </td>
+  </tr>
+  <% end  %>
+</table>

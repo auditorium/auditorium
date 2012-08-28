@@ -1,0 +1,43 @@
+<div class="controle_group">
+  <%= form_for(@lecture) do |f| %>
+    <% if @lecture.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@lecture.errors.count, "error") %> prohibited this lecture from being saved:</h2>
+
+        <ul>
+          <% @lecture.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="fields">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="fields">
+      <%= f.label :chair_id %>
+      <%= f.select :chair_id, options_from_collection_for_select(Chair.all, :id, :name, params[:chair_id]) %>
+    </div>
+    <div class="fields">
+      <%= f.label :description %>
+      <%= f.text_area :description, :rows => 4  %>
+    </div>
+    <div class="fields">
+      <%= f.label :url %>
+      <%= f.text_field :url%>
+    </div>
+    <div class="fields">
+      <%= f.label :sws %>
+      <%= f.number_field :sws %>
+    </div>
+
+    <div class="fields">
+      <%= f.label :creditpoints %>
+      <%= f.number_field :creditpoints %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+</div>

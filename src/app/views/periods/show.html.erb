@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p><%= @period.weekday %></p>
+<p><%= @period.duration %></p>
+<p><%= @period.place %></p>
+<p><%= @period.event.course.name %></p>
+<p><%= @period.minute_of_day %></p>
+
+<%= link_to 'Edit', edit_period_path(@period) %> |
+<%= link_to 'Back', periods_path %>

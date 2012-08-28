@@ -1,0 +1,21 @@
+<span class="post-metadata">
+  <% if params[:controller].eql? 'home' or params[:controller].eql? 'courses' %>
+    <% if post.post_type.eql? 'question' %>
+      <%= link_to "#{post.answers.count} answers", post_path(post) %> &middot;
+    <% end %>
+    <%= link_to "#{post.comments.count} comments", post_path(post) %> &middot;
+  <% end %>
+  <%= "by #{post.author_name}" %> 
+  <%= "#{distance_of_time_in_words(Time.now, post.created_at)} ago" %> &middot;
+
+  <%= link_to "#{post.course.name}", course_path(post.course) %>
+
+  &middot; <%= link_to 'melden', "report/#{post.id}",:class => "icon-minus-sign" %>
+
+  <% if can? :update, post  %>
+    &middot; <%= link_to "entfernen", post, :class => "icon-trash ", :data => { :confirm => 'Are you sure that you want to remove this post?' }, method: :delete %>
+    <% if post.author %>
+      &middot; <%= link_to 'bearbeiten', edit_post_path(post),:class => "icon-pencil " %>
+    <% end %> 
+  <% end %>
+</span>

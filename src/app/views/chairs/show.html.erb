@@ -1,0 +1,19 @@
+<!-- chair  -->
+<p id="notice"><%= notice %></p>
+
+<header>
+<h2><%= @chair.name %></h2>
+<h3><%= @chair.institute.name %></h3>
+</header>
+
+<%= render "shared/grid", :objects => @chair.lectures %>
+<%#= render "lectures/list_simple", :lectures => @chair.lectures %>
+
+<footer>
+<%= link_to chairs_path, :class => 'btn btn-mini' do %>
+  <span class="icon-arrow-left"> back</span>
+<% end %>
+|  
+
+<%= render "chairs/access_buttons", :chair=> @chair %>
+</footer>

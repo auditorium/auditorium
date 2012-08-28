@@ -1,0 +1,97 @@
+<header class="hero-unit">
+  
+  <div class="row-fluid">
+    <div class="span11">
+      <h2>
+        <% if @course.previous %>
+          <small>
+            <%= link_to content_tag('i', '', :class=>'icon-chevron-left'), @course.previous, :rel=>"tooltip", 'data-original-title'=>"Go to the previous semester", :id => 'previous-course' %>
+          </small>
+        <% else %>
+          <small>
+            <%= link_to content_tag('i', '', :class=>'icon-chevron-left'), '#', :rel=>"tooltip", 'data-original-title'=>"Not available yet", :id => 'previous-course' %>
+          </small>
+        <% end %>
+    
+        <%= " #{@course.name.titleize}" %>
+        <small><%= link_to "(#{@course.term.code})", @course.term %></small> 
+
+        <% if @course.next %>
+          <small>
+            <%= link_to content_tag('i', '', :class=>'icon-chevron-right'), @course.next, :rel=>"tooltip", 'data-original-title'=>"Go to the next semester", :id => 'next-course' %>
+          </small>
+        <% else %>
+           <small><%= link_to content_tag('i', '', :class=>'icon-chevron-right'), '#', :rel=>"tooltip", 'data-original-title'=>"Not available yet", :id => 'next-course' %>
+           </small>
+        <% end %>
+
+      </h2>
+      <div class='<%= "follow-button follow-button-#{@course.id}" %>'><%= render :partial => 'shared/follow_button', :locals => { :course => @course } %></div>
+    </div>
+    <div class="span1">
+      <%= render :partial => 'courses/maintain_dropdown', :locals => {:course => @course } %>
+    </div>  
+  </div>
+  
+  
+  <blockquote cite="<%= url_for @course.lecture  %>">
+    <% unless @course.description.nil? or @course.description.empty? %>
+      <p class="lead"><%= @course.description %></p>
+    <% end %>
+  </blockquote>
+
+  <dl class="dl-horizontal">
+    <dt>all courses</dt>
+
+    <dd> <%= link_to "list of all courses of this lecture ", :controller => "lectures", :action => "show", :id => @course.lecture.id, :noredirect => true %> </dd>
+    
+    <%= render :partial => 'courses/maintainer_list', :locals => {:maintainers => @course.maintainers, :editors => @course.editors, :course => @course }%>
+
+    <% unless @course.lecture.chair.url.nil? or @course.lecture.chair.url.empty? %>
+      <dt>chair website</dt>
+      <dd> <%= link_to @course.lecture.chair.url, @course.lecture.chair.url%> </dd>
+    <% end %>
+
+    <% unless @course.lecture.url.nil? or @course.lecture.url.empty? %>
+      <dt>lecture website</dt>
+      <dd> <%= link_to @course.lecture.url, @course.lecture.url%> </dd>
+    <% end %>
+
+    <% unless @course.url.nil? or @course.url.empty? %>
+      <dt>course website</dt>
+      <dd> <%= link_to @course.url, @course.url %> </dd>
+    <% end %>
+  </dl>
+</header>
+
+<%= render :partial => 'courses/manage_users_modal', :locals => { :course => @course }%>
+
+
+<section id="announcement_stream">
+    <div class="page-header">
+      <h3>
+        Course announcements
+        <% if current_user and current_user.may_edit_course(@course) %>
+         <small><%= link_to 'New announcement', new_post_path(:post_type => 'info', :course_id => @course.id), :class => 'inline-button btn btn-mini btn-warning' %></small>
+        <% end %>
+      </h3>    
+    </div>
+    <div id="announcement-stream">
+      <%= render 'courses/announcement_stream'%>
+    </div>
+</section>
+<section id="question_stream">
+    <div class="page-header">
+      <h3>
+        Questions?
+        <% if user_signed_in? %>
+          <small><%= link_to 'Ask a question', new_post_path(:post_type => 'question', :course_id => @course.id), :class => 'inline-button btn btn-mini btn-primary' %></small>
+        <% end %>
+      </h3>
+    </div>
+    <div id="question-stream">
+      <%= render 'courses/question_stream' %>
+    </div>
+</section>
+
+  

@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p><%= @event.event_type %></p>
+<p><%= @event.course.name %></p>
+<p><%= @event.tutor.full_name %></p>
+<p><%= @event.weekday %></p>
+<p><%= @event.beginDate %></p>
+<p><%= @event.endDate %></p>
+<p><%= @event.week %></p>
+<p><%= @event.url %></p>
+<p><%= @event.building %></p>
+<p><%= @event.room %></p>
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>

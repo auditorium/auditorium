@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<h2> Meldung </h2>
+
+<h3> "<%= link_to @report.post.subject , @report.post %>" - <%= @report.post.author %> </h3>
+<h4> gemeldet von <%= @report.reporter %> </h4>
+<div class="well">
+  <p> <%= @report.body  %> </p>
+</div>
+
+<% unless @report.read %>
+<%= link_to '"gelesen" markieren', { :controller => "reports", :action=> "mark_read", :id => @report.id}, :class => "btn btn-mini icon-check" %>
+<% end%>
+
+<%= link_to 'Back', reports_path %>

@@ -1,0 +1,19 @@
+<% if @course.infos.count == 0 %>
+  <div class="well">
+  <p>No announcements were made, yet. 
+    <% if current_user and current_user.may_edit_course(@course) %>
+      <%= link_to 'Be the first with an announcement.', new_post_path(:post_type => 'info', :course_id => @course.id) %>
+    <% end %>
+  </p>
+  </div>
+<% else %> 
+
+  <% infos_per_day = @course.infos.reverse.group_by{ |post| post.created_at.to_date.beginning_of_day }%>
+  <% infos_per_day.each do |day, infos| %>
+    <h4><%= day.strftime("%A - %d. %B %Y") %></h4>
+    <% for info in infos %>
+      <%= render :partial => 'posts/post_teaser', :locals => { :post => info} %>
+    <% end %>
+  <% end %>
+<% end %>
+

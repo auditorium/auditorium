@@ -1,0 +1,5 @@
+<% if current_user.courses.count > 0 %>
+  <%= render :partial => 'shared/courses_accordion', :locals => {:courses_by_faculty => current_user.courses_by_faculty, :user_or_all => 'user' } %>
+<% else %>
+  <div class="alert alert-info">You can search for a course and follow them to get notifications.</div>
+<% end %>

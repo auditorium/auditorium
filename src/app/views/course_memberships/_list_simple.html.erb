@@ -1,0 +1,10 @@
+<dl>
+<% if user %>
+<% user.courses.each do |course| %>
+  <dt> <%= link_to course, course %> </dt>
+  <dd> <%= course.description %> </dd>
+<% end %>
+<% else %>
+<%= render :partial => 'courses/full_list', :locals => { :courses => @courses}%>
+<% end %>
+</dl>

@@ -1,0 +1,41 @@
+<table class="table-posts">
+  <tbody>
+    <tr>
+      <% if post.post_type.eql? 'question' %>
+        <td rowspan="3" class="post-badge question-badge">&nbsp;</td> 
+      <% elsif post.post_type.eql? 'info' %>
+        <td rowspan="3" class="post-badge info-badge">&nbsp;</td>
+      <% end %>
+      <td rowspan="3" class="post-rating">
+        <%= render :partial => 'posts/rating', :locals => { :post => post } %>
+      </td>
+
+      <td colspan="3"><% if not post.post_type.eql? 'answer' %>
+        <h3 class="post-subject">
+          <% if not post.author.nil? and post.author.alternative_email %>
+          <span class="gravatar">
+            <%= gravatar_image_tag(post.author.alternative_email, :alt => post.author, :gravatar => {:default => :wavatar, :size => 40, :secure => true})%>
+          </span>
+          <% end %>
+        
+          <%= link_to post.subject, post_path(post) %>
+
+        </h3>
+      <% end %>
+      </td>
+    <tr><td class="post-body" colspan="2"><%= markdown(post.body) %></td></tr>
+    <tr><td class="post-footer" colspan="3"><%= render :partial => 'posts/post_meta_data', :locals => { :post => post } %></td></tr>
+  </tbody>
+</table>
+
+<% if params[:controller].eql? 'posts'%>
+<table class="table-comments"> 
+    <% post.comments.each do |comment| %>
+      <tr><td><%= render :partial => 'posts/comment', :locals => {:comment => comment }%></td></tr>
+    <% end %>
+    <tr>
+      <td class="comment-footer"><%= render :partial => 'posts/comment_form', :locals => {:post => post } %></td>
+    </tr>
+</table>
+
+<% end %>

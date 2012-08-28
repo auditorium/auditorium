@@ -1,0 +1,71 @@
+class Ability
+  include CanCan::Ability
+
+  def initialize(user)
+    # Define abilities for the passed in user here. For example:
+    alias_action :following, :to => :follow
+    alias_action :answering, :to => :answer
+    alias_action :commenting, :to => :comment
+    alias_action :rating, :to => :rate
+
+
+    user ||= User.new # guest user (not logged in)
+
+    if user.id? # registrierte Benutzer
+
+      can :read, :all #if user.confirmed?
+      cannot :read, Report
+
+      can :update,   User, :id => user.id
+      can :moderate, User, user.is_admin?
+
+      can :create,   Post
+      can :update,   Post, :author_id => user.id
+      can :destroy,  Post, :author_id => user.id
+      can :comment,  Post
+      can :report,   Post
+      can :answer,   Post
+      can :rate,     Post do |post|
+        post.current_user != user
+      end
+
+      # can :post_in, Course do |course|
+      #   user.is_course_member? course
+      # end
+
+      can :announce_in, Course do |course|
+        user.is_course_editor? course or user.is_course_maintainer? course
+      end
+
+      #can :follow, Course do |course| course.faculty.id == user.faculty_id end
+
+      can :follow, Course
+      can :follow, Lecture
+      can :follow, Faculty
+
+    else # Gäste
+      cannot :read, :all
+    end
+
+    if user.admin?  # admin
+      can :manage, :all
+      can :destroy, :all
+      can :read, :all #if user.confirmed?
+    end
+
+
+    # The first argument to `can` is the action you are giving the user permission to do.
+    # If you pass :manage it will apply to every action. Other common actions here are
+    # :read, :create, :update and :destroy.
+    #
+    # The second argument is the resource the user can perform the action on. If you pass
+    # :all it will apply to every resource. Otherwise pass a Ruby class of the resource.
+    #
+    # The third argument is an optional hash of conditions to further filter the objects.
+    # For example, here the user can only update published articles.
+    #
+    #   can :update, Article, :published => true
+    #
+    # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
+  end
+end

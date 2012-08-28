@@ -1,0 +1,1 @@
+$('#search_results').html('<%= escape_javascript render :partial => "shared/search_results" %>');

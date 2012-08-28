@@ -1,0 +1,51 @@
+<div class="navbar" id='navigation'>
+  <div class="navbar-inner">
+
+    <div class="container">
+
+      <!--
+      <a class="btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-plus"></span> </a>
+      -->
+
+      <ul class="nav">
+        <% if signed_in? %>
+        <li>
+        <%= link_to( home_path ) do %>
+          <em class="icon-home"></em>
+          <span class="hidden-phone">
+          Home
+          </span>
+        <% end%>
+        </li>
+
+        <li>
+        <%= link_to( courses_path ) do %>
+          <em class="icon-list"></em>
+          <span class="hidden-phone"> Courses </span>
+        <% end%>
+        </li>
+        <% if user_signed_in? %>
+          <li>
+          <%= link_to( course_memberships_path ) do %>
+            <em class="icon-star"></em>
+            <span class="hidden-phone">
+              My Courses
+            </span>
+          <% end%>
+          </li>
+        <% end %>
+
+        <% end %>
+      </ul>
+      
+       
+      <ul class="nav pull-right">
+        <%= render "shared/user_li" %>
+      </ul>
+      
+
+    </div>
+
+  </div>
+<%= render "shared/breadcrumbs" %>
+</div>

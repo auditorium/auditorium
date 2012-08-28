@@ -1,0 +1,52 @@
+<section id="courses-tabs">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#my-courses" data-toggle="tab"><h3>My Courses</h3></a></li>
+    <li><a href="#browse-courses" data-toggle="tab"><h3>All Courses</h3></a></li>
+
+  </ul>
+</section>
+
+<section class="tab-content">
+  <div class="tab-pane fade active in" id="my-courses">
+    <div class="row-fluid">
+      <div class="span12">
+        <% if current_user %>
+          <div class="span6">
+            <div class="stream" id="<%= current_user.id %>-stream">
+              <%= render :partial => 'posts/posts_stream', :locals => {:posts_per_day => current_user.posts_of_followed_courses_per_day } %>
+            </div>
+          </div>
+    
+          <div class="span6">
+            <div id="user-courses">
+              <%= render :partial => 'courses/user_courses' %>
+            </div>
+          </div>
+        
+        <% else %>
+          <div class="alert alert-info">Please <%= link_to 'Sign in', '/users/sign_in' %> or <%= link_to 'Sign up', '/users/sign_up' %> to see your courses and recent activity.</div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane fade in" id="browse-courses">
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="span6">
+          <%= render :partial => 'posts/posts_stream', :locals => {:posts_per_day => @posts_per_day }%>
+        </div>
+    
+        <div class="span6">
+          <div id="all-courses">
+            <%= render :partial => 'courses/all_courses', :locals => {:courses_by_faculty => courses_by_faculty }%>  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+

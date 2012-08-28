@@ -1,0 +1,45 @@
+
+<div class="row-fluid">
+<%= form_for(@course) do |f| %>
+  <% if @course.errors.any? %>
+    <div class="alert alert-error">
+      <h3><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved!</h3>
+
+      <ul>
+      <% @course.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="fields">
+    <%= f.label :name %>
+    <%= f.text_field :name, :placeholder => "Name of course..." %>
+  </div>
+
+  <div class="fields">
+    <%= f.label :description %>
+    <%= f.text_area :description, :rows => 4 %>
+  </div>
+
+  <div class="fields">
+    <%= f.label :url %>
+    <%= f.text_field :url, 'data-provide' => "typeahead", 'data-source' => "#{Course.all.map{ |c| c.url }}", :placeholder => "Name of course..." %>
+  </div>
+
+  <div class="fields">
+    <%= f.label :term_id %>
+    <%= f.select :term_id, options_from_collection_for_select(Term.all, :id, :code, Term.last) %>
+  </div>
+
+  <div class="fields">
+    <%= f.label :lecture_id %>
+    <%= f.select :lecture_id, options_from_collection_for_select(Lecture.all, :id, :name, @course.lecture_id) %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+</div>

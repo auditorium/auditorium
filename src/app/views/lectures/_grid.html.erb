@@ -1,0 +1,39 @@
+
+<%
+  cols = 3 if cols.nil?
+  cols = 12/cols
+  i = 0
+%>
+<div class="row-fluid" id="grid" >
+  <% lectures.each do |lecture| %>
+    <div class="span<%=cols%> well" >
+      <h3><%= link_to lecture.name, lecture %></h3>
+      <h4><%= lecture.parent.name %></h4>
+      <hr />
+      <ul>
+      <% lecture.courses.each do |course| %>
+        <li><p><%= link_to course.name, course %></p></li>
+      <% end %>
+      </ul>
+      <% if lecture.description %>
+        <p><%= lecture.description %></p>
+      <% else %>
+        <p>There's no description available, yet!</p>
+      <% end %>
+      <% if current_user and current_user.admin? %>
+        <p>
+          <%= link_to 'new course', new_course_path(:lecture_id => lecture.id), :class => 'btn btn-small btn-primary' %>
+          <%= link_to 'edit lecture', edit_lecture_path(lecture) , { :class => 'btn btn-small btn-warning' }  %>
+          <%#= link_to 'Destroy', lecture, confirm: 'Are you sure?', method: :delete, :class => "btn btn-mini btn-danger" %>
+        </p>
+      <% end %>
+    </div>
+    <% i=i+1 %>
+    <% if i % (12/cols) == 0 %>
+    </div>
+
+    <div class="row-fluid" >
+    <% end %>
+
+  <% end %>
+</div>

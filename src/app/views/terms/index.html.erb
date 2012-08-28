@@ -1,0 +1,27 @@
+<h2>Listing terms</h2>
+
+<table>
+  <tr>
+    <th>Typ</th>
+    <th>Beginn</th>
+    <th>Ende</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @terms.each do |term| %>
+  <tr>
+    <td><%= term.term_type %></td>
+    <td><%= term.beginDate %></td>
+    <td><%= term.endDate %></td>
+    <td><%= link_to 'Show', term %></td>
+    <td><%= link_to 'Edit', edit_term_path(term) %></td>
+    <td><%= link_to 'Destroy', term, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Term', new_term_path %>

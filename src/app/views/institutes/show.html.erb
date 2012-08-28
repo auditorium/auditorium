@@ -1,0 +1,15 @@
+<!-- Institute -->
+<p id="notice"><%= notice %></p>
+
+<header>
+<h2><%= @institute.name %></h2>
+<h3><%= @institute.faculty.name%></h3>
+</header>
+
+<%= render "shared/grid", :objects => @institute.children %>
+<%#= render "chairs/list_simple", :chairs=> @institute.chairs %>
+
+<%= link_to institutes_path, :class => 'btn btn-mini' do %>
+  <span class="icon-arrow-left"> back</span>
+<% end %>
+<%= render "institutes/access_buttons", :institute=> @institute%>

@@ -1,0 +1,18 @@
+<section>
+<table class="table table-striped">
+  <caption>
+    institutes
+  </caption>
+  <thead>
+  <tr>
+    <th>Institute</th>
+  </tr>
+  </thead>
+
+<% institutes.each do |institute| %>
+  <tr data-id="<%= institute.id%>" class="lecture">
+    <td class="lecture"> <%= link_to institute.name, institute%></td>
+  </tr>
+<% end %>
+</table>
+</section>

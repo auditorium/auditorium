@@ -1,0 +1,10 @@
+<header>
+<h2>Lectures</h2>
+</header>
+
+<%#= render "lectures/list_full", :lectures => @lectures %>
+<%= render :partial => 'lectures/grid', :locals => { :lectures => @lectures, :cols => nil } %>
+
+<% if current_user and current_user.admin? %>
+  <%= link_to 'New Lecture', new_lecture_path, { :class => 'btn btn-primary' } if current_user.admin? %>
+<% end %>

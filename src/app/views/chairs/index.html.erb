@@ -1,0 +1,10 @@
+<header>
+<h2>Chairs</h2>
+<h3><%= %></h3>
+</header>
+
+<%= render :partial => 'chairs/grid', :locals => { :chairs => @chairs, :cols => nil } %>
+
+<% if current_user and current_user.admin? %>
+  <%= link_to 'add chair', new_chair_path, { :class => 'btn btn-primary' } %>
+<% end %>

@@ -1,0 +1,27 @@
+<div id="maintainer-list">
+<% unless maintainers.empty? %>
+  <dt><%= pluralize(maintainers.count, 'maintainer') %></dt>
+  <dd>
+    <% maintainers.each do |maintainer| %>
+      <%= maintainer.user.full_name %>
+      <% unless maintainers.last == maintainer %>
+      <%= ", " %>  
+      <% end %>
+    <% end %>
+    
+  </dd>
+<% end %>
+
+<% if current_user && current_user.may_edit_course(course) && !editors.empty? %>
+  <dt><%= pluralize(editors.count, 'editor') %></dt>
+  <dd>
+    <% editors.each do |editor| %>
+      <%= editor.user.full_name %>
+      <% unless editors.last == editor %>
+      <%= ", " %>  
+      <% end %>
+    <% end %>
+    
+  </dd>
+<% end %>
+</div>

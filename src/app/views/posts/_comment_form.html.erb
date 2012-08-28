@@ -1,0 +1,18 @@
+<% if current_user %>
+  <p><%= link_to 'kommentieren', "#comment", :class=> 'commenting', :id => post.id %></p>
+
+  <div id='<%= "comment-#{post.id}-form" %>' class="comment-form">
+    <%= form_tag "#{post_path(post)}/commenting", :method => "post" do %> 
+      <div class="row-fluid">
+
+        <div class="span8">
+          <%= text_area_tag :body, nil, :rows => 2,  :placeholder => "Your comment...", :class => "span12" %>
+        </div>
+        <div class="span1">  
+          <%= submit_tag 'Kommentar absenden', :class => "btn btn-primary" %>
+        </div>
+      </div>
+ 
+    <% end %>
+  </div>
+<% end %>

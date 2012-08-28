@@ -1,0 +1,57 @@
+
+<% if post.errors.any? %>
+<div class="alert alert-error">
+  Something went wrong
+  <dl>
+    <% post.errors.full_messages.each do |msg| %>
+    <dd><%= msg %></dd>
+    <% end %>
+  </dl>
+</div>
+<% end %>
+<%= form_for (post), :class => 'form-horizontal', :remote => false do |f| %>
+<% if params[:controller].eql? 'home' %>
+<fieldset class="well">
+  <% else %>
+  <fieldset>
+    <% end %>
+    <div class="control-group">
+      <% if signed_in? %>
+      <div class="controls">
+
+        <label for="subject_field" class="accessibility"> subject </label>
+        <%= f.text_field :subject, :placeholder => 'Subject of the question...', :class => "span8", :id => "subject_field" %>
+        <label for="content_field" class="accessibility"> content </label>
+        <%= f.text_area :body, :placeholder => 'Content of your question...', :class => "span8", :id => "content_field", :size => '10x8' %>
+
+
+        <label for="course_select" class="accessibility"> course </label>
+        <%= f.select(:course_id, options_from_collection_for_select(Course.order('name ASC').select("id, name, term_id"), :id, :name_with_term, params[:course_id] || post.course_id), { include_blank: '-- please select a course --'}, {:id=>"course_select",:class => 'span4'}) %>
+        <label for="tag_field" class="accessibility"> tags (separate by space)</label>
+        <%= text_field_tag :tags, nil, :placeholder => "Delimit tags by space, semicolon or comma.", :class => "span4", :id => "tag_field" %>
+
+        
+
+        <% if params[:controller].eql? 'home' %>
+        <%= f.hidden_field :post_type, :value => 'question' %>
+        <% else %>
+        <% post_type = post.post_type || params[:post_type] %>
+        <%= f.hidden_field :post_type, :value => post_type %>
+        <% end %>
+      </div>
+      
+      <%= f.submit "Ask question", :class => 'btn btn-large btn-primary span2', 'data-disable-with' => 'Submitting...' %>
+      <% else %>
+      <div class='controls'>
+        <center>
+        <%= link_to 'Sign in to write a question', '/users/sign_in', :class => 'btn btn-large btn-primary' %>
+        <p class="help-block"><%= link_to 'Not an account yet? Sign up.', '/users/sign_up'%></p>
+        </center>
+      </div>
+      <% end %>
+
+    </div>
+
+    <% end %>
+  </fieldset>
+</div>

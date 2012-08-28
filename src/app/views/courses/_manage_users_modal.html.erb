@@ -1,0 +1,38 @@
+<% if current_user and (current_user.is_course_maintainer?(@course) or current_user.admin?) %>
+<!-- manage users modal -->
+
+<div class="modal hide" id="manage-users-modal">
+  <%= form_tag "/courses/#{course.id}/manage_users", :method => 'post', :id => 'manage-users-form', :remote => true do %>
+  
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h3>Manage users in this course</h3>
+  </div>
+  <div class="modal-body">
+    <table class="table">
+      <% User.all.each do |user| %>
+      <tr>
+        <td><%= user.full_name %></td>
+        <td>
+          <%= radio_button_tag "#{user.id}", 'member', user.is_course_member?(course), :class => 'btn' %>
+          <%= "Member" %>
+        </td>
+        <td>
+          <%= radio_button_tag "#{user.id}", 'editor', user.is_course_editor?(course),:class => 'btn btn-primary'%>
+          <%= "Editor" %>
+        </td>
+        <td>
+          <%= radio_button_tag "#{user.id}", 'maintainer', user.is_course_maintainer?(course), :class => 'btn btn-warning' %>
+          <%= "Maintainer" %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+  <div class="modal-footer">
+    <%= button_tag 'Close', 'data-dismiss' => 'modal', :class => 'btn' %>
+    <%= submit_tag 'Save changes', :class => 'btn btn-primary', :disable_with => 'saving...' %>
+  </div>
+  <% end %>
+</div>
+<% end %>

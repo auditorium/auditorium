@@ -1,0 +1,11 @@
+
+<div class="container center span8">
+<% if @post.post_type.eql? 'question' %>
+	<h2>Edit your Question!</h2>
+<% else %>
+	<h2> Edit your Announcement!</h2>
+<% end %>
+<%= render :partial => 'posts/form', :locals => { :post => @post }%>
+</div>
+
+<%= debug @post %>

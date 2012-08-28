@@ -1,0 +1,50 @@
+<%= form_for(@period) do |f| %>
+  <% if @period.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@period.errors.count, "error") %> prohibited this period from being saved:</h2>
+
+      <ul>
+      <% @period.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="fields">
+    <%= f.label :weekday %>
+    <%= f.select :weekday, options_for_select(weekdays) %>
+  </div>
+  <div class="fields">
+    <%= f.label :duration, 'Aller wie vielen Wochen?' %>
+    <%= f.number_field :duration %>
+  </div>
+  <div class="fields">
+    <%= f.label :place %>
+    <%= f.text_field :place %>
+  </div>
+  <div class="fields">
+    <%= f.label :event_id %>
+    <%= f.select :event_id, options_from_collection_for_select(Event.all, :id, :name) %>
+  </div>
+  
+  <div class="fields">
+    <%= f.label :minute_of_day %>
+    <%= f.time_select :minute_of_day, :ignore_date => true%>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<!--
+create_table "periods", :force => true do |t|
+  t.string   "weekday"
+  t.integer  "duration"
+  t.string   "place"
+  t.datetime "created_at",    :null => false
+  t.datetime "updated_at",    :null => false
+  t.integer  "event_id"
+  t.integer  "minute_of_day"
+end
+-->

@@ -1,0 +1,7 @@
+<h2>Editing lecture</h2>
+
+<%= render 'form' %>
+
+<%= link_to 'back', lectures_path, :class =>'btn btn-mini icon-arrow-left' %>
+<%= link_to 'show', @lecture, :class=>'btn btn-mini btn-primary' %> |
+<%= link_to 'delete', @lecture, confirm: 'Are you sure?', method: :delete, :class => "btn btn-mini btn-danger" %>

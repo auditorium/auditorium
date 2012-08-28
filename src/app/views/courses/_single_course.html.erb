@@ -1,0 +1,70 @@
+
+<table class="courses-table">
+		<thead>
+			<tr>
+				<td colspan='0'>
+					<h3>
+						<small>
+              <div class='<%= "follow-button follow-button-#{course.id}" %>'>
+                <%= render :partial => 'shared/follow_button', :locals => { :course => course } %>
+              </div>
+							<%= link_to 'details', '#', :id => "collapse-course-#{course.id}", 'data-id' => course.id, :class => 'collapse-course pull-right' %>
+						</small>
+						<%= link_to course.name_with_term, course %>
+					</h3>
+				</td>
+			</tr>
+
+		</thead>
+		<tbody style="z-index:1000;position:absolute;background-color:#fff;display:none" class="courses-body" id='course-<%= course.id %>' data-id='<%= course.id %>'>
+				<tr>
+					<td colspan='2' class="courses-activity">
+						<ul class="unstyled">
+							<li><%= pluralize(course.questions.count, 'question') %></li>
+							<li><%= pluralize(course.infos.count, 'announcement') %></li>
+							<li><%= pluralize(course.followers.count, 'subscriber') %></li>
+							<li><%= pluralize(course.participants.count, 'participant') %></li>
+						</ul>
+					</td>
+
+					<td class="courses-post-badge question-badge">&nbsp;</td>
+					<td colspan='3' class="courses-posts">
+						<% if course.questions.count > 0 %>
+							<ul class="unstyled">
+								<% course.questions.first(4).each do |question| %>
+									<li>
+										<%= link_to "#{question.subject}", question %>
+										<span class="hidden-phone-tight post-date"><%= "#{question.created_at.strftime("%b %e %Y, %H:%m")}" %></span>
+									</li>
+								<% end %>
+								<% if course.questions.count > 4 %>
+									<li><%= link_to 'more »', course %></li>
+								<% end %>
+							</ul>	
+						<% else %>
+							<%= link_to "No questions ask yet. Be the first.", course %>
+						<% end %>
+					</td>
+
+					<td class="courses-post-badge info-badge">&nbsp;</td>
+					<td colspan='3' class="courses-posts">
+						<% if course.infos.count > 0 %>
+							<ul class="unstyled">
+								<% course.infos.first(4).each do |info| %>
+									<li>
+										<%= link_to "#{info.subject}", info %>
+										<span class="hidden-phone-tight post-date"><%= "#{info.created_at.strftime("%b %e %Y, %H:%m")}" %></span>
+									</li>
+								<% end %>
+								<% if course.infos.count > 4 %>
+									<li><%= link_to 'more »', course %></li>
+								<% end %>
+							</ul>	
+						<% else %>
+							<%= "No announcement made yet."%>
+						<% end %>
+					</td>
+				</tr>
+			
+		</tbody>
+	</table>

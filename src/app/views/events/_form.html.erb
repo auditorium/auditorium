@@ -1,0 +1,58 @@
+<%= form_for(@event) do |f| %>
+  <% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+      <% @event.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="fields">
+    <%= f.label(:event_type, 'Type') %>
+    <%= f.select(:event_type, options_for_select(event_types)) %>
+  </div>
+  <div class="fields">
+    <%= f.label :course_id %>
+    <%= f.select :course_id, options_from_collection_for_select(Course.all, :id, :name) %>
+  </div>
+  <div class="fields">
+    <%= f.label :tutor_id %>
+
+    <%= f.select :tutor_id, options_from_collection_for_select(User.all, :id, :full_name) %>
+  </div>
+  <div class="field">
+    <%= f.label :weekday %>
+    <%= f.select :weekday, options_for_select(weekdays) %>
+  </div>
+  
+  <div class="fields">
+    <%= f.label :beginDate %>
+    <%= f.date_select :beginDate, :ignore_time => true %>
+  </div>
+  <div class="fields">
+    <%= f.label :endDate %>
+    <%= f.date_select :endDate, :ignore_time => true %>
+  </div>
+  <div class="fields">
+    <%= f.label :week %>
+    <%= f.select :week, options_for_select(week_rotation) %>
+  </div>
+  <div class="fields">
+    <%= f.label :url %>
+    <%= f.text_field :url %>
+  </div>
+  <div class="fields">
+    <%= f.label :building %>
+    <%= f.text_field :building %>
+  </div>
+  <div class="fields">
+    <%= f.label :room %>
+    <%= f.text_field :room %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,29 @@
+<div class="controle_group">
+  <%= form_for(@institute) do |f| %>
+    <% if @institute.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@institute.errors.count, "error") %> prohibited this institute from being saved:</h2>
+
+        <ul>
+          <% @institute.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="fields">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+
+    <div class="fields">
+      <%= f.label :faculty_id %>
+      <%= f.select :faculty_id, options_from_collection_for_select(Faculty.all, :id, :name, params[:faculty_id]) %>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%= debug params %>

@@ -1,0 +1,40 @@
+
+<%
+  cols = 3 if cols.nil?
+  cols = 12/cols
+  i = 0
+%>
+<div class="row-fluid" >
+  <% chairs.each do |chair| %>
+    <div class="span<%=cols%> well" >
+      <strong><%= link_to chair.name, chair %></strong>
+
+      <br />
+      <em><%= chair.parent.name %></em>
+      <%if  chair.lectures.count > 0 %>
+        <small>
+          <ul>
+            <% chair.lectures.each do |l| %>
+              <li><%= l.name %></li>
+            <% end %>
+          </ul>
+        </small>
+      <% end %>
+
+
+        <hr />
+        <em><%= chair.lectures.count %> lectures</em>
+        <br />
+        <%= render "chairs/access_buttons", :chair=> chair %>
+        <%#= link_to 'Destroy', chair, confirm: 'Are you sure?', method: :delete, :class => "btn btn-mini btn-danger" %>
+        <br />
+    </div>
+    <% i=i+1 %>
+    <% if i % (12/cols) == 0 %>
+    </div>
+
+    <div class="row-fluid" >
+    <% end %>
+
+  <% end %>
+</div>

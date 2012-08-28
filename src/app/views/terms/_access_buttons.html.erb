@@ -1,0 +1,5 @@
+<% if current_user %>
+  <%= link_to("new lecture", new_lecture_path(:chair_id => chair.id), { :class => 'btn btn-mini btn-primary'}) %>
+  <%= link_to 'edit chair', edit_chair_path(chair), { :class => 'btn btn-mini btn-warning' }  %>
+  <%= link_to 'destroy chair', chair, confirm: 'Are you sure?', method: :delete, :class => "btn btn-mini btn-danger" %>
+<% end %>

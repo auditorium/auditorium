@@ -1,0 +1,6 @@
+<div id="activity">
+  <div class="container center span8">
+    <h2>Recent activity</h2>
+    <%= render :partial => 'posts/posts_stream', :locals => {:posts_per_day => @posts_per_day }%>
+  </div>
+</div>
