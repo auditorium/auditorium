@@ -10,12 +10,12 @@
 
   <%= link_to "#{post.course.name}", course_path(post.course) %>
 
-  &middot; <%= link_to 'melden', "report/#{post.id}",:class => "icon-minus-sign" %>
+  &middot; <%= link_to ' report', "report/#{post.id}",:class => "icon-minus-sign" %>
 
   <% if can? :update, post  %>
-    &middot; <%= link_to "entfernen", post, :class => "icon-trash ", :data => { :confirm => 'Are you sure that you want to remove this post?' }, method: :delete %>
+    &middot; <%= link_to " remove", post, :class => "icon-trash ", :data => { :confirm => 'Are you sure that you want to remove this post?' }, method: :delete %>
     <% if post.author %>
-      &middot; <%= link_to 'bearbeiten', edit_post_path(post),:class => "icon-pencil " %>
+      &middot; <%= link_to ' edit', edit_post_path(post),:class => "icon-pencil " %>
     <% end %> 
   <% end %>
 </span>
