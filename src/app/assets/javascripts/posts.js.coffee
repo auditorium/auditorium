@@ -7,3 +7,16 @@ jQuery ->
 	$('.commenting').click ->
 		post_id = $(this).attr('id')
 		$('#comment-'+post_id+'-form').show()
+
+	# when user chooses question only for moderator 
+	$('a#private-post').click ->
+		$('input#submit-button-label').val("Ask a moderator (private)")
+		$('input#is-private').val('true')
+		$('div.btn-group').removeClass('open')
+		return false
+	
+	$('a#public-post').click ->
+		$('input#submit-button-label').val("Ask a public question")
+		$('input#is-private').val('false')
+		$('div.btn-group').removeClass('open')
+		return false

@@ -12,7 +12,7 @@ Auditorium::Application.routes.draw do
 
   controller :users do
     get 'users' => :index, as: :ranking
-    get 'users/moderation' => 'users#moderation', :as => :users_moderation
+    get 'users/moderation' => 'users#moderation', :as => :user_moderation
     match 'users/:id/confirm' => 'users#confirm'
     delete  "users/:id/delete",      :to => "users#destroy", :as => :destroy_user_account
   end
@@ -30,9 +30,11 @@ Auditorium::Application.routes.draw do
   match 'posts/:parent_id/answering', :to => 'posts#answering'
   match 'posts/:parent_id/commenting', :to => 'posts#commenting'
   
+  resources :reports
+  
   match 'report/:post_id', :to => 'reports#new'
   match 'reports/:id/mark_read', :to => 'reports#mark_read'
-  
+
   resources :course_memberships
   match "my_courses", :to => "course_memberships#index"
   

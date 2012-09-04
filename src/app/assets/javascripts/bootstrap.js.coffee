@@ -6,13 +6,14 @@ jQuery ->
 
 scrollTop = -> document.body.scrollTop or document.documentElement.scrollTop
 $("li.dropdown-fallback").each -> @style.display= "none"
-jQuery ($)->
+
+# this does not work!!
+#jQuery ($)->
 #  $("a[rel=popover]").popover()
 #  $(".tooltip").tooltip()
 #  $("a[rel=tooltip]").tooltip()
 # $('.dropdown-toggle').dropdown()
-
-  document.querySelector("li.dropdown").style.display = "inline"
+# document.querySelector("li.dropdown").style.display = "inline"
 
 window.onscroll = ->
   navigation = document.querySelector("div#navigation")

@@ -167,5 +167,12 @@ class User < ActiveRecord::Base
     end
   end
 
+  def is_moderator?(course)
+    course.moderators.include? self  
+  end
+
+  def can_see(post)
+    not ((post.is_private || post.origin.is_private) && self != post.author && !self.is_moderator?(post.course) && !self.admin?)
+  end
 
 end

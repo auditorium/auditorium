@@ -39,8 +39,21 @@
         <%= f.hidden_field :post_type, :value => post_type %>
         <% end %>
       </div>
+
+      <div class="btn-group">
+        <%= f.submit "Ask a public question", { :class => 'btn btn-large btn-success', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>
+        <button class="btn btn-large btn-success dropdown-toggle" data-toggle="dropdown">
+           <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li><%= link_to 'ask a public question', '#', :id => 'public-post' %></li>
+          <li><%= link_to 'ask a moderator (private)', '#', :id => 'private-post' %></li>
+        </ul>
+      </div>
+
+      <%= f.hidden_field :is_private, :value => false, :id => 'is-private' %>
+
       
-      <%= f.submit "Ask question", :class => 'btn btn-large btn-primary span2', 'data-disable-with' => 'Submitting...' %>
       <% else %>
       <div class='controls'>
         <center>

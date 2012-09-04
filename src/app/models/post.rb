@@ -10,7 +10,7 @@ class Post < ActiveRecord::Base
    
   has_many :tags 
    
-  attr_accessible :body, :subject, :post_type, :parent_id, :course_id, :author_id, :answer_to_id
+  attr_accessible :body, :subject, :post_type, :parent_id, :course_id, :author_id, :answer_to_id, :is_private
 
   validates :post_type, presence: true, inclusion: { in: %w{question answer info comment} }
   validates :subject, presence: true
@@ -28,8 +28,6 @@ class Post < ActiveRecord::Base
   after_save do
     author.update_score if rating_changed?
   end
-
-  # TODO think about private posts again
   
   # get answers and comments to this post if any
    def answers
@@ -44,11 +42,23 @@ class Post < ActiveRecord::Base
      self.parent_id == nil
    end
   
-    def author_name
-      if not self.author.nil?
-        return self.author.full_name
+  def author_name
+    if not self.author.nil?
+      return self.author.full_name
+    else
+      return "deleted person"
+    end        
+  end
+
+  def origin
+    if self.parent.nil?
+      self
+    else
+      if self.parent.parent.nil?
+        self.parent # answer or comment
       else
-        return "deleted person"
-      end        
+        self.parent.parent # comment to an answer
+      end
     end
+  end
 end

@@ -7,7 +7,7 @@
         <td rowspan="2" class="post-badge info-badge">&nbsp;</td>
       <% end %>
       <td colspan="1"><% if not post.post_type.eql? 'answer' %>
-        <h3 class="post-subject"><%= link_to post.subject, post_path(post) %></h3>
+        <h3 class="post-subject"><small><%= "(private)" if post.is_private %></small> <%= link_to post.subject, post_path(post) %> </h3>
       <% end %>
     <tr><td class="post-footer"><%= render :partial => 'posts/post_meta_data', :locals => { :post => post } %></td></tr>
   </tbody>

@@ -1,15 +1,11 @@
 <% if @course.questions.count == 0 %>
   <div class="well">
   <p>
-    No questions were ask, yet. <%= link_to 'Be the first with a question.', new_post_path(:post_type => 'question', :course_id => @course.id) %>
+    No questions were asked, yet. <%= link_to 'Be the first with a question.', new_post_path(:post_type => 'question', :course_id => @course.id) %>
   </p>
   </div>
 <% else %> 
-  <% questions_per_day = @course.questions.reverse.group_by{ |post| post.created_at.to_date.beginning_of_day }%>
-  <% questions_per_day.each do |day, questions| %>
-    <h4><%= day.strftime("%A - %d. %B %Y") %></h4>
-    <% for question in questions %>
-      <%= render :partial => 'posts/post_teaser', :locals => { :post => question} %>
-    <% end %>
+  <% for question in @course.questions %>
+    <%= render :partial => 'posts/post_teaser', :locals => { :post => question} %>
   <% end %>
 <% end %>

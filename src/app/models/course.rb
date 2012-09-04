@@ -49,6 +49,12 @@ class Course < ActiveRecord::Base
     participants.uniq
   end
   
+  def moderators
+    moderators = Array.new
+    moderators << self.editors
+    moderators << self.maintainers
+  end
+
   def children
     self.events
   end
@@ -58,7 +64,8 @@ class Course < ActiveRecord::Base
   end
 
   def questions
-    Post.order('created_at DESC').find_all_by_course_id_and_post_type(self.id, "question")
+    questions = Post.order('created_at DESC').find_all_by_course_id_and_post_type(self.id, "question")
+    questions.delete_if {|post| !current_user.can_see(post)}
   end
   
   def infos

@@ -5,8 +5,6 @@ class PostsController < ApplicationController
   def index
     @posts = Post.order('created_at DESC').where('post_type = ? or post_type = ?', 'question', 'info').all
     
-    @posts_per_day = @posts.group_by{ |post| post.created_at.to_date.beginning_of_day }
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @posts }
@@ -19,8 +17,12 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @post }
+      if (@post.is_private || @post.origin.is_private) && current_user != @post.author && !current_user.is_moderator?(@post.course) && !current_user.admin?
+        format.html { redirect_to home_path, :flash => { :error => "Sorry, you don't have permissions to access this page." } }
+      else 
+        format.html # show.html.erb
+        format.json { render json: @post }
+      end
     end
   end
 

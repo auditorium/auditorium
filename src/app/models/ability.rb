@@ -28,7 +28,7 @@ class Ability
       can :rate,     Post do |post|
         post.current_user != user
       end
-
+      
       # can :post_in, Course do |course|
       #   user.is_course_member? course
       # end
