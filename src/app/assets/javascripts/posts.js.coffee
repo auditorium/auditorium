@@ -20,3 +20,14 @@ jQuery ->
 		$('input#is-private').val('false')
 		$('div.btn-group').removeClass('open')
 		return false
+	
+	# backward compatability for non-js user -.-
+	$('#course_name').css('display', 'inline')
+	$('#course_name').css('visibility', 'visible')
+	$('#course_select').remove()
+	$('#label_course_select').remove()
+
+	$('#course_name').autocomplete
+		source: "/ajax/courses"
+		select: (event,ui) -> 
+			$("#post_course_id").val(ui.item.id)

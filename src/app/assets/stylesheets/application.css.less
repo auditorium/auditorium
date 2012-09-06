@@ -9,6 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require_tree .
 */
 
 // Bootstrap
@@ -695,5 +696,18 @@ li.notification p {
 
 /* misc */
 .accessibility {
-  display:none;
+  position:absolute;
+  left:-10000px;
 }
+
+p.hint {
+  color:@grayLight;
+  padding:5px;
+}
+
+.backward_compatability {
+  display: none;
+  line-height: 0;
+  visibility: hidden;
+}
+

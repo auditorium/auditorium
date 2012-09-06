@@ -61,4 +61,18 @@ class Post < ActiveRecord::Base
       end
     end
   end
+
+# methods for autocompletion
+  def course_name=(name)
+    course = Course.find_by_name(name)
+    if course
+      self.course_id = course.id
+    else
+      errors[:course_name] << "Invalid name entered"
+    end
+  end
+  
+  def course_name
+    Course.find(course_id).name if course_id
+  end
 end

@@ -24,35 +24,41 @@
         <label for="content_field" class="accessibility"> content </label>
         <%= f.text_area :body, :placeholder => 'Content of your question...', :class => "span8", :id => "content_field", :size => '10x8' %>
 
+        <label for="course_name" class="accessibility backward_compatability" id='label_course_select'>course</label>
+        <%= f.hidden_field :course_id, :class => 'backward_compatability', 'style' => 'display:none' %>
+        <%= text_field_tag :course_name, nil, :placeholder => 'Search for your course...', :class => 'span5 backward_compatability', 'style' => 'display:none'  %>
 
-        <label for="course_select" class="accessibility"> course </label>
-        <%= f.select(:course_id, options_from_collection_for_select(Course.order('name ASC').select("id, name, term_id"), :id, :name_with_term, params[:course_id] || post.course_id), { include_blank: '-- please select a course --'}, {:id=>"course_select",:class => 'span4'}) %>
+        <!-- for backward compatibility a select -->   
+        <label for="course_select" class="accessibility" id='label_course_select'>course</label>
+        <%= f.select(:course_id, options_from_collection_for_select(Course.order('name ASC').select("id, name, term_id"), :id, :name_with_term, params[:course_id] || post.course_id), { include_blank: '-- please select a course --'}, {:id=>"course_select",:class => 'span5'}) %>
+
         <label for="tag_field" class="accessibility"> tags (separate by space)</label>
-        <%= text_field_tag :tags, nil, :placeholder => "Delimit tags by space, semicolon or comma.", :class => "span4", :id => "tag_field" %>
-
+        <%= text_field_tag :tags, nil, :placeholder => "Delimit tags by space, semicolon or comma.", :class => "span3", :id => "tag_field" %>
+             
         
 
         <% if params[:controller].eql? 'home' %>
-        <%= f.hidden_field :post_type, :value => 'question' %>
+          <%= f.hidden_field :post_type, :value => 'question' %>
         <% else %>
         <% post_type = post.post_type || params[:post_type] %>
-        <%= f.hidden_field :post_type, :value => post_type %>
+          <%= f.hidden_field :post_type, :value => post_type %>
         <% end %>
+
+        <%= f.hidden_field :is_private, :value => false, :id => 'is-private' %>
       </div>
 
       <div class="btn-group">
-        <%= f.submit "Ask a public question", { :class => 'btn btn-large btn-success', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>
-        <button class="btn btn-large btn-success dropdown-toggle" data-toggle="dropdown">
+        <%= f.submit "Ask a public question", { :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>
+        <button class="btn btn-large btn-primary dropdown-toggle" data-toggle="dropdown">
            <span class="caret"></span>
         </button>
         <ul class="dropdown-menu">
           <li><%= link_to 'ask a public question', '#', :id => 'public-post' %></li>
           <li><%= link_to 'ask a moderator (private)', '#', :id => 'private-post' %></li>
         </ul>
+
       </div>
-
-      <%= f.hidden_field :is_private, :value => false, :id => 'is-private' %>
-
+      <p class="hint">Choose between public and private questions.<br />Private questions can only be seen by moderators of the course.</p>
       
       <% else %>
       <div class='controls'>
@@ -68,3 +74,5 @@
     <% end %>
   </fieldset>
 </div>
+
+<%= debug @post %>

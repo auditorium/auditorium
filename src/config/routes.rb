@@ -1,4 +1,6 @@
 Auditorium::Application.routes.draw do
+  get "ajax/courses"
+
   match 'intro', :to => 'landing_page#index'
   match 'home', :to => 'home#index'
   
@@ -40,7 +42,9 @@ Auditorium::Application.routes.draw do
   
   resources :chairs
 
-  resources :posts  
+  resources :posts do
+    get :autocomplete_courses_name, :on => :collection
+  end
 
   resources :reports
 
