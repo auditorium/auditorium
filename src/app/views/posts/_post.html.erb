@@ -24,18 +24,24 @@
       <% end %>
       </td>
     <tr><td class="post-body" colspan="2"><%= markdown(post.body) %></td></tr>
-    <tr><td class="post-footer" colspan="3"><%= render :partial => 'posts/post_footer', :locals => { :post => post } %></td></tr>
+    <tr><td class="post-footer" colspan="3">
+      <%= render :partial => 'posts/post_footer', :locals => { :post => post } %>
+    </td></tr>
   </tbody>
 </table>
+<%= render 'posts/report_modal', :post => post %>
 
 <% if params[:controller].eql? 'posts'%>
 <table class="table-comments"> 
-    <% post.comments.each do |comment| %>
-      <tr><td><%= render :partial => 'posts/comment', :locals => {:comment => comment }%></td></tr>
-    <% end %>
-    <tr>
-      <td class="comment-footer"><%= render :partial => 'posts/comment_form', :locals => {:post => post } %></td>
-    </tr>
+  <% post.comments.each do |comment| %>
+    <tr><td>
+      <%= render :partial => 'posts/comment', :locals => {:comment => comment }%>
+    </td></tr>
+    
+  <% end %>
 </table>
+
+
+
 
 <% end %>

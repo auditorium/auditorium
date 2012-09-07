@@ -50,5 +50,6 @@ jQuery ->
 
 	$('a.submit-report').click ->
 		data_id = $(this).data('id')
+		$('.report-modal').hide()
 		$('.report-modal.post-'+data_id).show()
 		return false
