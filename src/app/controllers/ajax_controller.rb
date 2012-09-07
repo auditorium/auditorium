@@ -6,7 +6,7 @@ class AjaxController < ApplicationController
     else
       courses = Course.all(limit: 10)
     end
-    list = courses.map {|c| Hash[ id: c.id, label: c.name, name: c.name]}
+    list = courses.map {|c| Hash[ id: c.id, label: (c.name_with_term short: false), name: (c.name_with_term short: false)]}
     render json: list
   end
 end

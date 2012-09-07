@@ -75,4 +75,8 @@ class Post < ActiveRecord::Base
   def course_name
     Course.find(course_id).name if course_id
   end
+
+  def top_rated?
+    self.rating >= 10
+  end
 end

@@ -1,0 +1,26 @@
+<span class="post-metadata">
+  <% if params[:controller].eql? 'home' or params[:controller].eql? 'courses' %>
+    <% if post.post_type.eql? 'question' %>
+      <%= link_to "#{post.answers.count} answers", post_path(post) %> &middot;
+    <% end %>
+    <%= link_to "#{post.comments.count} comments", post_path(post) %> &middot;
+  <% end %>
+  <%= "by #{post.author_name}" %> 
+  <%= "#{distance_of_time_in_words(Time.now, post.created_at)} ago" %> &middot;
+
+  <% if current_user.subscribed_to?(post.course) %>
+    <%= link_to " #{post.course.name}", course_path(post.course), title: 'You have subscribed to this course.', class: 'icon-star' %>
+  <% else %>
+    <%= link_to "#{post.course.name}", course_path(post.course) %>
+  <% end %>
+  <span class="pull-right">
+    <%= link_to ' report', new_report_path(post_id: post.id) %>
+
+    <% if can? :update, post  %>
+      &middot; <%= link_to " remove", post, :data => { :confirm => 'Are you sure that you want to remove this post?' }, method: :delete %>
+      <% if post.author %>
+        &middot; <%= link_to ' edit', edit_post_path(post) %>
+      <% end %> 
+    <% end %>
+  </span>
+</span>

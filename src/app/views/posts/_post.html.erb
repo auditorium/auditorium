@@ -1,4 +1,4 @@
-<table class="table-posts">
+<table class="table-posts" id='<%= post.id %>'>
   <tbody>
     <tr>
       <% if post.post_type.eql? 'question' %>
@@ -24,7 +24,7 @@
       <% end %>
       </td>
     <tr><td class="post-body" colspan="2"><%= markdown(post.body) %></td></tr>
-    <tr><td class="post-footer" colspan="3"><%= render :partial => 'posts/post_meta_data', :locals => { :post => post } %></td></tr>
+    <tr><td class="post-footer" colspan="3"><%= render :partial => 'posts/post_footer', :locals => { :post => post } %></td></tr>
   </tbody>
 </table>
 

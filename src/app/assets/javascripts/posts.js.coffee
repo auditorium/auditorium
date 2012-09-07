@@ -31,3 +31,12 @@ jQuery ->
 		source: "/ajax/courses"
 		select: (event,ui) -> 
 			$("#post_course_id").val(ui.item.id)
+
+	$('.hint.hidden-post a').click ->
+		data_id = $(this).data('id')
+		$('.table-posts.hidden.post-'+data_id).show().effect('highlight', {}, 1200)
+		$('.table-posts.hidden.post-'+data_id).removeClass('hidden')
+		$('p.hint.post-'+data_id).hide()
+		return false
+	
+	$('.table-posts.hidden').hide()

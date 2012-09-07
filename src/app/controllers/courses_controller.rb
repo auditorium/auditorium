@@ -8,7 +8,7 @@ class CoursesController < ApplicationController
   # GET /courses.json
   def index
     @courses = Course.order('name ASC').page(params[:page]).per(20)
-
+    @courses_by_faculty = @courses.to_a.group_by{ |course| course.faculty }
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @courses }

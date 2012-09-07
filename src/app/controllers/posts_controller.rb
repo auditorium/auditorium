@@ -31,6 +31,10 @@ class PostsController < ApplicationController
   # GET /posts/new.json
   def new
     @post = Post.new
+    if params[:course_id]
+      @post.course_id = params[:course_id]
+      @course_name = Course.find(params[:course_id]).name
+    end 
     
     respond_to do |format|
       format.html # new.html.erb
@@ -91,17 +95,19 @@ class PostsController < ApplicationController
   # DELETE /posts/1.json
   def destroy
     @post = Post.find(params[:id])
-    
-    @origin = root_path
-    @origin = @post.parent if @post.parent
-    @origin = @post.parent.parent if @post.parent and @post.parent.parent
-    
+    if @post.origin
+      origin_path = root_path
+    else
+      origin_path = @post.parent if @post.parent
+      origin_path = @post.parent.parent if @post.parent and @post.parent.parent
+    end
+
     notifications = Notification.where(:notifyable_id => @post.id, :notifyable_type => 'Post')
-    Notification.destroy(notifications)
+    Notification.destroy(notifications) if !notifications.empty?
     @post.destroy
 
     respond_to do |format|
-      format.html { redirect_to @origin or root_path if @origin_post.nil? }
+      format.html { redirect_to root_path, flash: { success: 'The post was successfully destroyed.' } }
       format.json { head :no_content }
     end
   end

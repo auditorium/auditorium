@@ -8,12 +8,9 @@
   </div>
 <% else %> 
 
-  <% infos_per_day = @course.infos.reverse.group_by{ |post| post.created_at.to_date.beginning_of_day }%>
-  <% infos_per_day.each do |day, infos| %>
-    <h4><%= day.strftime("%A - %d. %B %Y") %></h4>
-    <% for info in infos %>
-      <%= render :partial => 'posts/post_teaser', :locals => { :post => info} %>
-    <% end %>
+  <% for info in @course.infos %>
+    <%= render :partial => 'posts/post_teaser', :locals => { :post => info} %>
   <% end %>
+
 <% end %>
 

@@ -85,7 +85,10 @@
       <h3>
         Questions?
         <% if user_signed_in? %>
-          <small><%= link_to 'Ask a question', new_post_path(:post_type => 'question', :course_id => @course.id), :class => 'inline-button btn btn-mini btn-primary' %></small>
+          <small>
+            <%= link_to 'Ask a public question', new_post_path(:post_type => 'question', :course_id => @course.id), :class => 'inline-button btn btn-mini btn-primary' %> or
+            <%= link_to 'Ask a moderator (private question)', new_post_path(:post_type => 'question', :course_id => @course.id, :is_private => true), class: 'inline-button btn btn-mini btn-primary' %>
+          </small>
         <% end %>
       </h3>
     </div>

@@ -67,7 +67,7 @@ class User < ActiveRecord::Base
     membership.membership_type if membership
   end
   
-  def subcribed_to?(course)
+  def subscribed_to?(course)
     membership = self.course_membership course
   end
 
@@ -175,4 +175,7 @@ class User < ActiveRecord::Base
     not ((post.is_private || post.origin.is_private) && self != post.author && !self.is_moderator?(post.course) && !self.admin?)
   end
 
+  def rating_minimum
+    -6 # todo: customizable in future releases
+  end
 end

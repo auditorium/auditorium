@@ -8,9 +8,8 @@ class HomeController < ApplicationController
       
       @post = Post.new()
       @post.post_type = 'question'
-      @posts = Post.order('created_at DESC').where('post_type = ? or post_type = ?', 'question', 'info').all
+      @posts = Post.order('created_at DESC').where('post_type = ? or post_type = ?', 'question', 'info').page(params[:page]).per(20)
       
-      @posts_per_day = @posts.group_by{ |post| post.created_at.to_date.beginning_of_day }
     else
       redirect_to root_path
     end

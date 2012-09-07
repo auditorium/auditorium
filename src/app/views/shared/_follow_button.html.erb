@@ -1,4 +1,4 @@
-<% if current_user and current_user.subcribed_to?(course) %>
+<% if current_user and current_user.subscribed_to?(course) %>
     <%= button_to 'already subscribed', "#{course_path(course)}/following", :name => 'unfollow', :class => "follow-button btn btn-mini btn-info", 'data-id' => "#{course.id}", :disabled => should_be_disabled?, 'data-disable-with' => 'loading...', :id => 'follow-button', :remote => true %>
 <% else %>
     <%= button_to 'subscribe to course',"#{course_path(course)}/following", :name => 'follow', :class => "follow-button btn btn-mini", 'data-id' => "f#{course.id}", :disabled => should_be_disabled?, 'data-disable-with' => 'loading...', :id => 'follow-button', :remote => true   %>

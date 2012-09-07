@@ -25,8 +25,8 @@ class Course < ActiveRecord::Base
   end
 
   #scope :unmaintained,includes(:course_memberships).where(:course_memberships)
-  def name_with_term
-    if self.name.length > 50
+  def name_with_term(option = { short: true })
+    if self.name.length > 50 && :short == true
       "#{self.name[0..50].titleize}... (#{self.term.code})"
     else
       "#{self.name.titleize} (#{self.term.code})"

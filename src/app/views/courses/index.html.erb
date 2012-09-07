@@ -1,7 +1,5 @@
 <% if @courses_by_faculty.count > 0 %>
 
-	<%= paginate @courses %>
-
 	<% @courses_by_faculty.each do |faculty, courses| %>
 
 		<h2><%= "#{faculty}" %></h2>
