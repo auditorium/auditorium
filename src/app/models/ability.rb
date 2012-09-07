@@ -26,7 +26,7 @@ class Ability
       can :report,   Post
       can :answer,   Post
       can :rate,     Post do |post|
-        post.current_user != post.author
+        user != post.author
       end
       
       # can :post_in, Course do |course|
