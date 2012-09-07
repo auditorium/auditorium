@@ -1,15 +1,28 @@
-<p id="notice"><%= notice %></p>
+<div class="center span8">
+<h3>Report details <small><%= link_to "show all reports", reports_path %></small></h3>
 
-<h2> Meldung </h2>
+<table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Reporter</th>
+        <th>When?</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <td><%= @report.reporter %></td>
+      <td>reported <%= distance_of_time_in_words(Time.now, @report.created_at) %> ago</td>
+      <td>
+      <%= link_to ' read', mark_report_as_read_path(@report.id), :title =>'mark report as read', :class=>"icon-ok" %>
+      &middot;
+      <%= link_to ' edit', edit_post_path(@report.post), class: 'icon-edit' %>
+      &middot;
+      <%= link_to ' delete', @report.post, :data => { :confirm => 'Are you sure that you want to remove this post?' }, method: :delete, class: 'icon-trash' %>
+    </td>
+    </tbody>
+  </table>
 
-<h3> "<%= link_to @report.post.subject , @report.post %>" - <%= @report.post.author %> </h3>
-<h4> gemeldet von <%= @report.reporter %> </h4>
-<div class="well">
-  <p> <%= @report.body  %> </p>
+<h3><%= "#{@report.post.post_type.capitalize} details" %></h3>
+
+<%= render 'posts/post', :post => @report.post %>
 </div>
-
-<% unless @report.read %>
-<%= link_to '"gelesen" markieren', { :controller => "reports", :action=> "mark_read", :id => @report.id}, :class => "btn btn-mini icon-check" %>
-<% end%>
-
-<%= link_to 'Back', reports_path %>

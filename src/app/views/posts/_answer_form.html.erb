@@ -4,15 +4,9 @@
   <div class="answer-form">
     <%= form_tag "#{post_path(post)}/answering", :method => "post" do %> 
       <div class="row-fluid">
-
-        <div class="span8">
-          <%= text_area_tag :body, nil, :rows => 5,  :placeholder => "Deine Antwort...", :class => "span12" %>
-        </div>
-        <div class="span1">  
-          <%= submit_tag 'Absenden', :class => "btn btn-primary" %>
-        </div>
+        <%= text_area_tag :body, nil, :rows => 5,  :placeholder => "Your answer...", :class => "span12" %> 
+        <%= submit_tag 'Submit', :class => "btn btn-primary" %>
       </div>
- 
     <% end %>
   </div>
 <% else %>

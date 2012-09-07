@@ -1,27 +1,11 @@
-<div class="controle_group">
-<%= form_for(@report) do |f| %>
-  <% if @report.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@report.errors.count, "error") %> prohibited this report from being saved:</h2>
-
-      <ul>
-      <% @report.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<div class='span9'>
+  <%= form_for(@report = Report.new) do |f| %>
+    <div class='span4'>
+      <%= f.hidden_field :post_id, :value => post.id %>
+      <%= f.text_area :body, class: 'span4', :size => '10x1' %>
+    </div>
+    <div class="span4">
+      <%= f.submit 'Submit report', class: 'btn span2' %>
     </div>
   <% end %>
-
-  <div class="fields">
-    <%= f.hidden_field :post_id %>
-  </div>
-
-  <div class="fields">
-    <%= f.text_area :body, :cols => 40, :rows => 4 %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit :value => "Petzen"%>
-  </div>
-<% end %>
 </div>

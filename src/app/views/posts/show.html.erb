@@ -1,3 +1,4 @@
+<div class="center span8">
 <%= render :partial => 'post', :locals => {:post => @post } %>
 <hr />
 
@@ -11,4 +12,5 @@
 <% elsif current_user.nil? and @post.post_type.eql? 'info'%>
   <div class="alert alert-info">Please <%= link_to 'Sign in', '/users/sign_in' %> or <%= link_to 'Sign up', '/users/sign_up' %> to comment this information.</div>
 <% end %>
+</div>
 

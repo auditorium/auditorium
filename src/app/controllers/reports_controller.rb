@@ -28,16 +28,6 @@ class ReportsController < ApplicationController
   # GET /reports/new.json
   def new
     @report = Report.new
-
-    @post = Post.find params[:post_id]
-
-    @report.reporter = current_user
-    @report.post = @post
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @report }
-    end
   end
 
   # GET /reports/1/edit
@@ -53,7 +43,7 @@ class ReportsController < ApplicationController
 
     respond_to do |format|
       if @report.save
-        format.html { redirect_to @report, notice: 'Report was successfully created.' }
+        format.html { redirect_to @report, success: 'Report was successfully created.' }
         format.json { render json: @report, status: :created, location: @report }
       else
         format.html { render action: "new" }
@@ -69,7 +59,7 @@ class ReportsController < ApplicationController
     @report.save
 
     respond_to do |format|
-      format.html { redirect_to @report }
+      format.html { redirect_to reports_path }
       format.json { head :no_content }
     end
 

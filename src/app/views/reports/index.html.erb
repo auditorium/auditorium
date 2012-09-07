@@ -1,34 +1,24 @@
 <h2>Reports</h2>
 
-
-<table class="table table-condensed">
-  <thead>
-    <tr>
-      <th>Author</th>
-      <th>Post</th>
-      <th>Petze</th>
-      <th>Bericht</th>
-    </tr>
-  </thead>
-  <tbody>
-
-    <% @reports.reverse.each do |report| %>
-      <% if report.read %>
-        <tr class='read'>
-        <td> <i class=""></i> </td>
-        <% else %>
-        <tr class='unread'>
-        <td> <i class="icon-ok"></i> </td>
-        <% end %>
-
-        <td><em><%= report.post.author %></em></td>
-        <td><em><%= link_to report.post.subject, report.post %></em></td>
-        <td><%= report.reporter %></td>
-        <td><%= link_to report.body.to_s.slice(0..100), report  %></td>
-        <td><%= I18n.localize(report.created_at, :format => :short)%></td>
+<% if @reports.any? %>
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Report</th>
+        <th>Author of the post</th>
+        <th>Subject of the post</th>
+        <th>Content of the post</th>
+        <th>Date of post</th>
+        <th>Actions</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <%= render @reports %>
+    </tbody>
+    <%= paginate @reports %>
+  </table>
+<% else %>
+  <p class='alert alert-info'>Seems your audience is harmful.</p>
+<% end %>
 
-<%= paginate @reports %>

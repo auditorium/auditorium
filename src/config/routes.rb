@@ -32,11 +32,9 @@ Auditorium::Application.routes.draw do
   match 'posts/:parent_id/answering', :to => 'posts#answering'
   match 'posts/:parent_id/commenting', :to => 'posts#commenting'
 
-  match '/reports/:id/mark_read', :to => 'reports#mark_read'
-
   resources :reports
-  
-  
+
+  match '/reports/:id/mark_read', :to => 'reports#mark_read', :as => 'mark_report_as_read'
 
   resources :course_memberships
   match "my_courses", :to => "course_memberships#index"

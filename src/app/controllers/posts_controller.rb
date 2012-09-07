@@ -106,6 +106,9 @@ class PostsController < ApplicationController
     Notification.destroy(notifications) if !notifications.empty?
     @post.destroy
 
+    reports = Report.find_all_by_post_id(@post.id)
+    Report.destroy(reports)
+
     respond_to do |format|
       format.html { redirect_to root_path, flash: { success: 'The post was successfully destroyed.' } }
       format.json { head :no_content }
@@ -130,7 +133,7 @@ class PostsController < ApplicationController
         format.html { redirect_to @post.parent, :flash => { :success => "Thanks for your answer." } }
         format.json { render json: @post.parent }
       else 
-        format.html { redirect_to redirect_url, :flash => { :error => "It went something wrong. Please try again to answer this post." } }
+        format.html { redirect_to redirect_url, :flash => { :error => "Something went wrong. Please try again." } }
         format.json { render json: @post.parent.errors, status: :unprocessable_entity }
       end
     end
@@ -157,10 +160,10 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to post_path(@origin_post), :flash => { :success => "Dein Kommentar wurde erfolgreich abgegeben." } }
+        format.html { redirect_to post_path(@origin_post), :flash => { :success => "Your comment was successfully submitted." } }
         format.json { render json: @origin_post }
       else 
-        format.html { redirect_to post_path(@origin_post), :flash => { :error => "Dein Kommentar konnte nicht eingetragen werden..." } }
+        format.html { redirect_to post_path(@origin_post), :flash => { :error => "Something went wrong with your comment. Please try again." } }
         format.json { render json: @origin_post.errors, status: :unprocessable_entity }
       end
     end

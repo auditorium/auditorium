@@ -25,8 +25,9 @@
         <%= f.text_area :body, :placeholder => 'Content of your question...', :class => "span8", :id => "content_field", :size => '10x8' %>
 
         <label for="course_name" class="accessibility backward_compatability" id='label_course_select'>course</label>
-        <%= f.hidden_field :course_id, :class => 'backward_compatability', 'style' => 'display:none' %>
-        <%= text_field_tag :course_name, @course_name, :placeholder => 'Search for your course...', :class => 'span5 backward_compatability', 'style' => 'display:none' %>
+        <%= f.hidden_field :course_id, :value => (params[:course_id] || :course_id), :class => 'backward_compatability', 'style' => 'display:none' %>
+        <%  @course_name = post.course.name_with_term if !post.nil? && !post.course.nil? %>
+        <%= text_field_tag :course_name, @course_name , :placeholder => 'Search for your course...', :class => 'span5 backward_compatability', 'style' => 'display:none' %>
 
         <!-- for backward compatibility a select -->   
         <label for="course_select" class="accessibility" id='label_course_select'>course</label>
@@ -45,27 +46,45 @@
 
         <%= f.hidden_field :is_private, :value => (params[:is_private] or false), :id => 'is-private' %>
       </div>
-      <% if params[:post_type].nil? or params[:post_type].eql? 'question' %>
+      <% if params[:controller].eql? 'home' or (post and post.post_type.eql? 'question') or params[:post_type].eql? 'question' %>
         <div class="btn-group">
-          <% if params[:is_private] == 'true' %> 
-            <%= f.submit "Ask a moderator (private)", { :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>
+          <% if params[:action].eql? 'edit' %>
+            <% if params[:is_private] == 'true' %> 
+              <%= f.submit "Update as private question", { :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>
+            <% else %>
+              <%= f.submit "Update as public question", { :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>
+            <% end %>
           <% else %>
-            <%= f.submit "Ask a public question", { :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>
+            <% if params[:is_private] == 'true' %> 
+              <%= f.submit "Ask as private question", { :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>
+            <% else %>
+              <%= f.submit "Ask as public question", { :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>
+            <% end %>
           <% end %>
 
           <button class="btn btn-large btn-primary dropdown-toggle" data-toggle="dropdown">
              <span class="caret"></span>
           </button>
           <ul class="dropdown-menu">
-            <li><%= link_to 'ask a public question', '#', :id => 'public-post' %></li>
-            <li><%= link_to 'ask a moderator (private)', '#', :id => 'private-post' %></li>
+            
+            <% if params[:action].eql? 'edit' %>
+            <li><%= link_to 'update as public question', '#', :id => 'public-post' %></li>
+            <li><%= link_to 'update as private question', '#', :id => 'private-post' %></li>
+            <% else %>
+            <li><%= link_to 'ask as public question', '#', :id => 'public-post' %></li>
+            <li><%= link_to 'ask as private question', '#', :id => 'private-post' %></li>
+            <% end %>
           </ul>
 
         </div>
         <p class="hint">Choose between public and private questions.<br />Private questions can only be seen by moderators of the course.</p>
 
       <% else %>
-        <%= f.submit "Post your announcement", { :class => 'btn btn-large btn-warning', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>  
+        <% if params[:action].eql? 'edit' %> 
+          <%= f.submit "Update your announcement", { :class => 'btn btn-large btn-warning', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>  
+        <% else %>
+          <%= f.submit "Post your announcement", { :class => 'btn btn-large btn-warning', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>  
+        <% end %>
       <% end %>
       
       <% else %>

@@ -10,13 +10,18 @@ jQuery ->
 
 	# when user chooses question only for moderator 
 	$('a#private-post').click ->
-		$('input#submit-button-label').val("Ask a moderator (private)")
+
+		$('input#submit-button-label').val((index, value) ->
+				value.replace('public', 'private')
+			)
 		$('input#is-private').val('true')
 		$('div.btn-group').removeClass('open')
 		return false
 	
 	$('a#public-post').click ->
-		$('input#submit-button-label').val("Ask a public question")
+		$('input#submit-button-label').val((index, value) ->
+				value.replace('private', 'public')
+			);
 		$('input#is-private').val('false')
 		$('div.btn-group').removeClass('open')
 		return false
@@ -40,3 +45,10 @@ jQuery ->
 		return false
 	
 	$('.table-posts.hidden').hide()
+
+	$('.report-modal').hide()
+
+	$('a.submit-report').click ->
+		data_id = $(this).data('id')
+		$('.report-modal.post-'+data_id).show()
+		return false
