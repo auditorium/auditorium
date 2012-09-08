@@ -33,16 +33,12 @@
 <% if params[:controller].eql? 'posts'%>
 <table class="table-comments"> 
   <% post.comments.each do |comment| %>
-    <tr><td>
-      <%= render :partial => 'posts/comment', :locals => {:comment => comment }%>
-    </td></tr>
-    
+    <tr><td><%= render :partial => 'posts/comment', :locals => {:comment => comment }%></td></tr>
   <% end %>
-</table>
-
+  <tr>
+    <td class="comment-footer"><%= render :partial => 'posts/comment_form', :locals => {:post => post } %></td>
+  </tr>
+</table>    
+<% end %>
 
 <%= render 'posts/report_modal', :post => post %>
-
-
-
-<% end %>
