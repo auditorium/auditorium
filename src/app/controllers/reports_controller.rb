@@ -43,8 +43,7 @@ class ReportsController < ApplicationController
 
     respond_to do |format|
       if @report.save
-        format.html { redirect_to @report, success: 'Report was successfully created.' }
-        format.json { render json: @report, status: :created, location: @report }
+        format.html { redirect_to home_path, success: 'Report was successfully created.' }
       else
         format.html { render action: "new" }
         format.json { render json: @report.errors, status: :unprocessable_entity }

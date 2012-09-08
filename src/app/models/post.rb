@@ -79,4 +79,12 @@ class Post < ActiveRecord::Base
   def top_rated?
     self.rating >= 10
   end
+
+  def reports
+    Report.find_all_by_post_id(self.id)
+  end
+
+  def too_many_reports?
+    self.reports.count >= 4
+  end
 end
