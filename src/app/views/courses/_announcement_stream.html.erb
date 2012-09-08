@@ -1,4 +1,4 @@
-<% if @course.infos.count == 0 %>
+<% if @infos.count == 0 %>
   <div class="well">
   <p>No announcements were made, yet. 
     <% if current_user and current_user.may_edit_course(@course) %>
@@ -8,7 +8,7 @@
   </div>
 <% else %> 
 
-  <% for info in @course.infos %>
+  <% @infos.each do |info| %>
     <%= render :partial => 'posts/post_teaser', :locals => { :post => info} %>
   <% end %>
 

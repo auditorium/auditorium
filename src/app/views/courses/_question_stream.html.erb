@@ -1,11 +1,11 @@
-<% if @course.questions.count == 0 %>
+<% if @questions.count == 0 %>
   <div class="well">
   <p>
     No questions were asked, yet. <%= link_to 'Be the first with a question.', new_post_path(:post_type => 'question', :course_id => @course.id) %>
   </p>
   </div>
 <% else %> 
-  <% for question in @course.questions %>
+  <% for question in @questions %>
     <%= render :partial => 'posts/post_teaser', :locals => { :post => question} %>
   <% end %>
 <% end %>

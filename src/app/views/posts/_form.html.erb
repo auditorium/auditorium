@@ -27,14 +27,11 @@
         <label for="course_name" class="accessibility backward_compatability" id='label_course_select'>course</label>
         <%= f.hidden_field :course_id, :value => (params[:course_id] || :course_id), :class => 'backward_compatability', 'style' => 'display:none' %>
         <%  @course_name = post.course.name_with_term if !post.nil? && !post.course.nil? %>
-        <%= text_field_tag :course_name, @course_name , :placeholder => 'Search for your course...', :class => 'span5 backward_compatability', 'style' => 'display:none' %>
+        <%= text_field_tag :course_name, @course_name , :placeholder => 'Search for your course...', :class => 'span8 backward_compatability', 'style' => 'display:none' %>
 
         <!-- for backward compatibility a select -->   
         <label for="course_select" class="accessibility" id='label_course_select'>course</label>
-        <%= f.select(:course_id, options_from_collection_for_select(Course.order('name ASC').select("id, name, term_id"), :id, :name_with_term, params[:course_id] || post.course_id), { include_blank: '-- please select a course --'}, {:id=>"course_select",:class => 'span5'}) %>
-
-        <label for="tag_field" class="accessibility"> tags (separate by space)</label>
-        <%= text_field_tag :tags, nil, :placeholder => "Delimit tags by space, semicolon or comma.", :class => "span3", :id => "tag_field" %>
+        <%= f.select(:course_id, options_from_collection_for_select(Course.order('name ASC').select("id, name, term_id"), :id, :name_with_term, params[:course_id] || post.course_id), { include_blank: '-- please select a course --'}, {:id=>"course_select",:class => 'span8'}) %>
              
 
         <% if params[:controller].eql? 'home' %>

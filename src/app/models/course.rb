@@ -64,12 +64,11 @@ class Course < ActiveRecord::Base
   end
 
   def questions
-    questions = Post.order('created_at DESC').find_all_by_course_id_and_post_type(self.id, "question")
-    questions.delete_if {|post| !current_user.can_see(post)}
+    questions = Post.order('created_at ASC').where('post_type = ? and course_id = ?','question', self.id)
   end
   
   def infos
-    Post.order('created_at DESC').find_all_by_course_id_and_post_type(self.id, "info")
+    Post.order('created_at ASC').where('post_type = ? and course_id = ?','info', self.id)
   end
 
   def is_now?
@@ -94,14 +93,6 @@ class Course < ActiveRecord::Base
   
   def posts_per_day
     self.posts.group_by{ |post| post.created_at.to_date.beginning_of_day }
-  end
-
-  def questions
-    self.posts.select { |post| post.post_type.eql? 'question'}
-  end
-  
-  def infos
-    self.posts.select { |post| post.post_type.eql? 'info'}
   end
 
   def next
