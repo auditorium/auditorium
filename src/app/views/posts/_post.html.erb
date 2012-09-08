@@ -29,7 +29,6 @@
     </td></tr>
   </tbody>
 </table>
-<%= render 'posts/report_modal', :post => post %>
 
 <% if params[:controller].eql? 'posts'%>
 <table class="table-comments"> 
@@ -41,6 +40,8 @@
   <% end %>
 </table>
 
+
+<%= render 'posts/report_modal', :post => post %>
 
 
 

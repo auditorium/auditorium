@@ -45,11 +45,14 @@ jQuery ->
 		return false
 	
 	$('.table-posts.hidden').hide()
-
-	$('.report-modal').hide()
-
+	
+	$('.modal').hide()
 	$('a.submit-report').click ->
 		data_id = $(this).data('id')
-		$('.report-modal').hide()
-		$('.report-modal.post-'+data_id).show()
+		$('input#report_post_id').val(data_id)
+		$('.modal').show()
+		return false
+
+	$('a.closeButton').click -> 
+		$('.modal').hide()
 		return false
