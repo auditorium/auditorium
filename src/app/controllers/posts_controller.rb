@@ -57,11 +57,6 @@ class PostsController < ApplicationController
       
     respond_to do |format|
       if @post.save
-        # create tags for this post
-        tags = params[:tags].split(/[^a-zA-Z0-9\-#\+\.]+/)
-        tags.each do |tag|
-          Tag.create(:name => tag, :post => @post)
-        end
         format.js
         format.html { redirect_to @post.course, :flash => { :success => 'Post was successfully created.' } }
         format.json { render json: @post, status: :created, location: @post }

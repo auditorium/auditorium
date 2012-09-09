@@ -7,7 +7,7 @@
 
 <div id="activity">
   <div class="center span8">
-    <h2>Recent activity</h2>
+    <h2><%=t :recent_activity %></h2>
     <%= render :partial => 'posts/posts_stream'%>
 
     <%= paginate @posts %>
