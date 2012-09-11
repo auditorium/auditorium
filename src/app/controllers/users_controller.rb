@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   end
 
   def moderation
-  	@users = User.all
+  	@users = User.order('created_at DESC')
   	respond_to do |format|
   		format.html
   	end
