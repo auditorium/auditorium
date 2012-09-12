@@ -14,7 +14,9 @@
     <%= link_to "#{post.course.name_with_term}", course_path(post.course) %>
   <% end %>
   <span class="pull-right">
-    <%= link_to ' report', '#', :class => "submit-report", 'data-id' => post.id %>
+    <% if can? :report, post  %>
+      <%= link_to ' report', '#', :class => "submit-report", 'data-id' => post.id %>
+    <% end %> 
     <% if can? :update, post  %>
       &middot; <%= link_to " remove", post, :data => { :confirm => 'Are you sure that you want to remove this post?' }, method: :delete %>
       <% if post.author %>

@@ -5,7 +5,9 @@
 	  	<% if can? :update, comment  %>
 	    	<%= link_to "remove", comment, :data => { :confirm => 'Are you sure that you want to remove this comment?' }, method: :delete %>&middot;
 	  	<% end %>
-	  	<%= link_to ' report', '#', :class => "submit-report", 'data-id' => comment.id %>	
+      <% if can? :report, comment %>
+        <%= link_to ' report', '#', :class => "submit-report", 'data-id' => comment.id %>	
+	  	<% end %>
   	</span>
   </span>
 </div>
