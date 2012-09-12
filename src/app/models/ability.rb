@@ -23,12 +23,14 @@ class Ability
       can :update,   Post, :author_id => user.id
       can :destroy,  Post, :author_id => user.id
       can :comment,  Post
-      can :report,   Post
+      can :report,   Post do |post|
+        user.id != post.author.id
+      end
       can :answer,   Post
       can :rate,     Post do |post|
-        user != post.author
+        user.id != post.author.id
       end
-      
+
       # can :post_in, Course do |course|
       #   user.is_course_member? course
       # end
