@@ -23,7 +23,7 @@
           <%= f.text_area :body, :placeholder => 'Content of your question...', :class => "span8", :id => "content_field", :size => '10x8' %>
 
           <label for="course_name" class="accessibility backward_compatability" id='label_course_select'>course</label>
-          <%= f.hidden_field :course_id, :value => (params[:course_id] || :course_id), :class => 'backward_compatability', 'style' => 'display:none' %>
+          <%= f.hidden_field :course_id, :value => (params[:course_id] || post.course_id), :class => 'backward_compatability', 'style' => 'display:none' %>
           <%  @course_name = post.course.name_with_term if !post.nil? && !post.course.nil? %>
           <%= text_field_tag :course_name, @course_name , :placeholder => 'Search for your course...', :class => 'span8 backward_compatability', 'style' => 'display:none' %>
 

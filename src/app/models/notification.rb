@@ -14,7 +14,8 @@ class Notification < ActiveRecord::Base
 
   def path
     if self.notifyable_type.eql? 'Post' or self.notifyable_type.eql? 'Rating'
-      Post.find self.notifyable_id
+      post = Post.find self.notifyable_id
+      return post.origin
     end
   end
 
