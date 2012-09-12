@@ -14,13 +14,12 @@ class NotificationObserver < ActiveRecord::Observer
         receivers = post.course.users
       end
 
-      receivers.delete_if {|receiver| receiver.id == post.author_id }
+      receivers.delete_if {|receiver| receiver.id == post.author_id}
       sender = post.author
       
       receivers.each do |receiver|
         Notification.create!(:receiver => receiver, :sender => sender, :notifyable_id => post.id, :notifyable_type => post.class.name)
       
-        puts "MODERATOR: #{receiver}"
         if post.is_private?
           #send email notifications to moderators
           AuditoriumMailer.private_question(receiver, post).deliver

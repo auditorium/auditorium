@@ -168,7 +168,7 @@ class User < ActiveRecord::Base
   end
 
   def is_moderator?(course)
-    course.moderators.include? self  
+    course.moderators.include? self if !course.moderators.nil? 
   end
 
   def can_see(post)
