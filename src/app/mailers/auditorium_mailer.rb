@@ -17,4 +17,17 @@ class AuditoriumMailer < ActionMailer::Base
   		template_path: "auditorium_mailer",
   		template_name: "#{membership_type}_membership")
   end
+
+  def private_question(user, post)
+  	@user = user
+  	@course = post.course
+  	@url = course_url(post.course)
+  	@post = post
+  	@membership_type = CourseMembership.find_by_course_id_and_user_id(@course.id, @user.id).membership_type
+
+  	mail(to: @user.email,
+  		subject: "#{@post.author.full_name} asks a private question in #{@course.name_with_term}.",
+  		template_path: 'auditorium_mailer',
+  		template_name: 'private_question')
+  end
 end

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <style>
+      body {
+        padding:20px;
+      }
+      p {
+        font-weight:200;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="font-weight:100;">Hello, <%= @user.full_name %></h1>
+    
+    <p><%= @post.author.full_name %> asks a question with the subject "<%= @post.subject %>" directly to the course moderators:</p>
+
+    <p><b>You can</b></p>
+    <ul>
+      <li><%= link_to 'go to the post', post_url(@post) %> or</li>
+      <li><%= link_to 'edit the post', edit_post_url(@post) %>.</li>
+    </ul>
+
+    <p>You get this email, because you're the <%= @membership_type %> of the course <%= link_to @course.name_with_term, course_url(@course) %>.</p>
+
+    <p>Have a great day!</p>
+    <em>The auditorium team</em>
+  </body>
+</html>

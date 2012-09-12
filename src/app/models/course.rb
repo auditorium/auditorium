@@ -50,9 +50,7 @@ class Course < ActiveRecord::Base
   end
   
   def moderators
-    moderators = Array.new
-    moderators << self.editors
-    moderators << self.maintainers
+    CourseMembership.where('membership_type = ? or membership_type = ? and course_id = ?', 'maintainer', 'editor', self.id).map(&:user)
   end
 
   def children

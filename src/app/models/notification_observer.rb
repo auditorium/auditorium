@@ -5,19 +5,26 @@ class NotificationObserver < ActiveRecord::Observer
     # code to send confirmation email...
     Rails.logger.debug "OBSERVE #{model}"
     
-    if model.class.name.eql? 'Post'
-
-      if model.is_private?
-        receivers = model.course.moderators
+    case model.class.name
+    when 'Post'
+      post = model
+      if post.is_private?
+        receivers = post.course.moderators
       else
-        receivers = model.course.users
+        receivers = post.course.users
       end
 
-      receivers.delete_if {|user| user.id == model.author.id }
-      sender = model.author
+      receivers.delete_if {|receiver| receiver.id == post.author_id }
+      sender = post.author
       
       receivers.each do |receiver|
-        Notification.create!(:receiver => receiver, :sender => sender, :notifyable_id => model.id, :notifyable_type => model.class.name)
+        Notification.create!(:receiver => receiver, :sender => sender, :notifyable_id => post.id, :notifyable_type => post.class.name)
+      
+        puts "MODERATOR: #{receiver}"
+        if post.is_private?
+          #send email notifications to moderators
+          AuditoriumMailer.private_question(receiver, post).deliver
+        end
       end
     end
   end

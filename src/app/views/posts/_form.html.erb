@@ -36,13 +36,13 @@
           <!-- questions -->
           <div class="btn-group">
             <% if params[:action].eql? 'edit' %>
-              <% if params[:is_private] == 'true' %> 
+              <% if params[:is_private] == 'true' or post.is_private == true %> 
                 <%= f.submit "Update as private question", { :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>
               <% else %>
                 <%= f.submit "Update as public question", { :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>
               <% end %>
             <% else %>
-              <% if params[:is_private] == 'true' %> 
+              <% if params[:is_private] == 'true' or post.is_private == true %> 
                 <%= f.submit "Ask as private question", { :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>
               <% else %>
                 <%= f.submit "Ask as public question", { :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>
@@ -84,7 +84,7 @@
         <% post_type = post.post_type || params[:post_type] %>
         <%= f.hidden_field :post_type, :value => post_type %>
       <% end %>
-      <%= f.hidden_field :is_private, :value => (params[:is_private] or false), :id => 'is-private' %>
+      <%= f.hidden_field :is_private, :value => (params[:is_private] or post.is_private or false), :id => 'is-private' %>
     <% end %> <!-- end form -->
   </div> 
 </div>

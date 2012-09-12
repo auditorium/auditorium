@@ -154,9 +154,6 @@ class CoursesController < ApplicationController
       before = membership.membership_type if not membership.nil?
       after = membership_type
 
-      puts "BEFORE: #{before}"
-      puts "AFTER: #{after}"
-
       if membership.nil?
         membership = CourseMembership.create(:user_id => user.id, :course_id => @course.id, :membership_type => membership_type)
       else
