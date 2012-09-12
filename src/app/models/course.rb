@@ -52,7 +52,10 @@ class Course < ActiveRecord::Base
   def moderators
     moderators = Array.new
     moderators = CourseMembership.where('(membership_type = ? or membership_type = ?) and course_id = ?', 'maintainer', 'editor', self.id).map(&:user)
-    moderators = User.where('admin = true') if moderators.empty?
+    if moderators.empty?
+      moderators = User.where('admin = true')
+    end
+    moderators
   end
 
   def children
