@@ -150,14 +150,26 @@ class CoursesController < ApplicationController
     User.all.each do |user|
       membership_type = params["#{user.id}"]
       membership = CourseMembership.find_by_course_id_and_user_id(@course.id, user.id)
+
+      before = membership.membership_type if not membership.nil?
+      after = membership_type
+
+      puts "BEFORE: #{before}"
+      puts "AFTER: #{after}"
+
       if membership.nil?
         membership = CourseMembership.create(:user_id => user.id, :course_id => @course.id, :membership_type => membership_type)
       else
         membership.membership_type = membership_type
         membership.save
       end
+
+      # send mail
+      if not before.eql? after and not after.eql? 'member'
+        AuditoriumMailer.membership_changed(@course, user, membership_type).deliver
+      end
     end
-    
+
     if request.env["HTTP_REFERER"]
       redirect_url = request.env["HTTP_REFERER"]
     else

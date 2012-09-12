@@ -7,24 +7,18 @@ class NotificationObserver < ActiveRecord::Observer
     
     if model.class.name.eql? 'Post'
 
-      # if model.is_private?
-      #   receivers = model.course.moderators
-      # else
-      #   receivers = model.course.users
-      # end
+      if model.is_private?
+        receivers = model.course.moderators
+      else
+        receivers = model.course.users
+      end
 
-      # receivers.delete_if {|user| user.id == model.author.id }
-      # sender = model.author
+      receivers.delete_if {|user| user.id == model.author.id }
+      sender = model.author
       
-      # receivers.each do |receiver|
-      #   Notification.create!(:receiver => receiver, :sender => sender, :notifyable_id => model.id, :notifyable_type => model.class.name)
-      # end
+      receivers.each do |receiver|
+        Notification.create!(:receiver => receiver, :sender => sender, :notifyable_id => model.id, :notifyable_type => model.class.name)
+      end
     end
-  end
-
-#todo
-  def send_email(moderator)
-
-    
   end
 end
