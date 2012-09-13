@@ -22,7 +22,7 @@
     <h3><%= pluralize(@results[:posts].count, 'Post') %></h3>
     <table class="table">
       <% @results[:posts].each do |post| %>
-      <tr><td><%= link_to post.subject, post %></td></tr>
+      <tr><td><%= link_to post.subject, post.origin %></td></tr>
       <% end %>
     </table>
   <% end %>

@@ -97,12 +97,12 @@ class PostsController < ApplicationController
       origin_path = @post.parent.parent if @post.parent and @post.parent.parent
     end
 
+    reports = Report.find_all_by_post_id(@post.id)
+    Report.destroy(reports)
+
     notifications = Notification.where(:notifyable_id => @post.id, :notifyable_type => 'Post')
     Notification.destroy(notifications) if !notifications.empty?
     @post.destroy
-
-    reports = Report.find_all_by_post_id(@post.id)
-    Report.destroy(reports)
 
     respond_to do |format|
       format.html { redirect_to root_path, flash: { success: 'The post was successfully destroyed.' } }
