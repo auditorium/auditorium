@@ -12,6 +12,7 @@ class NotificationObserver < ActiveRecord::Observer
         receivers = post.course.moderators
       else
         receivers = post.course.users
+        receivers << post.origin.author if not receivers.include? post.origin.author 
       end
 
       receivers.delete_if {|receiver| receiver.id == post.author_id}

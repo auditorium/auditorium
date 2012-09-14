@@ -88,11 +88,10 @@ class NotificationsController < ApplicationController
     current_user.notifications.each do |notification|
       notification.read = true
       notification.save
-    end
+    end if not current_user.notifications.empty?
 
     respond_to do |format|
-      format.html { redirect_to notifications_url, notice: 'Marked all notifications as read.' }
-      format.json { head :ok }
+      format.html { redirect_to notifications_path, success: 'Marked all notifications as read.' }
     end
   end
 end

@@ -16,9 +16,10 @@
   <span class="pull-right">
     <% if can? :report, post  %>
       <%= link_to ' report', '#', :class => "submit-report", 'data-id' => post.id %>
+      &middot; 
     <% end %> 
     <% if can? :update, post  %>
-      &middot; <%= link_to " remove", post, :data => { :confirm => 'Are you sure that you want to remove this post?' }, method: :delete %>
+      <%= link_to " remove", post, :data => { :confirm => 'Are you sure that you want to remove this post?' }, method: :delete %>
       <% if post.author %>
         &middot; <%= link_to ' edit', edit_post_path(post) %>
       <% end %> 

@@ -101,7 +101,10 @@ class PostsController < ApplicationController
     Report.destroy(reports)
 
     notifications = Notification.where(:notifyable_id => @post.id, :notifyable_type => 'Post')
-    Notification.destroy(notifications) if !notifications.empty?
+    notifications.each do |n|
+      n.destroy
+    end
+
     @post.destroy
 
     respond_to do |format|

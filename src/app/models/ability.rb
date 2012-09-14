@@ -14,6 +14,7 @@ class Ability
     if user.id? # registrierte Benutzer
 
       can :read, :all #if user.confirmed?
+      can :mark_all_as_read, Notification
       cannot :read, Report
 
       can :update,   User, :id => user.id
@@ -21,7 +22,10 @@ class Ability
 
       can :create,   Post
       can :update,   Post, :author_id => user.id
-      can :destroy,  Post, :author_id => user.id
+      can :destroy,  Post do |post|
+        post.origin.author == user
+      end
+
       can :comment,  Post
       can :report,   Post do |post|
         user.id != post.author.id
@@ -44,6 +48,14 @@ class Ability
       can :follow, Course
       can :follow, Lecture
       can :follow, Faculty
+
+      can :manage_users, Course do |course|
+        user.is_course_maintainer? course
+      end
+
+      can :manage, Course do |course|
+        user.is_course_maintainer? course
+      end
 
     else # Gäste
       cannot :read, :all
