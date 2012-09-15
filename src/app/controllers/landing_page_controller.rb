@@ -1,7 +1,10 @@
 class LandingPageController < ApplicationController
   def index
   	if current_user
-  		redirect_to home_path
+  		respond_to do |format|
+  			format.js
+  			format.html { redirect_to home_path, :info => "Sorry, you don't have permissions for this action."}
+  		end
   	end
   end
 end

@@ -7,19 +7,22 @@
         <td rowspan="3" class="post-badge info-badge">&nbsp;</td>
       <% end %>
       <td rowspan="3" class="post-rating">
-        <%= render :partial => 'posts/rating', :locals => { :post => post } %>
+        <center>
+          <%= render :partial => 'posts/rating', :locals => { :post => post } %>
+          <% if post.post_type.eql? 'answer' %>
+          <%= render :partial => 'posts/answered', :locals => { :post => post } %>
+          <% end %>
+        </center>
       </td>
 
       <td colspan="3"><% if not post.post_type.eql? 'answer' %>
         <h3 class="post-subject">
+          <%= link_to post.subject, post_path(post) %>
           <% if not post.author.nil? and post.author.alternative_email %>
-          <span class="gravatar">
-            <%= gravatar_image_tag(post.author.alternative_email, :alt => post.author, :gravatar => {:default => :wavatar, :size => 40, :secure => true})%>
+          <span class="gravatar pull-right">
+            <%= gravatar_image_tag(post.author.alternative_email, :alt => post.author.full_name, :gravatar => {:default => :wavatar, :size => 40, :secure => true })%>
           </span>
           <% end %>
-        
-          <%= link_to post.subject, post_path(post) %>
-
         </h3>
       <% end %>
       </td>

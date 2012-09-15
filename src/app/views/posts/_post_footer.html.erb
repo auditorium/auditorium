@@ -7,7 +7,7 @@
   <% end %>
   <%= "by #{post.author_name}" %> 
   <%= "#{distance_of_time_in_words(Time.now, post.created_at)} ago" %> &middot;
-
+  <%= "last edit #{distance_of_time_in_words(Time.now, post.updated_at) } ago" if (post.updated_at - post.created_at) > 0 %> &middot;
   <% if current_user.subscribed_to?(post.course) %>
     <%= link_to " #{post.course.name_with_term}", course_path(post.course), title: 'You have subscribed to this course.', class: 'icon-star' %>
   <% else %>
@@ -16,9 +16,10 @@
   <span class="pull-right">
     <% if can? :report, post  %>
       <%= link_to ' report', '#', :class => "submit-report", 'data-id' => post.id %>
-      &middot; 
+       
     <% end %> 
     <% if can? :update, post  %>
+      &middot;
       <%= link_to " remove", post, :data => { :confirm => 'Are you sure that you want to remove this post?' }, method: :delete %>
       <% if post.author %>
         &middot; <%= link_to ' edit', edit_post_path(post) %>

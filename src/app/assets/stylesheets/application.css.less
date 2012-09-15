@@ -478,19 +478,18 @@ li.dropdown-fallback
   }
 }
 
-.post-rating {
-  width:30px;
-}
 
 .post-rating {
   vertical-align:top;
   padding-left:10px!important;
+  width:30px;
+  margin:5px;
+  padding:0;
 }
 
 .post-subject, .post-body, .post-footer {
   padding: 5px 10px;
-  line-height: 1;
-  margin: 5px;
+  margin:0;
 }
 
 table.table-posts {
@@ -579,9 +578,13 @@ table.courses-table {
   }
 }
 
-p.rating-button {
+p.rating-button, p.answered-button {
   margin:0 5px;
   padding:0;
+
+  form {
+    margin:0;
+  }
 }
 
 p.rating-points {
@@ -604,6 +607,30 @@ p.rating-points {
   
   &:hover {
     color:@blueDark;
+  }
+}
+
+.btn-answered {
+  border:none;
+  background:none;
+  font-size:25px;
+  padding:0;
+  font-weight:100;
+  margin:0;
+  &.answered{
+    color:@green;
+
+    &:hover {
+    color:@grayLighter;
+    }
+  }
+
+  &.not.answered {
+    color:@grayLighter;
+    
+    &:hover {
+      color:@green;
+    }
   }
 }
 
@@ -715,4 +742,3 @@ p.hint {
   line-height: 0;
   visibility: hidden;
 }
-

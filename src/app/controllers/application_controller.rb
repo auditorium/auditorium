@@ -7,8 +7,7 @@ class ApplicationController < ActionController::Base
     unless current_user
       authenticate_user!
     else
-      flash[:alert] = "Access denied."
-      redirect_to intro_path
+      redirect_to intro_path, {:exception => exception }
     end
  end
 

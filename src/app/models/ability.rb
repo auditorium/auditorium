@@ -7,6 +7,7 @@ class Ability
     alias_action :answering, :to => :answer
     alias_action :commenting, :to => :comment
     alias_action :rating, :to => :rate
+    alias_action :answered, :to => :mark_as_answered
 
 
     user ||= User.new # guest user (not logged in)
@@ -33,6 +34,10 @@ class Ability
       can :answer,   Post
       can :rate,     Post do |post|
         user.id != post.author.id
+      end
+
+      can :mark_as_answered, Post do |post|
+        user.id == post.parent.author.id
       end
 
       # can :post_in, Course do |course|

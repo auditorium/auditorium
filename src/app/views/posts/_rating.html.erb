@@ -1,5 +1,4 @@
-<center>
-<%= form_tag "#{post_path(post)}/rate", :method => "post", :remote => true do %> 
+<%= form_tag "#{post_path(post)}/rate", :method => "post", :class => 'button_to', :remote => true do %> 
 <p class="rating-button">
   <%= button_tag :type => "submit", :name => 'up', :class => "btn-rating", :disabled => should_be_disabled? do %>
     <i class="icon-arrow-up"></i>
@@ -12,4 +11,3 @@
   <% end %>
 </p>
 <% end %>
-</center>

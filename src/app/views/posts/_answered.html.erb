@@ -1,0 +1,9 @@
+<%= form_tag answered_post_path(post), :method => "post", :class => 'button_to', :remote => true do %> 
+<p class="answered-button">
+	<% answered = 'not answered' %>
+	<% answered = 'answered' if not post.answer_to_id.nil? %>
+  <%= button_tag :type => "submit", :name => 'is answer', :title => 'This answers my question.', :class => "btn-answered #{answered}", :id => "post-#{post.id}-answered", :disabled => should_be_disabled? do %>
+    <i class="icon-ok"></i>
+  <% end %>
+</p>
+<% end %>
