@@ -8,9 +8,13 @@
   <tbody>
     <tr>
       <% if post.post_type.eql? 'question' %>
-        <td rowspan="2" class="post-badge question-badge">&nbsp;</td> 
+        <% if post.is_private? %>
+          <td rowspan="3" class="post-badge private-question-badge">&nbsp;</td> 
+        <% else %>
+          <td rowspan="3" class="post-badge question-badge">&nbsp;</td> 
+        <% end %>
       <% elsif post.post_type.eql? 'info' %>
-        <td rowspan="2" class="post-badge info-badge">&nbsp;</td>
+        <td rowspan="3" class="post-badge info-badge">&nbsp;</td>
       <% end %>
       <td colspan="1"><% if not post.post_type.eql? 'answer' %>
         <h3 class="post-subject">

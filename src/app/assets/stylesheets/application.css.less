@@ -48,6 +48,7 @@
 @yellow:       #ffc40d;
 @subscribed-color: #e8efff;
 @orange:       #f89406;
+@orangeLight:  #EFCBB6;
 @pink:         #c3325f;
 @purple:       #7a43b6;
 @beige:      #f0f0eb;
@@ -472,6 +473,10 @@ li.dropdown-fallback
   &.question-badge {
     background: @blue url("question-badge.png") top no-repeat;
   }
+
+  &.private-question-badge {
+    background: @orange url("question-badge.png") top no-repeat;
+  }
   
   &.info-badge {
     background: @yellow url("info-badge.png") top no-repeat;
@@ -479,6 +484,10 @@ li.dropdown-fallback
 
   &.answer-badge {
     background: @grayLight url("answer-badge.png") top no-repeat;  
+  }
+
+  &.private-answer-badge {
+    background: @orangeLight url("answer-badge.png") top no-repeat;
   }
 }
 
@@ -748,5 +757,9 @@ p.hint {
 .backward_compatability {
   display: none;
   line-height: 0;
+  visibility: hidden;
+}
+
+#reportModal {
   visibility: hidden;
 }

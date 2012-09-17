@@ -2,8 +2,12 @@ class NotificationObserver < ActiveRecord::Observer
   observe :post, :rating, :course_membership, :lecture_membership, :faculty_membership
 
   def send_course_updates_to?(receiver)
-    email_setting = EmailSetting.where(:user_id => receiver.id)
-    true || email_setting.emails_for_subscribtions if email_setting
+    email_setting = EmailSetting.find_by_user_id(receiver.id)
+    if email_setting.nil?
+      return true
+    else
+      email_setting.emails_for_subscribtions
+    end
   end
 
   def after_create(model)
@@ -26,6 +30,8 @@ class NotificationObserver < ActiveRecord::Observer
         
         # send emails to subscribers
         AuditoriumMailer.update_in_course(receiver, post).deliver if send_course_updates_to?(receiver)
+
+        puts "RECEIVE? #{send_course_updates_to?(receiver)}"
         AuditoriumMailer.private_question(receiver, post).deliver if post.is_private?
 
       end

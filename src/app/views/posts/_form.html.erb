@@ -34,33 +34,15 @@
 
         <% if params[:controller].eql? 'home' or (post and post.post_type.eql? 'question') or params[:post_type].eql? 'question' %>
           <!-- questions -->
-          <div class="btn-group">
-            <% if params[:action].eql? 'edit' %>
-              <% if params[:is_private] == 'true' or post.is_private == true %> 
-                <%= f.submit "Update as private question", { :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>
-              <% else %>
-                <%= f.submit "Update as public question", { :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>
-              <% end %>
-            <% else %>
-              <% if params[:is_private] == 'true' or post.is_private == true %> 
-                <%= f.submit "Ask as private question", { :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>
-              <% else %>
-                <%= f.submit "Ask as public question", { :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>
-              <% end %>
-            <% end %>
-            <!-- dropdown --> 
-            <button class="btn btn-large btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-            <ul class="dropdown-menu">
-              <% if params[:action].eql? 'edit' %>
-                <li><%= link_to 'update as public question', '#', :id => 'public-post' %></li>
-                <li><%= link_to 'update as private question', '#', :id => 'private-post' %></li>
-              <% else %>
-                <li><%= link_to 'ask as public question', '#', :id => 'public-post' %></li>
-                <li><%= link_to 'ask as private question', '#', :id => 'private-post' %></li>
-              <% end %>
-            </ul>
-          </div><!-- end of btn group -->
-          <p class="hint">Choose between public and private questions.<br />Private questions can only be seen by moderators of the course.</p>
+          <label class="checkbox">
+          <%= f.check_box :is_private %><%= "Mark this question as private. Only moderators of this course can see your post." %>
+          </label>
+          <% if params[:action].eql? 'edit' %>
+            <%= f.submit "Update question", { :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>
+          <% else %>
+            <%= f.submit "Submit your question", { :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>
+          <% end %>
+          
         <% elsif (post and post.post_type.eql? 'answer') or params[:post_type].eql? 'answer' %>
           <!-- answers -->
           <% if params[:action].eql? 'edit' %> 
@@ -90,7 +72,6 @@
         <% post_type = post.post_type || params[:post_type] %>
         <%= f.hidden_field :post_type, :value => post_type %>
       <% end %>
-      <%= f.hidden_field :is_private, :value => (params[:is_private] or post.is_private or false), :id => 'is-private' %>
     <% end %> <!-- end form -->
   </div> 
 </div>

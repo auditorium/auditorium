@@ -2,11 +2,19 @@
   <tbody>
     <tr>
       <% if post.post_type.eql? 'question' %>
-        <td rowspan="3" class="post-badge question-badge">&nbsp;</td> 
+        <% if post.is_private? %>
+          <td rowspan="3" class="post-badge private-question-badge">&nbsp;</td> 
+        <% else %>
+          <td rowspan="3" class="post-badge question-badge">&nbsp;</td> 
+        <% end %>
       <% elsif post.post_type.eql? 'info' %>
         <td rowspan="3" class="post-badge info-badge">&nbsp;</td>
       <% elsif post.post_type.eql? 'answer' %>
-        <td rowspan='3' class='post-badge answer-badge'>&nbsp;</td>
+        <% if post.origin.is_private %>
+          <td rowspan='3' class='post-badge private-answer-badge'>&nbsp;</td>
+        <% else %>
+          <td rowspan='3' class='post-badge answer-badge'>&nbsp;</td>
+        <% end %>
       <% end %>
       <td rowspan="3" class="post-rating">
         <center>
