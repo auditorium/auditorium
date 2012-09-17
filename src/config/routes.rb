@@ -1,4 +1,6 @@
 Auditorium::Application.routes.draw do
+  resources :email_settings
+
   get "ajax/courses"
 
   match 'intro', :to => 'landing_page#index'
@@ -6,7 +8,7 @@ Auditorium::Application.routes.draw do
   match 'permission_denied', :to => 'applications#permission_denied', :as => :permission_denied
 
   resources :notifications
-
+  
   resources :faculties
   
   controller :search do
@@ -26,7 +28,7 @@ Auditorium::Application.routes.draw do
 
   resources :courses
   match 'courses/:id/manage_users', :to => 'courses#manage_users'
-  match 'courses/search', :to => 'courses#search'
+  match 'courses/<search', :to => 'courses#search'
   match 'courses/:id/following', :to => 'courses#following'
   match 'posts/:id/rate', :to => 'posts#rate', :as => :rate_post
   match 'posts/:id/answered', :to => 'posts#answered', :as => :answered_post

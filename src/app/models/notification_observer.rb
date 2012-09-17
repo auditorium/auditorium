@@ -1,10 +1,13 @@
 class NotificationObserver < ActiveRecord::Observer
   observe :post, :rating, :course_membership, :lecture_membership, :faculty_membership
-  
+
+  def send_course_updates_to?(receiver)
+    email_setting = EmailSetting.where(:user_id => receiver.id)
+    true || email_setting.emails_for_subscribtions if email_setting
+  end
+
   def after_create(model)
     # code to send confirmation email...
-    Rails.logger.debug "OBSERVE #{model}"
-    
     case model.class.name
     when 'Post'
       post = model
@@ -20,11 +23,11 @@ class NotificationObserver < ActiveRecord::Observer
       
       receivers.each do |receiver|
         Notification.create!(:receiver => receiver, :sender => sender, :notifyable_id => post.id, :notifyable_type => post.class.name)
-      
-        if post.is_private?
-          #send email notifications to moderators
-          AuditoriumMailer.private_question(receiver, post).deliver
-        end
+        
+        # send emails to subscribers
+        AuditoriumMailer.update_in_course(receiver, post).deliver if send_course_updates_to?(receiver)
+        AuditoriumMailer.private_question(receiver, post).deliver if post.is_private?
+
       end
     end
   end

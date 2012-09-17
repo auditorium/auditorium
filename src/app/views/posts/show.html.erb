@@ -1,6 +1,5 @@
 <div class="center span8">
 <%= render :partial => 'post', :locals => {:post => @post } %>
-<hr />
 
 <% @post.answers.each do |answer| %>
   <%= render :partial => 'posts/post', :locals => { :post => answer }%>

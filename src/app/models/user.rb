@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   has_many :faculties,  :through => :faculty_memberships
   has_many :posts, :foreign_key => :author_id
   has_many :notifications, :foreign_key => :receiver_id
+  has_one :email_setting
   
   validates_uniqueness_of :email
   validates_uniqueness_of :username

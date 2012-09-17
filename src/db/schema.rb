@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120904113518) do
+ActiveRecord::Schema.define(:version => 20120917134032) do
 
   create_table "chairs", :force => true do |t|
     t.string   "name"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20120904113518) do
     t.datetime "updated_at",                            :null => false
     t.integer  "notifyable_id"
     t.string   "notifyable_type"
+    t.boolean  "receive_emails",  :default => true
   end
 
   add_index "course_memberships", ["course_id"], :name => "index_course_memberships_on_course_id"
@@ -49,6 +50,17 @@ ActiveRecord::Schema.define(:version => 20120904113518) do
 
   add_index "courses", ["lecture_id"], :name => "index_courses_on_lecture_id"
   add_index "courses", ["term_id"], :name => "index_courses_on_term_id"
+
+  create_table "email_settings", :force => true do |t|
+    t.integer  "user_id"
+    t.boolean  "html_format",              :default => true
+    t.boolean  "emails_for_subscribtions", :default => true
+    t.boolean  "weekly",                   :default => true
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+  end
+
+  add_index "email_settings", ["user_id"], :name => "index_email_settings_on_user_id"
 
   create_table "events", :force => true do |t|
     t.string   "event_type"

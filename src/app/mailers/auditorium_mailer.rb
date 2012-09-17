@@ -1,11 +1,11 @@
 class AuditoriumMailer < ActionMailer::Base
-  default from: "do-not-reply@auditorium.inftex.net"
+  default from: "notification+#{('a'..'z').to_a.shuffle[0..7].join}@auditorium.inftex.net"
 
   def welcome_email(user)
   	@user = user
     @url = "http://auditorium.inftex.net"
     mail(to: @user.email, subject: 'Welcome to auditorium. Your account has been confirmed.')
-  end
+  end 
 
   def membership_changed(course, user, membership_type)
   	@user = user
@@ -33,8 +33,34 @@ class AuditoriumMailer < ActionMailer::Base
     end
 
   	mail(to: @user.email,
-  		subject: "#{@post.author.full_name} asked a private question in #{@course.name_with_term}.",
+  		subject: "[private question] #{@post.subject[0..100]}... - #{@post.course.name_with_term}",
   		template_path: 'auditorium_mailer',
   		template_name: @template)
+  end
+
+  def update_in_course(user, post) 
+    @user = user
+    @course = post.course
+    @url = course_url(post.course)
+    @post = post
+
+    case post.post_type
+        
+    when 'info'
+      subject = "[announcement] #{@post.subject[0..100]}... - #{@post.course.name_with_term}"
+    when 'question'
+      subject = "[question] #{@post.subject[0..100]}... - #{@post.course.name_with_term}" 
+    when 'comment'
+      subject = "[comment] #{@post.body[0..100]}... - #{@post.course.name_with_term}"
+    when 'answer'
+      subject = "[answer] #{@post.body[0..100]}... - #{@post.course.name_with_term}"
+    else
+      subject = "#{@post.author.full_name} posted something - #{@course.name_with_term}."
+    end
+
+    mail(to: @user.email,
+      subject: subject,
+      template_path: 'auditorium_mailer',
+      template_name: 'update_in_course')
   end
 end

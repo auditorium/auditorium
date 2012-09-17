@@ -1,13 +1,18 @@
 <span class="post-metadata">
   <% if params[:controller].eql? 'home' or params[:controller].eql? 'courses' %>
     <% if post.post_type.eql? 'question' %>
-      <%= link_to "#{post.answers.count} answers", post_path(post) %> &middot;
+      <%= link_to "#{post.answers.count} answers", post_path(post) %> 
+       &middot;
     <% end %>
-    <%= link_to "#{post.comments.count} comments", post_path(post) %> &middot;
+    <%= link_to "#{post.comments.count} comments", post_path(post) %>
+     &middot; 
   <% end %>
-  <%= "by #{post.author_name}" %> 
-  <%= "#{distance_of_time_in_words(Time.now, post.created_at)} ago" %> &middot;
-  <%= "last edit #{distance_of_time_in_words(Time.now, post.updated_at) } ago" if (post.updated_at - post.created_at) > 0 %> &middot;
+  <% if post.author.id == current_user.id %>
+    <%= "by me" %> 
+  <% else %>
+    <%= "by #{post.author_name}" %>
+  <% end %>
+  <%= "#{distance_of_time_in_words(Time.now, post.created_at)} ago" %> 
   <% if current_user.subscribed_to?(post.course) %>
     <%= link_to " #{post.course.name_with_term}", course_path(post.course), title: 'You have subscribed to this course.', class: 'icon-star' %>
   <% else %>
@@ -16,14 +21,17 @@
   <span class="pull-right">
     <% if can? :report, post  %>
       <%= link_to ' report', '#', :class => "submit-report", 'data-id' => post.id %>
-       
+      &middot; 
     <% end %> 
     <% if can? :update, post  %>
-      &middot;
+       
       <%= link_to " remove", post, :data => { :confirm => 'Are you sure that you want to remove this post?' }, method: :delete %>
+      &middot; 
       <% if post.author %>
-        &middot; <%= link_to ' edit', edit_post_path(post) %>
-      <% end %> 
+       <%= link_to ' edit', edit_post_path(post) %> <%= "(#{distance_of_time_in_words(Time.now, post.updated_at) } ago)" if (post.updated_at.to_i - post.created_at.to_i) > 0 %>
+      <% else %>
+      <%= "last edit #{distance_of_time_in_words(Time.now, post.updated_at) } ago" if (post.updated_at.to_i - post.created_at.to_i) > 0 %>
+      <% end %>
     <% end %>
   </span>
 </span>

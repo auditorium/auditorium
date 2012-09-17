@@ -5,6 +5,8 @@
         <td rowspan="3" class="post-badge question-badge">&nbsp;</td> 
       <% elsif post.post_type.eql? 'info' %>
         <td rowspan="3" class="post-badge info-badge">&nbsp;</td>
+      <% elsif post.post_type.eql? 'answer' %>
+        <td rowspan='3' class='post-badge answer-badge'>&nbsp;</td>
       <% end %>
       <td rowspan="3" class="post-rating">
         <center>
