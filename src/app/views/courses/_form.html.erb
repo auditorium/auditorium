@@ -38,7 +38,7 @@
           <%= f.select(:lecture_id, options_from_collection_for_select(Lecture.order('name ASC').select("id, name"), :id, :name, params[:lecture_id] || @course.lecture_id), { include_blank: '-- please select a lecture --'}, {:id=>"lecture_select",:class => 'span8'}) %>
 
           <label for="term_id" class="accessibility"> term </label>
-            <%= f.select :term_id, options_from_collection_for_select(Term.all, :id, :code, Term.last), :class => 'span8', :id => 'term_id' %>
+            <%= f.select :term_id, options_from_collection_for_select(Term.all, :id, :code, @course.term_id), :class => 'span8', :id => 'term_id' %>
         </div>
           <% if params[:action].eql? 'edit' %>
             <%= f.submit "Update course", { :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>
