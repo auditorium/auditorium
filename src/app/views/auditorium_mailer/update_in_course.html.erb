@@ -37,8 +37,13 @@
   </head>
   <body>
     <h1>Hi, <%= @user.full_name %></h1>
-    
-    <p>There is a new <%= @post.post_type %> in <%= @post.course.name_with_term %> written by <%= @post.author.full_name %>.</p>
+    <% 
+    if @post.post_type.eql? 'info'
+      type = 'announcement'
+    else 
+      type = @post.post_type
+    end %>
+    <p>There is a new <%= type %> in <%= @post.course.name_with_term %> written by <%= @post.author.full_name %>.</p>
 
     
     <div class="post-details">
