@@ -47,7 +47,7 @@
   
   <blockquote cite="<%= url_for @course.lecture  %>">
     <% unless @course.description.nil? or @course.description.empty? %>
-      <p class="lead"><%= @course.description %></p>
+      <p class="lead"><%= markdown(@course.description) %></p>
     <% end %>
   </blockquote>
 
@@ -99,8 +99,9 @@
         Questions?
         <% if user_signed_in? %>
           <small>
-            <%= link_to 'Ask a public question', new_post_path(:post_type => 'question', :course_id => @course.id), :class => 'inline-button btn btn-mini btn-primary' %> or
-            <%= link_to 'Ask a moderator (private question)', new_post_path(:post_type => 'question', :course_id => @course.id, :is_private => true), class: 'inline-button btn btn-mini btn-primary' %>
+            <%= link_to 'Ask a public question', new_post_path(:post_type => 'question', :course_id => @course.id), :class => 'inline-button btn btn-mini btn-primary' %>
+            <%= link_to 'Ask a private question', new_post_path(:post_type => 'question', :course_id => @course.id, :is_private => true), class: 'inline-button btn btn-mini' %>
+            <p class="hint"><b>Hint:</b> Private questions can only be seen by moderators of this course.</p>
           </small>
         <% end %>
         <p class="pull-right"><small>sorted by last activity</small></p>
