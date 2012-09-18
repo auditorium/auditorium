@@ -2,8 +2,13 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 jQuery ->
-	$('tr').click ->
+	$('tbody tr').click ->
     window.location = $(this).find('a').attr('href')
-	$('tr').hover ->
+	$('tbody tr').hover ->
     	$(this).toggleClass('hover')
+
+  $('thead tr').click -> 
+   	 false
+  $('thead tr').hover ->
+   	 false
 	
