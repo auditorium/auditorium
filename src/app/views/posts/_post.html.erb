@@ -19,7 +19,7 @@
       <td rowspan="3" class="post-rating">
         <center>
           <%= render :partial => 'posts/rating', :locals => { :post => post } %>
-          <% if post.post_type.eql? 'answer' %>
+          <% if post.post_type.eql? 'answer' and can? :mark_as_answered, post %>
           <%= render :partial => 'posts/answered', :locals => { :post => post } %>
           <% end %>
         </center>
