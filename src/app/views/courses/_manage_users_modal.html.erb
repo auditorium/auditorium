@@ -18,7 +18,8 @@
           <% else %>
             <b><%= user.email.split('@')[0] %></b>
           <% end %>
-          <br/><%= "#{user.first_name} #{user.last_name}" %></td>
+          <br/><%= "#{user.first_name} #{user.last_name}" %>
+        </td>
         <td>
           <%= radio_button_tag "#{user.id}", 'member', user.is_course_member?(course), :class => 'btn' %>
           <%= "Member" %>

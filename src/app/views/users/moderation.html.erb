@@ -19,7 +19,14 @@
 				<% else %>
 				<td><span class="icon-ok"></span></td>
 				<% end %>
-				<td><%= user.username %></td>
+				<td>
+					<% if user.username %>
+          <b><%= user.username %></b>
+          <% else %>
+            <b><%= user.email.split('@')[0] %></b>
+          <% end %>
+          <br/><%= "#{user.first_name} #{user.last_name}" %>
+       	</td>
 				<td><%= user.email %></td>
 				<td><%= I18n.localize(user.created_at, :format => :short) %></td>
 				<% if can? :destroy, user %>
