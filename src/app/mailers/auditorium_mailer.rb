@@ -1,5 +1,5 @@
 class AuditoriumMailer < ActionMailer::Base
-  default from: "notification+#{('a'..'z').to_a.shuffle[0..7].join}@auditorium.inftex.net"
+  default from: "auditorium <notification+#{('a'..'z').to_a.shuffle[0..7].join}@auditorium.inftex.net>"
 
   def welcome_email(user)
   	@user = user
