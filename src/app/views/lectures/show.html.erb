@@ -12,7 +12,7 @@
   <p>There's no description available, yet!</p>
 <% end %>
 
-<h3>Courses in this lecture</h3>
+<h3>Courses in this lecture <small>You can't find the correct course? <%= link_to 'Create it and we will approve it', new_course_path %>.</small></h3>
 <% if @lecture.courses.count > 0 %>
   
   <% @lecture.courses.each do |course| %>
