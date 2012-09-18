@@ -10,9 +10,9 @@
   </div>
   <div class="modal-body">
     <table class="table">
-      <% User.all.each do |user| %>
+      <% User.order('first_name ASC, last_name ASC, email ASC, username ASC').each do |user| %>
       <tr>
-        <td><%= user.full_name %></td>
+        <td><b><%= user.username if user.username %></b><br/><%= "#{user.first_name} #{user.last_name}" %></td>
         <td>
           <%= radio_button_tag "#{user.id}", 'member', user.is_course_member?(course), :class => 'btn' %>
           <%= "Member" %>
