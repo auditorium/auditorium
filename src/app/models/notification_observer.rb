@@ -15,6 +15,11 @@ class NotificationObserver < ActiveRecord::Observer
     case model.class.name
     when 'Post'
       post = model
+
+      # change latest activity of origin
+      post.origin.last_activity = DateTime.now
+      post.origin.save
+
       if post.is_private?
         receivers = post.course.moderators
       else

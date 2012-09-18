@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120917134032) do
+ActiveRecord::Schema.define(:version => 20120918153547) do
 
   create_table "chairs", :force => true do |t|
     t.string   "name"
@@ -191,6 +191,7 @@ ActiveRecord::Schema.define(:version => 20120917134032) do
     t.string   "notifyable_type"
     t.boolean  "needs_review",    :default => false
     t.boolean  "is_private",      :default => false
+    t.datetime "last_activity"
   end
 
   add_index "posts", ["answer_to_id"], :name => "index_posts_on_answer_to_id"

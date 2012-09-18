@@ -68,20 +68,22 @@
 
 
 <section id="announcement_stream">
-    <div class="page-header">
       <h3>
-        Course announcements
+        Course announcements 
         <% if current_user and current_user.may_edit_course(@course) %>
          <small><%= link_to 'New announcement', new_post_path(:post_type => 'info', :course_id => @course.id), :class => 'inline-button btn btn-mini btn-warning' %></small>
         <% end %>
-      </h3>    
-    </div>
+        <p class="pull-right"><small>sorted by last activity</small></p>
+        <hr />
+      </h3>  
     <div id="announcement-stream">
       <%= render 'courses/announcement_stream'%>
     </div>
 </section>
+
+<br />
+
 <section id="question_stream">
-    <div class="page-header">
       <h3>
         Questions?
         <% if user_signed_in? %>
@@ -90,8 +92,9 @@
             <%= link_to 'Ask a moderator (private question)', new_post_path(:post_type => 'question', :course_id => @course.id, :is_private => true), class: 'inline-button btn btn-mini btn-primary' %>
           </small>
         <% end %>
+        <p class="pull-right"><small>sorted by last activity</small></p>
+        <hr />
       </h3>
-    </div>
     <div id="question-stream">
       <%= render 'courses/question_stream' %>
     </div>

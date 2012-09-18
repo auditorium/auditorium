@@ -52,9 +52,8 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(params[:post])
     @post.author = current_user
-    
-      
-      
+    @post.last_activity = @post.created_at
+
     respond_to do |format|
       if @post.save
         format.js
@@ -72,8 +71,12 @@ class PostsController < ApplicationController
   # PUT /posts/1.json
   def update
     @post = Post.find(params[:id])
+    @post.last_activity = @post.updated_at
+
     @origin = @post
     @origin = @post.parent_id if @post.parent_id
+    @origin.last_activity = DateTime.now
+    @origin.save
 
     respond_to do |format|
       if @post.update_attributes(params[:post])

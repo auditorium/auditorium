@@ -19,8 +19,8 @@ class CoursesController < ApplicationController
   # GET /courses/1.json
   def show
     @course = Course.find(params[:id])
-    @infos = Post.order('created_at DESC').where('post_type = ? and course_id = ?', 'info', @course.id).page(params[:info_page]).per(20)
-    @questions = Post.order('created_at DESC').where('post_type = ? and course_id = ?', 'question', @course.id).page(params[:question_page]).per(20)
+    @infos = Post.order('last_activity DESC, updated_at DESC, created_at DESC').where('post_type = ? and course_id = ?', 'info', @course.id).page(params[:info_page]).per(20)
+    @questions = Post.order('last_activity DESC, updated_at DESC, created_at DESC').where('post_type = ? and course_id = ?', 'question', @course.id).page(params[:question_page]).per(20)
     if current_user.nil?
       @questions.delete_if { |post| post.is_private }
     else

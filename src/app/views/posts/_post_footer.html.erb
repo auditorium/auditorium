@@ -30,7 +30,7 @@
       <% if post.author %>
        <%= link_to ' edit', edit_post_path(post) %> <%= "(#{distance_of_time_in_words(Time.now, post.updated_at) } ago)" if (post.updated_at.to_i - post.created_at.to_i) > 0 %>
       <% else %>
-      <%= "last edit #{distance_of_time_in_words(Time.now, post.updated_at) } ago" if (post.updated_at.to_i - post.created_at.to_i) > 0 %>
+      <%= "last activity #{distance_of_time_in_words(Time.now, post.last_activity) } ago" if (post.updated_at.to_i - post.created_at.to_i) > 0 %>
       <% end %>
     <% end %>
   </span>

@@ -8,7 +8,7 @@ class HomeController < ApplicationController
       
       @post = Post.new()
       @post.post_type = 'question'
-      @posts = Post.order('created_at DESC').where('post_type = ? or post_type = ?', 'question', 'info').page(params[:page]).per(20)
+      @posts = Post.order('last_activity DESC, updated_at DESC, created_at DESC').where('post_type = ? or post_type = ?', 'question', 'info').page(params[:page]).per(20)
       
     else
       redirect_to root_path
