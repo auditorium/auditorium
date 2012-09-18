@@ -1,3 +1,14 @@
+<% if !@course.approved? %>
+<div class="alert alert-info">
+  <% if can? :approve, @course %>
+  <%= link_to 'approve course', approve_course_path(@course), class: 'btn btn-success' %>
+  <%= link_to 'delete course', @course, class: 'btn btn-danger', confirm: 'Are you sure that you want to delete this course?', method: :delete %>
+  <% end %>
+  This course was suggested and will be checked by our moderators. You can still interact with this course like with approved courses. 
+  
+
+</div>
+<% end %>
 <header class="hero-unit">
   
   <div class="row-fluid">

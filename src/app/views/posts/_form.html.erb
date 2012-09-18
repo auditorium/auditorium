@@ -21,7 +21,7 @@
           <label for="content_field" class="accessibility"> content </label>
           
           <%= f.text_area :body, :placeholder => "Add the content here...", :class => "span8", :id => "content_field", :size => '10x8' %>
-          <p class='hint'><b>Hint:</b> You can use <%= link_to 'Markdown', 'http://daringfireball.net/projects/markdown' %> for rich text, like code blocks, links, headlines and so on. Here you can find a <%= link_to 'Markdown reference', 'http://daringfireball.net/projects/markdown/' %> (by John Gruber).</p>
+          <p class='hint'><b>Hint:</b> Use <%= link_to 'Markdown', 'http://daringfireball.net/projects/markdown' %> for rich text. Here is a <%= link_to 'reference for the syntax of Markdown', 'http://daringfireball.net/projects/markdown/' %> (by John Gruber).</p>
 
           <label for="course_name" class="accessibility backward_compatability" id='label_course_select'>course</label>
           <%= f.hidden_field :course_id, :value => (params[:course_id] || post.course_id), :class => 'backward_compatability', 'style' => 'display:none' %>
@@ -31,6 +31,8 @@
           <!-- for backward compatibility a select -->   
           <label for="course_select" class="accessibility" id='label_course_select'>course</label>
           <%= f.select(:course_id, options_from_collection_for_select(Course.order('name ASC').select("id, name, term_id"), :id, :name_with_term, params[:course_id] || post.course_id), { include_blank: '-- please select a course --'}, {:id=>"course_select",:class => 'span8'}) %>
+          
+          <p class="hint">You can't find the correct course? <%= link_to 'Create it and we will approve it', new_course_path %>. </p>
         </div>
 
         <% if params[:controller].eql? 'home' or (post and post.post_type.eql? 'question') or params[:post_type].eql? 'question' %>

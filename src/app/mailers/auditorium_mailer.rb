@@ -63,4 +63,22 @@ class AuditoriumMailer < ActionMailer::Base
       template_path: 'auditorium_mailer',
       template_name: 'update_in_course')
   end
+
+  def new_course_to_approve(course, admin)
+    @user = admin
+    @course_url = course_url(course)
+    @course = course 
+
+    mail(to: @user.email, 
+      subject: "The course '#{course.name_with_term}' needs to be approved.")
+  end
+
+  def course_approved(course, user)
+    @user = user
+    @course_url = course_url(course)
+    @course = course 
+
+    mail(to: @user.email, 
+      subject: "Your course '#{course.name_with_term}' has been approved.")
+  end
 end

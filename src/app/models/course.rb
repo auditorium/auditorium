@@ -2,12 +2,13 @@ class Course < ActiveRecord::Base
 
   belongs_to :lecture
   belongs_to :term
+  belongs_to :creator, class_name: 'User'
   has_many :posts, :dependent => :destroy
   has_many :events, :dependent => :destroy
   has_many :course_memberships, :dependent => :destroy
   has_many :users, through: :course_memberships
   
-  attr_accessible :description, :name, :beginDate, :endDate, :term_id, :lecture_id, :maintainer_id, :sws, :url
+  attr_accessible :description, :name, :beginDate, :endDate, :creator_id, :term_id, :lecture_id, :sws, :url
 
   validates :name, presence: true
   validates :lecture, presence: true
@@ -117,5 +118,19 @@ class Course < ActiveRecord::Base
       previous_term = Term.where("term_type = 'ss' and beginDate >= ? and endDate <= ?", Date.new(current_term.beginDate.year, 4, 1), Date.new(current_term.beginDate.year, 9, 30)).first
     end
     course = Course.where(:lecture_id => self.lecture.id, :term_id => previous_term.id).first if previous_term
+  end
+
+  # ajax
+  def lecture_name=(name)
+    lecture = Lecture.find_by_name(name)
+    if lecture
+      self.lecture_id = lecture.id
+    else
+      errors[:lecture_name] << "Invalid name entered"
+    end
+  end
+  
+  def lecture_name
+    Lecture.find(lecture_id).name if lecture_id
   end
 end

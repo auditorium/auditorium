@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120918153547) do
+ActiveRecord::Schema.define(:version => 20120918200952) do
 
   create_table "chairs", :force => true do |t|
     t.string   "name"
@@ -42,12 +42,15 @@ ActiveRecord::Schema.define(:version => 20120918153547) do
     t.integer  "term_id"
     t.integer  "lecture_id"
     t.text     "description"
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.integer  "sws",         :default => 0
     t.string   "url",         :default => ""
+    t.boolean  "approved",    :default => true
+    t.integer  "creator_id"
   end
 
+  add_index "courses", ["creator_id"], :name => "index_courses_on_creater_id"
   add_index "courses", ["lecture_id"], :name => "index_courses_on_lecture_id"
   add_index "courses", ["term_id"], :name => "index_courses_on_term_id"
 

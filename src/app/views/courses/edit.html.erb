@@ -1,7 +1,5 @@
-<h2>Editing course</h2>
+<div class="container span8 center">
+<h2>Update the course</h2>
 
-<%= render 'form' %>
-
-<%= link_to 'back', courses_path, :class =>'btn btn-mini icon-arrow-left' %>
-<%= link_to 'show', @course, :class=>'btn btn-mini btn-primary' %> |
-<%= link_to 'delete', @course, confirm: 'Are you sure?', method: :delete, :class => "btn btn-mini btn-danger" %>
+<%= render :partial => 'courses/form'%>
+</div>

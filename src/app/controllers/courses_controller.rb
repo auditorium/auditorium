@@ -55,9 +55,30 @@ class CoursesController < ApplicationController
   # POST /courses.json
   def create
     @course = Course.new(params[:course])
+    if current_user.is_admin?
+      @course.approved = true
+      flash_message = 'Course was successfully created.' 
+    else
+      @course.approved = false
+      @course.creator = current_user
+      flash_message = 'Course was successfully suggested. Our moderators will check it. But you can already ask questions if you want.'
+    end
+
+    
+
+    # creater gets maintainer status 
+    # TODO
 
     respond_to do |format|
       if @course.save
+        # make create to maintainer if he is no admin
+        if !@course.creator.is_admin?
+          membership = CourseMembership.new(:user_id => @course.creator.id, :course_id => @course.id, :membership_type => 'maintainer')
+          if membership.save!
+            AuditoriumMailer.membership_changed(@course, @course.creator, 'maintainer').deliver 
+          end
+        end
+
         format.html { redirect_to @course, notice: 'Course was successfully created.' }
         format.json { render json: @course, status: :created, location: @course }
       else
@@ -177,6 +198,20 @@ class CoursesController < ApplicationController
       format.js
       format.html { redirect_to redirect_url, :flash => { :success => 'Successfully updated users for this course.'} }
 
+    end
+  end
+
+  def approve
+    course = Course.find(params[:id])
+    course.approved = true
+    course.save
+
+    if not course.creator.nil?
+      AuditoriumMailer.course_approved(course, course.creator).deliver
+    end
+    respond_to do |format|
+      format.js
+      format.html { redirect_to course, :flash => { :success => 'Course has been approved.'} }
     end
   end
 

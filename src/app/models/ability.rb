@@ -50,6 +50,7 @@ class Ability
 
       #can :follow, Course do |course| course.faculty.id == user.faculty_id end
 
+      can :create, Course
       can :follow, Course
       can :follow, Lecture
       can :follow, Faculty
@@ -61,6 +62,8 @@ class Ability
       can :manage, Course do |course|
         user.is_course_maintainer? course
       end
+
+      cannot :approve, Course
 
     else # Gäste
       cannot :read, :all

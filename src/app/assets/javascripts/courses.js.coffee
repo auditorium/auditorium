@@ -27,4 +27,15 @@ jQuery ->
   	$('#maintain-course').tooltip('show')
   $('#follow-button-membership-type').mouseenter ->
   	$('#follow-button-membership-type').tooltip('show')
+
+  # backward compatability for non-js user -.-
+  $('#lecture_name').css('display', 'inline')
+  $('#lecture_name').css('visibility', 'visible')
+  $('#lecture_select').remove()
+  $('#label_lecture_select').remove()
+
+  $('#lecture_name').autocomplete
+    source: "/ajax/lectures"
+    select: (event,ui) -> 
+      $("#course_lecture_id").val(ui.item.id)
 	

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <style>
+      body {
+        padding:20px;
+      }
+      p {
+        font-weight:200;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="font-weight:100;">Hello, <%= @user.full_name %></h1>
+    
+    <p>Your recently created course <%= link_to @course.name_with_term, course_url(@course) %> has been approved.</p>
+
+    <p>Have a great day!</p>
+    <em>The auditorium team</em>
+  </body>
+</html>

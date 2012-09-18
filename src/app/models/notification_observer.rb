@@ -1,5 +1,6 @@
 class NotificationObserver < ActiveRecord::Observer
-  observe :post, :rating, :course_membership, :lecture_membership, :faculty_membership
+  observe :post, :rating, :course, :course_membership, :lecture_membership, :faculty_membership
+
 
   def send_course_updates_to?(receiver)
     email_setting = EmailSetting.find_by_user_id(receiver.id)
@@ -13,33 +14,40 @@ class NotificationObserver < ActiveRecord::Observer
   def after_create(model)
     # code to send confirmation email...
     case model.class.name
-    when 'Post'
-      post = model
+      when 'Post'
+        post = model
 
-      # change latest activity of origin
-      post.origin.last_activity = DateTime.now
-      post.origin.save
+        # change latest activity of origin
+        post.origin.last_activity = DateTime.now
+        post.origin.save
 
-      if post.is_private?
-        receivers = post.course.moderators
-      else
-        receivers = post.course.users
-        receivers << post.origin.author if not receivers.include? post.origin.author 
-      end
+        if post.is_private?
+          receivers = post.course.moderators
+        else
+          receivers = post.course.users
+          receivers << post.origin.author if not receivers.include? post.origin.author 
+        end
 
-      receivers.delete_if {|receiver| receiver.id == post.author_id}
-      sender = post.author
-      
-      receivers.each do |receiver|
-        Notification.create!(:receiver => receiver, :sender => sender, :notifyable_id => post.id, :notifyable_type => post.class.name)
+        receivers.delete_if {|receiver| receiver.id == post.author_id}
+        sender = post.author
         
-        # send emails to subscribers
-        AuditoriumMailer.update_in_course(receiver, post).deliver if send_course_updates_to?(receiver)
+        receivers.each do |receiver|
+          Notification.create!(:receiver => receiver, :sender => sender, :notifyable_id => post.id, :notifyable_type => post.class.name)
+          
+          # send emails to subscribers
+          AuditoriumMailer.update_in_course(receiver, post).deliver if send_course_updates_to?(receiver)
+          AuditoriumMailer.private_question(receiver, post).deliver if post.is_private?
+        end
+      when 'Course'
+        course = model
 
-        puts "RECEIVE? #{send_course_updates_to?(receiver)}"
-        AuditoriumMailer.private_question(receiver, post).deliver if post.is_private?
-
-      end
+        puts "CREATOR: #{course.creator.full_name}" 
+        if !course.approved?
+          admins = User.where(:admin => true)
+          admins.each do |admin|
+            AuditoriumMailer.new_course_to_approve(course, admin).deliver  
+          end
+        end
     end
   end
 end
