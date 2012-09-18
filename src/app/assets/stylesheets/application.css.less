@@ -111,6 +111,8 @@
 @font-weight-h4:  300;
 @font-size-h4:    1.5em;
 
+small {font-size: 0.7em;}
+
 //MIXINS
 .soft-border
 {
@@ -669,6 +671,14 @@ form.button_to div, form.button_to div input {
 div.follow-button {
   margin:5px 10px;
   display: inline;
+
+  &.small {
+    margin:0px 0px;
+    display: inline;
+    * > {
+      font-size: 0.9em;
+      }
+  }
 }
 
 /* notifications */

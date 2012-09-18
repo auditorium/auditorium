@@ -17,6 +17,10 @@ class Term < ActiveRecord::Base
     end
   end
 
+  def to_s
+    self.code
+  end
+
   def is_now?
     self.beginDate <= Date.today and  Date.today <= self.endDate
   end
