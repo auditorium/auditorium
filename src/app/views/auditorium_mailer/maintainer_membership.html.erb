@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <style>
+      body {
+        padding:20px;
+      }
+      p {
+        font-weight:200;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="font-weight:100;">Hello, <%= @user.full_name %></h1>
+    
+    <p>Now you are a maintainer of the course <%= link_to @course.name_with_term, @url %>. As maintainer you can access the course with additional privileges:</p>
+      <ul>
+        <li>make announcements for this course,</li>
+        <li>read and edit private questions,</li>
+        <li>manage users of the course,</li>
+        <li>edit the course,</li>
+        <li>create new courses for this lecture.</li>
+      </ul>
+    </p>
+      Go to <%= link_to @course.name_with_term, @url %> and see what you can do.  
+    </p>
+
+    <p>Have a great day!</p>
+    <em>The auditorium team</em>
+  </body>
+</html>

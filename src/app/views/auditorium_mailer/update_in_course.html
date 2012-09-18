@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <style>
+      body {
+        padding:20px;
+      }
+
+      h1 {
+        font-weight:100;
+      }
+
+      p {
+        font-weight:200;
+      }
+
+      .post-details {
+        width:50%;
+        margin:5px;
+        padding:5px;
+        border:1px solid #ddd;
+        background:#eee;
+      }
+
+      .post-details p {
+        margin:2px;
+        padding:0;
+      }
+
+      .post-subject {
+        font-size:1.2em;
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <h1>Hi, <%= @user.full_name %></h1>
+    
+    <p>There is a new <%= @post.post_type %> in <i><%= @post.course.name_with_term %></i> written by <%= @post.author.full_name %>.</p>
+
+    
+    <div class="post-details">
+      <% if @post.post_type.eql? 'question' or @post.post_type.eql? 'info' %>
+      <p class="post-subject"><b><%= @post.subject %></p>
+      <% end %>
+      <p class="post-body"><%= @post.body %></p>
+    </div>
+
+    <% if @post.origin.post_type.eql? 'question' %>
+      <p><%= link_to "View, answer or comment on #{@post.origin.author}'s question.", @post.origin %><p>
+    <% else %>
+      <p><%= link_to "View or comment on #{@post.origin.author}'s announcement.", @post.origin %></p>
+    <% end %>
+
+    <p class="email-footer"><small>You receive this email, because you subscribed to <%= link_to @post.course.name_with_term, @post.course %>. <%= link_to 'Change', edit_user_registration_url %> what emails auditorium sends you.</small></p>
+  </body>
+</html>

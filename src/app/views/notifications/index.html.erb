@@ -15,7 +15,7 @@
 
   <tbody>
 
-  <% current_user.notifications.reverse.each do |notification| %>
+  <% current_user.notifications.each do |notification| %>
     <% if notification.notifyable_type.eql? 'Post' %>
       <% post = notification.notifyable_object %>
       <% if not post.nil? %>

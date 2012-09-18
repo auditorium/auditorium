@@ -97,16 +97,43 @@ class PostsController < ApplicationController
       origin_path = @post.parent.parent if @post.parent and @post.parent.parent
     end
 
-    notifications = Notification.where(:notifyable_id => @post.id, :notifyable_type => 'Post')
-    Notification.destroy(notifications) if !notifications.empty?
-    @post.destroy
-
     reports = Report.find_all_by_post_id(@post.id)
     Report.destroy(reports)
+
+    notifications = Notification.where(:notifyable_id => @post.id, :notifyable_type => 'Post')
+    notifications.each do |n|
+      n.destroy
+    end
+
+    @post.destroy
 
     respond_to do |format|
       format.html { redirect_to root_path, flash: { success: 'The post was successfully destroyed.' } }
       format.json { head :no_content }
+    end
+  end
+
+  def answered 
+
+    @answer = Post.find(params[:id])
+    @parent = @answer.parent
+
+    if @answer.answer_to_id.nil?
+      @answer.answer_to_id = @parent.id
+    else
+      @answer.answer_to_id = nil
+    end
+
+    @answer.save
+
+    respond_to do |format|
+      if @answer.answer_to_id.nil?
+        format.js 
+        format.html { redirect_to @parent, :flash => { :success => "Oh. That's bad, that it is no answer." } }
+      else
+        format.js 
+        format.html { redirect_to @parent, :flash => { :success => 'Great that this answer helped you!' } }
+      end
     end
   end
   
@@ -118,7 +145,6 @@ class PostsController < ApplicationController
     @post = Post.new(:subject => subject,
                      :body => params[:body], 
                      :parent_id => params[:parent_id], 
-                     :answer_to_id => params[:parent_id], 
                      :course_id => @parent.course_id,
                      :author_id => current_user.id,
                      :post_type => 'answer')

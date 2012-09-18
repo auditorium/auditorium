@@ -48,6 +48,7 @@
 @yellow:       #ffc40d;
 @subscribed-color: #e8efff;
 @orange:       #f89406;
+@orangeLight:  #EFCBB6;
 @pink:         #c3325f;
 @purple:       #7a43b6;
 @beige:      #f0f0eb;
@@ -109,6 +110,8 @@
 @font-size-h3-well:    1.5em;
 @font-weight-h4:  300;
 @font-size-h4:    1.5em;
+
+small {font-size: 0.7em;}
 
 //MIXINS
 .soft-border
@@ -472,25 +475,40 @@ li.dropdown-fallback
   &.question-badge {
     background: @blue url("question-badge.png") top no-repeat;
   }
+
+  &.private-question-badge {
+    background: @orange url("question-badge.png") top no-repeat;
+  }
   
   &.info-badge {
     background: @yellow url("info-badge.png") top no-repeat;
   }
+
+  &.answer-badge {
+    background: @grayLight url("answer-badge.png") top no-repeat;  
+  }
+
+  &.private-answer-badge {
+    background: @orangeLight url("answer-badge.png") top no-repeat;
+  }
 }
 
-.post-rating {
-  width:30px;
-}
 
 .post-rating {
   vertical-align:top;
   padding-left:10px!important;
+  width:30px;
+  margin:5px;
+  padding:0;
 }
 
 .post-subject, .post-body, .post-footer {
-  padding: 5px 10px;
-  line-height: 1;
-  margin: 5px;
+  padding: 0 10px;
+  margin:0;
+}
+
+td.post-footer {
+  vertical-align: bottom;
 }
 
 table.table-posts {
@@ -519,7 +537,7 @@ table.table-comments {
 
 span.comment-metadata, span.post-metadata {
     color:@gray;
-    font-size:0.8em;
+    font-size:0.9em;
   }
 
 /* course */
@@ -579,9 +597,13 @@ table.courses-table {
   }
 }
 
-p.rating-button {
+p.rating-button, p.answered-button {
   margin:0 5px;
   padding:0;
+
+  form {
+    margin:0;
+  }
 }
 
 p.rating-points {
@@ -607,6 +629,30 @@ p.rating-points {
   }
 }
 
+.btn-answered {
+  border:none;
+  background:none;
+  font-size:25px;
+  padding:0;
+  font-weight:100;
+  margin:0;
+  &.answered{
+    color:@green;
+
+    &:hover {
+    color:@grayLight;
+    }
+  }
+
+  &.not.answered {
+    color:@grayLight;
+    
+    &:hover {
+      color:@green;
+    }
+  }
+}
+
 .center {
   margin: 0 auto;
   float: none;
@@ -625,6 +671,14 @@ form.button_to div, form.button_to div input {
 div.follow-button {
   margin:5px 10px;
   display: inline;
+
+  &.small {
+    margin:0px 0px;
+    display: inline;
+    * > {
+      font-size: 0.9em;
+      }
+  }
 }
 
 /* notifications */
@@ -716,3 +770,6 @@ p.hint {
   visibility: hidden;
 }
 
+#reportModal {
+  visibility: hidden;
+}

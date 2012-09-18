@@ -8,24 +8,6 @@ jQuery ->
 		post_id = $(this).attr('id')
 		$('#comment-'+post_id+'-form').show()
 
-	# when user chooses question only for moderator 
-	$('a#private-post').click ->
-
-		$('input#submit-button-label').val((index, value) ->
-				value.replace('public', 'private')
-			)
-		$('input#is-private').val('true')
-		$('div.btn-group').removeClass('open')
-		return false
-	
-	$('a#public-post').click ->
-		$('input#submit-button-label').val((index, value) ->
-				value.replace('private', 'public')
-			);
-		$('input#is-private').val('false')
-		$('div.btn-group').removeClass('open')
-		return false
-	
 	# backward compatability for non-js user -.-
 	$('#course_name').css('display', 'inline')
 	$('#course_name').css('visibility', 'visible')
@@ -51,8 +33,10 @@ jQuery ->
 		data_id = $(this).data('id')
 		$('input#report_post_id').val(data_id)
 		$('.modal').show()
+		$('#reportModal').css('visibility', 'visible')
 		return false
 
 	$('a.closeButton').click -> 
 		$('.modal').hide()
+		$('#reportModal').css('visibility', 'hidden')
 		return false

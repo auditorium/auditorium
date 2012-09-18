@@ -4,6 +4,11 @@
     <div class="well">
       <%= render 'course_memberships/list_simple', :user => resource %>
     </div>
+
+    <h2>Email Settings</h2>
+    <div class="well">
+      <%= render 'email_settings/form', :user => resource %>
+    </div>
   </div>
   <div class="container span6">
     <% devise_error_messages! %>

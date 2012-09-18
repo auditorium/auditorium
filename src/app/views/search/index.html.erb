@@ -1,10 +1,8 @@
-
-
 <div class="center span8">
   <h2>Search</h2>
 
   <%= form_tag '/search', :method => 'get', :id => 'search_form', :remote => false do %>
-    <%= text_field_tag :query, nil, :placeholder => 'Search', :class => 'search-query span8', :id => 'searchbar' %>
+    <%= text_field_tag :query, params[:query], :placeholder => 'Search', :class => 'search-query span8', :id => 'searchbar' %>
   <% end %>
 
   <h2>Search results</h2>

@@ -116,4 +116,8 @@ module ApplicationHelper
     end
   end
 
+  def admins
+    User.find_all(:admin => true)
+  end
+
 end

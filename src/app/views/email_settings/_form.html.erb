@@ -1,0 +1,23 @@
+	<% email_setting = EmailSetting.where(:user_id => current_user.id).first_or_initialize %>
+
+  <%= form_for(email_setting, :class => 'form-horizontal') do |f| %>
+    <div class="control-group">
+      
+      <div class="controls">
+      	<!--<label class="checkbox">
+        <%= f.check_box :html_format %><%= "Receive emails in HTML Format" %>
+        </label>-->
+
+        <label class="checkbox">
+        <%= f.check_box :emails_for_subscribtions %><%= "Receive emails with updates for every subscribed course" %>
+        </label>
+
+        <!-- <label class="checkbox">
+        <%= f.check_box :weekly %><%= "Receive weekly emails with updates on auditorium" %>
+        </label> -->
+      </div>
+    </div>
+    <div class="controls">
+       <%= f.submit "Save email settings", :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Saving...' %>
+    </div> 
+<% end %>
