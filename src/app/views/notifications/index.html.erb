@@ -19,16 +19,20 @@
     <% if notification.notifyable_type.eql? 'Post' %>
       <% post = notification.notifyable_object %>
       <% if not post.nil? %>
-        <% if notification.read %>
-        <tr class='read'>
-        <% else %>
-        <tr class='unread'>
-        <% end %>
-          
-          <td><%= I18n.localize(notification.created_at, :format => :short)%></td>
-          <td><%= "New #{post.post_type} by #{post.author}:" %><%= link_to "#{post.subject}", notification %></td>
-          <td><%= post.course.name_with_term %></td>
-        </tr>
+        <%= link_to post do %>
+         
+        
+          <% if notification.read %>
+          <tr class='read'>
+          <% else %>
+          <tr class='unread'>
+          <% end %>
+            
+            <td><%= I18n.localize(notification.created_at, :format => :short)%></td>
+            <td><%= "New #{post.post_type} by #{post.author}:" %><%= link_to post.subject, notification %></td>
+            <td><%= post.course.name_with_term %></td>
+          </tr>
+        <% end %>  
       <% end %>
     <% end %>
   <% end %>
