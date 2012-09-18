@@ -16,11 +16,16 @@
       <div class="control-group">
       <% if signed_in? %>
         <div class="controls">
-
+          <% if post.post_type.eql? 'info'
+              type = 'announcement'
+            else
+              type = post.post_type
+            end %>
           <label for="subject_field" class="accessibility"> subject </label>
-          <%= f.text_field :subject, :placeholder => 'Subject of the question...', :class => "span8", :id => "subject_field" %>
+          <%= f.text_field :subject, :placeholder => "Subject of the #{type}...", :class => "span8", :id => "subject_field" %>
           <label for="content_field" class="accessibility"> content </label>
-          <%= f.text_area :body, :placeholder => 'Content of your question...', :class => "span8", :id => "content_field", :size => '10x8' %>
+          
+          <%= f.text_area :body, :placeholder => "Content of your #{type}...", :class => "span8", :id => "content_field", :size => '10x8' %>
           <p class='hint'><b>Hint:</b> You can use <%= link_to 'Markdown', 'http://daringfireball.net/projects/markdown' %> for rich text, like code blocks, links, headlines and so on. Here you can find a <%= link_to 'Markdown reference', 'http://daringfireball.net/projects/markdown/' %> (by John Gruber).</p>
 
           <label for="course_name" class="accessibility backward_compatability" id='label_course_select'>course</label>
