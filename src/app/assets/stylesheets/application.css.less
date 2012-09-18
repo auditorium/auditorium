@@ -691,13 +691,18 @@ div.follow-button {
   color:#333;
 }
 
-tr:hover {
-  cursor:pointer;
-  background:@grayLighter;
-  color: @black;
+tr.clickable {
+  &:hover {
+    cursor:pointer;
+    background:@grayLighter;
+    color: @black;
 
-  a {
-    color: @blue;
+    a {
+      color: @blue;
+      &:hover {
+        color: @blueDark;
+      }
+    }
   }
 }
 

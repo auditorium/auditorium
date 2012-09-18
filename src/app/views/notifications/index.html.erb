@@ -4,7 +4,7 @@
 </h2>
 
 <% if current_user.notifications.count > 0 %>
-<table class="table">
+<table class="table notifications">
   <thead>
     <tr>
       <th>When?</th>
@@ -23,9 +23,9 @@
          
         
           <% if notification.read %>
-          <tr class='read'>
+          <tr class='clickable read'>
           <% else %>
-          <tr class='unread'>
+          <tr class='clickable unread'>
           <% end %>
             
             <td><%= I18n.localize(notification.created_at, :format => :short)%></td>
