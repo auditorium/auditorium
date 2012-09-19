@@ -18,7 +18,7 @@ Auditorium::Application.routes.draw do
 
   controller :users do
     get 'users' => :index, as: :ranking
-    get 'users/moderation' => 'users#moderation', :as => :user_moderation
+    get 'users/moderation' => 'users#moderation', :as => :users_moderation
     match 'users/:id/confirm' => 'users#confirm'
     delete  "users/:id/delete",      :to => "users#destroy", :as => :destroy_user_account
   end
