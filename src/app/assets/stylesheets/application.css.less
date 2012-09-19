@@ -528,17 +528,30 @@ table.table-comments {
   margin:20px auto;
   width:90%;
   div.comment {
-    margin:10px;
+    margin:5px 0 5px 60px;
     border-bottom:1px solid @grayLighter;
+
+    p {
+      padding:0;
+      margin:0;
+    }
   }
   
   
 }
 
 span.comment-metadata, span.post-metadata {
-    color:@gray;
-    font-size:0.9em;
-  }
+  color:@gray;
+  font-size:0.9em;
+}
+
+td.comment-button p {
+  margin:0px 0 5px 60px;
+}
+
+.comment-form {
+  margin: 0 0 0 60px;
+}
 
 /* course */
 .post-badge {

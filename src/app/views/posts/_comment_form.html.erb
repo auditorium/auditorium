@@ -1,5 +1,5 @@
 <% if current_user %>
-  <p><%= link_to 'comment', "#comment", :class=> 'commenting', :id => post.id %></p>
+  <p><%= link_to 'add a comment', "#comment", :class=> 'commenting', :id => post.id %></p>
 
   <div id='<%= "comment-#{post.id}-form" %>' class="comment-form">
     <%= form_tag "#{post_path(post)}/commenting", :method => "post" do %> 
