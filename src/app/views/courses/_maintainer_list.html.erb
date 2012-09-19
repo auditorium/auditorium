@@ -3,7 +3,6 @@
   <dt><%= pluralize(maintainers.count, 'maintainer') %></dt>
   <dd>
     <% maintainers.each do |maintainer| %>
-      <%= debug maintainer %>
       <%= maintainer.user.full_name if !maintainer.user.nil? %>
       <% unless maintainers.last == maintainer %>
       <%= ", " %>  
