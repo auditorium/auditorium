@@ -1,13 +1,13 @@
 module ApplicationHelper
   class CodeRayify < Redcarpet::Render::HTML
     def block_code(code, language='ruby')
-      CodeRay.scan(code, language).div(:line_numbers => false)
+      CodeRay.scan(code, language).div
     end
   end
 
   def markdown(text)
     coderayified = CodeRayify.new(:filter_html => true, 
-                                  :hard_wrap => true)
+                                  :hard_wrap => false)
     options = {
       :fenced_code_blocks => true,
       :no_intra_emphasis => true,
@@ -23,7 +23,7 @@ module ApplicationHelper
 
   def comment_markdown(text)
     coderayified = CodeRayify.new(:filter_html => true, 
-                                  :hard_wrap => true)
+                                  :hard_wrap => false)
     options = {
       :fenced_code_blocks => true,
       :no_intra_emphasis => true,
