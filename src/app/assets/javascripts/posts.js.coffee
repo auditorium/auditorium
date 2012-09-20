@@ -48,10 +48,10 @@ jQuery ->
 
 	$('a#insert-inline-code').click -> 
 		text_area = $('textarea#content_field')
-		text_area.append('`put code here`')
+		text_area.append(' `put code here`')
 		return false
 
 	$('a#insert-quote').click -> 
 		text_area = $('textarea#content_field')
-		text_area.append('\n> your quote...')
+		text_area.append('\n\n> your quote...')
 		return false

@@ -4,7 +4,15 @@
   <div class="answer-form">
     <%= form_tag "#{post_path(post)}/answering", :method => "post" do %> 
       <div class="row-fluid">
-        <%= text_area_tag :body, nil, :rows => 5,  :placeholder => "Your answer...", :class => "span12" %> 
+        <div class="rich-text-buttons">
+            <ul>
+              <li><%= link_to 'code block', '#', :id => 'insert-code-block', :title => 'Add a code block.', :class => 'btn btn-mini' %></li>
+              <li>
+              <li><%= link_to 'inline code', '#', :id => 'insert-inline-code', :title => 'Add inline code into your text.', :class => 'btn btn-mini' %></li>
+              <li>
+              <li><%= link_to 'quote', '#', :id => 'insert-quote', :title => 'Add a quote.', :class => 'btn btn-mini' %></li>
+            </div>
+        <%= text_area_tag :body, nil, :rows => 5,  :placeholder => "Your answer...", :class => "span12", :id => 'content_field' %> 
         <%= submit_tag 'Submit', :class => "btn btn-primary" %>
       </div>
     <% end %>
