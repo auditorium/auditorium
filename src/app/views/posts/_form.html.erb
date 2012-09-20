@@ -16,10 +16,14 @@
       <div class="control-group">
       <% if signed_in? %>
         <div class="controls">
+          <% if post.post_type.eql? 'answer' %>
+          <%= f.hidden_field :subject %>
+          <% else %>
+
           <label for="subject_field" class="accessibility"> subject </label>
           <%= f.text_field :subject, :placeholder => "Add the subject here...", :class => "span8", :id => "subject_field" %>
-          <label for="content_field" class="accessibility"> content </label>
-          
+          <% end %>
+         
           <div class="rich-text-buttons">
             <ul>
               <li><%= link_to 'code block', '#', :id => 'insert-code-block', :title => 'Add a code block.', :class => 'btn btn-mini' %></li>
@@ -27,7 +31,9 @@
               <li><%= link_to 'inline code', '#', :id => 'insert-inline-code', :title => 'Add inline code into your text.', :class => 'btn btn-mini' %></li>
               <li>
               <li><%= link_to 'quote', '#', :id => 'insert-quote', :title => 'Add a quote.', :class => 'btn btn-mini' %></li>
-            </div>
+            </ul>
+          </div>
+          <label for="content_field" class="accessibility"> content </label>
           <%= f.text_area :body, :placeholder => "Add the content here...", :class => "span8", :id => "content_field", :size => '10x8' %>
           
           <label for="course_name" class="accessibility backward_compatability" id='label_course_select'>course</label>
