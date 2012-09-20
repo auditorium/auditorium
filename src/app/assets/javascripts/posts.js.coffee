@@ -40,3 +40,18 @@ jQuery ->
 		$('.modal').hide()
 		$('#reportModal').css('visibility', 'hidden')
 		return false
+
+	$('a#insert-code-block').click -> 
+		text_area = $('textarea#content_field')
+		text_area.append('\n```ruby\nput code here\n```')
+		return false
+
+	$('a#insert-inline-code').click -> 
+		text_area = $('textarea#content_field')
+		text_area.append('`put code here`')
+		return false
+
+	$('a#insert-quote').click -> 
+		text_area = $('textarea#content_field')
+		text_area.append('\n> your quote...')
+		return false

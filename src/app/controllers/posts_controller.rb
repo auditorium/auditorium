@@ -55,7 +55,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.save
         format.js
-        format.html { redirect_to @post.course, :flash => { :success => 'Post was successfully created.' } }
+        format.html { redirect_to @post.origin, :flash => { :success => 'Post was successfully created.' } }
         format.json { render json: @post, status: :created, location: @post }
       else
         format.js
