@@ -1,7 +1,7 @@
 module ApplicationHelper
   class CodeRayify < Redcarpet::Render::HTML
     def block_code(code, language='ruby')
-      CodeRay.scan(code, language).div(:line_numbers => :table)
+      CodeRay.scan(code, language)
     end
   end
 
