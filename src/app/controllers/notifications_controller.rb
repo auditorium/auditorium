@@ -18,6 +18,7 @@ class NotificationsController < ApplicationController
     @notification = Notification.find(params[:id])
     @notification.read = true
     @notification.save
+
     respond_to do |format|
       format.html { redirect_to @notification.path }
       format.json { render json: @notification }
