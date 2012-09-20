@@ -22,9 +22,12 @@ class Ability
       can :moderate, User, user.is_admin?
 
       can :create,   Post
-      can :update,   Post, :author_id => user.id
+      can :update,   Post do |post|
+        post.author_id == user.id or post.course.moderators.include? user
+      end
+
       can :destroy,  Post do |post|
-        post.origin.author == user
+        post.origin.author == user or post.author_id == user.id or post.course.moderators.include? user
       end
 
       can :comment,  Post
