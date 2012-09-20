@@ -25,6 +25,10 @@ class Ability
       can :update,   Post do |post|
         post.author_id == user.id or post.course.moderators.include? user or post.course.editors.include? user
       end
+      
+      cannot :read, Post do |post|
+          post.origin.is_private? and !(post.author_id == user.id or post.course.moderators.include? user or post.course.editors.include? user)
+      end
 
       can :destroy,  Post do |post|
         post.author_id == user.id or post.course.moderators.include? user or post.course.editors.include? user

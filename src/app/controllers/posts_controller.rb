@@ -16,14 +16,11 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @post = Post.find(params[:id])
+    
 
     respond_to do |format|
-      if (@post.is_private || @post.origin.is_private) && current_user != @post.author && !current_user.is_moderator?(@post.course) && !current_user.admin?
-        format.html { redirect_to home_path, :flash => { :error => "Sorry, you don't have permissions to access this page." } }
-      else 
-        format.html # show.html.erb
-        format.json { render json: @post }
-      end
+      format.html
+      format.json { render json: @post }
     end
   end
 
@@ -53,6 +50,7 @@ class PostsController < ApplicationController
     @post = Post.new(params[:post])
     @post.author = current_user
     @post.last_activity = DateTime.now
+    @post.is_private = true if @post.origin.is_private?
 
     respond_to do |format|
       if @post.save
@@ -72,6 +70,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     @post.last_activity = @post.updated_at
+
 
     @origin = @post
     @origin = @post.parent_id if @post.parent_id

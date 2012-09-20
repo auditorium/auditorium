@@ -43,7 +43,7 @@
     else 
       type = @post.post_type
     end %>
-    <p>There is a new <%= type %> in <%= @post.course.name_with_term %> written by <%= @post.author.full_name %>.</p>
+    <p>There is a new <%= 'private' if @post.origin.is_private? %> <%= type %> in <%= @post.course.name_with_term %> written by <%= @post.author.full_name %>.</p>
 
     
     <div class="post-details">

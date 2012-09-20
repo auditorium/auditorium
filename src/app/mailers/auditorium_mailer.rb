@@ -47,13 +47,13 @@ class AuditoriumMailer < ActionMailer::Base
     case post.post_type
         
     when 'info'
-      subject = "[announcement] #{@post.subject[0..100]}... - #{@post.course.name_with_term}"
+      subject = "["+ ('private ' if post.origin.is_private?) + "announcement] #{@post.subject[0..100]}... - #{@post.course.name_with_term}"
     when 'question'
-      subject = "[question] #{@post.subject[0..100]}... - #{@post.course.name_with_term}" 
+      subject = "["+ ('private ' if post.origin.is_private?) + "question] #{@post.subject[0..100]}... - #{@post.course.name_with_term}" 
     when 'comment'
-      subject = "[comment] #{@post.body[0..100]}... - #{@post.course.name_with_term}"
+      subject = "["+ ('private ' if post.origin.is_private?) + "comment] #{@post.body[0..100]}... - #{@post.course.name_with_term}"
     when 'answer'
-      subject = "[answer] #{@post.body[0..100]}... - #{@post.course.name_with_term}"
+      subject = "["+ ('private ' if post.origin.is_private?) + "answer] #{@post.body[0..100]}... - #{@post.course.name_with_term}"
     else
       subject = "#{@post.author.full_name} posted something - #{@course.name_with_term}."
     end

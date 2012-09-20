@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     unless current_user
       authenticate_user!
     else
-      redirect_to intro_path, {:exception => exception }
+      redirect_to home_path, {:exception => exception, :notice => "Sorry, you don't have permissions to access this page." }
     end
  end
 
