@@ -486,6 +486,13 @@ li.dropdown-fallback
 
   &.answer-badge {
     background: @grayLight url("answer-badge.png") top no-repeat;  
+
+    &.answered {
+      background-color: @green;
+    }
+    &.not.answered {
+      background-color: @grayLight;
+    }
   }
 
   &.private-answer-badge {

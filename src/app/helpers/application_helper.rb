@@ -73,7 +73,7 @@ module ApplicationHelper
         item = @course
       end
       parents = []
-      while !item.nil?  
+      while !item.nil?
         parents.push item
         item = item.parent
       end

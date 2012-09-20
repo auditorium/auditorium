@@ -72,7 +72,7 @@ class CoursesController < ApplicationController
     respond_to do |format|
       if @course.save
         # make create to maintainer if he is no admin
-        if !@course.creator.is_admin?
+        if @course.creator and !@course.creator.is_admin?
           membership = CourseMembership.new(:user_id => @course.creator.id, :course_id => @course.id, :membership_type => 'maintainer')
           if membership.save!
             AuditoriumMailer.membership_changed(@course, @course.creator, 'maintainer').deliver 

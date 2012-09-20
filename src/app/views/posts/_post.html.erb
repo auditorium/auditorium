@@ -11,9 +11,9 @@
         <td rowspan="3" class="post-badge info-badge">&nbsp;</td>
       <% elsif post.post_type.eql? 'answer' %>
         <% if post.origin.is_private %>
-          <td rowspan='3' class='post-badge private-answer-badge'>&nbsp;</td>
+          <td rowspan='3' class='post-badge private-answer-badge <%= "not" if post.answer_to_id.nil? %> answered'>&nbsp;</td>
         <% else %>
-          <td rowspan='3' class='post-badge answer-badge'>&nbsp;</td>
+          <td rowspan='3' class='post-badge answer-badge <%= "not" if post.answer_to_id.nil? %> answered'>&nbsp;</td>
         <% end %>
       <% end %>
       <td rowspan="3" class="post-rating">

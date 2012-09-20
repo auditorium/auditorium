@@ -16,14 +16,12 @@
       <% if signed_in? %>
         <div class="controls">
           <label for="name" class="accessibility"> name of course </label>
-          <%= f.text_field :name, :placeholder => "Name the course...", :class => "span8" %>
+          <%= f.text_field :name, :placeholder => "Name the course...", :class => "span8", :id => 'new_course_name' %>
           
           <label for="description" class="accessibility"> description </label>
           
           <%= f.text_area :description, :placeholder => "Add a description to the course...", :class => "span8", :id => "description", :size => '10x8' %>
           <p class='hint'><b>Hint:</b> You can use <%= link_to 'Markdown', 'http://daringfireball.net/projects/markdown' %> for rich text. Here you can find a <%= link_to 'Markdown reference', 'http://daringfireball.net/projects/markdown/' %> (by John Gruber).</p>
-            
-            
 
             <label for="url" class="accessibility"> url from course </label>
           <%= f.url_field :url, :placeholder => "Add url from course", :class => "span8" %>
@@ -31,7 +29,7 @@
           <label for="lecture_name" class="accessibility backward_compatability" id='label_lecture_select'>lecture</label>
           <%= f.hidden_field :lecture_id, :value => (params[:lecture_id] || @course.lecture_id), :class => 'backward_compatability', 'style' => 'display:none' %>
           <%  @lecture_name = @course.lecture.name if !@course.nil? && !@course.lecture.nil? %>
-          <%= text_field_tag :lecture_name, @lecture_name , :placeholder => 'Search for lecture...', :class => 'span8 backward_compatability', 'style' => 'display:none' %>
+          <%= text_field_tag :lecture_name, @lecture_name , :placeholder => 'If available, select lecture...', :class => 'span8 backward_compatability', 'style' => 'display:none' %>
 
           <!-- for backward compatibility a select -->   
           <label for="lecture_select" class="accessibility" id='label_lecture_select'>lecture</label>

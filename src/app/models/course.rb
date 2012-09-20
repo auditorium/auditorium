@@ -11,7 +11,6 @@ class Course < ActiveRecord::Base
   attr_accessible :description, :name, :beginDate, :endDate, :creator_id, :term_id, :lecture_id, :sws, :url
 
   validates :name, presence: true
-  validates :lecture, presence: true
   validates :term,  presence: true
 
   define_index do
@@ -35,7 +34,8 @@ class Course < ActiveRecord::Base
   end
   
   def parent
-    self.lecture.parent
+
+    self.lecture.parent if !self.lecture.nil? 
   end
   
   def followers

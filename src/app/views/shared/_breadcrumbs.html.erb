@@ -1,8 +1,7 @@
 <% if params[:action] == 'show' and ["faculties","institutes","chairs","lectures","courses"].include? params[:controller] %>
 
 <ul class="breadcrumb">
-
-        
+    
   <% for item, index in item_parents %>
     <li>
     <% unless item_parents.index(item)  == 0 %>

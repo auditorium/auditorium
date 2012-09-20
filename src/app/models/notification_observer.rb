@@ -1,5 +1,5 @@
 class NotificationObserver < ActiveRecord::Observer
-  observe :post, :rating, :course, :course_membership, :lecture_membership, :faculty_membership
+  observe :user,:post, :rating, :course, :course_membership, :lecture_membership, :faculty_membership
 
 
   def send_course_updates_to?(receiver)
@@ -40,14 +40,17 @@ class NotificationObserver < ActiveRecord::Observer
         end
       when 'Course'
         course = model
-
-        puts "CREATOR: #{course.creator.full_name}" 
         if !course.approved?
           admins = User.where(:admin => true)
           admins.each do |admin|
             AuditoriumMailer.new_course_to_approve(course, admin).deliver  
           end
         end
+      # when 'User'
+      #   user = model
+      #   # add membership to support course
+      #   course = Course.find_by_name('Support Center')
+      #   membership = CourseMembership.new(:user_id => user.id, :course_id => course.id, :membership_type => 'member') if !course.nil?
     end
   end
 end
