@@ -16,10 +16,9 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @post = Post.find(params[:id])
-    
 
     respond_to do |format|
-      format.html
+      format.html 
       format.json { render json: @post }
     end
   end
@@ -55,7 +54,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.save
         format.js
-        format.html { redirect_to @post.origin, :flash => { :success => 'Post was successfully created.' } }
+        format.html { redirect_to "#{post_path(@post.origin)}#post-#{@post.id}", :flash => { :success => 'Post was successfully created.' } }
         format.json { render json: @post, status: :created, location: @post }
       else
         format.js
@@ -79,7 +78,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
-        format.html { redirect_to post_path(@origin), :flash => { :success =>  'Post was successfully updated.' } }
+        format.html { redirect_to "#{post_url(@post.origin)}#post-#{@post.id}", :flash => { :success =>  'Post was successfully updated.' } }
         format.json { head :no_content }
       else
         format.html { render action: "edit", :flash => { :error => "Post couldn't be updated!" } }
@@ -153,7 +152,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post.parent, :flash => { :success => "Thanks for your answer." } }
+        format.html { redirect_to "#{post_url(@post.origin)}#post-#{@post.id}", :flash => { :success => "Thanks for your answer." } }
         format.json { render json: @post.parent }
       else 
         format.html { redirect_to redirect_url, :flash => { :error => "Something went wrong. Please try again." } }
@@ -183,7 +182,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to post_path(@origin_post), :flash => { :success => "Your comment was successfully submitted." } }
+        format.html { redirect_to "#{post_url(@comment.origin)}#post-#{@comment.id}", :flash => { :success => "Your comment was successfully submitted." } }
         format.json { render json: @origin_post }
       else 
         format.html { redirect_to post_path(@origin_post), :flash => { :error => "Something went wrong with your comment. Please try again." } }

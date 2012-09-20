@@ -2,6 +2,10 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 jQuery ->
+	post_hash = window.location.hash
+	$(post_hash).effect('highlight', {}, 3000)
+	false
+
 	$('.comment-form').hide()
 	
 	$('.commenting').click ->
@@ -55,3 +59,10 @@ jQuery ->
 		text_area = $('textarea#content_field')
 		text_area.append('\n\n> your quote...')
 		return false
+
+	$('.permalink').click -> 
+		post_id = $(this).data('id')
+		alert 'Copy this link to share:\n' + $('a#post-'+post_id).attr("href")
+		return false
+
+	$()
