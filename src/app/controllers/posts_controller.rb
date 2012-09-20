@@ -52,7 +52,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(params[:post])
     @post.author = current_user
-    @post.last_activity = @post.created_at
+    @post.last_activity = DateTime.now
 
     respond_to do |format|
       if @post.save
@@ -75,8 +75,8 @@ class PostsController < ApplicationController
 
     @origin = @post
     @origin = @post.parent_id if @post.parent_id
-    @origin.last_activity = DateTime.now
-    @origin.save
+    @post.origin.last_activity = DateTime.now
+    @post.origin.save
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
