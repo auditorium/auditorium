@@ -44,16 +44,18 @@ class AuditoriumMailer < ActionMailer::Base
     @url = course_url(post.course)
     @post = post
 
+    private_flag = 'private ' if post.origin.is_private?
+
     case post.post_type
-        
+
     when 'info'
-      subject = "["+ ('private ' if post.origin.is_private?) + "announcement] #{@post.subject[0..100]}... - #{@post.course.name_with_term}"
+      subject = "[#{private_flag}announcement] #{@post.subject[0..100]}... - #{@post.course.name_with_term}"
     when 'question'
-      subject = "["+ ('private ' if post.origin.is_private?) + "question] #{@post.subject[0..100]}... - #{@post.course.name_with_term}" 
+      subject = "[#{private_flag}question] #{@post.subject[0..100]}... - #{@post.course.name_with_term}" 
     when 'comment'
-      subject = "["+ ('private ' if post.origin.is_private?) + "comment] #{@post.body[0..100]}... - #{@post.course.name_with_term}"
+      subject = "[#{private_flag}comment] #{@post.body[0..100]}... - #{@post.course.name_with_term}"
     when 'answer'
-      subject = "["+ ('private ' if post.origin.is_private?) + "answer] #{@post.body[0..100]}... - #{@post.course.name_with_term}"
+      subject = "[#{private_flag}answer] #{@post.body[0..100]}... - #{@post.course.name_with_term}"
     else
       subject = "#{@post.author.full_name} posted something - #{@course.name_with_term}."
     end
