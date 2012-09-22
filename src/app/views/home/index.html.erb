@@ -1,16 +1,16 @@
 <div id='ask_question'>
   <div class="center span8">
-    <h2>You need help? Ask a question.</h2>
+    <h2>You need help? Ask a question. <small><a href="#activity" class="scroll">Go to recent acivity</a></small></h2>
   <%= render :partial => 'posts/form', :locals => { :post => Post.new }%>
   </div>
 </div>
 
-<div id="activity">
+<section id="activity">
   <div class="center span8">
     <h2><%= "Recent activity" %> <small>sorted by last activity</small></h2>
     <%= render :partial => 'posts/posts_stream'%>
 
     <%= paginate @posts %>
   </div>
-</div>
+</section>
 

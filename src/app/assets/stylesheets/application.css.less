@@ -251,7 +251,7 @@ small {font-size: 0.7em;}
 body
 {
   font: 14px/22px @baseFontFamily;
-  font-weight:200;
+  font-weight:200; 
   
   pre, p code {
     padding: 2px 4px;
@@ -270,7 +270,7 @@ body
     color: @headerColor;
     background-color:@headerBackground;
     background-image:@headerBackgroundImage;
-    background-repeat: no-repeat;
+    background-repeat:no-repeat;
 
     h1 {
       font-size:4.5em;
@@ -314,6 +314,7 @@ body
     background-color: @contentBackground;
     padding-top: 20px;
     padding-bottom: 20px;
+    display:block;
     #shadow > .inset-top;
 
     #content
@@ -329,10 +330,6 @@ body
       footer
       {
         .top-border;
-      }
-
-      section
-      {
       }
     }
   }
