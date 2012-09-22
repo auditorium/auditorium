@@ -4,8 +4,10 @@
 	<h2>Edit your Question!</h2>
 <% elsif @post.post_type.eql? 'answer' %>
 	<h2>Edit your answer</h2>
+<% elsif @post.post_type.eql? 'comment' %>
+	<h2>Edit your comment!</h2>
 <% else %>
-	<h2> Edit your Announcement!</h2>
+	<h2>Edit your Announcement!</h2>
 <% end %>
 <%= render :partial => 'posts/form', :locals => { :post => @post }%>
 </div>

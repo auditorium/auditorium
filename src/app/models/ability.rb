@@ -22,6 +22,7 @@ class Ability
       can :moderate, User, user.is_admin?
 
       can :create,   Post
+      
       can :update,   Post do |post|
         post.author_id == user.id or post.course.moderators.include? user or post.course.editors.include? user
       end

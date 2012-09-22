@@ -3,13 +3,14 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 jQuery ->
 	post_hash = window.location.hash
-	$(post_hash).effect('highlight', {}, 3000)
+	$(post_hash).effect('highlight', {}, 1500)
 	false
 
 	$('.comment-form').hide()
 	
 	$('.commenting').click ->
 		post_id = $(this).attr('id')
+		$(this).hide()
 		$('#comment-'+post_id+'-form').show()
 
 	# backward compatability for non-js user -.-

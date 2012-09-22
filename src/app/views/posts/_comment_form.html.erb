@@ -5,8 +5,8 @@
     <%= form_tag "#{post_path(post)}/commenting", :method => "post" do %> 
       <div class="row-fluid">
 
-        <div class="span8">
-          <%= text_area_tag :body, nil, :rows => 2,  :placeholder => "Your comment...", :class => "span12" %>
+        <div class="span9">
+          <%= text_area_tag :body, nil, :rows => 1,  :placeholder => "Your comment...", :class => "span12" %>
         </div>
         <div class="span1">  
           <%= submit_tag 'Submit comment', :class => "btn btn-primary" %>

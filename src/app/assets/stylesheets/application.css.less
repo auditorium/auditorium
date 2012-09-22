@@ -532,11 +532,15 @@ table.table-posts {
 }
 
 table.table-comments {
-  margin:20px auto;
-  width:90%;
+  margin:0 0 20px 0;
+  width: 90%;
+  float:right;
+
+  tbody tr {
+    margin:0;
+  }
   div.comment {
-    margin:5px 0 5px 60px;
-    border-bottom:1px solid @grayLighter;
+    margin:0 5px;
 
     p {
       padding:0;
@@ -561,11 +565,11 @@ span.comment-metadata, span.post-metadata {
 }
 
 td.comment-button p {
-  margin:0px 0 5px 60px;
+  margin:0;
 }
 
 .comment-form {
-  margin: 0 0 0 60px;
+  margin: 0;
 }
 
 /* course */
@@ -833,4 +837,8 @@ p.hint {
 
 blockquote h1 {
   font-size:1.2em;
+}
+
+.answer-form {
+  clear:both;
 }

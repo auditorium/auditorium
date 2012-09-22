@@ -1,7 +1,8 @@
 <% if current_user %>
-  <h3>Your answer</h3>
+  
 
   <div class="answer-form">
+    <h3>Can you answer the question? <small class="hint">If not, add a comment.</small></h3>
     <%= form_tag "#{post_path(post)}/answering", :method => "post" do %> 
       <div class="row-fluid">
         <div class="rich-text-buttons">
@@ -13,7 +14,7 @@
               <li><%= link_to 'quote', '#', :id => 'insert-quote', :title => 'Add a quote.', :class => 'btn btn-mini' %></li>
             </div>
         <%= text_area_tag :body, nil, :rows => 5,  :placeholder => "Your answer...", :class => "span12", :id => 'content_field' %> 
-        <%= submit_tag 'Submit', :class => "btn btn-primary" %>
+        <%= submit_tag 'Submit your answer', :class => "btn btn-primary" %>
       </div>
     <% end %>
   </div>

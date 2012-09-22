@@ -16,7 +16,7 @@
       <div class="control-group">
       <% if signed_in? %>
         <div class="controls">
-          <% if post.post_type.eql? 'answer' %>
+          <% if post.post_type.eql? 'answer' or post.post_type.eql? 'comment' %>
           <%= f.hidden_field :subject %>
           <% else %>
 
@@ -25,7 +25,9 @@
           <% end %>
          
           <div class="rich-text-buttons">
+
             <ul>
+              <li>Insert:</li>
               <li><%= link_to 'code block', '#', :id => 'insert-code-block', :title => 'Add a code block.', :class => 'btn btn-mini' %></li>
               <li>
               <li><%= link_to 'inline code', '#', :id => 'insert-inline-code', :title => 'Add inline code into your text.', :class => 'btn btn-mini' %></li>
@@ -36,48 +38,51 @@
           <label for="content_field" class="accessibility"> content </label>
           <%= f.text_area :body, :placeholder => "Add the content here...", :class => "span8", :id => "content_field", :size => '10x8' %>
           
-          <label for="course_name" class="accessibility backward_compatability" id='label_course_select'>course</label>
-          <%= f.hidden_field :course_id, :value => (params[:course_id] || post.course_id), :class => 'backward_compatability', 'style' => 'display:none' %>
-          <%  @course_name = post.course.name_with_term if !post.nil? && !post.course.nil? %>
-          <%= text_field_tag :course_name, @course_name , :placeholder => 'Search for the course...', :class => 'span8 backward_compatability', 'style' => 'display:none' %>
+          <% if post.post_type.eql? 'comment' %>
+            <%= f.hidden_field :course_id %>
+          <% else %>
+            <label for="course_name" class="accessibility backward_compatability" id='label_course_select'>course</label>
+            <%= f.hidden_field :course_id, :value => (params[:course_id] || post.course_id), :class => 'backward_compatability', 'style' => 'display:none' %>
+            <%  @course_name = post.course.name_with_term if !post.nil? && !post.course.nil? %>
+            <%= text_field_tag :course_name, @course_name , :placeholder => 'Search for the course...', :class => 'span8 backward_compatability', 'style' => 'display:none' %>
 
-          <!-- for backward compatibility a select -->   
-          <label for="course_select" class="accessibility" id='label_course_select'>course</label>
-          <%= f.select(:course_id, options_from_collection_for_select(Course.order('name ASC').select("id, name, term_id"), :id, :name_with_term, params[:course_id] || post.course_id), { include_blank: '-- please select a course --'}, {:id=>"course_select",:class => 'span8'}) %>
-          
+            <!-- for backward compatibility a select -->   
+            <label for="course_select" class="accessibility" id='label_course_select'>course</label>
+            <%= f.select(:course_id, options_from_collection_for_select(Course.order('name ASC').select("id, name, term_id"), :id, :name_with_term, params[:course_id] || post.course_id), { include_blank: '-- please select a course --'}, {:id=>"course_select",:class => 'span8'}) %>
+          <% end %>
         </div>
 
         <% if params[:controller].eql? 'home' or (post and post.post_type.eql? 'question') or params[:post_type].eql? 'question' %>
           <!-- questions -->
           <label class="checkbox">
-
-            <% if ((params[:is_private] and params[:is_private].eql? 'true') or :is_private == true) 
-                checked = 'checked'
-              else
-                checked = 'unchecked'
-              end %>
-
-          <%= f.check_box :is_private, { :checked => checked }  %><%= "Mark this question as private. Only moderators of this course can see your post." %>
+          <%= f.check_box :is_private %><%= "Mark this question as private. Only moderators of this course can see your post." %>
           </label>
           <% if params[:action].eql? 'edit' %>
             <%= f.submit "Update question", { :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>
           <% else %>
-            <%= f.submit "Submit your question", { :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>
+            <%= f.submit "Submit question", { :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>
           <% end %>
           
         <% elsif (post and post.post_type.eql? 'answer') or params[:post_type].eql? 'answer' %>
           <!-- answers -->
           <% if params[:action].eql? 'edit' %> 
-            <%= f.submit "Update your answer", { :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>  
+            <%= f.submit "Update answer", { :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>  
           <% else %>
             <%= f.submit "Answer the question", { :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>  
+          <% end %>
+        <% elsif (post and post.post_type.eql? 'comment') or params[:post_type].eql? 'comment' %>
+          <!-- answers -->
+          <% if params[:action].eql? 'edit' %> 
+            <%= f.submit "Update comment", { :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>  
+          <% else %>
+            <%= f.submit "Comment on this post", { :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>  
           <% end %>
         <% else %>
           <!-- announcements -->
           <% if params[:action].eql? 'edit' %> 
-            <%= f.submit "Update your announcement", { :class => 'btn btn-large btn-warning', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>  
+            <%= f.submit "Update announcement", { :class => 'btn btn-large btn-warning', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>  
           <% else %>
-            <%= f.submit "Post your announcement", { :class => 'btn btn-large btn-warning', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>  
+            <%= f.submit "Submit announcement", { :class => 'btn btn-large btn-warning', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>  
           <% end %>
         <% end %>
       <% else %>
