@@ -9,9 +9,9 @@
     <tr>
       <% if post.post_type.eql? 'question' %>
         <% if post.is_private? %>
-          <td rowspan="3" class="post-badge private-question-badge">&nbsp;</td> 
+          <td rowspan="3" class="post-badge private-question-badge <%= "not" if post.answered? %> answered">&nbsp;</td> 
         <% else %>
-          <td rowspan="3" class="post-badge question-badge">&nbsp;</td> 
+          <td rowspan="3" class="post-badge question-badge <%= "not" if post.answered? %> answered">&nbsp;</td> 
         <% end %>
       <% elsif post.post_type.eql? 'info' %>
         <td rowspan="3" class="post-badge info-badge">&nbsp;</td>

@@ -80,6 +80,7 @@
 
 
 <section id="announcement_stream">
+  <div class="center span8">
       <h3>
         Course announcements 
         <% if current_user and current_user.may_edit_course(@course) %>
@@ -91,11 +92,13 @@
     <div id="announcement-stream">
       <%= render 'courses/announcement_stream'%>
     </div>
+  </div>
 </section>
 
 <br />
 
 <section id="question_stream">
+  <div class="center span8">
       <h3>
         Questions?
         <% if user_signed_in? %>
@@ -111,6 +114,7 @@
     <div id="question-stream">
       <%= render 'courses/question_stream' %>
     </div>
+  </div>
 </section>
 
   

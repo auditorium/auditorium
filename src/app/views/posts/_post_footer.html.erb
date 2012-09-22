@@ -1,5 +1,9 @@
 <span class="post-metadata">
   <% if params[:controller].eql? 'home' or params[:controller].eql? 'courses' %>
+    <% if post.answered? %>
+      <span class="icon-ok answered" title="This question was answered."></span>
+      &middot;
+    <% end %>
     <% if post.post_type.eql? 'question' %>
       <%= link_to "#{post.answers.count} answers", post_path(post) %> 
        &middot;
@@ -7,19 +11,22 @@
     <%= link_to "#{post.comments.count} comments", post_path(post) %>
      &middot; 
   <% end %>
+
   <% if post.author.id == current_user.id %>
     <%= "by me" %> 
   <% else %>
     <%= "by #{post.author_name}" %>
   <% end %>
   &middot;
-  <%= link_to "#{distance_of_time_in_words(Time.now, post.created_at)} ago", "#{post_url(post.origin)}#post-#{post.id}", :class => 'permalink', 'data-id' => "#{post.id}", :id => "post-#{post.id}" %>
+  <%= link_to "#{distance_of_time_in_words(Time.now, post.created_at)} ago", "#{post_url(post.origin)}#post-#{post.id}", :class => 'permalink', 'data-id' => "#{post.id}", :id => "post-#{post.id}", title: 'Get permalink for this post.' %>
   &middot;
   <% if current_user.subscribed_to?(post.course) %>
     <%= link_to " #{post.course.name_with_term}", course_path(post.course), title: 'You have subscribed to this course.', class: 'icon-star' %>
   <% else %>
     <%= link_to "#{post.course.name_with_term}", course_path(post.course) %>
   <% end %>
+
+  <% if !params[:controller].eql? 'home' and !params[:controller].eql? 'courses' %>
   <span class="pull-right">
     <% if can? :report, post %>
       <%= link_to ' report', '#', :class => "submit-report", 'data-id' => post.id %>
@@ -37,4 +44,5 @@
       <%= "edit #{distance_of_time_in_words(Time.now, post.updated_at) } ago" if (post.updated_at.to_i - post.created_at.to_i) > 0 %>
     <% end %>
   </span>
+  <% end %>
 </span>

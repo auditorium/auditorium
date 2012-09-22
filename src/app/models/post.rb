@@ -50,6 +50,18 @@ class Post < ActiveRecord::Base
     end        
   end
 
+  def answered?
+    if self.post_type.eql? 'question'
+      self.answers.each do |answer|
+        if answer.answer_to_id
+          return true
+        end
+      end
+    end
+
+    false # question is not answered yet
+  end
+
   def origin
     if self.parent.nil?
       self
