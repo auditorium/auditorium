@@ -16,8 +16,7 @@
       }
 
       .post-details {
-        width:50%;
-        margin:5px;
+        margin:5px 20px;
         padding:5px;
         border:1px solid #ddd;
         background:#eee;
@@ -42,8 +41,8 @@
 
     
     <div class="post-details">
-      <p class="post-subject"><b><%= @post.subject %></p>
-      <p class="post-body"><%= @post.body %></p>
+      <p class="post-subject"><b><%= markdown @post.subject %></p>
+      <p class="post-body"><%= markdown @post.body %></p>
     </div>
 
     <p><%= link_to 'Edit', edit_post_url(@post) %>, <%= link_to "view, answer or comment on #{@post.origin.author}'s question.", post_url(@post.origin) %><p>

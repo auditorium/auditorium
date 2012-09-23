@@ -16,8 +16,7 @@
       }
 
       .post-details {
-        width:50%;
-        margin:5px;
+        margin:5px 20px;
         padding:5px;
         border:1px solid #ddd;
         background:#eee;
@@ -48,9 +47,9 @@
     
     <div class="post-details">
       <% if @post.post_type.eql? 'question' or @post.post_type.eql? 'info' %>
-      <p class="post-subject"><b><%= @post.subject %></p>
+      <p class="post-subject"><b><%= markdown @post.subject %></p>
       <% end %>
-      <p class="post-body"><%= @post.body %></p>
+      <p class="post-body"><%= markdown @post.body %></p>
     </div>
 
     <% if @post.origin.post_type.eql? 'question' %>

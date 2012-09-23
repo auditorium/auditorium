@@ -4,12 +4,21 @@
 
     <%= "by #{comment.author_name}" %> &middot; <%= link_to "#{distance_of_time_in_words(Time.now, comment.created_at)} ago", "#{post_url(comment.origin)}#post-#{comment.id}", :class => 'permalink', 'data-id' => "#{comment.id}", :id => "post-#{comment.id}" %>
   	<span class="pull-right">
-	  	<% if can? :update, comment  %>
-	    	<%= link_to "remove", comment, :data => { :confirm => 'Are you sure that you want to remove this comment?' }, method: :delete %>&middot;
+	  	<% if can? :destroy, comment  %>
+	    	<%= link_to "remove", comment, :data => { :confirm => 'Are you sure that you want to remove this comment?' }, method: :delete %>
 	  	<% end %>
+
       <% if can? :report, comment %>
+        &middot;
         <%= link_to ' report', '#', :class => "submit-report", 'data-id' => comment.id %>	
 	  	<% end %>
+      <% if can? :update, comment %>
+        &middot;
+        <%= link_to ' edit', edit_post_path(comment) %> <%= "(#{distance_of_time_in_words(Time.now, comment.updated_at) } ago)" if (comment.updated_at.to_i - comment.created_at.to_i) > 0 %>
+      <% else %>
+        &middot;
+        <%= "edit #{distance_of_time_in_words(Time.now, comment.updated_at) } ago" if (comment.updated_at.to_i - comment.created_at.to_i) > 0 %>
+      <% end %>
   	</span>
   </span>
 </div>

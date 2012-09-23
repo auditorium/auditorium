@@ -251,7 +251,7 @@ small {font-size: 0.7em;}
 body
 {
   font: 14px/22px @baseFontFamily;
-  font-weight:200;
+  font-weight:200; 
   
   pre, p code {
     padding: 2px 4px;
@@ -261,7 +261,7 @@ body
   }
 
   h1 {
-    margin:50px 0 15px 0;
+    margin:50px 0 15px 0
   }
   
   /* top level outlines */
@@ -270,7 +270,7 @@ body
     color: @headerColor;
     background-color:@headerBackground;
     background-image:@headerBackgroundImage;
-    background-repeat: no-repeat;
+    background-repeat:no-repeat;
 
     h1 {
       font-size:4.5em;
@@ -314,6 +314,7 @@ body
     background-color: @contentBackground;
     padding-top: 20px;
     padding-bottom: 20px;
+    display:block;
     #shadow > .inset-top;
 
     #content
@@ -329,10 +330,6 @@ body
       footer
       {
         .top-border;
-      }
-
-      section
-      {
       }
     }
   }
@@ -500,6 +497,10 @@ li.dropdown-fallback
   }
 }
 
+.icon-ok.answered {
+  color:@green;
+}
+
 
 .post-rating {
   vertical-align:top;
@@ -510,8 +511,13 @@ li.dropdown-fallback
 }
 
 .post-subject, .post-body, .post-footer {
-  padding: 0 10px;
+  padding:0 10px;
   margin:0;
+}
+
+.post-subject {
+  min-height:20px;
+  padding:10px;
 }
 
 td.post-footer {
@@ -532,11 +538,15 @@ table.table-posts {
 }
 
 table.table-comments {
-  margin:20px auto;
-  width:90%;
+  margin:0 0 20px 0;
+  width: 90%;
+  float:right;
+
+  tbody tr {
+    margin:0;
+  }
   div.comment {
-    margin:5px 0 5px 60px;
-    border-bottom:1px solid @grayLighter;
+    margin:0 5px;
 
     p {
       padding:0;
@@ -561,11 +571,11 @@ span.comment-metadata, span.post-metadata {
 }
 
 td.comment-button p {
-  margin:0px 0 5px 60px;
+  margin:0;
 }
 
 .comment-form {
-  margin: 0 0 0 60px;
+  margin: 0;
 }
 
 /* course */
@@ -833,4 +843,8 @@ p.hint {
 
 blockquote h1 {
   font-size:1.2em;
+}
+
+.answer-form {
+  clear:both;
 }
