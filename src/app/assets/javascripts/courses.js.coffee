@@ -40,15 +40,5 @@ jQuery ->
       $("#course_lecture_id").val(ui.item.id)
 
 
-  # info and question details
-  $(".info-details").hide()
-  $(".question-details").hide()
-  $("a.info, a.question").click ->
-    link = $(this)
-    course_id = link.data('id')
-    type = link.data('type')
-    $("##{type}-details-#{course_id}").slideToggle("slow")
-    
-    return false
 
 	

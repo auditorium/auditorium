@@ -466,9 +466,12 @@ li.dropdown-fallback
 
 /* post */
 
-.info-title     { padding:0 5px; text-align: right; background: @yellow; color: @white; }
-.question-title { padding:0 5px; text-align: right; background: @blue; color: @white; }
-.answer-title   { padding:0 5px; text-align: right; background: @grayLight; color: @white; }
+.info-title      { padding:0 5px; background: @yellow; color: @white; }
+.info-title a    { color: @white; display:block; text-decoration:none;}
+.info-details    { .well-small; background: @white; }
+.question-title  { padding:0 5px; background: @blue; color: @white; }
+.question-title a{ color: @white; display:block; text-decoration:none;}
+.question-details{ .well; background: @white; }
 
 
 .post-badge {
@@ -825,6 +828,13 @@ p.hint {
   color:@grayLight;
   font-size: 0.9em;
   font-style: italic;
+}
+
+.well-small{
+  .well;
+  margin-bottom:0px;
+  padding: 5px 10px 19px 19px;
+  
 }
 
 .backward_compatability {
