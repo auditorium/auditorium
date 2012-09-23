@@ -1,11 +1,19 @@
 
 <div class="container center span8">
-<% if @post.post_type.eql? 'question' %>
-	<h2>Edit your Question!</h2>
-<% elsif @post.post_type.eql? 'answer' %>
-	<h2>Edit your answer</h2>
+<% if @post.author.id == current_user.id %>
+<% author = 'your' %>
 <% else %>
-	<h2> Edit your Announcement!</h2>
+<% author = "#{@post.author.full_name}s" %>
+<% end %>
+
+<% if @post.post_type.eql? 'question' %>
+	<h2><%= "Edit #{author} question!" %></h2>
+<% elsif @post.post_type.eql? 'answer' %>
+	<h2><%= "Edit #{author} answer!" %></h2>
+<% elsif @post.post_type.eql? 'comment' %>
+	<h2><%= "Edit #{author} comment!" %></h2>
+<% else %>
+	<h2><%= "Edit #{author} announcement!" %></h2>
 <% end %>
 <%= render :partial => 'posts/form', :locals => { :post => @post }%>
 </div>

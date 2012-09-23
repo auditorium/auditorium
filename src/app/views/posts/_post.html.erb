@@ -44,13 +44,18 @@
 </table>
 
 <% if params[:controller].eql? 'posts'%>
-<table class="table-comments"> 
+
+<table class="table table-comments"> 
+  <thead><th>Comments</th></thead>
+  <tfoot><td><%= render :partial => 'posts/comment_form', :locals => {:post => post } %></td></tfoot>
+  <tbody>
   <% post.comments.each do |comment| %>
     <tr><td><%= render :partial => 'posts/comment', :locals => {:comment => comment }%></td></tr>
   <% end %>
-  <tr>
-    <td class="comment-button"><%= render :partial => 'posts/comment_form', :locals => {:post => post } %></td>
-  </tr>
+  
+  </tbody>
+  
+  
 </table>    
 <% end %>
 

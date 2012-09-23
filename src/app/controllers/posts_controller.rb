@@ -27,6 +27,8 @@ class PostsController < ApplicationController
   # GET /posts/new.json
   def new
     @post = Post.new
+    @post.is_private = params[:is_private] if params[:is_private]
+
     if params[:course_id]
       @post.course_id = params[:course_id]
       @course_name = Course.find(params[:course_id]).name
