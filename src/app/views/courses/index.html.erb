@@ -4,9 +4,96 @@
 
 		<h2><%= "#{faculty}" %></h2>
 
-		<% courses.each do |course| %>
-			<%= render :partial => 'courses/single_course', :locals => { :course => course } %>
-		<% end %>
+<%
+  cols = 3 if cols.nil?
+  cols = 12/cols
+  i = 0
+%>
+<a href="?all=<%= !params[:all] %>">show all</a>
+<div class="row-fluid" id="grid" >
+  <% courses.each do |course| %>
+    <div class="span<%=cols%> well" >
+      <h3>
+        <%= link_to course.name, course %>
+        <small><em> <%= course.term%> <%= course.parent %> </em></small>
+      </h3>
+
+          <br/>
+
+        <div class="subtle">
+          <em class="icon-group"></em>
+          <%= pluralize(course.followers.count, 'subscriber') %>
+
+          <em class="icon-group"></em>
+          <%= pluralize(course.participants.count, 'participant') %>
+        </div>
+
+          <em class="info icon-info-sign"></em>
+          <%= course.infos.count %>
+        <dl> <dt class="info-title"> infos </dt> <dd> <small>
+            <% if course.infos.count > 0 %>
+              <ul class="unstyled">
+                <% course.infos.first(4).each do |info| %>
+
+                  <li>
+                  <span class="hidden-phone-tight post-date pull-right">
+                    <%= "#{distance_of_time_in_words(Time.now, info.created_at)}" %>
+                  </span>
+
+                  <strong> <%= link_to "#{info.subject}", info %> </strong> <br/>
+                  <em> <%= info.author %> </em>
+
+                  </li>
+
+                <% end %>
+                <% if course.infos.count > 4 %>
+                  <li><%= link_to 'more »', course %></li>
+                <% end %>
+              </ul>	
+            <% else %>
+              <%= link_to "No infos ask yet. Be the first.", course %>
+            <% end %>
+          </small> </dd> </dl>
+
+          <em class="question icon-question-sign"></em>
+          <%= course.questions.count %>
+
+        <dl> <dt class="question-title"> questions </dt> <dd> <small>
+            <% if course.questions.count > 0 %>
+              <ul class="unstyled">
+                <% course.questions.first(4).each do |question| %>
+
+                  <li>
+                  <span class="hidden-phone-tight post-date pull-right">
+                    <%= "#{distance_of_time_in_words(Time.now, question.created_at)}" %>
+                  </span>
+
+                  <strong> <%= link_to "#{question.subject}", question %> </strong> <br/>
+                  <em> <%= question.author %> </em>
+
+                  </li>
+
+                <% end %>
+                <% if course.questions.count > 4 %>
+                  <li><%= link_to 'more »', course %></li>
+                <% end %>
+              </ul>	
+            <% else %>
+              <%= link_to "No questions ask yet. Be the first.", course %>
+            <% end %>
+          </small> </dd> </dl>
+
+
+    </div>
+      <% i=i+1 %>
+      <% if i % (12/cols) == 0 %>
+    </div>
+
+    <div class="row-fluid" >
+    <% end %>
+
+  <% end %>
+</div>
 
 	<% end %>
 

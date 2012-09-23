@@ -25,6 +25,9 @@ class Course < ActiveRecord::Base
   end
 
   #scope :unmaintained,includes(:course_memberships).where(:course_memberships)
+
+  scope :current, -> {joins(:term).where("beginDate < ?", Date.today).where("endDate > ?", Date.today)}
+
   def name_with_term(option = { short: true })
     if self.name.length > 50 && :short == true
       "#{self.name[0..50].titleize}... (#{self.term.code})"

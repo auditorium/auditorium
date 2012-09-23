@@ -4,15 +4,17 @@
   cols = 12/cols
   i = 0
 %>
+<a href="?all=<%= !params[:all] %>">show all</a>
+
 <div class="row-fluid" id="grid" >
   <% lectures.each do |lecture| %>
     <div class="span<%=cols%> well" >
       <h3><%= link_to lecture.name, lecture %></h3>
-      <h4><%= lecture.parent.name %></h4>
+      <em><%= lecture.parent.name %></em>
       <hr />
       <ul>
       <% lecture.courses.each do |course| %>
-        <li><p><%= link_to course.name, course %></p></li>
+        <li><p><%= link_to course.term, course %></p></li>
       <% end %>
       </ul>
       <% if lecture.description %>

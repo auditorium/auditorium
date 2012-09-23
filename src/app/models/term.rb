@@ -7,6 +7,7 @@ class Term < ActiveRecord::Base
   validates :beginDate, presence: true
   validates :endDate,   presence: true
 
+  scope :current, -> {where("beginDate < ?", Date.today).where("endDate > ?", Date.today)}
 
   def code 
     name = term_type.upcase
@@ -25,7 +26,4 @@ class Term < ActiveRecord::Base
     self.beginDate <= Date.today and  Date.today <= self.endDate
   end
 
-  def current
-    Term.order(:name).select {|term| term.is_now? }
-  end
 end

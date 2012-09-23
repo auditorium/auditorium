@@ -58,6 +58,10 @@ module ApplicationHelper
     ['every week', 'odd week', 'even week']
   end
 
+  def current_term
+    Term.where("beginDate < ?", Date.today).where("endDate > ?", Date.today)[0]
+  end
+
   def item_parents
     if params[:action] == 'show'
       case params[:controller]

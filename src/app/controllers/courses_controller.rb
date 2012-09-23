@@ -4,11 +4,19 @@ class CoursesController < ApplicationController
 
   
   include ActionView::Helpers::DateHelper 
+
   # GET /courses
   # GET /courses.json
   def index
-    @courses = Course.order('name ASC').page(params[:page]).per(20)
+
+    if params[:all] == "true"
+      @courses = Course.order('name ASC').order('created_at DESC').page(params[:page]).per(20)
+    else
+      @courses = Course.current.order('name ASC').page(params[:page]).per(20)
+    end
+
     @courses_by_faculty = @courses.to_a.group_by{ |course| course.faculty }
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @courses }
