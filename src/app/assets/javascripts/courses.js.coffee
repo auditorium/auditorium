@@ -4,19 +4,19 @@
 
 jQuery ->
   # collapse course view
-  $('a.collapse-course').click ->
-    link = $(this)
-    course_id = $(this).data('id')
-    course_body = $('tbody#course-'+course_id)
-    console.log link
-    if course_body.is(':hidden') == true
-      course_body.show("slow")
-      link.html('hide details')
-    else if course_body.is(':hidden') == false
-      course_body.hide("slow")
-      link.html('details')
-    false
-  $('tbody.courses-body').hide()
+  #$('a.collapse-course').click ->
+  #  link = $(this)
+  #  course_id = $(this).data('id')
+  #  course_body = $('tbody#course-'+course_id)
+  #  console.log link
+  #  if course_body.is(':hidden') == true
+  #    course_body.show("slow")
+  #    link.html('hide details')
+  #  else if course_body.is(':hidden') == false
+  #    course_body.hide("slow")
+  #    link.html('details')
+  #  false
+  #$('tbody.courses-body').hide()
 	
   # tooltips 	
   $('#previous-course').mouseenter ->
@@ -36,6 +36,22 @@ jQuery ->
 
   $('#lecture_name').autocomplete
     source: "/ajax/lectures"
-    select: (event,ui) -> 
+    select: (event,ui) ->
       $("#course_lecture_id").val(ui.item.id)
+
+
+  # info and question details
+  $(".info-details").hide()
+  $(".question-details").hide()
+  $("a.info, a.question").click ->
+    link = $(this)
+    course_id = link.data('id')
+    type = link.data('type')
+    if $("##{type}-details-#{course_id}").is(":hidden")
+      $("##{type}-details-#{course_id}").show("slow")
+    else
+      $("##{type}-details-#{course_id}").hide("slow")
+    
+    return false
+
 	
