@@ -47,10 +47,7 @@ jQuery ->
     link = $(this)
     course_id = link.data('id')
     type = link.data('type')
-    if $("##{type}-details-#{course_id}").is(":hidden")
-      $("##{type}-details-#{course_id}").show("slow")
-    else
-      $("##{type}-details-#{course_id}").hide("slow")
+    $("##{type}-details-#{course_id}").slideToggle("slow")
     
     return false
 

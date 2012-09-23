@@ -12,33 +12,28 @@
     <a href="?all=<%= !params[:all] %>">show all</a>
     <div class="row-fluid" id="grid" >
       <% courses.each do |course| %>
-        <div class="span<%=cols%> well" >
-          <h3>
-            <%= link_to course.name, course %>
-            <small><em> <%= course.term%> <%= course.parent %> </em></small>
-          </h3>
+        <div class="span<%=cols%> " style="min-height:220px;">
 
-          <br/>
-
-          <div class="subtle">
-            <em class="icon-group"></em>
-            <%= pluralize(course.followers.count, 'subscriber') %>
-
-            <em class="icon-group"></em>
-            <%= pluralize(course.participants.count, 'participant') %>
+          <div class="subtle pull-right" style="text-align:right;">
+              <div class='<%= "follow-button follow-button-#{course.id}" %>'>
+                <%= render :partial => 'shared/follow_button', :locals => { :course => course } %>
+              </div>
           </div>
 
-          <strong>
-            <a href="#" class="info icon-info-sign" data-id="<%= course.id%>" data-type="info">
-              <%= course.infos.count %>
-            </a>
-          </strong>
+          <h3 style="min-height:70px;">
+            <%= link_to course.name, course %><br/>
+          </h3>
 
-          <strong>
-            <a href="#" class="question icon-question-sign" data-id="<%= course.id%>" data-type="question">
-              <%= course.questions.count %>
-            </a>
-          </strong>
+          <div class="well">
+
+          <div class="subtle pull-right" style="text-align:right;">
+            <%= course.participants.count %>/
+            <%= pluralize(course.followers.count, 'active member') %>
+          </div>
+            <strong>
+              <a href="#" class="btn btn-mini btn-warning info" data-id="<%= course.id%>" data-type="info"> <%= pluralize(course.infos.count, 'info') %></a>
+              <a href="#" class="btn btn-mini btn-info question" data-id="<%= course.id%>" data-type="question"> <%= pluralize(course.questions.count, 'questions') %></a>
+            </strong>
 
           <dl class="info-details" id="info-details-<%= course.id%>"> <dt class="info-title"> infos </dt> <dd> <small>
               <% if course.infos.count > 0 %>
@@ -66,18 +61,25 @@
           </small> </dd> </dl>
 
 
-          <dl class="question-details" id="question-details-<%= course.id%>"> <dt class="question-title"> questions </dt> <dd> <small>
+          <dl class="question-details" id="question-details-<%= course.id%>"> <dt class="question-title"> questions </dt> <dd>
               <% if course.questions.count > 0 %>
                 <ul class="unstyled">
                   <% course.questions.first(4).each do |question| %>
 
                     <li>
-                    <span class="hidden-phone-tight post-date pull-right">
+                    <span class="hidden-phone-tight post-date pull-right subtle">
                       <%= "#{distance_of_time_in_words(Time.now, question.created_at)}" %>
                     </span>
 
-                    <strong> <%= link_to "#{question.subject}", question %> </strong> <br/>
-                    <em> <%= question.author %> </em>
+                    <strong>
+                      <% if question.answered? %>
+                      <span class="icon-ok answered"></span>
+                      <% end %>
+                      <%= link_to "#{question.subject}", question %> </strong> <br/>
+                    <span class="subtle">
+                    <em> <%= question.author %> </em> |
+                    <em> <%= pluralize question.answers.count, 'answer' %> </em>
+                    </span>
 
                     </li>
 
@@ -89,7 +91,8 @@
               <% else %>
                 <%= link_to "No questions ask yet. Be the first.", course %>
               <% end %>
-          </small> </dd> </dl>
+           </dd> </dl>
+          </div>
 
 
         </div>
