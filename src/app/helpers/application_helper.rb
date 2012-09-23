@@ -124,4 +124,13 @@ module ApplicationHelper
     User.find_all(:admin => true)
   end
 
+  def shorten (string, length)
+    if string.length > length
+      "#{string[0,length]}..."
+    else
+      string
+    end
+
+  end
+
 end

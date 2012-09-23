@@ -14,6 +14,7 @@ jQuery ->
 
 
   $(".question-details").hide()
+  $(".info-details").hide()
 
   $("a.info, a.question").click ->
     link = $(this)

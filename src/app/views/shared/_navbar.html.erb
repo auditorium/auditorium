@@ -19,21 +19,21 @@
         </li>
 
         <li>
+        <%= link_to( my_courses_path ) do %>
+          <em class="icon-star"></em>
+          <span class="hidden-phone">
+            My Courses
+          </span>
+        <% end%>
+        </li>
+
+        <li>
         <%= link_to( courses_path ) do %>
           <em class="icon-list"></em>
           <span class="hidden-phone"> Courses </span>
         <% end%>
         </li>
-        <% if user_signed_in? %>
-          <li>
-          <%= link_to( my_courses_path ) do %>
-            <em class="icon-star"></em>
-            <span class="hidden-phone">
-              My Courses
-            </span>
-          <% end%>
-          </li>
-        <% end %>
+
 
         <% end %>
       </ul>

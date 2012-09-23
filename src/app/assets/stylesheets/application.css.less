@@ -468,10 +468,9 @@ li.dropdown-fallback
 
 .info-title      { padding:0 5px; background: @yellow; color: @white; }
 .info-title a    { color: @white; display:block; text-decoration:none;}
-.info-details    { .well-small; background: @white; }
-.question-title  { padding:0 5px; background: @blue; color: @white; }
-.question-title a{ color: @white; display:block; text-decoration:none;}
-.question-details{ .well; background: @white; }
+.question-title  { padding:0 5px;  }
+.question-title a{  display:block; text-decoration:none;}
+.question-details{ border-left: 1px dashed @blue; padding-left:5px;}
 
 
 .post-badge {
@@ -505,7 +504,8 @@ li.dropdown-fallback
   }
 }
 
-.icon-ok.answered {
+.icon-ok.answered ,
+.icon-check.answered {
   color:@green;
 }
 
@@ -828,6 +828,7 @@ p.hint {
   color:@grayLight;
   font-size: 0.9em;
   font-style: italic;
+  a {text-decoration: none;}
 }
 
 .well-small{
