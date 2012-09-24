@@ -1,8 +1,8 @@
 <% if @courses_by_faculty.count > 0 %>
 
-  <% @courses_by_faculty.each do |faculty, courses| %>
+	<% @courses_by_faculty.each do |faculty, courses| %>
 
-    <h2><%= "#{faculty}" %></h2>
+		<h2><%= "#{faculty}" %></h2>
 
     <%
       cols = 1 if cols.nil?
@@ -14,106 +14,15 @@
       <% courses.each do |course| %>
         <div class="span<%=cols%> " style="min-height:220px;">
 
-          <div class="subtle pull-right" style="text-align:right;">
-              <div class='<%= "follow-button follow-button-#{course.id}" %>'>
-                <%= render :partial => 'shared/follow_button', :locals => { :course => course } %>
-              </div>
-          </div>
 
-          <h3 style="min-height:70px;">
-            <%= link_to course.name, course %><br/>
-          </h3>
+	<% end %>
 
-          <div class="well">
-
-          <div class="subtle pull-right" style="text-align:right;">
-            <%= course.participants.count %>/
-            <%= pluralize(course.followers.count, 'active member') %>
-          </div>
-            <strong>
-              <a href="#" class="btn btn-mini btn-warning info" data-id="<%= course.id%>" data-type="info"> <%= pluralize(course.infos.count, 'info') %></a>
-              <a href="#" class="btn btn-mini btn-info question" data-id="<%= course.id%>" data-type="question"> <%= pluralize(course.questions.count, 'questions') %></a>
-            </strong>
-
-          <dl class="info-details" id="info-details-<%= course.id%>"> <dt class="info-title"> infos </dt> <dd> <small>
-              <% if course.infos.count > 0 %>
-                <ul class="unstyled">
-                  <% course.infos.first(4).each do |info| %>
-
-                    <li>
-                    <span class="hidden-phone-tight post-date pull-right">
-                      <%= "#{distance_of_time_in_words(Time.now, info.created_at)}" %>
-                    </span>
-
-                    <strong> <%= link_to "#{info.subject}", info %> </strong> <br/>
-                    <em> <%= info.author %> </em>
-
-                    </li>
-
-                  <% end %>
-                  <% if course.infos.count > 4 %>
-                    <li><%= link_to 'more »', course %></li>
-                  <% end %>
-                </ul>	
-              <% else %>
-                <%= link_to "No infos ask yet. Be the first.", course %>
-              <% end %>
-          </small> </dd> </dl>
-
-
-          <dl class="question-details" id="question-details-<%= course.id%>"> <dt class="question-title"> questions </dt> <dd>
-              <% if course.questions.count > 0 %>
-                <ul class="unstyled">
-                  <% course.questions.first(4).each do |question| %>
-
-                    <li>
-                    <span class="hidden-phone-tight post-date pull-right subtle">
-                      <%= "#{distance_of_time_in_words(Time.now, question.created_at)}" %>
-                    </span>
-
-                    <strong>
-                      <% if question.answered? %>
-                      <span class="icon-ok answered"></span>
-                      <% end %>
-                      <%= link_to "#{question.subject}", question %> </strong> <br/>
-                    <span class="subtle">
-                    <em> <%= question.author %> </em> |
-                    <em> <%= pluralize question.answers.count, 'answer' %> </em>
-                    </span>
-
-                    </li>
-
-                  <% end %>
-                  <% if course.questions.count > 4 %>
-                    <li><%= link_to 'more »', course %></li>
-                  <% end %>
-                </ul>	
-              <% else %>
-                <%= link_to "No questions ask yet. Be the first.", course %>
-              <% end %>
-           </dd> </dl>
-          </div>
-
-
-        </div>
-        <% i=i+1 %>
-        <% if i % (12/cols) == 0 %>
-        </div>
-
-        <div class="row-fluid" >
-        <% end %>
-
-      <% end %>
-    </div>
-
-  <% end %>
-
-  <%= paginate @courses %>
+	<%= paginate @courses %>
 
 <% else %>
 
-  <h2>Courses</h2>
+	<h2>Courses</h2>
 
-  <div class="alert alert-info">Seems that no courses are currently in the database. <% if user_signed_in? %><%= link_to 'Create a course.', new_course_path %><% end %></div>
+	<div class="alert alert-info">Seems that no courses are currently in the database. <% if user_signed_in? %><%= link_to 'Create a course.', new_course_path %><% end %></div>
 
 <% end %>
