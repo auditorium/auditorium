@@ -527,14 +527,13 @@ td.post-footer {
 table.table-posts {
   width:100%;
   margin:10px 0;
-  
-  tbody {
+  td.post-footer, td.post-rating, td.post-badge {
     border-bottom:1px solid #ddd;
   }
-}
-
-.table-posts.subscribed {
-  background-color:@subscribed-color;
+  
+  &.subscribed {
+    background-color:@subscribed-color;
+  }
 }
 
 table.table-comments {
@@ -847,4 +846,38 @@ blockquote h1 {
 
 .answer-form {
   clear:both;
+}
+
+.filter-box {
+
+  border:none;
+  border-bottom:1px solid #E3E3E3;
+  border-top:1px solid #E3E3E3;
+  background-color:white;
+  color:@grayDark;
+
+  margin:0 0 10px 0;
+  padding:5px 5px 0 5px;
+
+  p.hint {
+    clear: both;
+    padding:5px 10px 0 10px;
+  }
+  ul {
+    clear:both;
+    list-style:none;
+    margin:0;
+    padding:0;
+    color:@grayDark;
+  }
+  li {
+    float:left;
+    margin:3px 10px;
+
+    a {
+      &.current {
+        font-weight:bold;
+      }
+    }
+  }
 }

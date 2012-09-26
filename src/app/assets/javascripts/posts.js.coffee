@@ -63,4 +63,8 @@ jQuery ->
 		alert 'Copy this link to share:\n' + $('a#post-'+post_id).attr("href")
 		return false
 
-	$()
+
+	$('.filter-box').hide()
+	$('#filter').click -> 
+		$('.filter-box').slideToggle()
+		false
