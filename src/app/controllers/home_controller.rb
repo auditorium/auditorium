@@ -17,7 +17,7 @@ class HomeController < ApplicationController
       
       when 'all'
         cookies[:post_filter] = 'all'
-        @post_filter = {post_type: "info", post_type: "question"}
+        @post_filter = {post_type: ["info", "question"]}
       
       else 
         case cookies[:post_filter]
@@ -26,7 +26,7 @@ class HomeController < ApplicationController
         when 'question'
           @post_filter = {post_type: 'question'}
         else 
-          @post_filter = {post_type: "info", post_type: "question"}
+          @post_filter = {post_type: ["info", "question"]}
         end
       end
 
