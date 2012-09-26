@@ -13,11 +13,11 @@ module HomeHelper
 	end
 
 	def show_all_courses
-		true if !params[:course_filter].eql? 'subscribed' and !cookies[:post_filter].eql? 'subscribed'
+		true if !params[:course_filter].eql? 'subscribed' and !cookies[:course_filter].eql? 'subscribed'
 	end
 
 	def show_only_subscribed_courses
-		true if params[:course_filter].eql? 'subscribed' or cookies[:post_filter].eql? 'subscribed'
+		true if params[:course_filter].eql? 'subscribed' or cookies[:course_filter].eql? 'subscribed'
 	end
 
   def post_types
