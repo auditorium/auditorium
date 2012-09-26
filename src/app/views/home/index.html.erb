@@ -1,13 +1,31 @@
 <div id='ask_question'>
   <div class="center span8">
-    <h2>You need help? Ask a question. <small><a href="#activity" class="scroll">Go to recent acivity</a></small></h2>
+    <h2>You need help? Ask a question. <small><a href="#activity" class="scroll btn btn-link pull-right">Go to recent acivity</a></small></h2>
   <%= render :partial => 'posts/form', :locals => { :post => Post.new }%>
   </div>
 </div>
 
 <section id="activity">
   <div class="center span8">
-    <h2><%= "Recent activity" %> <small>sorted by last activity</small></h2>
+    <h2><%= "Recent activity" %>
+    	<small><%= link_to content_tag('span', ' filter activity stream', class: 'icon-tags'), '#', class: 'btn btn-link pull-right', :id => 'filter' %></small>
+    </h2>
+
+    <div class="container span8 center filter-box alert">
+	    	<ul>
+	    		<li><b>Filter posts:</b></li>
+    			<li><%= link_to 'show all', home_path(:post_filter => 'all', params[:course_filter].nil? ? nil : :course_filter => params[:course_filter]), class: "#{'current' if show_all_posts}"  %></li>
+    			<li><%= link_to 'show only infos', home_path(:post_filter => 'infos', params[:course_filter].nil? ? nil : :course_filter => params[:course_filter]), class: "#{'current' if show_only_infos}" %></li>
+    			<li><%= link_to 'show only questions', home_path(:post_filter => 'questions', params[:course_filter].nil? ? nil : :course_filter => params[:course_filter]), class: "#{'current' if show_only_questions}"  %></li>
+    		</ul>
+    		<ul>
+    			<li><b>Filter courses:</b></li>
+    			<li><%= link_to 'show all', home_path(:course_filter => 'all', params[:post_filter].nil? ? nil : :post_filter => params[:post_filter]), class: "#{'current' if show_all_courses}"  %></li>
+    			<li><%= link_to 'show subscribed', home_path(:course_filter => 'subscribed', params[:post_filter].nil? ? nil : :post_filter => params[:post_filter]), class: "#{'current' if show_only_subscribed_courses}"  %></li>
+    		</ul>
+    		<p class="hint"><b>Hint:</b> We will store a cookie to save your filter.</p>
+	  </div>
+	  
     <%= render :partial => 'posts/posts_stream'%>
 
     <%= paginate @posts %>

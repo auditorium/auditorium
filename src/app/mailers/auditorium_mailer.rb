@@ -1,11 +1,11 @@
 class AuditoriumMailer < ActionMailer::Base
   add_template_helper(ApplicationHelper)
 
-  default from: "auditorium <notification+#{('a'..'z').to_a.shuffle[0..7].join}@auditorium.inftex.net>"
+  default from: "auditorium <notification+#{('a'..'z').to_a.shuffle[0..7].join}@auditorium.inf.tu-dresden.de>"
 
   def welcome_email(user)
   	@user = user
-    @url = "http://auditorium.inftex.net"
+    @url = "http://auditorium.inf.tu-dresden.de"
     mail(to: @user.email, subject: 'Welcome to auditorium. Your account has been confirmed.')
   end 
 
