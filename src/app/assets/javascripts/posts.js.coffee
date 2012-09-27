@@ -85,6 +85,5 @@ jQuery ->
 
 	$('.permalink').click -> 
 		post_id = $(this).data('id')
-		alert 'Copy this link to share:\n' + $('a#post-'+post_id).attr("href")
-		return false
-
+		$('html,body').animate({scrollTop:$('#post-'+post_id).offset().top - 70}, 500)
+		$('#post-'+post_id).effect('highlight', {}, 1000)
