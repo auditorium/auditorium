@@ -513,13 +513,13 @@ li.dropdown-fallback
 .post-subject, .post-body, .post-footer {
   padding:0 10px;
   margin:0;
+  
 }
 
 .post-subject {
   min-height:20px;
   padding:10px;
 }
-
 td.post-footer {
   vertical-align: bottom;
 }
@@ -579,6 +579,7 @@ td.comment-button p {
 
 /* course */
 .post-badge {
+  min-width:20px;
   width:20px;
   height:65px;
   &.question-badge {
@@ -836,6 +837,10 @@ p.hint {
   ul li {
     float:left;
     margin:5px;
+  }
+
+  li:last {
+    clear:both;
   }
 
 }

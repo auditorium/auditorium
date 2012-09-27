@@ -3,6 +3,26 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 jQuery ->
 
+	# get caret position in text area
+	insertAtCaret = (element,value) ->
+		@element=document.getElementById(element)
+		if(document.selection)
+			@element.focus()
+			sel=document.selection.createRange()
+			sel.text=value
+			return
+		
+		if(@element.selectionStart||@element.selectionStart=="0")
+			@t_start=@element.selectionStart
+			@t_end=@element.selectionEnd
+			@val_start=@element.value.substring(0, @t_start)
+			@val_end=@element.value.substring(@t_end,@element.value.length)
+			@element.value=@val_start+value+@val_end
+		else
+			@element.value+=value
+
+
+
 	$('.comment-form').hide()
 	
 	$('.commenting').click ->
@@ -43,20 +63,24 @@ jQuery ->
 		$('#reportModal').css('visibility', 'hidden')
 		return false
 
-	$('a#insert-code-block').click -> 
-		$('textarea#content_field').text().append('\n```ruby\nput code here\n```')
+	$('a#insert-inline-code').click ->
+		insertAtCaret('content_field', '`# add your code`')
 		return false
 
-	$('a#insert-inline-code').click -> 
-		$('textarea#content_field').text().append(' `put code here`')
+	$('a#insert-code-block').click ->
+		insertAtCaret('content_field', '\n```ruby\n# add your code\n```')
 		return false
 
-	$('a#insert-quote').click -> 
-		$('textarea#content_field').text().append('\n\n> your quote...')
+	$('a#insert-quote').click ->
+		insertAtCaret('content_field', '\n\n> content\n\n')
 		return false
 
-	$('a#insert-latex').click ->
-		$('textarea#content_field').text().append("\n\n<p>\[ your quote...\]")
+	$('a#insert-latex-inline').click ->
+		insertAtCaret('content_field', '$%LaTeX code here!$')
+		return false
+
+	$('a#insert-latex-block').click ->
+		insertAtCaret('content_field', '\n$$%LaTeX code here!$$\n')
 		return false
 
 	$('.permalink').click -> 
@@ -64,8 +88,3 @@ jQuery ->
 		alert 'Copy this link to share:\n' + $('a#post-'+post_id).attr("href")
 		return false
 
-
-	$('.filter-box').hide()
-	$('#filter').click -> 
-		$('.filter-box').slideToggle()
-		false
