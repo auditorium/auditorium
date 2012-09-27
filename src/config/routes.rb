@@ -1,4 +1,6 @@
 Auditorium::Application.routes.draw do
+  mathjax 'mathjax'
+  
   resources :email_settings
 
   get "ajax/courses"

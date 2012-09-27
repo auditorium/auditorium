@@ -6,15 +6,15 @@ module ApplicationHelper
   end
 
   def markdown(text)
-    coderayified = CodeRayify.new(:filter_html => true, 
-                                  :hard_wrap => false)
+    coderayified = CodeRayify.new()
+
     options = {
       :fenced_code_blocks => true,
       :no_intra_emphasis => true,
       :autolink => true,
       :strikethrough => true,
       :lax_html_blocks => true,
-      :superscript => true
+      #:superscript => true
     }
 
     markdown_to_html = Redcarpet::Markdown.new(coderayified, options)
@@ -22,15 +22,13 @@ module ApplicationHelper
   end
 
   def comment_markdown(text)
-    coderayified = CodeRayify.new(:filter_html => true, 
-                                  :hard_wrap => false)
+    coderayified = CodeRayify.new()
     options = {
       :fenced_code_blocks => true,
       :no_intra_emphasis => true,
       :autolink => true,
       :strikethrough => true,
       :lax_html_blocks => true,
-      :superscript => true, 
       :no_styles => true
     }
 

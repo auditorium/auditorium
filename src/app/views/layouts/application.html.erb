@@ -6,6 +6,17 @@
     <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
+    
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+       tex2jax: {
+         inlineMath: [ ['$','$'] ],
+         processEscapes: true
+       }
+      });
+    </script>
+    <%= mathjax_tag %>
   </head>
   <body data-spy="scroll" data-target=".subnav" data-offset="50">
     <header id="header">

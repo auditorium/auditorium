@@ -44,18 +44,19 @@ jQuery ->
 		return false
 
 	$('a#insert-code-block').click -> 
-		text_area = $('textarea#content_field')
-		text_area.append('\n```ruby\nput code here\n```')
+		$('textarea#content_field').text().append('\n```ruby\nput code here\n```')
 		return false
 
 	$('a#insert-inline-code').click -> 
-		text_area = $('textarea#content_field')
-		text_area.append(' `put code here`')
+		$('textarea#content_field').text().append(' `put code here`')
 		return false
 
 	$('a#insert-quote').click -> 
-		text_area = $('textarea#content_field')
-		text_area.append('\n\n> your quote...')
+		$('textarea#content_field').text().append('\n\n> your quote...')
+		return false
+
+	$('a#insert-latex').click ->
+		$('textarea#content_field').text().append("\n\n<p>\[ your quote...\]")
 		return false
 
 	$('.permalink').click -> 
