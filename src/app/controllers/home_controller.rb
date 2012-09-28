@@ -47,6 +47,11 @@ class HomeController < ApplicationController
           @posts = Post.order('last_activity DESC, updated_at DESC, created_at DESC').where(@post_filter).page(params[:page]).per(20)
         end
       end
+
+      respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @posts }
+    end
     else
       redirect_to root_path
     end

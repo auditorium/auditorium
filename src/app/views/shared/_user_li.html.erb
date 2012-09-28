@@ -16,7 +16,7 @@
 
   <li class="pull-right">
   <%= link_to destroy_user_session_path, :method => :delete do %> <em class="icon-off"></em>
-      <span class="visible-desktop"> Logout </span>
+      <span> Logout </span>
       <% end %>
   </li>
 
@@ -24,7 +24,7 @@
   <li class="pull-right">
     <%= link_to(new_user_session_path, 'data-toggle' => 'modal') do %>
       <em class='icon-user'></em>
-      <span class="visible-desktop">Sign in</span>
+      <span>Sign in</span>
     <% end %>
     <%= render :partial => 'shared/modal_login' %>
   </li>

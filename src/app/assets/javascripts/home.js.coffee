@@ -30,10 +30,12 @@ jQuery ->
 	$('a#show_question_form').click ->
 		$('#question_form').slideDown()
 		$('html,body').animate({scrollTop:$('#content').offset().top - 60}, 500)
+		$('#show_question_form').hide()
 		false
 
 	$('#hide_question_form').click -> 
 		$('#question_form').slideUp()
 		$('html,body').animate({scrollTop:$('#content').offset().top - 60}, 500)
+		$('#show_question_form').show()
 		false
 		
