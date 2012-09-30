@@ -55,7 +55,7 @@
 @purple:       #7a43b6;
 @beige:      #f0f0eb;
 
-@bodyBackground:     @gray;
+@bodyBackground:     transparent; // surprised? check out html{}
 @headerColor:        @white;
 @headerBackground:   @gray;
 @headerBackgroundImage : url("faculty-informatik.jpg");
@@ -250,6 +250,10 @@ small {font-size: 0.7em;}
 
 /****** SPECIFICS ******/
 
+html
+{
+    background: @grayDark url('low_contrast_linen.png');
+}
 body
 {
   font: 14px/22px @baseFontFamily;
@@ -343,8 +347,6 @@ body
     width:100%;
     padding-top:15px;
     #shadow > .inset-top(@black,15px);
-    background-color:@bodyBackground;
-    background-image: url('low_contrast_linen.png');
     color:@white;
     a {color:@white; }
 
