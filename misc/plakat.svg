@@ -18,6 +18,18 @@
    sodipodi:docname="plakat.svg">
   <defs
      id="defs4">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient6060">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop6062" />
+      <stop
+         style="stop-color:#000000;stop-opacity:0;"
+         offset="1"
+         id="stop6064" />
+    </linearGradient>
     <filter
        id="filter3108"
        style="color-interpolation-filters:sRGB;"
@@ -391,6 +403,88 @@
          operator="over"
          result="composite2" />
     </filter>
+    <filter
+       color-interpolation-filters="sRGB"
+       id="filter3108-4-1-74"
+       inkscape:label="Drop Shadow">
+      <feFlood
+         id="feFlood3110-5-0-0"
+         flood-opacity="1"
+         flood-color="rgb(0,0,0)"
+         result="flood" />
+      <feComposite
+         id="feComposite3112-0-0-4"
+         in2="SourceGraphic"
+         in="flood"
+         operator="in"
+         result="composite1" />
+      <feGaussianBlur
+         id="feGaussianBlur3114-3-0-10"
+         stdDeviation="1.2"
+         result="blur" />
+      <feOffset
+         id="feOffset3116-8-2-3"
+         dx="0"
+         dy="0"
+         result="offset" />
+      <feComposite
+         id="feComposite3118-4-4-9"
+         in2="offset"
+         in="SourceGraphic"
+         operator="over"
+         result="composite2" />
+    </filter>
+    <filter
+       color-interpolation-filters="sRGB"
+       id="filter3108-4-1-74-7"
+       inkscape:label="Drop Shadow">
+      <feFlood
+         id="feFlood3110-5-0-0-9"
+         flood-opacity="1"
+         flood-color="rgb(0,0,0)"
+         result="flood" />
+      <feComposite
+         id="feComposite3112-0-0-4-7"
+         in2="SourceGraphic"
+         in="flood"
+         operator="in"
+         result="composite1" />
+      <feGaussianBlur
+         id="feGaussianBlur3114-3-0-10-4"
+         stdDeviation="1.2"
+         result="blur" />
+      <feOffset
+         id="feOffset3116-8-2-3-2"
+         dx="0"
+         dy="0"
+         result="offset" />
+      <feComposite
+         id="feComposite3118-4-4-9-8"
+         in2="offset"
+         in="SourceGraphic"
+         operator="over"
+         result="composite2" />
+    </filter>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient6060"
+       id="linearGradient6090"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(540.07412,345.41809)"
+       x1="-414.59305"
+       y1="259.11307"
+       x2="386.80695"
+       y2="259.11307" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient6060"
+       id="linearGradient6139"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(540.07412,345.41809)"
+       x1="-414.59305"
+       y1="259.11307"
+       x2="386.80695"
+       y2="259.11307" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -399,17 +493,19 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.65717461"
-     inkscape:cx="710.30263"
-     inkscape:cy="703.00951"
+     inkscape:zoom="0.40570253"
+     inkscape:cx="542.85516"
+     inkscape:cy="501.4661"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="layer3"
      showgrid="false"
      inkscape:window-width="1920"
      inkscape:window-height="1160"
      inkscape:window-x="0"
      inkscape:window-y="0"
-     inkscape:window-maximized="1" />
+     inkscape:window-maximized="1"
+     showguides="true"
+     inkscape:guide-bbox="true" />
   <metadata
      id="metadata7">
     <rdf:RDF>
@@ -423,7 +519,7 @@
     </rdf:RDF>
   </metadata>
   <g
-     inkscape:label="Layer 1"
+     inkscape:label="Hintergrund"
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(0,435.82679)">
@@ -436,7 +532,7 @@
        width="1034.3451" />
     <text
        xml:space="preserve"
-       style="font-size:55.80164337000000074px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.43185699000000000;stroke-linecap:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;filter:url(#filter3108);font-family:Sans;-inkscape-font-specification:Josefin Sans Std Bold"
+       style="font-size:55.80164337px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.43185699;stroke-linecap:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;filter:url(#filter3108);font-family:Sans;-inkscape-font-specification:Josefin Sans Std Bold"
        x="65.081604"
        y="-267.63782"
        id="text2996"
@@ -446,60 +542,7 @@
          id="tspan2998"
          x="65.081604"
          y="-267.63782"
-         style="font-size:55.80164336999999364px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;stroke:#000000;stroke-width:0.43185699000000000;stroke-linecap:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:Josefin Sans Std;-inkscape-font-specification:Josefin Sans Std Bold">auditorium</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:55.80163956px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;filter:url(#filter3108-4-1);font-family:Quicksand;-inkscape-font-specification:Quicksand"
-       x="65.081604"
-       y="-267.63782"
-       id="text2996-2-4"
-       sodipodi:linespacing="125%"
-       transform="matrix(0.84003735,0,0,0.84003735,2249.9679,195.83819)"><tspan
-         y="-267.63782"
-         x="65.081604"
-         sodipodi:role="line"
-         id="tspan3165-6"
-         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz Italic">Die Vorlesungsfolien helfen dir nicht weiter?</tspan><tspan
-         y="-197.88577"
-         x="65.081604"
-         sodipodi:role="line"
-         id="tspan3211"
-         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz Italic">Du kennst niemanden, der eine Lösung weiß?</tspan><tspan
-         y="-128.13371"
-         x="65.081604"
-         sodipodi:role="line"
-         id="tspan3213"
-         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz Italic" /><tspan
-         y="-58.381668"
-         x="65.081604"
-         sodipodi:role="line"
-         id="tspan3215"
-         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz Italic">Du suchst im Internet und findest nur</tspan><tspan
-         y="11.37038"
-         x="65.081604"
-         sodipodi:role="line"
-         id="tspan3217"
-         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz Italic">unübersichtliche Foren und Wikipedia kann</tspan><tspan
-         y="81.122429"
-         x="65.081604"
-         sodipodi:role="line"
-         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz Italic"
-         id="tspan3223">dir nicht helfen?</tspan><tspan
-         y="150.87448"
-         x="65.081604"
-         sodipodi:role="line"
-         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz Italic"
-         id="tspan3225" /><tspan
-         y="220.62653"
-         x="65.081604"
-         sodipodi:role="line"
-         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz Italic"
-         id="tspan3227">Keine Panik! </tspan><tspan
-         y="290.37857"
-         x="65.081604"
-         sodipodi:role="line"
-         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz Italic"
-         id="tspan3229">Es gibt auditorium</tspan></text>
+         style="font-size:55.80164337px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;stroke:#000000;stroke-width:0.43185699;stroke-linecap:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:Josefin Sans Std;-inkscape-font-specification:Josefin Sans Std Bold">auditorium</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:55.80163956px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#4d4d4d;fill-opacity:1;stroke:none;filter:url(#filter3108-4-1-7);font-family:Quicksand;-inkscape-font-specification:Quicksand"
@@ -600,74 +643,137 @@
          id="tspan4154">Melden Sie Ihre Tutoren als Betreuer an oder reden Sie selbst mit.</tspan></text>
     <text
        xml:space="preserve"
+       style="font-size:68.72387695px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz"
+       x="42.884327"
+       y="903.4303"
+       id="text2996-2-4-3-8"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5329"
+         x="42.884327"
+         y="903.4303" /></text>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot4849"
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:'micro.pcf'"><flowRegion
+         id="flowRegion4851"><rect
+           id="rect4853"
+           width="546.5979"
+           height="142.02937"
+           x="352.92145"
+           y="2534.0415" /></flowRegion><flowPara
+         id="flowPara4855" /></flowRoot>    <text
+       xml:space="preserve"
+       style="font-size:55.80163956px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#4d4d4d;fill-opacity:1;stroke:none;font-family:Quicksand;-inkscape-font-specification:Quicksand"
+       x="65.081604"
+       y="-267.63782"
+       id="text2996-2-4-3-04"
+       sodipodi:linespacing="125%"
+       transform="matrix(0.61600955,0,0,0.61600955,303.98257,1092.7756)"><tspan
+         y="-267.63782"
+         x="65.081604"
+         sodipodi:role="line"
+         style="font-size:55.80163956px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#4d4d4d;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz"
+         id="tspan4154-3" /></text>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot5151"
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:'micro.pcf'"><flowRegion
+         id="flowRegion5153"><rect
+           id="rect5155"
+           width="641.28412"
+           height="460.51947"
+           x="774.70563"
+           y="3304.4434" /></flowRegion><flowPara
+         id="flowPara5157" /></flowRoot>    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:'micro.pcf'"
+       x="979.95264"
+       y="1199.0725"
+       id="text5355"
+       sodipodi:linespacing="125%"
+       transform="translate(0,-435.82679)"><tspan
+         sodipodi:role="line"
+         id="tspan5357"
+         x="979.95264"
+         y="1199.0725" /></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Dozententext"
+     style="display:none"
+     sodipodi:insensitive="true">
+    <text
+       xml:space="preserve"
        style="font-size:46.07475662px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#4d4d4d;fill-opacity:1;stroke:none;font-family:Quicksand;-inkscape-font-specification:Quicksand"
        x="88.673012"
-       y="315.99451"
+       y="751.82129"
        id="text2996-2-4-3-6"
        sodipodi:linespacing="125%"><tspan
-         y="315.99451"
+         y="751.82129"
          x="88.673012"
          sodipodi:role="line"
          style="font-size:53.6152916px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#4d4d4d;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz"
          id="tspan4140-1" /><tspan
-         y="383.01361"
+         y="818.84039"
          x="88.673012"
          sodipodi:role="line"
          style="font-size:46.7869339px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#4d4d4d;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz"
          id="tspan4142-6" /><tspan
-         y="450.03275"
+         y="885.8595"
          x="88.673012"
          sodipodi:role="line"
          style="font-size:73.59742737px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;font-family:Josefin Sans Std;-inkscape-font-specification:Josefin Sans Std"
          id="tspan4146-8" /><tspan
-         y="510.16446"
+         y="945.99121"
          x="88.673012"
          sodipodi:role="line"
          style="font-size:46.7869339px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#4d4d4d;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz"
-         id="tspan5414">ist eine Platform auf der Studenten, Dozenten und Tutoren</tspan><tspan
-         y="568.64813"
+         id="tspan5414">ist eine Platform auf der sich Studenten, Dozenten und Tutoren</tspan><tspan
+         y="1004.4749"
          x="88.673012"
          sodipodi:role="line"
          style="font-size:46.7869339px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#4d4d4d;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz"
-         id="tspan5455">Vorlesungbezongen mit einander austauschen können.</tspan><tspan
-         y="627.13177"
+         id="tspan5455">vorlesungbezongen mit einander austauschen können.</tspan><tspan
+         y="1062.9586"
          x="88.673012"
          sodipodi:role="line"
          style="font-size:46.7869339px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#4d4d4d;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz"
          id="tspan5442">Besonders gute Fragen und Antworten werden sogar belohnt.</tspan><tspan
-         y="685.61548"
+         y="1121.4423"
          x="88.673012"
          sodipodi:role="line"
          style="font-size:46.7869339px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#4d4d4d;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz"
          id="tspan5457" /><tspan
-         y="744.09912"
+         y="1179.9259"
          x="88.673012"
          sodipodi:role="line"
          style="font-size:46.7869339px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#4d4d4d;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz"
          id="tspan5459">Weisen Sie jetzt ihre Studenten und Mitarbeiter darauf hin.</tspan><tspan
-         y="802.58282"
+         y="1238.4095"
          x="88.673012"
          sodipodi:role="line"
          style="font-size:46.7869339px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#4d4d4d;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz"
          id="tspan4148-1" /><tspan
-         y="861.06647"
+         y="1296.8932"
          x="88.673012"
          sodipodi:role="line"
          style="font-size:46.7869339px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#4d4d4d;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz"
          id="tspan4150-7" /><tspan
-         y="919.55011"
+         y="1355.377"
          x="88.673012"
          sodipodi:role="line"
          style="font-size:46.7869339px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#4d4d4d;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz"
          id="tspan4152-6" /><tspan
-         y="978.03381"
+         y="1413.8606"
          x="88.673012"
          sodipodi:role="line"
          style="font-size:46.7869339px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#4d4d4d;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz"
          id="tspan4154-5" /></text>
     <g
        id="g5335"
-       transform="translate(-59.560769,0)">
+       transform="translate(-59.560766,435.82678)">
       <text
          sodipodi:linespacing="125%"
          id="text2996-2-4-3-3"
@@ -711,7 +817,7 @@
            style="font-size:51.43466949px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#4d4d4d;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz"
            sodipodi:role="line"
            x="185.00264"
-           y="16.345978">Fragen immer wieder unterschiedlichen Studenten? </tspan><tspan
+           y="16.345976">Fragen immer wieder unterschiedlichen Studenten? </tspan><tspan
            id="tspan4126-3"
            style="font-size:51.43466949px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#4d4d4d;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz"
            sodipodi:role="line"
@@ -767,99 +873,261 @@
     </g>
     <text
        xml:space="preserve"
-       style="font-size:68.72387695px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz"
-       x="42.884327"
-       y="903.4303"
-       id="text2996-2-4-3-8"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan5329"
-         x="42.884327"
-         y="903.4303" /></text>
-    <flowRoot
-       xml:space="preserve"
-       id="flowRoot4849"
-       style="fill:black;stroke:none;stroke-opacity:1;stroke-width:1px;stroke-linejoin:miter;stroke-linecap:butt;fill-opacity:1;font-family:Sans;font-style:normal;font-weight:normal;font-size:40px;line-height:125%;letter-spacing:0px;word-spacing:0px;-inkscape-font-specification:'micro.pcf';font-stretch:normal;font-variant:normal"><flowRegion
-         id="flowRegion4851"><rect
-           id="rect4853"
-           width="546.5979"
-           height="142.02937"
-           x="352.92145"
-           y="2534.0415" /></flowRegion><flowPara
-         id="flowPara4855" /></flowRoot>    <text
-       xml:space="preserve"
-       style="font-size:55.80163956px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#4d4d4d;fill-opacity:1;stroke:none;font-family:Quicksand;-inkscape-font-specification:Quicksand"
-       x="65.081604"
-       y="-267.63782"
-       id="text2996-2-4-3-04"
-       sodipodi:linespacing="125%"
-       transform="matrix(0.61600955,0,0,0.61600955,303.98257,1092.7756)"><tspan
-         y="-267.63782"
-         x="65.081604"
-         sodipodi:role="line"
-         style="font-size:55.80163956px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#4d4d4d;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz"
-         id="tspan4154-3" /></text>
-    <flowRoot
-       xml:space="preserve"
-       id="flowRoot5151"
-       style="fill:black;stroke:none;stroke-opacity:1;stroke-width:1px;stroke-linejoin:miter;stroke-linecap:butt;fill-opacity:1;font-family:Sans;font-style:normal;font-weight:normal;font-size:40px;line-height:125%;letter-spacing:0px;word-spacing:0px;-inkscape-font-specification:'micro.pcf';font-stretch:normal;font-variant:normal"><flowRegion
-         id="flowRegion5153"><rect
-           id="rect5155"
-           width="641.28412"
-           height="460.51947"
-           x="774.70563"
-           y="3304.4434" /></flowRegion><flowPara
-         id="flowPara5157" /></flowRoot>    <text
-       xml:space="preserve"
-       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:'micro.pcf'"
-       x="979.95264"
-       y="1199.0725"
-       id="text5355"
-       sodipodi:linespacing="125%"
-       transform="translate(0,-435.82679)"><tspan
-         sodipodi:role="line"
-         id="tspan5357" /></text>
-    <text
-       xml:space="preserve"
-       style="font-size:39.85211182px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Source Sans Pro;-inkscape-font-specification:Source Sans Pro"
-       x="360.21442"
-       y="1003.9977"
-       id="text5461"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan5463"
-         x="360.21442"
-         y="1003.9977">http://auditorium.inf.tu-dresden.de/</tspan></text>
-    <image
-       y="792.93048"
-       x="88.878616"
-       id="image3153"
-       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFcAAABXCAIAAAD+qk47AAAAA3NCSVQICAjb4U/gAAACR0lEQVR4
-nO2cy27DMAwEx0X+/5fTAwEHqRSWL/VQ7BxtyREWq4ikZF/0eD6fn25d1/WjzX1l7b42dh7odK/x
-1en8b5AKAC8jOVbcdPvs9ojJIwZujifVS14AqWA81kuOXR2/rbciEyHSpjaeVC95AaSCsZkRNVIO
-dNaR2qLTRF4AqWCMzYiIbyNXIrfGkRdAKhibGVGzorNG1IKl1PRZSTWWF0AqGK8Z0SzX3ETCnvVH
-a21qOfuKvABSwbjGg5NUQtFsPDV4eQGkgpH7R03V/2t7DZHNi0iv1BV5AaSCsdmPmCryREzu/PoU
-kWkoL4BUMLxaU8rSN5HyUSRZSNEcqrwAUsG4IlHKVADf/InaKY5IrCUvgFQwXmvEudgmskPn3Ert
-a9TyEXkBpILhnWuqlT2b9Z/x7CMyWeQFkArGpvra/P+fqho51KIv5yfkBZAKhldrWqnZ1ek+foY2
-NULlEW9IBdhm1uMx0njxdqoedSMvgFQwcmvE2vj1oFKxyGm8cu6cibwAUsEIvTF07gUf5zl/WY+V
-F0AqGAfXiMiTa4l5ahjaj4giFSBYfXU4lxrUtqGdETrd5QWQCsbY2dfxfe3mOavU9JEXQCoYj2a6
-2tw+cNqsjSMvJUXGozxij1SA7SmOCONHjCI0z1npNPgvSAUY/BZH6hsa6wPPhUbas44iFWDwywMr
-zdBo/OiUs8TICyAVjIMzYiX1fkQqa6iVxRQ1vSEVYPBbHJHukeyjFiw1K7TyAkgFY/5bHOsDp96P
-0Lmms0gFgG+9MSKehIMDFwAAAABJRU5ErkJggg==
-"
-       height="219.24002"
-       width="202.54295" />
-    <text
-       xml:space="preserve"
        style="font-size:147.38676453px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:'micro.pcf'"
        x="206.75912"
-       y="459.22385"
+       y="895.0506"
        id="text3169"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3171"
          x="206.75912"
-         y="459.22385"
+         y="895.0506"
          style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-family:Josefin Sans Std;-inkscape-font-specification:Josefin Sans Std Light">auditorium</tspan></text>
+    <path
+       style="fill:#000000"
+       d="m 88.878616,1421.5373 0,-26.46 24.444834,0 24.44484,0 0,26.46 0,26.46 -24.44484,0 -24.444834,0 0,-26.46 z m 41.905434,0 0,-18.9 -17.4606,0 -17.460594,0 0,18.9 0,18.9 17.460594,0 17.4606,0 0,-18.9 z m -27.93695,0 0,-11.34 10.47635,0 10.47636,0 0,11.34 0,11.34 -10.47636,0 -10.47635,0 0,-11.34 z m 41.90543,7.56 0,-18.9 3.49212,0 3.49212,0 0,-3.78 0,-3.78 -3.49212,0 -3.49212,0 0,-7.56 0,-7.56 6.98424,0 6.98424,0 0,11.34 0,11.34 3.49212,0 3.49212,0 0,-7.56 0,-7.56 6.98424,0 6.98424,0 0,3.78 0,3.78 -3.49212,0 -3.49212,0 0,7.56 0,7.56 10.47636,0 10.47636,0 0,3.78 0,3.78 3.49212,0 3.49212,0 0,3.78 0,3.78 3.49212,0 3.49212,0 0,3.78 0,3.78 3.49212,0 3.49212,0 0,3.78 0,3.78 -3.49212,0 -3.49212,0 0,-3.78 0,-3.78 -3.49212,0 -3.49212,0 0,3.78 0,3.78 -6.98424,0 -6.98424,0 0,-3.78 0,-3.78 3.49212,0 3.49212,0 0,-3.78 0,-3.78 -3.49212,0 -3.49212,0 0,3.78 0,3.78 -3.49212,0 -3.49212,0 0,3.78 0,3.78 -3.49212,0 -3.49212,0 0,-7.56 0,-7.56 3.49212,0 3.49212,0 0,-3.78 0,-3.78 -3.49212,0 -3.49212,0 0,-3.78 0,-3.78 -6.98424,0 -6.98424,0 0,7.56 0,7.56 -3.49212,0 -3.49212,0 0,7.56 0,7.56 -3.49212,0 -3.49212,0 0,-18.9 z m 13.96848,15.12 0,-3.78 3.49212,0 3.49212,0 0,3.78 0,3.78 -3.49212,0 -3.49212,0 0,-3.78 z m 62.85816,0 0,-3.78 3.49212,0 3.49212,0 0,-3.78 0,-3.78 -10.47636,0 -10.47636,0 0,-3.78 0,-3.78 -3.49212,0 -3.49212,0 0,-3.78 0,-3.78 -3.49212,0 -3.49212,0 0,-3.78 0,-3.78 -3.49212,0 -3.49212,0 0,-3.78 0,-3.78 3.49212,0 3.49212,0 0,-3.78 0,-3.78 3.49212,0 3.49212,0 0,-3.78 0,-3.78 3.49212,0 3.49212,0 0,-3.78 0,-3.78 -3.49212,0 -3.49212,0 0,-3.78 0,-3.78 -6.98424,0 -6.98424,0 0,3.78 0,3.78 3.49212,0 3.49212,0 0,3.78 0,3.78 -3.49212,0 -3.49212,0 0,-3.78 0,-3.78 -3.49212,0 -3.49212,0 0,3.78 0,3.78 -3.49212,0 -3.49212,0 0,-7.56 0,-7.56 3.49212,0 3.49212,0 0,-3.78 0,-3.78 -3.49212,0 -3.49212,0 0,-3.78 0,-3.78 -3.49212,0 -3.49212,0 0,-3.78 0,-3.78 -6.98424,0 -6.98424,0 0,-7.56 0,-7.56 -3.49212,0 -3.49212,0 0,-3.78 0,-3.78 -6.98424,0 -6.98424,0 0,-3.78 0,-3.78 17.4606,0 17.4606,0 0,3.78 0,3.78 -6.98424,0 -6.98424,0 0,3.78 0,3.78 3.49212,0 3.49212,0 0,3.78 0,3.78 3.49212,0 3.49212,0 0,-3.78 0,-3.78 6.98424,0 6.98424,0 0,3.78 0,3.78 -3.49212,0 -3.49212,0 0,7.56 0,7.56 10.47636,0 10.47636,0 0,3.78 0,3.78 3.49212,0 3.49212,0 0,3.78 0,3.78 3.49212,0 3.49212,0 0,-3.78 0,-3.78 6.98424,0 6.98424,0 0,3.78 0,3.78 6.98424,0 6.98424,0 0,3.78 0,3.78 6.98424,0 6.98424,0 0,-3.78 0,-3.78 3.49212,0 3.49212,0 0,-3.78 0,-3.78 -3.49212,0 -3.49212,0 0,3.78 0,3.78 -6.98424,0 -6.98424,0 0,-3.78 0,-3.78 -6.98424,0 -6.98424,0 0,-7.56 0,-7.56 -3.49212,0 -3.49212,0 0,3.78 0,3.78 -3.49212,0 -3.49212,0 0,-3.78 0,-3.78 -3.49212,0 -3.49212,0 0,-3.78 0,-3.78 -3.49212,0 -3.49212,0 0,3.78 0,3.78 -3.49212,0 -3.49212,0 0,-3.78 0,-3.78 3.49212,0 3.49212,0 0,-3.78 0,-3.78 3.49212,0 3.49212,0 0,-3.78 0,-3.78 3.49212,0 3.49212,0 0,-3.78 0,-3.78 -3.49212,0 -3.49212,0 0,3.78 0,3.78 -6.98424,0 -6.98424,0 0,-3.78 0,-3.78 3.49212,0 3.49212,0 0,-3.78 0,-3.78 -3.49212,0 -3.49212,0 0,3.78 0,3.78 -3.49212,0 -3.49212,0 0,3.78 0,3.78 -3.49212,0 -3.49212,0 0,-7.56 0,-7.56 3.49212,0 3.49212,0 0,-3.78 0,-3.78 -3.49212,0 -3.49212,0 0,-3.78 0,-3.78 -3.49212,0 -3.49212,0 0,-3.78 0,-3.78 -3.49212,0 -3.49212,0 0,3.78 0,3.78 -13.96848,0 -13.96848,0 0,-3.78 0,-3.78 10.47636,0 10.47636,0 0,-3.78 0,-3.78 3.49212,0 3.49212,0 0,-3.78 0,-3.78 3.49212,0 3.49212,0 0,3.78 0,3.78 3.49212,0 3.49212,0 0,7.56 0,7.56 10.47636,0 10.47636,0 0,3.78 0,3.78 3.49212,0 3.49212,0 0,3.78 0,3.78 3.49212,0 3.49212,0 0,3.78 0,3.78 3.49212,0 3.49212,0 0,3.78 0,3.78 3.49212,0 3.49212,0 0,-7.56 0,-7.56 6.98424,0 6.98424,0 0,3.78 0,3.78 -3.49212,0 -3.49212,0 0,3.78 0,3.78 3.49212,0 3.49212,0 0,3.78 0,3.78 3.49212,0 3.49212,0 0,3.78 0,3.78 3.49212,0 3.49212,0 0,3.78 0,3.78 -6.98424,0 -6.98424,0 0,-3.78 0,-3.78 -3.49212,0 -3.49212,0 0,-3.78 0,-3.78 -6.98424,0 -6.98424,0 0,-3.78 0,-3.78 -3.49212,0 -3.49212,0 0,3.78 0,3.78 -3.49212,0 -3.49212,0 0,3.78 0,3.78 3.49212,0 3.49212,0 0,3.78 0,3.78 3.49212,0 3.49212,0 0,-3.78 0,-3.78 3.49212,0 3.49212,0 0,3.78 0,3.78 3.49212,0 3.49212,0 0,3.78 0,3.78 20.95272,0 20.95272,0 0,-3.78 0,-3.78 3.49212,0 3.49212,0 0,-3.78 0,-3.78 -3.49212,0 -3.49212,0 0,-7.56 0,-7.56 -3.49212,0 -3.49212,0 0,-3.78 0,-3.78 6.98424,0 6.98424,0 0,-3.78 0,-3.78 3.49212,0 3.49212,0 0,3.78 0,3.78 -3.49212,0 -3.49212,0 0,11.34 0,11.34 3.49212,0 3.49212,0 0,3.78 0,3.78 -3.49212,0 -3.49212,0 0,11.34 0,11.34 -6.98424,0 -6.98424,0 0,7.56 0,7.56 3.49212,0 3.49212,0 0,-3.78 0,-3.78 3.49212,0 3.49212,0 0,-3.78 0,-3.78 3.49212,0 3.49212,0 0,3.78 0,3.78 3.49212,0 3.49212,0 0,7.56 0,7.56 -6.98424,0 -6.98424,0 0,3.78 0,3.78 -3.49212,0 -3.49212,0 0,3.78 0,3.78 -3.49212,0 -3.49212,0 0,3.78 0,3.78 -17.4606,0 -17.4606,0 0,3.78 0,3.78 3.49212,0 3.49212,0 0,7.56 0,7.56 -3.49212,0 -3.49212,0 0,3.78 0,3.78 -3.49212,0 -3.49212,0 0,-3.78 z m 0,-22.68 0,-3.78 3.49212,0 3.49212,0 0,-7.56 0,-7.56 -3.49212,0 -3.49212,0 0,-3.78 0,-3.78 -3.49212,0 -3.49212,0 0,-3.78 0,-3.78 3.49212,0 3.49212,0 0,3.78 0,3.78 3.49212,0 3.49212,0 0,-3.78 0,-3.78 -3.49212,0 -3.49212,0 0,-3.78 0,-3.78 -3.49212,0 -3.49212,0 0,-3.78 0,-3.78 -3.49212,0 -3.49212,0 0,3.78 0,3.78 3.49212,0 3.49212,0 0,3.78 0,3.78 -3.49212,0 -3.49212,0 0,11.34 0,11.34 -3.49212,0 -3.49212,0 0,3.78 0,3.78 3.49212,0 3.49212,0 0,3.78 0,3.78 6.98424,0 6.98424,0 0,-3.78 z m -13.96848,-7.56 0,-3.78 3.49212,0 3.49212,0 0,3.78 0,3.78 -3.49212,0 -3.49212,0 0,-3.78 z m 48.88968,-15.12 0,-11.34 -10.47636,0 -10.47636,0 0,11.34 0,11.34 10.47636,0 10.47636,0 0,-11.34 z m -13.96848,0 0,-3.78 3.49212,0 3.49212,0 0,3.78 0,3.78 -3.49212,0 -3.49212,0 0,-3.78 z m 6.98424,41.58 0,-7.56 -3.49212,0 -3.49212,0 0,-3.78 0,-3.78 13.96848,0 13.96848,0 0,7.56 0,7.56 3.49212,0 3.49212,0 0,-11.34 0,-11.34 -3.49212,0 -3.49212,0 0,-3.78 0,-3.78 3.49212,0 3.49212,0 0,-3.78 0,-3.78 3.49212,0 3.49212,0 0,3.78 0,3.78 -3.49212,0 -3.49212,0 0,3.78 0,3.78 6.98424,0 6.98424,0 0,3.78 0,3.78 -3.49212,0 -3.49212,0 0,7.56 0,7.56 -3.49212,0 -3.49212,0 0,3.78 0,3.78 -13.96848,0 -13.96848,0 0,-7.56 z m -160.637514,-68.04 0,-15.12 3.49212,0 3.49212,0 0,-3.78 0,-3.78 -3.49212,0 -3.49212,0 0,-3.78 0,-3.78 3.49212,0 3.49212,0 0,3.78 0,3.78 3.492119,0 3.492125,0 0,3.78 0,3.78 -3.492125,0 -3.492119,0 0,15.12 0,15.12 -3.49212,0 -3.49212,0 0,-15.12 z m 20.952714,11.34 0,-3.78 -3.49211,0 -3.49212,0 0,-3.78 0,-3.78 6.98423,0 6.98424,0 0,-3.78 0,-3.78 -6.98424,0 -6.98423,0 0,-3.78 0,-3.78 3.49212,0 3.49211,0 0,-3.78 0,-3.78 -3.49211,0 -3.49212,0 0,-7.56 0,-7.56 3.49212,0 3.49211,0 0,-3.78 0,-3.78 3.49212,0 3.49212,0 0,3.78 0,3.78 3.49212,0 3.49212,0 0,-3.78 0,-3.78 3.49212,0 3.49212,0 0,3.78 0,3.78 3.49212,0 3.49212,0 0,3.78 0,3.78 -6.98424,0 -6.98424,0 0,3.78 0,3.78 -3.49212,0 -3.49212,0 0,3.78 0,3.78 6.98424,0 6.98424,0 0,-3.78 0,-3.78 3.49212,0 3.49212,0 0,3.78 0,3.78 -3.49212,0 -3.49212,0 0,3.78 0,3.78 6.98424,0 6.98424,0 0,-3.78 0,-3.78 6.98424,0 6.98424,0 0,3.78 0,3.78 -6.98424,0 -6.98424,0 0,3.78 0,3.78 10.47636,0 10.47636,0 0,3.78 0,3.78 -10.47636,0 -10.47636,0 0,-3.78 0,-3.78 -6.98424,0 -6.98424,0 0,3.78 0,3.78 3.49212,0 3.49212,0 0,3.78 0,3.78 -13.96848,0 -13.96848,0 0,-3.78 z m 174.606,-22.68 0,-3.78 3.49212,0 3.49212,0 0,3.78 0,3.78 -3.49212,0 -3.49212,0 0,-3.78 z m -34.9212,-22.68 0,-3.78 -3.49212,0 -3.49212,0 0,-3.78 0,-3.78 3.49212,0 3.49212,0 0,-3.78 0,-3.78 -3.49212,0 -3.49212,0 0,-7.56 0,-7.56 -20.95272,0 -20.95272,0 0,-3.78 0,-3.78 -3.49212,0 -3.49212,0 0,-3.78 0,-3.78 -3.49212,0 -3.49212,0 0,-7.56 0,-7.56 3.49212,0 3.49212,0 0,-3.78 0,-3.78 6.98424,0 6.98424,0 0,11.34 0,11.34 -3.49212,0 -3.49212,0 0,3.78 0,3.78 3.49212,0 3.49212,0 0,-3.78 0,-3.78 6.98424,0 6.98424,0 0,3.78 0,3.78 6.98424,0 6.98424,0 0,-3.78 0,-3.78 3.49212,0 3.49212,0 0,3.78 0,3.78 3.49212,0 3.49212,0 0,-3.78 0,-3.78 3.49212,0 3.49212,0 0,3.78 0,3.78 3.49212,0 3.49212,0 0,-3.78 0,-3.78 3.49212,0 3.49212,0 0,3.78 0,3.78 -3.49212,0 -3.49212,0 0,11.34 0,11.34 -3.49212,0 -3.49212,0 0,3.78 0,3.78 3.49212,0 3.49212,0 0,7.56 0,7.56 -6.98424,0 -6.98424,0 0,-3.78 z m 6.98424,-30.24 0,-3.78 -3.49212,0 -3.49212,0 0,3.78 0,3.78 3.49212,0 3.49212,0 0,-3.78 z m -55.87392,-30.24 0,-3.78 -3.49212,0 -3.49212,0 0,3.78 0,3.78 3.49212,0 3.49212,0 0,-3.78 z m -111.747834,52.92 0,-3.78 3.49212,0 3.49212,0 0,3.78 0,3.78 -3.49212,0 -3.49212,0 0,-3.78 z m 195.558714,0 0,-3.78 3.49212,0 3.49212,0 0,3.78 0,3.78 -3.49212,0 -3.49212,0 0,-3.78 z m -181.59023,-7.56 0,-3.78 -3.492125,0 -3.492119,0 0,-3.78 0,-3.78 -3.49212,0 -3.49212,0 0,-11.34 0,-11.34 17.460604,0 17.46059,0 0,7.56 0,7.56 -3.49212,0 -3.49212,0 0,-3.78 0,-3.78 -3.49212,0 -3.49212,0 0,3.78 0,3.78 3.49212,0 3.49212,0 0,3.78 0,3.78 -3.49212,0 -3.49212,0 0,7.56 0,7.56 -3.49211,0 -3.49212,0 0,-3.78 z m 0,-18.9 0,-7.56 -3.492125,0 -3.492119,0 0,7.56 0,7.56 3.492119,0 3.492125,0 0,-7.56 z m 13.96847,15.12 0,-7.56 3.49212,0 3.49212,0 0,-3.78 0,-3.78 13.96848,0 13.96848,0 0,3.78 0,3.78 -10.47636,0 -10.47636,0 0,3.78 0,3.78 -3.49212,0 -3.49212,0 0,3.78 0,3.78 -3.49212,0 -3.49212,0 0,-7.56 z m 41.90544,-15.12 0,-7.56 3.49212,0 3.49212,0 0,7.56 0,7.56 -3.49212,0 -3.49212,0 0,-7.56 z m 125.71632,-3.78 0,-3.78 -3.49212,0 -3.49212,0 0,-3.78 0,-3.78 3.49212,0 3.49212,0 0,3.78 0,3.78 3.49212,0 3.49212,0 0,3.78 0,3.78 -3.49212,0 -3.49212,0 0,-3.78 z m -62.85816,-15.12 0,-3.78 -3.49212,0 -3.49212,0 0,-3.78 0,-3.78 3.49212,0 3.49212,0 0,3.78 0,3.78 3.49212,0 3.49212,0 0,-3.78 0,-3.78 3.49212,0 3.49212,0 0,7.56 0,7.56 -6.98424,0 -6.98424,0 0,-3.78 z m -132.700554,-30.24 0,-26.46 24.444834,0 24.44484,0 0,26.46 0,26.46 -24.44484,0 -24.444834,0 0,-26.46 z m 41.905434,0 0,-18.9 -17.4606,0 -17.460594,0 0,18.9 0,18.9 17.460594,0 17.4606,0 0,-18.9 z m -27.93695,0 0,-11.34 10.47635,0 10.47636,0 0,11.34 0,11.34 -10.47636,0 -10.47635,0 0,-11.34 z m 41.90543,18.9 0,-7.56 3.49212,0 3.49212,0 0,-3.78 0,-3.78 -3.49212,0 -3.49212,0 0,-3.78 0,-3.78 10.47636,0 10.47636,0 0,3.78 0,3.78 -3.49212,0 -3.49212,0 0,7.56 0,7.56 -3.49212,0 -3.49212,0 0,3.78 0,3.78 -3.49212,0 -3.49212,0 0,-7.56 z m 27.93696,3.78 0,-3.78 -3.49212,0 -3.49212,0 0,-3.78 0,-3.78 6.98424,0 6.98424,0 0,7.56 0,7.56 -3.49212,0 -3.49212,0 0,-3.78 z m 69.8424,-22.68 0,-26.46 24.44484,0 24.44484,0 0,26.46 0,26.46 -24.44484,0 -24.44484,0 0,-26.46 z m 41.90544,0 0,-18.9 -17.4606,0 -17.4606,0 0,18.9 0,18.9 17.4606,0 17.4606,0 0,-18.9 z m -27.93696,0 0,-11.34 10.47636,0 10.47636,0 0,11.34 0,11.34 -10.47636,0 -10.47636,0 0,-11.34 z m -34.9212,3.78 0,-7.56 -3.49212,0 -3.49212,0 0,3.78 0,3.78 -3.49212,0 -3.49212,0 0,-3.78 0,-3.78 -3.49212,0 -3.49212,0 0,-3.78 0,-3.78 -6.98424,0 -6.98424,0 0,3.78 0,3.78 3.49212,0 3.49212,0 0,3.78 0,3.78 -3.49212,0 -3.49212,0 0,-3.78 0,-3.78 -3.49212,0 -3.49212,0 0,3.78 0,3.78 -3.49212,0 -3.49212,0 0,-7.56 0,-7.56 3.49212,0 3.49212,0 0,-3.78 0,-3.78 -3.49212,0 -3.49212,0 0,-3.78 0,-3.78 6.98424,0 6.98424,0 0,3.78 0,3.78 3.49212,0 3.49212,0 0,-3.78 0,-3.78 3.49212,0 3.49212,0 0,3.78 0,3.78 3.49212,0 3.49212,0 0,7.56 0,7.56 3.49212,0 3.49212,0 0,-3.78 0,-3.78 10.47636,0 10.47636,0 0,3.78 0,3.78 -3.49212,0 -3.49212,0 0,7.56 0,7.56 -3.49212,0 -3.49212,0 0,-7.56 z m -76.82664,-18.9 0,-3.78 3.49212,0 3.49212,0 0,3.78 0,3.78 -3.49212,0 -3.49212,0 0,-3.78 z m 13.96848,-3.78 0,-7.56 3.49212,0 3.49212,0 0,7.56 0,7.56 -3.49212,0 -3.49212,0 0,-7.56 z m 62.85816,-3.78 0,-3.78 6.98424,0 6.98424,0 0,3.78 0,3.78 -6.98424,0 -6.98424,0 0,-3.78 z"
+       id="path3175"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-size:39.85211182px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Source Sans Pro;-inkscape-font-specification:Source Sans Pro"
+       x="360.21442"
+       y="1439.8245"
+       id="text5461"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5463"
+         x="360.21442"
+         y="1439.8245">http://auditorium.inf.tu-dresden.de/</tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Studententext"
+     style="display:inline">
+    <text
+       xml:space="preserve"
+       style="font-size:55.80163956px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;filter:url(#filter3108-4-1-74);font-family:Quicksand;-inkscape-font-specification:Quicksand"
+       x="65.081604"
+       y="-267.63782"
+       id="text2996-2-4"
+       sodipodi:linespacing="125%"
+       transform="matrix(0.8929314,0,0,0.8929314,123.51178,816.34113)"><tspan
+         y="-267.63782"
+         x="65.081604"
+         sodipodi:role="line"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz Italic"
+         id="tspan3229" /></text>
+    <text
+       xml:space="preserve"
+       style="font-size:55.80163956px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;filter:url(#filter3108-4-1-74-7);font-family:Quicksand;-inkscape-font-specification:Quicksand"
+       x="65.081604"
+       y="-267.63782"
+       id="text2996-2-4-7"
+       sodipodi:linespacing="125%"
+       transform="matrix(0.8929314,0,0,0.8929314,1271.5557,312.26476)"><tspan
+         y="-267.63782"
+         x="65.081604"
+         sodipodi:role="line"
+         id="tspan3165-6"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz Italic">Die Vorlesungsfolien helfen dir nicht weiter?</tspan><tspan
+         y="-197.88577"
+         x="65.081604"
+         sodipodi:role="line"
+         id="tspan3211"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz Italic">Du kennst niemanden, der eine Lösung weiß?</tspan><tspan
+         y="-128.13371"
+         x="65.081604"
+         sodipodi:role="line"
+         id="tspan3213"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz Italic" /><tspan
+         y="-58.381668"
+         x="65.081604"
+         sodipodi:role="line"
+         id="tspan3215"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz Italic">Du suchst im Internet und findest nur</tspan><tspan
+         y="11.37038"
+         x="65.081604"
+         sodipodi:role="line"
+         id="tspan3217"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz Italic">unübersichtliche Foren und Wikipedia kann</tspan><tspan
+         y="81.122429"
+         x="65.081604"
+         sodipodi:role="line"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz Italic"
+         id="tspan3223">dir nicht helfen?</tspan><tspan
+         y="150.87448"
+         x="65.081604"
+         sodipodi:role="line"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz Italic"
+         id="tspan3225" /><tspan
+         y="220.62653"
+         x="65.081604"
+         sodipodi:role="line"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz Italic"
+         id="tspan3227">Keine Panik! </tspan><tspan
+         y="290.37857"
+         x="65.081604"
+         sodipodi:role="line"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz Italic"
+         id="tspan3229-4">Es gibt auditorium</tspan></text>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3650"
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:'micro.pcf'"><flowRegion
+         id="flowRegion3652"><rect
+           id="rect3654"
+           width="223.80386"
+           height="90.382324"
+           x="1394.4702"
+           y="283.09128" /></flowRegion><flowPara
+         id="flowPara3656"></flowPara></flowRoot>    <rect
+       style="fill:#000000;fill-opacity:0;stroke:none"
+       id="rect3844"
+       width="674.41162"
+       height="452.42416"
+       x="337.66693"
+       y="941.74023"
+       ry="6.549593" />
+    <g
+       id="g6148"
+       transform="translate(0,49.297203)">
+      <flowRoot
+         xml:space="preserve"
+         id="flowRoot6386"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:'micro.pcf'"><flowRegion
+           id="flowRegion6388"><rect
+             id="rect6390"
+             width="1453.649"
+             height="292.6666"
+             x="-97.914185"
+             y="685.50781" /></flowRegion><flowPara
+           id="flowPara6392"></flowPara></flowRoot>      <g
+         id="g6651"
+         transform="translate(0,3.6576296e-6)">
+        <g
+           id="g6182-5"
+           style="display:inline"
+           transform="translate(-303.06312,431.73495)">
+          <flowRoot
+             transform="matrix(1.1945261,0,0,1.1945261,426.35704,-44.068531)"
+             id="flowRoot6070-8"
+             style="font-size:61.63337708px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Quicksand;-inkscape-font-specification:Quicksand"
+             xml:space="preserve"><flowRegion
+               id="flowRegion6072-9" /><flowPara
+               style="font-size:55px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz"
+               id="flowPara6076-3">Hast du Fragen zu Lehrveranstaltungen?</flowPara></flowRoot>        </g>
+        <g
+           id="g6182-5-2"
+           style="display:inline"
+           transform="translate(-302.25883,419.73587)">
+          <flowRoot
+             transform="matrix(0.65560913,0,0,0.65560913,428.26901,8.0032621)"
+             id="flowRoot6070-8-6"
+             style="font-size:53.38546753px;font-style:oblique;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#999999;fill-opacity:1;stroke:none;font-family:Quicksand;-inkscape-font-specification:Quicksand Oblique"
+             xml:space="preserve"><flowRegion
+               id="flowRegion6072-9-5" /><flowPara
+               style="font-size:53.38546753px;font-style:oblique;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#999999;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Quicksand Oblique"
+               id="flowPara6076-3-4">Aber du möchtest nicht alleine zu deinem Professor oder Tutoren gehen?</flowPara></flowRoot>        </g>
+      </g>
+      <g
+         id="g6643"
+         transform="translate(0,83.588168)">
+        <flowRoot
+           transform="matrix(0.66410553,0,0,0.66410553,124.64299,511.04141)"
+           xml:space="preserve"
+           style="font-size:52.70246887px;font-style:oblique;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#999999;fill-opacity:1;stroke:none;font-family:Quicksand;-inkscape-font-specification:Quicksand Oblique"
+           id="flowRoot6070"><flowRegion
+             id="flowRegion6072" /><flowPara
+             id="flowPara6076"
+             style="font-size:52.70246887px;font-style:oblique;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#999999;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Quicksand Oblique">Doch du findest nur unübersichtliche Foren wo niemand dir helfen kann?</flowPara></flowRoot>        <flowRoot
+           transform="matrix(0.85822791,0,0,0.85822791,124.10675,470.60144)"
+           xml:space="preserve"
+           style="font-size:61.63337708px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Quicksand;-inkscape-font-specification:Quicksand"
+           id="flowRoot6070-0"><flowRegion
+             id="flowRegion6072-6" /><flowPara
+             id="flowPara6310"
+             style="font-size:55px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz">Du suchst im Internet nach einer passenden Antworten?</flowPara></flowRoot>      </g>
+      <g
+         id="g6635"
+         transform="translate(0,174.7155)">
+        <flowRoot
+           transform="matrix(0.9700869,0,0,0.9700869,123.68596,591.92134)"
+           xml:space="preserve"
+           style="font-size:36.07924271px;font-style:oblique;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#999999;fill-opacity:1;stroke:none;display:inline;font-family:Quicksand;-inkscape-font-specification:Quicksand Oblique"
+           id="flowRoot6070-0-6"><flowRegion
+             id="flowRegion6072-6-5" /><flowPara
+             id="flowPara6310-9"
+             style="font-size:36.07924271px;font-style:oblique;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#999999;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Quicksand Oblique">Oder dich mit deinen Kommilitonen austauschen?</flowPara></flowRoot>        <flowRoot
+           transform="matrix(1.1463515,0,0,1.1463515,123.41036,551.48137)"
+           xml:space="preserve"
+           style="font-size:61.63337708px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Quicksand;-inkscape-font-specification:Quicksand"
+           id="flowRoot6070-0-6-8"><flowRegion
+             id="flowRegion6072-6-5-9" /><flowPara
+             id="flowPara6310-9-8"
+             style="font-size:55px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz">Du möchtest direkt deine Tutoren Fragen?</flowPara></flowRoot>      </g>
+      <g
+         id="g6627"
+         transform="translate(0,268.40961)">
+        <flowRoot
+           transform="matrix(1.2098567,0,0,1.2098567,123.25687,632.3613)"
+           xml:space="preserve"
+           style="font-size:61.63337708px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Quicksand;-inkscape-font-specification:Quicksand"
+           id="flowRoot6070-0-6-8-6"><flowRegion
+             id="flowRegion6072-6-5-9-1" /><flowPara
+             id="flowPara6310-9-8-6"
+             style="font-size:55px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz">Hast du vielleicht selber die Antworten?</flowPara></flowRoot>        <flowRoot
+           transform="matrix(0.98996626,0,0,0.98996626,123.70305,672.80127)"
+           xml:space="preserve"
+           style="font-size:35.35474014px;font-style:oblique;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#999999;fill-opacity:1;stroke:none;display:inline;font-family:Quicksand;-inkscape-font-specification:Quicksand Oblique"
+           id="flowRoot6070-0-6-8-6-3"><flowRegion
+             id="flowRegion6072-6-5-9-1-8" /><flowPara
+             id="flowPara6310-9-8-6-7"
+             style="font-size:35.35474014px;font-style:oblique;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#999999;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Quicksand Oblique">Und du möchtest anderen Studenten aushelfen?</flowPara></flowRoot>      </g>
+    </g>
+    <flowRoot
+       transform="matrix(2.525573,0,0,2.525573,349.28468,1124.4096)"
+       xml:space="preserve"
+       style="font-size:61.63337708px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Josefin Sans Std;-inkscape-font-specification:Josefin Sans Std Light"
+       id="flowRoot6070-0-6-8-6-6"><flowRegion
+         id="flowRegion6072-6-5-9-1-4" /><flowPara
+         id="flowPara6310-9-8-6-1"
+         style="font-size:61.63337708px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;font-family:Josefin Sans Std;-inkscape-font-specification:Josefin Sans Std Light">auditorium</flowPara></flowRoot>    <rect
+       style="fill:#999999;fill-opacity:0;stroke:none"
+       id="rect6661"
+       width="711.11218"
+       height="309.33997"
+       x="319.1994"
+       y="1080.2546"
+       ry="6.549593" />
+    <flowRoot
+       xml:space="preserve"
+       style="font-size:45px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#4d4d4d;fill-opacity:1;stroke:none;display:inline;font-family:Quicksand;-inkscape-font-specification:Quicksand"
+       id="flowRoot6663"
+       transform="matrix(0.96201708,0,0,0.96201708,49.610029,109.08339)"><flowRegion
+         id="flowRegion6665"><use
+           x="0"
+           y="0"
+           xlink:href="#rect6661"
+           id="use6667"
+           width="1052.3622"
+           height="1488.189" /></flowRegion><flowPara
+         style="font-size:45px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz"
+         id="flowPara6669">ist eine Platform auf der sich Studenten, Dozenten und Tutoren vorlesungbezongen mit einander austauschen können. Besonders gute Fragen und Antworten werden sogar belohnt.      </flowPara></flowRoot>    <path
+       style="fill:#000000"
+       d="m 57.712006,1406.0279 0,-31.3684 28.979479,0 28.979485,0 0,31.3684 0,31.3685 -28.979485,0 -28.979479,0 0,-31.3685 z m 49.679114,0 0,-22.406 -20.699635,0 -20.699626,0 0,22.406 0,22.4061 20.699626,0 20.699635,0 0,-22.4061 z m -33.119403,0 0,-13.4436 12.419768,0 12.41978,0 0,13.4436 0,13.4437 -12.41978,0 -12.419768,0 0,-13.4437 z m 49.679113,8.9625 0,-22.4061 4.13992,0 4.13993,0 0,-4.4812 0,-4.4812 -4.13993,0 -4.13992,0 0,-8.9624 0,-8.9626 8.27985,0 8.27985,0 0,13.4438 0,13.4436 4.13993,0 4.13993,0 0,-8.9624 0,-8.9624 8.27985,0 8.27985,0 0,4.4812 0,4.4812 -4.13992,0 -4.13993,0 0,8.9624 0,8.9624 12.41978,0 12.41978,0 0,4.4812 0,4.4812 4.13992,0 4.13993,0 0,4.4813 0,4.4812 4.13993,0 4.13992,0 0,4.4812 0,4.4812 4.13993,0 4.13993,0 0,4.4812 0,4.4812 -4.13993,0 -4.13993,0 0,-4.4812 0,-4.4812 -4.13992,0 -4.13993,0 0,4.4812 0,4.4812 -8.27985,0 -8.27986,0 0,-4.4812 0,-4.4812 4.13993,0 4.13993,0 0,-4.4812 0,-4.4812 -4.13993,0 -4.13993,0 0,4.4812 0,4.4812 -4.13992,0 -4.13993,0 0,4.4812 0,4.4812 -4.13992,0 -4.13993,0 0,-8.9624 0,-8.9624 4.13993,0 4.13992,0 0,-4.4812 0,-4.4813 -4.13992,0 -4.13993,0 0,-4.4812 0,-4.4812 -8.27985,0 -8.27986,0 0,8.9624 0,8.9625 -4.13992,0 -4.13993,0 0,8.9624 0,8.9624 -4.13993,0 -4.13992,0 0,-22.406 z m 16.5597,17.9248 0,-4.4812 4.13993,0 4.13993,0 0,4.4812 0,4.4812 -4.13993,0 -4.13993,0 0,-4.4812 z m 74.51868,0 0,-4.4812 4.13993,0 4.13992,0 0,-4.4812 0,-4.4812 -12.41978,0 -12.41978,0 0,-4.4812 0,-4.4813 -4.13992,0 -4.13993,0 0,-4.4812 0,-4.4812 -4.13993,0 -4.13992,0 0,-4.4812 0,-4.4812 -4.13993,0 -4.13993,0 0,-4.4812 0,-4.4812 4.13993,0 4.13993,0 0,-4.4812 0,-4.4812 4.13992,0 4.13993,0 0,-4.4814 0,-4.4812 4.13993,0 4.13992,0 0,-4.4812 0,-4.4812 -4.13992,0 -4.13993,0 0,-4.4812 0,-4.4812 -8.27985,0 -8.27986,0 0,4.4812 0,4.4812 4.13993,0 4.13993,0 0,4.4812 0,4.4812 -4.13993,0 -4.13993,0 0,-4.4812 0,-4.4812 -4.13992,0 -4.13993,0 0,4.4812 0,4.4812 -4.13992,0 -4.13993,0 0,-8.9624 0,-8.9624 4.13993,0 4.13992,0 0,-4.4812 0,-4.4812 -4.13992,0 -4.13993,0 0,-4.4812 0,-4.4813 -4.13993,0 -4.13992,0 0,-4.4812 0,-4.4812 -8.27986,0 -8.27985,0 0,-8.9624 0,-8.9624 -4.13993,0 -4.13992,0 0,-4.4812 0,-4.4812 -8.27986,0 -8.27985,0 0,-4.4812 0,-4.4813 20.69963,0 20.69964,0 0,4.4813 0,4.4812 -8.27986,0 -8.27985,0 0,4.4812 0,4.4812 4.13993,0 4.13992,0 0,4.4812 0,4.4812 4.13993,0 4.13993,0 0,-4.4812 0,-4.4812 8.27985,0 8.27985,0 0,4.4812 0,4.4812 -4.13992,0 -4.13993,0 0,8.9624 0,8.9624 12.41978,0 12.41978,0 0,4.4813 0,4.4812 4.13992,0 4.13993,0 0,4.4812 0,4.4812 4.13993,0 4.13992,0 0,-4.4812 0,-4.4812 8.27986,0 8.27985,0 0,4.4812 0,4.4812 8.27985,0 8.27986,0 0,4.4812 0,4.4812 8.27985,0 8.27985,0 0,-4.4812 0,-4.4812 4.13993,0 4.13993,0 0,-4.4812 0,-4.4812 -4.13993,0 -4.13993,0 0,4.4812 0,4.4812 -8.27985,0 -8.27985,0 0,-4.4812 0,-4.4812 -8.27986,0 -8.27985,0 0,-8.9625 0,-8.9624 -4.13993,0 -4.13992,0 0,4.4812 0,4.4812 -4.13993,0 -4.13993,0 0,-4.4812 0,-4.4812 -4.13992,0 -4.13993,0 0,-4.4812 0,-4.4812 -4.13993,0 -4.13992,0 0,4.4812 0,4.4812 -4.13993,0 -4.13993,0 0,-4.4812 0,-4.4812 4.13993,0 4.13993,0 0,-4.4812 0,-4.4812 4.13992,0 4.13993,0 0,-4.4812 0,-4.4812 4.13993,0 4.13992,0 0,-4.4812 0,-4.4813 -4.13992,0 -4.13993,0 0,4.4813 0,4.4812 -8.27985,0 -8.27986,0 0,-4.4812 0,-4.4813 4.13993,0 4.13993,0 0,-4.4812 0,-4.4812 -4.13993,0 -4.13993,0 0,4.4812 0,4.4812 -4.13992,0 -4.13993,0 0,4.4813 0,4.4812 -4.13992,0 -4.13993,0 0,-8.9625 0,-8.9624 4.13993,0 4.13992,0 0,-4.4812 0,-4.4812 -4.13992,0 -4.13993,0 0,-4.4812 0,-4.4812 -4.13993,0 -4.13992,0 0,-4.4812 0,-4.4812 -4.13993,0 -4.13993,0 0,4.4812 0,4.4812 -16.5597,0 -16.55971,0 0,-4.4812 0,-4.4812 12.41978,0 12.41978,0 0,-4.4812 0,-4.4813 4.13993,0 4.13992,0 0,-4.4812 0,-4.4812 4.13993,0 4.13993,0 0,4.4812 0,4.4812 4.13992,0 4.13993,0 0,8.9625 0,8.9624 12.41978,0 12.41978,0 0,4.4812 0,4.4812 4.13992,0 4.13993,0 0,4.4812 0,4.4812 4.13993,0 4.13992,0 0,4.4812 0,4.4812 4.13993,0 4.13993,0 0,4.4813 0,4.4812 4.13992,0 4.13993,0 0,-8.9625 0,-8.9624 8.27985,0 8.27986,0 0,4.4812 0,4.4812 -4.13993,0 -4.13993,0 0,4.4813 0,4.4812 4.13993,0 4.13993,0 0,4.4812 0,4.4812 4.13992,0 4.13993,0 0,4.4812 0,4.4812 4.13993,0 4.13992,0 0,4.4812 0,4.4812 -8.27985,0 -8.27985,0 0,-4.4812 0,-4.4812 -4.13993,0 -4.13993,0 0,-4.4812 0,-4.4812 -8.27985,0 -8.27985,0 0,-4.4812 0,-4.4812 -4.13993,0 -4.13993,0 0,4.4812 0,4.4812 -4.13992,0 -4.13993,0 0,4.4812 0,4.4812 4.13993,0 4.13992,0 0,4.4812 0,4.4812 4.13993,0 4.13993,0 0,-4.4812 0,-4.4812 4.13992,0 4.13993,0 0,4.4812 0,4.4812 4.13993,0 4.13992,0 0,4.4812 0,4.4812 24.83956,0 24.83956,0 0,-4.4812 0,-4.4812 4.13993,0 4.13993,0 0,-4.4812 0,-4.4812 -4.13993,0 -4.13993,0 0,-8.9624 0,-8.9624 -4.13992,0 -4.13993,0 0,-4.4812 0,-4.4813 8.27985,0 8.27986,0 0,-4.4812 0,-4.4812 4.13992,0 4.13993,0 0,4.4812 0,4.4812 -4.13993,0 -4.13992,0 0,13.4437 0,13.4436 4.13992,0 4.13993,0 0,4.4812 0,4.4812 -4.13993,0 -4.13992,0 0,13.4437 0,13.4436 -8.27986,0 -8.27985,0 0,8.9624 0,8.9624 4.13993,0 4.13992,0 0,-4.4812 0,-4.4812 4.13993,0 4.13993,0 0,-4.4812 0,-4.4812 4.13992,0 4.13993,0 0,4.4812 0,4.4812 4.13993,0 4.13992,0 0,8.9624 0,8.9626 -8.27985,0 -8.27985,0 0,4.4812 0,4.4812 -4.13993,0 -4.13993,0 0,4.4812 0,4.4812 -4.13992,0 -4.13993,0 0,4.4812 0,4.4812 -20.69963,0 -20.69964,0 0,4.4812 0,4.4812 4.13993,0 4.13993,0 0,8.9625 0,8.9624 -4.13993,0 -4.13993,0 0,4.4812 0,4.4812 -4.13992,0 -4.13993,0 0,-4.4812 z m 0,-26.8873 0,-4.4812 4.13993,0 4.13992,0 0,-8.9624 0,-8.9624 -4.13992,0 -4.13993,0 0,-4.4812 0,-4.4812 -4.13993,0 -4.13992,0 0,-4.4814 0,-4.4812 4.13992,0 4.13993,0 0,4.4812 0,4.4814 4.13993,0 4.13992,0 0,-4.4814 0,-4.4812 -4.13992,0 -4.13993,0 0,-4.4812 0,-4.4812 -4.13993,0 -4.13992,0 0,-4.4812 0,-4.4812 -4.13993,0 -4.13993,0 0,4.4812 0,4.4812 4.13993,0 4.13993,0 0,4.4812 0,4.4812 -4.13993,0 -4.13993,0 0,13.4438 0,13.4436 -4.13992,0 -4.13993,0 0,4.4812 0,4.4812 4.13993,0 4.13992,0 0,4.4812 0,4.4812 8.27986,0 8.27985,0 0,-4.4812 z m -16.55971,-8.9624 0,-4.4812 4.13993,0 4.13993,0 0,4.4812 0,4.4812 -4.13993,0 -4.13993,0 0,-4.4812 z m 57.95898,-17.9248 0,-13.4438 -12.41978,0 -12.41978,0 0,13.4438 0,13.4436 12.41978,0 12.41978,0 0,-13.4436 z m -16.55971,0 0,-4.4812 4.13993,0 4.13992,0 0,4.4812 0,4.4812 -4.13992,0 -4.13993,0 0,-4.4812 z m 8.27985,49.2933 0,-8.9624 -4.13992,0 -4.13993,0 0,-4.4812 0,-4.4813 16.55971,0 16.5597,0 0,8.9625 0,8.9624 4.13993,0 4.13993,0 0,-13.4436 0,-13.4437 -4.13993,0 -4.13993,0 0,-4.4812 0,-4.4812 4.13993,0 4.13993,0 0,-4.4812 0,-4.4812 4.13992,0 4.13993,0 0,4.4812 0,4.4812 -4.13993,0 -4.13992,0 0,4.4812 0,4.4812 8.27985,0 8.27985,0 0,4.4812 0,4.4812 -4.13992,0 -4.13993,0 0,8.9625 0,8.9624 -4.13993,0 -4.13992,0 0,4.4812 0,4.4812 -16.55971,0 -16.55971,0 0,-8.9624 z m -190.436614,-80.6619 0,-17.9249 4.139927,0 4.139926,0 0,-4.4812 0,-4.4812 -4.139926,0 -4.139927,0 0,-4.4812 0,-4.4812 4.139927,0 4.139926,0 0,4.4812 0,4.4812 4.139926,0 4.139932,0 0,4.4812 0,4.4812 -4.139932,0 -4.139926,0 0,17.9249 0,17.9248 -4.139926,0 -4.139927,0 0,-17.9248 z m 24.839553,13.4436 0,-4.4812 -4.139915,0 -4.139927,0 0,-4.4812 0,-4.4812 8.279842,0 8.279853,0 0,-4.4812 0,-4.4812 -8.279853,0 -8.279842,0 0,-4.4812 0,-4.4813 4.139927,0 4.139915,0 0,-4.4812 0,-4.4812 -4.139915,0 -4.139927,0 0,-8.9624 0,-8.9624 4.139927,0 4.139915,0 0,-4.4812 0,-4.4812 4.139926,0 4.139927,0 0,4.4812 0,4.4812 4.139927,0 4.139926,0 0,-4.4812 0,-4.4812 4.139925,0 4.13993,0 0,4.4812 0,4.4812 4.13993,0 4.13992,0 0,4.4812 0,4.4812 -8.27985,0 -8.279855,0 0,4.4812 0,4.4812 -4.139926,0 -4.139927,0 0,4.4812 0,4.4812 8.279853,0 8.279855,0 0,-4.4812 0,-4.4812 4.13993,0 4.13992,0 0,4.4812 0,4.4812 -4.13992,0 -4.13993,0 0,4.4813 0,4.4812 8.27985,0 8.27986,0 0,-4.4812 0,-4.4813 8.27985,0 8.27985,0 0,4.4813 0,4.4812 -8.27985,0 -8.27985,0 0,4.4812 0,4.4812 12.41978,0 12.41978,0 0,4.4812 0,4.4812 -12.41978,0 -12.41978,0 0,-4.4812 0,-4.4812 -8.27986,0 -8.27985,0 0,4.4812 0,4.4812 4.13993,0 4.13992,0 0,4.4812 0,4.4812 -16.559705,0 -16.559706,0 0,-4.4812 z m 206.996331,-26.8872 0,-4.4813 4.13993,0 4.13992,0 0,4.4813 0,4.4812 -4.13992,0 -4.13993,0 0,-4.4812 z m -41.39927,-26.8873 0,-4.4812 -4.13992,0 -4.13993,0 0,-4.4812 0,-4.4812 4.13993,0 4.13992,0 0,-4.4812 0,-4.4813 -4.13992,0 -4.13993,0 0,-8.9624 0,-8.9624 -24.83956,0 -24.83956,0 0,-4.4812 0,-4.4812 -4.13993,0 -4.13992,0 0,-4.4812 0,-4.4812 -4.13993,0 -4.13993,0 0,-8.9625 0,-8.9624 4.13993,0 4.13993,0 0,-4.4812 0,-4.4812 8.27985,0 8.27985,0 0,13.4436 0,13.4437 -4.13992,0 -4.13993,0 0,4.4812 0,4.4812 4.13993,0 4.13992,0 0,-4.4812 0,-4.4812 8.27986,0 8.27985,0 0,4.4812 0,4.4812 8.27985,0 8.27986,0 0,-4.4812 0,-4.4812 4.13992,0 4.13993,0 0,4.4812 0,4.4812 4.13993,0 4.13992,0 0,-4.4812 0,-4.4812 4.13993,0 4.13993,0 0,4.4812 0,4.4812 4.13992,0 4.13993,0 0,-4.4812 0,-4.4812 4.13993,0 4.13992,0 0,4.4812 0,4.4812 -4.13992,0 -4.13993,0 0,13.4436 0,13.4436 -4.13993,0 -4.13992,0 0,4.4813 0,4.4812 4.13992,0 4.13993,0 0,8.9624 0,8.9624 -8.27985,0 -8.27986,0 0,-4.4812 z m 8.27986,-35.8497 0,-4.4812 -4.13993,0 -4.13993,0 0,4.4812 0,4.4812 4.13993,0 4.13993,0 0,-4.4812 z m -66.23883,-35.8497 0,-4.4812 -4.13993,0 -4.13992,0 0,4.4812 0,4.4812 4.13992,0 4.13993,0 0,-4.4812 z m -132.477644,62.737 0,-4.4812 4.139927,0 4.139926,0 0,4.4812 0,4.4812 -4.139926,0 -4.139927,0 0,-4.4812 z m 231.835884,0 0,-4.4812 4.13993,0 4.13992,0 0,4.4812 0,4.4812 -4.13992,0 -4.13993,0 0,-4.4812 z m -215.276173,-8.9624 0,-4.4813 -4.139932,0 -4.139926,0 0,-4.4812 0,-4.4812 -4.139926,0 -4.139927,0 0,-13.4436 0,-13.4436 20.699638,0 20.699621,0 0,8.9624 0,8.9624 -4.139926,0 -4.139927,0 0,-4.4812 0,-4.4812 -4.139927,0 -4.139926,0 0,4.4812 0,4.4812 4.139926,0 4.139927,0 0,4.4812 0,4.4812 -4.139927,0 -4.139926,0 0,8.9624 0,8.9625 -4.139915,0 -4.139927,0 0,-4.4812 z m 0,-22.4061 0,-8.9624 -4.139932,0 -4.139926,0 0,8.9624 0,8.9624 4.139926,0 4.139932,0 0,-8.9624 z m 16.559695,17.9248 0,-8.9624 4.139927,0 4.139926,0 0,-4.4812 0,-4.4812 16.559705,0 16.55971,0 0,4.4812 0,4.4812 -12.41978,0 -12.41978,0 0,4.4812 0,4.4812 -4.13993,0 -4.139925,0 0,4.4813 0,4.4812 -4.139926,0 -4.139927,0 0,-8.9625 z m 49.679118,-17.9248 0,-8.9624 4.13993,0 4.13993,0 0,8.9624 0,8.9624 -4.13993,0 -4.13993,0 0,-8.9624 z m 149.03736,-4.4812 0,-4.4812 -4.13993,0 -4.13992,0 0,-4.4812 0,-4.4812 4.13992,0 4.13993,0 0,4.4812 0,4.4812 4.13993,0 4.13992,0 0,4.4812 0,4.4812 -4.13992,0 -4.13993,0 0,-4.4812 z m -74.51868,-17.9248 0,-4.4813 -4.13993,0 -4.13992,0 0,-4.4812 0,-4.4812 4.13992,0 4.13993,0 0,4.4812 0,4.4812 4.13993,0 4.13992,0 0,-4.4812 0,-4.4812 4.13993,0 4.13993,0 0,8.9624 0,8.9625 -8.27986,0 -8.27985,0 0,-4.4812 z m -157.317204,-35.8497 0,-31.3685 28.979479,0 28.979485,0 0,31.3685 0,31.3684 -28.979485,0 -28.979479,0 0,-31.3684 z m 49.679114,0 0,-22.4061 -20.699635,0 -20.699626,0 0,22.4061 0,22.406 20.699626,0 20.699635,0 0,-22.406 z m -33.119403,0 0,-13.4437 12.419768,0 12.41978,0 0,13.4437 0,13.4436 -12.41978,0 -12.419768,0 0,-13.4436 z m 49.679113,22.406 0,-8.9624 4.13992,0 4.13993,0 0,-4.4812 0,-4.4812 -4.13993,0 -4.13992,0 0,-4.4812 0,-4.4812 12.41978,0 12.41978,0 0,4.4812 0,4.4812 -4.13993,0 -4.13993,0 0,8.9624 0,8.9624 -4.13992,0 -4.13993,0 0,4.4812 0,4.4812 -4.13993,0 -4.13992,0 0,-8.9624 z m 33.11941,4.4812 0,-4.4812 -4.13993,0 -4.13992,0 0,-4.4812 0,-4.4812 8.27985,0 8.27985,0 0,8.9624 0,8.9624 -4.13992,0 -4.13993,0 0,-4.4812 z m 82.79853,-26.8872 0,-31.3685 28.97949,0 28.97948,0 0,31.3685 0,31.3684 -28.97948,0 -28.97949,0 0,-31.3684 z m 49.67912,0 0,-22.4061 -20.69963,0 -20.69964,0 0,22.4061 0,22.406 20.69964,0 20.69963,0 0,-22.406 z m -33.11941,0 0,-13.4437 12.41978,0 12.41978,0 0,13.4437 0,13.4436 -12.41978,0 -12.41978,0 0,-13.4436 z m -41.39927,4.4812 0,-8.9624 -4.13993,0 -4.13992,0 0,4.4812 0,4.4812 -4.13993,0 -4.13993,0 0,-4.4812 0,-4.4812 -4.13992,0 -4.13993,0 0,-4.4812 0,-4.4813 -8.27985,0 -8.27986,0 0,4.4813 0,4.4812 4.13993,0 4.13993,0 0,4.4812 0,4.4812 -4.13993,0 -4.13993,0 0,-4.4812 0,-4.4812 -4.13992,0 -4.13993,0 0,4.4812 0,4.4812 -4.13992,0 -4.13993,0 0,-8.9624 0,-8.9625 4.13993,0 4.13992,0 0,-4.4812 0,-4.4812 -4.13992,0 -4.13993,0 0,-4.4812 0,-4.4812 8.27985,0 8.27985,0 0,4.4812 0,4.4812 4.13993,0 4.13993,0 0,-4.4812 0,-4.4812 4.13992,0 4.13993,0 0,4.4812 0,4.4812 4.13993,0 4.13992,0 0,8.9624 0,8.9625 4.13993,0 4.13993,0 0,-4.4812 0,-4.4813 12.41978,0 12.41978,0 0,4.4813 0,4.4812 -4.13993,0 -4.13993,0 0,8.9624 0,8.9624 -4.13992,0 -4.13993,0 0,-8.9624 z m -91.07838,-22.4061 0,-4.4812 4.13992,0 4.13993,0 0,4.4812 0,4.4812 -4.13993,0 -4.13992,0 0,-4.4812 z m 16.5597,-4.4812 0,-8.9624 4.13993,0 4.13993,0 0,8.9624 0,8.9624 -4.13993,0 -4.13993,0 0,-8.9624 z m 74.51868,-4.4812 0,-4.4812 8.27985,0 8.27986,0 0,4.4812 0,4.4812 -8.27986,0 -8.27985,0 0,-4.4812 z"
+       id="path3175-3"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-size:39.85211182px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Source Sans Pro;-inkscape-font-specification:Source Sans Pro"
+       x="353.61612"
+       y="1436.9099"
+       id="text5461-0"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5463-7"
+         x="353.61612"
+         y="1436.9099">http://auditorium.inf.tu-dresden.de/</tspan></text>
   </g>
 </svg>
