@@ -494,10 +494,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.57375002"
-     inkscape:cx="414.1487"
-     inkscape:cy="781.61857"
+     inkscape:cx="172.75437"
+     inkscape:cy="782.49003"
      inkscape:document-units="px"
-     inkscape:current-layer="layer3"
+     inkscape:current-layer="g3264-4"
      showgrid="false"
      inkscape:window-width="1920"
      inkscape:window-height="1160"
@@ -514,7 +514,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -702,8 +702,7 @@
      inkscape:groupmode="layer"
      id="layer2"
      inkscape:label="Dozententext"
-     style="display:inline"
-     sodipodi:insensitive="true">
+     style="display:inline">
     <g
        style="display:inline"
        id="g3302-4"
@@ -810,7 +809,7 @@
            id="flowRoot6070-06"><flowRegion
              id="flowRegion6072-7" /><flowPara
              id="flowPara6076-9"
-             style="font-size:52.70246887px;font-style:oblique;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#999999;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Quicksand Oblique">Trotzdem fallen Studenten reihenweise duch Ihre Prüfung?</flowPara></flowRoot>        <flowRoot
+             style="font-size:52.70246887px;font-style:oblique;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#999999;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Quicksand Oblique">Trotzdem fallen Studenten reihenweise durch Ihre Prüfung?</flowPara></flowRoot>        <flowRoot
            transform="matrix(0.96824712,0,0,0.96824712,123.84674,469.41073)"
            xml:space="preserve"
            style="font-size:61.63337708px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Quicksand;-inkscape-font-specification:Quicksand"
@@ -827,8 +826,8 @@
            style="font-size:36.07924271px;font-style:oblique;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#999999;fill-opacity:1;stroke:none;display:inline;font-family:Quicksand;-inkscape-font-specification:Quicksand Oblique"
            id="flowRoot6070-0-6-3"><flowRegion
              id="flowRegion6072-6-5-7" /><flowPara
-             id="flowPara6310-9-9"
-             style="font-size:36.07924271px;font-style:oblique;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#999999;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Quicksand Oblique">Doch ihre Antworten werden nicht vom Fragesteller weitererzählt.</flowPara></flowRoot>        <flowRoot
+             style="font-size:36.07924271px;font-style:oblique;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#999999;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Quicksand Oblique"
+             id="flowPara3227">Doch Ihre Antworten werden nicht vom Fragesteller weitererzählt.</flowPara></flowRoot>        <flowRoot
            transform="matrix(1.174232,0,0,1.174232,123.37217,551.17963)"
            xml:space="preserve"
            style="font-size:61.63337708px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Quicksand;-inkscape-font-specification:Quicksand"
@@ -866,15 +865,15 @@
              id="flowRegion6072-7-6" /><flowPara
              id="flowPara6076-9-4"
              style="font-size:52.70246887px;font-style:oblique;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#999999;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Quicksand Oblique">Doch Sie bekommen immer wieder die gleichen Fragen gestellt?</flowPara></flowRoot>        <flowRoot
-           transform="matrix(0.94385764,0,0,0.94385764,123.98947,469.67469)"
+           transform="matrix(0.96639387,0,0,0.94385764,123.9586,469.67469)"
            xml:space="preserve"
            style="font-size:61.63337708px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Quicksand;-inkscape-font-specification:Quicksand"
            id="flowRoot6070-0-1-2"><flowRegion
              id="flowRegion6072-6-1-7" /><flowPara
              id="flowPara6310-2-7"
-             style="font-size:55px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz">Sie beantworten gerne die Fragen Ihrer Studenten? </flowPara><flowPara
+             style="font-size:55px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz">Sie beantworten gern die Fragen Ihrer Studenten? </flowPara><flowPara
              style="font-size:55px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz"
-             id="flowPara3624"></flowPara><flowPara
+             id="flowPara3624" /><flowPara
              style="font-size:55px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz"
              id="flowPara3626" /></flowRoot>      </g>
     </g>
