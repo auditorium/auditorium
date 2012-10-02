@@ -17,7 +17,7 @@ class HomeController < ApplicationController
       
       when 'all'
         cookies[:post_filter] = 'all'
-        @post_filter = {post_type: "info", post_type: "question"}
+        @post_filter = {post_type: ["info", "question"]}
       
       else 
         case cookies[:post_filter]
@@ -26,7 +26,7 @@ class HomeController < ApplicationController
         when 'question'
           @post_filter = {post_type: 'question'}
         else 
-          @post_filter = {post_type: "info", post_type: "question"}
+          @post_filter = {post_type: ["info", "question"]}
         end
       end
 
@@ -47,6 +47,11 @@ class HomeController < ApplicationController
           @posts = Post.order('last_activity DESC, updated_at DESC, created_at DESC').where(@post_filter).page(params[:page]).per(20)
         end
       end
+
+      respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @posts }
+    end
     else
       redirect_to root_path
     end

@@ -10,81 +10,28 @@
 </div>
 <% end %>
 
-<div class="row">
-  <div class="well span8">
+<div class="row center span8 well">
+
     <%= form_for (post), :class => 'form-horizontal', :remote => false do |f| %>
       <div class="control-group">
       <% if signed_in? %>
         <div class="controls">
-          <% if post.post_type.eql? 'answer' or post.post_type.eql? 'comment' %>
-          <%= f.hidden_field :subject %>
-          <% else %>
+          <%= render 'posts/form_course_select', :post => post, :f => f %>
 
-          <label for="subject_field" class="accessibility"> subject </label>
-          <%= f.text_field :subject, :placeholder => "Add the subject here...", :class => "span8", :id => "subject_field" %>
+          <% if post.post_type.eql? 'answer' or post.post_type.eql? 'comment' %>
+            <%= f.hidden_field :subject %>
+          <% else %>
+            <label for="subject">Second, the subject for your post:</label>
+            <%= f.text_field :subject, :placeholder => "Type in a specific subject.", :class => "span8", :id => "subject_field" %>
           <% end %>
          
-          <div class="rich-text-buttons">
+          <label for="content_field">Third, the content of your post:</label>
+          <%= render 'posts/rich_text_buttons' %>
 
-            <ul>
-              <li>Insert:</li>
-              <li><%= link_to 'code block', '#', :id => 'insert-code-block', :title => 'Add a code block.', :class => 'btn btn-mini' %></li>
-              <li>
-              <li><%= link_to 'inline code', '#', :id => 'insert-inline-code', :title => 'Add inline code into your text.', :class => 'btn btn-mini' %></li>
-              <li>
-              <li><%= link_to 'quote', '#', :id => 'insert-quote', :title => 'Add a quote.', :class => 'btn btn-mini' %></li>
-            </ul>
-          </div>
-          <label for="content_field" class="accessibility"> content </label>
-          <%= f.text_area :body, :placeholder => "Add the content here...", :class => "span8", :id => "content_field", :size => '10x8' %>
-          
-          <% if post.post_type.eql? 'comment' %>
-            <%= f.hidden_field :course_id %>
-          <% else %>
-            <label for="course_name" class="accessibility backward_compatability" id='label_course_select'>course</label>
-            <%= f.hidden_field :course_id, :value => (params[:course_id] || post.course_id), :class => 'backward_compatability', 'style' => 'display:none' %>
-            <%  @course_name = post.course.name_with_term if !post.nil? && !post.course.nil? %>
-            <%= text_field_tag :course_name, @course_name , :placeholder => 'Search for the course...', :class => 'span8 backward_compatability', 'style' => 'display:none' %>
-
-            <!-- for backward compatibility a select -->   
-            <label for="course_select" class="accessibility" id='label_course_select'>course</label>
-            <%= f.select(:course_id, options_from_collection_for_select(Course.order('name ASC').select("id, name, term_id"), :id, :name_with_term, params[:course_id] || post.course_id), { include_blank: '-- please select a course --'}, {:id=>"course_select",:class => 'span8'}) %>
-          <% end %>
+          <%= f.text_area :body, :placeholder => "Type in the content of your question.", :class => "span8", :id => "content_field", :size => '10x8' %>
         </div>
 
-        <% if params[:controller].eql? 'home' or (post and post.post_type.eql? 'question') or params[:post_type].eql? 'question' %>
-          <!-- questions -->
-          <label class="checkbox">
-          <%= f.check_box :is_private %><%= "Mark this question as private. Only moderators of this course can see your post." %>
-          </label>
-          <% if params[:action].eql? 'edit' %>
-            <%= f.submit "Update question", { :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>
-          <% else %>
-            <%= f.submit "Submit question", { :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>
-          <% end %>
-          
-        <% elsif (post and post.post_type.eql? 'answer') or params[:post_type].eql? 'answer' %>
-          <!-- answers -->
-          <% if params[:action].eql? 'edit' %> 
-            <%= f.submit "Update answer", { :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>  
-          <% else %>
-            <%= f.submit "Answer the question", { :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>  
-          <% end %>
-        <% elsif (post and post.post_type.eql? 'comment') or params[:post_type].eql? 'comment' %>
-          <!-- answers -->
-          <% if params[:action].eql? 'edit' %> 
-            <%= f.submit "Update comment", { :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>  
-          <% else %>
-            <%= f.submit "Comment on this post", { :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>  
-          <% end %>
-        <% else %>
-          <!-- announcements -->
-          <% if params[:action].eql? 'edit' %> 
-            <%= f.submit "Update announcement", { :class => 'btn btn-large btn-warning', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>  
-          <% else %>
-            <%= f.submit "Submit announcement", { :class => 'btn btn-large btn-warning', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>  
-          <% end %>
-        <% end %>
+        <%= render 'posts/form_submit_buttons', :post => post, :f => f %>
       <% else %>
         <!-- not signed in -->
         <div class='controls center'>
@@ -93,8 +40,7 @@
         </div>
       <% end %>
 
-      <p class='hint'>You can't find the correct course? <%= link_to 'Create it!', new_course_path %>.<br/>
-        Use <%= link_to 'Markdown', 'http://daringfireball.net/projects/markdown' %> in the content area for rich text. Here is a <%= link_to 'reference for the syntax of Markdown', 'http://daringfireball.net/projects/markdown/' %> (by John Gruber).</p>
+      
       </div>
       <% if params[:controller].eql? 'home' %>
         <%= f.hidden_field :post_type, :value => 'question' %>
@@ -103,5 +49,5 @@
         <%= f.hidden_field :post_type, :value => post_type %>
       <% end %>
     <% end %> <!-- end form -->
-  </div> 
+
 </div>

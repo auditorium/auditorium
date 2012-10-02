@@ -1,0 +1,39 @@
+<% if params[:controller].eql? 'home' or (post and post.post_type.eql? 'question') or params[:post_type].eql? 'question' %>
+  <!-- questions -->
+  <label class="checkbox">
+  <%= f.check_box :is_private %><%= "Check this when only moderators should see your question." %>
+  </label>
+  <% if params[:action].eql? 'edit' %>
+    <%= f.submit "Update question", { :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>
+  <% else %>
+    <%= f.submit "Submit question", { :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>
+  <% end %>
+
+<% elsif (post and post.post_type.eql? 'answer') or params[:post_type].eql? 'answer' %>
+  <!-- answers -->
+  <% if params[:action].eql? 'edit' %> 
+    <%= f.submit "Update answer", { :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>  
+  <% else %>
+    <%= f.submit "Answer the question", { :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>  
+  <% end %>
+<% elsif (post and post.post_type.eql? 'comment') or params[:post_type].eql? 'comment' %>
+  <!-- answers -->
+  <% if params[:action].eql? 'edit' %> 
+    <%= f.submit "Update comment", { :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>  
+  <% else %>
+    <%= f.submit "Comment on this post", { :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>  
+  <% end %>
+<% else %>
+  <!-- announcements -->
+  <% if params[:action].eql? 'edit' %> 
+    <%= f.submit "Update announcement", { :class => 'btn btn-large btn-warning', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>  
+  <% else %>
+    <%= f.submit "Submit announcement", { :class => 'btn btn-large btn-warning', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>  
+  <% end %>
+<% end %>
+<% if params[:controller].eql? 'home' %>
+  <%= link_to 'Cancel', '#', :class => 'btn btn-large', :id => 'hide_question_form' %>
+<% else %>
+  <%= link_to 'Cancel', :back, :class => 'btn btn-large' %>
+<% end %> 
+<p class='hint'>You can't find the correct course? <%= link_to 'Create it!', new_course_path %>.</p>

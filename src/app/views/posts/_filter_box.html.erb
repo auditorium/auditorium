@@ -1,0 +1,11 @@
+<div class="container span8 center filter-box alert">
+	<ul>
+		<li><b>Filter posts:</b></li>
+		<li><%= link_to 'show all', home_path(:post_filter => 'all', params[:course_filter].nil? ? nil : :course_filter => params[:course_filter]), class: "#{'current' if show_all_posts}"  %></li>
+		<li><%= link_to 'only infos', home_path(:post_filter => 'infos', params[:course_filter].nil? ? nil : :course_filter => params[:course_filter]), class: "#{'current' if show_only_infos}" %></li>
+		<li><%= link_to 'only questions', home_path(:post_filter => 'questions', params[:course_filter].nil? ? nil : :course_filter => params[:course_filter]), class: "#{'current' if show_only_questions}"  %></li>
+	  <li>|</li>
+      <li><%= link_to toggle_course_filter_caption, home_path(:course_filter => toggle_course_filter_value, params[:post_filter].nil? ? nil : :post_filter => params[:post_filter]), class: "#{'current' if show_only_subscribed_courses}", :title => 'click to toggle activate/deactive filter'  %></li>
+    </ul>
+	<p class="hint"><b>Hint:</b> We will store a cookie to save your filter.</p>
+</div>

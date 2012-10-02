@@ -20,6 +20,18 @@ module HomeHelper
 		true if params[:course_filter].eql? 'subscribed' or cookies[:course_filter].eql? 'subscribed'
 	end
 
+	def toggle_course_filter_caption
+		(params[:course_filter].eql? 'subscribed' or cookies[:course_filter].eql? 'subscribed') ? 'show only subscribed' : 'show only subscribed'
+	end
+
+	def toggle_course_filter_value
+		(params[:course_filter].eql? 'subscribed' or cookies[:course_filter].eql? 'subscribed') ? 'all' : 'subscribed'
+	end
+
+	def toggle_course_filter_current_class
+		(params[:course_filter].eql? 'subscribed' or cookies[:course_filter].eql? 'subscribed') ? 'current' : nil
+	end
+
   def post_types
     ['question', 'info']
   end

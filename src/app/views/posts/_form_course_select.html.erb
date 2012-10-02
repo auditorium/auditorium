@@ -1,0 +1,11 @@
+<% if post.post_type.eql? 'comment' %>
+  <%= f.hidden_field :course_id %>
+<% else %>  
+  <label for="course_id">First, choose the course for your post:</label>
+  <%= f.hidden_field :course_id, :value => (params[:course_id] || post.course_id), :class => 'backward_compatability', 'style' => 'display:none' %>
+  <%  @course_name = post.course.name_with_term if !post.nil? && !post.course.nil? %>
+  <%= text_field_tag :course_name, @course_name , :placeholder => 'Type in the name of the course...', :class => 'span8 backward_compatability', 'style' => 'display:none' %>
+
+  <!-- for backward compatibility a select -->   
+  <%= f.select(:course_id, options_from_collection_for_select(Course.order('name ASC').select("id, name, term_id"), :id, :name_with_term, params[:course_id] || post.course_id), { include_blank: '-- please select a course --'}, {:id=>"course_select",:class => 'span8'}) %>
+<% end %>

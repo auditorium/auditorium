@@ -15,7 +15,8 @@
 // Bootstrap
 @import "twitter/bootstrap/bootstrap";
 @import "twitter/bootstrap/responsive";
-/* custom navbar collapse*/
+
+
 
 
 // Font Awesome - for Glyphs
@@ -25,6 +26,7 @@
 @fontAwesomeSvgzPath: 'fontawesome-webfont.svgz';
 @fontAwesomeSvgPath:  'fontawesome-webfont.svg';
 @import "fontawesome";
+
 
 // Set the correct sprite paths
 @iconSpritePath:       asset-path("twitter/bootstrap/bootstrap/glyphicons-halflings.png", image);
@@ -53,7 +55,7 @@
 @purple:       #7a43b6;
 @beige:      #f0f0eb;
 
-@bodyBackground:     @gray;
+@bodyBackground:     transparent; // surprised? check out html{}
 @headerColor:        @white;
 @headerBackground:   @gray;
 @headerBackgroundImage : url("faculty-informatik.jpg");
@@ -248,6 +250,10 @@ small {font-size: 0.7em;}
 
 /****** SPECIFICS ******/
 
+html
+{
+    background: @grayDark url('low_contrast_linen.png');
+}
 body
 {
   font: 14px/22px @baseFontFamily;
@@ -274,7 +280,8 @@ body
 
     h1 {
       font-size:4.5em;
-      font-weight:300;
+      font-weight: bold;
+      font-family: 'CaviarDreams';
       text-shadow: @black 0px 0px 2px;
       margin:5px 0;
       padding:10px 5px 0 5px;
@@ -340,7 +347,6 @@ body
     width:100%;
     padding-top:15px;
     #shadow > .inset-top(@black,15px);
-    background-color:@bodyBackground;
     color:@white;
     a {color:@white; }
 
@@ -360,6 +366,7 @@ h1
 {
   font-weight:  @font-weight-h1;
   font-size:    @font-size-h1;
+  font-family: 'CaviarDreams';
 }
 
 h2
@@ -481,7 +488,7 @@ li.dropdown-fallback
   }
 
   &.private-question-badge {
-    background: @orange url("question-badge.png") top no-repeat;
+    background: #9fc9f0 url("question-badge.png") top no-repeat;
   }
   
   &.info-badge {
@@ -500,7 +507,7 @@ li.dropdown-fallback
   }
 
   &.private-answer-badge {
-    background: @orangeLight url("answer-badge.png") top no-repeat;
+    background: #f0dfae url("answer-badge.png") top no-repeat;
   }
 }
 
@@ -521,13 +528,13 @@ li.dropdown-fallback
 .post-subject, .post-body, .post-footer {
   padding:0 10px;
   margin:0;
+  
 }
 
 .post-subject {
   min-height:20px;
   padding:10px;
 }
-
 td.post-footer {
   vertical-align: bottom;
 }
@@ -587,6 +594,7 @@ td.comment-button p {
 
 /* course */
 .post-badge {
+  min-width:20px;
   width:20px;
   height:65px;
   &.question-badge {
@@ -860,6 +868,10 @@ p.hint {
     margin:5px;
   }
 
+  li:last {
+    clear:both;
+  }
+
 }
 
 blockquote h1 {
@@ -902,4 +914,9 @@ blockquote h1 {
       }
     }
   }
+}
+
+/* latex */
+.MathJax_Display {
+  text-align:left!important;
 }
