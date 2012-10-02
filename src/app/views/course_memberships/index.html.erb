@@ -8,11 +8,12 @@
 
     <div class="row-fluid" id="grid" >
       <% courses.each do |course| %>
-        <div class="span<%=cols%>" style="padding:0;margin-bottom:20px;">
+        <div class="span<%=cols%>" id="well-<%= course.id %>" style="padding:0;margin-bottom:20px;">
           <div class="well-small"> 
 
             <div class="subtle pull-right">
-              <em class="icon-remove"></em>
+              <%= link_to "#{course_path(course)}/unfollow", :class => "icon-remove remove-cross btn btn-mini btn-link", 'data-id' => "#{course.id}", 'data-name' => "#{course.name}"  do %>
+              <% end %>
             </div>
 
             <h3 style="min-height:50px;"> <%= link_to course.name, course %><br/> </h3>

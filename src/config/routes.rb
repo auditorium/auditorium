@@ -34,6 +34,7 @@ Auditorium::Application.routes.draw do
   match 'courses/<search', :to => 'courses#search'
   match 'courses/:id/following', :to => 'courses#following'
   match 'courses/:id/approve', :to => 'courses#approve', :as => :approve_course
+  match 'courses/:id/unfollow', :to => 'courses#following', :unfollow => 'true'
   match 'posts/:id/rate', :to => 'posts#rate', :as => :rate_post
   match 'posts/:id/answered', :to => 'posts#answered', :as => :answered_post
   
@@ -46,7 +47,7 @@ Auditorium::Application.routes.draw do
 
   resources :course_memberships
   match "my_courses", :to => "course_memberships#index"
-  
+
   resources :chairs
 
   resources :posts do

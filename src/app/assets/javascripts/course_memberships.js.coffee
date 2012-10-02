@@ -8,8 +8,9 @@ jQuery ->
 
   $(".remove-cross").click ->
     if confirm "do you want to unsubscribe \"#{$(this).data('name')}\""
-      alert "this has not been implemented yet"
-    return false
+      $("#well-#{$(this).data('id')}").hide  -> alert('happened')
+    else
+      return false
 
 
 

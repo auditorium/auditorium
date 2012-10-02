@@ -4,16 +4,9 @@
 
 		<h2><%= "#{faculty}" %></h2>
 
-    <%
-      cols = 1 if cols.nil?
-      cols = 12/cols
-      i = 0
-    %>
-    <a href="?all=<%= !params[:all] %>">show all</a>
-    <div class="row-fluid" id="grid" >
-      <% courses.each do |course| %>
-        <div class="span<%=cols%> " style="min-height:220px;">
-
+		<% courses.each do |course| %>
+			<%= render :partial => 'courses/single_course', :locals => { :course => course } %>
+		<% end %>
 
 	<% end %>
 
