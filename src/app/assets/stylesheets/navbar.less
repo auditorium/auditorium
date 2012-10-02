@@ -1,0 +1,39 @@
+.breadcrumb { font-size: 0.8em; }
+.breadcrumb span
+{
+  display:inline;
+  padding:0;
+  vertical-align:middle;
+}
+
+.nav > li > a {
+  display: inline-block;
+}
+
+#navigation
+{
+  .navbar-fixed-top
+  {
+    margin-bottom: 25px;
+  }
+  li a {
+    padding: 10px;
+
+    &:hover {
+      color:@grayLight;
+    }
+  }
+  li.admin a
+  {
+    color: @admin-red;
+    font-weight:bold;
+  }
+
+  .btn-navbar
+  {
+    box-shadow: 0 0 0 ;
+    &:hover, span:hover { text-decoration: none;}
+  }
+  
+}
+
