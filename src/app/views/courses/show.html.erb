@@ -6,8 +6,58 @@
   <% end %>
   This course was suggested and will be checked by our moderators. You can still interact with this course like with approved courses. 
 </div>
-
 <% end %>
+
+<div class="hero-unit">
+  <h2>
+    <%= " #{@course.name.titleize}" %>
+    <small><%= "(#{@course.term.code})" %></small>
+  </h2>
+  <% unless @course.description.nil? or @course.description.empty? %>
+      <p class="lead"><%= markdown(@course.description) %></p>
+    <% end %>
+</div>
+<div class="row">
+  <div class="span4">
+    <h3>About</h3>
+    <dl class="dl-horizontal">
+      <dt>Course Website</dt>
+      <dd><%= link_to @course.url, @course.url %></dt></dd> 
+    </dl>
+
+    <dl class="dl-horizontal">
+        <dt><%= pluralize(@course.maintainers.count, 'maintainer') %></dt>
+        <dd>
+          <% if @course.maintainers.empty? %>
+            <%= link_to "I'm lecturer of this course", maintainer_request_path, class: 'btn btn-mini btn-primary' %>
+          <% else %>
+            <% @course.maintainers.each do |maintainer| %>
+              <% if !maintainer.user.nil? %>
+                <dd><%= maintainer.user.full_name %></dd>
+              <% end %>
+            <% end %>
+          <% end %>
+        </dd>
+      <% if current_user && current_user.may_edit_course(@course) && !@course.editors.empty? %>
+        <dt><%= pluralize(@course.editors.count, 'editor') %></dt>
+          <% @course.editors.each do |editor| %>
+            <% if !editor.user.nil? %>
+              <dd><%= editor.user.full_name %></dd>
+            <% end %>
+          <% end %>
+      <% end %>
+    </dl>
+  </div>
+  <div class="span4">
+    <h3>What's new?</h3>
+  </div>
+  <div class="span4">
+    <h3>Maintainer actions</h3>
+      <%= link_to content_tag('span', ' manage users', :class=> 'icon-user'), '#manage-users-modal', 'data-toggle'=>"modal"%>
+  </div>
+</div>
+
+
 <header class="hero-unit">
   
   <div class="row-fluid">

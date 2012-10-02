@@ -1,4 +1,6 @@
 Auditorium::Application.routes.draw do
+  get "admins/index"
+
   mathjax 'mathjax'
   
   resources :email_settings
@@ -31,12 +33,13 @@ Auditorium::Application.routes.draw do
 
   resources :courses
   match 'courses/:id/manage_users', :to => 'courses#manage_users'
-  match 'courses/<search', :to => 'courses#search'
+ # match 'courses/search', :to => 'courses#search'
   match 'courses/:id/following', :to => 'courses#following'
   match 'courses/:id/approve', :to => 'courses#approve', :as => :approve_course
+  match 'courses/:id/maintainer_request', :to => 'courses#maintainer_request', :as => :maintainer_request
+  
   match 'posts/:id/rate', :to => 'posts#rate', :as => :rate_post
   match 'posts/:id/answered', :to => 'posts#answered', :as => :answered_post
-  
   match 'posts/:parent_id/answering', :to => 'posts#answering'
   match 'posts/:parent_id/commenting', :to => 'posts#commenting'
 

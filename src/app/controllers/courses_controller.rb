@@ -197,7 +197,6 @@ class CoursesController < ApplicationController
     respond_to do |format|
       format.js
       format.html { redirect_to redirect_url, :flash => { :success => 'Successfully updated users for this course.'} }
-
     end
   end
 
@@ -213,6 +212,10 @@ class CoursesController < ApplicationController
       format.js
       format.html { redirect_to course, :flash => { :success => 'Course has been approved.'} }
     end
+  end
+
+  def maintainer_request
+
   end
 
 end

@@ -118,4 +118,9 @@ module ApplicationHelper
     User.find_all(:admin => true)
   end
 
+  def mathjax_should_load
+    %w{posts courses home reports}.include? params[:controller]
+
+  end
+
 end
