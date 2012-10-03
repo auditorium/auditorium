@@ -14,6 +14,7 @@ jQuery ->
 
 
 
+
   $(".question-details").hide()
   $(".info-details").hide()
 
