@@ -71,11 +71,11 @@ class Course < ActiveRecord::Base
   end
 
   def questions
-    questions = Post.order('created_at ASC').where('post_type = ? and course_id = ?','question', self.id)
+    questions = Post.order('last_activity DESC, updated_at DESC, created_at DESC').where('post_type = ? and course_id = ?','question', self.id)
   end
   
   def infos
-    Post.order('created_at ASC').where('post_type = ? and course_id = ?','info', self.id)
+    Post.order('last_activity DESC, updated_at DESC, created_at DESC').where('post_type = ? and course_id = ?','info', self.id)
   end
 
   def is_now?

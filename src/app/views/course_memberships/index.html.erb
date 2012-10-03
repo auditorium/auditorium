@@ -19,7 +19,7 @@
             <h3 style="min-height:50px;"> <%= link_to course.name, course %><br/> </h3>
 
 
-            <% if course.infos.count > 0  %>
+            <% if course.infos.reverse.count > 0  %>
               <dl class="info">
                 <dt class="info-title">
                 <a href="#" class="info" data-id="<%= course.id%>" data-type="info">
@@ -34,7 +34,7 @@
                     <% course.infos.first(4).each do |info| %>
 
                       <li>
-                      <span class="hidden-phone-tight post-date pull-right"> <%= "#{distance_of_time_in_words(Time.now, info.created_at)} ago" %> </span>
+                      <span class="hidden-phone-tight post-date pull-right"> <%= "#{distance_of_time_in_words(Time.now, info.updated_at)} ago" %> </span>
                       <strong> <%= link_to "#{info.subject}", info %> </strong> <br/>
                       </li>
 
@@ -54,15 +54,15 @@
                 <dt class="question-title"> 
                 <a href="#" class="question" data-id="<%= course.id%>" data-type="question">
                   <i class="chevron icon-chevron-right"></i>
-                  <span class="pull-right"><%= pluralize(course.questions.count, 'question') %></span>
+                  <span class="pull-right"><%= pluralize(course.questions.keep_if{|q| can? :read, q}.count, 'question') %></span>
                 </a>
                 </dt>
 
                 <dd class="question-details" id="question-details-<%= course.id%>">
-                <% if course.questions.count > 0 %>
+                <% if course.questions.keep_if{|q| can? :read, q}.count > 0 %>
                   <ul class="unstyled">
                     <% course.questions.first(4).each do |question| %>
-
+                      <% if can? :read, question %>
                       <li>
 
                       <strong>
@@ -77,11 +77,11 @@
                       <span class="subtle">
                         <em> <%= question.author %> </em> |
                         <em> <%= pluralize question.answers.count, 'answer' %> </em> |
-                        <em> <%= "#{distance_of_time_in_words(Time.now, question.created_at)}" %> ago </em>
+                        <em> <%= "#{distance_of_time_in_words(Time.now, question.last_activity)}" %> ago </em>
                       </span>
 
                       </li>
-
+                      <% end %>
                     <% end %>
                     <% if course.questions.count > 4 %>
                       <li><%= link_to 'more »', course %></li>
