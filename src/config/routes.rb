@@ -18,16 +18,15 @@ Auditorium::Application.routes.draw do
     get 'search' => :index, as: :search
   end
 
-  controller :users do
-    get 'users' => :index, as: :ranking
-    get 'users/moderation' => 'users#moderation', :as => :users_moderation
-    match 'users/:id/confirm' => 'users#confirm'
-    delete  "users/:id/delete",      :to => "users#destroy", :as => :destroy_user_account
-  end
-
-  post 'notifications/mark_all_as_read' => 'notifications#mark_all_as_read', :as => :mark_all_as_read
-
   devise_for :users, :controllers => { :confirmations => "users/confirmations", :sessions => "users/sessions", :registrations => "users/registrations" }
+  get 'users/moderation' => 'users#moderation', :as => :users_moderation
+  
+  resources :users
+  get 'users/:id/questions' => 'users#questions', :as => :users_questions
+  get 'users/:id/answers' => 'users#answers', :as => :users_answers
+  match 'users/:id/confirm' => 'users#confirm', :as => :confirm_user
+  post 'notifications/mark_all_as_read' => 'notifications#mark_all_as_read', :as => :mark_all_as_read
+  
 
   resources :courses
   match 'courses/:id/manage_users', :to => 'courses#manage_users'

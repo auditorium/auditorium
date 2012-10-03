@@ -13,9 +13,9 @@
   <% end %>
 
   <% if post.author.id == current_user.id %>
-    <%= "by me" %> 
+    <%= link_to "by me", post.author %> 
   <% else %>
-    <%= "by #{post.author_name}" %>
+    <%= link_to "by #{post.author_name}", post.author %>
   <% end %>
   &middot;
   <%= link_to "#{distance_of_time_in_words(Time.now, post.created_at)} ago", "#{post_url(post.origin)}#post-#{post.id}", :class => 'permalink', 'data-id' => "#{post.id}", :id => "post-#{post.id}", title: 'Get permalink for this post.' %>

@@ -8,9 +8,9 @@
   <h2>Search results</h2>
 
   <% if params[:query].nil? %>
-    <div class="alert alert-info">Type in your search query...</div>
+    <p class="hint">Type in your search query...</p>
   <% elsif @results[:posts].empty? and @results[:lectures].empty? and @results[:courses].empty? %>
-    <div class="alert alert-info">No results found!</div>
+    <p class="hint">No results found!</p>
   <% else %>
 
     <% if @results[:lectures].count > 0 %>

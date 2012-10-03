@@ -19,11 +19,11 @@
     <%= render :partial => 'courses/single_course', :locals => { :course => course }%>
   <% end %>
 <% else %>
-  <div class="alert alert-info">There are no courses yet.
+  <p class="hint">There are no courses yet.
     <% if user_signed_in? and current_user.admin? %>
     <%= link_to 'Create a new course.', new_course_path(:lecture_id => @lecture.id) %>
     <% end %>
-  </div>
+  </p>
 <% end %>
 <%= render "lectures/access_buttons", :lecture=> @lecture%>
 

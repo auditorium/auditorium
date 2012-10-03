@@ -81,6 +81,7 @@ class Ability
       can :manage, :all
       can :destroy, :all
       can :read, :all #if user.confirmed?
+      can :update, :all
 
       can :rate,     Post do |post|
         user.id != post.author.id

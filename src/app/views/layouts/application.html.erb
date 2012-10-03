@@ -16,7 +16,7 @@
        }
       });
     </script>
-    <%= mathjax_tag %>
+    <%= mathjax_tag config: 'TeX-AMS_HTML.js' %>
   </head>
   <body data-spy="scroll" data-target=".subnav" data-offset="50">
     <header id="header">
@@ -35,6 +35,11 @@
         <% end %>
         <%= yield %>
       </div>
+      <% if Rails.env.development? %>
+        <%= debug params %>
+        <%= debug session %>
+      <% end %>
+
     </section>
     <footer id="footer">
       <%= render :partial => 'shared/footer' %>

@@ -17,7 +17,7 @@
         <dt>navigate</dt>
         <dd><em class="icon-home"></em> <%= link_to "Home", root_path %></dd>
         <dd><em class="icon-search"></em> <%= link_to "Search", search_path %></dd>
-        <dd><em class="icon-thumbs-up"></em> <%= link_to "Ranking", ranking_path %></dd>
+        <dd><em class="icon-thumbs-up"></em> <%= link_to "Ranking", users_path %></dd>
         <% if current_user %>
           <dd><em class="icon-envelope"></em> <%= link_to "#{current_user.unread_notifications.count} Notifications ", notifications_path %></dd>
         <% end %>
