@@ -7,7 +7,7 @@
 jQuery ->
 
   $('a.remove-cross').hover ->
-    $('a.remove-cross').tooltip('show')
+    $(this).tooltip('show')
 
   $(".question-details").hide()
   $(".info-details").hide()
