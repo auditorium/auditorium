@@ -1,3 +1,4 @@
 $(function() {
 	$('#feedback-<%= @feedback.id %>').removeClass('unread').addClass('read');
+	$('#feedback-<%= @feedback.id %>-icon').html('<i class="icon-check"></i>');
 });
