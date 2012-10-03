@@ -35,11 +35,6 @@
         <% end %>
         <%= yield %>
       </div>
-      <% if Rails.env.development? %>
-        <%= debug params %>
-        <%= debug session %>
-      <% end %>
-
     </section>
     <footer id="footer">
       <%= render :partial => 'shared/footer' %>

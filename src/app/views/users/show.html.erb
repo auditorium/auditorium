@@ -2,7 +2,7 @@
 if params[:show] and params[:show].eql? 'all'
 	limit = nil
 else
-	limit = 10
+	limit = 5
 end 
 %>
 <div class="container">
@@ -21,7 +21,7 @@ end
 	    	<%= render :partial => 'posts/post_teaser', :locals => { :post => question} %>
 	    	<% end %>
 			<% end %>
-				<%= link_to "view more questions", user_path(@user, show: 'all') %>
+				<%= link_to "view more", user_path(@user, show: 'all') %>
 
 		<% end %>
 	</div>
@@ -36,7 +36,7 @@ end
 	    	<%= render :partial => 'posts/post_teaser', :locals => { :post => answer.origin} %>
 	    	<% end %>
 			<% end %>
-			<%= link_to "view more answers to questions...", user_path(@user, show: 'all')%>
+			<%= link_to "view more", user_path(@user, show: 'all')%>
 		<% end %>
 	</div>
 </section>
