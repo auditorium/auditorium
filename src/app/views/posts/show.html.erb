@@ -9,7 +9,7 @@
 <% if @post.post_type.eql? 'question' %>
   <%= render :partial => 'posts/answer_form', :locals => { :post => @post }%>
 <% elsif current_user.nil? and @post.post_type.eql? 'info'%>
-  <div class="alert alert-info">Please <%= link_to 'Sign in', '/users/sign_in' %> or <%= link_to 'Sign up', '/users/sign_up' %> to comment this information.</div>
+  <p class="hint">Please <%= link_to 'Sign in', '/users/sign_in' %> or <%= link_to 'Sign up', '/users/sign_up' %> to comment this information.</p>
 <% end %>
 </div>
 

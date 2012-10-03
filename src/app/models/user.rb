@@ -150,20 +150,16 @@ class User < ActiveRecord::Base
   # in models to map to a nice sign up e-mail.
   def send_on_create_confirmation_instructions
     if self.email.match /tu-dresden.de$/
-      Rails.logger.debug "TU DRESDEN EMAIL! :)"
       send_devise_notification(:confirmation_instructions)
     else
-      Rails.logger.debug "NO TU DRESDEN EMAIl! :("
       false
     end
   end
 
   def send_unlock_instructions
     if self.email.match /tu-dresden.de$/
-      Rails.logger.debug "TU DRESDEN EMAIL! :)"
       send_devise_notification(:confirmation_instructions)
     else
-      Rails.logger.debug "NO TU DRESDEN EMAIl! :("
       false
     end
   end
@@ -178,5 +174,13 @@ class User < ActiveRecord::Base
 
   def rating_minimum
     -6 # todo: customizable in future releases
+  end
+
+  def questions(limit=nil)
+    questions = Post.where(author_id: self.id, post_type: 'question').limit(limit)
+  end
+
+  def answers(limit=nil)
+    answers = Post.where(author_id: self.id, post_type: 'answer').limit(limit)
   end
 end

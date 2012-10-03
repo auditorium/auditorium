@@ -29,9 +29,9 @@
       <% end %>
     </table>
   <% else %>
-    <div class="alert alert-info">You can search for a course and follow them to get notifications.</div>
+    <p class="hint">You can search for a course and follow them to get notifications.</p>
   <% end %>
 
 <% else %>
-  <div class="alert alert-info">Please log in to see your courses. <%= link_to 'Sign in', '/users/sign_in' %> or <%= link_to 'Sign up', '/users/sign_up' %></div>
+  <p class="hint">Please log in to see your courses. <%= link_to 'Sign in', '/users/sign_in' %> or <%= link_to 'Sign up', '/users/sign_up' %></p>
 <% end %>
