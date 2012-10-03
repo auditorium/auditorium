@@ -1,0 +1,80 @@
+/* COLOR PALETTE - put this into an extra file */
+// http://twitter.github.com/bootstrap/less.html#variables
+/* default colors */
+@black:        #000;
+@grayDarker:   #222;
+@grayDark:     #333;
+@gray:         #555;
+@grayLight:    #999;
+@grayLighter:  #eee;
+@white:        #fff;
+
+@blue:         #049cdb;
+@green:        #46a546;
+@red:          #bf261d;
+@yellow:       #ffc40d;
+@subscribed-color: #e8efff;
+@orange:       #f89406;
+@orangeLight:  #EFCBB6;
+@pink:         #c3325f;
+@purple:       #7a43b6;
+@beige:      #f0f0eb;
+
+@bodyBackground:     transparent; // surprised? check out html{}
+@headerColor:        @white;
+@headerBackground:   @gray;
+@headerBackgroundImage : url("faculty-informatik.jpg");
+@contentBackground:  @white;
+@admin-red:          lighten(@red, 30%);
+
+@textColor:@black;
+@linkColor:@blue;
+@linkColorHover:lighten(@linkColor,30%);
+
+@btnBackground:                  @white;
+@btnBackgroundHighlight:         darken(@white, 10%);
+@btnBorder:                      darken(@white, 20%);
+
+@navbarLinkColor:            @white;
+@navbarBackground:           @grayDark;
+@navbarBackgroundHighlight:  @grayDark;
+@dropdownLinkColor:          @black;
+
+@btnPrimaryBackground:           desaturate(@linkColor, 15%);
+@btnPrimaryBackgroundHighlight:  spin(@btnPrimaryBackground, 15%);
+
+@btnInfoBackground:              @blue;
+@btnInfoBackgroundHighlight:     desaturate(@blue, 25%);
+
+@btnSuccessBackground:           lighten(@green, 15%);
+@btnSuccessBackgroundHighlight:  @btnSuccessBackground;
+
+@btnWarningBackground:           desaturate(@orange, 15%);
+@btnWarningBackgroundHighlight:  spin(@btnWarningBackground, 15%);
+
+@btnDangerBackground:            desaturate(@red,15%);
+@btnDangerBackgroundHighlight:   spin(@btnDangerBackground,15%);
+
+@btnInverseBackground:           @gray;
+@btnInverseBackgroundHighlight:  @grayDarker;
+
+/* now overwriting colors */
+// @import ""
+
+
+@body-padding-top:   60px;
+//@navbarHeight: 30px; //default: 40px
+
+@baseFontFamily:     @helvetica; 
+@helvetica:          "Helvetica Neue",Helvetica Neue,Helvetica,Arial,sans-serif;
+
+@font-weight-h1:  100;
+@font-size-h1:    3em;
+@font-weight-h2:  300;
+@font-size-h2:    2.2em;
+@font-weight-h3:  200;
+@font-size-h3:    1.6em;
+@font-size-h3-well:    1.5em;
+@font-weight-h4:  300;
+@font-size-h4:    1.5em;
+

@@ -15,7 +15,7 @@
 		<% @users.each do |user| %>
 			<tr>
 				<% if not user.confirmed? and can? :manage, user %>
-				<td><%= button_to 'confirm', "/users/#{user.id}/confirm", :class => 'btn btn-success btn-primary' %>  <%= "Confirmation sent (#{I18n.localize(user.confirmation_sent_at, format: :short)})" if not user.confirmation_sent_at.nil? %> </td>
+				<td><%= button_to 'confirm', confirm_user_path(user), :class => 'btn btn-success btn-mini btn-primary' %>  <%= "Confirmation sent (#{I18n.localize(user.confirmation_sent_at, format: :short)})" if not user.confirmation_sent_at.nil? %> </td>
 				<% else %>
 				<td><span class="icon-ok"></span></td>
 				<% end %>
@@ -29,14 +29,12 @@
        	</td>
 				<td><%= user.email %></td>
 				<td><%= I18n.localize(user.created_at, :format => :short) %></td>
-				<% if can? :destroy, user %>
-				<td><%= link_to "Delete User", destroy_user_account_path(user), 
-	                        :class => "btn btn-danger btn-mini", 
-	                        :confirm => "Are you sure?",
-	                        :title => "Delete #{user.full_name}",
-	                        :method => :delete %>
-	      <% end %>
-	    </td>
+				<% if can? :manage, user %>
+				<td>
+					<%= link_to 'Edit user', edit_user_path(user), class: 'btn btn-mini btn-warning' %>
+					<%= link_to "Delete user", user, :data => { :confirm => "Are you sure that you want to delete #{user.full_name}?" }, method: :delete, class: 'btn btn-mini btn-danger' %>
+				</td>
+	    	<% end %>
 			</tr>
 		<% end %>
 	</tbody>

@@ -32,6 +32,10 @@ class Lecture < ActiveRecord::Base
     self.courses
   end
 
+  def faculty
+    self.chair.institute.faculty
+  end
+
   def has_current_course?
     !self.courses.nil? and self.current_courses.length > 0
   end

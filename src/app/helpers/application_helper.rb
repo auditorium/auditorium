@@ -56,6 +56,10 @@ module ApplicationHelper
     ['every week', 'odd week', 'even week']
   end
 
+  def current_term
+    Term.where("beginDate < ?", Date.today).where("endDate > ?", Date.today)[0]
+  end
+
   def item_parents
     if params[:action] == 'show'
       case params[:controller]
@@ -116,6 +120,15 @@ module ApplicationHelper
 
   def admins
     User.find_all(:admin => true)
+  end
+
+  def shorten (string, length)
+    if string.length > length
+      "#{string[0,length]}..."
+    else
+      string
+    end
+
   end
 
 end

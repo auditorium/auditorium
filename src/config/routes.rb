@@ -1,4 +1,9 @@
 Auditorium::Application.routes.draw do
+  resources :feedback
+  get 'feedback', :to => 'feedback#index', :as => :feedbacks
+  post 'feedback/:id/mark_as_read' => 'feedback#mark_as_read', :as => :mark_feedback_as_read
+
+
   mathjax 'mathjax'
   
   resources :email_settings
@@ -18,22 +23,22 @@ Auditorium::Application.routes.draw do
     get 'search' => :index, as: :search
   end
 
-  controller :users do
-    get 'users' => :index, as: :ranking
-    get 'users/moderation' => 'users#moderation', :as => :users_moderation
-    match 'users/:id/confirm' => 'users#confirm'
-    delete  "users/:id/delete",      :to => "users#destroy", :as => :destroy_user_account
-  end
-
-  post 'notifications/mark_all_as_read' => 'notifications#mark_all_as_read', :as => :mark_all_as_read
-
   devise_for :users, :controllers => { :confirmations => "users/confirmations", :sessions => "users/sessions", :registrations => "users/registrations" }
+  get 'users/moderation' => 'users#moderation', :as => :users_moderation
+  
+  resources :users
+  get 'users/:id/questions' => 'users#questions', :as => :users_questions
+  get 'users/:id/answers' => 'users#answers', :as => :users_answers
+  match 'users/:id/confirm' => 'users#confirm', :as => :confirm_user
+  post 'notifications/mark_all_as_read' => 'notifications#mark_all_as_read', :as => :mark_all_as_read
+  
 
   resources :courses
   match 'courses/:id/manage_users', :to => 'courses#manage_users'
   match 'courses/<search', :to => 'courses#search'
   match 'courses/:id/following', :to => 'courses#following'
   match 'courses/:id/approve', :to => 'courses#approve', :as => :approve_course
+  match 'courses/:id/unfollow', :to => 'courses#following', :unfollow => 'true'
   match 'posts/:id/rate', :to => 'posts#rate', :as => :rate_post
   match 'posts/:id/answered', :to => 'posts#answered', :as => :answered_post
   
@@ -46,7 +51,7 @@ Auditorium::Application.routes.draw do
 
   resources :course_memberships
   match "my_courses", :to => "course_memberships#index"
-  
+
   resources :chairs
 
   resources :posts do

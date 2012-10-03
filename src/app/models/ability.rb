@@ -73,6 +73,8 @@ class Ability
 
       cannot :approve, Course
 
+      can :create, Feedback
+      cannot :manage, Feedback
     else # Gäste
       cannot :read, :all
     end
@@ -81,10 +83,13 @@ class Ability
       can :manage, :all
       can :destroy, :all
       can :read, :all #if user.confirmed?
+      can :update, :all
 
       can :rate,     Post do |post|
         user.id != post.author.id
       end
+
+      can :manage, Feedback
     end
 
 

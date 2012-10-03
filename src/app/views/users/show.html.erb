@@ -1,0 +1,50 @@
+<% 
+if params[:show] and params[:show].eql? 'all'
+	limit = nil
+else
+	limit = 5
+end 
+%>
+<div class="container">
+<h2>
+	Profile of <%= @user.full_name %>
+  <%= gravatar_image_tag(@user.alternative_email, :alt => @user.full_name, :gravatar => {:default => :wavatar, :size => 40, :secure => true })%>
+</h2>
+<section class="row-fluid">
+	<div id="questions" class="span6">
+		<h3>Questions</h3>
+		<% if @user.questions.empty? %>
+			<p class="hint">Sorry this user does not asked questions, yet!</p>
+		<% else %>
+			<% @user.questions(limit).each do |question| %>
+				<% if can? :read, question %>
+	    	<%= render :partial => 'posts/post_teaser', :locals => { :post => question} %>
+	    	<% end %>
+			<% end %>
+				<%= link_to "view more", user_path(@user, show: 'all') %>
+
+		<% end %>
+	</div>
+
+	<div id="answers" class="span6">
+		<h3>Answers to questions</h3>
+		<% if @user.answers.empty? %>
+			<p class="hint">Sorry this user does not answered any question, yet!</p>
+		<% else %>
+			<% @user.answers(limit).each do |answer| %>
+				<% if can? :read, answer.origin %>
+	    	<%= render :partial => 'posts/post_teaser', :locals => { :post => answer.origin} %>
+	    	<% end %>
+			<% end %>
+			<%= link_to "view more", user_path(@user, show: 'all')%>
+		<% end %>
+	</div>
+</section>
+
+<% if can? :manage, @user %>
+	<p>
+		<%= link_to 'Edit user', edit_user_path(@user), class: 'btn btn-mini btn-warning' %>
+		<%= link_to "Delete user", @user, :data => { :confirm => "Are you sure that you want to delete #{@user.full_name}?" }, method: :delete, class: 'btn btn-mini btn-danger' %>
+	</p>
+<% end %>
+</div>
