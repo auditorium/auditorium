@@ -1,4 +1,9 @@
 Auditorium::Application.routes.draw do
+  resources :feedback
+  get 'feedback', :to => 'feedback#index', :as => :feedbacks
+  post 'feedback/:id/mark_as_read' => 'feedback#mark_as_read', :as => :mark_feedback_as_read
+
+
   mathjax 'mathjax'
   
   resources :email_settings
