@@ -2,7 +2,7 @@ class FeedbackController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @feedbacks = Feedback.page(params[:page]).per(10)
+    @feedbacks = Feedback.order('created_at DESC').page(params[:page]).per(10)
   end
 
   def new
