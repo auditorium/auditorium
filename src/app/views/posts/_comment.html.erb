@@ -2,7 +2,12 @@
   <%= comment_markdown(comment.body) %>
   <span class="comment-metadata">
 
-    <%= "by #{comment.author_name}" %> &middot; <%= link_to "#{distance_of_time_in_words(Time.now, comment.created_at)} ago", "#{post_url(comment.origin)}#post-#{comment.id}", :class => 'permalink', 'data-id' => "#{comment.id}", :id => "post-#{comment.id}" %>
+    <% if comment.author.id == current_user.id %>
+      <%= link_to "by me", comment.author %> 
+    <% else %>
+      <%= link_to "by #{comment.author_name}", comment.author %>
+    <% end %>
+     &middot; <%= link_to "#{distance_of_time_in_words(Time.now, comment.created_at)} ago", "#{post_url(comment.origin)}#post-#{comment.id}", :class => 'permalink', 'data-id' => "#{comment.id}", :id => "post-#{comment.id}" %>
   	<span class="pull-right">
 	  	<% if can? :destroy, comment  %>
 	    	<%= link_to "remove", comment, :data => { :confirm => 'Are you sure that you want to remove this comment?' }, method: :delete %>
