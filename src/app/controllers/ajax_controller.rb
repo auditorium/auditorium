@@ -9,4 +9,15 @@ class AjaxController < ApplicationController
     list = courses.map {|c| Hash[ id: c.id, label: (c.name_with_term short: false), name: (c.name_with_term short: false)]}
     render json: list
   end
+
+  def lectures
+    if params[:term]
+      like= "%".concat(params[:term].concat("%"))
+      lectures = Lecture.where("name like ?", like).limit(10)
+    else
+      lectures = Lecture.all(limit: 10)
+    end
+    list = lectures.map {|c| Hash[ id: c.id, label: c.name, name: c.name]}
+    render json: list
+  end
 end

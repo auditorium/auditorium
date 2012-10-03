@@ -1,22 +1,11 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
- *
- *= require_self
- *= require_tree .
+*= require_self
+*= require_tree .
 */
 
 // Bootstrap
 @import "twitter/bootstrap/bootstrap";
 @import "twitter/bootstrap/responsive";
-/* custom navbar collapse*/
-
 
 // Font Awesome - for Glyphs
 @fontAwesomeEotPath:  'fontawesome-webfont.eot';
@@ -25,95 +14,90 @@
 @fontAwesomeSvgzPath: 'fontawesome-webfont.svgz';
 @fontAwesomeSvgPath:  'fontawesome-webfont.svg';
 @import "fontawesome";
+@import "variables";
+@import "caviar-dreams";
 
-// Set the correct sprite paths
-@iconSpritePath:       asset-path("twitter/bootstrap/bootstrap/glyphicons-halflings.png", image);
-@iconWhiteSpritePath:  asset-path("twitter/bootstrap/bootstrap/glyphicons-halflings-white.png", image);
+/* headers */
+h1, h2, h3, h4, h5, h6{
+  color:@textColor;
+  margin:10px 0;
+  line-height: 1;
+  a { color:@grayDarker; }
+  a:hover {color: lighten(@grayDarker, 35%);  text-decoration: none }
+}
+h1 {
+  font-weight:  @font-weight-h1;
+  font-size:    @font-size-h1;
+  font-family: 'CaviarDreams';
+}
+
+h2 {
+  font-weight:  @font-weight-h2;
+  font-size:    @font-size-h2;
+}
+
+h3 {
+  font-weight:  @font-weight-h3;
+  font-size:    @font-size-h3;
+  vertical-align: bottom;
+}
+.well h3 {
+  font-weight:  @font-weight-h3;
+  font-size:    @font-size-h3-well;
+}
+
+h4, h5, h6
+{
+  font-weight:  @font-weight-h4;
+}
+
+/* media */
+/****** resonse overrides ******/
+
+// Landscape phones and down
+@media (max-width: 480px) {
+  //.breadcrumb li { display: list-item; }
+  .breadcrumb { display: none; }
+}
+
+// Landscape phone to portrait tablet
+@media (max-width: 767px)
+{ 
+  body{
+    padding: 0;
+    #content
+    {
+      padding: 0 8px;
+    }
+  }
+  .lead
+  {
+    font-size:15px;
+    visibility: hidden;
+  }
+  h1, .lead
+  {
+    padding: 0 12px;
+  }
+  .navbar-fixed-top
+  {
+    position:fixed;
+    padding: 0 12px;
+  }
+  #footer
+  {
+    padding: 15px 5px;
+  }
+}
+
+// Portrait tablet to landscape and desktop
+@media (min-width: 768px) and (max-width: 979px) {  }
+
+// Large desktop
+@media (min-width: 1200px) { }
 
 
-/* COLOR PALETTE - put this into an extra file */
-// http://twitter.github.com/bootstrap/less.html#variables
-/* default colors */
-@black:        #000;
-@grayDarker:   #222;
-@grayDark:     #333;
-@gray:         #555;
-@grayLight:    #999;
-@grayLighter:  #eee;
-@white:        #fff;
-
-@blue:         #049cdb;
-@green:        #46a546;
-@red:          #9d261d;
-@yellow:       #ffc40d;
-@subscribed-color: #e8efff;
-@orange:       #f89406;
-@orangeLight:  #EFCBB6;
-@pink:         #c3325f;
-@purple:       #7a43b6;
-@beige:      #f0f0eb;
-
-@bodyBackground:     @gray;
-@headerColor:        @white;
-@headerBackground:   @gray;
-@headerBackgroundImage : url("faculty-informatik.jpg");
-@contentBackground:  @white;
-@admin-red:          lighten(@red, 30%);
-
-@textColor:@black;
-@linkColor:@blue;
-@linkColorHover:lighten(@linkColor,30%);
-
-@btnBackground:                  @white;
-@btnBackgroundHighlight:         darken(@white, 10%);
-@btnBorder:                      darken(@white, 20%);
-
-@navbarLinkColor:            @white;
-@navbarBackground:           @grayDark;
-@navbarBackgroundHighlight:  @grayDark;
-@dropdownLinkColor:          @black;
-
-@btnPrimaryBackground:           desaturate(@linkColor, 15%);
-@btnPrimaryBackgroundHighlight:  spin(@btnPrimaryBackground, 15%);
-
-@btnInfoBackground:              @blue;
-@btnInfoBackgroundHighlight:     desaturate(@blue, 25%);
-
-@btnSuccessBackground:           lighten(@green, 15%);
-@btnSuccessBackgroundHighlight:  @btnSuccessBackground;
-
-@btnWarningBackground:           desaturate(@orange, 15%);
-@btnWarningBackgroundHighlight:  spin(@btnWarningBackground, 15%);
-
-@btnDangerBackground:            desaturate(@red,15%);
-@btnDangerBackgroundHighlight:   spin(@btnDangerBackground,15%);
-
-@btnInverseBackground:           @gray;
-@btnInverseBackgroundHighlight:  @grayDarker;
-
-/* now overwriting colors */
-// @import ""
-
-
-@body-padding-top:   100px;
-//@navbarHeight: 30px; //default: 40px
-
-@baseFontFamily:     @helvetica; 
-@helvetica:          "Helvetica Neue",Helvetica Neue,Helvetica,Arial,sans-serif;
-
-@font-weight-h1:  100;
-@font-size-h1:    3em;
-@font-weight-h2:  300;
-@font-size-h2:    2.2em;
-@font-weight-h3:  200;
-@font-size-h3:    1.6em;
-@font-size-h3-well:    1.5em;
-@font-weight-h4:  300;
-@font-size-h4:    1.5em;
-
-small {font-size: 0.7em;}
-
-//MIXINS
+/* mixins */
 .soft-border
 {
   border-style: solid;
@@ -125,6 +109,40 @@ small {font-size: 0.7em;}
   .soft-border;
   border-width: 1px 0 0 0;
   margin-top: 1em;
+}
+
+.bottom-border
+{
+  .soft-border;
+  border-width: 0 0 1px 0;
+  margin-bottom: 4em;
+}
+.border-radius (@radius)
+{
+  border-radius: @radius;
+  -moz-border-radius: @radius;
+  -webkit-border-radius: @radius;
+}
+.border-radius(@a,@b,@c,@d)
+{
+    -webkit-border-radius: @a,@b,@c,@d;
+       -moz-border-radius: @a,@b,@c,@d;
+            border-radius: @a,@b,@c,@d;
+}
+
+#gradient
+{
+  .no-gradient(@color)
+  {
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,@color), color-stop(100%, @color)); /* Chrome,Safari4+ */
+    background-image: -webkit-linear-gradient(  top,  @color 0%,  @color 100%); /* Chrome 10+,Safari 5.1+ */
+    background-image: -moz-linear-gradient(     top,  @color 0%,  @color 100%); /* FF3.6+ */
+    background-image: -ms-linear-gradient(      top,  @color 0%,  @color 100%); /* IE10+ */
+    background-image: -o-linear-gradient(       top,  @color 0%,  @color 100%); /* Opera 11.10+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false); /* IE6-9 */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@color', endColorstr='@color',GradientType=0 ); /* IE6-9 */
+    background-image: linear-gradient(top, @color 0%,@color 100%); /* W3C */
+  }
 }
 
 .bottom-border
@@ -189,69 +207,368 @@ small {font-size: 0.7em;}
   }
 }
 
+small {font-size: 0.7em;}
+
+.accessibility {
+  position:absolute;
+  left:-10000px;
+}
+
+p.hint {
+  color:@grayLight;
+  padding:5px;
+}
+
+.subtle {
+  color:@grayLight;
+  font-size: 0.9em;
+  font-style: italic;
+  a {text-decoration: none;}
+}
+
+/* button */
+.btn-rating {
+  border:none;
+  background:none;
+  font-size:15px;
+  margin:0;
+  padding:0;
+  color:@blue;
+  font-weight:100;
+  
+  &:hover {
+    color:@blueDark;
+  }
+}
+
+.btn-answered {
+  border:none;
+  background:none;
+  font-size:25px;
+  padding:0;
+  font-weight:100;
+  margin:0;
+  &.answered{
+    color:@green;
+
+    &:hover {
+    color:@grayLight;
+    }
+  }
+
+  &.not.answered {
+    color:@grayLight;
+    
+    &:hover {
+      color:@green;
+    }
+  }
+}
+
+form.button_to {
+  margin:0;
+  padding:0;
+  display:inline;
+}
+  
+form.button_to div, form.button_to div input {
+  display:inline;
+}
+
+div.follow-button {
+  margin:5px 10px;
+  display: inline;
+
+  &.small {
+    margin:0px 0px;
+    display: inline;
+    * > {
+      font-size: 0.9em;
+      }
+  }
+}
+
+.breadcrumb { font-size: 0.8em; }
+.breadcrumb span
+{
+  display:inline;
+  padding:0;
+  vertical-align:middle;
+}
+
+.nav > li > a {
+  display: inline-block;
+}
+
+#navigation
+{
+  .navbar-fixed-top
+  {
+    margin-bottom: 25px;
+  }
+  li a {
+    padding: 10px;
+
+    &:hover {
+      color:@grayLight;
+    }
+  }
+  li.admin a
+  {
+    color: @admin-red;
+    font-weight:bold;
+  }
+
+  .btn-navbar
+  {
+    box-shadow: 0 0 0 ;
+    &:hover, span:hover { text-decoration: none;}
+  }
+  
+}
+
+
+/* post */
+a.remove-cross {
+  color: @grayLight;
+
+  &:hover {
+    color: @gray;
+    text-decoration: none;
+  }
+}
+
+dl.info, dl.question {
+  margin:10px 0;
+  padding:0;
+}
+
+.info-title      { 
+  padding:0 5px; 
+  background: lighten(@yellow, 10%); 
+  color: @white; 
+}
+
+.info-title a    { 
+  color: @white; 
+  display:block; 
+  text-decoration:none;
+}
+
+.info-details, .question-details { 
+  border-left: 1px solid lighten(@gray, 30%); 
+  margin:0 5px;
+  padding:5px 5px 2px 5px;
+}
+
+.question-title  { 
+  padding:0 5px; 
+  background: lighten(@gray, 30%); 
+  color: @white; 
+}
+
+.question-title a { 
+  color: @white; 
+  display:block; 
+  text-decoration:none;
+}
+
+
+.post-badge {
+  width:20px;
+  height:65px;
+  &.question-badge {
+    background: @blue url("question-badge.png") top no-repeat;
+  }
+
+  &.private-question-badge {
+    background: #9fc9f0 url("question-badge.png") top no-repeat;
+  }
+  
+  &.info-badge {
+    background: @yellow url("info-badge.png") top no-repeat;
+  }
+
+  &.answer-badge {
+    background: @grayLight url("answer-badge.png") top no-repeat;  
+
+    &.answered {
+      background-color: @green;
+    }
+    &.not.answered {
+      background-color: @grayLight;
+    }
+  }
+
+  &.private-answer-badge {
+    background: #f0dfae url("answer-badge.png") top no-repeat;
+  }
+}
+
+
+.post-rating {
+  vertical-align:top;
+  padding-left:10px!important;
+  width:30px;
+  margin:5px;
+  padding:0;
+}
+
+.post-subject, .post-body, .post-footer {
+  padding:0 10px;
+  margin:0;
+  
+}
+
+.post-subject {
+  min-height:20px;
+  padding:10px;
+}
+td.post-footer {
+  vertical-align: bottom;
+}
+
+table.table-posts {
+  width:100%;
+  margin:10px 0;
+  td.post-footer, td.post-rating, td.post-badge {
+    border-bottom:1px solid #ddd;
+  }
+  
+  &.subscribed {
+    background-color:@subscribed-color;
+  }
+}
+
+table.table-comments {
+  margin:0 0 20px 0;
+  width: 90%;
+  float:right;
+
+  tbody tr {
+    margin:0;
+  }
+  div.comment {
+    margin:0 5px;
+
+    p {
+      padding:0;
+      margin:0;
+    }
+
+    h1,h2,h3,h4,h5,h6 {
+      font-size:1em;  
+      font-weight:normal;
+      line-height:1;
+      padding:0;
+      margin:0;
+    }
+  }
+  
+  
+}
+
+span.comment-metadata, span.post-metadata {
+  color:@gray;
+  font-size:0.9em;
+}
+
+td.comment-button p {
+  margin:0;
+}
+
+.comment-form {
+  margin: 0;
+}
+
+
+/* notifications */
+.read, .read a { color:#ddd; }
+.unread, .unread a { color:#333; }
+
+tr.clickable {
+  &:hover {
+    cursor:pointer;
+    background:@grayLighter;
+    color: @black;
+
+    a {
+      color: @blue;
+      &:hover {
+        color: @blueDark;
+      }
+    }
+  }
+}
+
+li.notification {
+  border-bottom:1px solid #eee;
+
+  & a {
+    padding:5px;
+  }
+
+  a:hover {
+    color:#333;
+  }
+  
+  p {
+
+    &.title {
+      font-weight:200;
+      font-size:12pt;
+      word-wrap: break-word;
+    }
+    margin:0;
+    padding:0;
+    text-shadow:none;
+  }
+}
+
+a.notification-button {
+
+  &.red {
+    background-color:@red;
+  }
+  width: 28px!important;
+  height: 25px!important;
+  text-align: center!important;
+  margin: 7px!important;
+  padding: 3px 1px 0 0!important;
+  vertical-align: center!important;
+
+  &:hover {
+    background-color:@gray!important;
+    cursor:pointer;
+  }
+}
+
+
+
+li.notification p {
+
+  padding:5px;
+}
+
+// Set the correct sprite paths
+@iconSpritePath:       asset-path("twitter/bootstrap/bootstrap/glyphicons-halflings.png", image);
+@iconWhiteSpritePath:  asset-path("twitter/bootstrap/bootstrap/glyphicons-halflings-white.png", image);
 
 /* docs */
 // https://developer.mozilla.org/en/Sections_and_Outlines_of_an_HTML5_document
 // http://wrangl.com/sass-v-less
 // http://twitter.github.com/recess/
 // https://developer.mozilla.org/en/CSS/Writing_Efficient_CSS
-
 // See http://twitter.github.com/bootstrap/less.html for their names and documentation
-
-
-
-/****** resonse overrides ******/
-
-// Landscape phones and down
-@media (max-width: 480px) {
-  //.breadcrumb li { display: list-item; }
-  .breadcrumb { display: none; }
-}
-
-// Landscape phone to portrait tablet
-@media (max-width: 767px)
-{ 
-  body{
-    padding: 0;
-    #content
-    {
-      padding: 0 8px;
-    }
-  }
-  .lead
-  {
-    font-size:15px;
-    visibility: hidden;
-  }
-  h1, .lead
-  {
-    padding: 0 12px;
-  }
-  .navbar-fixed-top
-  {
-    position:fixed;
-    padding: 0 12px;
-  }
-  #footer
-  {
-    padding: 15px 5px;
-  }
-}
-
-// Portrait tablet to landscape and desktop
-@media (min-width: 768px) and (max-width: 979px) {  }
-
-// Large desktop
-@media (min-width: 1200px) { }
-
-
 
 /****** SPECIFICS ******/
 
+html { background: @grayDark url('low_contrast_linen.png'); }
+
 body
-{
+{/*{*/
   font: 14px/22px @baseFontFamily;
-  font-weight:200;
+  font-weight:200; 
   
   pre, p code {
     padding: 2px 4px;
@@ -261,7 +578,7 @@ body
   }
 
   h1 {
-    margin:50px 0 15px 0;
+    margin:50px 0 15px 0
   }
   
   /* top level outlines */
@@ -270,11 +587,12 @@ body
     color: @headerColor;
     background-color:@headerBackground;
     background-image:@headerBackgroundImage;
-    background-repeat: no-repeat;
+    background-repeat:no-repeat;
 
     h1 {
       font-size:4.5em;
-      font-weight:300;
+      font-weight: bold;
+      font-family: 'CaviarDreams';
       text-shadow: @black 0px 0px 2px;
       margin:5px 0;
       padding:10px 5px 0 5px;
@@ -314,6 +632,7 @@ body
     background-color: @contentBackground;
     padding-top: 20px;
     padding-bottom: 20px;
+    display:block;
     #shadow > .inset-top;
 
     #content
@@ -330,10 +649,6 @@ body
       {
         .top-border;
       }
-
-      section
-      {
-      }
     }
   }
 
@@ -343,61 +658,12 @@ body
     width:100%;
     padding-top:15px;
     #shadow > .inset-top(@black,15px);
-    background-color:@bodyBackground;
     color:@white;
     a {color:@white; }
 
     
   }
-}
-
-/* headers */
-h1, h2, h3, h4, h5, h6{
-  color:@textColor;
-  margin:10px 0;
-  line-height: 1;
-  a { color:@grayDarker; }
-  a:hover {color: lighten(@grayDarker, 35%);  text-decoration: none }
-}
-h1
-{
-  font-weight:  @font-weight-h1;
-  font-size:    @font-size-h1;
-}
-
-h2
-{
-  font-weight:  @font-weight-h2;
-  font-size:    @font-size-h2;
-}
-
-h3
-{
-  font-weight:  @font-weight-h3;
-  font-size:    @font-size-h3;
-  vertical-align: bottom;
-}
-.well h3
-{
-  font-weight:  @font-weight-h3;
-  font-size:    @font-size-h3-well;
-}
-
-h4, h5, h6
-{
-  font-weight:  @font-weight-h4;
-}
-
-.breadcrumb
-{
-  font-size: 0.8em;
-}
-.breadcrumb span
-{
-  display:inline;
-  padding:0;
-  vertical-align:middle;
-}
+}/*}*/
 
 /* tables */
 td > a
@@ -413,135 +679,21 @@ td > a
 }
 
 /* forms */
-.control_group {outline: 2px dashed purple;}
-.controle_group, .control_group
-{
-  .well;
-}
+.controle_group { .well; }
 
-.sort_desc:after
-{
- content: url("./arrow_down.png");
-}
+.sort_desc:after { content: url("./arrow_down.png"); }
 
-.sort_asc:after
-{
- content: url("./arrow_up.png");
-}
-
-#navigation
-{
-  .navbar-fixed-top
-  {
-    margin-bottom: 25px;
-  }
-  li a {
-    padding: 10px;
-
-    &:hover {
-      color:@grayLight;
-    }
-  }
-  li.admin a
-  {
-    color: @admin-red;
-    font-weight:bold;
-  }
-
-  .btn-navbar
-  {
-    box-shadow: 0 0 0 ;
-    &:hover, span:hover { text-decoration: none;}
-  }
-  
-}
+.sort_asc:after { content: url("./arrow_up.png"); }
 
 
-li.dropdown-fallback
-{
-  display: none;
-}
+li.dropdown-fallback { display: none; }
 
-.btn .icon-arrow-left,
-.btn .icon-arrow-right
-{
-}
+.icon-ok.answered , .icon-check.answered { color:@green; }
 
-/* post */
-
-.post-badge {
-  width:20px;
-  height:65px;
-  &.question-badge {
-    background: @blue url("question-badge.png") top no-repeat;
-  }
-
-  &.private-question-badge {
-    background: @orange url("question-badge.png") top no-repeat;
-  }
-  
-  &.info-badge {
-    background: @yellow url("info-badge.png") top no-repeat;
-  }
-
-  &.answer-badge {
-    background: @grayLight url("answer-badge.png") top no-repeat;  
-  }
-
-  &.private-answer-badge {
-    background: @orangeLight url("answer-badge.png") top no-repeat;
-  }
-}
-
-
-.post-rating {
-  vertical-align:top;
-  padding-left:10px!important;
-  width:30px;
-  margin:5px;
-  padding:0;
-}
-
-.post-subject, .post-body, .post-footer {
-  padding: 0 10px;
-  margin:0;
-}
-
-td.post-footer {
-  vertical-align: bottom;
-}
-
-table.table-posts {
-  width:100%;
-  margin:10px 0;
-  
-  tbody {
-    border-bottom:1px solid #ddd;
-  }
-}
-
-.table-posts.subscribed {
-  background-color:@subscribed-color;
-}
-
-table.table-comments {
-  margin:20px auto;
-  width:90%;
-  div.comment {
-    margin:10px;
-    border-bottom:1px solid @grayLighter;
-  }
-  
-  
-}
-
-span.comment-metadata, span.post-metadata {
-    color:@gray;
-    font-size:0.9em;
-  }
 
 /* course */
 .post-badge {
+  min-width:20px;
   width:20px;
   height:65px;
   &.question-badge {
@@ -614,132 +766,11 @@ p.rating-points {
   color:@black;
 }
 
-/* button */
-.btn-rating {
-  border:none;
-  background:none;
-  font-size:15px;
-  margin:0;
-  padding:0;
-  color:@blue;
-  font-weight:100;
-  
-  &:hover {
-    color:@blueDark;
-  }
-}
-
-.btn-answered {
-  border:none;
-  background:none;
-  font-size:25px;
-  padding:0;
-  font-weight:100;
-  margin:0;
-  &.answered{
-    color:@green;
-
-    &:hover {
-    color:@grayLight;
-    }
-  }
-
-  &.not.answered {
-    color:@grayLight;
-    
-    &:hover {
-      color:@green;
-    }
-  }
-}
-
 .center {
   margin: 0 auto;
   float: none;
 }
 
-form.button_to {
-  margin:0;
-  padding:0;
-  display:inline;
-}
-  
-form.button_to div, form.button_to div input {
-  display:inline;
-}
-
-div.follow-button {
-  margin:5px 10px;
-  display: inline;
-
-  &.small {
-    margin:0px 0px;
-    display: inline;
-    * > {
-      font-size: 0.9em;
-      }
-  }
-}
-
-/* notifications */
-
-.read, .read a {
-  color:#ddd;
-}
-  
-.unread, .unread a {
-  color:#333;
-}
-
-
-li.notification {
-  border-bottom:1px solid #eee;
-
-  & a {
-    padding:5px;
-  }
-
-  a:hover {
-    color:#333;
-  }
-  
-  p {
-
-    &.title {
-      font-weight:200;
-      font-size:12pt;
-      word-wrap: break-word;
-    }
-    margin:0;
-    padding:0;
-    text-shadow:none;
-  }
-}
-
-a.notification-button {
-
-  &.red {
-    background-color:@red;
-  }
-  width: 28px!important;
-  height: 25px!important;
-  text-align: center!important;
-  margin: 7px!important;
-  padding: 3px 1px 0 0!important;
-  vertical-align: center!important;
-
-  &:hover {
-    background-color:@gray!important;
-    cursor:pointer;
-  }
-}
-
-
-
-li.notification p {
-
-  padding:5px;
-}
 
 #searchbar {
   margin: 2px;
@@ -747,21 +778,11 @@ li.notification p {
   height: 18px;
 }
 
-/* navbar */ 
-
-.nav > li > a {
-  display: inline-block;
-}
-
-/* misc */
-.accessibility {
-  position:absolute;
-  left:-10000px;
-}
-
-p.hint {
-  color:@grayLight;
-  padding:5px;
+.well-small{
+  .well;
+  margin-bottom:0px;
+  padding: 5px 10px 19px 19px;
+  
 }
 
 .backward_compatability {
@@ -772,4 +793,70 @@ p.hint {
 
 #reportModal {
   visibility: hidden;
+}
+
+/* markdown buttons */
+.rich-text-buttons {
+  ul {
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+
+  ul li {
+    float:left;
+    margin:5px;
+  }
+
+  li:last {
+    clear:both;
+  }
+
+}
+
+blockquote h1 {
+  font-size:1.2em;
+}
+
+.answer-form {
+  clear:both;
+}
+
+.filter-box {
+
+  border:none;
+  border-bottom:1px solid #E3E3E3;
+  border-top:1px solid #E3E3E3;
+  background-color:white;
+  color:@grayDark;
+
+  margin:0 0 10px 0;
+  padding:5px 5px 0 5px;
+
+  p.hint {
+    clear: both;
+    padding:5px 10px 0 10px;
+  }
+  ul {
+    clear:both;
+    list-style:none;
+    margin:0;
+    padding:0;
+    color:@grayDark;
+  }
+  li {
+    float:left;
+    margin:3px 10px;
+
+    a {
+      &.current {
+        font-weight:bold;
+      }
+    }
+  }
+}
+
+/* latex */
+.MathJax_Display {
+  text-align:left!important;
 }

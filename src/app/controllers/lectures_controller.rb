@@ -5,7 +5,12 @@ class LecturesController < ApplicationController
   # GET /lectures
   # GET /lectures.json
   def index
-    @lectures = Lecture.all
+    if params[:all] == "true"
+      #TODO fix this with a nicer statement
+      @lectures = Lecture.all
+    else
+      @lectures = Lecture.all.reject {|l| l.courses.empty? }
+    end
 
     case params[:sort]
     when "chair"

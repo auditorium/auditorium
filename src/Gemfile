@@ -17,6 +17,7 @@ gem 'gravatar_image_tag'
 gem 'kaminari'
 gem 'font-awesome-rails'
 gem 'whenever'
+gem 'mathjax-rails'
 
 # for markdown rich text
 gem 'redcarpet', '~> 2.1.1'

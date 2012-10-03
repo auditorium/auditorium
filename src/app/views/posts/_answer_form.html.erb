@@ -1,14 +1,16 @@
 <% if current_user %>
-  <h3>Your answer</h3>
+  
 
   <div class="answer-form">
+    <h3>Can you answer the question? <small class="hint">If not, add a comment.</small></h3>
     <%= form_tag "#{post_path(post)}/answering", :method => "post" do %> 
       <div class="row-fluid">
-        <%= text_area_tag :body, nil, :rows => 5,  :placeholder => "Your answer...", :class => "span12" %> 
-        <%= submit_tag 'Submit', :class => "btn btn-primary" %>
+        <%= render 'posts/rich_text_buttons' %>
+        <%= text_area_tag :body, nil, :rows => 5,  :placeholder => "Your answer...", :class => "span12", :id => 'content_field' %> 
+        <%= submit_tag 'Submit your answer', :class => "btn btn-primary" %>
       </div>
     <% end %>
   </div>
 <% else %>
-  <div class="alert alert-info">Please <%= link_to 'Sign in', '/users/sign_in' %> or <%= link_to 'Sign up', '/users/sign_up' %> to answer or comment this question.</div>
+  <p class="hint">Please <%= link_to 'Sign in', '/users/sign_in' %> or <%= link_to 'Sign up', '/users/sign_up' %> to answer or comment this question.</p>
 <% end %>

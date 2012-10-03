@@ -1,21 +1,20 @@
 module ApplicationHelper
   class CodeRayify < Redcarpet::Render::HTML
-    def block_code(code, language)
-      language = 'ruby' if language.nil?
-      CodeRay.scan(code, language).div(:line_numbers => :table)
+    def block_code(code, language='ruby')
+      CodeRay.scan(code, language).div
     end
   end
 
   def markdown(text)
-    coderayified = CodeRayify.new(:filter_html => true, 
-                                  :hard_wrap => true)
+    coderayified = CodeRayify.new()
+
     options = {
       :fenced_code_blocks => true,
       :no_intra_emphasis => true,
       :autolink => true,
       :strikethrough => true,
       :lax_html_blocks => true,
-      :superscript => true
+      #:superscript => true
     }
 
     markdown_to_html = Redcarpet::Markdown.new(coderayified, options)
@@ -23,15 +22,14 @@ module ApplicationHelper
   end
 
   def comment_markdown(text)
-    coderayified = CodeRayify.new(:filter_html => true, 
-                                  :hard_wrap => true)
+    coderayified = CodeRayify.new()
     options = {
       :fenced_code_blocks => true,
       :no_intra_emphasis => true,
       :autolink => true,
       :strikethrough => true,
       :lax_html_blocks => true,
-      :superscript => true
+      :no_styles => true
     }
 
     markdown_to_html = Redcarpet::Markdown.new(coderayified, options)
@@ -58,6 +56,10 @@ module ApplicationHelper
     ['every week', 'odd week', 'even week']
   end
 
+  def current_term
+    Term.where("beginDate < ?", Date.today).where("endDate > ?", Date.today)[0]
+  end
+
   def item_parents
     if params[:action] == 'show'
       case params[:controller]
@@ -73,7 +75,7 @@ module ApplicationHelper
         item = @course
       end
       parents = []
-      while !item.nil?  
+      while !item.nil?
         parents.push item
         item = item.parent
       end
@@ -118,6 +120,15 @@ module ApplicationHelper
 
   def admins
     User.find_all(:admin => true)
+  end
+
+  def shorten (string, length)
+    if string.length > length
+      "#{string[0,length]}..."
+    else
+      string
+    end
+
   end
 
 end

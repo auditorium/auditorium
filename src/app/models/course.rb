@@ -2,15 +2,15 @@ class Course < ActiveRecord::Base
 
   belongs_to :lecture
   belongs_to :term
+  belongs_to :creator, class_name: 'User'
   has_many :posts, :dependent => :destroy
   has_many :events, :dependent => :destroy
   has_many :course_memberships, :dependent => :destroy
   has_many :users, through: :course_memberships
   
-  attr_accessible :description, :name, :beginDate, :endDate, :term_id, :lecture_id, :maintainer_id, :sws, :url
+  attr_accessible :description, :name, :beginDate, :endDate, :creator_id, :term_id, :lecture_id, :sws, :url
 
   validates :name, presence: true
-  validates :lecture, presence: true
   validates :term,  presence: true
 
   define_index do
@@ -25,6 +25,9 @@ class Course < ActiveRecord::Base
   end
 
   #scope :unmaintained,includes(:course_memberships).where(:course_memberships)
+
+  scope :current, -> {joins(:term).where("beginDate < ?", Date.today).where("endDate > ?", Date.today)}
+
   def name_with_term(option = { short: true })
     if self.name.length > 50 && :short == true
       "#{self.name[0..50].titleize}... (#{self.term.code})"
@@ -34,7 +37,8 @@ class Course < ActiveRecord::Base
   end
   
   def parent
-    self.lecture.parent
+
+    self.lecture.parent if !self.lecture.nil? 
   end
   
   def followers
@@ -63,15 +67,15 @@ class Course < ActiveRecord::Base
   end
 
   def faculty
-    self.lecture.chair.institute.faculty
+    self.lecture.chair.institute.faculty if self.lecture
   end
 
   def questions
-    questions = Post.order('created_at ASC').where('post_type = ? and course_id = ?','question', self.id)
+    questions = Post.order('last_activity DESC, updated_at DESC, created_at DESC').where('post_type = ? and course_id = ?','question', self.id)
   end
   
   def infos
-    Post.order('created_at ASC').where('post_type = ? and course_id = ?','info', self.id)
+    Post.order('last_activity DESC, updated_at DESC, created_at DESC').where('post_type = ? and course_id = ?','info', self.id)
   end
 
   def is_now?
@@ -117,5 +121,19 @@ class Course < ActiveRecord::Base
       previous_term = Term.where("term_type = 'ss' and beginDate >= ? and endDate <= ?", Date.new(current_term.beginDate.year, 4, 1), Date.new(current_term.beginDate.year, 9, 30)).first
     end
     course = Course.where(:lecture_id => self.lecture.id, :term_id => previous_term.id).first if previous_term
+  end
+
+  # ajax
+  def lecture_name=(name)
+    lecture = Lecture.find_by_name(name)
+    if lecture
+      self.lecture_id = lecture.id
+    else
+      errors[:lecture_name] << "Invalid name entered"
+    end
+  end
+  
+  def lecture_name
+    Lecture.find(lecture_id).name if lecture_id
   end
 end

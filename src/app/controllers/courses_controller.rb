@@ -4,11 +4,19 @@ class CoursesController < ApplicationController
 
   
   include ActionView::Helpers::DateHelper 
+
   # GET /courses
   # GET /courses.json
   def index
-    @courses = Course.order('name ASC').page(params[:page]).per(20)
+
+    if params[:all] == "true"
+      @courses = Course.order('name ASC').order('created_at DESC').page(params[:page]).per(20)
+    else
+      @courses = Course.order('name ASC').page(params[:page]).per(20)
+    end
+
     @courses_by_faculty = @courses.to_a.group_by{ |course| course.faculty }
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @courses }
@@ -19,8 +27,8 @@ class CoursesController < ApplicationController
   # GET /courses/1.json
   def show
     @course = Course.find(params[:id])
-    @infos = Post.order('created_at DESC').where('post_type = ? and course_id = ?', 'info', @course.id).page(params[:info_page]).per(20)
-    @questions = Post.order('created_at DESC').where('post_type = ? and course_id = ?', 'question', @course.id).page(params[:question_page]).per(20)
+    @infos = Post.order('last_activity DESC, updated_at DESC, created_at DESC').where('post_type = ? and course_id = ?', 'info', @course.id).page(params[:info_page]).per(20)
+    @questions = Post.order('last_activity DESC, updated_at DESC, created_at DESC').where('post_type = ? and course_id = ?', 'question', @course.id).page(params[:question_page]).per(20)
     if current_user.nil?
       @questions.delete_if { |post| post.is_private }
     else
@@ -55,9 +63,30 @@ class CoursesController < ApplicationController
   # POST /courses.json
   def create
     @course = Course.new(params[:course])
+    if current_user.is_admin?
+      @course.approved = true
+      flash_message = 'Course was successfully created.' 
+    else
+      @course.approved = false
+      @course.creator = current_user
+      flash_message = 'Course was successfully suggested. Our moderators will check it. But you can already ask questions if you want.'
+    end
+
+    
+
+    # creater gets maintainer status 
+    # TODO
 
     respond_to do |format|
       if @course.save
+        # make create to maintainer if he is no admin
+        if @course.creator and !@course.creator.is_admin?
+          membership = CourseMembership.new(:user_id => @course.creator.id, :course_id => @course.id, :membership_type => 'maintainer')
+          if membership.save!
+            AuditoriumMailer.membership_changed(@course, @course.creator, 'maintainer').deliver 
+          end
+        end
+
         format.html { redirect_to @course, notice: 'Course was successfully created.' }
         format.json { render json: @course, status: :created, location: @course }
       else
@@ -118,18 +147,18 @@ class CoursesController < ApplicationController
       if params['follow']
         if course_membership.save!
           format.js { }
-          format.html { redirect_to redirect_url, :flash => {:success => 'Du folgst nun dem Kurs und wirst informiert, wenn es Neuigkeiten gibt!' } }
+          format.html { redirect_to redirect_url, :flash => {:success => 'You have subscribed to this course. Now you will receive notificatons on updates.' } }
           format.json { render json: course, status: :following, location: course }
         else
-          format.html { redirect_to redirect_url, :flash => {:alert => 'Es ist ein Fehler aufgetreten, bitte versuche es noch einmal.' }}
+          format.html { redirect_to redirect_url, :flash => {:alert => 'Something went wrong. Try again later.' }}
           format.json { render json: course.errors, status: :unprocessable_entity }
         end
       elsif params['unfollow']
         format.js { }
-        format.html { redirect_to redirect_url, :flash => {:success => 'Du wurdes erfolgreich aus dem Kurs ausgetragen.' } }
+        format.html { redirect_to redirect_url, :flash => {:success => 'You have successfully unsubscribed to this course. You will no longer receive notifications on updates.' } }
         format.json { render json: course, status: :following, location: course }
       else
-        format.html { redirect_to redirect_url, :flash => {:alert => 'Es ist ein Fehler aufgetreten, bitte versuche es noch einmal.' }}
+        format.html { redirect_to redirect_url, :flash => {:alert => 'Something went wrong. Try again later.' }}
         format.json { render json: course.errors, status: :unprocessable_entity }
       end
       
@@ -177,6 +206,20 @@ class CoursesController < ApplicationController
       format.js
       format.html { redirect_to redirect_url, :flash => { :success => 'Successfully updated users for this course.'} }
 
+    end
+  end
+
+  def approve
+    course = Course.find(params[:id])
+    course.approved = true
+    course.save
+
+    if not course.creator.nil?
+      AuditoriumMailer.course_approved(course, course.creator).deliver
+    end
+    respond_to do |format|
+      format.js
+      format.html { redirect_to course, :flash => { :success => 'Course has been approved.'} }
     end
   end
 

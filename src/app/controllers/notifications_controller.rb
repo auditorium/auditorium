@@ -4,7 +4,7 @@ class NotificationsController < ApplicationController
   # GET /notifications
   # GET /notifications.json
   def index
-    @notifications = Notification.all
+    @notifications = current_user.notifications.page(params[:page]).per(10) if current_user
 
     respond_to do |format|
       format.html # index.html.erb
@@ -18,6 +18,7 @@ class NotificationsController < ApplicationController
     @notification = Notification.find(params[:id])
     @notification.read = true
     @notification.save
+
     respond_to do |format|
       format.html { redirect_to @notification.path }
       format.json { render json: @notification }

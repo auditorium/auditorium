@@ -18,12 +18,8 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
 
     respond_to do |format|
-      if (@post.is_private || @post.origin.is_private) && current_user != @post.author && !current_user.is_moderator?(@post.course) && !current_user.admin?
-        format.html { redirect_to home_path, :flash => { :error => "Sorry, you don't have permissions to access this page." } }
-      else 
-        format.html # show.html.erb
-        format.json { render json: @post }
-      end
+      format.html 
+      format.json { render json: @post }
     end
   end
 
@@ -31,6 +27,8 @@ class PostsController < ApplicationController
   # GET /posts/new.json
   def new
     @post = Post.new
+    @post.is_private = params[:is_private] if params[:is_private]
+
     if params[:course_id]
       @post.course_id = params[:course_id]
       @course_name = Course.find(params[:course_id]).name
@@ -52,13 +50,13 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(params[:post])
     @post.author = current_user
-    
-      
-      
+    @post.last_activity = DateTime.now
+    @post.is_private = true if @post.origin.is_private?
+
     respond_to do |format|
       if @post.save
         format.js
-        format.html { redirect_to @post.course, :flash => { :success => 'Post was successfully created.' } }
+        format.html { redirect_to "#{post_path(@post.origin)}#post-#{@post.id}", :flash => { :success => 'Post was successfully created.' } }
         format.json { render json: @post, status: :created, location: @post }
       else
         format.js
@@ -72,12 +70,17 @@ class PostsController < ApplicationController
   # PUT /posts/1.json
   def update
     @post = Post.find(params[:id])
+    @post.last_activity = @post.updated_at
+
+
     @origin = @post
     @origin = @post.parent_id if @post.parent_id
+    @post.origin.last_activity = DateTime.now
+    @post.origin.save
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
-        format.html { redirect_to post_path(@origin), :flash => { :success =>  'Post was successfully updated.' } }
+        format.html { redirect_to "#{post_url(@post.origin)}#post-#{@post.id}", :flash => { :success =>  'Post was successfully updated.' } }
         format.json { head :no_content }
       else
         format.html { render action: "edit", :flash => { :error => "Post couldn't be updated!" } }
@@ -151,7 +154,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post.parent, :flash => { :success => "Thanks for your answer." } }
+        format.html { redirect_to "#{post_url(@post.origin)}#post-#{@post.id}", :flash => { :success => "Thanks for your answer." } }
         format.json { render json: @post.parent }
       else 
         format.html { redirect_to redirect_url, :flash => { :error => "Something went wrong. Please try again." } }
@@ -181,7 +184,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to post_path(@origin_post), :flash => { :success => "Your comment was successfully submitted." } }
+        format.html { redirect_to "#{post_url(@comment.origin)}#post-#{@comment.id}", :flash => { :success => "Your comment was successfully submitted." } }
         format.json { render json: @origin_post }
       else 
         format.html { redirect_to post_path(@origin_post), :flash => { :error => "Something went wrong with your comment. Please try again." } }

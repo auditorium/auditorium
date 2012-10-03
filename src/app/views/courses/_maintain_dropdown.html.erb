@@ -1,13 +1,13 @@
 <div class="btn-group">
 <% if current_user and (current_user.is_course_maintainer?(course) or current_user.admin?) %>
-  <%= link_to content_tag('i', '', :class => 'icon-cog'), '#', :class => 'btn dropdown-toggle', 'data-toggle' => 'dropdown', :rel => 'tooltip', 'data-original-title' => 'maintain the course', :id => 'maintain-course' %>
+  <%= link_to content_tag('i', ' maintain course', :class => 'icon-cog'), '#', :class => 'btn dropdown-toggle', 'data-toggle' => 'dropdown', :rel => 'tooltip', 'data-original-title' => 'maintain the course', :id => 'maintain-course' %>
 
   <ul class="dropdown-menu">
     <li>
       <%= link_to content_tag('span', ' manage users', :class=> 'icon-user'), '#manage-users-modal', 'data-toggle'=>"modal"%>
     </li>
     <li>
-      <%= link_to content_tag('span', ' new semester', :class=> 'icon-plus'), new_course_path(:name => course.name, :lecture_id => course.lecture.id, :description => @course.description, :url => course.url) %>
+      <%= link_to content_tag('span', ' new semester', :class=> 'icon-plus'), new_course_path(:course => course) %>
     </li>
     <li>
       <%= link_to content_tag('span', ' edit course', :class=>'icon-edit'), edit_course_path %>

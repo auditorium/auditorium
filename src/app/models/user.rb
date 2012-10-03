@@ -11,15 +11,15 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
   
   has_many :events, foreign_key: :tutor_id # as tutor
-  has_many :lecture_memberships
-  has_many :course_memberships
-  has_many :faculty_memberships
+  has_many :lecture_memberships, :dependent => :destroy
+  has_many :course_memberships, :dependent => :destroy
+  has_many :faculty_memberships, :dependent => :destroy
   has_many :lectures, :through => :lecture_memberships  # lecture maintainers
   has_many :courses,    :through => :course_memberships  # as student or course-editor (tutor,  professor,  etc.)
   has_many :faculties,  :through => :faculty_memberships
   has_many :posts, :foreign_key => :author_id
   has_many :notifications, :foreign_key => :receiver_id
-  has_one :email_setting
+  has_one :email_setting, :dependent => :destroy
   
   validates_uniqueness_of :email
   validates_uniqueness_of :username
@@ -150,20 +150,16 @@ class User < ActiveRecord::Base
   # in models to map to a nice sign up e-mail.
   def send_on_create_confirmation_instructions
     if self.email.match /tu-dresden.de$/
-      Rails.logger.debug "TU DRESDEN EMAIL! :)"
       send_devise_notification(:confirmation_instructions)
     else
-      Rails.logger.debug "NO TU DRESDEN EMAIl! :("
       false
     end
   end
 
   def send_unlock_instructions
     if self.email.match /tu-dresden.de$/
-      Rails.logger.debug "TU DRESDEN EMAIL! :)"
       send_devise_notification(:confirmation_instructions)
     else
-      Rails.logger.debug "NO TU DRESDEN EMAIl! :("
       false
     end
   end
@@ -178,5 +174,13 @@ class User < ActiveRecord::Base
 
   def rating_minimum
     -6 # todo: customizable in future releases
+  end
+
+  def questions(limit=nil)
+    questions = Post.where(author_id: self.id, post_type: 'question').limit(limit)
+  end
+
+  def answers(limit=nil)
+    answers = Post.where(author_id: self.id, post_type: 'answer').limit(limit)
   end
 end

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <style>
+      body {
+        padding:20px;
+      }
+      p {
+        font-weight:200;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="font-weight:100;">Hello, <%= @user.full_name %></h1>
+    
+    <p>A new course was suggested, because it did not exist before.</p>
+    
+    <b><%= @course.name_with_term %></b>
+    </p>
+      Go to the <%= link_to 'course', @course_url %> and check if you can approve it.  
+    </p>
+
+    <p>Have a great day!</p>
+    <em>The auditorium team</em>
+  </body>
+</html>

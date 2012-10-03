@@ -1,0 +1,1018 @@
+
+---
+chairs:
+  columns:
+  - id
+  - name
+  - institute_id
+  - created_at
+  - updated_at
+  - url
+  records: 
+  - - 1
+    - Databases
+    - 1
+    - 2012-05-29 13:38:59.000000000 Z
+    - 2012-05-29 13:38:59.000000000 Z
+    - 
+  - - 2
+    - Betriebssysteme
+    - 1
+    - 2012-05-29 13:39:06.000000000 Z
+    - 2012-06-19 19:53:52.000000000 Z
+    - http://os.inf.tu-dresden.de
+  - - 3
+    - VLSI Entwurfssysteme
+    - 2
+    - 2012-05-29 13:39:23.000000000 Z
+    - 2012-05-29 13:39:23.000000000 Z
+    - 
+  - - 4
+    - Rechnerarchitektur
+    - 2
+    - 2012-05-29 13:39:34.000000000 Z
+    - 2012-05-29 13:39:34.000000000 Z
+    - 
+  - - 5
+    - Mikrorechner
+    - 2
+    - 2012-05-29 13:39:43.000000000 Z
+    - 2012-05-29 13:39:43.000000000 Z
+    - 
+  - - 6
+    - Softwaretechnik
+    - 4
+    - 2012-05-29 13:39:59.000000000 Z
+    - 2012-05-29 13:39:59.000000000 Z
+    - 
+  - - 7
+    - Algebraische und Logische Grundlagende der Programmierung
+    - 5
+    - 2012-05-29 13:40:34.000000000 Z
+    - 2012-05-29 13:40:34.000000000 Z
+    - 
+  - - 8
+    - Grundlagen der Programmierung
+    - 5
+    - 2012-05-29 13:40:43.000000000 Z
+    - 2012-05-29 13:40:43.000000000 Z
+    - 
+  - - 9
+    - Automaten Theorie
+    - 5
+    - 2012-05-29 13:40:52.000000000 Z
+    - 2012-05-29 13:40:52.000000000 Z
+    - 
+  - - 10
+    - Datenschutz und Datensicherheit
+    - 6
+    - 2012-05-29 13:41:09.000000000 Z
+    - 2012-05-29 13:41:09.000000000 Z
+    - 
+
+---
+course_memberships:
+  columns:
+  - id
+  - user_id
+  - course_id
+  - membership_type
+  - created_at
+  - updated_at
+  - notifyable_id
+  - notifyable_type
+  - receive_emails
+  records: 
+  - - 2
+    - 2
+    - 4
+    - member
+    - 2012-06-16 12:24:25.000000000 Z
+    - 2012-06-16 12:24:25.000000000 Z
+    - 
+    - 
+    - true
+  - - 3
+    - 2
+    - 5
+    - member
+    - 2012-06-17 12:29:43.000000000 Z
+    - 2012-06-17 12:29:43.000000000 Z
+    - 
+    - 
+    - true
+  - - 4
+    - 2
+    - 2
+    - member
+    - 2012-06-19 19:36:30.000000000 Z
+    - 2012-06-19 19:36:30.000000000 Z
+    - 
+    - 
+    - true
+  - - 7
+    - 2
+    - 6
+    - member
+    - 2012-09-22 14:50:58.000000000 Z
+    - 2012-09-22 14:50:58.000000000 Z
+    - 
+    - 
+    - true
+  - - 8
+    - 2
+    - 3
+    - member
+    - 2012-09-23 16:10:16.000000000 Z
+    - 2012-09-23 16:10:16.000000000 Z
+    - 
+    - 
+    - true
+
+---
+courses:
+  columns:
+  - id
+  - name
+  - term_id
+  - lecture_id
+  - description
+  - created_at
+  - updated_at
+  - sws
+  - url
+  - approved
+  - creator_id
+  records: 
+  - - 1
+    - Internet and Web Applications
+    - 1
+    - 1
+    - ! "Die Lehrveranstaltung fuehrt den Hoerer in Prinzipien und Funktionsweisen
+      weit verbreiteter und aktueller Technologien der Anwendungsebene im Internet
+      ein. Ausgehend von der Darstellung fundamentaler Grundlagen verwendeter Protokolle
+      und Interaktionsmechanismen im World Wide Web wird auf deren haeufige Einsatzgebiete
+      eingegangen. Naeher betrachtet werden in diesem Rahmen Technologien, die unter
+      den Begriffen Web 2.0 und HTML5 zusammengefasst sind. Zusaetzlich ist dabei
+      mit dem Semantic Web eine derzeit in der Umsetzung befindliche Erweiterung des
+      klassischen Webs behandelt. Darueber hinaus werden Systeme jenseits des World
+      Wide Webs, wie File Sharing Anwendungen oder Content Distribution Networks,
+      diskutiert. \n# Die Lehrveranstaltung verfolgt damit die Ziele die Hoererschaft
+      in die Lage zu versetzen, aktuelle Entwicklungen auf dem behandelten Gebiet
+      abzuschaetzen und Anregungen fuer weitere Entwicklungen zu geben."
+    - 2012-05-21 09:01:35.000000000 Z
+    - 2012-05-21 09:01:35.000000000 Z
+    - 0
+    - ''
+    - true
+    - 
+  - - 2
+    - Einführung in Datenbank Systeme
+    - 1
+    - 22
+    - ''
+    - 2012-05-29 20:37:40.000000000 Z
+    - 2012-05-29 20:37:40.000000000 Z
+    - 0
+    - ''
+    - true
+    - 
+  - - 3
+    - Einführung in Datenbank Systeme
+    - 2
+    - 22
+    - ''
+    - 2012-05-31 16:08:51.000000000 Z
+    - 2012-05-31 16:08:51.000000000 Z
+    - 0
+    - ''
+    - true
+    - 
+  - - 4
+    - pizza eating group
+    - 1
+    - 8
+    - We read papers to each other and eat pizza.
+    - 2012-06-14 17:48:37.000000000 Z
+    - 2012-06-14 17:48:37.000000000 Z
+    - 0
+    - ''
+    - true
+    - 
+  - - 5
+    - Anonyme und unbeobachtbare Kommunikation
+    - 1
+    - 20
+    - ''
+    - 2012-06-17 12:29:28.000000000 Z
+    - 2012-06-19 18:48:57.000000000 Z
+    - 0
+    - http://www.inf.tu-dresden.de/index.php?node_id=3157&ln=de
+    - true
+    - 
+  - - 6
+    - pizza eating group
+    - 2
+    - 8
+    - ''
+    - 2012-06-19 20:08:55.000000000 Z
+    - 2012-06-19 20:08:55.000000000 Z
+    - 0
+    - ''
+    - true
+    - 
+  - - 7
+    - pizza eating group
+    - 2
+    - 8
+    - ''
+    - 2012-06-19 20:09:11.000000000 Z
+    - 2012-06-19 20:09:11.000000000 Z
+    - 0
+    - ''
+    - true
+    - 
+
+---
+events:
+  columns:
+  - id
+  - event_type
+  - course_id
+  - created_at
+  - updated_at
+  - tutor_id
+  - weekday
+  - beginDate
+  - endDate
+  - week
+  - url
+  - building
+  - room
+  records: 
+  - - 1
+    - lecture
+    - 1
+    - 2012-05-21 09:01:36.000000000 Z
+    - 2012-05-21 09:01:36.000000000 Z
+    - 1
+    - 
+    - 
+    - 
+    - 
+    - ''
+    - ''
+    - ''
+
+---
+faculties:
+  columns:
+  - id
+  - name
+  - created_at
+  - updated_at
+  - url
+  records: 
+  - - 1
+    - Informatik
+    - 2012-05-29 13:33:59.000000000 Z
+    - 2012-05-29 13:33:59.000000000 Z
+    - 
+
+---
+faculty_memberships:
+  columns:
+  - id
+  - user_id
+  - faculty_id
+  - membership_type
+  - created_at
+  - updated_at
+  - notifyable_id
+  - notifyable_type
+  records: 
+  - - 2
+    - 2
+    - 1
+    - student
+    - 2012-06-14 21:51:49.000000000 Z
+    - 2012-06-14 21:51:49.000000000 Z
+    - 
+    - 
+
+---
+institutes:
+  columns:
+  - id
+  - name
+  - faculty_id
+  - created_at
+  - updated_at
+  - url
+  records: 
+  - - 1
+    - Systems Engineering
+    - 1
+    - 2012-05-29 13:34:20.000000000 Z
+    - 2012-05-29 13:34:20.000000000 Z
+    - 
+  - - 2
+    - Technische Informatik
+    - 1
+    - 2012-05-29 13:34:30.000000000 Z
+    - 2012-05-29 13:34:30.000000000 Z
+    - 
+  - - 3
+    - Technische Informatik
+    - 1
+    - 2012-05-29 13:36:27.000000000 Z
+    - 2012-05-29 13:36:27.000000000 Z
+    - 
+  - - 4
+    - Software und Multimedia Technik
+    - 1
+    - 2012-05-29 13:36:37.000000000 Z
+    - 2012-05-29 13:36:37.000000000 Z
+    - 
+  - - 5
+    - Theoretische Informatik
+    - 1
+    - 2012-05-29 13:36:46.000000000 Z
+    - 2012-05-29 13:36:46.000000000 Z
+    - 
+  - - 6
+    - System Architektur
+    - 1
+    - 2012-05-29 13:36:54.000000000 Z
+    - 2012-05-29 13:36:54.000000000 Z
+    - 
+
+---
+lectures:
+  columns:
+  - id
+  - name
+  - chair_id
+  - created_at
+  - updated_at
+  - url
+  - sws
+  - creditpoints
+  - description
+  - maintainer_id
+  records: 
+  - - 1
+    - Internet and Web Applications
+    - 1
+    - 2012-05-29 13:46:55.000000000 Z
+    - 2012-05-29 20:36:39.000000000 Z
+    - ''
+    - 2
+    - 2
+    - ''
+    - 
+  - - 2
+    - Architektur verteilter Informationssysteme
+    - 1
+    - 2012-05-29 13:52:39.000000000 Z
+    - 2012-05-29 13:52:39.000000000 Z
+    - ''
+    - 0
+    - 0
+    - ''
+    - 
+  - - 3
+    - Architektur von DatenbankSystemen
+    - 1
+    - 2012-05-29 13:52:57.000000000 Z
+    - 2012-05-29 13:52:57.000000000 Z
+    - ''
+    - 0
+    - 0
+    - ''
+    - 
+  - - 4
+    - Advanced Systems Programming
+    - 2
+    - 2012-05-29 13:53:13.000000000 Z
+    - 2012-05-29 13:53:13.000000000 Z
+    - ''
+    - 0
+    - 0
+    - ''
+    - 
+  - - 5
+    - microkernel based operating systems
+    - 2
+    - 2012-05-29 13:54:43.000000000 Z
+    - 2012-05-29 13:54:43.000000000 Z
+    - ''
+    - 0
+    - 0
+    - ''
+    - 
+  - - 6
+    - microkernel construction
+    - 2
+    - 2012-05-29 13:54:49.000000000 Z
+    - 2012-05-29 13:54:49.000000000 Z
+    - ''
+    - 0
+    - 0
+    - ''
+    - 
+  - - 7
+    - distributed  operating systems
+    - 2
+    - 2012-05-29 13:55:07.000000000 Z
+    - 2012-05-29 13:55:07.000000000 Z
+    - ''
+    - 0
+    - 0
+    - ''
+    - 
+  - - 8
+    - pizza eating group
+    - 2
+    - 2012-05-29 13:55:31.000000000 Z
+    - 2012-06-19 19:55:37.000000000 Z
+    - http://www.inf.tu-dresden.de/index.php?node_id=1324&ln=en
+    - 0
+    - 0
+    - ''
+    - 
+  - - 9
+    - Computertechnik
+    - 3
+    - 2012-05-29 13:55:47.000000000 Z
+    - 2012-05-29 13:55:47.000000000 Z
+    - ''
+    - 0
+    - 0
+    - ''
+    - 
+  - - 10
+    - Programmierbare Schaltkreise
+    - 3
+    - 2012-05-29 13:55:55.000000000 Z
+    - 2012-05-29 13:55:55.000000000 Z
+    - ''
+    - 0
+    - 0
+    - ''
+    - 
+  - - 11
+    - Rechnerarchitektur 1
+    - 4
+    - 2012-05-29 13:56:08.000000000 Z
+    - 2012-05-29 13:56:08.000000000 Z
+    - ''
+    - 0
+    - 0
+    - ''
+    - 
+  - - 12
+    - Rechnerarchitektur 2
+    - 4
+    - 2012-05-29 13:56:11.000000000 Z
+    - 2012-05-29 13:56:11.000000000 Z
+    - ''
+    - 0
+    - 0
+    - ''
+    - 
+  - - 13
+    - Hardware Praktikum
+    - 4
+    - 2012-05-29 13:56:19.000000000 Z
+    - 2012-05-29 13:56:19.000000000 Z
+    - ''
+    - 0
+    - 0
+    - ''
+    - 
+  - - 14
+    - Softwaretechnik 1
+    - 6
+    - 2012-05-29 13:56:37.000000000 Z
+    - 2012-05-29 13:56:37.000000000 Z
+    - ''
+    - 0
+    - 0
+    - ''
+    - 
+  - - 15
+    - Softwaretechnik 2
+    - 6
+    - 2012-05-29 13:56:40.000000000 Z
+    - 2012-05-29 13:56:40.000000000 Z
+    - ''
+    - 0
+    - 0
+    - ''
+    - 
+  - - 16
+    - Security and Cryptography 1
+    - 10
+    - 2012-05-29 13:57:10.000000000 Z
+    - 2012-05-29 13:57:10.000000000 Z
+    - ''
+    - 0
+    - 0
+    - ''
+    - 
+  - - 17
+    - Security and Cryptography 2
+    - 10
+    - 2012-05-29 13:57:13.000000000 Z
+    - 2012-05-29 13:57:13.000000000 Z
+    - ''
+    - 0
+    - 0
+    - ''
+    - 
+  - - 18
+    - Steganographie und Multimedia-Forensik
+    - 10
+    - 2012-05-29 13:57:29.000000000 Z
+    - 2012-05-29 13:57:29.000000000 Z
+    - ''
+    - 0
+    - 0
+    - ''
+    - 
+  - - 19
+    - Einführung in das Datenschutzrecht
+    - 10
+    - 2012-05-29 13:57:43.000000000 Z
+    - 2012-05-29 13:57:43.000000000 Z
+    - ''
+    - 0
+    - 0
+    - ''
+    - 
+  - - 20
+    - Anonyme und unbeobachtbare Kommunikation
+    - 1
+    - 2012-05-29 13:57:56.000000000 Z
+    - 2012-06-19 18:49:44.000000000 Z
+    - http://www.inf.tu-dresden.de/index.php?node_id=3157&ln=de
+    - 0
+    - 0
+    - ''
+    - 
+  - - 21
+    - Informatik und Gesellschaft
+    - 10
+    - 2012-05-29 13:58:05.000000000 Z
+    - 2012-05-29 13:58:05.000000000 Z
+    - ''
+    - 0
+    - 0
+    - ''
+    - 
+  - - 22
+    - Einführung in Datenbank Systeme
+    - 1
+    - 2012-05-29 20:37:17.000000000 Z
+    - 2012-05-29 20:37:17.000000000 Z
+    - ''
+    - 2
+    - 0
+    - ''
+    - 
+
+---
+periods:
+  columns:
+  - id
+  - weekday
+  - duration
+  - place
+  - created_at
+  - updated_at
+  - event_id
+  - minute_of_day
+  records: 
+  - - 1
+    - thursday
+    - 7
+    - INF/E023
+    - 2012-05-21 09:01:36.000000000 Z
+    - 2012-05-21 09:01:36.000000000 Z
+    - 1
+    - 1000
+
+---
+posts:
+  columns:
+  - id
+  - subject
+  - body
+  - post_type
+  - parent_id
+  - answer_to_id
+  - course_id
+  - created_at
+  - updated_at
+  - author_id
+  - rating
+  - notifyable_id
+  - notifyable_type
+  - needs_review
+  - is_private
+  - last_activity
+  records: 
+  - - 1
+    - Was gibt's zu essen?
+    - Pizza?
+    - question
+    - 
+    - 
+    - 4
+    - 2012-06-14 19:25:20.000000000 Z
+    - 2012-06-19 18:09:32.000000000 Z
+    - 2
+    - 1
+    - 
+    - 
+    - false
+    - false
+    - 
+  - - 2
+    - kein plan
+    - kein plan
+    - answer
+    - 1
+    - 1
+    - 4
+    - 2012-06-14 20:36:22.000000000 Z
+    - 2012-06-14 20:36:22.000000000 Z
+    - 2
+    - 0
+    - 
+    - 
+    - false
+    - false
+    - 
+  - - 3
+    - english please!
+    - english please!
+    - comment
+    - 2
+    - 
+    - 4
+    - 2012-06-14 20:47:25.000000000 Z
+    - 2012-06-14 20:47:25.000000000 Z
+    - 2
+    - 0
+    - 
+    - 
+    - false
+    - false
+    - 
+  - - 4
+    - What kind of pizza do you have?
+    - This comes as a surprise. There is a pizza eating group. But what kind of pizza
+      do you have?
+    - question
+    - 
+    - 
+    - 4
+    - 2012-06-14 20:50:49.000000000 Z
+    - 2012-06-14 20:51:11.000000000 Z
+    - 2
+    - -1
+    - 
+    - 
+    - false
+    - false
+    - 
+  - - 5
+    - This has been asked b
+    - This has been asked before.
+    - answer
+    - 4
+    - 4
+    - 4
+    - 2012-06-14 20:51:08.000000000 Z
+    - 2012-06-14 20:51:12.000000000 Z
+    - 2
+    - -1
+    - 
+    - 
+    - false
+    - false
+    - 
+  - - 6
+    - Was fuer pizza wird es geben?
+    - ! "Ich wüsste gerne was es für Pizza gibt, weil ich nämlich:\r\n* laktoseintollerant\r\n*
+      glutenintollerant\r\n* veganer und\r\n* medieninformatiker\r\n\r\nbin.\r\n\r\nDanke"
+    - question
+    - 
+    - 
+    - 6
+    - 2012-09-22 14:50:58.000000000 Z
+    - 2012-09-22 15:31:05.000000000 Z
+    - 2
+    - 1
+    - 
+    - 
+    - false
+    - false
+    - 2012-09-22 15:31:04.000000000 Z
+  - - 7
+    - you will be surprised
+    - there will be pizza
+    - info
+    - 
+    - 
+    - 6
+    - 2012-09-22 15:07:32.000000000 Z
+    - 2012-09-22 15:07:32.000000000 Z
+    - 2
+    - 0
+    - 
+    - 
+    - false
+    - false
+    - 2012-09-22 15:07:32.000000000 Z
+  - - 8
+    - Ja das interessiert m
+    - Ja das interessiert mich auch, ich bin nämlich inder und esse kein Rindfleisch
+    - comment
+    - 6
+    - 
+    - 6
+    - 2012-09-22 15:30:44.000000000 Z
+    - 2012-09-22 15:30:44.000000000 Z
+    - 2
+    - 0
+    - 
+    - 
+    - false
+    - false
+    - 
+  - - 9
+    - Es gibt quadro stagio
+    - Es gibt quadro stagione
+    - answer
+    - 6
+    - 6
+    - 6
+    - 2012-09-22 15:31:04.000000000 Z
+    - 2012-09-23 16:37:01.000000000 Z
+    - 2
+    - 0
+    - 
+    - 
+    - false
+    - false
+    - 
+  - - 10
+    - Welche Papers sollen wir eigentlich lesen?
+    - ! "Welche Papers sollen wir eigentlich lesen?\r\nUnd, sind die alle auf Englisch?"
+    - question
+    - 
+    - 
+    - 6
+    - 2012-09-22 15:31:57.000000000 Z
+    - 2012-09-22 15:31:57.000000000 Z
+    - 2
+    - 0
+    - 
+    - 
+    - false
+    - false
+    - 2012-09-22 15:31:57.000000000 Z
+  - - 11
+    - Prüfungsvorbereitung
+    - Bin ich eigentlich hier der einzige der gerade lernt?
+    - question
+    - 
+    - 
+    - 5
+    - 2012-09-23 16:08:36.000000000 Z
+    - 2012-09-23 16:08:36.000000000 Z
+    - 2
+    - 0
+    - 
+    - 
+    - false
+    - false
+    - 2012-09-23 16:08:36.000000000 Z
+
+---
+ratings:
+  columns:
+  - id
+  - user_id
+  - post_id
+  - created_at
+  - updated_at
+  - points
+  - notifyable_id
+  - notifyable_type
+  records: 
+  - - 1
+    - 2
+    - 4
+    - 2012-06-14 20:51:11.000000000 Z
+    - 2012-06-14 20:51:11.000000000 Z
+    - -1
+    - 
+    - 
+  - - 2
+    - 2
+    - 5
+    - 2012-06-14 20:51:12.000000000 Z
+    - 2012-06-14 20:51:12.000000000 Z
+    - -1
+    - 
+    - 
+  - - 3
+    - 2
+    - 1
+    - 2012-06-19 18:09:32.000000000 Z
+    - 2012-06-19 18:09:32.000000000 Z
+    - 1
+    - 
+    - 
+  - - 4
+    - 2
+    - 6
+    - 2012-09-22 15:30:11.000000000 Z
+    - 2012-09-22 15:30:11.000000000 Z
+    - 1
+    - 
+    - 
+
+---
+reports:
+  columns:
+  - id
+  - reporter_id
+  - body
+  - read
+  - post_id
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - 2
+    - this is not appropriate
+    - false
+    - 4
+    - 2012-08-26 15:47:20.000000000 Z
+    - 2012-08-26 15:47:20.000000000 Z
+  - - 2
+    - 
+    - 
+    - false
+    - 5
+    - 2012-08-26 17:25:06.000000000 Z
+    - 2012-08-26 17:27:04.000000000 Z
+  - - 3
+    - 2
+    - test
+    - false
+    - 1
+    - 2012-08-26 17:58:17.000000000 Z
+    - 2012-08-26 17:58:17.000000000 Z
+  - - 6
+    - 2
+    - ist doch klar was es gibt, solche dummen fragen sollte man nicht stellen durfen!
+    - true
+    - 1
+    - 2012-08-26 18:13:36.000000000 Z
+    - 2012-08-26 19:33:25.000000000 Z
+
+---
+terms:
+  columns:
+  - id
+  - term_type
+  - beginDate
+  - endDate
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - ws
+    - 2011-10-01
+    - 2012-03-31
+    - 2012-05-21 09:01:35.000000000 Z
+    - 2012-05-21 09:01:35.000000000 Z
+  - - 2
+    - ss
+    - 2012-04-01
+    - 2012-09-30
+    - 2012-05-31 16:06:31.000000000 Z
+    - 2012-05-31 16:06:31.000000000 Z
+  - - 3
+    - ws
+    - 2012-10-01
+    - 2013-03-31
+    - 2012-05-21 09:01:35.000000000 Z
+    - 2012-05-21 09:01:35.000000000 Z
+  - - 4
+    - ss
+    - 2013-04-01
+    - 2013-09-30
+    - 2012-05-31 16:06:31.000000000 Z
+    - 2012-05-31 16:06:31.000000000 Z
+  - - 5
+    - ws
+    - 2012-10-22
+    - 2013-04-03
+    - 2012-09-22 13:45:58.000000000 Z
+    - 2012-09-22 13:46:10.000000000 Z
+
+---
+users:
+  columns:
+  - id
+  - username
+  - email
+  - encrypted_password
+  - reset_password_token
+  - reset_password_sent_at
+  - remember_created_at
+  - confirmation_token
+  - confirmed_at
+  - confirmation_sent_at
+  - unconfirmed_email
+  - created_at
+  - updated_at
+  - admin
+  - first_name
+  - last_name
+  - title
+  - website
+  - notification_id
+  - alternative_email
+  - score
+  records: 
+  - - 1
+    - Tutor1
+    - tutor@tu-dresden.de
+    - $2a$10$5OILidN77K2mgRnB3Xsji.YbrTZnL41oALGX4foRcLDVBxeMgAXB6
+    - 
+    - 
+    - 
+    - 
+    - 2012-08-26 19:38:49.000000000 Z
+    - 
+    - 
+    - 2012-05-29 13:28:48.000000000 Z
+    - 2012-08-26 19:38:49.000000000 Z
+    - false
+    - Tutor
+    - Dach
+    - ''
+    - 
+    - 
+    - 
+    - 0
+  - - 2
+    - hoodie
+    - hendrik@hoodie.de
+    - $2a$10$wTcQr4nmJelpEwifB3ogvOZLkXf2Wua23hi7HiR/P31RKT5NQzrcq
+    - 
+    - 
+    - 
+    - 
+    - 2012-08-26 14:50:04.000000000 Z
+    - 
+    - 
+    - 2012-05-29 13:59:32.000000000 Z
+    - 2012-09-22 13:45:35.000000000 Z
+    - true
+    - Hendrik
+    - Sollich
+    - ''
+    - 
+    - 
+    - 
+    - 0
+  - - 3
+    - sn3ek
+    - Lars.Beier@mailbox.tu-dresden.de
+    - $2a$10$u7lSjIcqeoKBaFxLLtEY3OzzVMwaRuPB3mFXUM4Hwsq8wsI/xW//q
+    - 
+    - 
+    - 
+    - 
+    - 2012-08-26 19:38:42.000000000 Z
+    - 
+    - 
+    - 2012-05-29 13:59:32.000000000 Z
+    - 2012-08-26 19:38:42.000000000 Z
+    - true
+    - Lars
+    - Beier
+    - ''
+    - 
+    - 
+    - 
+    - 0

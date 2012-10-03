@@ -1,16 +1,25 @@
 <div id='ask_question'>
-  <div class="center span8">
-    <h2>You need help? Ask a question.</h2>
-  <%= render :partial => 'posts/form', :locals => { :post => Post.new }%>
+  <div class="center">
+    
+    <div id="question_form">
+      <div class="row center span8"> <h2>The course is over and you still have a question?</h2></div>
+      <%= render :partial => 'posts/form', :locals => { :post => Post.new }%>
+    </div>
   </div>
 </div>
 
-<div id="activity">
+<section id="activity">
   <div class="center span8">
-    <h2><%=t :recent_activity %></h2>
+    <h2>Recent activity
+      <%= link_to 'Ask a question', '#', class: 'btn btn-primary', id: 'show_question_form' %>
+      <small><%= link_to content_tag('span', ' filter activity stream', class: 'icon-tags'), '#', class: 'btn btn-link pull-right', :id => 'filter' %></small>
+    </h2>
+
+    <%= render 'posts/filter_box' %>
+	  
     <%= render :partial => 'posts/posts_stream'%>
 
-    <%= paginate @posts %>
+    <%= paginate @posts %>Still can't find your question? <%= link_to "Submit your question.", '#', id: 'show_question_form' %>
   </div>
-</div>
+</section>
 

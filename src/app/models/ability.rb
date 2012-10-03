@@ -22,9 +22,17 @@ class Ability
       can :moderate, User, user.is_admin?
 
       can :create,   Post
-      can :update,   Post, :author_id => user.id
+      
+      can :update,   Post do |post|
+        post.author_id == user.id or post.course.moderators.include? user or post.course.editors.include? user
+      end
+      
+      cannot :read, Post do |post|
+          post.origin.is_private? and !(post.author_id == user.id or post.course.moderators.include? user or post.course.editors.include? user)
+      end
+
       can :destroy,  Post do |post|
-        post.origin.author == user
+        post.author_id == user.id or post.course.moderators.include? user or post.course.editors.include? user
       end
 
       can :comment,  Post
@@ -50,6 +58,7 @@ class Ability
 
       #can :follow, Course do |course| course.faculty.id == user.faculty_id end
 
+      can :create, Course
       can :follow, Course
       can :follow, Lecture
       can :follow, Faculty
@@ -62,6 +71,10 @@ class Ability
         user.is_course_maintainer? course
       end
 
+      cannot :approve, Course
+
+      can :create, Feedback
+      cannot :manage, Feedback
     else # Gäste
       cannot :read, :all
     end
@@ -70,10 +83,13 @@ class Ability
       can :manage, :all
       can :destroy, :all
       can :read, :all #if user.confirmed?
+      can :update, :all
 
       can :rate,     Post do |post|
         user.id != post.author.id
       end
+
+      can :manage, Feedback
     end
 
 

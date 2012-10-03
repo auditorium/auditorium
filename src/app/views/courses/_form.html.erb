@@ -1,45 +1,64 @@
-
-<div class="row-fluid">
-<%= form_for(@course) do |f| %>
-  <% if @course.errors.any? %>
-    <div class="alert alert-error">
-      <h3><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved!</h3>
-
-      <ul>
-      <% @course.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <div class="fields">
-    <%= f.label :name %>
-    <%= f.text_field :name, :placeholder => "Name of course..." %>
-  </div>
-
-  <div class="fields">
-    <%= f.label :description %>
-    <%= f.text_area :description, :rows => 4 %>
-  </div>
-
-  <div class="fields">
-    <%= f.label :url %>
-    <%= f.text_field :url, 'data-provide' => "typeahead", 'data-source' => "#{Course.all.map{ |c| c.url }}", :placeholder => "Name of course..." %>
-  </div>
-
-  <div class="fields">
-    <%= f.label :term_id %>
-    <%= f.select :term_id, options_from_collection_for_select(Term.all, :id, :code, Term.last) %>
-  </div>
-
-  <div class="fields">
-    <%= f.label :lecture_id %>
-    <%= f.select :lecture_id, options_from_collection_for_select(Lecture.all, :id, :name, @course.lecture_id) %>
-  </div>
-
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<% if @course.errors.any? %>
+<div class="alert alert-error">
+  Something went wrong
+  <dl>
+    <% @course.errors.full_messages.each do |msg| %>
+    <dd><%= msg %></dd>
+    <% end %>
+  </dl>
+</div>
 <% end %>
+
+<div class="row">
+  <div class="well span8">
+    <%= form_for (@course), :class => 'form-horizontal', :remote => false do |f| %>
+      <div class="control-group">
+      <% if signed_in? %>
+        <div class="controls">
+          <label for="name" class="accessibility"> name of course </label>
+          <%= f.text_field :name, :placeholder => "Name the course...", :class => "span8", :id => 'new_course_name' %>
+          
+          <label for="description" class="accessibility"> description </label>
+          
+          <%= f.text_area :description, :placeholder => "Add a description to the course...", :class => "span8", :id => "description", :size => '10x8' %>
+          <p class='hint'><b>Hint:</b> You can use <%= link_to 'Markdown', 'http://daringfireball.net/projects/markdown' %> for rich text. Here you can find a <%= link_to 'Markdown reference', 'http://daringfireball.net/projects/markdown/' %> (by John Gruber).</p>
+
+            <label for="url" class="accessibility"> url from course </label>
+          <%= f.url_field :url, :placeholder => "Add url from course", :class => "span8" %>
+
+          <label for="lecture_name" class="accessibility backward_compatability" id='label_lecture_select'>lecture</label>
+          <%= f.hidden_field :lecture_id, :value => (params[:lecture_id] || @course.lecture_id), :class => 'backward_compatability', 'style' => 'display:none' %>
+          <%  @lecture_name = @course.lecture.name if !@course.nil? && !@course.lecture.nil? %>
+          <%= text_field_tag :lecture_name, @lecture_name , :placeholder => 'If available, select lecture...', :class => 'span8 backward_compatability', 'style' => 'display:none' %>
+
+          <!-- for backward compatibility a select -->   
+          <label for="lecture_select" class="accessibility" id='label_lecture_select'>lecture</label>
+          <%= f.select(:lecture_id, options_from_collection_for_select(Lecture.order('name ASC').select("id, name"), :id, :name, params[:lecture_id] || @course.lecture_id), { include_blank: '-- please select a lecture --'}, {:id=>"lecture_select",:class => 'span8'}) %>
+
+          <label for="term_id" class="accessibility"> term </label>
+            <%= f.select :term_id, options_from_collection_for_select(Term.all, :id, :code, @course.term_id), :class => 'span8', :id => 'term_id' %>
+        </div>
+          <% if params[:action].eql? 'edit' %>
+            <%= f.submit "Update course", { :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>
+            <%= link_to "Cancel", course_path(@course), class: 'btn btn-large' %> 
+          <% else %>
+            
+            <%= f.submit "Submit course", { :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>
+            <%= link_to "Cancel", courses_path, class: 'btn btn-large' %>
+            <% if !current_user.is_admin? %>
+              <p class="hint">Your suggested course can be used immediately. Our moderators will check this course for approval.</p>
+            <% end %>
+          <% end %>
+ 
+
+      <% else %>
+        <!-- not signed in -->
+        <div class='controls center'>
+          <%= link_to 'Sign in to suggest a course', '/users/sign_in', :class => 'btn btn-large btn-primary' %>
+          <p class="help-block"><%= link_to 'Not an account yet? Sign up.', '/users/sign_up'%></p>
+        </div>
+      <% end %>
+      </div>
+    <% end %> <!-- end form -->
+  </div> 
 </div>

@@ -3,9 +3,11 @@
   <dt><%= pluralize(maintainers.count, 'maintainer') %></dt>
   <dd>
     <% maintainers.each do |maintainer| %>
-      <%= maintainer.user.full_name %>
-      <% unless maintainers.last == maintainer %>
-      <%= ", " %>  
+      <% if !maintainer.user.nil? %>
+        <%= maintainer.user.full_name %>
+        <% unless maintainers.last == maintainer %>
+        <%= ", " %>  
+        <% end %>
       <% end %>
     <% end %>
     
@@ -16,9 +18,11 @@
   <dt><%= pluralize(editors.count, 'editor') %></dt>
   <dd>
     <% editors.each do |editor| %>
-      <%= editor.user.full_name %>
-      <% unless editors.last == editor %>
-      <%= ", " %>  
+      <% if !editor.user.nil? %>
+        <%= editor.user.full_name %>
+        <% unless editors.last == editor %>
+        <%= ", " %>  
+        <% end %>
       <% end %>
     <% end %>
     
