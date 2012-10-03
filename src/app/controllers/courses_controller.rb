@@ -147,18 +147,18 @@ class CoursesController < ApplicationController
       if params['follow']
         if course_membership.save!
           format.js { }
-          format.html { redirect_to redirect_url, :flash => {:success => 'Du folgst nun dem Kurs und wirst informiert, wenn es Neuigkeiten gibt!' } }
+          format.html { redirect_to redirect_url, :flash => {:success => 'You have subscribed to this course. Now you will receive notificatons on updates.' } }
           format.json { render json: course, status: :following, location: course }
         else
-          format.html { redirect_to redirect_url, :flash => {:alert => 'Es ist ein Fehler aufgetreten, bitte versuche es noch einmal.' }}
+          format.html { redirect_to redirect_url, :flash => {:alert => 'Something went wrong. Try again later.' }}
           format.json { render json: course.errors, status: :unprocessable_entity }
         end
       elsif params['unfollow']
         format.js { }
-        format.html { redirect_to redirect_url, :flash => {:success => 'Du wurdes erfolgreich aus dem Kurs ausgetragen.' } }
+        format.html { redirect_to redirect_url, :flash => {:success => 'You have successfully unsubscribed to this course. You will no longer receive notifications on updates.' } }
         format.json { render json: course, status: :following, location: course }
       else
-        format.html { redirect_to redirect_url, :flash => {:alert => 'Es ist ein Fehler aufgetreten, bitte versuche es noch einmal.' }}
+        format.html { redirect_to redirect_url, :flash => {:alert => 'Something went wrong. Try again later.' }}
         format.json { render json: course.errors, status: :unprocessable_entity }
       end
       

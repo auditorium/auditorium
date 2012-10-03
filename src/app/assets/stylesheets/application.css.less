@@ -329,11 +329,49 @@ div.follow-button {
 
 
 /* post */
-.info-title      { padding:0 5px; background: @yellow; color: @white; }
-.info-title a    { color: @white; display:block; text-decoration:none;}
-.question-title  { padding:0 5px;  }
-.question-title a{  display:block; text-decoration:none;}
-.question-details{ border-left: 1px dashed @blue; padding-left:5px;}
+a.remove-cross {
+  color: @grayLight;
+
+  &:hover {
+    color: @gray;
+    text-decoration: none;
+  }
+}
+
+dl.info, dl.question {
+  margin:10px 0;
+  padding:0;
+}
+
+.info-title      { 
+  padding:0 5px; 
+  background: lighten(@yellow, 10%); 
+  color: @white; 
+}
+
+.info-title a    { 
+  color: @white; 
+  display:block; 
+  text-decoration:none;
+}
+
+.info-details, .question-details { 
+  border-left: 1px solid lighten(@gray, 30%); 
+  margin:0 5px;
+  padding:5px 5px 2px 5px;
+}
+
+.question-title  { 
+  padding:0 5px; 
+  background: lighten(@gray, 30%); 
+  color: @white; 
+}
+
+.question-title a { 
+  color: @white; 
+  display:block; 
+  text-decoration:none;
+}
 
 
 .post-badge {

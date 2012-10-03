@@ -6,14 +6,8 @@
   # info and question details
 jQuery ->
 
-  $(".remove-cross").click ->
-    if confirm "do you want to unsubscribe \"#{$(this).data('name')}\""
-      $("#well-#{$(this).data('id')}").hide  -> alert('happened')
-    else
-      return false
-
-
-
+  $('a.remove-cross').hover ->
+    $('a.remove-cross').tooltip('show')
 
   $(".question-details").hide()
   $(".info-details").hide()

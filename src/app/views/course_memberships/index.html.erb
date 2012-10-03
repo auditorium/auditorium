@@ -12,7 +12,7 @@
           <div class="well-small"> 
 
             <div class="subtle pull-right">
-              <%= link_to "#{course_path(course)}/unfollow", :class => "icon-remove remove-cross btn btn-mini btn-link", 'data-id' => "#{course.id}", 'data-name' => "#{course.name}"  do %>
+              <%= link_to "#{course_path(course)}/unfollow", 'data-placement' => 'right', :title => 'Click to unsubscribe.',:rel => "tooltip", :class => "icon-remove remove-cross btn btn-mini btn-link", 'data-id' => "#{course.id}", 'data-name' => "#{course.name}", :data => { :confirm => "Are you sure that you want to unsubscribe to #{course.name_with_term}?" }  do %>
               <% end %>
             </div>
 
@@ -20,7 +20,7 @@
 
 
             <% if course.infos.count > 0  %>
-              <dl>
+              <dl class="info">
                 <dt class="info-title">
                 <a href="#" class="info" data-id="<%= course.id%>" data-type="info">
                   <i class="chevron icon-chevron-right"></i>
@@ -34,7 +34,7 @@
                     <% course.infos.first(4).each do |info| %>
 
                       <li>
-                      <span class="hidden-phone-tight post-date pull-right"> <%= "#{distance_of_time_in_words(Time.now, info.created_at)}" %> </span>
+                      <span class="hidden-phone-tight post-date pull-right"> <%= "#{distance_of_time_in_words(Time.now, info.created_at)} ago" %> </span>
                       <strong> <%= link_to "#{info.subject}", info %> </strong> <br/>
                       </li>
 
@@ -50,11 +50,11 @@
               <% end %>
 
 
-              <dl>
+              <dl class="question">
                 <dt class="question-title"> 
                 <a href="#" class="question" data-id="<%= course.id%>" data-type="question">
                   <i class="chevron icon-chevron-right"></i>
-                  <span class="dont-pull-right"><%= pluralize(course.questions.count, 'question') %></span>
+                  <span class="pull-right"><%= pluralize(course.questions.count, 'question') %></span>
                 </a>
                 </dt>
 
