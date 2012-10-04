@@ -485,6 +485,70 @@
        y1="259.11307"
        x2="386.80695"
        y2="259.11307" />
+    <filter
+       id="filter3478"
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Drop Shadow">
+      <feFlood
+         id="feFlood3480"
+         flood-opacity="0.2"
+         flood-color="rgb(0,0,0)"
+         result="flood" />
+      <feComposite
+         id="feComposite3482"
+         in2="SourceGraphic"
+         in="flood"
+         operator="in"
+         result="composite1" />
+      <feGaussianBlur
+         id="feGaussianBlur3484"
+         in="composite"
+         stdDeviation="3.3"
+         result="blur" />
+      <feOffset
+         id="feOffset3486"
+         dx="8.7"
+         dy="8.2"
+         result="offset" />
+      <feComposite
+         id="feComposite3488"
+         in2="offset"
+         in="SourceGraphic"
+         operator="over"
+         result="composite2" />
+    </filter>
+    <filter
+       id="filter3490"
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Drop Shadow">
+      <feFlood
+         id="feFlood3492"
+         flood-opacity="0.2"
+         flood-color="rgb(0,0,0)"
+         result="flood" />
+      <feComposite
+         id="feComposite3494"
+         in2="SourceGraphic"
+         in="flood"
+         operator="in"
+         result="composite1" />
+      <feGaussianBlur
+         id="feGaussianBlur3496"
+         in="composite"
+         stdDeviation="3.3"
+         result="blur" />
+      <feOffset
+         id="feOffset3498"
+         dx="8.7"
+         dy="8.2"
+         result="offset" />
+      <feComposite
+         id="feComposite3500"
+         in2="offset"
+         in="SourceGraphic"
+         operator="over"
+         result="composite2" />
+    </filter>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -494,10 +558,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.57375002"
-     inkscape:cx="192.79794"
-     inkscape:cy="650.744"
+     inkscape:cx="471.66503"
+     inkscape:cy="683.85947"
      inkscape:document-units="px"
-     inkscape:current-layer="layer3"
+     inkscape:current-layer="layer4"
      showgrid="false"
      inkscape:window-width="1280"
      inkscape:window-height="762"
@@ -1172,7 +1236,6 @@
      inkscape:groupmode="layer"
      id="layer4"
      inkscape:label="Teaser"
-     sodipodi:insensitive="true"
      style="display:inline">
     <g
        style="display:inline"
@@ -1181,14 +1244,52 @@
       <g
          transform="translate(-2.250409,0)"
          id="g3217-4">
-        <flowRoot
+        <g
            transform="matrix(2.3635062,0,0,2.3635062,349.89434,1124.5413)"
-           xml:space="preserve"
            style="font-size:61.63337708px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Josefin Sans Std;-inkscape-font-specification:Josefin Sans Std Light"
-           id="flowRoot6070-0-6-8-6-6-6"><flowRegion
-             id="flowRegion6072-6-5-9-1-4-94" /><flowPara
-             id="flowPara6310-9-8-6-1-7"
-             style="font-size:61.63337708px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;font-family:Caviar Dreams;-inkscape-font-specification:Caviar Dreams Bold">auditorium</flowPara></flowRoot>        <flowRoot
+           id="flowRoot6070-0-6-8-6-6-6">
+          <path
+             d="M 8.3963438,-3.8821805 C 5.3066445,-6.9718676 3.761799,-10.713604 3.7618028,-15.1074 c -3.8e-6,-4.393766 1.5348102,-8.125471 4.6044466,-11.195125 3.0896826,-3.089665 6.8314186,-4.63451 11.2252196,-4.634541 4.474013,3.1e-5 8.376253,1.645191 11.70673,4.935485 l 0,-2.467743 3.821992,0 0,28.469324 -3.821992,0 0,-4.1831247 c -3.370603,3.33045025 -7.272842,4.99567329 -11.70673,4.9956741 -4.353675,-8.1e-7 -8.08538,-1.56490921 -11.1951252,-4.6947299 M 7.7041721,-15.1074 c -7.7e-6,3.330461 1.1736736,6.1493026 3.5210479,8.4565326 2.387477,2.3072434 5.176224,3.4608618 8.366249,3.4608586 3.250175,3.2e-6 6.069016,-1.1536152 8.456533,-3.4608586 1.765509,-1.8056568 2.848907,-3.8219816 3.250197,-6.0489786 l 0,-4.815108 c -0.40129,-2.226967 -1.484688,-4.213197 -3.250197,-5.958695 -2.347391,-2.34734 -5.166232,-3.521021 -8.456533,-3.521048 -3.250214,2.7e-5 -6.048992,1.173708 -8.396344,3.521048 -2.3273107,2.327323 -3.4909606,5.11607 -3.4909529,8.366249"
+             style="font-weight:bold;line-height:125%;fill:#000000;font-family:Caviar Dreams;-inkscape-font-specification:Caviar Dreams Bold"
+             id="path3503" />
+          <path
+             d="m 44.118423,-10.894181 0,-17.635331 3.791897,0 0,17.364481 c -8e-6,2.1266818 0.782446,3.9423768 2.347365,5.4470907 1.524772,1.5247883 3.440782,2.2771481 5.748035,2.2570817 2.046402,3.5e-6 3.852066,-0.7322934 5.416996,-2.1968928 1.564886,-1.484651 2.347341,-3.320409 2.347365,-5.5072796 l 0,-17.364481 3.821991,0 0,17.635331 c -0.04015,3.2100795 -1.153646,5.8985119 -3.340481,8.0653053 -2.126695,2.12667321 -4.875316,3.19000841 -8.245871,3.19000877 -3.571218,-3.6e-7 -6.430185,-1.06333556 -8.576911,-3.19000877 -2.166804,-2.1667934 -3.270265,-4.8552258 -3.310386,-8.0653053"
+             style="font-weight:bold;line-height:125%;fill:#000000;font-family:Caviar Dreams;-inkscape-font-specification:Caviar Dreams Bold"
+             id="path3505" />
+          <path
+             d="M 80.382199,-3.8821805 C 77.2925,-6.9718676 75.747654,-10.713604 75.747658,-15.1074 c -4e-6,-4.393766 1.53481,-8.125471 4.604447,-11.195125 3.089682,-3.089665 6.831418,-4.63451 11.225219,-4.634541 4.474013,3.1e-5 8.376253,1.645191 11.706726,4.935485 l 0,-19.621563 3.822,0 0,45.623144 -3.822,0 0,-4.1831247 c -3.370599,3.33045025 -7.272838,4.99567329 -11.706726,4.9956741 -4.353675,-8.1e-7 -8.08538,-1.56490921 -11.195125,-4.6947299 M 79.690027,-15.1074 c -7e-6,3.330461 1.173674,6.1493026 3.521048,8.4565326 2.387477,2.3072434 5.176224,3.4608618 8.366249,3.4608586 3.250175,3.2e-6 6.069016,-1.1536152 8.456536,-3.4608586 1.76551,-1.8056568 2.8489,-3.8219816 3.25019,-6.0489786 l 0,-4.815108 c -0.40129,-2.226967 -1.48468,-4.213197 -3.25019,-5.958695 -2.347394,-2.34734 -5.166235,-3.521021 -8.456536,-3.521048 -3.250214,2.7e-5 -6.048992,1.173708 -8.396344,3.521048 -2.327311,2.327323 -3.49096,5.11607 -3.490953,8.366249"
+             style="font-weight:bold;line-height:125%;fill:#000000;font-family:Caviar Dreams;-inkscape-font-specification:Caviar Dreams Bold"
+             id="path3507" />
+          <path
+             d="m 116.25475,-32.772826 c -0.60189,-0.621918 -0.90283,-1.364246 -0.90283,-2.226987 0,-0.862671 0.30094,-1.605 0.90283,-2.226988 0.62195,-0.621913 1.36428,-0.932888 2.22699,-0.932927 0.8627,3.9e-5 1.60503,0.311014 2.22699,0.932927 0.66207,0.662114 0.9931,1.404443 0.99311,2.226988 -1e-5,0.822615 -0.33104,1.554912 -0.99311,2.196893 -0.62196,0.621983 -1.36429,0.932959 -2.22699,0.932927 -0.86271,3.2e-5 -1.60504,-0.300912 -2.22699,-0.902833 M 116.58579,0 l 0,-28.469324 3.82199,0 0,28.469324 -3.82199,0"
+             style="font-weight:bold;line-height:125%;fill:#000000;font-family:Caviar Dreams;-inkscape-font-specification:Caviar Dreams Bold"
+             id="path3509" />
+          <path
+             d="m 128.14205,-24.707521 0,-3.761803 5.53738,0 0,-11.586352 3.82199,0 0,11.586352 5.56747,0 0,3.761803 -5.56747,0 0,24.707521 -3.82199,0 0,-24.707521 -5.53738,0"
+             style="font-weight:bold;line-height:125%;fill:#000000;font-family:Caviar Dreams;-inkscape-font-specification:Caviar Dreams Bold"
+             id="path3511" />
+          <path
+             d="m 153.00004,-3.8821805 c -3.0897,-3.0896871 -4.63455,-6.8314235 -4.63454,-11.2252195 -1e-5,-4.393766 1.53481,-8.125471 4.60444,-11.195125 3.08969,-3.089665 6.83142,-4.63451 11.22522,-4.634541 4.41383,3.1e-5 8.15556,1.544876 11.22522,4.634541 3.12979,3.129843 4.6947,6.871579 4.69473,11.225219 -3e-5,4.333608 -1.56494,8.0653126 -4.69473,11.1951255 -3.10978,3.12982069 -6.85152,4.69472909 -11.22522,4.6947299 -4.35367,-8.1e-7 -8.08538,-1.56490921 -11.19512,-4.6947299 M 152.30787,-15.1074 c -1e-5,3.330461 1.17367,6.1493026 3.52104,8.4565326 2.38748,2.3072434 5.17623,3.4608618 8.36625,3.4608586 3.25018,3.2e-6 6.06902,-1.1536152 8.45653,-3.4608586 2.34734,-2.30723 3.52102,-5.1260716 3.52105,-8.4565326 -3e-5,-3.250179 -1.17371,-6.038926 -3.52105,-8.366249 -2.34739,-2.34734 -5.16623,-3.521021 -8.45653,-3.521048 -3.25021,2.7e-5 -6.04899,1.173708 -8.39634,3.521048 -2.32731,2.327323 -3.49096,5.11607 -3.49095,8.366249"
+             style="font-weight:bold;line-height:125%;fill:#000000;font-family:Caviar Dreams;-inkscape-font-specification:Caviar Dreams Bold"
+             id="path3513" />
+          <path
+             d="m 187.2475,0 0,-28.469324 3.7919,0 0,3.460859 c 2.78874,-2.668344 5.6477,-4.072749 8.57691,-4.213219 l 0,4.062747 c -1.76556,0.04015 -3.45084,0.862731 -5.05586,2.467743 -2.30725,2.307259 -3.48093,4.98566 -3.52105,8.03521 l 0,14.655984 -3.7919,0"
+             style="font-weight:bold;line-height:125%;fill:#000000;font-family:Caviar Dreams;-inkscape-font-specification:Caviar Dreams Bold"
+             id="path3515" />
+          <path
+             d="m 205.81576,-32.772826 c -0.60189,-0.621918 -0.90284,-1.364246 -0.90283,-2.226987 -10e-6,-0.862671 0.30094,-1.605 0.90283,-2.226988 0.62194,-0.621913 1.36427,-0.932888 2.22699,-0.932927 0.86269,3.9e-5 1.60502,0.311014 2.22698,0.932927 0.66207,0.662114 0.99311,1.404443 0.99312,2.226988 -10e-6,0.822615 -0.33105,1.554912 -0.99312,2.196893 -0.62196,0.621983 -1.36429,0.932959 -2.22698,0.932927 -0.86272,3.2e-5 -1.60505,-0.300912 -2.22699,-0.902833 M 206.1468,0 l 0,-28.469324 3.82199,0 0,28.469324 -3.82199,0"
+             style="font-weight:bold;line-height:125%;fill:#000000;font-family:Caviar Dreams;-inkscape-font-specification:Caviar Dreams Bold"
+             id="path3517" />
+          <path
+             d="m 219.50872,-10.894181 0,-17.635331 3.79189,0 0,17.364481 c -1e-5,2.1266818 0.78245,3.9423768 2.34737,5.4470907 1.52477,1.5247883 3.44078,2.2771481 5.74803,2.2570817 2.04641,3.5e-6 3.85207,-0.7322934 5.417,-2.1968928 1.56489,-1.484651 2.34734,-3.320409 2.34736,-5.5072796 l 0,-17.364481 3.822,0 0,17.635331 c -0.0402,3.2100795 -1.15365,5.8985119 -3.34049,8.0653053 -2.12669,2.12667321 -4.87531,3.19000841 -8.24587,3.19000877 -3.57121,-3.6e-7 -6.43018,-1.06333556 -8.57691,-3.19000877 -2.1668,-2.1667934 -3.27026,-4.8552258 -3.31038,-8.0653053"
+             style="font-weight:bold;line-height:125%;fill:#000000;font-family:Caviar Dreams;-inkscape-font-specification:Caviar Dreams Bold"
+             id="path3519" />
+          <path
+             d="m 251.89032,0 0,-28.469324 3.7919,0 0,-0.300944 c 0.90282,-0.902803 2.54798,-1.354219 4.93549,-1.354249 2.38747,3e-5 4.44392,0.862736 6.16935,2.588121 l 0.63198,0.601888 0.66208,-0.601888 c 1.72539,-1.725385 3.78184,-2.588091 6.16936,-2.588121 2.46771,3e-5 4.52416,0.862736 6.16936,2.588121 1.68525,1.685313 2.54795,3.631417 2.58812,5.838317 l 0,21.698079 -3.822,0 0,-22.299967 c -0.0803,-0.862684 -0.55176,-1.705327 -1.41443,-2.527931 -0.98312,-0.983059 -2.1568,-1.474601 -3.52105,-1.474627 -1.32418,2.6e-5 -2.4778,0.491568 -3.46086,1.474627 -0.98311,0.983108 -1.47465,2.166821 -1.47463,3.551141 l 0,21.276757 -3.82199,0 0,-22.299967 c -0.0803,-0.822558 -0.55175,-1.665201 -1.41444,-2.527931 -0.9831,-0.983059 -2.13671,-1.474601 -3.46085,-1.474627 -1.3643,2.6e-5 -2.50788,0.491568 -3.43077,1.474627 -0.86271,0.782479 -1.36429,1.785625 -1.50472,3.009442 l 0,21.818456 -3.7919,0"
+             style="font-weight:bold;line-height:125%;fill:#000000;font-family:Caviar Dreams;-inkscape-font-specification:Caviar Dreams Bold"
+             id="path3521" />
+        </g>
+        <flowRoot
            xml:space="preserve"
            style="font-size:45px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#4d4d4d;fill-opacity:1;stroke:none;display:inline;font-family:Quicksand;-inkscape-font-specification:Quicksand"
            id="flowRoot6663-0"
@@ -1201,7 +1302,7 @@
                width="1052.3622"
                height="1488.189" /></flowRegion><flowPara
              style="font-size:45px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:125%;writing-mode:lr-tb;text-anchor:end;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz"
-             id="flowPara6669-8">…ist für Studenten, Dozenten und Tutoren, um sich vorlesungsbezogen miteinander auszutauschen.</flowPara><flowPara
+             id="flowPara6669-8">…für Studenten, Dozenten und Tutoren, um sich vorlesungsbezogen miteinander auszutauschen.</flowPara><flowPara
              style="font-size:45px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz"
              id="flowPara3209-0" /><flowPara
              style="font-size:49.89516449px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#1a1a1a;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz Bold"
@@ -1234,5 +1335,29 @@
              y="1436.9099">http://auditorium.inf.tu-dresden.de/</tspan></text>
       </g>
     </g>
+    <text
+       xml:space="preserve"
+       style="font-size:84.52428435999999579px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz;filter:url(#filter3490)"
+       x="-60.813442"
+       y="610.24377"
+       id="text3284"
+       sodipodi:linespacing="125%"
+       transform="matrix(0.98587718,-0.16746993,0.16746993,0.98587718,0,0)"><tspan
+         sodipodi:role="line"
+         id="tspan3286"
+         x="-60.813442"
+         y="610.24377">Hast du Fragen zu deinen Vorlesungen?</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:110.33672332999999810px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Yanone Kaffeesatz;-inkscape-font-specification:Yanone Kaffeesatz;filter:url(#filter3478)"
+       x="209.19763"
+       y="736.33936"
+       id="text3284-0"
+       sodipodi:linespacing="125%"
+       transform="matrix(0.9915116,0.13001829,-0.13001829,0.9915116,0,0)"><tspan
+         sodipodi:role="line"
+         id="tspan3286-3"
+         x="209.19763"
+         y="736.33936">Hast du gute Antworten?</tspan></text>
   </g>
 </svg>
