@@ -3,7 +3,7 @@
 // You can use Less here: http://lesscss.org/
 @import 'variables';
 #feedback { 
-	height: 104px; 
+	height: 100px; 
 	width: 104px; 
 	position: fixed; 
 	top: 40%; 
@@ -16,19 +16,19 @@
 }
 
 #feedback a { 
-	display: block; 
 	background: lighten(@red, 5%); 
 	height: 15px; 
 	width: 70px; 
-	padding: 8px 16px;
+	padding: 5px 16px;
 	color: #fff; 
 	font-family: Arial, sans-serif; 
 	font-size: 17px; 
 	font-weight: bold; 
-	text-decoration: none; 
-	border-bottom: solid 1px @grayLight; 
-	border-left: solid 1px @grayLight; 
-	border-right: solid 1px @white;
+  align: center;
+	text-decoration:   none;
+	border-bottom:     solid   1px   @grayLight;
+	border-left:       solid   1px   @grayLight;
+	border-right:      solid   1px   @white;
 }
 
 #feedback a:hover { 
