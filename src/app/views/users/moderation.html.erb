@@ -4,6 +4,7 @@
 	<thead>
 		<tr>
 			<th>Confirmed?</th>
+			<th>ID</th>
 			<th>Username</th>
 			<th>Email</th>
 			<th>Created</th>
@@ -23,14 +24,15 @@
 				<% else %>
 				<td><span class="icon-ok"></span></td>
 				<% end %>
+				<td><%= user.id %></td>
 				<td>
 					<% if user.admin? %>
 					<i class="icon-certificate" title='Admin of auditorium' rel="tooltip" style="cursor:pointer;"></i>
 					<% end %>
 					<% if user.username %>
-          <b><%= user.username %></b>
+          <b><%=link_to user.username, user %></b>
           <% else %>
-            <b><%= user.email.split('@')[0] %></b>
+            <b><%=link_to user.email.split('@')[0], user %></b>
           <% end %>
           <br/><%= "#{user.first_name} #{user.last_name}" %>
        	</td>
@@ -46,3 +48,5 @@
 		<% end %>
 	</tbody>
 </table>
+
+<%= paginate @users %>

@@ -5,7 +5,7 @@
   <%= render :partial => 'shared/notifications' %>
 
   <li class='pull-right hidden-phone <%= "admin" if current_user.admin? %>' >
-    <a href="<%= edit_user_registration_path %>">
+    <a href="<%= user_path(current_user) %>" title='Profile page'>
       <em class="icon-user"></em>
       <span class="visible-desktop">
       <% if current_user.username?%> <%= current_user.username%>
@@ -14,9 +14,17 @@
     </a>
   </li>
 
+  <li  class='pull-right'>
+     <a href="<%= edit_user_registration_path %>" title='Settings'>
+      <em class="icon-cog"></em>
+      <span class="visible-desktop">
+      Settings
+      </span>
+    </a>
+  </li>
   <li class="pull-right">
-  <%= link_to destroy_user_session_path, :method => :delete do %> <em class="icon-off"></em>
-      <span> Logout </span>
+  <%= link_to destroy_user_session_path, :method => :delete, :title => 'Logout' do %> <em class="icon-off"></em>
+      <span class="visible-desktop"> Logout </span>
       <% end %>
   </li>
 

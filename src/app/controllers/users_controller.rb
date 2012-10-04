@@ -36,7 +36,7 @@ class UsersController < ApplicationController
   end
 
   def moderation
-  	@users = User.order('created_at DESC')
+  	@users = User.order('created_at DESC').page(params[:page]).per(20)
   	respond_to do |format|
   		format.html
   	end
