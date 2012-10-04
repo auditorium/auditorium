@@ -71,6 +71,7 @@
                         <% else%>
                           <span class="icon-check-empty"></span>
                         <% end %>
+                        <%= content_tag('i', '', class: 'icon-lock private-question', title: 'Private question', rel: 'tooltip') if question.is_private %>
                         <%= link_to "#{shorten question.subject, 26}", question %>
                       </strong>
                       <br/>

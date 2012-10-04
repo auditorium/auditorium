@@ -88,5 +88,5 @@ jQuery ->
 		$('html,body').animate({scrollTop:$('#post-'+post_id).offset().top - 70}, 500)
 		$('#post-'+post_id).effect('highlight', {}, 1000)
 
-	$('#private-question').hover ->
+	$('.private-question').hover ->
 		$(this).tooltip('show')
