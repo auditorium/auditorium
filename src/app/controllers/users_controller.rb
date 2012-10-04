@@ -10,6 +10,8 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+
+    @user.admin = params[:admin]
     respond_to do |format|
       if @user.update_without_password(params[:user])
         format.html { redirect_to @user, :flash => { :success =>  'User was successfully updated.' } }
