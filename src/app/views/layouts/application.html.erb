@@ -7,6 +7,9 @@
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
     
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
     <script type="text/x-mathjax-config">
       MathJax.Hub.Config({
@@ -39,9 +42,11 @@
     <footer id="footer">
       <%= render :partial => 'shared/footer' %>
     </footer>
-    <div id="feedback">
+    <% if can? :create, Feedback %>
+    <div class="hidden-phone" id="feedback">
       <%= link_to 'feedback', '#feedbackModal', 'data-toggle'=>"modal", 'role' => 'button' %>
     </div>
+    <% end %>
 
     <%= render 'feedback/feedback_modal' %>
   </body>

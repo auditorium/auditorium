@@ -8,7 +8,7 @@
     <div class="control-group">
 
       <div class="controls">
-        <%= f.email_field :email, :placeholder => 'Email address', :class => "span4" %>
+        <%= f.email_field :email, :placeholder => 'Email address', :class => "span4", :title => 'Have you signed up with your TU Dresden email address, e.g. sNumber@mail.zih.tu-dresden.de', :rel => 'tooltip', :id => 'confirm-email-address', 'data-placement' => 'right' %>
 
       </div>
       <%= f.submit "Resend confirmation instructions", :class => 'btn btn-large btn-primary span3', 'data-disable-with' => 'Sending email...' %>

@@ -71,7 +71,7 @@ class Course < ActiveRecord::Base
   end
 
   def questions
-    questions = Post.order('last_activity DESC, updated_at DESC, created_at DESC').where('post_type = ? and course_id = ?','question', self.id)
+    Post.order('last_activity DESC, updated_at DESC, created_at DESC').where('post_type = ? and course_id = ?','question', self.id)
   end
   
   def infos

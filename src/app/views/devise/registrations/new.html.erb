@@ -9,8 +9,8 @@
 
       <div class="controls">
         <%= f.text_field :username, :placeholder => 'Username', :class => "span3"%>
-        <%= f.email_field :email, :placeholder => 'Email address', :class => "span3"%>
-        <%= f.password_field :password, :placeholder => 'Password', :class => "span3"%>
+        <%= f.email_field :email, :placeholder => 'Email address', :class => "span3", :title => 'Use your TU Dresden email address,<br/>e.g. sNumber@mail.zih.tu-dresden.de', :rel => 'tooltip', :id => 'signup-email-address', 'data-placement' => 'right' %>
+        <%= f.password_field :password, :placeholder => 'Password', :class => "span3", :title => 'Minimum six characters', :rel => 'tooltip', :id => 'signup-password', 'data-placement' => 'right'%>
         <%= f.password_field :password_confirmation, :placeholder => 'Password confirmation', :class => "span3" %>
 
       </div>

@@ -11,7 +11,7 @@
     <%= link_to "#{post.comments.count} comments", post_path(post) %>
      &middot; 
   <% end %>
-
+  
   <% if post.author.id == current_user.id %>
     <%= link_to "by me", post.author %> 
   <% else %>

@@ -38,4 +38,7 @@ jQuery ->
 		$('html,body').animate({scrollTop:$('#content').offset().top - 60}, 500)
 		$('#show_question_form').show()
 		false
+
+	$('span#language').hover ->
+    $(this).tooltip('show')
 		
