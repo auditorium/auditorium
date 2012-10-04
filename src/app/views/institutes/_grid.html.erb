@@ -10,7 +10,7 @@
       <strong><%= link_to chair.name, chair %></strong>
 
       <br />
-      <em><%= chair.parent.name %></em>
+      <em>Lectures:</em>
       <%if  chair.lectures.count > 0 %>
         <small>
           <ul>
@@ -25,7 +25,7 @@
         <hr />
         <em><%= chair.lectures.count %> lectures</em>
         <br />
-        <%= render "chairs/access_buttons", :chair=> chair %>
+        <%#= render "chairs/access_buttons", :chair=> chair %>
         <%#= link_to 'Destroy', chair, confirm: 'Are you sure?', method: :delete, :class => "btn btn-mini btn-danger" %>
         <br />
     </div>
