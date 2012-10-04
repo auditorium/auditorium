@@ -85,4 +85,9 @@ class AuditoriumMailer < ActionMailer::Base
     mail(to: @user.email, 
       subject: "Your course '#{course.name_with_term}' has been approved.")
   end
+
+  def user_becomes_admin(user)
+    @user = user
+    mail(to: @user.email, subject: 'You are now admin of auditorium!')
+  end
 end

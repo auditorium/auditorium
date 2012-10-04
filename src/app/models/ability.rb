@@ -73,8 +73,9 @@ class Ability
 
       cannot :approve, Course
 
-      can :create, Feedback
       cannot :manage, Feedback
+      can :create, Feedback
+      
     else # Gäste
       cannot :read, :all
     end

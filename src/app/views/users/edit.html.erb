@@ -78,7 +78,7 @@
         <%= f.label :admin, 'Admin?', :class => 'control-label'%>
         <div class="controls">
           <label class="checkbox">
-          <%= check_box_tag :admin, @user.admin?, @user.admin? %><%= "Should this user be an admin?" %>
+          <%= check_box_tag(:admin, nil, @user.admin?) %><%= "Should this user be an admin?" %>
           </label>
           <p class="alert alert-danger">Be sure if you change the permissions of this user!</p>
         </div>
