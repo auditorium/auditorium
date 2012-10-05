@@ -8,6 +8,7 @@ class Ability
     alias_action :commenting, :to => :comment
     alias_action :rating, :to => :rate
     alias_action :answered, :to => :mark_as_answered
+    alias_action :search_courses, :to => :search_for_courses
 
 
     user ||= User.new # guest user (not logged in)
@@ -77,6 +78,8 @@ class Ability
       can :create, Feedback
 
       cannot :manage, Term
+      can :read, Term
+      can :search_for_courses, Term
       
     else # Gäste
       cannot :read, :all

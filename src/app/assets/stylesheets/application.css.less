@@ -287,19 +287,14 @@ form.button_to {
   
 form.button_to div, form.button_to div input {
   display:inline;
+    width:90px;
 }
 
-div.follow-button {
-  margin:5px 10px;
-  display: inline;
-
-  &.small {
-    margin:0px 0px;
-    display: inline;
-    * > {
-      font-size: 0.9em;
-      }
-  }
+.follow-button {
+  margin:0;
+  padding:2px 5px;
+ 
+  display:inline;
 }
 
 .breadcrumb { font-size: 0.8em; }
@@ -791,6 +786,33 @@ table.courses-table {
   }
 }
 
+a.course-title {
+  font-size:1.2em;
+}
+
+p.course-details {
+  margin:4px;
+  padding:2px;
+  display:inline;
+}
+
+ul.horizontal {
+  margin:5px 10px;
+  li {
+    padding:5px 10px;
+    float:left;
+    display:block;
+  }
+
+  &:after{
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+}
+
 p.rating-button, p.answered-button {
   margin:0 5px;
   padding:0;
@@ -798,6 +820,14 @@ p.rating-button, p.answered-button {
   form {
     margin:0;
   }
+}
+
+.well-search {
+  .well;
+  margin:0;
+  padding:10px 10px 0 10px;
+  background:whitesmoke;
+  border:1px solid @grayLighter;
 }
 
 p.rating-points {

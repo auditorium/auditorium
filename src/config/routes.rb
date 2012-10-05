@@ -21,6 +21,10 @@ Auditorium::Application.routes.draw do
   
   resources :faculties
   
+  resources :terms
+  get 'my_courses/search', to: 'terms#search_courses', as: :search_courses
+  get 'terms/:id/search', to: 'terms#search_courses', as: :search_courses_in_term
+
   controller :search do
     get 'search' => :index, as: :search
   end
@@ -38,7 +42,7 @@ Auditorium::Application.routes.draw do
   resources :courses
   match 'courses/:id/manage_users', :to => 'courses#manage_users'
   match 'courses/<search', :to => 'courses#search'
-  match 'courses/:id/following', :to => 'courses#following'
+  match 'courses/:id/following', :to => 'courses#following', as: :follow_course
   match 'courses/:id/approve', :to => 'courses#approve', :as => :approve_course
   match 'courses/:id/unfollow', :to => 'courses#following', :unfollow => 'true'
   match 'posts/:id/rate', :to => 'posts#rate', :as => :rate_post
@@ -63,8 +67,6 @@ Auditorium::Application.routes.draw do
   resources :reports
 
   resources :periods
-
-  resources :terms
 
   resources :institutes
 
