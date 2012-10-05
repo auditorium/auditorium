@@ -8,6 +8,10 @@ jQuery ->
 		$('html,body').animate({scrollTop:$(window.location.hash).offset().top - 70}, 1000)
 		$('div'+window.location.hash).effect('highlight', {}, 2000)
 
+	$('.ie').hide()
+	if $.browser.msie
+		$('.ie').show()
+
 	# when link with scroll class is clicked - scroll event is triggered
 	$('.scroll').click (event) ->
 		event.preventDefault()
