@@ -8,13 +8,13 @@
     <div class="control-group">
 
       <div class="controls">
-        <label for="username" class="ie">Username</label>
+        <label for="username" class="accessibility">Username</label>
         <%= f.text_field :username, :placeholder => 'Username', :class => "span3"%>
-        <label for="email" class="ie">Email address</label>
+        <label for="email" class="accessibility">Email address</label>
         <%= f.email_field :email, :placeholder => 'Email address', :class => "span3", :title => 'Use your TU Dresden email address,<br/>e.g. sNumber@mail.zih.tu-dresden.de', :rel => 'tooltip', :id => 'signup-email-address', 'data-placement' => 'right' %>
-        <label for="password" class="ie">Password</label>
+        <label for="password" class="accessibility">Password</label>
         <%= f.password_field :password, :placeholder => 'Password', :class => "span3", :title => 'Minimum six characters', :rel => 'tooltip', :id => 'signup-password', 'data-placement' => 'right'%>
-        <label for="password_confirm" class="ie">Password confirmation</label>
+        <label for="password_confirm" class="accessibility">Password confirmation</label>
         <%= f.password_field :password_confirmation, :placeholder => 'Password confirmation', :class => "span3" %>
       </div>
       <%= f.submit "Sign up", :class => 'btn btn-large btn-primary span2', 'data-disable-with' => 'Signing up...' %>
