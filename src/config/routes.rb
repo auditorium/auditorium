@@ -1,8 +1,7 @@
 Auditorium::Application.routes.draw do
   devise_for :users, :controllers => { :confirmations => "users/confirmations", :sessions => "users/sessions", :registrations => "users/registrations" }
   
-  resources :feedback
-  get 'feedback', :to => 'feedback#index', :as => :feedbacks
+  resources :feedbacks
   post 'feedback/:id/mark_as_read' => 'feedback#mark_as_read', :as => :mark_feedback_as_read
 
 
