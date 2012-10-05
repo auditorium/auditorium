@@ -3,12 +3,14 @@
 // You can use Less here: http://lesscss.org/
 @import 'variables';
 #feedback { 
-	height: 100px; 
+  outline: 1px dashed red; 
+	height: 10px; 
 	width: 104px; 
 	position: fixed; 
-	top: 40%; 
+	top: 80%; 
 	z-index: 1000;
   margin:0;
+  margin-left:-50px;
   display:block;
 	transform: rotate(-90deg);
 	-webkit-transform: rotate(-90deg); 
@@ -21,7 +23,7 @@
 	background: lighten(@red, 5%); 
 	height: 12px; 
 	width: 70px; 
-	padding: 4px 12px;
+	padding: 4px 14px;
 	color: #fff; 
 	font-family: Arial, sans-serif; 
 	font-size: 1.1em; 
