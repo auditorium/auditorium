@@ -1,21 +1,21 @@
-<div class="container span6 center">
-  
+<div class="center container span4">
   <% devise_error_messages! %>
-  <h2>Resend confirmation instructions</h2>
+  <h2>Resend confirmation</h2>
 
   <%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
-  <fieldset class="well span4">
+  <fieldset class="well">
     <div class="control-group">
-
+        <%= f.label :email, 'Email address', :class => 'accessibility'%>
       <div class="controls">
         <%= f.email_field :email, :placeholder => 'Email address', :class => "span4", :title => 'Have you signed up with your TU Dresden email address, e.g. sNumber@mail.zih.tu-dresden.de', :rel => 'tooltip', :id => 'confirm-email-address', 'data-placement' => 'right' %>
-
-      </div>
-      <%= f.submit "Resend confirmation instructions", :class => 'btn btn-large btn-primary span4', 'data-disable-with' => 'Sending email...' %>
-      <p class='help-block'><%= render :partial => "devise/shared/links" %></p>
     </div>
-
     
-    </fieldset>
+    <div class="controls">
+      <%= f.submit "Resend confirmation instructions", :class => 'btn btn-large btn-primary span4', 'data-disable-with' => 'Sending email...' %>
+    </div>
+    <hr />
+      <p class='help-block'><%= render :partial => "devise/shared/links" %></p>
+  </fieldset>
   <% end %>
 </div>
+
