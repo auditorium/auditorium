@@ -4,6 +4,7 @@
 jQuery ->
 	$('a#feedback').click ->
 		$('#feedbackModal').modal('show')
+		$('#feedbackModal').css('visiblity', 'visible')
 
 	$('#hide-feedback-modal').click ->
 		$('#feedbackModal').modal('hide')
