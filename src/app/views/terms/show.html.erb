@@ -1,8 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<p><%= @term.term_type %></p>
-<p><%= @term.beginDate %></p>
-<p><%= @term.endDate %></p>
+<h2><%= term_types()[@term.type] %> <%= @term.year %></h2>
+<ul>
+<% @courses.each do |course| %>
 
-<%= link_to 'Edit', edit_term_path(@term) %> |
+  <li> 
+  <%= link_to course.name , course %> 
+  </li>
+
+<% end %>
+</ul>
+
 <%= link_to 'Back', terms_path %>
+<p class="hint"> Don't find your faculty?<br/>
+ See <%= link_to "Settings", edit_user_registration_path %> to associate with a faculty</p>
