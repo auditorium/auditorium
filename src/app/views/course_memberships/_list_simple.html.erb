@@ -1,5 +1,5 @@
 <div>
-  <% if current_user.courses.coutn > 0 %>
+  <% if current_user.courses.count > 0 %>
   <% current_user.courses.each do |course| %>
     <div class="row-fluid" >
       <div class='span2 pull-right <%= "follow-button small follow-button-#{course.id}" %>'>
