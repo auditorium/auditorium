@@ -9,13 +9,10 @@ class CoursesController < ApplicationController
   # GET /courses.json
   def index
 
-    if params[:all] == "true"
-      @courses = Course.order('name ASC').order('created_at DESC').page(params[:page]).per(20)
-    else
-      @courses = Course.order('name ASC').page(params[:page]).per(20)
-    end
-
-    @courses_by_faculty = @courses.to_a.group_by{ |course| course.faculty }
+    @term = Term.find(params[:term_id])
+    @courses = Course.order('term_id DESC, name DESC')
+    @courses.sort! { |x,y| y.participants.count <=> x.participants.count }
+    @courses = Kaminari.paginate_array(@courses).page(params[:page]).per(20)
 
     respond_to do |format|
       format.html # index.html.erb

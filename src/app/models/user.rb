@@ -83,17 +83,17 @@ class User < ActiveRecord::Base
   
   def is_course_maintainer?(course)
     membership = self.course_membership course
-    membership.membership_type.eql? 'maintainer' if membership
+    return membership.membership_type.eql? 'maintainer' if membership
   end
   
   def is_course_editor?(course)
     membership = self.course_membership course
-    membership.membership_type.eql? 'editor' if membership
+    return membership.membership_type.eql? 'editor' if membership
   end
   
   def is_lecture_member?(lecture)
     membership = self.lecture_membership lecture
-    membership.membership_type.eql? 'member' if membership
+    return membership.membership_type.eql? 'member' if membership
   end
   
   def is_lecture_maintainer?(lecture)

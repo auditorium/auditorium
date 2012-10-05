@@ -5,6 +5,7 @@
 
   # info and question details
 jQuery ->
+
   $('.my-courses').hide()
 
   $('a.remove-cross').hover ->

@@ -24,7 +24,6 @@ class TermsController < ApplicationController
     @courses.sort! { |x,y| y.participants.count <=> x.participants.count }
     @courses = Kaminari.paginate_array(@courses).page(params[:page]).per(20)
 
-    @faculties = Faculty.order('name DESC')
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @term }

@@ -1,6 +1,6 @@
-<h2>Search and subscribe to new courses</h2>
-</a><div class="well">
-<%= form_tag search_courses_path, :method => 'get', class: 'form-search', :remote => true do %>
+<div class="well">
+<label for='q'>Search and subscribe to new courses</label>
+<%= form_tag search_my_courses_path, :method => 'get', class: 'form-search', :remote => true do %>
   <div class="controls">
     <%= text_field_tag :q, params[:q], :placeholder => "Type in the name of the course, you're searching for...", class: 'span10' %>
     <%= submit_tag 'Search', class: 'btn btn-info span2' %>
@@ -10,7 +10,7 @@
 
 <% if params[:q].nil? %>
 <div class="courses-table my-courses">
-  <%= render 'terms/courses' %>
+  <%= render 'courses/courses-list' %>
 </div>
 <% end %>
 

@@ -22,7 +22,8 @@ Auditorium::Application.routes.draw do
   resources :faculties
   
   resources :terms
-  get 'my_courses/search', to: 'terms#search_courses', as: :search_courses
+  get 'courses/search', to: 'terms#search_courses', as: :search_courses
+  get 'my_courses/search', to: 'terms#search_courses', as: :search_my_courses
   get 'terms/:id/search', to: 'terms#search_courses', as: :search_courses_in_term
 
   controller :search do

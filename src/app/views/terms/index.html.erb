@@ -5,7 +5,7 @@
   <div class="well span4">
     <h3><%= link_to term.code, term_path(term) %></h3>
     <ul class="unstyled">
-      <li>Courses: <%= term.courses.count %></li>
+      <li>Courses: <%=link_to term.courses.count, courses_path(:term_id => term.id) %></li>
     </ul>
     <% if can? :manage, term %>
     <div class="controls">

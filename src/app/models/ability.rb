@@ -61,6 +61,11 @@ class Ability
 
       can :create, Course
       can :follow, Course
+      can :read, Course
+      can :manage, Course do |course|
+        user.is_course_maintainer? course
+      end
+
       can :follow, Lecture
       can :follow, Faculty
 
@@ -68,9 +73,7 @@ class Ability
         user.is_course_maintainer? course
       end
 
-      can :manage, Course do |course|
-        user.is_course_maintainer? course
-      end
+      
 
       cannot :approve, Course
 
