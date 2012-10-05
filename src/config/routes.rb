@@ -1,4 +1,5 @@
 Auditorium::Application.routes.draw do
+
   resources :feedback
   get 'feedback', :to => 'feedback#index', :as => :feedbacks
   post 'feedback/:id/mark_as_read' => 'feedback#mark_as_read', :as => :mark_feedback_as_read
@@ -13,6 +14,7 @@ Auditorium::Application.routes.draw do
 
   match 'intro', :to => 'landing_page#index'
   match 'home', :to => 'home#index'
+  match 'my_faculties', :to => 'my_faculties#index'
   match 'permission_denied', :to => 'applications#permission_denied', :as => :permission_denied
 
   resources :notifications

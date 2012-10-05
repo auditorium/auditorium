@@ -6,25 +6,22 @@
 %>
 <div class="row-fluid" >
   <% chairs.each do |chair| %>
-    <div class="span<%=cols%> well" >
-      <strong><%= link_to chair.name, chair %></strong>
+    <div class="span<%=cols%> well-small" >
 
-      <br />
-      <em>Lectures:</em>
-      <%if  chair.lectures.count > 0 %>
-        <small>
-          <ul>
-            <% chair.lectures.each do |l| %>
+      <h4><%= link_to chair.name, chair %></h4>
+      <%if  chair.current_lectures.count > 0 %>
+        <small> <ul>
+            <% chair.current_lectures.each do |l| %>
               <li><%= link_to l.name, l %></li>
             <% end %>
-          </ul>
-        </small>
+          </ul> </small>
+        <% else%>
+          <em>
+            no current lectures
+          </em>
       <% end %>
 
 
-        <hr />
-        <em><%= chair.lectures.count %> lectures</em>
-        <br />
         <%#= render "chairs/access_buttons", :chair=> chair %>
         <%#= link_to 'Destroy', chair, confirm: 'Are you sure?', method: :delete, :class => "btn btn-mini btn-danger" %>
         <br />

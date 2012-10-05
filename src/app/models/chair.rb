@@ -22,4 +22,16 @@ class Chair < ActiveRecord::Base
   def children 
     self.lectures
   end
+
+  def lectures_by_current
+    self.lectures.group_by{ |lecture| lecture.has_current_course? }
+  end
+
+  def current_lectures
+    self.lectures.keep_if { |lecture| lecture.has_current_course? }
+  end
+
+  def old_lectures
+    self.lectures.keep_if { |lecture| not lecture.has_current_course? }
+  end
 end

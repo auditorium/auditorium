@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th></th>
     <th>Typ</th>
     <th>Beginn</th>
     <th>Ende</th>
@@ -12,6 +13,7 @@
 
 <% @terms.each do |term| %>
   <tr>
+    <td><%= term %></td>
     <td><%= term.term_type %></td>
     <td><%= term.beginDate %></td>
     <td><%= term.endDate %></td>

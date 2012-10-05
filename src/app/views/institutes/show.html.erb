@@ -3,10 +3,10 @@
 
 <header>
 <h2><%= @institute.name %> </h2>
-<h3><%= @institute.faculty.name%></h3>
+<h3><%= link_to @institute.faculty %></h3>
 </header>
 
-<h4>Chairs</h4>
+<!--<h4>Chairs</h4>-->
 <%= render "grid", :chairs => @institute.children %>
 <%#= render "chairs/list_simple", :chairs=> @institute.chairs %>
 

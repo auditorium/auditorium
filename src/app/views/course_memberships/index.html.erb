@@ -2,7 +2,7 @@
 
   <% @courses_by_faculty.each do |faculty, courses| %>
 
-    <h2><%= "My Courses in #{faculty}" %></h2>
+    <h2 name="<%= faculty %>"><%= "My Courses in #{faculty}" %></h2>
 
     <% cols = 3 ; cols = 12/cols ; i = 0 %>
 

@@ -127,6 +127,10 @@ class User < ActiveRecord::Base
     end
   end
   
+  def faculties_with_courses 
+    self.courses.group_by{ |course| course.lecture.chair.institute.faculty }
+  end
+  
   def courses_by_faculty
     self.courses.group_by{ |course| course.lecture.chair.institute.faculty.name }
   end
