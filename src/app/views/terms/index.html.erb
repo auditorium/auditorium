@@ -1,29 +1,26 @@
-<h2>Listing terms</h2>
+<h2>Browse by terms</h2>
 
-<table>
+<table class="span6 offset3 table table-condensed table-striped table-hover">
+
+  <thead class="">
   <tr>
     <th></th>
-    <th>Typ</th>
-    <th>Beginn</th>
-    <th>Ende</th>
-    <th></th>
-    <th></th>
-    <th></th>
   </tr>
+  </thead>
+  <tbody class="">
 
 <% @terms.each do |term| %>
   <tr>
-    <td><%= term %></td>
-    <td><%= term.term_type %></td>
-    <td><%= term.beginDate %></td>
-    <td><%= term.endDate %></td>
-    <td><%= link_to 'Show', term %></td>
-    <td><%= link_to 'Edit', edit_term_path(term) %></td>
-    <td><%= link_to 'Destroy', term, confirm: 'Are you sure?', method: :delete %></td>
+    <td> 
+      <%= link_to term, term %>
+      <% unless term.courses.count > 0 %>
+        <td style="text-align:right;"><p class="hint" style="text-align:right;display:inline;"> no courses entered yet  </p> </td>
+        <% else %>
+          <td> </td> 
+      <% end %>
+
+    </td>
   </tr>
 <% end %>
+  </tbody>
 </table>
-
-<br />
-
-<%= link_to 'New Term', new_term_path %>

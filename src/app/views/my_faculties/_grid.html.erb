@@ -1,0 +1,14 @@
+
+<div class="span<%=cols%> well-small">
+  <h4> <%= link_to faculty, faculty %> </h4>
+  <%= link_to "Browse", faculty %>
+  <hr/>
+  <% unless courses.nil? %>
+    <em> <%= link_to "#{courses.size} courses subscribed", "my_courses##{faculty}" %>  </em>
+  <% end %>
+</div>
+
+<% i=i+1 %>
+<% if i % (12/cols) == 0 %>
+</div> <div class="row-fluid" >
+<% end %>

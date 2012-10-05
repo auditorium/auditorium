@@ -3,7 +3,7 @@ class TermsController < ApplicationController
   # GET /terms
   # GET /terms.json
   def index
-    @terms = Term.all
+    @terms = Term.order("beginDate").reverse
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,6 +15,8 @@ class TermsController < ApplicationController
   # GET /terms/1.json
   def show
     @term = Term.find(params[:id])
+    @courses = @term.courses.keep_if {|c| current_user.faculties.include? c.faculty  }
+    @courses.sort! { |x,y| y.participants.count <=> x.participants.count }
 
     respond_to do |format|
       format.html # show.html.erb
