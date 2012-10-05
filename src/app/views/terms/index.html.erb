@@ -1,26 +1,18 @@
-<h2>Browse by terms</h2>
+<h2>Browse courses by term</h2>
 
-<table class="span6 offset3 table table-condensed table-striped table-hover">
-
-  <thead class="">
-  <tr>
-    <th></th>
-  </tr>
-  </thead>
-  <tbody class="">
-
-<% @terms.each do |term| %>
-  <tr>
-    <td> 
-      <%= link_to term, term %>
-      <% unless term.courses.count > 0 %>
-        <td style="text-align:right;"><p class="hint" style="text-align:right;display:inline;"> no courses entered yet  </p> </td>
-        <% else %>
-          <td> </td> 
-      <% end %>
-
-    </td>
-  </tr>
-<% end %>
-  </tbody>
-</table>
+<div class="row-fluid">
+  <% @terms.each do |term| %>
+  <div class="well span4">
+    <h3><%= link_to term.code, term_path(term) %></h3>
+    <ul class="unstyled">
+      <li>Courses: <%= term.courses.count %></li>
+    </ul>
+    <% if can? :manage, term %>
+    <div class="controls">
+      <%= link_to 'edit', edit_term_path(term), class: 'btn btn-warning btn-mini' %>
+      <%= link_to 'delete', term, confirm: 'Are you sure?', method: :delete, :class => "btn btn-mini btn-danger" %>
+    </div>
+    <% end %>
+  </div>
+  <% end %>
+</div>

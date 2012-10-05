@@ -75,6 +75,8 @@ class Ability
 
       cannot :manage, Feedback
       can :create, Feedback
+
+      cannot :manage, Term
       
     else # Gäste
       cannot :read, :all
@@ -89,7 +91,6 @@ class Ability
       can :rate,     Post do |post|
         user.id != post.author.id
       end
-
       can :manage, Feedback
     end
 
