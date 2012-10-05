@@ -27,7 +27,7 @@
 
       <td colspan="3"><% if not post.post_type.eql? 'answer' %>
         <h3 class="post-subject">
-          <%= content_tag('i', '', class: 'icon-eye private-question', title: 'Private question', rel: 'tooltip') if post.is_private %>
+          <%= content_tag('i', '', class: 'icon-eye-open private-question', title: 'Private question', rel: 'tooltip') if post.is_private %>
           <%= link_to post.subject, post_path(post) %>
           <% if not post.author.nil? and post.author.alternative_email %>
           <span class="gravatar pull-right">
