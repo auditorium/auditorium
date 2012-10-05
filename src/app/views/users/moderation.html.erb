@@ -18,8 +18,12 @@
 				<% if not user.confirmed? and can? :manage, user %>
 					<td>
 						<%= button_to 'confirm', confirm_user_path(user), :class => 'btn btn-info btn-mini btn-primary' %>  
-						<%= "no TU Dresden Email Address!" unless user.email.match /tu-dresden$/ %>
-					</td>
+						<% if user.email.match /tu-dresden.de$/%>
+							<%= "Confirmation sent" %>
+						<% else %>
+							<%= "no TU Dresden Email Address!" %>
+						<% end %>
+ 					</td>
 
 				<% else %>
 				<td><span class="icon-ok"></span></td>

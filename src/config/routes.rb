@@ -1,4 +1,6 @@
 Auditorium::Application.routes.draw do
+  devise_for :users, :controllers => { :confirmations => "users/confirmations", :sessions => "users/sessions", :registrations => "users/registrations" }
+  
   resources :feedback
   get 'feedback', :to => 'feedback#index', :as => :feedbacks
   post 'feedback/:id/mark_as_read' => 'feedback#mark_as_read', :as => :mark_feedback_as_read
@@ -23,10 +25,10 @@ Auditorium::Application.routes.draw do
     get 'search' => :index, as: :search
   end
 
-  devise_for :users, :controllers => { :confirmations => "users/confirmations", :sessions => "users/sessions", :registrations => "users/registrations" }
-  get 'users/moderation' => 'users#moderation', :as => :users_moderation
-  
+
   resources :users
+
+  get 'users/moderation' => 'users#moderation', :as => :users_moderation
   get 'users/:id/questions' => 'users#questions', :as => :users_questions
   get 'users/:id/answers' => 'users#answers', :as => :users_answers
   match 'users/:id/confirm' => 'users#confirm', :as => :confirm_user
