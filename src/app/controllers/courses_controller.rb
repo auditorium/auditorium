@@ -10,7 +10,7 @@ class CoursesController < ApplicationController
   def index
 
     @term = Term.find(params[:term_id])
-    @courses = Course.where('term_id = ?', @term.id)order('term_id DESC, name DESC')
+    @courses = Course.where('term_id = ?', @term.id).order('term_id DESC, name DESC')
     @courses.sort! { |x,y| y.participants.count <=> x.participants.count }
     @courses = Kaminari.paginate_array(@courses).page(params[:page]).per(20)
 
