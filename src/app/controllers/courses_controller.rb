@@ -9,8 +9,12 @@ class CoursesController < ApplicationController
   # GET /courses.json
   def index
 
-    @term = Term.find(params[:term_id])
-    @courses = Course.where('term_id = ?', @term.id).order('term_id DESC, name DESC')
+    if params[:term_id]
+      @term = Term.find(params[:term_id]) if params[:term_id]
+      @courses = Course.where('term_id = ?', @term.id).order('term_id DESC, name DESC')
+    else
+      @courses = Course.order('term_id DESC, name DESC')
+    end
     @courses.sort! { |x,y| y.participants.count <=> x.participants.count }
     @courses = Kaminari.paginate_array(@courses).page(params[:page]).per(20)
 

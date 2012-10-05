@@ -7,9 +7,8 @@ end
 %>
 <div class="container">
 <h2>
-	<% if @user.admin? %><i class="icon-certificate" title='Admin of auditorium' rel="tooltip" style="cursor:pointer;"></i><% end %>
-	Profile of <%= @user.full_name %>
-  <%= gravatar_image_tag(@user.alternative_email, :alt => @user.full_name, :gravatar => {:default => :wavatar, :size => 40, :secure => true })%>
+	<%= gravatar_image_tag(@user.alternative_email, :alt => @user.full_name, :gravatar => {:default => :wavatar, :size => 100, :secure => true })%>
+	Profile of <% if @user.admin? %><i class="icon-certificate" title='Admin of auditorium' rel="tooltip" style="cursor:pointer;"></i><% end %> <%= @user.full_name %>
 </h2>
 <section class="row-fluid">
 	<div id="questions" class="span6">
