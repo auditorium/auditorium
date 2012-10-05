@@ -7,7 +7,8 @@
 %>
 
 <div class="row-fluid" >
-  <% @faculties.each do |faculty, courses|%>
+  <% if @faculties.count > 0 or @faculties_with_courses.count >0 %>
+  <% @faculties_with_courses.each do |faculty, courses|%>
     <div class="span<%=cols%> well-small">
       <h4> <%= link_to faculty, faculty %> </h4>
       <%= link_to "Browse", faculty %>
@@ -21,5 +22,9 @@
 
     <div class="row-fluid" >
     <% end %>
+  <% end %>
+<% else %>
+  <p> You should sign up for your faculties.  </p>
+  <p> see at <%= link_to "Settings", edit_user_registration_path %> </p>
   <% end %>
 </div>
