@@ -128,11 +128,12 @@ class User < ActiveRecord::Base
   end
   
   def faculties_with_courses 
-    self.courses.group_by{ |course| course.lecture.chair.institute.faculty }
+    fwc = self.courses.keep_if{ |course| !course.lecture.nil? }
+    fwc.group_by{ |course| course.lecture.chair.institute.faculty if course.lecture }
   end
   
   def courses_by_faculty
-    self.courses.group_by{ |course| course.lecture.chair.institute.faculty.name }
+    self.courses.group_by{ |course| course.lecture.chair.institute.faculty.name if course.lecture }
   end
   
   def posts_of_followed_courses_per_day

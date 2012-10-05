@@ -1,5 +1,6 @@
 class TermsController < ApplicationController
   load_and_authorize_resource
+
   # GET /terms
   # GET /terms.json
   def index
@@ -15,9 +16,15 @@ class TermsController < ApplicationController
   # GET /terms/1.json
   def show
     @term = Term.find(params[:id])
-    @courses = @term.courses.keep_if {|c| current_user.faculties.include? c.faculty  }
+    if params[:faculties].eql? 'all' or current_user.faculties.empty?
+      @courses = @term.courses  
+    else
+      @courses = @term.courses.keep_if {|c| current_user.faculties.include? c.faculty  }
+    end
     @courses.sort! { |x,y| y.participants.count <=> x.participants.count }
+    @courses = Kaminari.paginate_array(@courses).page(params[:page]).per(20)
 
+    @faculties = Faculty.order('name DESC')
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @term }
@@ -81,6 +88,22 @@ class TermsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to terms_url }
       format.json { head :no_content }
+    end
+  end
+
+  def search_courses
+
+    if params[:term_id]
+      @courses = Course.where('term_id = ? and name LIKE ?', params[:term_id], "%#{params[:q]}%")
+    else 
+      @courses = Course.where('name LIKE ?', "%#{params[:q]}%")
+    end
+
+    @courses.sort! { |x,y| y.participants.count <=> x.participants.count }
+    @courses = Kaminari.paginate_array(@courses).page(params[:page]).per(20)
+
+    respond_to do |format|
+      format.js
     end
   end
 end

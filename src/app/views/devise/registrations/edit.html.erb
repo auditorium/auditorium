@@ -71,7 +71,7 @@
       <hr />
       
       <div class="control-group"> 
-        <%= f.label 'Edit your faculties', :class => 'control-label'%>
+        <%= f.label 'Edit your faculties', :class => 'control-label', id: 'your-faculties'%>
         <div class="controls">
           <% resource.faculties.each do |faculty| %>
           <p><%= select_tag("faculty_id[#{faculty.id}]".to_sym, options_from_collection_for_select(Faculty.select("id, name"), :id, :name, faculty.id.to_i), {include_blank: '-- please choose a faculty --', :class => 'span8'}) %></p>

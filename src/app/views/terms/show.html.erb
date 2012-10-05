@@ -1,16 +1,19 @@
-<p id="notice"><%= notice %></p>
-
 <h2><%= term_types()[@term.type] %> <%= @term.year %></h2>
-<ul>
-<% @courses.each do |course| %>
 
-  <li> 
-  <%= link_to course.name , course %> 
-  </li>
+<div class="well">
+<%= form_tag search_courses_in_term_path, :method => 'get', class: 'form-search', :remote => true do %>
+	<div class="controls">
+		<%= text_field_tag :q, params[:q], :placeholder => "Type in the name of the course, you're searching for...", class: 'span10' %>
+		<%= hidden_field_tag :term_id, @term.id %>
+		<%= submit_tag 'Search', class: 'btn btn-info span2' %>
+	</div>
 
+	<p class="hint">
+		This table contains only courses of <%= link_to 'your faculties', "#{edit_user_registration_path}#your-faculties" %> you've added in your settings pane.<br />
+		You can search for courses in all faculties.
+	</p>
 <% end %>
-</ul>
-
-<%= link_to 'Back', terms_path %>
-<p class="hint"> Don't find your faculty?<br/>
- See <%= link_to "Settings", edit_user_registration_path %> to associate with a faculty</p>
+</div>
+<div class="courses-table">
+<%= render 'terms/courses' %>
+</div>

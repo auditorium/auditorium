@@ -49,7 +49,7 @@ module ApplicationHelper
   end
   
   def term_types
-    { "ss" => "Sommersemester", "ws" => "Wintersemester", "tri1" => "1. Trisemester", "tri2" => "2. Trisemester", "tri3" => '3. Trisemester' }
+    { "ss" => "Summer Semester", "ws" => "Winter Semester", "tri1" => "1. Trisemester", "tri2" => "2. Trisemester", "tri3" => '3. Trisemester' }
   end
   
   def week_rotation

@@ -1,0 +1,40 @@
+<table class="table table-striped course-results">
+	<thead>
+		<tr>
+			<th>Course name</th>
+			<th>Faculty</th>
+			<th>
+			</th>
+		</tr>
+	</thead>
+<tbody>
+	<% @courses.each do |course| %>
+		<tr>
+			
+			<td>
+				<b><%=link_to (params[:term_id].nil? ? course.name_with_term : course.name), course_path(course), class: 'course-title' %></b>
+				<br />
+				<small><em>
+					<%= pluralize(course.participants.count, 'participant') %>,
+					<%= pluralize(course.questions.count, 'question') %>,
+					<%= pluralize(course.infos.count, 'info') %>
+				</em></small>
+			</td>
+			<td>
+			<% if course.faculty %>
+				<%=link_to course.faculty.name, faculty_path(course.faculty) %>
+			<% else %>
+				This course does not contain to a faculty.
+			<% end %>
+			</td>
+			<td>
+				<div class='<%= "follow-button follow-button-#{course.id}" %>'>
+					<%= render :partial => 'shared/follow_button', :locals => { :course => course } %>
+				</div>
+			</td>
+		</tr>
+	<% end %>
+</tbody>
+</table>
+
+<%=paginate @courses %>
