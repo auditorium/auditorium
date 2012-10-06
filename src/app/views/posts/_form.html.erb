@@ -32,6 +32,7 @@
         </div>
 
         <%= render 'posts/form_submit_buttons', :post => post, :f => f %>
+        <p class='hint'>You can't find the correct course? <%= link_to 'Create it!', new_course_path %>.</p>
       <% else %>
         <!-- not signed in -->
         <div class='controls center'>
