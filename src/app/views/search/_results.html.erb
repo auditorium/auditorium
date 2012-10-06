@@ -25,6 +25,7 @@
         </td></tr>
       <% end %>
     </table>
+    <%= paginate @results[:lectures], :param_name => :lecture_page %>
   <% end %>
 
   <% if @results[:courses].count > 0 %>
@@ -44,6 +45,7 @@
       </tr>
       <% end %>
     </table>
+    <%= paginate @results[:courses], :param_name => :course_page %>
   <% end %>
 
   <% if @results[:posts].count > 0 %>
@@ -66,6 +68,7 @@
       <% end %>
       <% end %>
     </table>
+    <%= paginate @results[:posts], :param_name => :post_page %>
   <% end %>
 
 <% end %>
