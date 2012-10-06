@@ -1,0 +1,16 @@
+Hi, <%= @user.full_name %>
+=======================================================
+    
+There is a new <%= @post.post_type %> in <%= @post.course.name_with_term %> written by <%= @post.author.full_name %>
+
+Subject: 
+<%= @post.subject %>
+---
+
+Content:
+<%= @post.body %>
+---
+
+Edit <%=edit_post_url(@post) %>, View, answer or comment on <%= @post.origin.author %>'s question <%= post_url(@post.origin) %>
+
+You receive this email, because you're <%= @membership_type %> in <%= @post.course.name_with_term %> <%= course_url(@post.course) %> Change <%= edit_user_registration_url %> what emails auditorium sends you.

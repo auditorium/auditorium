@@ -8,6 +8,7 @@
 		<%= submit_tag 'Search', class: 'btn btn-info span2' %>
 	</div>
 
+	<p class='hint'>You can't find the correct course? <%= link_to 'Create it!', new_course_path %>.</p>
 	<p class="hint">
 		This table contains only courses of <%= link_to 'your faculties', "#{edit_user_registration_path}#your-faculties" %> you've added in your settings pane.<br />
 		You can search for courses in all faculties.
