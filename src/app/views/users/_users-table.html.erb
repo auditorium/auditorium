@@ -1,0 +1,58 @@
+<% if @users.count > 0 %>
+<table class="table table-condensed">
+	<thead>
+		<tr>
+			<th>Confirmed?</th>
+			<th>ID</th>
+			<th>Username</th>
+			<th>Email</th>
+			<th>Created</th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @users.each do |user| %>
+			<tr>
+				<% if not user.confirmed? and can? :manage, user %>
+					<td>
+						<%= button_to 'confirm', confirm_user_path(user), :class => 'btn btn-info btn-mini btn-primary' %>  
+						<% if user.email.match /tu-dresden.de$/%>
+							<%= "Confirmation sent" %>
+						<% else %>
+							<%= "no TU Dresden Email Address!" %>
+						<% end %>
+ 					</td>
+
+				<% else %>
+				<td><span class="icon-ok"></span></td>
+				<% end %>
+				<td><%= user.id %></td>
+				<td>
+					<% if user.admin? %>
+					<i class="icon-certificate" title='Admin of auditorium' rel="tooltip" style="cursor:pointer;"></i>
+					<% end %>
+					<% if user.username %>
+          <b><%=link_to user.username, user %></b>
+          <% else %>
+            <b><%=link_to user.email.split('@')[0], user %></b>
+          <% end %>
+          <br/><%= "#{user.first_name} #{user.last_name}" %>
+       	</td>
+				<td><%= user.email %></td>
+				<td><%= I18n.localize(user.created_at, :format => :short) %></td>
+				<% if can? :manage, user %>
+				<td>
+					<%= link_to 'Edit user', edit_user_path(user), class: 'btn btn-mini btn-warning' %>
+					<%= link_to "Delete user", user, :data => { :confirm => "Are you sure that you want to delete #{user.full_name}?" }, method: :delete, class: 'btn btn-mini btn-danger' %>
+				</td>
+	    	<% end %>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<%= paginate @users %>
+<% else %>
+<p class="hint">No users found.</p>
+<% end %>

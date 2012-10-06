@@ -21,6 +21,7 @@ class Ability
 
       can :update,   User, :id => user.id
       can :moderate, User, user.is_admin?
+      cannot :search, User
 
       can :create,   Post
       
@@ -83,6 +84,7 @@ class Ability
       cannot :manage, Term
       can :read, Term
       can :search_for_courses, Term
+      can :search, User
       
     else # Gäste
       cannot :read, :all

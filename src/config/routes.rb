@@ -32,8 +32,8 @@ Auditorium::Application.routes.draw do
 
   devise_for :users, :controllers => { :confirmations => "users/confirmations", :sessions => "users/sessions", :registrations => "users/registrations" }
   get 'users/moderation' => 'users#moderation', :as => :users_moderation
+  get 'users/moderation/search', to: 'users#search', as: :search_users
   resources :users
-  
   get 'users/:id/questions' => 'users#questions', :as => :users_questions
   get 'users/:id/answers' => 'users#answers', :as => :users_answers
   match 'users/:id/confirm' => 'users#confirm', :as => :confirm_user

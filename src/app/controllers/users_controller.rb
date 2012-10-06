@@ -67,4 +67,13 @@ class UsersController < ApplicationController
     redirect_to users_moderation_path, :flash => { :success => "You successfully deleted the user #{@user.full_name}!" }
     authorize! :destroy, User, :message => "You don't have authorisation to delete this user."          
   end
+
+  def search
+
+    @users = User.where('username LIKE ? or first_name LIKE ? or last_name LIKE ? or email LIKE ?', "%#{params[:q]}%","%#{params[:q]}%","%#{params[:q]}%","%#{params[:q]}%").limit(20).page(params[:page]).per(20)
+
+    respond_to do |format|
+      format.js
+    end
+  end
 end
