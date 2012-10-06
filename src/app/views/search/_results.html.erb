@@ -4,7 +4,14 @@
   <p class="hint">No results found!</p>
 <% else %>
 
+<% rows = 3 %>
+<% rows -= 1 if @results[:lectures].empty? %>
+<% rows -= 1 if @results[:courses].empty? %>
+<% rows -= 1 if @results[:posts].empty? %>
+
+<div class="row-fluid">
   <% if @results[:lectures].count > 0 %>
+  <div class="span<%= 12/rows %>">
     <h4><%= pluralize(@results[:lectures].count, 'Lecture') %></h4>
     <table class="table table-striped">
       <% @results[:lectures].each do |lecture| %>
@@ -26,9 +33,13 @@
       <% end %>
     </table>
     <%= paginate @results[:lectures], :param_name => :lecture_page %>
+  </div>
   <% end %>
 
+
+
   <% if @results[:courses].count > 0 %>
+    <div class="span<%= 12/rows %>">
     <h4><%= pluralize(@results[:courses].count, 'Course') %></h4>
     <table class="table table-striped">
       <% @results[:courses].each do |course| %>
@@ -46,9 +57,12 @@
       <% end %>
     </table>
     <%= paginate @results[:courses], :param_name => :course_page %>
+    </div>
   <% end %>
 
+
   <% if @results[:posts].count > 0 %>
+    <div class="span<%= 12/rows %>">
     <h4><%= pluralize(@results[:posts].count, 'Post') %></h4>
     <table class="table table-striped">
       <% @results[:posts].each do |post| %>
@@ -69,7 +83,10 @@
       <% end %>
     </table>
     <%= paginate @results[:posts], :param_name => :post_page %>
+  </div>
   <% end %>
+
+
 
 <% end %>
 </div>
