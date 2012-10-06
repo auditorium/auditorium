@@ -52,5 +52,5 @@
 
 <%=paginate @courses %>
 <% else %>
-<p class="hint">No courses found.</p>
+<p class="hint">No courses found. <% if params[:controller].eql? 'terms' %><%= link_to 'Show all courses of this term.', courses_path(:term_id => @term.id) %><% end %></p>
 <% end %>
