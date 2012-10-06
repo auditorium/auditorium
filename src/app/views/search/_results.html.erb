@@ -22,8 +22,7 @@
             <p class='hint'><%= link_to 'Create the course for this semester!', new_course_path(:lecture_id => lecture.id, :name => lecture.name, :term_id => Term.last.id, :url => lecture.url, :description => lecture.description) %></p>
             <% end %>
           </em></small>
-        </td>
-        <td><b></b></td></tr>
+        </td></tr>
       <% end %>
     </table>
   <% end %>
@@ -59,9 +58,11 @@
             <% if post.is_private? %><%= "private" %><% end %> <%= post.post_type %>,
             <%= pluralize(post.answers.count, 'answer') %>,
             <%=link_to "written by #{post.author.full_name}", user_path(post.author) %>
+          <span class="pull-right"><%= "last activity: #{distance_of_time_in_words(Time.now, post.updated_at) } ago"%></span>
           </em></small>
+
         </td>
-        <td class="pull-right"><%= "last activity: #{distance_of_time_in_words(Time.now, post.updated_at) } ago"%></td>
+       
       </tr>
       <% end %>
     </table>
