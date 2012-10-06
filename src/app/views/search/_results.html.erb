@@ -5,7 +5,7 @@
 <% else %>
 
   <% if @results[:lectures].count > 0 %>
-    <h4><%= pluralize(@results[:lectures].count, 'Lectures') %></h4>
+    <h4><%= pluralize(@results[:lectures].count, 'Lecture') %></h4>
     <table class="table table-striped">
       <% @results[:lectures].each do |lecture| %>
       <tr>
@@ -19,7 +19,7 @@
             <%= link_to course.term.code, course_path(course) %><%= "," unless lecture.courses.last == course %>
             <% end %>
             <% else %>
-            <p class='hint'><%= link_to 'Create the course for this semester!', new_course_path(:lecture_id => lecture.id, :name => lecture.name, :term_id => Term.last.id, :url => lecture.url, :description => lecture.description) %>.</p>
+            <p class='hint'><%= link_to 'Create the course for this semester!', new_course_path(:lecture_id => lecture.id, :name => lecture.name, :term_id => Term.last.id, :url => lecture.url, :description => lecture.description) %></p>
             <% end %>
           </em></small>
         </td>
