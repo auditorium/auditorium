@@ -93,9 +93,9 @@ class TermsController < ApplicationController
   def search_courses
 
     if params[:term_id]
-      @courses = Course.where('term_id = ? and name LIKE ?', params[:term_id], "%#{params[:q]}%")
+      @courses = Course.where('term_id = ? and name LIKE ?', params[:term_id], "%#{params[:q]}%").limit(20)
     else 
-      @courses = Course.where('name LIKE ?', "%#{params[:q]}%")
+      @courses = Course.where('name LIKE ?', "%#{params[:q]}%").limit(20)
     end
 
     @courses.sort! { |x,y| y.participants.count <=> x.participants.count }

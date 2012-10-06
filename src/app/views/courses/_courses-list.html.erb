@@ -1,3 +1,4 @@
+<% if @courses.count > 0 %>
 <table class="table table-striped course-results">
 	<thead>
 		<tr>
@@ -50,3 +51,6 @@
 </table>
 
 <%=paginate @courses %>
+<% else %>
+<p class="hint">No courses found.</p>
+<% end %>
