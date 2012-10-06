@@ -50,6 +50,7 @@
     <h4><%= pluralize(@results[:posts].count, 'Post') %></h4>
     <table class="table table-striped">
       <% @results[:posts].each do |post| %>
+      <% if can? :read, post %>
       <tr>
         <td>
           <b><% if post.is_private? %><i class="icon-eye-open"></i><% end %> <%= link_to post.subject, post %></b>
@@ -60,10 +61,9 @@
             <%=link_to "written by #{post.author.full_name}", user_path(post.author) %>
           <span class="pull-right"><%= "last activity: #{distance_of_time_in_words(Time.now, post.updated_at) } ago"%></span>
           </em></small>
-
         </td>
-       
       </tr>
+      <% end %>
       <% end %>
     </table>
   <% end %>
