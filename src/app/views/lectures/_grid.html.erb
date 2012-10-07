@@ -14,8 +14,9 @@
         <p><%= "Go to course in:" %>
         <% lecture.courses.each do |course| %>
         <%= link_to course.term.code, course_path(course) %><%= "," unless lecture.courses.last == course %>
+        <% end %>
         </p>
-      <% end %>
+      
       <% else %>
         <p class='hint'><%= link_to 'Create the course for this semester!', new_course_path(:lecture_id => lecture.id, :name => lecture.name, :term_id => Term.last.id, :url => lecture.url, :description => lecture.description) %></p>
       <% end %>

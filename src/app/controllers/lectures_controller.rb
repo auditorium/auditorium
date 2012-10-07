@@ -11,7 +11,7 @@ class LecturesController < ApplicationController
       @lectures = Lecture.all
     end
 
-    @lectures = Kaminari.paginate_array(@lectures).page(params[:page]).per(10)
+    @lectures = Kaminari.paginate_array(@lectures).page(params[:page]).per(9)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -122,7 +122,7 @@ class LecturesController < ApplicationController
 
   def search
 
-    @lectures = Lecture.where('name LIKE ?', "%#{params[:q]}%").limit(40).page(params[:page]).per(10)
+    @lectures = Lecture.where('name LIKE ?', "%#{params[:q]}%").limit(40).page(params[:page]).per(9)
 
     respond_to do |format|
       format.js

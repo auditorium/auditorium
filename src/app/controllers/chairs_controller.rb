@@ -11,7 +11,7 @@ class ChairsController < ApplicationController
       @chairs = Chair.order("name")
     end
 
-    @chairs = Kaminari.paginate_array(@chairs).page(params[:page]).per(20)
+    @chairs = Kaminari.paginate_array(@chairs).page(params[:page]).per(9)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @chairs }
@@ -91,7 +91,7 @@ class ChairsController < ApplicationController
 
   def search
 
-    @chairs = Chair.where('name LIKE ?', "%#{params[:q]}%").limit(40).page(params[:page]).per(10)
+    @chairs = Chair.where('name LIKE ?', "%#{params[:q]}%").limit(40).page(params[:page]).per(9)
 
     respond_to do |format|
       format.js
