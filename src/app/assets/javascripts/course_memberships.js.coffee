@@ -30,4 +30,8 @@ jQuery ->
 
     return false
 
+  $('#search-courses').click ->
+    $('.search-courses-to-subscribe').show()
+    $('#search-courses').hide()
+    false
 

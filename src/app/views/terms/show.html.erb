@@ -5,10 +5,10 @@
 	<div class="controls">
 		<%= text_field_tag :q, params[:q], :placeholder => "Type in the name of the course, you're searching for...", class: 'span10' %>
 		<%= hidden_field_tag :term_id, @term.id %>
-		<%= submit_tag 'Search', class: 'btn btn-info span2' %>
+		<%= submit_tag 'Search', class: 'btn btn-info span2 hidden-phone' %>
 	</div>
 
-	<p class='hint'>You can't find the correct course? <%= link_to 'Search for the lecture first!', lectures_path(:q => params[:q]), :class=>'search-for-lecture' %></p>
+	<p class='hint hidden-phone'>You can't find the correct course? <%= link_to 'Search for the lecture first!', lectures_path(:q => params[:q]), :class=>'search-for-lecture' %></p>
 	<p class="hint">
 		This table contains only courses of <%= link_to 'your faculties', "#{edit_user_registration_path}#your-faculties" %> you've added in your settings pane.<br />
 		You can search for courses in all faculties.

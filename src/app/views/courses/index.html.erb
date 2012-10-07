@@ -5,9 +5,9 @@
 <%= form_tag search_courses_path, :method => 'get', class: 'form-search', :remote => true do %>
   <div class="controls">
     <%= text_field_tag :q, params[:q], :placeholder => "Type in the name of the course, you're searching for...", class: 'span10' %>
-    <%= submit_tag 'Search', class: 'btn btn-info span2' %>
+    <%= submit_tag 'Search', class: 'btn btn-info span2 hidden-phone' %>
   </div>
-  <p class='hint'>You can't find the correct course? <%= link_to 'Search for the lecture first!', lectures_path(:q => params[:q]), :class=>'search-for-lecture' %></p>
+  <p class='hint hidden-phone'>You can't find the correct course? <%= link_to 'Search for the lecture first!', lectures_path(:q => params[:q]), :class=>'search-for-lecture' %></p>
 <% end %>
 </div>
 

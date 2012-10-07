@@ -1,22 +1,3 @@
-<div class="well">
-<label for='q'>Search and subscribe to new courses</label>
-<%= form_tag search_my_courses_path, :method => 'get', class: 'form-search', :remote => true do %>
-  <div class="controls">
-    <%= text_field_tag :q, params[:q], :placeholder => "Type in the name of the course, you're searching for...", class: 'span10' %>
-    <%= submit_tag 'Search', class: 'btn btn-info span2' %>
-  </div>
-
-  <p class='hint'>You can't find the correct course? <%= link_to 'Search for the lecture first!', lectures_path(:q => params[:q]), :class=>'search-for-lecture' %></p>
-<% end %>
-</div>
-
-<% if params[:q].nil? %>
-<div class="courses-table my-courses">
-  <%= render 'courses/courses-list' %>
-</div>
-<% end %>
-
-
 <% if @courses_by_faculty.count > 0 %>
 
   <% @courses_by_faculty.each do |faculty, courses| %>
@@ -140,3 +121,22 @@
       <p class="hint">You don't have subscribed to any course yet. You can search for a course and add it to this view.</p>
 
     <% end %>
+
+<hr />
+<div class="well">
+<label for='q'>Search and subscribe to new courses</label>
+<%= form_tag search_my_courses_path, :method => 'get', class: 'form-search', :remote => true do %>
+  <div class="controls">
+    <%= text_field_tag :q, params[:q], :placeholder => "Type in the name of the course, you're searching for...", class: 'span10' %>
+    <%= submit_tag 'Search', class: 'btn btn-info span2 hidden-phone' %>
+  </div>
+
+  <p class='hint hidden-phone'>You can't find the correct course? <%= link_to 'Search for the lecture first!', lectures_path(:q => params[:q]), :class=>'search-for-lecture' %></p>
+<% end %>
+</div>
+
+<% if params[:q].nil? %>
+<div class="courses-table my-courses">
+  <%= render 'courses/courses-list' %>
+</div>
+<% end %>

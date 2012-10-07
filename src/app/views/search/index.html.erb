@@ -3,7 +3,7 @@
 <%= form_tag search_path, :method => 'get', class: 'form-search', :remote => true do %>
   <div class="controls">
     <%= text_field_tag :query, params[:query], :placeholder => "Type in the name of the course, you're searching for...", class: 'span10' %>
-    <%= submit_tag 'Search', class: 'btn btn-info span2' %>
+    <%= submit_tag 'Search', class: 'btn btn-info span2 hidden-phone' %>
   </div>
 <% end %>
 </div>

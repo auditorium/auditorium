@@ -4,7 +4,7 @@
 <%= form_tag search_users_path, :method => 'get', class: 'form-search', :remote => true do %>
   <div class="controls">
     <%= text_field_tag :q, params[:q], :placeholder => "Search for the user...", class: 'span10' %>
-    <%= submit_tag 'Search', class: 'btn btn-info span2' %>
+    <%= submit_tag 'Search', class: 'btn btn-info span2 hidden-phone' %>
   </div>
 <% end %>
 </div>
