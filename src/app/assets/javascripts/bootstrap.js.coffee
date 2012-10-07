@@ -1,7 +1,12 @@
 jQuery ->
   # when page is loaded with hash
   if window.location.hash and window.location.hash.match(/#post-/)
-    $('html,body').animate({scrollTop:$(window.location.hash).offset().top - 60}, 1000)
+    if $.browser.safari 
+      bodyelem = $("body")
+    else 
+      bodyelem = $("html,body")
+    
+    bodyelem.animate({scrollTop:$(window.location.hash).offset().top - 60}, 1000)
     $('div'+window.location.hash).effect('highlight', {}, 2000)
 
 scrollTop = -> document.body.scrollTop or document.documentElement.scrollTop
