@@ -4,29 +4,25 @@
   cols = 12/cols
   i = 0
 %>
-<a href="?all=<%= !params[:all] %>">show all</a>
-
 <div class="row-fluid" id="grid" >
-  <% lectures.each do |lecture| %>
+  <% @lectures.each do |lecture| %>
     <div class="span<%=cols%> well" >
       <h3><%= link_to lecture.name, lecture %></h3>
       <em><%= lecture.parent.name %></em>
       <hr />
-      <ul>
-      <% lecture.courses.each do |course| %>
-        <li><p><%= link_to course.term, course %></p></li>
+      <% if lecture.courses.count > 0 %>
+        <p><%= "Go to course in:" %>
+        <% lecture.courses.each do |course| %>
+        <%= link_to course.term.code, course_path(course) %><%= "," unless lecture.courses.last == course %>
+        </p>
       <% end %>
-      </ul>
-      <% if lecture.description %>
-        <p><%= lecture.description %></p>
       <% else %>
-        <p>There's no description available, yet!</p>
+        <p class='hint'><%= link_to 'Create the course for this semester!', new_course_path(:lecture_id => lecture.id, :name => lecture.name, :term_id => Term.last.id, :url => lecture.url, :description => lecture.description) %></p>
       <% end %>
       <% if current_user and current_user.admin? %>
         <p>
           <%= link_to 'new course', new_course_path(:lecture_id => lecture.id), :class => 'btn btn-small btn-primary' %>
           <%= link_to 'edit lecture', edit_lecture_path(lecture) , { :class => 'btn btn-small btn-warning' }  %>
-          <%#= link_to 'Destroy', lecture, confirm: 'Are you sure?', method: :delete, :class => "btn btn-mini btn-danger" %>
         </p>
       <% end %>
     </div>
@@ -39,3 +35,5 @@
 
   <% end %>
 </div>
+  <%=paginate @lectures %>
+

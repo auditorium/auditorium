@@ -1,7 +1,25 @@
 
 <div class="span<%=cols%> well-small">
   <h4> <%= link_to faculty, faculty %> </h4>
-  <%= link_to "Browse", faculty %>
+  <%if  faculty.children.count > 0 %>
+    <table class="table table-striped">
+      <thead>
+      	<tr>
+      		<th>Institute name</th>
+      		<th>Chairs</th>
+      	</tr>
+      </thead>
+      <tbody>
+	      <% faculty.children.each do |institute| %>
+	      <tr>
+	        <td><%= link_to institute.name, institute %></td>
+	        <td><%= link_to pluralize(institute.children.count, 'Chair'), chairs_path(:institute_id => institute.id) %></td>
+	      </tr>	
+	      <% end %>
+    	</tbody>
+    </table>
+  <% end %>
+
   <hr/>
   <% unless courses.nil? %>
     <em> <%= link_to "#{courses.size} courses subscribed", "my_courses##{faculty}" %>  </em>

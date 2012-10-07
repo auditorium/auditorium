@@ -10,20 +10,16 @@
 
       <h4><%= link_to chair.name, chair %></h4>
       <%if  chair.current_lectures.count > 0 %>
-        <small> <ul>
+          <ul>
             <% chair.current_lectures.each do |l| %>
               <li><%= link_to l.name, l %></li>
             <% end %>
-          </ul> </small>
+          </ul>
         <% else%>
           <em>
             no current lectures
           </em>
       <% end %>
-
-
-        <%#= render "chairs/access_buttons", :chair=> chair %>
-        <%#= link_to 'Destroy', chair, confirm: 'Are you sure?', method: :delete, :class => "btn btn-mini btn-danger" %>
         <br />
     </div>
     <% i=i+1 %>

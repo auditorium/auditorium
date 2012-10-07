@@ -5,21 +5,13 @@ class LecturesController < ApplicationController
   # GET /lectures
   # GET /lectures.json
   def index
-    if params[:all] == "true"
-      #TODO fix this with a nicer statement
-      @lectures = Lecture.all
+    if params[:chair_id]
+      @lectures = Lecture.where('chair_id = ?', params[:chair_id]) 
     else
-      @lectures = Lecture.all.reject {|l| l.courses.empty? }
+      @lectures = Lecture.all
     end
 
-    case params[:sort]
-    when "chair"
-      @lectures.sort! {|x,y| x.chair.name<=> y.chair.name}
-    when "name"
-      @lectures.sort! {|x,y| x.name.downcase <=> y.name.downcase }
-    end
-
-    @lectures.reverse!  if params[:direction] == "desc"
+    @lectures = Kaminari.paginate_array(@lectures).page(params[:page]).per(10)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -108,6 +100,15 @@ class LecturesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to lectures_url }
       format.json { head :no_content }
+    end
+  end
+
+  def search
+
+    @lectures = Lecture.where('name LIKE ?', "%#{params[:q]}%").limit(40).page(params[:page]).per(10)
+
+    respond_to do |format|
+      format.js
     end
   end
 end

@@ -25,6 +25,7 @@ Auditorium::Application.routes.draw do
   get 'courses/search', to: 'terms#search_courses', as: :search_courses
   get 'my_courses/search', to: 'terms#search_courses', as: :search_my_courses
   get 'terms/:id/search', to: 'terms#search_courses', as: :search_courses_in_term
+  get 'lectures/search', to: 'lectures#search', as: :search_lectures
 
   controller :search do
     get 'search' => :index, as: :search
@@ -59,7 +60,9 @@ Auditorium::Application.routes.draw do
   resources :course_memberships
   match "my_courses", :to => "course_memberships#index"
 
+  get 'chairs/search', to: 'chairs#search', as: :search_chairs
   resources :chairs
+  
 
   resources :posts do
     get :autocomplete_courses_name, :on => :collection
@@ -74,6 +77,7 @@ Auditorium::Application.routes.draw do
   resources :events
 
   resources :lectures
+  
 # run "rake db:jexam_sync" instead of GETting an url
 #  resources :jexamwebservice
 

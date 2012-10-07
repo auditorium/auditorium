@@ -165,14 +165,6 @@ class CoursesController < ApplicationController
       
     end
   end
-
-  def search
-    #todo
-    respond_to do |format|
-        format.js 
-        format.html { redirect_to "#{root_url}?s=#{params[:query]}" }
-    end
-  end
   
   def manage_users
     @course = Course.find(params[:id])

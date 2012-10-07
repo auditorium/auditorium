@@ -4,30 +4,43 @@
   cols = 12/cols
   i = 0
 %>
-<div class="row-fluid" >
-  <% chairs.each do |chair| %>
+<div class="row-fluid" id="grid" >
+  <% @chairs.each do |chair| %>
     <div class="span<%=cols%> well" >
-      <strong><%= link_to chair.name, chair %></strong>
+      <h3><%= link_to chair.name, chair %></h3>
+      <p class="hint"><%= link_to chair.parent.name, chair.parent %></p>
+      <hr />
+      <h4><%= pluralize(chair.lectures.count, 'Lecture') %></h4>
+      <table class="table table-striped">
+        <% chair.lectures.first(5).each do |lecture| %>
+        <tr>
+          <td>
+            <b><%= link_to lecture.name, lecture %></b>
+            <br />
+            <small><em>
+              <% if lecture.courses.count > 0 %>
+              <%= "Go to course in:" %>
+              <% lecture.courses.each do |course| %>
+              <%= link_to course.term.code, course_path(course) %><%= "," unless lecture.courses.last == course %>
+              <% end %>
+              <% else %>
+              <p class='hint'><%= link_to 'Create the course for this semester!', new_course_path(:lecture_id => lecture.id, :name => lecture.name, :term_id => Term.last.id, :url => lecture.url, :description => lecture.description) %></p>
+              <% end %>
+            </em></small>
+          </td></tr>
+        <% end %>
+      </table>
 
-      <br />
-      <em><%= chair.parent.name %></em>
-      <%if  chair.lectures.count > 0 %>
-        <small>
-          <ul>
-            <% chair.lectures.each do |l| %>
-              <li><%= link_to l.name, l %></li>
-            <% end %>
-          </ul>
-        </small>
+      <% if chair.lectures.count > 5 %>
+        <p class="hint"><%=link_to 'Show all lectures of this chair', lectures_path(:chair_id => chair.id) %></p>
       <% end %>
 
-
-        <hr />
-        <em><%= chair.lectures.count %> lectures</em>
-        <br />
-        <%= render "chairs/access_buttons", :chair=> chair %>
-        <%#= link_to 'Destroy', chair, confirm: 'Are you sure?', method: :delete, :class => "btn btn-mini btn-danger" %>
-        <br />
+      <% if current_user and current_user.admin? %>
+        <p>
+          <%= link_to 'new lecture', new_course_path(:chair_id => chair.id), :class => 'btn btn-small btn-primary' %>
+          <%= link_to 'edit chair', edit_chair_path(chair) , { :class => 'btn btn-small btn-warning' }  %>
+        </p>
+      <% end %>
     </div>
     <% i=i+1 %>
     <% if i % (12/cols) == 0 %>
@@ -38,3 +51,6 @@
 
   <% end %>
 </div>
+  <%=paginate @chairs %>
+
+

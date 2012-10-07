@@ -5,8 +5,13 @@ class ChairsController < ApplicationController
   # GET /chairs
   # GET /chairs.json
   def index
-    @chairs = Chair.order("name")
+    if params[:institute_id] 
+      @chairs = Chair.where('institute_id = ?', params[:institute_id]).order(:name)
+    else
+      @chairs = Chair.order("name")
+    end
 
+    @chairs = Kaminari.paginate_array(@chairs).page(params[:page]).per(20)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @chairs }
@@ -81,6 +86,15 @@ class ChairsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to chairs_url }
       format.json { head :no_content }
+    end
+  end
+
+  def search
+
+    @chairs = Chair.where('name LIKE ?', "%#{params[:q]}%").limit(40).page(params[:page]).per(10)
+
+    respond_to do |format|
+      format.js
     end
   end
 end
