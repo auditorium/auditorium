@@ -6,6 +6,7 @@ class FacultiesController < ApplicationController
   # GET /faculties.json
   def index
     @faculties = Faculty.all
+    @faculties_with_courses = current_user.faculties_with_courses
 
     respond_to do |format|
       format.html # index.html.erb

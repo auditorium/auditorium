@@ -3,11 +3,14 @@
 // You can use Less here: http://lesscss.org/
 @import 'variables';
 #feedback { 
-	height: 104px; 
+	height: 10px; 
 	width: 104px; 
 	position: fixed; 
-	top: 40%; 
+	top: 80%; 
 	z-index: 1000;
+  margin:0;
+  margin-left:-50px;
+  display:block;
 	transform: rotate(-90deg);
 	-webkit-transform: rotate(-90deg); 
 	-moz-transform: rotate(-90deg); 
@@ -16,21 +19,22 @@
 }
 
 #feedback a { 
-	display: block; 
 	background: lighten(@red, 5%); 
-	height: 15px; 
+	height: 12px; 
 	width: 70px; 
-	padding: 8px 16px;
+	padding: 4px 14px;
 	color: #fff; 
 	font-family: Arial, sans-serif; 
-	font-size: 17px; 
+	font-size: 1.1em; 
 	font-weight: bold; 
-	text-decoration: none; 
-	border-bottom: solid 1px @grayLight; 
-	border-left: solid 1px @grayLight; 
-	border-right: solid 1px @white;
+  align: center;
+	text-decoration:   none;
 }
 
 #feedback a:hover { 
 	background: darken(@red, 5%); 
+}
+
+div#feedbackModal {
+	display:none;
 }

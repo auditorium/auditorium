@@ -2,7 +2,7 @@
 
   <% @courses_by_faculty.each do |faculty, courses| %>
 
-    <h2><%= "My Courses in #{faculty}" %></h2>
+    <h2 name="<%= faculty %>"><%= "My Courses in #{faculty}" %></h2>
 
     <% cols = 3 ; cols = 12/cols ; i = 0 %>
 
@@ -19,7 +19,7 @@
             <h3 style="min-height:50px;"> <%= link_to course.name, course %><br/> </h3>
 
 
-            <% if course.infos.reverse.count > 0  %>
+            <% if course.infos.count > 0  %>
               <dl class="info">
                 <dt class="info-title">
                 <a href="#" class="info" data-id="<%= course.id%>" data-type="info">
@@ -71,6 +71,7 @@
                         <% else%>
                           <span class="icon-check-empty"></span>
                         <% end %>
+                        <%= content_tag('i', '', class: 'icon-eye-open private-question', title: 'Private question', rel: 'tooltip') if question.is_private %>
                         <%= link_to "#{shorten question.subject, 26}", question %>
                       </strong>
                       <br/>
@@ -115,8 +116,27 @@
 
     <% else %>
 
-      <h2>Courses</h2>
+      <h2>My Courses</h2>
 
-      <div class="alert alert-info">Seems that no courses are currently in the database. <% if user_signed_in? %><%= link_to 'Create a course.', new_course_path %><% end %></div>
+      <p class="hint">You don't have subscribed to any course yet. You can search for a course and add it to this view.</p>
 
     <% end %>
+
+<hr />
+<div class="well">
+<label for='q'>Search and subscribe to new courses</label>
+<%= form_tag search_my_courses_path, :method => 'get', class: 'form-search', :remote => true do %>
+  <div class="controls">
+    <%= text_field_tag :q, params[:q], :placeholder => "Type in the name of the course, you're searching for...", class: 'span10' %>
+    <%= submit_tag 'Search', class: 'btn btn-info span2 hidden-phone' %>
+  </div>
+
+  <p class='hint hidden-phone'>You can't find the correct course? <%= link_to 'Search for the lecture first!', lectures_path(:q => params[:q]), :class=>'search-for-lecture' %></p>
+<% end %>
+</div>
+
+<% if params[:q].nil? %>
+<div class="courses-table my-courses">
+  <%= render 'courses/courses-list' %>
+</div>
+<% end %>

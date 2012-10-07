@@ -1,9 +1,6 @@
-<!-- Lecture -->
-
-<header>
 <h2><%= @lecture.name %></h2>
-<h3><%= @lecture.chair.name%> <small><%= @lecture.chair.institute.name%></small></h3>
-</header>
+<h3><%=link_to @lecture.chair.name, @lecture.chair %></h3>
+
 
 <div class="container">
 <% if @lecture.description and not @lecture.description.eql? "null" %>
@@ -12,7 +9,7 @@
   <p>There's no description available, yet!</p>
 <% end %>
 
-<h3>Courses in this lecture <small>You can't find the correct course? <%= link_to 'Create it and we will approve it', new_course_path %>.</small></h3>
+<h3>Courses in this lecture.</h3>
 <% if @lecture.courses.count > 0 %>
   
   <% @lecture.courses.each do |course| %>
@@ -20,9 +17,8 @@
   <% end %>
 <% else %>
   <p class="hint">There are no courses yet.
-    <% if user_signed_in? and current_user.admin? %>
-    <%= link_to 'Create a new course.', new_course_path(:lecture_id => @lecture.id) %>
-    <% end %>
+    <%= link_to 'New semester course', new_course_path(:lecture_id => @lecture.id, :name => @lecture.name, :term_id => Term.last.id, :url => @lecture.url, :description => @lecture.description) %>
+
   </p>
 <% end %>
 <%= render "lectures/access_buttons", :lecture=> @lecture%>

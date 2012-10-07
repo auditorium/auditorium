@@ -119,14 +119,17 @@ h4, h5, h6
 }
 .border-radius (@radius)
 {
-  border-radius: @radius;
+  
   -moz-border-radius: @radius;
   -webkit-border-radius: @radius;
+  -o-border-radius: @radius;
+  border-radius: @radius;
 }
 .border-radius(@a,@b,@c,@d)
 {
     -webkit-border-radius: @a,@b,@c,@d;
        -moz-border-radius: @a,@b,@c,@d;
+         -o-border-radius: @a,@b,@c,@d;
             border-radius: @a,@b,@c,@d;
 }
 
@@ -153,14 +156,17 @@ h4, h5, h6
 }
 .border-radius (@radius)
 {
-  border-radius: @radius;
+  
   -moz-border-radius: @radius;
   -webkit-border-radius: @radius;
+  -o-border-radius: @radius;
+  border-radius: @radius;
 }
 .border-radius(@a,@b,@c,@d)
 {
     -webkit-border-radius: @a,@b,@c,@d;
        -moz-border-radius: @a,@b,@c,@d;
+         -o-border-radius: @a,@b,@c,@d;
             border-radius: @a,@b,@c,@d;
 }
 
@@ -185,29 +191,37 @@ h4, h5, h6
   {
   -webkit-box-shadow: inset 0 0px 0 #fff, 0 0px 0px rgba(0,0,0,.0);
      -moz-box-shadow: inset 0 0px 0 #fff, 0 0px 0px rgba(0,0,0,.0);
+       -o-box-shadow: inset 0 0px 0 #fff, 0 0px 0px rgba(0,0,0,.0);
+      -ms-box-shadow: inset 0 0px 0 #fff, 0 0px 0px rgba(0,0,0,.0);
           box-shadow: inset 0 0px 0 #fff, 0 0px 0px rgba(0,0,0,.0);
   }
   .soft
   {
   -webkit-box-shadow: inset 0 1px 0 #fff, 0 1px 5px rgba(0,0,0,.1);
      -moz-box-shadow: inset 0 1px 0 #fff, 0 1px 5px rgba(0,0,0,.1);
+      -ms-box-shadow: inset 0 1px 0 #fff, 0 1px 5px rgba(0,0,0,.1);
+       -o-box-shadow: inset 0 1px 0 #fff, 0 1px 5px rgba(0,0,0,.1);
           box-shadow: inset 0 1px 0 #fff, 0 1px 5px rgba(0,0,0,.1);
   }
   .light
   {
   -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.05);
      -moz-box-shadow: inset 0 3px 5px rgba(0,0,0,.05);
+       -o-box-shadow: inset 0 3px 5px rgba(0,0,0,.05);
+      -ms-box-shadow: inset 0 3px 5px rgba(0,0,0,.05);
           box-shadow: inset 0 3px 5px rgba(0,0,0,.05);
   }
   .inset-top(@color:@gray, @size:5px)
   {
        -moz-box-shadow: inset 0 @size @size -@size @color;
     -webkit-box-shadow: inset 0 @size @size -@size @color;
+        -ms-box-shadow: inset 0 @size @size -@size @color;
+         -o-box-shadow: inset 0 @size @size -@size @color;
             box-shadow: inset 0 @size @size -@size @color;
   }
 }
 
-small {font-size: 0.7em;}
+small {font-size: 0.9em;}
 
 .accessibility {
   position:absolute;
@@ -273,22 +287,17 @@ form.button_to {
   
 form.button_to div, form.button_to div input {
   display:inline;
+    width:90px;
 }
 
-div.follow-button {
-  margin:5px 10px;
-  display: inline;
-
-  &.small {
-    margin:0px 0px;
-    display: inline;
-    * > {
-      font-size: 0.9em;
-      }
-  }
+.follow-button {
+  margin:0;
+  padding:2px 5px;
+ 
+  display:inline;
 }
 
-.breadcrumb { font-size: 0.8em; }
+.breadcrumb { font-size: 0.9em; }
 .breadcrumb span
 {
   display:inline;
@@ -321,7 +330,6 @@ div.follow-button {
 
   .btn-navbar
   {
-    box-shadow: 0 0 0 ;
     &:hover, span:hover { text-decoration: none;}
   }
   
@@ -483,8 +491,8 @@ td.comment-button p {
 
 
 /* notifications */
-.read, .read a { color:#ddd; }
-.unread, .unread a { color:#333; }
+.read, .read a { color:@grayLight; }
+.unread, .unread a { color:@grayDarker; }
 
 tr.clickable {
   &:hover {
@@ -598,6 +606,30 @@ body
       padding:10px 5px 0 5px;
       a { color: @headerColor; }
       a:hover { color: @headerColor; text-decoration: none; }
+      span{
+        em {
+          #shadow > .no-shadow() !important;
+         display: block;
+         z-index: 10;
+         font-size: .4em;
+         position: absolute;
+         margin-left: -10px;
+         padding-top: 15px;
+        }
+        -webkit-transform: rotate(-40deg); 
+        -moz-transform: rotate(-40deg); 
+        -o-transform: rotate(-40deg); 
+         z-index: 5;
+         font-family: @baseFontFamily;
+         position: absolute;
+         dispaly:block;
+         vertical-align: center;
+         margin:0;
+         margin-left:-10px;
+         margin-top:-15px;
+         color: @white;
+
+      }
     }
 
     padding-top: @body-padding-top;
@@ -609,9 +641,14 @@ body
 
     p {
       margin:5px 0;
-      padding:5px 5px;
-      text-shadow: @grayDark 0px 0px 4px;
-      font-weight: 200;
+      padding:5px 10px;
+      text-shadow: @black 0px 0px 2px;
+      font-weight: 400;
+      font-size:1.3em;
+
+      small {
+        font-size:1.0em;
+      }
     }
 
     & > .container
@@ -719,7 +756,7 @@ table.courses-table {
   }
 
   span.post-date {
-    font-size:0.8em;
+    font-size:0.9em;
   }
 
   tbody td {
@@ -749,6 +786,33 @@ table.courses-table {
   }
 }
 
+a.course-title {
+  font-size:1.2em;
+}
+
+p.course-details {
+  margin:4px;
+  padding:2px;
+  display:inline;
+}
+
+ul.horizontal {
+  margin:5px 10px;
+  li {
+    padding:5px 10px;
+    float:left;
+    display:block;
+  }
+
+  &:after{
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+}
+
 p.rating-button, p.answered-button {
   margin:0 5px;
   padding:0;
@@ -756,6 +820,14 @@ p.rating-button, p.answered-button {
   form {
     margin:0;
   }
+}
+
+.well-search {
+  .well;
+  margin:0;
+  padding:10px 10px 0 10px;
+  background:whitesmoke;
+  border:1px solid @grayLighter;
 }
 
 p.rating-points {
@@ -780,7 +852,6 @@ p.rating-points {
 
 .well-small{
   .well;
-  margin-bottom:0px;
   padding: 5px 10px 19px 19px;
   
 }
@@ -860,3 +931,4 @@ blockquote h1 {
 .MathJax_Display {
   text-align:left!important;
 }
+

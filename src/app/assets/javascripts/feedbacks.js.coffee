@@ -3,7 +3,9 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 jQuery ->
 	$('a#feedback').click ->
+		$('#feedbackModal').css('display', 'block')
 		$('#feedbackModal').modal('show')
+		
 
 	$('#hide-feedback-modal').click ->
 		$('#feedbackModal').modal('hide')

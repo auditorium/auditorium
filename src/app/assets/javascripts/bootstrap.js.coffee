@@ -1,19 +1,12 @@
 jQuery ->
-	$('#search_form input').keyup ->
-		console.log $(this).attr('action')
-		$.get($('#search_form').attr('action'), $('#search_form').serialize(), null, 'script')
-		return false
+  # when page is loaded with hash
+  if window.location.hash and window.location.hash.match(/#post-/)
+    $('html,body').animate({scrollTop:$(window.location.hash).offset().top - 60}, 1000)
+    $('div'+window.location.hash).effect('highlight', {}, 2000)
 
 scrollTop = -> document.body.scrollTop or document.documentElement.scrollTop
 $("li.dropdown-fallback").each -> @style.display= "none"
 
-# this does not work!!
-#jQuery ($)->
-#  $("a[rel=popover]").popover()
-#  $(".tooltip").tooltip()
-#  $("a[rel=tooltip]").tooltip()
-# $('.dropdown-toggle').dropdown()
-# document.querySelector("li.dropdown").style.display = "inline"
 
 window.onscroll = ->
   navigation = document.querySelector("div#navigation")

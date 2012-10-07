@@ -10,6 +10,12 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+
+    unless @user.admin?
+      @user.admin = params[:admin]
+      AuditoriumMailer.user_becomes_admin(@user).deliver  
+    end 
+    
     respond_to do |format|
       if @user.update_without_password(params[:user])
         format.html { redirect_to @user, :flash => { :success =>  'User was successfully updated.' } }
@@ -30,7 +36,7 @@ class UsersController < ApplicationController
   end
 
   def moderation
-  	@users = User.order('created_at DESC')
+  	@users = User.order('created_at DESC').page(params[:page]).per(20)
   	respond_to do |format|
   		format.html
   	end
@@ -60,5 +66,14 @@ class UsersController < ApplicationController
     @user.destroy
     redirect_to users_moderation_path, :flash => { :success => "You successfully deleted the user #{@user.full_name}!" }
     authorize! :destroy, User, :message => "You don't have authorisation to delete this user."          
+  end
+
+  def search
+
+    @users = User.where('username LIKE ? or first_name LIKE ? or last_name LIKE ? or email LIKE ?', "%#{params[:q]}%","%#{params[:q]}%","%#{params[:q]}%","%#{params[:q]}%").limit(20).page(params[:page]).per(20)
+
+    respond_to do |format|
+      format.js
+    end
   end
 end

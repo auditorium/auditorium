@@ -1,7 +1,11 @@
 <h2>Editing lecture</h2>
 
+<div class="container center span8">
 <%= render 'form' %>
+</div>
 
-<%= link_to 'back', lectures_path, :class =>'btn btn-mini icon-arrow-left' %>
-<%= link_to 'show', @lecture, :class=>'btn btn-mini btn-primary' %> |
-<%= link_to 'delete', @lecture, confirm: 'Are you sure?', method: :delete, :class => "btn btn-mini btn-danger" %>
+<% if can? :manage, @lecture %>
+	<%= link_to 'back', lectures_path, :class =>'btn btn-mini icon-arrow-left' %>
+	<%= link_to 'show', @lecture, :class=>'btn btn-mini btn-primary' %> |
+	<%= link_to 'delete', @lecture, confirm: 'Are you sure?', method: :delete, :class => "btn btn-mini btn-danger" %>
+<% end %>

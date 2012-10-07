@@ -25,5 +25,6 @@ solr/pids/**/*
 Capfile
 config/deploy.rb
 config/environments/production.rb
+config/environments/secret_token.rb
 config/jexam.wsdl
 lib/tasks/jexam.rake

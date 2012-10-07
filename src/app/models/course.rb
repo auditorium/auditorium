@@ -11,6 +11,7 @@ class Course < ActiveRecord::Base
   attr_accessible :description, :name, :beginDate, :endDate, :creator_id, :term_id, :lecture_id, :sws, :url
 
   validates :name, presence: true
+  validates :lecture_id, presence: true
   validates :term,  presence: true
 
   define_index do
@@ -71,7 +72,7 @@ class Course < ActiveRecord::Base
   end
 
   def questions
-    questions = Post.order('last_activity DESC, updated_at DESC, created_at DESC').where('post_type = ? and course_id = ?','question', self.id)
+    Post.order('last_activity DESC, updated_at DESC, created_at DESC').where('post_type = ? and course_id = ?','question', self.id)
   end
   
   def infos

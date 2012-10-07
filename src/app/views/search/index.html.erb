@@ -1,44 +1,14 @@
-<div class="center span8">
-  <h2>Search</h2>
-
-  <%= form_tag '/search', :method => 'get', :id => 'search_form', :remote => false do %>
-    <%= text_field_tag :query, params[:query], :placeholder => 'Search', :class => 'search-query span8', :id => 'searchbar' %>
-  <% end %>
-
-  <h2>Search results</h2>
-
-  <% if params[:query].nil? %>
-    <p class="hint">Type in your search query...</p>
-  <% elsif @results[:posts].empty? and @results[:lectures].empty? and @results[:courses].empty? %>
-    <p class="hint">No results found!</p>
-  <% else %>
-
-    <% if @results[:lectures].count > 0 %>
-      <h3><%= pluralize(@results[:lectures].count, 'Lectures') %></h3>
-      <table class="table">
-        <% @results[:lectures].each do |lecture| %>
-        <tr><td><%= link_to lecture.name, lecture %></td></tr>
-        <% end %>
-      </table>
-    <% end %>
-    
-    <% if @results[:courses].count > 0 %>
-      <h3><%= pluralize(@results[:courses].count, 'Course') %></h3>
-      <table class="table">
-        <% @results[:courses].each do |course| %>
-        <tr><td><%= link_to course.name, course %></td></tr>
-        <% end %>
-      </table>
-    <% end %>
-    
-    <% if @results[:posts].count > 0 %>
-      <h3><%= pluralize(@results[:posts].count, 'Post') %></h3>
-      <table class="table">
-        <% @results[:posts].each do |post| %>
-        <tr><td><%= link_to post.subject, post %></td></tr>
-        <% end %>
-      </table>
-    <% end %>
-
-  <% end %>
+<h2>Search through auditorium</h2>
+<div class="well">
+<%= form_tag search_path, :method => 'get', class: 'form-search', :remote => true do %>
+  <div class="controls">
+    <%= text_field_tag :query, params[:query], :placeholder => "Type in the name of the course, you're searching for...", class: 'span10' %>
+    <%= submit_tag 'Search', class: 'btn btn-info span2 hidden-phone' %>
   </div>
+<% end %>
+</div>
+
+<h3>Search results</h3>
+<div class="search-results">
+<%= render 'search/results' %>
+</div>

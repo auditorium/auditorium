@@ -32,6 +32,7 @@
         </div>
 
         <%= render 'posts/form_submit_buttons', :post => post, :f => f %>
+        <p class='hint hidden-phone'>You can't find the correct course? <%= link_to 'Search for the lecture first!', lectures_path(:q => params[:q]), :class=>'search-for-lecture' %></p>
       <% else %>
         <!-- not signed in -->
         <div class='controls center'>

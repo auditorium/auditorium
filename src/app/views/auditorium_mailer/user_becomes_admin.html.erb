@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <style>
+      body {
+        padding:20px;
+      }
+
+      h1 {
+        font-weight:100;
+      }
+
+      p {
+        font-weight:200;
+      }
+
+      .post-details {
+        margin:5px 20px;
+        padding:5px;
+        border:1px solid #ddd;
+        background:#eee;
+      }
+
+      .post-details p {
+        margin:2px;
+        padding:0;
+      }
+
+      .post-subject {
+        font-size:1.2em;
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <h1>Hi, <%= @user.full_name %></h1>
+    
+    <p>You are now administer of auditorium. Now you have privileges for:</p>
+    <ul>
+      <li>managing users</li>
+      <li>managing courses</li>
+      <li>managing lectures</li>
+      <li>managing chairs</li>
+      <li>managing institutes</li>
+      <li>managing faculties</li>
+      <li>...</li>
+    </ul>
+
+    <p class="email-footer"><small><%=link_to 'Log in to auditorium and check it out!', root_url %></small></p>
+  </body>
+</html>

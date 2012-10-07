@@ -1,4 +1,5 @@
 <div>
+  <% if current_user.courses.count > 0 %>
   <% current_user.courses.each do |course| %>
     <div class="row-fluid" >
       <div class='span2 pull-right <%= "follow-button small follow-button-#{course.id}" %>'>
@@ -26,4 +27,7 @@
 
   <% end %>
 
+  <% else %>
+  <p class="hint">You don't have subscribed to courses, yet. <%= link_to 'Add some courses to get notifications on updates.', my_courses_path %></p>
+  <% end %>
 </div>

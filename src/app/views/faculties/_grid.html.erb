@@ -15,13 +15,11 @@
           <h4> <%= object.parent.name unless object.parent.nil? %></h4>
           <br />
           <%if  object.children.count > 0 %>
-            <small>
-              <ul>
-                <% object.children.each do |l| %>
-                  <li><%= link_to l, l %></li>
-                <% end %>
-              </ul>
-            </small>
+            <ul class="unstyled">
+              <% object.children.each do |l| %>
+                <li><%= link_to l, l %></li>
+              <% end %>
+            </ul>
           <% end %>
         </div>
         <div class="span12" >

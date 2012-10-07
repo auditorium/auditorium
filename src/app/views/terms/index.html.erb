@@ -1,27 +1,28 @@
-<h2>Listing terms</h2>
+<h2>Browse courses by term</h2>
 
-<table>
-  <tr>
-    <th>Typ</th>
-    <th>Beginn</th>
-    <th>Ende</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<div class="row-fluid">
+  <% cols = 3 ; cols = 12/cols ; i = 0 %>
+  <% @terms.each do |term| %>
 
-<% @terms.each do |term| %>
-  <tr>
-    <td><%= term.term_type %></td>
-    <td><%= term.beginDate %></td>
-    <td><%= term.endDate %></td>
-    <td><%= link_to 'Show', term %></td>
-    <td><%= link_to 'Edit', edit_term_path(term) %></td>
-    <td><%= link_to 'Destroy', term, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
+  
+  <div class="well span<%= cols %>">
+    <h3><%= link_to term.code, term_path(term) %></h3>
+    <ul class="unstyled">
+      <li>Courses: <%=link_to term.courses.count, courses_path(:term_id => term.id) %></li>
+    </ul>
+    <% if can? :manage, term %>
+    <div class="controls">
+      <%= link_to 'edit', edit_term_path(term), class: 'btn btn-warning btn-mini' %>
+      <%= link_to 'delete', term, confirm: 'Are you sure?', method: :delete, :class => "btn btn-mini btn-danger" %>
+    </div>
+    <% end %>
+    <% i=i+1 %>
+    <% if i % (12/cols) == 0 %>
+      </div>
+      <div class="row-fluid">
+    <% else %>
+  </div>
+    <% end %>
+  <% end %>
 
-<br />
-
-<%= link_to 'New Term', new_term_path %>
+</div>

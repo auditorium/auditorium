@@ -9,13 +9,14 @@ class CoursesController < ApplicationController
   # GET /courses.json
   def index
 
-    if params[:all] == "true"
-      @courses = Course.order('name ASC').order('created_at DESC').page(params[:page]).per(20)
+    if params[:term_id]
+      @term = Term.find(params[:term_id]) if params[:term_id]
+      @courses = Course.where('term_id = ?', @term.id).order('term_id DESC, name DESC')
     else
-      @courses = Course.order('name ASC').page(params[:page]).per(20)
+      @courses = Course.order('term_id DESC, name DESC')
     end
-
-    @courses_by_faculty = @courses.to_a.group_by{ |course| course.faculty }
+    @courses.sort! { |x,y| y.participants.count <=> x.participants.count }
+    @courses = Kaminari.paginate_array(@courses).page(params[:page]).per(20)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -162,14 +163,6 @@ class CoursesController < ApplicationController
         format.json { render json: course.errors, status: :unprocessable_entity }
       end
       
-    end
-  end
-
-  def search
-    #todo
-    respond_to do |format|
-        format.js 
-        format.html { redirect_to "#{root_url}?s=#{params[:query]}" }
     end
   end
   

@@ -1,24 +1,29 @@
-<div class="container span3 center">
-  <%= devise_error_messages! %>
+<div class="center container span3">
+  <% devise_error_messages! %>
   <h2>Sign in!</h2>
 
   <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-    <fieldset class="well">
-      <div class="control-group">
-
-        <div class="controls">
-          <label for="user_email" class="accessibility">email</label>
-          <%= f.text_field :email, :placeholder => 'Email address', :class => "span3"%>
-          <br/>
-          <label for="user_password" class="accessibility">password</label>
-          <%= f.password_field :password, :placeholder => 'Password', :class => "span3"%>
-
-
-        </div>
-        <%= f.submit "Sign in", :class => 'btn btn-large btn-primary span2', 'data-disable-with' => 'Signing in...' %>
-        <p class='help-block'><%= render :partial => "devise/shared/links" %></p>
+  <fieldset class="well">
+    <div class="control-group">
+        <%= f.label :email, 'Email address', :class => 'accessibility'%>
+      <div class="controls">
+        <%= f.text_field :email, :placeholder => 'Email address', :class => "span3"%>
       </div>
+    </div>
 
-    <% end %>
+    <div class="control-group">
+        <%= f.label :password, 'Password', :class => 'accessibility'%>
+      <div class="controls">
+        <%= f.password_field :password, :placeholder => 'Password', :class => "span3"%>
+      </div>
+    </div>
+
+    
+    <div class="controls">
+        <%= f.submit "Sign in", :class => 'btn btn-large btn-primary span3', 'data-disable-with' => 'Signing in...' %>
+    </div>
+    <hr />
+      <p class='help-block'><%= render :partial => "devise/shared/links" %></p>
   </fieldset>
+  <% end %>
 </div>

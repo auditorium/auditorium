@@ -1,0 +1,56 @@
+<% if @courses.count > 0 %>
+<table class="table table-striped course-results">
+	<thead>
+		<tr>
+			<th>Course name</th>
+			<th>Faculty</th>
+			<th>
+				<% if params[:controller].eql? 'course_memberships' %>
+					<%= link_to content_tag('i', '', class: 'icon-remove'), my_courses_path, id: 'close-results-table', class: 'pull-right' %>
+				<% end %>
+			</th>
+			<% if can? :manage, Course %>
+			<th></th>
+			<% end %>
+		</tr>
+	</thead>
+<tbody>
+	<% @courses.each do |course| %>
+		<tr>
+			
+			<td>
+				<b><%=link_to (params[:term_id].nil? ? course.name_with_term : course.name), course_path(course), class: 'course-title' %></b>
+				<br />
+				<small><em>
+					<%= pluralize(course.participants.count, 'participant') %>,
+					<%= pluralize(course.questions.count, 'question') %>,
+					<%= pluralize(course.infos.count, 'info') %>
+				</em></small>
+			</td>
+			<td>
+			<% if course.faculty %>
+				<%=link_to course.faculty.name, faculty_path(course.faculty) %>
+			<% else %>
+				This course does not contain to a faculty.
+			<% end %>
+			</td>
+			<td>
+				<div class='<%= "follow-button follow-button-#{course.id}" %>'>
+					<%= render :partial => 'shared/follow_button', :locals => { :course => course } %>
+				</div>
+			</td>
+			<% if can? :manage, course %>
+			<td>
+				<%= link_to 'edit', edit_course_path(course), class: 'btn btn-warning btn-mini span1' %>
+      	<%= link_to 'delete', course, confirm: "Are you sure that you want to delete this course?<br />#{course.name_with_term}", method: :delete, :class => "btn btn-mini btn-danger span1" %>
+			</td>
+			<% end %>
+		</tr>
+	<% end %>
+</tbody>
+</table>
+
+<%=paginate @courses %>
+<% else %>
+<p class="hint">No courses found. <% if params[:controller].eql? 'terms' %><%= link_to 'Show all courses of this term.', courses_path(:term_id => @term.id) %><% end %></p>
+<% end %>

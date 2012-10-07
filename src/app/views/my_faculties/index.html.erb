@@ -1,0 +1,25 @@
+<h2>My Faculties</h2>
+
+<% cols = 2; cols = 12/cols; i = 0 %>
+
+<div class="row-fluid" >
+  <% if @faculties_with_courses.count > 0 %>
+
+    <% @faculties_with_courses.each do |faculty, courses|%>
+      <%= render "grid", :faculty => faculty, :courses => courses, cols:cols, i:i  %>
+    <% end %>
+
+  <% else %>
+
+    <% if @faculties.count > 0 %>
+      <% @faculties.each do |faculty| %>
+        <%= render "grid", :faculty => faculty, :courses => nil, cols:cols, i:i  %>
+      <% end %>
+
+    <% else %>
+      <p class="hint"> You should sign up for your faculties.  </p>
+      <p class="hint"> See <%= link_to "Settings", edit_user_registration_path %> to associate with a faculty</p>
+    <% end %>
+
+  <% end %>
+</div>

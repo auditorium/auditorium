@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   helper_method :create_user
+  before_filter :set_current_user
 
   rescue_from CanCan::AccessDenied do |exception|
     unless current_user
@@ -61,5 +62,12 @@ class ApplicationController < ActionController::Base
 
     u.save
     u
+  end
+
+
+
+  private
+  def set_current_user
+    User.current = current_user
   end
 end

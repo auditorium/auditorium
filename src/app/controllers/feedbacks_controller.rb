@@ -1,4 +1,4 @@
-class FeedbackController < ApplicationController
+class FeedbacksController < ApplicationController
   load_and_authorize_resource
 
   def index
@@ -45,7 +45,7 @@ class FeedbackController < ApplicationController
       if @feedback.save
         format.js
       else
-        format.html{ redirect_to feedback_path, flash: { success: 'Something went wrong, try again in a little while' } }  
+        format.html{ redirect_to feedbacks_path, flash: { success: 'Something went wrong, try again in a little while' } }  
       end
     end
 

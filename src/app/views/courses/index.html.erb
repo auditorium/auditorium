@@ -1,21 +1,16 @@
-<% if @courses_by_faculty.count > 0 %>
+<h2>Courses <%= "in #{term_types()[@term.type]} #{@term.year}" unless @term.nil? %></h2>
 
-	<% @courses_by_faculty.each do |faculty, courses| %>
-
-		<h2><%= "#{faculty}" %></h2>
-
-		<% courses.each do |course| %>
-			<%= render :partial => 'courses/single_course', :locals => { :course => course } %>
-		<% end %>
-
-	<% end %>
-
-	<%= paginate @courses %>
-
-<% else %>
-
-	<h2>Courses</h2>
-
-	<p class="hint">Seems that no courses are currently in the database. <% if user_signed_in? %><%= link_to 'Create a course.', new_course_path %><% end %></p>
-
+<div class="well">
+<label for='q'>Search and subscribe to new courses</label>
+<%= form_tag search_courses_path, :method => 'get', class: 'form-search', :remote => true do %>
+  <div class="controls">
+    <%= text_field_tag :q, params[:q], :placeholder => "Type in the name of the course, you're searching for...", class: 'span10' %>
+    <%= submit_tag 'Search', class: 'btn btn-info span2 hidden-phone' %>
+  </div>
+  <p class='hint hidden-phone'>You can't find the correct course? <%= link_to 'Search for the lecture first!', lectures_path(:q => params[:q]), :class=>'search-for-lecture' %></p>
 <% end %>
+</div>
+
+<div class="courses-table">
+  <%= render 'courses/courses-list' %>
+</div>
