@@ -69,7 +69,7 @@
       <% if can? :read, post %>
       <tr>
         <td>
-          <b><% if post.is_private? %><i class="icon-eye-open"></i><% end %> <%= link_to post.subject, post %></b>
+          <b><% if post.is_private? %><i class="icon-eye-open"></i><% end %> <%= link_to post.subject, "#{post_path(post.origin)}#post-#{post.id}" %></b>
           <br />
           <small><em>
             <% if post.is_private? %><%= "private" %><% end %> <%= post.post_type %>,
