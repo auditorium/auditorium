@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :remember_me, :email, :alternative_email, :password, :password_confirmation
   attr_accessible :username, :title, :first_name, :last_name, :website
+  cattr_accessor :current
+  
   # attr_accessible :title, :body
   
   has_many :events, foreign_key: :tutor_id # as tutor

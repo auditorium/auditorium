@@ -1,9 +1,6 @@
-<!-- Lecture -->
-
-<header>
 <h2><%= @lecture.name %></h2>
-<h3><%= @lecture.chair.name%> <small><%= @lecture.chair.institute.name%></small></h3>
-</header>
+<h3><%=link_to @lecture.chair.name, @lecture.chair %></h3>
+
 
 <div class="container">
 <% if @lecture.description and not @lecture.description.eql? "null" %>

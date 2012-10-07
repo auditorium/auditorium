@@ -41,4 +41,8 @@ class Term < ActiveRecord::Base
     self.beginDate <= Date.today and  Date.today <= self.endDate
   end
 
+   def current
+    Term.where('beginDate <= ? and  ? <= endDate', Date.today, Date.today)
+  end
+
 end

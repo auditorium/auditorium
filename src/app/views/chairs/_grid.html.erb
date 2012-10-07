@@ -33,11 +33,13 @@
 
       <% if chair.lectures.count > 5 %>
         <p class="hint"><%=link_to 'Show all lectures of this chair', lectures_path(:chair_id => chair.id) %></p>
+      <% else %>
+        <p class='hint'>You can't find the correct lecture? <%= link_to 'Create it!', new_lecture_path %>.</p>
       <% end %>
 
       <% if current_user and current_user.admin? %>
         <p>
-          <%= link_to 'new lecture', new_course_path(:chair_id => chair.id), :class => 'btn btn-small btn-primary' %>
+          <%= link_to 'new lecture', new_lecture_path(:chair_id => chair.id), :class => 'btn btn-small btn-primary' %>
           <%= link_to 'edit chair', edit_chair_path(chair) , { :class => 'btn btn-small btn-warning' }  %>
         </p>
       <% end %>

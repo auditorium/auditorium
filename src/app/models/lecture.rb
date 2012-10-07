@@ -6,8 +6,8 @@ class Lecture < ActiveRecord::Base
   belongs_to :chair
 
   attr_accessible :name, :chair_id, :url, :sws, :creditpoints, :description
-  
-  validates :name,  presence: true
+
+  validates :name,  presence: true, :uniqueness => { scope: :chair_id, message: "of the course has been already taken in the chair you've selected. Go to lectures and search for the name." }
   validates :chair,   presence: true
 
   define_index do
@@ -58,6 +58,20 @@ class Lecture < ActiveRecord::Base
 
   def editors
     editors = LectureMembership.find_all_by_lecture_id_and_membership_type(self.id, 'editor')
+  end
+
+   # ajax
+  def chair_name=(name)
+    chair = Chair.find_by_name(name)
+    if chair
+      self.chair_id = chair.id
+    else
+      errors[:chair_name] << "Invalid name entered"
+    end
+  end
+  
+  def chair_name
+    Chair.find(chair_id).name if chair_id
   end
 
 end

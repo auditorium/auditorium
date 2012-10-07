@@ -60,6 +60,7 @@ class Ability
 
       #can :follow, Course do |course| course.faculty.id == user.faculty_id end
 
+      can :create, Lecture
       can :create, Course
       can :follow, Course
       can :read, Course

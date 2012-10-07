@@ -11,6 +11,7 @@ Auditorium::Application.routes.draw do
 
   get "ajax/courses"
   get "ajax/lectures"
+  get "ajax/chairs"
 
   match 'intro', :to => 'landing_page#index'
   match 'home', :to => 'home#index'

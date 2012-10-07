@@ -66,6 +66,23 @@ class LecturesController < ApplicationController
 
     respond_to do |format|
       if @lecture.save
+
+        # create course
+        @course = Course.create!(:name => @lecture.name,
+                                :description => @lecture.description,
+                                :url => @lecture.url,
+                                :lecture_id => @lecture.id,
+                                :term_id => params[:term_id])
+        if current_user.is_admin?
+          @course.approved = true
+          flash_message = 'Course was successfully created.' 
+        else
+          @course.approved = false
+          @course.creator = current_user
+          flash_message = 'Course was successfully suggested. Our moderators will check it. But you can already ask questions if you want.'
+          @course.save!
+        end
+
         format.html { redirect_to @lecture, notice: 'Lecture was successfully created.' }
         format.json { render json: @lecture, status: :created, location: @lecture }
       else
