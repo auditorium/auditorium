@@ -1,9 +1,10 @@
 <div class="center container span4">
   <% devise_error_messages! %>
-  <h2>Change your password</h2>
+  
 
   <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
-  <fieldset class="well">
+  <fieldset class="well span4">
+    <h2>Change your password</h2>
     <div class="control-group">
         <%= f.label :password, 'New password', :class => 'accessibility'%>
       <div class="controls">

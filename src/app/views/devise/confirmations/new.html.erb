@@ -1,9 +1,10 @@
 <div class="center container span4">
   <% devise_error_messages! %>
-  <h2>Resend confirmation</h2>
+  
 
   <%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
-  <fieldset class="well">
+  <fieldset class="well span4">
+    <h2>Resend confirmation</h2>
     <div class="control-group">
         <%= f.label :email, 'Email address', :class => 'accessibility'%>
       <div class="controls">

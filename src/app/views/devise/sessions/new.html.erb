@@ -1,9 +1,10 @@
 <div class="center container span3">
   <% devise_error_messages! %>
-  <h2>Sign in!</h2>
+  
 
   <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <fieldset class="well">
+  <fieldset class="well span3">
+    <h2>Sign in!</h2>
     <div class="control-group">
         <%= f.label :email, 'Email address', :class => 'accessibility'%>
       <div class="controls">

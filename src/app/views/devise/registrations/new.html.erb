@@ -1,9 +1,11 @@
 <div class="center container span4">
   <% devise_error_messages! %>
-  <h2>Sign up!</h2>
+  
 
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <fieldset class="well">
+
+    <fieldset class="well span4">
+      <h2>Sign up!</h2>
     <div class="control-group">
         <%= f.label :username, 'Username', :class => 'accessibility'%>
       <div class="controls">
