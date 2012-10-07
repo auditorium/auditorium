@@ -18,6 +18,8 @@ class InstitutesController < ApplicationController
   def show
     @institute = Institute.find(params[:id])
 
+    @chairs = Kaminari.paginate_array(@institute.chairs).page(params[:page]).per(9)
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @institute }

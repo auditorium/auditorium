@@ -1,16 +1,14 @@
-<!-- Institute -->
-<p id="notice"><%= notice %></p>
-
-<header>
-<h2><%= @institute.name %> </h2>
-<h3><%= link_to @institute.faculty %></h3>
-</header>
-
-<!--<h4>Chairs</h4>-->
-<%= render "grid", :chairs => @institute.children %>
-<%#= render "chairs/list_simple", :chairs=> @institute.chairs %>
-
-<%= link_to institutes_path, :class => 'btn btn-mini' do %>
-  <span class="icon-arrow-left"> back</span>
+<h2>Chairs <%= "for #{@institute}" %></h2>
+<div class="well">
+<label for='q'>Search for chairs in all faculties</label>
+<%= form_tag search_chairs_path, :method => 'get', class: 'form-search', :remote => true do %>
+  <div class="controls">
+    <%= text_field_tag :q, params[:q], :placeholder => "Type in the name of the chair, you're searching for...", class: 'span10' %>
+    <%= submit_tag 'Search', class: 'btn btn-info span2 hidden-phone' %>
+  </div>
 <% end %>
-<%= render "access_buttons", :institute=> @institute%>
+</div>
+
+<div class="chairs">
+<%= render :partial => 'chairs/grid' %>
+</div>

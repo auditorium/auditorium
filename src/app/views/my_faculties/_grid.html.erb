@@ -12,8 +12,8 @@
       <tbody>
 	      <% faculty.children.each do |institute| %>
 	      <tr>
-	        <td><%= link_to institute.name, institute %></td>
-	        <td><%= link_to pluralize(institute.children.count, 'Chair'), chairs_path(:institute_id => institute.id) %></td>
+	        <td><%= link_to institute.name, chairs_path(:institute_id => institute.id) %></td>
+	        <td><%= pluralize(institute.children.count, 'Chair') %></td>
 	      </tr>	
 	      <% end %>
     	</tbody>
