@@ -15,6 +15,8 @@ class Ability
 
     if user.id? # registrierte Benutzer
 
+      can :search, :all
+
       can :read, :all #if user.confirmed?
       can :mark_all_as_read, Notification
       cannot :read, Report
@@ -59,7 +61,6 @@ class Ability
       end
 
       #can :follow, Course do |course| course.faculty.id == user.faculty_id end
-
       can :create, Lecture
       can :create, Course
       can :follow, Course

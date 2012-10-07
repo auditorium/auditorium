@@ -7,8 +7,9 @@
     <% if post.post_type.eql? 'question' %>
       <%= link_to "#{post.answers.count} answers", post_path(post) %> 
        &middot;
-    <% end %>
+    <% else %>
     <%= link_to "#{post.comments.count} comments", post_path(post) %>
+    <% end %>
      &middot; 
   <% end %>
   

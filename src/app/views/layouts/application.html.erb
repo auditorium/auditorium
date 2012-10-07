@@ -7,7 +7,7 @@
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
     
-    <!--[if lt IE 10]>
+    <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
@@ -36,7 +36,6 @@
         <% flash.each do |key, value| %>
           <div class="alert alert-<%= key %>"><%= value %></div>
         <% end %>
-        <div class="ie alert alert-info">There are some problems with Internet Explorer. Please download Firefox, Google Chrome, Safari or Opera to get rid of this problems for now.</div>
         <%= yield %>
       </div>
     </section>

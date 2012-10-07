@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-    <%= form_tag '/search', :method => 'get', :id => 'search_form', :class => 'navbar-search visible-desktop',:remote => false do %>
+    <%= form_tag '/search', :method => 'get', :class => 'navbar-search visible-desktop form-search',:remote => false do %>
     <%= text_field_tag :query, nil, :placeholder => 'Search', :id => 'searchbar' %>
   <% end %>
   <%= render :partial => 'shared/notifications' %>

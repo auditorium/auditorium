@@ -2,28 +2,14 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 jQuery -> 
-	
-	# when page is loaded with hash
-	if window.location.hash
-		$('html,body').animate({scrollTop:$(window.location.hash).offset().top - 70}, 1000)
-		$('div'+window.location.hash).effect('highlight', {}, 2000)
-
-	$('.ie').hide()
-	if $.browser.msie
-		$('.ie').show()
-
 	# when link with scroll class is clicked - scroll event is triggered
 	$('.scroll').click (event) ->
 		event.preventDefault()
-		$('html,body').animate({scrollTop:$(this.hash).offset().top - 70}, 1000)
+		$('html,body').animate({scrollTop:$(this.hash).offset().top - 60}, 1000)
 
 	$('#courses-tab a').click (e) ->
 		e.preventDefault
 		$(this).tab('show')
-		
-	$('#searchbar input').keyup -> 
-		$.get($('#searchbar form').attr('action'), $('#searchbar form').serialize(), null, "script")
-		false
 
 	$('.filter-box').hide()
 	$('#filter').click -> 
