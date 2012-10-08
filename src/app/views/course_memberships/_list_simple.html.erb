@@ -1,29 +1,28 @@
 <div>
   <% if current_user.courses.count > 0 %>
   <% current_user.courses.each do |course| %>
-    <div class="row-fluid" >
-      <div class='span2 pull-right <%= "follow-button small follow-button-#{course.id}" %>'>
-        <%= render :partial => 'shared/follow_button', :locals => { :course => course } %>
-      </div>
-
-
-      <div class="span7">
+    <table class="table">
+      <tr>
+      
+      <td class="span7">
         <strong> <%= link_to course.name, course %> </strong>
         <br/>
         <em> <small> <%= course.term %> </small> </em>
-      </div>
+      </td>
 
-
-      <div class="span3">
+      <td class="span3">
         <small>
-        <ul class="unstyled margin:0;">
-          <li><nobr><%= pluralize(course.questions.count, 'question') %></nobr></li>
-          <li><nobr><%= pluralize(course.participants.count, 'participant') %></nobr></li>
-        </ul>
+          <%= pluralize(course.questions.count, 'question') %><br />
+          <%= pluralize(course.participants.count, 'participant') %><br />
+          <%= pluralize(course.followers.count, 'follower') %><br />
         </small>
-      </div>
+      </td>
+      <td class='span2 <%= "follow-button small follow-button-#{course.id}" %>'>
+        <%= render :partial => 'shared/follow_button', :locals => { :course => course } %>
+      </td>
 
-    </div>
+      </tr>
+    </table>
 
   <% end %>
 
