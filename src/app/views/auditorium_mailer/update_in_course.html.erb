@@ -53,9 +53,9 @@
     </div>
 
     <% if @post.origin.post_type.eql? 'question' %>
-      <p><%= link_to "View, answer or comment on #{@post.origin.author}'s question.", post_url(@post.origin) %><p>
+      <p><%= link_to "View, answer or comment on #{@post.origin.author}'s question.", "#{post_url(@post.origin)}#post-#{@post.id}" %><p>
     <% else %>
-      <p><%= link_to "View or comment on #{@post.origin.author}'s announcement.", post_url(@post.origin) %></p>
+      <p><%= link_to "View or comment on #{@post.origin.author}'s announcement.", "#{post_url(@post.origin)}#post-#{@post.id}" %></p>
     <% end %>
 
     <p class="email-footer"><small>You receive this email, because you subscribed to <%= link_to @post.course.name_with_term, course_url(@post.course) %>. <%= link_to 'Change', edit_user_registration_url %> what emails auditorium sends you.</small></p>
