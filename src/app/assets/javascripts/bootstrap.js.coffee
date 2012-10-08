@@ -1,15 +1,18 @@
-jQuery ->
-  # when page is loaded with hash
+scrollToPost = (offset) ->
   if window.location.hash and window.location.hash.match(/#post-/)
-    if $.browser.safari 
-      bodyelem = $("body")
-    else 
-      bodyelem = $("html,body")
-    
-    bodyelem.animate({scrollTop:$(window.location.hash).offset().top - 150}, 1000)
-    $('div'+window.location.hash)
-    $(window.location.hash).effect('highlight', {}, 2000)
+      $("html,body").animate({scrollTop:$(window.location.hash).offset().top - offset}, 500)
+      $('div'+window.location.hash)
+      $(window.location.hash).effect('highlight', {}, 2000)
 
+jQuery ->
+      
+
+  # when page is loaded with hash
+  if $.browser.safari 
+    $(window).load -> scrollToPost(70)
+  else
+    scrollToPost(140)
+    
 scrollTop = -> document.body.scrollTop or document.documentElement.scrollTop
 $("li.dropdown-fallback").each -> @style.display= "none"
 
