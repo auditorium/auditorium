@@ -23,6 +23,7 @@
 				<br />
 				<small><em>
 					<%= pluralize(course.participants.count, 'participant') %>,
+					<%= pluralize(course.followers.count, 'member') %>,
 					<%= pluralize(course.questions.count, 'question') %>,
 					<%= pluralize(course.infos.count, 'info') %>
 				</em></small>
