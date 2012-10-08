@@ -8,7 +8,7 @@ module ApplicationHelper
       if link.match /^https?:\/\/auditorium.inf.tu-dresden.de/
         "<a href=\"#{link}\">#{alt_text}</a>"
       else
-        "<a target=\"_blank\" href=\"#{link}\"  title='external link to #{link}'>#{alt_text} <i class='icon-external-link'></i></a>"
+        "<a target=\"_blank\" href=\"#{link}\"  title='external link to #{link}'> <i class='icon-external-link'></i> #{alt_text}</a>"
       end
     end
 
@@ -16,7 +16,7 @@ module ApplicationHelper
       if link.match /^https?:\/\/auditorium.inf.tu-dresden.de/
         "<a href=\"#{link}\">#{link}</i></a>"
       else
-        "<a target=\"_blank\" href=\"#{link}\" title='external link to #{link}'>#{link} <i class='icon-external-link'></i></a>"
+        "<a target=\"_blank\" href=\"#{link}\" title='external link to #{link}'><i class='icon-external-link'></i> #{link}</a>"
       end
     end
   end

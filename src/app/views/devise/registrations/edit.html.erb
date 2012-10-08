@@ -50,7 +50,8 @@
         <%= f.label :alternative_email, 'Second Email', :class => 'control-label'%>
         <div class="controls"> 
           <%= f.email_field :alternative_email, :class => "span8"%>
-        <span class="label">used for avatar</span> 
+        <span class="label">used for gravatar</span>
+        <p class="hint"><%= link_to ' Click to change or create your gravatar', 'https://de.gravatar.com/emails', 'target' => '_blank', class: 'icon-external-link' %></p> 
         </div> 
       </div>
       
