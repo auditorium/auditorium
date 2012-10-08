@@ -21,7 +21,7 @@ class TermsController < ApplicationController
     else
       @courses = @term.courses.keep_if {|c| current_user.faculties.include? c.faculty  }
     end
-    @courses.sort! { |x,y| y.participants.count <=> x.participants.count }
+    @courses.sort! { |x,y| y.participants.count <=> x.participants.count and y.followers.count <=> x.followers.count }
     @courses = Kaminari.paginate_array(@courses).page(params[:page]).per(20)
 
     respond_to do |format|
@@ -98,7 +98,7 @@ class TermsController < ApplicationController
       @courses = Course.where('name LIKE ?', "%#{params[:q]}%").limit(20)
     end
 
-    @courses.sort! { |x,y| y.participants.count <=> x.participants.count }
+    @courses.sort! { |x,y| y.participants.count <=> x.participants.count and y.followers.count <=> x.followers.count }
     @courses = Kaminari.paginate_array(@courses).page(params[:page]).per(20)
 
     respond_to do |format|
