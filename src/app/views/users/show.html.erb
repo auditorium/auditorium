@@ -15,7 +15,7 @@ end
 	<div id="questions" class="span6">
 		<h3>Questions</h3>
 		<% if @user.questions.empty? %>
-			<p class="hint">Sorry this user does not asked questions, yet!</p>
+			<p class="hint">Sorry this user has not posted any questions yet.</p>
 		<% else %>
 			<% @user.questions(limit).each do |question| %>
 				<% if can? :read, question %>
@@ -30,7 +30,7 @@ end
 	<div id="answers" class="span6">
 		<h3>Answers to questions</h3>
 		<% if @user.answers.empty? %>
-			<p class="hint">Sorry this user does not answered any question, yet!</p>
+			<p class="hint">Sorry this user has not answered any questions yet.</p>
 		<% else %>
 			<% @user.answers(limit).each do |answer| %>
 				<% if can? :read, answer.origin %>
