@@ -6,8 +6,9 @@ jQuery ->
     else 
       bodyelem = $("html,body")
     
-    bodyelem.animate({scrollTop:$(window.location.hash).offset().top - 60}, 1000)
-    $('div'+window.location.hash).effect('highlight', {}, 2000)
+    bodyelem.animate({scrollTop:$(window.location.hash).offset().top - 150}, 1000)
+    $('div'+window.location.hash)
+    $(window.location.hash).effect('highlight', {}, 2000)
 
 scrollTop = -> document.body.scrollTop or document.documentElement.scrollTop
 $("li.dropdown-fallback").each -> @style.display= "none"
