@@ -3,6 +3,22 @@ module ApplicationHelper
     def block_code(code, language='ruby')
       CodeRay.scan(code, language).div
     end
+
+    def link(link, title, alt_text)
+      if link.match /^https?:\/\/auditorium.inf.tu-dresden.de/
+        "<a href=\"#{link}\">#{alt_text}</a>"
+      else
+        "<a target=\"_blank\" href=\"#{link}\"  title='external link to #{link}'>#{alt_text} <i class='icon-external-link'></i></a>"
+      end
+    end
+
+    def autolink(link, link_type)
+      if link.match /^https?:\/\/auditorium.inf.tu-dresden.de/
+        "<a href=\"#{link}\">#{link}</i></a>"
+      else
+        "<a target=\"_blank\" href=\"#{link}\" title='external link to #{link}'>#{link} <i class='icon-external-link'></i></a>"
+      end
+    end
   end
 
   def markdown(text)
