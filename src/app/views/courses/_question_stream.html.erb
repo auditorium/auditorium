@@ -6,4 +6,6 @@
   <% for question in @questions %>
     <%= render :partial => 'posts/post_teaser', :locals => { :post => question} %>
   <% end %>
+
+  <%= paginate @questions %>
 <% end %>
