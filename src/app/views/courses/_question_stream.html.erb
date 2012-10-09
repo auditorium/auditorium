@@ -1,6 +1,6 @@
 <% if @questions.count == 0 %>
   <p class="hint">
-    No questions were asked, yet. <%= link_to 'Be the first with a question.', new_post_path(:post_type => 'question', :course_id => @course.id) %>
+    No questions were asked, yet. <%= link_to 'Ask your question.', new_post_path(:post_type => 'question', :course_id => @course.id) %>
   </p>
 <% else %> 
   <% for question in @questions %>

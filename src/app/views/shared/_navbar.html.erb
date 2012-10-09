@@ -41,6 +41,11 @@
       
 
     </div>
+    <div class="container">
+      <%= form_tag '/search', :method => 'get', :class => 'form-search visible-phone',:remote => false do %>
+        <%= text_field_tag :query, nil, :placeholder => 'Search', :id => 'searchbar', class: 'span2' %>
+      <% end %>
+    </div>
 
   </div>
 <%= render "shared/breadcrumbs" %>

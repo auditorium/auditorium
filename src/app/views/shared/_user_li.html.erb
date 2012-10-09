@@ -1,15 +1,15 @@
 <% if user_signed_in? %>
-    <%= form_tag '/search', :method => 'get', :class => 'navbar-search visible-desktop form-search',:remote => false do %>
+  <%= form_tag '/search', :method => 'get', :class => 'navbar-search form-search hidden-phone',:remote => false do %>
     <%= text_field_tag :query, nil, :placeholder => 'Search', :id => 'searchbar' %>
   <% end %>
   <%= render :partial => 'shared/notifications' %>
 
-  <li class='pull-right hidden-phone <%= "admin" if current_user.admin? %>' >
+  <li class='pull-right <%= "admin" if current_user.admin? %>' >
     <a href="<%= user_path(current_user) %>" title='Profile page'>
       <em class="icon-user"></em>
       <span class="visible-desktop">
       <% if current_user.username?%> <%= current_user.username%>
-      <% else %> <%= current_user.email %> <% end %>
+      <% else %> <%= current_user.email.split('@')[0] %> <% end %>
       </span>
     </a>
   </li>

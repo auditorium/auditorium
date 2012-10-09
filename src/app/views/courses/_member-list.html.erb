@@ -1,7 +1,7 @@
 <p>
   
   <% if @course.maintainers.empty? %>
-    <b><%= pluralize(@course.maintainers.count, 'maintainer') %> <%= link_to "I'm maintainer", new_post_path(:post_type => 'question', :course_id => @course.id, :is_private => true, :subject => "Ich bin Betreuer des Kurses.", :body => "Hallo,\nich bin der Betreuer des Kurses. Bitte authorisieren Sie mich. \nDanke #{current_user.full_name}") %></b> 
+    <b><%= pluralize(@course.maintainers.count, 'maintainer') %> <%= link_to "make me maintainer", new_post_path(:post_type => 'question', :course_id => @course.id, :is_private => true, :subject => "Ich bin Betreuer des Kurses.", :body => "Hallo,\nich bin der Betreuer des Kurses. Bitte authorisieren Sie mich. \nDanke #{current_user.full_name}") %></b> 
   <% else %>
     <b><%= pluralize(@course.maintainers.count, 'maintainer') %></b>
     <% @course.maintainers.each do |maintainer| %>
@@ -13,7 +13,7 @@
 </p>
 <p>
 <% if @course.editors.empty? %>
-  <b>no editor <%= link_to "I'm editor", new_post_path(:post_type => 'question', :course_id => @course.id, :is_private => true, :subject => "Ich bin Tutor des Kurses.", :body => "Hallo,\nIch bin ein Tutor des Kurses. Bitte authorisieren Sie mich.\nDanke #{current_user.full_name}") %></b> 
+  <b>no editor <%= link_to "make me editor", new_post_path(:post_type => 'question', :course_id => @course.id, :is_private => true, :subject => "Ich bin Tutor des Kurses.", :body => "Hallo,\nIch bin ein Tutor des Kurses. Bitte authorisieren Sie mich.\nDanke #{current_user.full_name}") %></b> 
 <% else %>
   <% @course.editors.each do |editor| %>
     <b><%= pluralize(@course.editors.count, 'editor') %></b>
@@ -25,11 +25,4 @@
 </p>
 <p>
   <b><%= pluralize(@course.followers.count, 'member') %></b>
-<% if current_user && current_user.may_edit_course(@course) %>
-    <% @course.followers.each do |member| %>
-      <% if !member.nil? %>
-        <%= member.full_name %><%= "," unless @course.followers.last == member %>
-      <% end %>
-    <% end %>
-<% end %>
 </p>
