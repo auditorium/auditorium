@@ -8,13 +8,13 @@
 </div>
 <% end %>
 
-<div class="hero-unit">
+<div class="hero-unit small">
   <h2>
     <%= " #{@course.name}" %>
     <small><%=link_to "(#{@course.term.code})", term_path(@course.term) %></small>
   </h2>
   <% unless @course.description.nil? or @course.description.empty? %>
-      <p class="lead"><%= markdown(@course.description) %></p>
+      <%= markdown(@course.description) %>
       <% else %>
       <%= link_to 'Add a description to the course', edit_course_path(@course) if can? :manage, @course %> 
     <% end %>
