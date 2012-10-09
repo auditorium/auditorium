@@ -1,6 +1,7 @@
 <div class="center span8">
 <%= render :partial => 'post', :locals => {:post => @post } %>
 
+<h3>Answers <small>sorted by rating</small></h3>
 <% @post.answers.each do |answer| %>
   <%= render :partial => 'posts/post', :locals => { :post => answer }%>
 <% end %>
