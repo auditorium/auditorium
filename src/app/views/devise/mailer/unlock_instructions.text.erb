@@ -1,0 +1,18 @@
+Hello <%= @resource.full_name %>!
+=======================================================
+
+Your account has been locked due to an excessive amount of unsuccessful sign in attempts.
+
+Click the link below to unlock your account:
+
+Unlock my account: <%= unlock_url(@resource, :unlock_token => @resource.unlock_token) %>Hello <%= @resource.full_name %>!
+
+Someone has requested a link to change your password, and you can do this through the link below.
+
+Change my password: <%= edit_password_url(@resource, :reset_password_token => @resource.reset_password_token) %>
+
+If you didn't request this, please ignore this email.
+Your password won't change until you access the link above and create a new one.
+
+Have a great day!
+The auditorium team

@@ -11,6 +11,7 @@ class Course < ActiveRecord::Base
   attr_accessible :description, :name, :beginDate, :endDate, :creator_id, :term_id, :lecture_id, :sws, :url
 
   validates :name, presence: true
+  validates :lecture_id, presence: true
   validates :term,  presence: true
 
   define_index do
@@ -25,6 +26,9 @@ class Course < ActiveRecord::Base
   end
 
   #scope :unmaintained,includes(:course_memberships).where(:course_memberships)
+
+  scope :current, -> {joins(:term).where("beginDate < ?", Date.today).where("endDate > ?", Date.today)}
+
   def name_with_term(option = { short: true })
     if self.name.length > 50 && :short == true
       "#{self.name[0..50].titleize}... (#{self.term.code})"
@@ -68,11 +72,11 @@ class Course < ActiveRecord::Base
   end
 
   def questions
-    questions = Post.order('created_at ASC').where('post_type = ? and course_id = ?','question', self.id)
+    Post.order('last_activity DESC, updated_at DESC, created_at DESC').where('post_type = ? and course_id = ?','question', self.id)
   end
   
   def infos
-    Post.order('created_at ASC').where('post_type = ? and course_id = ?','info', self.id)
+    Post.order('last_activity DESC, updated_at DESC, created_at DESC').where('post_type = ? and course_id = ?','info', self.id)
   end
 
   def is_now?

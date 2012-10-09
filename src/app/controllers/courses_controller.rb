@@ -4,11 +4,20 @@ class CoursesController < ApplicationController
 
   
   include ActionView::Helpers::DateHelper 
+
   # GET /courses
   # GET /courses.json
   def index
-    @courses = Course.order('name ASC').page(params[:page]).per(20)
-    @courses_by_faculty = @courses.to_a.group_by{ |course| course.faculty }
+
+    if params[:term_id]
+      @term = Term.find(params[:term_id]) if params[:term_id]
+      @courses = Course.where('term_id = ?', @term.id).order('term_id DESC, name DESC')
+    else
+      @courses = Course.order('term_id DESC, name DESC')
+    end
+    @courses.sort! { |x,y| y.participants.count <=> x.participants.count and y.followers.count <=> x.followers.count }
+    @courses = Kaminari.paginate_array(@courses).page(params[:page]).per(20)
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @courses }
@@ -139,29 +148,21 @@ class CoursesController < ApplicationController
       if params['follow']
         if course_membership.save!
           format.js { }
-          format.html { redirect_to redirect_url, :flash => {:success => 'Du folgst nun dem Kurs und wirst informiert, wenn es Neuigkeiten gibt!' } }
+          format.html { redirect_to redirect_url, :flash => {:success => 'You have subscribed to this course. Now you will receive notificatons on updates.' } }
           format.json { render json: course, status: :following, location: course }
         else
-          format.html { redirect_to redirect_url, :flash => {:alert => 'Es ist ein Fehler aufgetreten, bitte versuche es noch einmal.' }}
+          format.html { redirect_to redirect_url, :flash => {:alert => 'Something went wrong. Try again later.' }}
           format.json { render json: course.errors, status: :unprocessable_entity }
         end
       elsif params['unfollow']
         format.js { }
-        format.html { redirect_to redirect_url, :flash => {:success => 'Du wurdes erfolgreich aus dem Kurs ausgetragen.' } }
+        format.html { redirect_to redirect_url, :flash => {:success => 'You have successfully unsubscribed to this course. You will no longer receive notifications on updates.' } }
         format.json { render json: course, status: :following, location: course }
       else
-        format.html { redirect_to redirect_url, :flash => {:alert => 'Es ist ein Fehler aufgetreten, bitte versuche es noch einmal.' }}
+        format.html { redirect_to redirect_url, :flash => {:alert => 'Something went wrong. Try again later.' }}
         format.json { render json: course.errors, status: :unprocessable_entity }
       end
       
-    end
-  end
-
-  def search
-    #todo
-    respond_to do |format|
-        format.js 
-        format.html { redirect_to "#{root_url}?s=#{params[:query]}" }
     end
   end
   

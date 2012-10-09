@@ -2,11 +2,15 @@
 <html>
   <head lang="en">
     <title>auditorium</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
     
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
     <% if mathjax_should_load %>
     <script type="text/x-mathjax-config">
       MathJax.Hub.Config({
@@ -16,8 +20,8 @@
        }
       });
     </script>
-    
-    <%= mathjax_tag :config=>'TeX-AMS_HTML.js' %>
+
+    <%= mathjax_tag config: 'TeX-AMS_HTML.js' %>
     <% end %>
   </head>
   <body data-spy="scroll" data-target=".subnav" data-offset="50">
@@ -43,6 +47,13 @@
     <footer id="footer">
       <%= render :partial => 'shared/footer' %>
     </footer>
+    <% if can? :create, Feedback %>
+    <div class="hidden-phone" id="feedback">
+      <%= link_to 'feedback', '#feedbackModal', 'data-toggle'=>"modal", 'role' => 'button' %>
+    </div>
+    <% end %>
+
+    <%= render 'feedbacks/feedback_modal' %>
   </body>
 </html>
 

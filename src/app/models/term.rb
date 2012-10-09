@@ -7,14 +7,30 @@ class Term < ActiveRecord::Base
   validates :beginDate, presence: true
   validates :endDate,   presence: true
 
+  scope :current, -> {where("beginDate < ?", Date.today).where("endDate > ?", Date.today)}
 
   def code 
-    name = term_type.upcase
-    if term_type == 'ss'
-      return "#{name} #{endDate.year.to_s[2,4]}"
+      return "#{term_type.upcase} #{short_year}"
+  end
+
+  def year
+    if endDate.year == beginDate.year
+      return "#{endDate.year.to_s}"
     else
-      return "#{name} #{beginDate.year.to_s[2,4]}/#{endDate.year.to_s[2,4]}"
+      return "#{beginDate.year.to_s}/#{endDate.year.to_s}"
     end
+  end
+
+  def short_year
+    if endDate.year == beginDate.year
+      return "#{endDate.year.to_s[2,4]}"
+    else
+      return "#{beginDate.year.to_s[2,4]}/#{endDate.year.to_s[2,4]}"
+    end
+  end
+
+  def type
+    self.term_type
   end
 
   def to_s
@@ -25,7 +41,8 @@ class Term < ActiveRecord::Base
     self.beginDate <= Date.today and  Date.today <= self.endDate
   end
 
-  def current
-    Term.order(:name).select {|term| term.is_now? }
+   def current
+    Term.where('beginDate <= ? and  ? <= endDate', Date.today, Date.today)
   end
+
 end

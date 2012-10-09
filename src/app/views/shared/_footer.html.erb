@@ -4,22 +4,19 @@
     <div class="span4">
       <dl class="dl-horizontal">
         <dt>browse</dt>
-        <dd><em class="icon-pencil"></em> <%= link_to "Courses", courses_path %></dd>
-        <dd><em class="icon-book"></em> <%= link_to "Lectures", lectures_path %></dd>
-        <dd><em class="icon-group"></em> <%= link_to "Chairs", chairs_path %></dd>
-        <dd><em class="icon-beaker"></em> <%= link_to "Institutes", institutes_path%></dd>
-        <dd><em class="icon-home"></em> <%= link_to "Faculties", faculties_path %></dd>
+        <dd><i class="icon-list"></i> <%= link_to "all faculties", faculties_path %></dd>
+        <dd><i class="icon-time"></i> <%= link_to "by terms", terms_path %></dd>
       </dl>     
     </div>
 
     <div class="span4">
       <dl class="dl-horizontal">
         <dt>navigate</dt>
-        <dd><em class="icon-home"></em> <%= link_to "Home", root_path %></dd>
-        <dd><em class="icon-search"></em> <%= link_to "Search", search_path %></dd>
-        <dd><em class="icon-thumbs-up"></em> <%= link_to "Ranking", ranking_path %></dd>
+        <dd><i class="icon-home"></i> <%= link_to "Home", root_path %></dd>
+        <dd><i class="icon-search"></i> <%= link_to "Search", search_path %></dd>
+        <dd><i class="icon-list-ol"></i> <%= link_to "Ranking", users_path %></dd>
         <% if current_user %>
-          <dd><em class="icon-envelope"></em> <%= link_to "#{current_user.unread_notifications.count} Notifications ", notifications_path %></dd>
+          <dd><i class="icon-envelope"></i> <%= link_to "#{current_user.unread_notifications.count} Notifications ", notifications_path %></dd>
         <% end %>
       </dl>
     </div>
@@ -29,10 +26,11 @@
     <div class="span4 ">
       <dl class="dl-horizontal">
         <dt>admin</dt>
-        <dd><em class="icon-user"></em> <%= link_to 'moderation', users_moderation_path %></dd>
-        <dd><em class="icon-eye-open"></em> <%= link_to "reports", reports_path %></dd>
-        <dd><em class="icon-twitter"></em> <%= link_to "twitter", 'http://twitter.com/_auditorium' %></dd>
-        <dd><em class="icon-github"></em> <%= link_to "github", "https://github.com/auditorium/auditorium" %></dd>
+        <dd><i class="icon-user"></i> <%= link_to 'moderation', users_moderation_path %></dd>
+        <dd><i class="icon-comment-alt"></i> <%= link_to "feedback (#{Feedback.where(read: false).count})", feedbacks_path %></dd>
+        <dd><i class="icon-eye-open-open"></i> <%= link_to "reports", reports_path %></dd>
+        <dd><i class="icon-twitter"></i> <%= link_to "twitter", 'http://twitter.com/_auditorium' %></dd>
+        <dd><i class="icon-github"></i> <%= link_to "github", "https://github.com/auditorium/auditorium" %></dd>
       </dl>
     </div>
 
@@ -43,9 +41,9 @@
         <dt>
         need help?
         </dt>
-        <dd><em class="icon-twitter"></em> <%= link_to "twitter", 'http://twitter.com/_auditorium' %></dd>
-        <dd><em class="icon-github"></em> <%= link_to "github", "https://github.com/auditorium/auditorium" %></dd>
-        <dd><em class="icon-envelope"></em> <%= mail_to "auditorium@inftex.net", 'write us an email' %></dd>
+        <dd><i class="icon-twitter"></i> <%= link_to "twitter", 'http://twitter.com/_auditorium' %></dd>
+        <dd><i class="icon-github"></i> <%= link_to "github", "https://github.com/auditorium/auditorium" %></dd>
+        <dd><i class="icon-envelope"></i> <%= mail_to "auditorium@inftex.net", 'write us an email' %></dd>
       </dl>
     </div>
 

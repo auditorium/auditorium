@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.6'
+gem 'rails', '3.2.8'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -16,6 +16,7 @@ gem 'cancan'
 gem 'gravatar_image_tag'
 gem 'kaminari'
 gem 'font-awesome-rails'
+gem 'whenever'
 gem 'mathjax-rails'
 
 # for markdown rich text

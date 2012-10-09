@@ -8,11 +8,14 @@ class Ability
     alias_action :commenting, :to => :comment
     alias_action :rating, :to => :rate
     alias_action :answered, :to => :mark_as_answered
+    alias_action :search_courses, :to => :search_for_courses
 
 
     user ||= User.new # guest user (not logged in)
 
     if user.id? # registrierte Benutzer
+
+      can :search, :all
 
       can :read, :all #if user.confirmed?
       can :mark_all_as_read, Notification
@@ -20,6 +23,7 @@ class Ability
 
       can :update,   User, :id => user.id
       can :moderate, User, user.is_admin?
+      cannot :search, User
 
       can :create,   Post
       
@@ -57,9 +61,14 @@ class Ability
       end
 
       #can :follow, Course do |course| course.faculty.id == user.faculty_id end
-
+      can :create, Lecture
       can :create, Course
       can :follow, Course
+      can :read, Course
+      can :manage, Course do |course|
+        user.is_course_maintainer? course
+      end
+
       can :follow, Lecture
       can :follow, Faculty
 
@@ -67,12 +76,18 @@ class Ability
         user.is_course_maintainer? course
       end
 
-      can :manage, Course do |course|
-        user.is_course_maintainer? course
-      end
+      
 
       cannot :approve, Course
 
+      cannot :manage, Feedback
+      can :create, Feedback
+
+      cannot :manage, Term
+      can :read, Term
+      can :search_for_courses, Term
+      can :search, User
+      
     else # Gäste
       cannot :read, :all
     end
@@ -81,10 +96,12 @@ class Ability
       can :manage, :all
       can :destroy, :all
       can :read, :all #if user.confirmed?
+      can :update, :all
 
       can :rate,     Post do |post|
         user.id != post.author.id
       end
+      can :manage, Feedback
     end
 
 

@@ -1,5 +1,6 @@
+
 <% if current_user and current_user.subscribed_to?(course) %>
-    <%= button_to 'subscribed', "#{course_path(course)}/following", :name => 'unfollow', :class => "follow-button btn btn-mini btn-info", 'data-id' => "#{course.id}", :disabled => should_be_disabled?, 'data-disable-with' => 'loading...', :id => 'follow-button', :remote => true %>
+    <%= button_to "unsubscribe", follow_course_path(course), :name => 'unfollow', :class => "follow-button btn btn-info btn-mini", 'data-id' => "#{course.id}", :disabled => should_be_disabled?, 'data-disable-with' => 'loading...', :id => 'follow-button', rel: 'tooltip', title: "Unsubscribe for notifications on course activity?", 'data-placement' => 'right', :remote => true %>
 <% else %>
-    <%= button_to 'subscribe to course',"#{course_path(course)}/following", :name => 'follow', :class => "follow-button btn btn-mini", 'data-id' => "f#{course.id}", :disabled => should_be_disabled?, 'data-disable-with' => 'loading...', :id => 'follow-button', :remote => true   %>
+    <%= button_to "subscribe", follow_course_path(course), :name => 'follow', :class => "follow-button highlight btn btn-mini", 'data-id' => "#{course.id}", :disabled => should_be_disabled?, 'data-disable-with' => 'loading...', :id => 'follow-button', rel: 'tooltip', title: "Subscribe for notifications on course activity.", 'data-placement' => 'right', :remote => true   %>
 <% end %>

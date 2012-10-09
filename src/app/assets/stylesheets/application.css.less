@@ -1,23 +1,11 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
- *
- *= require_self
- *= require_tree .
+*= require_self
+*= require_tree .
 */
 
 // Bootstrap
 @import "twitter/bootstrap/bootstrap";
 @import "twitter/bootstrap/responsive";
-
-
-
 
 // Font Awesome - for Glyphs
 @fontAwesomeEotPath:  'fontawesome-webfont.eot';
@@ -26,182 +14,44 @@
 @fontAwesomeSvgzPath: 'fontawesome-webfont.svgz';
 @fontAwesomeSvgPath:  'fontawesome-webfont.svg';
 @import "fontawesome";
+@import "variables";
+@import "caviar-dreams";
 
-
-// Set the correct sprite paths
-@iconSpritePath:       asset-path("twitter/bootstrap/bootstrap/glyphicons-halflings.png", image);
-@iconWhiteSpritePath:  asset-path("twitter/bootstrap/bootstrap/glyphicons-halflings-white.png", image);
-
-
-/* COLOR PALETTE - put this into an extra file */
-// http://twitter.github.com/bootstrap/less.html#variables
-/* default colors */
-@black:        #000;
-@grayDarker:   #222;
-@grayDark:     #333;
-@gray:         #555;
-@grayLight:    #999;
-@grayLighter:  #eee;
-@white:        #fff;
-
-@blue:         #049cdb;
-@green:        #46a546;
-@red:          #9d261d;
-@yellow:       #ffc40d;
-@subscribed-color: #e8efff;
-@orange:       #f89406;
-@orangeLight:  #EFCBB6;
-@pink:         #c3325f;
-@purple:       #7a43b6;
-@beige:      #f0f0eb;
-
-@bodyBackground:     transparent; // surprised? check out html{}
-@headerColor:        @white;
-@headerBackground:   @gray;
-@headerBackgroundImage : url("faculty-informatik.jpg");
-@contentBackground:  @white;
-@admin-red:          lighten(@red, 30%);
-
-@textColor:@black;
-@linkColor:@blue;
-@linkColorHover:lighten(@linkColor,30%);
-
-@btnBackground:                  @white;
-@btnBackgroundHighlight:         darken(@white, 10%);
-@btnBorder:                      darken(@white, 20%);
-
-@navbarLinkColor:            @white;
-@navbarBackground:           @grayDark;
-@navbarBackgroundHighlight:  @grayDark;
-@dropdownLinkColor:          @black;
-
-@btnPrimaryBackground:           desaturate(@linkColor, 15%);
-@btnPrimaryBackgroundHighlight:  spin(@btnPrimaryBackground, 15%);
-
-@btnInfoBackground:              @blue;
-@btnInfoBackgroundHighlight:     desaturate(@blue, 25%);
-
-@btnSuccessBackground:           lighten(@green, 15%);
-@btnSuccessBackgroundHighlight:  @btnSuccessBackground;
-
-@btnWarningBackground:           desaturate(@orange, 15%);
-@btnWarningBackgroundHighlight:  spin(@btnWarningBackground, 15%);
-
-@btnDangerBackground:            desaturate(@red,15%);
-@btnDangerBackgroundHighlight:   spin(@btnDangerBackground,15%);
-
-@btnInverseBackground:           @gray;
-@btnInverseBackgroundHighlight:  @grayDarker;
-
-/* now overwriting colors */
-// @import ""
-
-
-@body-padding-top:   60px;
-//@navbarHeight: 30px; //default: 40px
-
-@baseFontFamily:     @helvetica; 
-@helvetica:          "Helvetica Neue",Helvetica Neue,Helvetica,Arial,sans-serif;
-
-@font-weight-h1:  100;
-@font-size-h1:    3em;
-@font-weight-h2:  300;
-@font-size-h2:    2.2em;
-@font-weight-h3:  200;
-@font-size-h3:    1.6em;
-@font-size-h3-well:    1.5em;
-@font-weight-h4:  300;
-@font-size-h4:    1.5em;
-
-small {font-size: 0.7em;}
-
-//MIXINS
-.soft-border
-{
-  border-style: solid;
-  border-color: @grayLight;
+/* headers */
+h1, h2, h3, h4, h5, h6{
+  color:@textColor;
+  margin:10px 0;
+  line-height: 1;
+  a { color:@grayDarker; }
+  a:hover {color: lighten(@grayDarker, 35%);  text-decoration: none }
+}
+h1 {
+  font-weight:  @font-weight-h1;
+  font-size:    @font-size-h1;
+  font-family: 'CaviarDreams';
 }
 
-.top-border
-{
-  .soft-border;
-  border-width: 1px 0 0 0;
-  margin-top: 1em;
+h2 {
+  font-weight:  @font-weight-h2;
+  font-size:    @font-size-h2;
 }
 
-.bottom-border
-{
-  .soft-border;
-  border-width: 0 0 1px 0;
-  margin-bottom: 4em;
+h3 {
+  font-weight:  @font-weight-h3;
+  font-size:    @font-size-h3;
+  vertical-align: bottom;
 }
-.border-radius (@radius)
-{
-  border-radius: @radius;
-  -moz-border-radius: @radius;
-  -webkit-border-radius: @radius;
-}
-.border-radius(@a,@b,@c,@d)
-{
-    -webkit-border-radius: @a,@b,@c,@d;
-       -moz-border-radius: @a,@b,@c,@d;
-            border-radius: @a,@b,@c,@d;
+.well h3 {
+  font-weight:  @font-weight-h3;
+  font-size:    @font-size-h3-well;
 }
 
-#gradient
+h4, h5, h6
 {
-  .no-gradient(@color)
-  {
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,@color), color-stop(100%, @color)); /* Chrome,Safari4+ */
-    background-image: -webkit-linear-gradient(  top,  @color 0%,  @color 100%); /* Chrome 10+,Safari 5.1+ */
-    background-image: -moz-linear-gradient(     top,  @color 0%,  @color 100%); /* FF3.6+ */
-    background-image: -ms-linear-gradient(      top,  @color 0%,  @color 100%); /* IE10+ */
-    background-image: -o-linear-gradient(       top,  @color 0%,  @color 100%); /* Opera 11.10+ */
-    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false); /* IE6-9 */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@color', endColorstr='@color',GradientType=0 ); /* IE6-9 */
-    background-image: linear-gradient(top, @color 0%,@color 100%); /* W3C */
-  }
+  font-weight:  @font-weight-h4;
 }
 
-#shadow
-{
-  .no-shadow
-  {
-  -webkit-box-shadow: inset 0 0px 0 #fff, 0 0px 0px rgba(0,0,0,.0);
-     -moz-box-shadow: inset 0 0px 0 #fff, 0 0px 0px rgba(0,0,0,.0);
-          box-shadow: inset 0 0px 0 #fff, 0 0px 0px rgba(0,0,0,.0);
-  }
-  .soft
-  {
-  -webkit-box-shadow: inset 0 1px 0 #fff, 0 1px 5px rgba(0,0,0,.1);
-     -moz-box-shadow: inset 0 1px 0 #fff, 0 1px 5px rgba(0,0,0,.1);
-          box-shadow: inset 0 1px 0 #fff, 0 1px 5px rgba(0,0,0,.1);
-  }
-  .light
-  {
-  -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.05);
-     -moz-box-shadow: inset 0 3px 5px rgba(0,0,0,.05);
-          box-shadow: inset 0 3px 5px rgba(0,0,0,.05);
-  }
-  .inset-top(@color:@gray, @size:5px)
-  {
-       -moz-box-shadow: inset 0 @size @size -@size @color;
-    -webkit-box-shadow: inset 0 @size @size -@size @color;
-            box-shadow: inset 0 @size @size -@size @color;
-  }
-}
-
-
-/* docs */
-// https://developer.mozilla.org/en/Sections_and_Outlines_of_an_HTML5_document
-// http://wrangl.com/sass-v-less
-// http://twitter.github.com/recess/
-// https://developer.mozilla.org/en/CSS/Writing_Efficient_CSS
-
-// See http://twitter.github.com/bootstrap/less.html for their names and documentation
-
-
-
+/* media */
 /****** resonse overrides ******/
 
 // Landscape phones and down
@@ -247,155 +97,209 @@ small {font-size: 0.7em;}
 @media (min-width: 1200px) { }
 
 
-
-/****** SPECIFICS ******/
-
-html
+/* mixins */
+.soft-border
 {
-    background: @grayDark url('low_contrast_linen.png');
+  border-style: solid;
+  border-color: @grayLight;
 }
-body
+
+.top-border
 {
-  font: 14px/22px @baseFontFamily;
-  font-weight:200; 
+  .soft-border;
+  border-width: 1px 0 0 0;
+  margin-top: 1em;
+}
+
+.bottom-border
+{
+  .soft-border;
+  border-width: 0 0 1px 0;
+  margin-bottom: 4em;
+}
+.border-radius (@radius)
+{
   
-  pre, p code {
-    padding: 2px 4px;
-    color: @grayDark;
-    background-color: #F7F7F9;
-    border: 1px dashed #E1E1E8;
-  }
+  -moz-border-radius: @radius;
+  -webkit-border-radius: @radius;
+  -o-border-radius: @radius;
+  border-radius: @radius;
+}
+.border-radius(@a,@b,@c,@d)
+{
+    -webkit-border-radius: @a,@b,@c,@d;
+       -moz-border-radius: @a,@b,@c,@d;
+         -o-border-radius: @a,@b,@c,@d;
+            border-radius: @a,@b,@c,@d;
+}
 
-  h1 {
-    margin:50px 0 15px 0
+#gradient
+{
+  .no-gradient(@color)
+  {
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,@color), color-stop(100%, @color)); /* Chrome,Safari4+ */
+    background-image: -webkit-linear-gradient(  top,  @color 0%,  @color 100%); /* Chrome 10+,Safari 5.1+ */
+    background-image: -moz-linear-gradient(     top,  @color 0%,  @color 100%); /* FF3.6+ */
+    background-image: -ms-linear-gradient(      top,  @color 0%,  @color 100%); /* IE10+ */
+    background-image: -o-linear-gradient(       top,  @color 0%,  @color 100%); /* Opera 11.10+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false); /* IE6-9 */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@color', endColorstr='@color',GradientType=0 ); /* IE6-9 */
+    background-image: linear-gradient(top, @color 0%,@color 100%); /* W3C */
   }
+}
+
+.bottom-border
+{
+  .soft-border;
+  border-width: 0 0 1px 0;
+  margin-bottom: 4em;
+}
+.border-radius (@radius)
+{
   
-  /* top level outlines */
-  & > header
+  -moz-border-radius: @radius;
+  -webkit-border-radius: @radius;
+  -o-border-radius: @radius;
+  border-radius: @radius;
+}
+.border-radius(@a,@b,@c,@d)
+{
+    -webkit-border-radius: @a,@b,@c,@d;
+       -moz-border-radius: @a,@b,@c,@d;
+         -o-border-radius: @a,@b,@c,@d;
+            border-radius: @a,@b,@c,@d;
+}
+
+#gradient
+{
+  .no-gradient(@color)
   {
-    color: @headerColor;
-    background-color:@headerBackground;
-    background-image:@headerBackgroundImage;
-    background-repeat:no-repeat;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,@color), color-stop(100%, @color)); /* Chrome,Safari4+ */
+    background-image: -webkit-linear-gradient(  top,  @color 0%,  @color 100%); /* Chrome 10+,Safari 5.1+ */
+    background-image: -moz-linear-gradient(     top,  @color 0%,  @color 100%); /* FF3.6+ */
+    background-image: -ms-linear-gradient(      top,  @color 0%,  @color 100%); /* IE10+ */
+    background-image: -o-linear-gradient(       top,  @color 0%,  @color 100%); /* Opera 11.10+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false); /* IE6-9 */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@color', endColorstr='@color',GradientType=0 ); /* IE6-9 */
+    background-image: linear-gradient(top, @color 0%,@color 100%); /* W3C */
+  }
+}
 
-    h1 {
-      font-size:4.5em;
-      font-weight: bold;
-      font-family: 'CaviarDreams';
-      text-shadow: @black 0px 0px 2px;
-      margin:5px 0;
-      padding:10px 5px 0 5px;
-      a { color: @headerColor; }
-      a:hover { color: @headerColor; text-decoration: none; }
-    }
+#shadow
+{
+  .no-shadow
+  {
+  -webkit-box-shadow: inset 0 0px 0 #fff, 0 0px 0px rgba(0,0,0,.0);
+     -moz-box-shadow: inset 0 0px 0 #fff, 0 0px 0px rgba(0,0,0,.0);
+       -o-box-shadow: inset 0 0px 0 #fff, 0 0px 0px rgba(0,0,0,.0);
+          box-shadow: inset 0 0px 0 #fff, 0 0px 0px rgba(0,0,0,.0);
+  }
+  .soft
+  {
+  -webkit-box-shadow: inset 0 1px 0 #fff, 0 1px 5px rgba(0,0,0,.1);
+     -moz-box-shadow: inset 0 1px 0 #fff, 0 1px 5px rgba(0,0,0,.1);
+       -o-box-shadow: inset 0 1px 0 #fff, 0 1px 5px rgba(0,0,0,.1);
+          box-shadow: inset 0 1px 0 #fff, 0 1px 5px rgba(0,0,0,.1);
+        filter:
+          progid:DXImageTransform.Microsoft.Shadow(color=#000,direction=135,strength=5);
+  }
+  .light
+  {
+  -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.05);
+     -moz-box-shadow: inset 0 3px 5px rgba(0,0,0,.05);
+       -o-box-shadow: inset 0 3px 5px rgba(0,0,0,.05);
+          box-shadow: inset 0 3px 5px rgba(0,0,0,.05);
+        filter:
+          progid:DXImageTransform.Microsoft.Shadow(color=#000,direction=0,strength=5);
+  }
+  .inset-top(@color:@gray, @size:5px)
+  {
+       -moz-box-shadow: inset 0 @size @size -@size @color;
+    -webkit-box-shadow: inset 0 @size @size -@size @color;
+         -o-box-shadow: inset 0 @size @size -@size @color;
+            box-shadow: inset 0 @size @size -@size @color;
+        filter:
+          progid:DXImageTransform.Microsoft.Shadow(color=#000,direction=135,strength=5);
+  }
+}
 
-    padding-top: @body-padding-top;
-    @media ( min-width: 1000px )
-    {
-      background-size: 100% auto;
-    }
+small {font-size: 0.9em;}
 
+.accessibility {
+  position:absolute;
+  left:-10000px;
+}
 
-    p {
-      margin:5px 0;
-      padding:5px 5px;
-      text-shadow: @grayDark 0px 0px 4px;
-      font-weight: 200;
-    }
+p.hint {
+  color:@grayLight;
+  padding:5px;
+}
 
-    & > .container
-    {
-      //background:lighten(@yellow, 30%); 
-      .navbar-inner
-      {
-        .border-radius(0);
-        //#gradient > .no-gradient(@grayDark);
-        //#shadow > .no-shadow();
-      }
+.subtle {
+  color:@grayLight;
+  font-size: 0.9em;
+  font-style: italic;
+  a {text-decoration: none;}
+}
+
+/* button */
+.btn-rating {
+  border:none;
+  background:none;
+  font-size:15px;
+  margin:0;
+  padding:0;
+  color:@blue;
+  font-weight:100;
+  
+  &:hover {
+    color:@blueDark;
+  }
+}
+
+.btn-answered {
+  border:none;
+  background:none;
+  font-size:25px;
+  padding:0;
+  font-weight:100;
+  margin:0;
+  &.answered{
+    color:@green;
+
+    &:hover {
+    color:@grayLight;
     }
   }
 
-  & > section
-  {
-    //background-color: lighten(@yellow, 40%);
-    background-color: @contentBackground;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    display:block;
-    #shadow > .inset-top;
-
-    #content
-    {
-      //background-color: @contentBackground;
-      header
-      {
-        .bottom-border;
-        //outline: 1px dashed green;
-        //padding: 20px 0px;
-      }
-
-      footer
-      {
-        .top-border;
-      }
-    }
-  }
-
-  #footer
-  {
-    bottom: 0px;
-    width:100%;
-    padding-top:15px;
-    #shadow > .inset-top(@black,15px);
-    color:@white;
-    a {color:@white; }
-
+  &.not.answered {
+    color:@grayLight;
     
+    &:hover {
+      color:@green;
+    }
   }
 }
 
-/* headers */
-h1, h2, h3, h4, h5, h6{
-  color:@textColor;
-  margin:10px 0;
-  line-height: 1;
-  a { color:@grayDarker; }
-  a:hover {color: lighten(@grayDarker, 35%);  text-decoration: none }
+form.button_to {
+  margin:0;
+  padding:0;
+  display:inline;
 }
-h1
-{
-  font-weight:  @font-weight-h1;
-  font-size:    @font-size-h1;
-  font-family: 'CaviarDreams';
+  
+form.button_to div, form.button_to div input {
+  display:inline;
+    width:90px;
 }
 
-h2
-{
-  font-weight:  @font-weight-h2;
-  font-size:    @font-size-h2;
+.follow-button {
+  margin:0;
+  padding:2px 5px;
+ 
+  display:inline;
 }
 
-h3
-{
-  font-weight:  @font-weight-h3;
-  font-size:    @font-size-h3;
-  vertical-align: bottom;
-}
-.well h3
-{
-  font-weight:  @font-weight-h3;
-  font-size:    @font-size-h3-well;
-}
-
-h4, h5, h6
-{
-  font-weight:  @font-weight-h4;
-}
-
-.breadcrumb
-{
-  font-size: 0.8em;
-}
+.breadcrumb { font-size: 0.9em; }
 .breadcrumb span
 {
   display:inline;
@@ -403,34 +307,8 @@ h4, h5, h6
   vertical-align:middle;
 }
 
-/* tables */
-td > a
-{
-  display:block;
-  margin:0;
-  &:hover
-  {
-    background:none;
-    color: black;
-    text-decoration:none;
-  }
-}
-
-/* forms */
-.control_group {outline: 2px dashed purple;}
-.controle_group, .control_group
-{
-  .well;
-}
-
-.sort_desc:after
-{
- content: url("./arrow_down.png");
-}
-
-.sort_asc:after
-{
- content: url("./arrow_up.png");
+.nav > li > a {
+  display: inline-block;
 }
 
 #navigation
@@ -454,24 +332,57 @@ td > a
 
   .btn-navbar
   {
-    box-shadow: 0 0 0 ;
     &:hover, span:hover { text-decoration: none;}
   }
   
 }
 
 
-li.dropdown-fallback
-{
-  display: none;
-}
-
-.btn .icon-arrow-left,
-.btn .icon-arrow-right
-{
-}
-
 /* post */
+a.remove-cross {
+  color: @grayLight;
+
+  &:hover {
+    color: @gray;
+    text-decoration: none;
+  }
+}
+
+dl.info, dl.question {
+  margin:10px 0;
+  padding:0;
+}
+
+.info-title      { 
+  padding:0 5px; 
+  background: lighten(@yellow, 10%); 
+  color: @white; 
+}
+
+.info-title a    { 
+  color: @white; 
+  display:block; 
+  text-decoration:none;
+}
+
+.info-details, .question-details { 
+  border-left: 1px solid lighten(@gray, 30%); 
+  margin:0 5px;
+  padding:5px 5px 2px 5px;
+}
+
+.question-title  { 
+  padding:0 5px; 
+  background: lighten(@gray, 30%); 
+  color: @white; 
+}
+
+.question-title a { 
+  color: @white; 
+  display:block; 
+  text-decoration:none;
+}
+
 
 .post-badge {
   width:20px;
@@ -502,10 +413,6 @@ li.dropdown-fallback
   &.private-answer-badge {
     background: #f0dfae url("answer-badge.png") top no-repeat;
   }
-}
-
-.icon-ok.answered {
-  color:@green;
 }
 
 
@@ -584,157 +491,10 @@ td.comment-button p {
   margin: 0;
 }
 
-/* course */
-.post-badge {
-  min-width:20px;
-  width:20px;
-  height:65px;
-  &.question-badge {
-    background: @blue url("question-badge.png") top no-repeat;
-  }
-  
-  &.info-badge {
-    background: @yellow url("info-badge.png") top no-repeat;
-  }
-}
-
-table.courses-table {
-  width:100%;
-  margin:20px 0;
-
-  thead {
-    border-bottom:1px solid #ddd;
-    
-    tr td{
-      padding:10px;
-      margin:10px 0;
-    }
-  }
-
-  span.post-date {
-    font-size:0.8em;
-  }
-
-  tbody td {
-    margin:0 10px;
-    padding:5px 10px;
-    vertical-align: top;
-
-    &.courses-posts {
-      width:40%;
-    }
-
-    &.courses-post-badge {
-      .post-badge;
-      min-width:20px!important;
-      
-      padding:0;
-      margin:0;
-    }
-
-    &.courses-activity {
-      width:100px;
-    }
-  }
-  .courses-body
-  {
-    #shadow > .soft;
-  }
-}
-
-p.rating-button, p.answered-button {
-  margin:0 5px;
-  padding:0;
-
-  form {
-    margin:0;
-  }
-}
-
-p.rating-points {
-  margin:3px 0;
-  padding:0;
-  font-size:24px;
-  font-weight:100;
-  color:@black;
-}
-
-/* button */
-.btn-rating {
-  border:none;
-  background:none;
-  font-size:15px;
-  margin:0;
-  padding:0;
-  color:@blue;
-  font-weight:100;
-  
-  &:hover {
-    color:@blueDark;
-  }
-}
-
-.btn-answered {
-  border:none;
-  background:none;
-  font-size:25px;
-  padding:0;
-  font-weight:100;
-  margin:0;
-  &.answered{
-    color:@green;
-
-    &:hover {
-    color:@grayLight;
-    }
-  }
-
-  &.not.answered {
-    color:@grayLight;
-    
-    &:hover {
-      color:@green;
-    }
-  }
-}
-
-.center {
-  margin: 0 auto;
-  float: none;
-}
-
-form.button_to {
-  margin:0;
-  padding:0;
-  display:inline;
-}
-  
-form.button_to div, form.button_to div input {
-  display:inline;
-}
-
-div.follow-button {
-  margin:5px 10px;
-  display: inline;
-
-  &.small {
-    margin:0px 0px;
-    display: inline;
-    * > {
-      font-size: 0.9em;
-      }
-  }
-}
 
 /* notifications */
-
-.read, .read a {
-  color:#ddd;
-}
-  
-.unread, .unread a {
-  color:#333;
-}
+.read, .read a { color:@grayLight; }
+.unread, .unread a { color:@grayDarker; }
 
 tr.clickable {
   &:hover {
@@ -800,27 +560,310 @@ li.notification p {
   padding:5px;
 }
 
+// Set the correct sprite paths
+@iconSpritePath:       asset-path("twitter/bootstrap/bootstrap/glyphicons-halflings.png", image);
+@iconWhiteSpritePath:  asset-path("twitter/bootstrap/bootstrap/glyphicons-halflings-white.png", image);
+
+/* docs */
+// https://developer.mozilla.org/en/Sections_and_Outlines_of_an_HTML5_document
+// http://wrangl.com/sass-v-less
+// http://twitter.github.com/recess/
+// https://developer.mozilla.org/en/CSS/Writing_Efficient_CSS
+// See http://twitter.github.com/bootstrap/less.html for their names and documentation
+
+/****** SPECIFICS ******/
+
+html { background: @grayDark url('low_contrast_linen.png'); }
+
+body
+{/*{*/
+  font: 14px/22px @baseFontFamily;
+  font-weight:200; 
+  
+  pre, p code {
+    padding: 2px 4px;
+    color: @grayDark;
+    background-color: #F7F7F9;
+    border: 1px dashed #E1E1E8;
+  }
+
+  h1 {
+    margin:50px 0 15px 0
+  }
+  
+  /* top level outlines */
+  & > header
+  {
+    color: @headerColor;
+    background-color:@headerBackground;
+    background-image:@headerBackgroundImage;
+    background-repeat:no-repeat;
+
+    h1 {
+      font-size:4.5em;
+      font-weight: bold;
+      font-family: 'CaviarDreams';
+      -webkit-text-shadow: @black 0px 0px 2px;
+      -moz-text-shadow: @black 0px 0px 2px;
+      -o-text-shadow: @black 0px 0px 2px;
+      text-shadow: @black 0px 0px 2px;
+      filter: glow(color=@grayDark,strength=4); 
+      margin:5px 0;
+      padding:10px 5px 0 5px;
+      a { color: @headerColor; }
+      a:hover { color: @headerColor; text-decoration: none; }
+      span{
+        em {
+          #shadow > .no-shadow() !important;
+         display: block;
+         z-index: 10;
+         font-size: .4em;
+         position: absolute;
+         margin-left: -10px;
+         padding-top: 15px;
+        }
+        -webkit-transform: rotate(-40deg); 
+        -moz-transform: rotate(-40deg); 
+        -o-transform: rotate(-40deg); 
+         z-index: 5;
+         font-family: @baseFontFamily;
+         position: absolute;
+         dispaly:block;
+         vertical-align: center;
+         margin:0;
+         margin-left:-10px;
+         margin-top:-15px;
+         color: @white;
+
+      }
+    }
+
+    padding-top: @body-padding-top;
+    @media ( min-width: 1000px )
+    {
+      background-size: 100% auto;
+    }
+
+
+    p {
+      margin:5px 0;
+      padding:5px 10px;
+      -webkit-text-shadow: @black 0px 0px 2px;
+      -moz-text-shadow: @black 0px 0px 2px;
+      -o-text-shadow: @black 0px 0px 2px;
+      text-shadow: @black 0px 0px 2px;
+      filter: glow(color=@grayDark,strength=4); 
+      font-weight: 400;
+      font-size:1.3em;
+
+      small {
+        font-size:1.0em;
+      }
+    }
+
+    & > .container
+    {
+      //background:lighten(@yellow, 30%); 
+      .navbar-inner
+      {
+        .border-radius(0);
+        //#gradient > .no-gradient(@grayDark);
+        //#shadow > .no-shadow();
+      }
+    }
+  }
+
+  & > section
+  {
+    //background-color: lighten(@yellow, 40%);
+    background-color: @contentBackground;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display:block;
+    #shadow > .inset-top;
+
+    #content
+    {
+      //background-color: @contentBackground;
+      header
+      {
+        .bottom-border;
+        //outline: 1px dashed green;
+        //padding: 20px 0px;
+      }
+
+      footer
+      {
+        .top-border;
+      }
+    }
+  }
+
+  #footer
+  {
+    bottom: 0px;
+    width:100%;
+    padding-top:15px;
+    #shadow > .inset-top(@black,15px);
+    color:@white;
+    a {color:@white; }
+
+    
+  }
+}/*}*/
+
+/* tables */
+td > a
+{
+  display:block;
+  margin:0;
+  &:hover
+  {
+    background:none;
+    color: black;
+    text-decoration:none;
+  }
+}
+
+/* forms */
+.controle_group { .well; }
+
+.sort_desc:after { content: url("./arrow_down.png"); }
+
+.sort_asc:after { content: url("./arrow_up.png"); }
+
+
+li.dropdown-fallback { display: none; }
+
+.icon-ok.answered , .icon-check.answered { color:@green; }
+
+
+/* course */
+.post-badge {
+  min-width:20px;
+  width:20px;
+  height:65px;
+  &.question-badge {
+    background: @blue url("question-badge.png") top no-repeat;
+  }
+  
+  &.info-badge {
+    background: @yellow url("info-badge.png") top no-repeat;
+  }
+}
+
+table.courses-table {
+  width:100%;
+  margin:20px 0;
+
+  thead {
+    border-bottom:1px solid #ddd;
+    
+    tr td{
+      padding:10px;
+      margin:10px 0;
+    }
+  }
+
+  span.post-date {
+    font-size:0.9em;
+  }
+
+  tbody td {
+    margin:0 10px;
+    padding:5px 10px;
+    vertical-align: top;
+
+    &.courses-posts {
+      width:40%;
+    }
+
+    &.courses-post-badge {
+      .post-badge;
+      min-width:20px!important;
+      
+      padding:0;
+      margin:0;
+    }
+
+    &.courses-activity {
+      width:100px;
+    }
+  }
+  .courses-body
+  {
+    #shadow > .soft;
+  }
+}
+
+a.course-title {
+  font-size:1.2em;
+}
+
+p.course-details {
+  margin:4px;
+  padding:2px;
+  display:inline;
+}
+
+ul.horizontal {
+  margin:5px 10px;
+  li {
+    padding:5px 10px;
+    float:left;
+    display:block;
+  }
+
+  &:after{
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+}
+
+p.rating-button, p.answered-button {
+  margin:0 5px;
+  padding:0;
+
+  form {
+    margin:0;
+  }
+}
+
+.well-search {
+  .well;
+  margin:0;
+  padding:10px 10px 0 10px;
+  background:whitesmoke;
+  border:1px solid @grayLighter;
+}
+
+p.rating-points {
+  margin:3px 0;
+  padding:0;
+  font-size:24px;
+  font-weight:100;
+  color:@black;
+}
+
+.center {
+  margin: 0 auto;
+  float: none;
+}
+
+
 #searchbar {
   margin: 2px;
   line-height: 1;
   height: 18px;
 }
 
-/* navbar */ 
-
-.nav > li > a {
-  display: inline-block;
-}
-
-/* misc */
-.accessibility {
-  position:absolute;
-  left:-10000px;
-}
-
-p.hint {
-  color:@grayLight;
-  padding:5px;
+.well-small{
+  .well;
+  padding: 5px 10px 19px 19px;
+  
 }
 
 .backward_compatability {
@@ -898,3 +941,4 @@ blockquote h1 {
 .MathJax_Display {
   text-align:left!important;
 }
+

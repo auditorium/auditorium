@@ -1,10 +1,14 @@
-<header>
-<h2>Chairs</h2>
-<h3><%= %></h3>
-</header>
-
-<%= render :partial => 'chairs/grid', :locals => { :chairs => @chairs, :cols => nil } %>
-
-<% if current_user and current_user.admin? %>
-  <%= link_to 'add chair', new_chair_path, { :class => 'btn btn-primary' } %>
+<h2>Chairs <%= "for #{Institute.find(params[:institute_id])}" if params[:institute_id] %></h2>
+<div class="well">
+<label for='q'>Search for chairs in all faculties</label>
+<%= form_tag search_chairs_path, :method => 'get', class: 'form-search', :remote => true do %>
+  <div class="controls">
+    <%= text_field_tag :q, params[:q], :placeholder => "Type in the name of the chair, you're searching for...", class: 'span10' %>
+    <%= submit_tag 'Search', class: 'btn btn-info span2 hidden-phone' %>
+  </div>
 <% end %>
+</div>
+
+<div class="chairs">
+<%= render :partial => 'chairs/grid' %>
+</div>

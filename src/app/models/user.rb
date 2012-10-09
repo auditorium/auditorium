@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :remember_me, :email, :alternative_email, :password, :password_confirmation
   attr_accessible :username, :title, :first_name, :last_name, :website
+  cattr_accessor :current
+  
   # attr_accessible :title, :body
   
   has_many :events, foreign_key: :tutor_id # as tutor
@@ -83,17 +85,17 @@ class User < ActiveRecord::Base
   
   def is_course_maintainer?(course)
     membership = self.course_membership course
-    membership.membership_type.eql? 'maintainer' if membership
+    return membership.membership_type.eql? 'maintainer' if membership
   end
   
   def is_course_editor?(course)
     membership = self.course_membership course
-    membership.membership_type.eql? 'editor' if membership
+    return membership.membership_type.eql? 'editor' if membership
   end
   
   def is_lecture_member?(lecture)
     membership = self.lecture_membership lecture
-    membership.membership_type.eql? 'member' if membership
+    return membership.membership_type.eql? 'member' if membership
   end
   
   def is_lecture_maintainer?(lecture)
@@ -127,8 +129,13 @@ class User < ActiveRecord::Base
     end
   end
   
+  def faculties_with_courses 
+    fwc = self.courses.keep_if{ |course| !course.lecture.nil? }
+    fwc.group_by{ |course| course.lecture.chair.institute.faculty if course.lecture }
+  end
+  
   def courses_by_faculty
-    self.courses.group_by{ |course| course.lecture.chair.institute.faculty.name }
+    self.courses.group_by{ |course| course.lecture.chair.institute.faculty.name if course.lecture }
   end
   
   def posts_of_followed_courses_per_day
@@ -150,20 +157,16 @@ class User < ActiveRecord::Base
   # in models to map to a nice sign up e-mail.
   def send_on_create_confirmation_instructions
     if self.email.match /tu-dresden.de$/
-      Rails.logger.debug "TU DRESDEN EMAIL! :)"
       send_devise_notification(:confirmation_instructions)
     else
-      Rails.logger.debug "NO TU DRESDEN EMAIl! :("
       false
     end
   end
 
   def send_unlock_instructions
     if self.email.match /tu-dresden.de$/
-      Rails.logger.debug "TU DRESDEN EMAIL! :)"
       send_devise_notification(:confirmation_instructions)
     else
-      Rails.logger.debug "NO TU DRESDEN EMAIl! :("
       false
     end
   end
@@ -178,5 +181,13 @@ class User < ActiveRecord::Base
 
   def rating_minimum
     -6 # todo: customizable in future releases
+  end
+
+  def questions(limit=nil)
+    questions = Post.where(author_id: self.id, post_type: 'question').limit(limit)
+  end
+
+  def answers(limit=nil)
+    answers = Post.where(author_id: self.id, post_type: 'answer').limit(limit)
   end
 end

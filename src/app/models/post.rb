@@ -31,7 +31,12 @@ class Post < ActiveRecord::Base
   
   # get answers and comments to this post if any
    def answers
-     Post.find_all_by_post_type_and_parent_id('answer', self.id)
+     answers = Post.find_all_by_post_type_and_parent_id('answer', self.id)
+     answers.sort{|x,y| y.rating <=> x.rating }
+   end
+
+   def answered?
+    !self.answer_to_id.nil?
    end
 
    def comments

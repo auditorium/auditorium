@@ -1,12 +1,20 @@
-<h2>Resend unlock instructions</h2>
-
-<%= form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
-
-  <div><%= f.submit "Resend unlock instructions" %></div>
-<% end %>
-
-<%= render :partial => "devise/shared/links" %>
+<div class="center container span4">
+  <% devise_error_messages! %>
+	<%= form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post }) do |f| %>
+  <fieldset class="well span4">
+    <h2>Resend unlock instructions</h2>
+    <div class="control-group">
+        <%= f.label :email, 'Email address', :class => 'accessibility'%>
+      <div class="controls">
+        <%= f.email_field :email, :placeholder => 'Email address', :class => "span4"%>
+      </div>
+    </div>
+    
+    <div class="controls">
+      <%= f.submit "Resend unlock instructions", :class => 'btn btn-large btn-primary span4', 'data-disable-with' => 'Sending email...' %>
+    </div>
+    <hr />
+      <p class='help-block'><%= render :partial => "devise/shared/links" %></p>
+  </fieldset>
+  <% end %>
+</div>

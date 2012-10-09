@@ -1,5 +1,25 @@
-<p>Welcome <%= @resource.full_name %>!</p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <style>
+      body {
+        padding:20px;
+      }
+      p {
+        font-weight:200;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="font-weight:100;">Welcome, <%= @resource.full_name %></h1>
+    
+    <p>You can confirm your account email through the link below:</p>
 
-<p>You can confirm your account email through the link below:</p>
+		<p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+
+    <p>Have a great day!</p>
+    <em>The auditorium team</em>
+  </body>
+</html>

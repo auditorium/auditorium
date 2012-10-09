@@ -1,0 +1,3 @@
+$('.my-courses').show();
+$('.search-for-lecture').attr("href", '<%= escape_javascript(lectures_path(:q => params[:q])) %>');
+$('.courses-table').html('<%= escape_javascript(render "courses/courses-list") %>');

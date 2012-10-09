@@ -1,5 +1,5 @@
 <% if @posts.count == 0 %>
-  <div class="alert alert-info">There are no question or information available yet. Be the first with a question.</div>
+  <p class="hint">There are no question or information available yet. Be the first with a question.</p>
 <% else %>
   <% for post in @posts %>
     <% if post_types.include? post.post_type and current_user and current_user.can_see(post) %>

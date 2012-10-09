@@ -3,21 +3,6 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 jQuery ->
-  # collapse course view
-  $('a.collapse-course').click ->
-    link = $(this)
-    course_id = $(this).data('id')
-    course_body = $('tbody#course-'+course_id)
-    console.log link
-    if course_body.is(':hidden') == true
-      course_body.show("slow")
-      link.html('hide details')
-    else if course_body.is(':hidden') == false
-      course_body.hide("slow")
-      link.html('details')
-    false
-  $('tbody.courses-body').hide()
-	
   # tooltips 	
   $('#previous-course').mouseenter ->
   	$('#previous-course').tooltip('show')
@@ -28,6 +13,12 @@ jQuery ->
   $('#follow-button-membership-type').mouseenter ->
   	$('#follow-button-membership-type').tooltip('show')
 
+  # follow button tooltips
+  $('.follow-button').hover -> 
+    $(this).tooltip('show')
+  $('.follow-button').click -> 
+    $(this).tooltip('hide')
+
   # backward compatability for non-js user -.-
   $('#lecture_name').css('display', 'inline')
   $('#lecture_name').css('visibility', 'visible')
@@ -36,6 +27,9 @@ jQuery ->
 
   $('#lecture_name').autocomplete
     source: "/ajax/lectures"
-    select: (event,ui) -> 
+    select: (event,ui) ->
       $("#course_lecture_id").val(ui.item.id)
+
+
+
 	

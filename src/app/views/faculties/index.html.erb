@@ -1,15 +1,25 @@
-<header>
 <h2>Faculties</h2>
-</header>
 
-<% if current_user and current_user.admin? %>
-  <%= link_to 'add faculty', new_faculty_path, { :class => 'btn btn-small btn-primary' }  %>
-<% end %>
+<% cols = 2; cols = 12/cols; i = 0 %>
 
-<%#= render "full_list", :faculties=> @faculties%>
-<%= render :partial => 'faculties/grid', :locals => { :objects => @faculties, :cols => 2} %>
-<br />
+<div class="row-fluid" >
+  <% if @faculties_with_courses.count > 0 %>
 
-<% if current_user and current_user.admin? %>
-  <%= link_to 'add faculty', new_faculty_path, { :class => 'btn btn-small btn-primary' }  %>
-<% end %>
+    <% @faculties_with_courses.each do |faculty, courses|%>
+      <%= render "my_faculties/grid", :faculty => faculty, :courses => courses, cols:cols, i:i  %>
+    <% end %>
+
+  <% else %>
+
+    <% if @faculties.count > 0 %>
+      <% @faculties.each do |faculty| %>
+        <%= render "my_faculties/grid", :faculty => faculty, :courses => nil, cols:cols, i:i  %>
+      <% end %>
+
+    <% else %>
+      <p class="hint"> You should sign up for your faculties.  </p>
+      <p class="hint"> See <%= link_to "Settings", edit_user_registration_path %> to associate with a faculty</p>
+    <% end %>
+
+  <% end %>
+</div>

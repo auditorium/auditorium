@@ -3,6 +3,22 @@ module ApplicationHelper
     def block_code(code, language='ruby')
       CodeRay.scan(code, language).div
     end
+
+    def link(link, title, alt_text)
+      if link.match /^https?:\/\/auditorium.inf.tu-dresden.de/
+        "<a href=\"#{link}\">#{alt_text}</a>"
+      else
+        "<a target=\"_blank\" href=\"#{link}\"  title='external link to #{link}'> <i class='icon-external-link'></i> #{alt_text}</a>"
+      end
+    end
+
+    def autolink(link, link_type)
+      if link.match /^https?:\/\/auditorium.inf.tu-dresden.de/
+        "<a href=\"#{link}\">#{link}</i></a>"
+      else
+        "<a target=\"_blank\" href=\"#{link}\" title='external link to #{link}'><i class='icon-external-link'></i> #{link}</a>"
+      end
+    end
   end
 
   def markdown(text)
@@ -49,11 +65,15 @@ module ApplicationHelper
   end
   
   def term_types
-    { "ss" => "Sommersemester", "ws" => "Wintersemester", "tri1" => "1. Trisemester", "tri2" => "2. Trisemester", "tri3" => '3. Trisemester' }
+    { "ss" => "Summer Semester", "ws" => "Winter Semester", "tri1" => "1. Trisemester", "tri2" => "2. Trisemester", "tri3" => '3. Trisemester' }
   end
   
   def week_rotation
     ['every week', 'odd week', 'even week']
+  end
+
+  def current_term
+    Term.where("beginDate < ?", Date.today).where("endDate > ?", Date.today)[0]
   end
 
   def item_parents
@@ -120,6 +140,14 @@ module ApplicationHelper
 
   def mathjax_should_load
     %w{posts courses home reports}.include? params[:controller]
+
+  def shorten (string, length)
+    if string.length > length
+      "#{string[0,length]}..."
+    else
+      string
+    end
+>>>>>>> master
 
   end
 

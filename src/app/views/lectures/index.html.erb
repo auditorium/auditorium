@@ -1,10 +1,16 @@
-<header>
-<h2>Lectures</h2>
-</header>
+<h2>Lectures <%= "for #{Chair.find(params[:chair_id])}" if params[:chair_id] %></h2>
+<div class="well">
+<label for='q'>Search for lectures of all faculties</label>
+<%= form_tag search_lectures_path, :method => 'get', class: 'form-search', :remote => true do %>
+  <div class="controls">
+    <%= text_field_tag :q, params[:q], :placeholder => "Type in the name of the lecture, you're searching for...", class: 'span10' %>
+    <%= submit_tag 'Search', class: 'btn btn-info span2 hidden-phone' %>
+  </div>
 
-<%#= render "lectures/list_full", :lectures => @lectures %>
-<%= render :partial => 'lectures/grid', :locals => { :lectures => @lectures, :cols => nil } %>
-
-<% if current_user and current_user.admin? %>
-  <%= link_to 'New Lecture', new_lecture_path, { :class => 'btn btn-primary' } if current_user.admin? %>
+  <p class='hint'>You can't find the correct lecture? <%= link_to 'Create it!', new_lecture_path %>.</p>
 <% end %>
+</div>
+
+<div class="lectures">
+<%= render :partial => 'lectures/grid' %>
+</div>
