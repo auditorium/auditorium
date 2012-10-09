@@ -32,6 +32,11 @@
 
   <div class='span<%= current_user.may_edit_course(@course) ? '3' : '4' %>'>
     <h3>About</h3>
+    <b>Membership</b>
+    <div class='<%= "follow-button follow-button-#{@course.id}" %>'>
+      <%= render :partial => 'shared/follow_button', :locals => { :course => @course } %>
+    </div>
+    <hr />
     <p>
       <b>website</b> 
       <% if @course.url.empty? %>
@@ -45,10 +50,10 @@
     </div>
   </div>
 
-  <% if current_user.may_edit_course(@course) %>
+  <% if can? :manage, @course %>
     <div class="span2">
       <h3>Manage course</h3>
-      <% if current_user.is_course_maintainer?(@course) %>
+      <% if can? :manage, User %>
       <p><%= link_to content_tag('span', ' manage users', :class=> 'icon-user'), '#manage-users-modal', 'data-toggle'=>"modal", :class => 'btn btn-primary maintainer-button' %></p>
       <% end %>
       <p><%= link_to content_tag('span', ' edit course', :class=>'icon-edit'), edit_course_path(@course), :class => 'btn maintainer-button'  %>
@@ -68,9 +73,6 @@
    
 </div>
 <hr />
-
-
-
 <section id="question_stream">
   <div class="center span8">
       <h3>
@@ -91,7 +93,7 @@
   </div>
 </section>
 
-<% if current_user.is_course_maintainer?(@course) %>
+<% if can? :manage, User %>
 <%= render :partial => 'courses/manage_users_modal', :locals => { :course => @course }%>
 <% end %>
   

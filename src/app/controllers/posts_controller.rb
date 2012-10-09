@@ -32,6 +32,8 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
     @post.is_private = params[:is_private] if params[:is_private]
+    @post.subject = params[:subject] if params[:subject]
+    @post.body = params[:body] if params[:body]
 
     if params[:course_id]
       @post.course_id = params[:course_id]
@@ -44,7 +46,7 @@ class PostsController < ApplicationController
     end
   end
 
-  def maintainer_request 
+  def maintainer_request
     @post = Post.new
     @post.post_type = 'question'
     @post.is_private = true
@@ -57,7 +59,7 @@ class PostsController < ApplicationController
     end 
     
     respond_to do |format|
-      format.html 
+      format.html
     end
   end
 

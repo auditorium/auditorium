@@ -28,7 +28,7 @@ class CoursesController < ApplicationController
   # GET /courses/1.json
   def show
     @course = Course.find(params[:id])
-    @users = User.order('username DESC, email DESC, first_name DESC, last_name DESC') if current_user.is_course_maintainer?(@course)
+    @users = User.order('username DESC, email DESC, first_name DESC, last_name DESC') if can? :manage, User
     @infos = Post.order('last_activity DESC, updated_at DESC, created_at DESC').where('post_type = ? and course_id = ?', 'info', @course.id).page(params[:info_page]).per(20)
     @questions = Post.order('last_activity DESC, updated_at DESC, created_at DESC').where('post_type = ? and course_id = ?', 'question', @course.id).page(params[:question_page]).per(20)
     if current_user.nil?
