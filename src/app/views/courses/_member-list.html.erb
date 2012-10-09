@@ -1,12 +1,12 @@
 <tr>  
   <% if @course.maintainers.empty? %>
-    <td><b><%= pluralize(@course.maintainers.count, 'maintainer') %></b></td> 
-    <td>
+    <td class="span7"><b><%= pluralize(@course.maintainers.count, 'maintainer') %></b></td> 
+    <td class="span5">
       <%= link_to "make me maintainer", new_post_path(:post_type => 'question', :course_id => @course.id, :is_private => true, :subject => "Ich bin Betreuer des Kurses.", :body => "Hallo,\nich bin der Betreuer des Kurses. Bitte authorisieren Sie mich. \nDanke #{current_user.full_name}") %>
     </td>
   <% else %>
-    <td><b><%= pluralize(@course.maintainers.count, 'maintainer') %></b></td>
-    <td>
+    <td class="span7"><b><%= pluralize(@course.maintainers.count, 'maintainer') %></b></td>
+    <td class="span5">
     <% @course.maintainers.each do |maintainer| %>
       <% if !maintainer.user.nil? %>
         <%= maintainer.user.full_name %><%= "," unless @course.maintainers.last == maintainer %>
@@ -17,14 +17,14 @@
 </tr>
 <tr>
 <% if @course.editors.empty? %>
-  <td><b>no editor </b></td>
-  <td>
+  <td class="span7"><b>no editor </b></td>
+  <td class="span5">
     <%= link_to "make me editor", new_post_path(:post_type => 'question', :course_id => @course.id, :is_private => true, :subject => "Ich bin Tutor des Kurses.", :body => "Hallo,\nIch bin ein Tutor des Kurses. Bitte authorisieren Sie mich.\nDanke #{current_user.full_name}") %>
   </td>
 <% else %>
   <% @course.editors.each do |editor| %>
-    <td><b><%= pluralize(@course.editors.count, 'editor') %></b></td>
-    <td>
+    <td class="span7"><b><%= pluralize(@course.editors.count, 'editor') %></b></td>
+    <td class="span5">
     <% if !editor.user.nil? %>
       <%= editor.user.full_name %><%= "," unless @course.editors.last == editor %>
     <% end %>
@@ -33,8 +33,8 @@
 <% end %>
 </tr>
 <tr>
-  <td><b><%= pluralize(@course.followers.count, 'member') %></b></td>
-  <td>
+  <td class="span7"><b><%= pluralize(@course.followers.count, 'member') %></b></td>
+  <td class="span5">
     <% if (can? :manage, @course) and  @course.followers.count > 0 %>
       <% @course.followers.each do |member| %>
         <%= member.full_name %><%= ',' unless @course.followers.last == member %>
