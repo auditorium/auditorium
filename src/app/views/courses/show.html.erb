@@ -21,7 +21,7 @@
 </div>
 
 <div class="row-fluid">
-  <div class="span6 well">
+  <div class="span6">
     <h3>Announcements 
       <% if current_user and current_user.may_edit_course(@course) %>
         <%= link_to 'Make an announcement', new_post_path(:post_type => 'info', :course_id => @course.id), :class => 'btn btn-warning btn-mini pull-right' %>
@@ -30,7 +30,7 @@
     <%= render 'courses/announcement_overview'%>
   </div>
 
-  <div class='span<%= current_user.may_edit_course(@course) ? '3' : '4' %> well'>
+  <div class='span<%= current_user.may_edit_course(@course) ? '3' : '4' %> vertical-border'>
     <h3>About</h3>
     <b>Membership</b>
     <div class='<%= "follow-button follow-button-#{@course.id}" %>'>
@@ -51,7 +51,7 @@
   </div>
 
   <% if can? :manage, @course %>
-    <div class="span3 well">
+    <div class="span3 vertical-border">
       <h3>Manage course</h3>
       <% if can? :manage, User %>
       <p><%= link_to content_tag('span', ' manage users', :class=> 'icon-user'), '#manage-users-modal', 'data-toggle'=>"modal", :class => 'btn btn-primary maintainer-button' %></p>
@@ -64,7 +64,7 @@
       <% end %>
     </div>
   <% else %>
-    <div class="span2 well">
+    <div class="span2 vertical-border">
       <h3>Questions?</h3>
       <p><%= link_to 'Ask a public question', new_post_path(:post_type => 'question', :course_id => @course.id), :class => 'btn btn-primary communicate-button' %></p>
       <p><%= link_to 'Ask a private question', new_post_path(:post_type => 'question', :course_id => @course.id, :is_private => true), class: 'btn communicate-button' %></p>
