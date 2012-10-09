@@ -7,12 +7,9 @@
   </p>
 <% else %> 
 	<table class="table announcement-teaser">
-  <% @infos.first(3).each do |info| %>
+  <% @infos.first(5).each do |info| %>
     <%= render :partial => 'posts/announcement-teaser', :locals => { :post => info} %>
   <% end %>
 </table>
-<% if @infos.count > 3 %>
-	<%= link_to 'Show all announcements', course_announcements_path(@course) %> 
-<% end %>
 <% end %>
 

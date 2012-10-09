@@ -1,28 +1,44 @@
-<p>
-  
+<tr>  
   <% if @course.maintainers.empty? %>
-    <b><%= pluralize(@course.maintainers.count, 'maintainer') %> <%= link_to "make me maintainer", new_post_path(:post_type => 'question', :course_id => @course.id, :is_private => true, :subject => "Ich bin Betreuer des Kurses.", :body => "Hallo,\nich bin der Betreuer des Kurses. Bitte authorisieren Sie mich. \nDanke #{current_user.full_name}") %></b> 
+    <td><b><%= pluralize(@course.maintainers.count, 'maintainer') %></b></td> 
+    <td>
+      <%= link_to "make me maintainer", new_post_path(:post_type => 'question', :course_id => @course.id, :is_private => true, :subject => "Ich bin Betreuer des Kurses.", :body => "Hallo,\nich bin der Betreuer des Kurses. Bitte authorisieren Sie mich. \nDanke #{current_user.full_name}") %>
+    </td>
   <% else %>
-    <b><%= pluralize(@course.maintainers.count, 'maintainer') %></b>
+    <td><b><%= pluralize(@course.maintainers.count, 'maintainer') %></b></td>
+    <td>
     <% @course.maintainers.each do |maintainer| %>
       <% if !maintainer.user.nil? %>
         <%= maintainer.user.full_name %><%= "," unless @course.maintainers.last == maintainer %>
       <% end %>
     <% end %>
+    </td>
   <% end %>
-</p>
-<p>
+</tr>
+<tr>
 <% if @course.editors.empty? %>
-  <b>no editor <%= link_to "make me editor", new_post_path(:post_type => 'question', :course_id => @course.id, :is_private => true, :subject => "Ich bin Tutor des Kurses.", :body => "Hallo,\nIch bin ein Tutor des Kurses. Bitte authorisieren Sie mich.\nDanke #{current_user.full_name}") %></b> 
+  <td><b>no editor </b></td>
+  <td>
+    <%= link_to "make me editor", new_post_path(:post_type => 'question', :course_id => @course.id, :is_private => true, :subject => "Ich bin Tutor des Kurses.", :body => "Hallo,\nIch bin ein Tutor des Kurses. Bitte authorisieren Sie mich.\nDanke #{current_user.full_name}") %>
+  </td>
 <% else %>
   <% @course.editors.each do |editor| %>
-    <b><%= pluralize(@course.editors.count, 'editor') %></b>
+    <td><b><%= pluralize(@course.editors.count, 'editor') %></b></td>
+    <td>
     <% if !editor.user.nil? %>
       <%= editor.user.full_name %><%= "," unless @course.editors.last == editor %>
     <% end %>
+    </td>
   <% end %>
 <% end %>
-</p>
-<p>
-  <b><%= pluralize(@course.followers.count, 'member') %></b>
-</p>
+</tr>
+<tr>
+  <td><b><%= pluralize(@course.followers.count, 'member') %></b></td>
+  <td>
+    <% if (can? :manage, @course) and  @course.followers.count > 0 %>
+      <% @course.followers.each do |member| %>
+        <%= member.full_name %><%= ',' unless @course.followers.last == member %>
+      <% end %>
+    <% end %>
+  </td>
+</tr>

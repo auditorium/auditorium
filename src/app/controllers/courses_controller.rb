@@ -45,10 +45,14 @@ class CoursesController < ApplicationController
   # GET /courses/new
   # GET /courses/new.json
   def new
-    @course = Course.new
-    @course.lecture_id = params[:lecture_id]
-    @course.name = params[:name]
-    @course.url = params[:url]
+    if params[:course_id]
+      @course = Course.find(params[:course_id])
+    else
+      @course = Course.new
+      @course.lecture_id = params[:lecture_id]
+      @course.name = params[:name]
+      @course.url = params[:url]
+    end
 
     respond_to do |format|
       format.html # new.html.erb
