@@ -69,8 +69,7 @@ class UsersController < ApplicationController
   end
 
   def search
-
-    @users = User.where('username LIKE ? or first_name LIKE ? or last_name LIKE ? or email LIKE ?', "%#{params[:q]}%","%#{params[:q]}%","%#{params[:q]}%","%#{params[:q]}%").limit(20).page(params[:page]).per(20)
+    @users = User.where('username LIKE ? or first_name LIKE ? or last_name LIKE ? or email LIKE ?', "%#{params[:q]}%","%#{params[:q]}%","%#{params[:q]}%","%#{params[:q]}%").order('created_at DESC').page(params[:page]).per(20)
 
     respond_to do |format|
       format.js

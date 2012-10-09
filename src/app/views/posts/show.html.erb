@@ -1,7 +1,10 @@
 <div class="center span8">
 <%= render :partial => 'post', :locals => {:post => @post } %>
 
+
+<% if @post.answers.count > 0 %>
 <h3>Answers <small>sorted by rating</small></h3>
+<% end %>
 <% @post.answers.each do |answer| %>
   <%= render :partial => 'posts/post', :locals => { :post => answer }%>
 <% end %>

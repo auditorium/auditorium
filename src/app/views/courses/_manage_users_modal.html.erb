@@ -1,40 +1,21 @@
-<% if current_user and (current_user.is_course_maintainer?(@course) or current_user.admin?) %>
-<!-- manage users modal -->
-
 <div class="modal hide" id="manage-users-modal">
-  <%= form_tag "/courses/#{course.id}/manage_users", :method => 'post', :id => 'manage-users-form', :remote => true do %>
-  
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal">×</button>
     <h3>Manage users in this course</h3>
   </div>
   <div class="modal-body">
-    <table class="table">
-      <% User.order('first_name ASC, last_name ASC, email ASC, username ASC').each do |user| %>
-      <tr>
-        <td>
-          <% if user.username %>
-          <b><%= user.username %></b>
-          <% else %>
-            <b><%= user.email.split('@')[0] %></b>
-          <% end %>
-          <br/><%= "#{user.first_name} #{user.last_name}" %>
-        </td>
-        <td>
-          <%= radio_button_tag "#{user.id}", 'member', user.is_course_member?(course), :class => 'btn' %>
-          <%= "Member" %>
-        </td>
-        <td>
-          <%= radio_button_tag "#{user.id}", 'editor', user.is_course_editor?(course),:class => 'btn btn-primary'%>
-          <%= "Editor" %>
-        </td>
-        <td>
-          <%= radio_button_tag "#{user.id}", 'maintainer', user.is_course_maintainer?(course), :class => 'btn btn-warning' %>
-          <%= "Maintainer" %>
-        </td>
-      </tr>
-      <% end %>
-    </table>
+
+    <%= form_tag search_users_to_manage_path, :method => 'get', class: 'form-search', :remote => true do %>
+    <div class="controls">
+      <%= text_field_tag :q, params[:q], :placeholder => "Search for the user..." %>
+      <%= submit_tag 'Search', class: 'btn btn-info hidden-phone' %>
+    </div>
+    <% end %>
+
+    <%= form_tag manage_users_path, :method => 'post', :id => 'manage-users-form', :remote => true do %>
+    <div class="manage-user-table">
+      <%= render 'course/manage-users-table' %>
+    </div>
   </div>
   <div class="modal-footer">
     <%= button_tag 'Close', 'data-dismiss' => 'modal', :class => 'btn' %>
@@ -42,4 +23,3 @@
   </div>
   <% end %>
 </div>
-<% end %>

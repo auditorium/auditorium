@@ -31,9 +31,9 @@ class Course < ActiveRecord::Base
 
   def name_with_term(option = { short: true })
     if self.name.length > 50 && :short == true
-      "#{self.name[0..50].titleize}... (#{self.term.code})"
+      "#{self.name[0..50]}... (#{self.term.code})"
     else
-      "#{self.name.titleize} (#{self.term.code})"
+      "#{self.name} (#{self.term.code})"
     end
   end
   

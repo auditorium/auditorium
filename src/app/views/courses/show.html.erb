@@ -10,142 +10,66 @@
 
 <div class="hero-unit">
   <h2>
-    <%= " #{@course.name.titleize}" %>
-    <small><%= "(#{@course.term.code})" %></small>
+    <%= " #{@course.name}" %>
+    <small><%=link_to "(#{@course.term.code})", term_path(@course.term) %></small>
   </h2>
   <% unless @course.description.nil? or @course.description.empty? %>
       <p class="lead"><%= markdown(@course.description) %></p>
+      <% else %>
+      <%= link_to 'Add a description to the course', edit_course_path(@course) if current_user.is_course_maintainer?(@course) %> 
     <% end %>
 </div>
-<div class="row">
-  <div class="span4">
+
+<div class="row-fluid">
+  <div class="span6">
+    <h3>Announcements 
+      <% if current_user and current_user.may_edit_course(@course) %>
+        <%= link_to 'Make an announcement', new_post_path(:post_type => 'info', :course_id => @course.id), :class => 'btn btn-warning btn-mini pull-right' %>
+      <% end %> </h3>
+
+    <%= render 'courses/announcement_overview'%>
+  </div>
+
+  <div class='span<%= current_user.may_edit_course(@course) ? '3' : '4' %>'>
     <h3>About</h3>
-    <dl class="dl-horizontal">
-      <dt>Course Website</dt>
-      <dd><%= link_to @course.url, @course.url %></dt></dd> 
-    </dl>
-
-    <dl class="dl-horizontal">
-        <dt><%= pluralize(@course.maintainers.count, 'maintainer') %></dt>
-        <dd>
-          <% if @course.maintainers.empty? %>
-            <%= link_to "I'm lecturer of this course", maintainer_request_path, class: 'btn btn-mini btn-primary' %>
-          <% else %>
-            <% @course.maintainers.each do |maintainer| %>
-              <% if !maintainer.user.nil? %>
-                <dd><%= maintainer.user.full_name %></dd>
-              <% end %>
-            <% end %>
-          <% end %>
-        </dd>
-      <% if current_user && current_user.may_edit_course(@course) && !@course.editors.empty? %>
-        <dt><%= pluralize(@course.editors.count, 'editor') %></dt>
-          <% @course.editors.each do |editor| %>
-            <% if !editor.user.nil? %>
-              <dd><%= editor.user.full_name %></dd>
-            <% end %>
-          <% end %>
+    <p>
+      <b>website</b> 
+      <% if @course.url.empty? %>
+        <%= current_user.is_course_maintainer?(@course) ? (link_to 'add url to the course', edit_course_path(@course)) : 'Not available yet' %>  
+      <% else %>
+      <%= link_to @course.url, @course.url %></p> 
       <% end %>
-    </dl>
-  </div>
-  <div class="span4">
-    <h3>What's new?</h3>
-  </div>
-  <div class="span4">
-    <h3>Maintainer actions</h3>
-      <%= link_to content_tag('span', ' manage users', :class=> 'icon-user'), '#manage-users-modal', 'data-toggle'=>"modal"%>
-  </div>
-</div>
-
-
-<header class="hero-unit">
-  
-  <div class="row-fluid">
-    <div class="span10">
-      <h2>
-        <% if @course.lecture and @course.previous %>
-          <small>
-            <%= link_to content_tag('i', '', :class=>'icon-chevron-left'), @course.previous, :rel=>"tooltip", 'data-original-title'=>"Go to the previous semester", :id => 'previous-course' %>
-          </small>
-        <% else %>
-          <small>
-            <%= link_to content_tag('i', '', :class=>'icon-chevron-left'), '#', :rel=>"tooltip", 'data-original-title'=>"Not available yet", :id => 'previous-course' %>
-          </small>
-        <% end %>
-    
-        <%= " #{@course.name.titleize}" %>
-        <small><%= "(#{@course.term.code})" %></small> 
-
-        <% if @course.lecture and @course.next %>
-          <small>
-            <%= link_to content_tag('i', '', :class=>'icon-chevron-right'), @course.next, :rel=>"tooltip", 'data-original-title'=>"Go to the next semester", :id => 'next-course' %>
-          </small>
-        <% else %>
-           <small><%= link_to content_tag('i', '', :class=>'icon-chevron-right'), '#', :rel=>"tooltip", 'data-original-title'=>"Not available yet", :id => 'next-course' %>
-           </small>
-        <% end %>
-
-      </h2>
-      <div class='<%= "follow-button follow-button-#{@course.id}" %>'><%= render :partial => 'shared/follow_button', :locals => { :course => @course } %></div>
+    </p>
+    <div class="member-list">
+      <%= render 'courses/member-list' %>
     </div>
+  </div>
+
+  <% if current_user.may_edit_course(@course) %>
     <div class="span2">
-      <%= render :partial => 'courses/maintain_dropdown', :locals => {:course => @course } %>
-    </div>  
-  </div>
-  
-  <blockquote cite="<%= url_for @course.url if !@course.url.nil? %>">
-    <% unless @course.description.nil? or @course.description.empty? %>
-      <p class="lead"><%= markdown(@course.description) %></p>
-    <% end %>
-  </blockquote>
-
-  <dl class="dl-horizontal">
-    
-    <% if @course.lecture %>
-    <dt>all courses</dt>
-
-    <dd> <%= link_to "list of all courses of this lecture ", :controller => "lectures", :action => "show", :id => @course.lecture.id, :noredirect => true %> </dd>
-    
-    <%= render :partial => 'courses/maintainer_list', :locals => {:maintainers => @course.maintainers, :editors => @course.editors, :course => @course }%>
-
-    <% unless @course.lecture.chair.url.nil? or @course.lecture.chair.url.empty? %>
-      <dt>chair website</dt>
-      <dd> <%= link_to @course.lecture.chair.url, @course.lecture.chair.url%> </dd>
-    <% end %>
-
-    <% unless @course.lecture.url.nil? or @course.lecture.url.empty? %>
-      <dt>lecture website</dt>
-      <dd> <%= link_to @course.lecture.url, @course.lecture.url%> </dd>
-    <% end %>
-    <% end %>
-
-    <% unless @course.url.nil? or @course.url.empty? %>
-      <dt>course website</dt>
-      <dd> <%= link_to @course.url, @course.url %> </dd>
-    <% end %>
-  </dl>
-</header>
-
-<%= render :partial => 'courses/manage_users_modal', :locals => { :course => @course }%>
-
-
-<section id="announcement_stream">
-  <div class="center span8">
-      <h3>
-        Course announcements 
-        <% if current_user and current_user.may_edit_course(@course) %>
-         <small><%= link_to 'New announcement', new_post_path(:post_type => 'info', :course_id => @course.id), :class => 'inline-button btn btn-mini btn-warning' %></small>
-        <% end %>
-        <p class="pull-right"><small>sorted by last activity</small></p>
-        <hr />
-      </h3>  
-    <div id="announcement-stream">
-      <%= render 'courses/announcement_stream'%>
+      <h3>Manage course</h3>
+      <% if current_user.is_course_maintainer?(@course) %>
+      <p><%= link_to content_tag('span', ' manage users', :class=> 'icon-user'), '#manage-users-modal', 'data-toggle'=>"modal", :class => 'btn btn-primary maintainer-button' %></p>
+      <% end %>
+      <p><%= link_to content_tag('span', ' edit course', :class=>'icon-edit'), edit_course_path(@course), :class => 'btn maintainer-button'  %>
+      </p>
+      <p><%= link_to content_tag('span', ' add new semester', :class=> 'icon-plus'), new_course_path(:course => @course), :class => 'btn maintainer-button'  %></p>
+      <% if can? :delete, @course %>
+      <p><%= link_to content_tag('span', ' delete course', :class=>'icon-trash'), @course, confirm: 'Are you sure that you want to delete this course?', method: :delete, :class => 'btn btn-danger maintainer-button' %></p>
+      <% end %>
     </div>
-  </div>
-</section>
+  <% else %>
+    <div class="span2">
+      <h3>Questions?</h3>
+      <p><%= link_to 'Ask a public question', new_post_path(:post_type => 'question', :course_id => @course.id), :class => 'btn btn-primary communicate-button' %></p>
+      <p><%= link_to 'Ask a private question', new_post_path(:post_type => 'question', :course_id => @course.id, :is_private => true), class: 'btn communicate-button' %></p>
+    </div>
+  <% end %>
+   
+</div>
+<hr />
 
-<br />
+
 
 <section id="question_stream">
   <div class="center span8">
@@ -159,12 +83,15 @@
         <% end %>
         <p class="pull-right"><small>sorted by last activity</small></p>
         <hr />
-        
       </h3>
+
     <div id="question-stream">
       <%= render 'courses/question_stream' %>
     </div>
   </div>
 </section>
 
+<% if current_user.is_course_maintainer?(@course) %>
+<%= render :partial => 'courses/manage_users_modal', :locals => { :course => @course }%>
+<% end %>
   

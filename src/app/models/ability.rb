@@ -75,9 +75,7 @@ class Ability
       can :manage_users, Course do |course|
         user.is_course_maintainer? course
       end
-
       
-
       cannot :approve, Course
 
       cannot :manage, Feedback

@@ -28,6 +28,7 @@ class CoursesController < ApplicationController
   # GET /courses/1.json
   def show
     @course = Course.find(params[:id])
+    @users = User.order('username DESC, email DESC, first_name DESC, last_name DESC') if current_user.is_course_maintainer?(@course)
     @infos = Post.order('last_activity DESC, updated_at DESC, created_at DESC').where('post_type = ? and course_id = ?', 'info', @course.id).page(params[:info_page]).per(20)
     @questions = Post.order('last_activity DESC, updated_at DESC, created_at DESC').where('post_type = ? and course_id = ?', 'question', @course.id).page(params[:question_page]).per(20)
     if current_user.nil?
@@ -188,16 +189,9 @@ class CoursesController < ApplicationController
         AuditoriumMailer.membership_changed(@course, user, membership_type).deliver
       end
     end
-
-    if request.env["HTTP_REFERER"]
-      redirect_url = request.env["HTTP_REFERER"]
-    else
-      redirect_url = @course
-    end
     
     respond_to do |format|
       format.js
-      format.html { redirect_to redirect_url, :flash => { :success => 'Successfully updated users for this course.'} }
     end
   end
 
@@ -215,8 +209,20 @@ class CoursesController < ApplicationController
     end
   end
 
-  def maintainer_request
+  def announcements
+    @infos = Course.find(params[:id]).infos
 
+    respond_to do |format|
+      format.html
+    end
+  end
+
+  def search_users
+    @users = User.where('username LIKE ? or first_name LIKE ? or last_name LIKE ? or email LIKE ?', "%#{params[:q]}%","%#{params[:q]}%","%#{params[:q]}%","%#{params[:q]}%").order('username DESC, email DESC, first_name DESC, last_name DESC')
+
+    respond_to do |format|
+      format.js
+    end
   end
 
 end

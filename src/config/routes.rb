@@ -40,13 +40,16 @@ Auditorium::Application.routes.draw do
   
 
   resources :courses
-  match 'courses/:id/manage_users', :to => 'courses#manage_users'
+  match 'courses/:id/manage_users', :to => 'courses#manage_users', :as => :manage_users
+  match 'courses/:id/announcements', :to => 'courses#announcements', :as => :course_announcements
+  match 'courses/:id/search_users', to: 'courses#search_users', as: :search_users_to_manage
 
   match 'courses/search', :to => 'courses#search'
   match 'courses/:id/following', :to => 'courses#following', as: :follow_course
   match 'courses/:id/approve', :to => 'courses#approve', :as => :approve_course
   match 'courses/:id/unfollow', :to => 'courses#following', :unfollow => 'true'
 
+  match 'posts/maintainer_request', :to => 'posts#maintainer_request', :as => :maintainer_request
   match 'posts/:id/rate', :to => 'posts#rate', :as => :rate_post
   match 'posts/:id/answered', :to => 'posts#answered', :as => :answered_post
   match 'posts/:parent_id/answering', :to => 'posts#answering'

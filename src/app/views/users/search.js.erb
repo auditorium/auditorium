@@ -1,1 +1,1 @@
-$('.users-table').html('<%= escape_javascript(render "users/users-table") %>');
+if($('.users-table').length > 0) { $('.users-table').html('<%= escape_javascript(render "users/users-table") %>'); }

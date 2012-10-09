@@ -1,0 +1,30 @@
+<table class="table table-striped">
+  <% if @users.count > 0 %>
+    <% @users.each do |user| %>
+      <tr>
+        <td>
+          <% if user.username %>
+          <b><%= user.username %></b>
+          <% else %>
+            <b><%= user.email.split('@')[0] %></b>
+          <% end %>
+          <br/><%= "#{user.first_name} #{user.last_name}" %>
+        </td>
+        <td>
+          <%= radio_button_tag "#{user.id}", 'member', user.is_course_member?(@course), :class => 'btn' %>
+          <%= "Member" %>
+        </td>
+        <td>
+          <%= radio_button_tag "#{user.id}", 'editor', user.is_course_editor?(@course),:class => 'btn btn-primary'%>
+          <%= "Editor" %>
+        </td>
+        <td>
+          <%= radio_button_tag "#{user.id}", 'maintainer', user.is_course_maintainer?(@course), :class => 'btn btn-warning' %>
+          <%= "Maintainer" %>
+        </td>
+      </tr>
+    <% end %>
+  <% else %>
+  <p class="hint">No user found.</p>
+  <% end %>
+</table>

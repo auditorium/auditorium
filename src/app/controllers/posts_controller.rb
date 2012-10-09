@@ -44,6 +44,23 @@ class PostsController < ApplicationController
     end
   end
 
+  def maintainer_request 
+    @post = Post.new
+    @post.post_type = 'question'
+    @post.is_private = true
+    @post.subject = "Bitte authorisiere mich als Maintainer des Kurses."
+    @post.body = "Hallo,\nbitte authorisiert mich als Maintainer des Kurses.\nVielen Dank\n#{current_user.full_name}"
+
+    if params[:course_id]
+      @post.course_id = params[:course_id]
+      @course_name = Course.find(params[:course_id]).name
+    end 
+    
+    respond_to do |format|
+      format.html 
+    end
+  end
+
   # GET /posts/1/edit
   def edit
     @post = Post.find(params[:id])

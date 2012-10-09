@@ -1,0 +1,35 @@
+<p>
+  
+  <% if @course.maintainers.empty? %>
+    <b><%= pluralize(@course.maintainers.count, 'maintainer') %> <%= link_to "I'm maintainer", new_post_path(:post_type => 'question', :course_id => @course.id, :is_private => true) %></b> 
+  <% else %>
+    <b><%= pluralize(@course.maintainers.count, 'maintainer') %></b>
+    <% @course.maintainers.each do |maintainer| %>
+      <% if !maintainer.user.nil? %>
+        <%= maintainer.user.full_name %><%= "," unless @course.maintainers.last == maintainer %>
+      <% end %>
+    <% end %>
+  <% end %>
+</p>
+<p>
+<% if @course.editors.empty? %>
+  <b>no editor <%= link_to "I'm editor", new_post_path(:post_type => 'question', :course_id => @course.id, :is_private => true) %></b> 
+<% else %>
+  <% @course.editors.each do |editor| %>
+    <b><%= pluralize(@course.editors.count, 'editor') %></b>
+    <% if !editor.user.nil? %>
+      <%= editor.user.full_name %><%= "," unless @course.editors.last == editor %>
+    <% end %>
+  <% end %>
+<% end %>
+</p>
+<p>
+  <b><%= pluralize(@course.followers.count, 'member') %></b>
+<% if current_user && current_user.may_edit_course(@course) %>
+    <% @course.followers.each do |member| %>
+      <% if !member.nil? %>
+        <%= member.full_name %><%= "," unless @course.followers.last == member %>
+      <% end %>
+    <% end %>
+<% end %>
+</p>

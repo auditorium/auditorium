@@ -1,0 +1,22 @@
+<div class="center span8">
+<h2>Announcements <small><%= link_to @course.name_with_term, course_path(@course) %></small></h2>
+<% if @infos.count == 0 %>
+  <p class="hint">
+  No announcements were made, yet. 
+    <% if current_user and current_user.may_edit_course(@course) %>
+      <%= link_to 'Write an announcement.', new_post_path(:post_type => 'info', :course_id => @course.id) %>
+    <% end %>
+  </p>
+<% else %> 
+
+  <% @infos.each do |info| %>
+    <%= render :partial => 'posts/post_teaser', :locals => { :post => info} %>
+  <% end %>
+
+<% end %>
+<%= link_to 'Go back to course', :back, :class => 'btn btn-large' %>
+<% if current_user and current_user.may_edit_course(@course) %>
+      <%= link_to 'Write an new announcement', new_post_path(:post_type => 'info', :course_id => @course.id), :class => 'btn btn-warning btn-large' %>
+<% end %>
+</div>
+
