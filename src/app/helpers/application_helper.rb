@@ -147,7 +147,6 @@ module ApplicationHelper
     else
       string
     end
->>>>>>> master
 
   end
 
