@@ -140,6 +140,7 @@ module ApplicationHelper
 
   def mathjax_should_load
     %w{posts courses home reports}.include? params[:controller]
+  end
 
   def shorten (string, length)
     if string.length > length
