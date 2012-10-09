@@ -4,7 +4,7 @@
   <% end %>
   <%= render :partial => 'shared/notifications' %>
 
-  <li class='pull-right <%= "admin" if current_user.admin? %>' >
+  <li class='pull-right <%= "admin" if current_user.admin? %> hidden-phone' >
     <a href="<%= user_path(current_user) %>" title='Profile page'>
       <em class="icon-user"></em>
       <span class="visible-desktop">
