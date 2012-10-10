@@ -42,7 +42,7 @@
       </div>
       
       <div class="control-group">
-        <%= f.label :alternative_email, 'Second Email', :class => 'control-label'%>
+        <%= f.label :alternative_email, 'Email for gravatar', :class => 'control-label'%>
         
         <div class="controls"> 
           <%= f.email_field :alternative_email, class: 'span4' %>
@@ -61,16 +61,6 @@
         <%= f.label :password_confirmation, 'Confirm new password', :class => 'control-label'%>
         <div class="controls">
           <%= f.password_field :password_confirmation, :autocomplete => "off", class: 'span4'  %>
-        </div>
-      </div>
-      
-      <div class="control-group"> 
-        <%= f.label 'Edit users faculties', :class => 'control-label'%>
-        <div class="controls">
-          <% @user.faculties.each do |faculty| %>
-          <p><%= select_tag("faculty_id[#{faculty.id}]".to_sym, options_from_collection_for_select(Faculty.select("id, name"), :id, :name, faculty.id.to_i), {include_blank: '-- please choose a faculty --'}, class: 'span4' ) %></p>
-          <% end %>
-          <%= select_tag("faculty_id[new]".to_sym, options_from_collection_for_select(Faculty.select("id, name"), :id, :name), include_blank: '-- please choose a faculty --', class: 'span4' ) %>
         </div>
       </div>
 

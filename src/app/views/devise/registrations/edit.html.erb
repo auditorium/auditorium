@@ -39,15 +39,17 @@
       
       <hr />
       
+      <% if can? :manage, User %>
       <div class="control-group">
         <%= f.label :email, 'Email address', :class => 'control-label'%>
         <div class="controls"> 
           <%= f.email_field :email, :class => "span8"%>
         </div>
       </div>
+      <% end %>
       
       <div class="control-group">
-        <%= f.label :alternative_email, 'Second Email', :class => 'control-label'%>
+        <%= f.label :alternative_email, 'Email for your gravatar', :class => 'control-label'%>
         <div class="controls"> 
           <%= f.email_field :alternative_email, :class => "span8"%>
         <span class="label">used for gravatar</span>
@@ -81,17 +83,6 @@
         </div>
       </div>
       
-      <hr />
-      
-      <div class="control-group">
-        <%= f.label :current_password, 'Current Password', :class => 'control-label' %>
-        <div class="controls">
-
-          <%= f.password_field :current_password, :class => 'span8' %><br/>
-          <p class="help-block">Your current password is needed to save your changes.</p>
-        </div>
-      </div>
-
       <hr />
       
       <div class="controls">

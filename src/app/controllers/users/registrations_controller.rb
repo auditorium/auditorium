@@ -51,7 +51,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
     self.resource.faculties = faculties
 
-    if resource.update_with_password(resource_params)
+    if resource.update_without_password(resource_params)
       if is_navigational_format?
         if resource.respond_to?(:pending_reconfirmation?) && resource.pending_reconfirmation?
           flash_key = :update_needs_confirmation
