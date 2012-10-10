@@ -8,7 +8,7 @@ jQuery ->
   if $.browser.safari 
     $(window).load -> scrollToPost(70)
   else
-    scrollToPost(140)
+    $(window).load -> scrollToPost(140)
     
 scrollTop = -> document.body.scrollTop or document.documentElement.scrollTop
 $("li.dropdown-fallback").each -> @style.display= "none"
