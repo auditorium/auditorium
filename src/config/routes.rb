@@ -1,4 +1,5 @@
 Auditorium::Application.routes.draw do
+  
   resources :feedbacks
   post 'feedback/:id/mark_as_read' => 'feedback#mark_as_read', :as => :mark_feedback_as_read
 

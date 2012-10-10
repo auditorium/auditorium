@@ -64,7 +64,13 @@ class ApplicationController < ActionController::Base
     u
   end
 
-
+  def url_options
+    super
+    @_url_options.dup.tap do |options|
+      options[:protocol] = Rails.env.production? ? "https://" : "http://"
+      options.freeze
+    end
+  end
 
   private
   def set_current_user
