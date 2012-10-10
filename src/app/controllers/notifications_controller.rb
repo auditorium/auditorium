@@ -20,7 +20,7 @@ class NotificationsController < ApplicationController
     @notification.save
 
     respond_to do |format|
-      format.html { redirect_to @notification.path }
+      format.html { redirect_to post_path(@notification.path.origin, :anchor => "post-#{@notification.path.id}") }
       format.json { render json: @notification }
     end
   end

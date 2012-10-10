@@ -11,6 +11,6 @@ Content:
 <%= @post.body %>
 ---
 
-Edit <%= edit_post_url(@post) %>, view, answer or comment on <%= @post.origin.author %>'s question <%= "#{post_url(@post.origin)}#post-#{@post.id}" %>
+Edit <%= edit_post_url(@post) %>, view, answer or comment on <%= @post.origin.author %>'s question <%= post_url(@post.origin, :anchor => "post-#{@post.id}") %>
 
 You receive this email, because you're admin and there are no moderators in <%= @post.course.name_with_term %> <%= course_url(@post.course) %> Change <%= edit_user_registration_url %> what emails auditorium sends you.

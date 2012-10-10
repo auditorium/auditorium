@@ -19,7 +19,7 @@
     <%= link_to "by #{post.author_name}", post.author %>
   <% end %>
   &middot;
-  <%= link_to "#{distance_of_time_in_words(Time.now, post.created_at)} ago", "#{post_url(post.origin)}#post-#{post.id}", :class => 'permalink', 'data-id' => "#{post.id}", :id => "post-#{post.id}", title: 'Get permalink for this post.' %>
+  <%= link_to "#{distance_of_time_in_words(Time.now, post.created_at)} ago", post_url(post.origin, :anchor => "post-#{post.id}"), :class => 'permalink', 'data-id' => "#{post.id}", :id => "post-#{post.id}", title: 'Get permalink for this post.' %>
   &middot;
   <% if current_user.subscribed_to?(post.course) %>
     <%= link_to " #{post.course.name_with_term}", course_path(post.course), title: 'You have subscribed to this course.', class: 'icon-star' %>
