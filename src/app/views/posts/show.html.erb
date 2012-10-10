@@ -10,6 +10,7 @@
 <% end %>
 
 
+
 <% if @post.post_type.eql? 'question' %>
   <%= render :partial => 'posts/answer_form', :locals => { :post => @post }%>
 <% elsif current_user.nil? and @post.post_type.eql? 'info'%>
