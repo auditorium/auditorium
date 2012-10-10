@@ -16,9 +16,9 @@ Content:
 ---
 
 <% if @post.origin.post_type.eql? 'question' %>
-<%= "View, answer or comment on #{@post.origin.author}'s question #{@post_url}" %>
+<%= "View, answer or comment on #{@post.origin.author}'s question #{post_url(@post.origin, :anchor => "post-#{@post.id}")}" %>
 <% else %>
-<%= "View or comment on #{@post.origin.author}'s announcement #{@post_url}" %>
+<%= "View or comment on #{@post.origin.author}'s announcement #{post_url(@post.origin, :anchor => "post-#{@post.id}")}" %>
 <% end %>
 
 You receive this email, because you subscribed to <%= @post.course.name_with_term %> <%= course_url(@post.course) %> Change what emails auditorium sends you <%= edit_user_registration_url %>

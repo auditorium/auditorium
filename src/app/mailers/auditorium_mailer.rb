@@ -40,12 +40,11 @@ class AuditoriumMailer < ActionMailer::Base
   		template_name: @template)
   end
 
-  def update_in_course(user, post, post_url) 
+  def update_in_course(user, post) 
     @user = user
     @course = post.course
     @url = course_url(post.course)
     @post = post
-    @post_url = post_url
     
     private_flag = 'private ' if post.origin.is_private?
 
