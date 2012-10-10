@@ -7,10 +7,10 @@
           <b><%= user.username %></b>
           <% end %>
           
-          <% if user.first_name.empty? and user.last_name.empty? %>
-            <br/><%= "#{user.email}" %>
-          <% else %>
+          <% if user.first_name and user.last_name%>
             <br/><%= "#{user.first_name} #{user.last_name}" %>
+          <% else %>
+            <br/><%= "#{user.email}" %>
           <% end %>
         </td>
         <td class="alert alert-info">
