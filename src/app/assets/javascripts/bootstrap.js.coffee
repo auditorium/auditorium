@@ -1,12 +1,9 @@
 scrollToPost = (offset) ->
   if window.location.hash and window.location.hash.match(/#post-/)
       $("html,body").animate({scrollTop:$(window.location.hash).offset().top - offset}, 500)
-      $('div'+window.location.hash)
       $(window.location.hash).effect('highlight', {}, 2000)
 
 jQuery ->
-      
-
   # when page is loaded with hash
   if $.browser.safari 
     $(window).load -> scrollToPost(70)
