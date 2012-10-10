@@ -17,12 +17,8 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     respond_to do |format|
-      if @post.post_type.eql? 'question' or @post.post_type.eql? 'info'
-        format.html 
-      else
-        flash[:notice] =  'You were redirected to the origin post.'
-        format.html { redirect_to "#{post_path(@post.origin)}#post-#{@post.id}" }
-      end
+
+      format.html 
       format.json { render json: @post }
     end
   end

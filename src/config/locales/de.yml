@@ -1,0 +1,8 @@
+# BITTE DAS FILE DURCH DEN VALIDATOR JAGEN! http://yamllint.com
+# FUER INDENT BITTE SPACES NUTZEN!!!
+
+de:
+  welcome: 'Willkommen auf auditorium!'
+  profile: 'Profil von'
+  posts:
+    headline: 'Beitrag'
