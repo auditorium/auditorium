@@ -22,6 +22,13 @@
           <%= f.text_field :username, :class => "span8" %>
         </div>
       </div>
+
+      <div class="control-group">
+        <%= f.label :title, 'Title', :class => 'control-label'%>
+        <div class="controls">
+          <%= f.select :title, options_for_select(available_title), :include_blank => true, :class => 'span8' %>
+        </div>
+      </div>
       
       <div class="control-group">
         <%= f.label :first_name, 'First name', :class => 'control-label'%> 

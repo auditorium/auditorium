@@ -142,6 +142,10 @@ module ApplicationHelper
     %w{posts courses home reports}.include? params[:controller]
   end
 
+  def available_title
+    %w{Dr. Prof. Doz.}
+  end
+
   def shorten (string, length)
     if string.length > length
       "#{string[0,length]}..."

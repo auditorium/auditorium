@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
   def full_name
     
     if (not self.first_name.nil? and not self.first_name.eql? "") or (not self.last_name.nil? and not self.last_name.eql? "")
-      "#{self.first_name} #{self.last_name}" 
+      "#{self.title} #{self.first_name} #{self.last_name}" 
     elsif self.username
       self.username 
     else
