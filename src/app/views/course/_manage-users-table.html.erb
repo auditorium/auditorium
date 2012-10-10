@@ -1,26 +1,35 @@
-<table class="table table-striped">
+<table class="table">
   <% if @users and @users.count > 0 %>
     <% @users.each do |user| %>
       <tr>
         <td>
           <% if user.username %>
           <b><%= user.username %></b>
-          <% else %>
-            <b><%= user.email.split('@')[0] %></b>
           <% end %>
-          <br/><%= "#{user.first_name} #{user.last_name}" %>
+          
+          <% if user.first_name.empty? and user.last_name.empty? %>
+            <br/><%= "#{user.email}" %>
+          <% else %>
+            <br/><%= "#{user.first_name} #{user.last_name}" %>
+          <% end %>
         </td>
-        <td>
-          <%= radio_button_tag "#{user.id}", 'member', user.is_course_member?(@course), :class => 'btn' %>
-          <%= "Member" %>
+        <td class="alert alert-info">
+          
+          <%= radio_button_tag "#{user.id}", 'member', user.is_course_member?(@course) %>
+          <span class="wrappable"><%= "Member" %></span>
+  
         </td>
-        <td>
-          <%= radio_button_tag "#{user.id}", 'editor', user.is_course_editor?(@course),:class => 'btn btn-primary'%>
-          <%= "Editor" %>
+        <td class="alert alert-warning">
+          
+          <%= radio_button_tag "#{user.id}", 'editor', user.is_course_editor?(@course) %>
+          <span class="wrappable"><%= "Editor" %></span>
+
         </td>
-        <td>
-          <%= radio_button_tag "#{user.id}", 'maintainer', user.is_course_maintainer?(@course), :class => 'btn btn-warning' %>
-          <%= "Maintainer" %>
+        <td class="alert alert-error">
+          
+          <%= radio_button_tag "#{user.id}", 'maintainer', user.is_course_maintainer?(@course) %>
+          <span class="wrappable"><%= "Maintainer" %></span>
+  
         </td>
       </tr>
     <% end %>
