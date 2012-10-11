@@ -66,16 +66,19 @@ class Ability
       can :follow, Course
       can :read, Course
       can :manage, Course do |course|
-        user.is_course_maintainer? course
+        user.is_course_maintainer? course or user.is_course_editor? course or user.admin?
+      end
+
+      cannot :manage_users, Course do |course|
+        !user.is_course_maintainer?(course)
+      end
+
+      cannot :delete, Course do |course|
+        !user.is_course_maintainer? course
       end
 
       can :follow, Lecture
       can :follow, Faculty
-
-      can :manage_users, Course do |course|
-        user.is_course_maintainer? course
-      end
-      
       cannot :approve, Course
 
       cannot :manage, Feedback
@@ -95,6 +98,7 @@ class Ability
       can :destroy, :all
       can :read, :all #if user.confirmed?
       can :update, :all
+      can :manage_users, Course
 
       can :rate,     Post do |post|
         user.id != post.author.id

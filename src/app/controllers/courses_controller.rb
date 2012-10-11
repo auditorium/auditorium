@@ -28,7 +28,7 @@ class CoursesController < ApplicationController
   # GET /courses/1.json
   def show
     @course = Course.find(params[:id])
-    @users = User.order('username DESC, email DESC, first_name DESC, last_name DESC') if can? :manage, User
+    @users = User.order('first_name ASC, last_name ASC, username ASC, email ASC').keep_if{|u| u != current_user} if can? :manage_users, @course
     @infos = Post.order('last_activity DESC, updated_at DESC, created_at DESC').where('post_type = ? and course_id = ?', 'info', @course.id)
     @questions = Post.order('last_activity DESC, updated_at DESC, created_at DESC').where('post_type = ? and course_id = ?', 'question', @course.id).page(params[:page]).per(15)
     if current_user.nil?
@@ -175,22 +175,26 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
     
     User.all.each do |user|
-      membership_type = params["#{user.id}"]
-      membership = CourseMembership.find_by_course_id_and_user_id(@course.id, user.id)
+      membership_type = params["membership_#{user.id}"]
+      puts "#{user.full_name}: #{membership_type}"
+      unless membership_type.eql? 'member' or membership_type.nil?
+        membership = CourseMembership.find_by_course_id_and_user_id(@course.id, user.id)
 
-      before = membership.membership_type if not membership.nil?
-      after = membership_type
+        before = membership.membership_type if not membership.nil?
+        after = membership_type
 
-      if membership.nil?
-        membership = CourseMembership.create(:user_id => user.id, :course_id => @course.id, :membership_type => membership_type)
-      else
-        membership.membership_type = membership_type
-        membership.save
-      end
+        if membership.nil?
+          membership = CourseMembership.create(:user_id => user.id, :course_id => @course.id, :membership_type => membership_type)
+        else
+          membership.membership_type = membership_type
+          membership.save
+        end
 
-      # send mail
-      if not before.eql? after and not after.eql? 'member'
-        AuditoriumMailer.membership_changed(@course, user, membership_type).deliver
+
+        # send mail
+        unless before.eql? after or membership_type.eql? 'member'
+          AuditoriumMailer.membership_changed(@course, user, membership_type).deliver
+        end
       end
     end
     

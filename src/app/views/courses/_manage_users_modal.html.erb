@@ -19,7 +19,7 @@
   </div>
   <div class="modal-footer">
     <%= button_tag 'Close', 'data-dismiss' => 'modal', :class => 'btn' %>
-    <%= submit_tag 'Save changes', :class => 'btn btn-primary', :disable_with => 'saving...' %>
+    <%= submit_tag 'Save changes', :data => { :disable_with => 'Submitting...' }, :class => 'btn btn-primary' %>
   </div>
   <% end %>
 </div>

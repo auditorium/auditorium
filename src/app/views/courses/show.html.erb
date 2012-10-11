@@ -48,7 +48,7 @@
     
     <% if can? :manage, @course %>
       <h3>Manage course</h3>
-      <% if can? :manage, User %>
+      <% if can? :manage_users, @course %>
       <p><%= link_to content_tag('span', ' Manage users', :class=> 'icon-user'), '#manage-users-modal', 'data-toggle'=>"modal", :class => 'btn btn-small btn-block btn-info' %></p>
       <% end %>
       <p><%= link_to content_tag('span', ' Edit course', :class=>'icon-edit'), edit_course_path(@course), :class => 'btn btn-small btn-block'  %>
@@ -79,6 +79,12 @@
           <% end %>
         </td>
       </tr>
+      <tr>
+        <td><b>All courses</b></td>
+        <td>
+          <%= link_to @course.lecture.name, lecture_path(@course.lecture, :noredirect => true) %>
+        </td>
+      </tr>
     </table>
     <hr />
     <h3>Member</h3>
@@ -87,7 +93,7 @@
     </table>  
    
 </div>
-<% if can? :manage, User %>
+<% if can? :manage_users, @course %>
 <%= render :partial => 'courses/manage_users_modal', :locals => { :course => @course }%>
 <% end %>
   

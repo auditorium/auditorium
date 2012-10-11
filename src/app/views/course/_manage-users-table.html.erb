@@ -15,19 +15,19 @@
         </td>
         <td class="alert alert-info">
           
-          <%= radio_button_tag "#{user.id}", 'member', user.is_course_member?(@course) %>
+          <%= radio_button_tag "membership_#{user.id}", 'member', user.is_course_member?(@course) %>
           <span class="wrappable"><%= "Member" %></span>
   
         </td>
         <td class="alert alert-warning">
           
-          <%= radio_button_tag "#{user.id}", 'editor', user.is_course_editor?(@course) %>
+          <%= radio_button_tag "membership_#{user.id}", 'editor', user.is_course_editor?(@course) %>
           <span class="wrappable"><%= "Editor" %></span>
 
         </td>
         <td class="alert alert-error">
           
-          <%= radio_button_tag "#{user.id}", 'maintainer', user.is_course_maintainer?(@course) %>
+          <%= radio_button_tag "membership_#{user.id}", 'maintainer', user.is_course_maintainer?(@course) %>
           <span class="wrappable"><%= "Maintainer" %></span>
   
         </td>
