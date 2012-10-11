@@ -6,6 +6,11 @@
 // Bootstrap
 @import "twitter/bootstrap/bootstrap";
 @import "twitter/bootstrap/responsive";
+@import "twitter/bootstrap/variables";
+@import "twitter/bootstrap/mixins";
+@import "fontawesome";
+@import "variables";
+@import "caviar-dreams";
 
 // Font Awesome - for Glyphs
 @fontAwesomeEotPath:  'fontawesome-webfont.eot';
@@ -13,9 +18,7 @@
 @fontAwesomeTtfPath:  'fontawesome-webfont.ttf';
 @fontAwesomeSvgzPath: 'fontawesome-webfont.svgz';
 @fontAwesomeSvgPath:  'fontawesome-webfont.svg';
-@import "fontawesome";
-@import "variables";
-@import "caviar-dreams";
+
 
 /* headers */
 h1, h2, h3, h4, h5, h6{
@@ -86,11 +89,7 @@ h5, h6
   {
     padding: 0 12px;
   }
-  .navbar-fixed-top
-  {
-    position:fixed;
-    padding: 0 12px;
-  }
+ 
   #footer
   {
     padding: 15px 5px;
@@ -329,30 +328,11 @@ form.button_to div, form.button_to div input {
   display:inline;
 }
 
-.breadcrumb { font-size: 0.9em; }
-.breadcrumb span
-{
-  display:inline;
-  padding:0;
-  vertical-align:middle;
-}
-
-.nav > li > a {
-  display: inline-block;
-}
-
-.navbar .nav {
-  margin:0;
-}
-
 #navigation
 {
-  .navbar-fixed-top
-  {
-    margin-bottom: 25px;
-  }
+
   li a {
-    padding: 10px;
+    color: @white;
 
     &:hover {
       color:@grayLight;
@@ -367,6 +347,27 @@ form.button_to div, form.button_to div input {
   .btn-navbar
   {
     &:hover, span:hover { text-decoration: none;}
+  }
+
+  .breadcrumb { 
+    line-height:1;
+    height:20px;
+    a { 
+      margin:2px 0;
+      color: @blue;
+      font-size:0.9em;
+      &:hover {
+        text-decoration:none;
+      }
+    }
+  }
+  .breadcrumb span
+  {
+    display:inline-block;
+    padding:0;
+    margin:-2px 5px;
+    vertical-align:middle;
+    color: @grayDark;
   }
   
 }
@@ -701,17 +702,6 @@ body
 
       small {
         font-size:1.0em;
-      }
-    }
-
-    & > .container
-    {
-      //background:lighten(@yellow, 30%); 
-      .navbar-inner
-      {
-        .border-radius(0);
-        //#gradient > .no-gradient(@grayDark);
-        //#shadow > .no-shadow();
       }
     }
   }

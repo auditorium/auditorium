@@ -1,10 +1,5 @@
-
-<li class="pull-right">
-  <li class="notification-button">
-    <% if current_user and current_user.unread_notifications.count > 0 %>
-      <%= link_to current_user.unread_notifications.count, notifications_path, :class=>"notification-button red", title: "#{current_user.unread_notifications.count} unread notifications" %>
-    <% else %>
-      <%= link_to '0', notifications_path, :class=>"notification-button", title: "0 unread notifications" %>
-    <% end %>
-  </li>
+<li class="notification-button">
+  <%= link_to current_user.unread_notifications.count, notifications_path, :class=>"visible-desktop notification-button #{red if current_user.unread_notifications.count > 0}", title: "#{current_user.unread_notifications.count} unread notifications" %>
+	<%= link_to pluralize(current_user.unread_notifications.count, 'notification'), notifications_path, :class=>"hidden-desktop", title: "#{current_user.unread_notifications.count} unread notifications" %>  
 </li>
+

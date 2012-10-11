@@ -2,38 +2,5 @@
   <%= form_tag '/search', :method => 'get', :class => 'navbar-search form-search hidden-phone',:remote => false do %>
     <%= text_field_tag :query, nil, :placeholder => 'Search', :id => 'searchbar' %>
   <% end %>
-  <%= render :partial => 'shared/notifications' %>
-
-  <li class='pull-right <%= "admin" if current_user.admin? %> hidden-phone' >
-    <a href="<%= user_path(current_user) %>" title='Profile page'>
-      <em class="icon-user"></em>
-      <span class="visible-desktop">
-      <% if current_user.username?%> <%= current_user.username%>
-      <% else %> <%= current_user.email.split('@')[0] %> <% end %>
-      </span>
-    </a>
-  </li>
-
-  <li  class='pull-right'>
-     <a href="<%= edit_user_registration_path %>" title='Settings'>
-      <em class="icon-wrench"></em>
-      <span class="visible-desktop">
-      Settings
-      </span>
-    </a>
-  </li>
-  <li class="pull-right">
-  <%= link_to destroy_user_session_path, :method => :delete do %> <em class="icon-off"></em>
-      <span class="visible-desktop"> Logout </span>
-      <% end %>
-  </li>
-
-<% else %>
-  <li class="pull-right">
-    <%= link_to(new_user_session_path, 'data-toggle' => 'modal') do %>
-      <em class='icon-user'></em>
-      <span>Sign in</span>
-    <% end %>
-    <%= render :partial => 'shared/modal_login' %>
-  </li>
+  s
 <% end %>

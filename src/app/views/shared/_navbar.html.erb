@@ -1,52 +1,50 @@
-<div class="navbar" id='navigation'>
-  <div class="navbar-inner">
+<div class="navbar navbar-inverse" id='navigation'>
+  <div class="navbar-inner"> 
+    <div class="container"> 
+      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
 
-    <div class="container">
-
-      <!--
-      <a class="btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-plus"></span> </a>
-      -->
-
-      <ul class="nav">
+      <ul class="nav"> 
+        <li><%= link_to 'Home', home_path %></li>
+      </ul>
+      <div class="nav-collapse subnav-collapse"> 
         <% if signed_in? %>
-        <li>
-        <%= link_to( home_path ) do %>
-          <i class="icon-home"></i>
-          <span class="hidden-phone"> Home </span>
-        <% end%>
-        </li>
+          <ul class="nav">
+            <li><%= link_to 'Subscribed courses', my_courses_path, :title => 'My Courses' %></li>
+            <li><%= link_to 'Courses by term', terms_path, :title => 'Faculties' %></li>
+            <li><%= link_to 'Faculty', faculties_path, :title => 'Faculties' %></li>
+            <% if @help %><li><%= link_to 'Help', course_path(@help) %></li><% end %>
+          </ul>
+          <ul class="nav pull-right">
+            <%= form_tag search_path, :method => 'get', :class => 'navbar-search',:remote => false do %>
+              <%= text_field_tag :query, nil, :placeholder => 'Search', :id => 'searchbar', class: 'search-query span2' %>
+            <% end %>
+            
+            <%= render :partial => 'shared/notifications' %>
 
-        <li>
-        <%= link_to( my_courses_path, :title => 'My Courses' ) do %>
-          <i class="icon-book"></i>
-          <span class="hidden-phone"> Courses</span>
-        <% end%>
-        </li>
+            <li class='<%= "admin" if current_user.admin? %>' >
+              <%= link_to (current_user.username? ? current_user.username : current_user.email.split('@')[0]), user_path(current_user) %> 
+            </li>
+            <li><%= link_to 'Settings', edit_user_registration_path %></li>
 
-        <li>
-        <%= link_to( faculties_path, :title => 'Faculties') do %>
-          <i class="icon-beaker"></i>
-          <span class="hidden-phone"> Faculties</span>
-        <% end%>
-        </li>
-
-
-        <% end %>
-      </ul>
-      
-       
-      <ul class="nav pull-right">
-        <%= render "shared/user_li" %>
-      </ul>
-      
-
-    </div>
-    <div class="container">
-      <%= form_tag '/search', :method => 'get', :class => 'form-search visible-phone',:remote => false do %>
-        <%= text_field_tag :query, nil, :placeholder => 'Search', :id => 'searchbar', class: 'span2' %>
-      <% end %>
-    </div>
-
+            <li>
+              <%= link_to 'Log out', destroy_user_session_path, :method => :delete %>
+            </li>
+          </ul>    
+        <% else %>
+          <ul class="nav">
+            <li><%= link_to 'Home', home_path %></li>
+          </ul>  
+          <ul class="nav pull-right">
+            <li><%= link_to 'Sign in', new_user_session_path %></li>
+            <li><%= link_to 'or sign up', new_user_registration_path %></li>
+          </ul>
+        <% end %>  
+      </div><!-- /.nav-collapse --> 
+    </div> 
   </div>
-<%= render "shared/breadcrumbs" %>
+  <%= render "shared/breadcrumbs" %>
 </div>
