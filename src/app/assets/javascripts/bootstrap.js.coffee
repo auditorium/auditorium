@@ -21,7 +21,7 @@ window.onscroll = ->
   section = document.querySelector("body > section")
   fixed_nav_class = 'navbar-fixed-top'
   offset = navigation.offsetTop
-  collapsed = $('body').width() <= 970
+  #collapsed = $('body').width() <= 970
 
   # remember offset
   if !navigation.hasAttribute('data-top')
@@ -29,10 +29,13 @@ window.onscroll = ->
 
   if scrollTop() >= offset && not navigation.classList.contains fixed_nav_class
     navigation.classList.add(fixed_nav_class)
+    
+    navigation.css('position', 'relative')
     section.style.paddingTop = "#{20 + nav_height}px"
     
 
   else if scrollTop() <= navigation.getAttribute('data-top') && navigation.classList.contains fixed_nav_class
     navigation.classList.remove(fixed_nav_class)
+    navigation.css('position', 'fixed')
     section.style.paddingTop = "20px"
 
