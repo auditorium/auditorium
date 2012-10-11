@@ -70,11 +70,11 @@ class Ability
       end
 
       cannot :manage_users, Course do |course|
-        !user.is_course_maintainer?(course)
+        !user.is_course_maintainer?(course) or !user.admin?
       end
 
       cannot :delete, Course do |course|
-        !user.is_course_maintainer? course
+        !user.is_course_maintainer? course or !user.admin?
       end
 
       can :follow, Lecture
@@ -98,7 +98,6 @@ class Ability
       can :destroy, :all
       can :read, :all #if user.confirmed?
       can :update, :all
-      can :manage_users, Course
 
       can :rate,     Post do |post|
         user.id != post.author.id
