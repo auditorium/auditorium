@@ -83,6 +83,11 @@ jQuery ->
 		insertAtCaret('content_field', '\n$$%LaTeX code here!$$\n')
 		return false
 
+	$('a.general-question').click ->
+		$('#course_name').val('Allgemeine und organisatorische Angelegenheiten').focus()
+		$('#course_name').autocomplete('search', $('#course_name').val())
+		return false
+
 	$('.permalink').click -> 
 		post_id = $(this).data('id')
 		$('html,body').animate({scrollTop:$('#post-'+post_id).offset().top - 70}, 500)

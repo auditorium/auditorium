@@ -9,3 +9,5 @@
   <!-- for backward compatibility a select -->   
   <%= f.select(:course_id, options_from_collection_for_select(Course.order('name ASC').select("id, name, term_id"), :id, :name_with_term, params[:course_id] || post.course_id), { include_blank: '-- please select a course --'}, {:id=>"course_select",:class => 'span8'}) %>
 <% end %>
+
+<p class="hint">Your question does not really contain to a course? <%= link_to 'Use our general course of auditorium to ask your question.', '#', class: 'general-question' %></p>
