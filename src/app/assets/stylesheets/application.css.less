@@ -70,7 +70,6 @@ h5, h6
 @media (max-width: 767px)
 { 
   body{
-    padding: 0;
     #content
     {
       padding: 0 8px;
@@ -737,6 +736,8 @@ body
       footer
       {
         .top-border;
+        margin:0;
+        padding:0;
       }
     }
   }
@@ -747,11 +748,10 @@ body
     width:100%;
     padding-top:15px;
     background: @grayDark url('low_contrast_linen.png');
+    min-height:150px;
     #shadow > .inset-top(@black,15px);
     color:@white;
     a {color:@white; }
-
-    
   }
 }/*}*/
 
@@ -983,5 +983,20 @@ blockquote h1 {
 /* latex */
 .MathJax_Display {
   text-align:left!important;
+}
+
+/* too cool for ie */
+
+a#tooCool {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  display: block;
+  height: 80px;
+  width: 80px;
+  background: url("too_cool_med.jpg") bottom right no-repeat;
+  background: url("too_cool_med.png") bottom right no-repeat;
+  text-indent: -999em;
+  text-decoration: none;
 }
 
