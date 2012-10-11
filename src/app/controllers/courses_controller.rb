@@ -176,25 +176,22 @@ class CoursesController < ApplicationController
     
     User.all.each do |user|
       membership_type = params["membership_#{user.id}"]
-      puts "#{user.full_name}: #{membership_type}"
-      unless membership_type.eql? 'member' or membership_type.nil?
-        membership = CourseMembership.find_by_course_id_and_user_id(@course.id, user.id)
+      membership = CourseMembership.find_by_course_id_and_user_id(@course.id, user.id)
 
-        before = membership.membership_type if not membership.nil?
-        after = membership_type
+      before = membership.membership_type if not membership.nil?
+      after = membership_type
 
-        if membership.nil?
-          membership = CourseMembership.create(:user_id => user.id, :course_id => @course.id, :membership_type => membership_type)
-        else
-          membership.membership_type = membership_type
-          membership.save
-        end
+      if membership.nil?
+        membership = CourseMembership.create(:user_id => user.id, :course_id => @course.id, :membership_type => membership_type)
+      else
+        membership.membership_type = membership_type
+        membership.save
+      end
 
 
-        # send mail
-        unless before.eql? after or membership_type.eql? 'member'
-          AuditoriumMailer.membership_changed(@course, user, membership_type).deliver
-        end
+      # send mail
+      unless before.eql? after or membership_type.eql? 'member' or membership_type.nil?
+        AuditoriumMailer.membership_changed(@course, user, membership_type).deliver
       end
     end
     
