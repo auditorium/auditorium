@@ -15,6 +15,7 @@
     <h4><%= pluralize(@results[:lectures].count, 'Lecture') %></h4>
     <table class="table table-striped">
       <% @results[:lectures].each do |lecture| %>
+      <% unless lecture.nil? %>
       <tr>
         <td>
           <b><%= link_to lecture.name, lecture %></b>
@@ -30,6 +31,7 @@
             <% end %>
           </em></small>
         </td></tr>
+        <% end %>
       <% end %>
     </table>
     <%= paginate @results[:lectures], :param_name => :lecture_page %>
@@ -43,17 +45,19 @@
     <h4><%= pluralize(@results[:courses].count, 'Course') %></h4>
     <table class="table table-striped">
       <% @results[:courses].each do |course| %>
-      <tr>
-      <td>
-      <b><%=link_to course.name_with_term, course_path(course) %></b>
-      <br />
-      <small><em>
-        <%= pluralize(course.participants.count, 'participant') %>,
-        <%= pluralize(course.questions.count, 'question') %>,
-        <%= pluralize(course.infos.count, 'info') %>
-      </em></small>
-    </td>
-      </tr>
+      <% unless course.nil? %>
+        <tr>
+        <td>
+        <b><%=link_to course.name_with_term, course_path(course) %></b>
+        <br />
+        <small><em>
+          <%= pluralize(course.participants.count, 'participant') %>,
+          <%= pluralize(course.questions.count, 'question') %>,
+          <%= pluralize(course.infos.count, 'info') %>
+        </em></small>
+        </td>
+        </tr>
+      <% end %>
       <% end %>
     </table>
     <%= paginate @results[:courses], :param_name => :course_page %>
@@ -66,6 +70,7 @@
     <h4><%= pluralize(@results[:posts].count, 'Post') %></h4>
     <table class="table table-striped">
       <% @results[:posts].each do |post| %>
+      <% unless post.nil? %>
       <% if can? :read, post %>
       <tr>
         <td>
@@ -79,6 +84,7 @@
           </em></small>
         </td>
       </tr>
+      <% end %>
       <% end %>
       <% end %>
     </table>

@@ -23,6 +23,7 @@ class LecturesController < ApplicationController
   # GET /lectures/1.json
   def show
     @lecture = Lecture.find(params[:id])
+    @courses = @lecture.courses.page(params[:page]).per(20)
 
     do_redirect = false
     do_redirect = params[:noredirect].nil? or

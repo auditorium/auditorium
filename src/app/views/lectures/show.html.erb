@@ -9,17 +9,12 @@
   <p>There's no description available, yet!</p>
 <% end %>
 
-<h3>Courses in this lecture.</h3>
-<% if @lecture.courses.count > 0 %>
-  
-  <% @lecture.courses.each do |course| %>
-    <%= render :partial => 'courses/single_course', :locals => { :course => course }%>
-  <% end %>
+<% if @courses.count > 0 %>
+<div class="courses-table">
+  <%= render 'courses/courses-list' %>
+</div>
 <% else %>
-  <p class="hint">There are no courses yet.
-    <%= link_to 'New semester course', new_course_path(:lecture_id => @lecture.id, :name => @lecture.name, :term_id => Term.last.id, :url => @lecture.url, :description => @lecture.description) %>
-
-  </p>
+<p class="hint">There is no course in this list yet. <%= link_to 'Add new semester.', new_course_path(:lecture_id => @lecture.id)  %></p>
 <% end %>
 <%= render "lectures/access_buttons", :lecture=> @lecture%>
 

@@ -9,13 +9,18 @@
       
       <ul class="nav">
         <li class="hidden-desktop"><%= link_to 'auditorium', home_path, class: 'brand' %></li>
-        <li class="hidden-phone"><%= link_to 'Home', home_path, class: "hidden-phone" %></li>
+        <li class="visible-desktop">
+          <%= link_to home_path do %><i class="icon-home"></i> Home<% end %>
+        </li>
       </ul>
       <% if signed_in? %>
       <ul class="nav">  
-
-        <li><%= link_to 'Subscribed courses', my_courses_path, :title => 'My Courses', class: 'hidden-phone' %></li>
-        <li><%= link_to 'Search', search_path, class: 'hidden-desktop' %></li>
+        <li class="hidden-phone">
+          <%= link_to my_courses_path do %><i class="icon-th-large"></i> My courses<% end %>
+        </li>
+        <li class="hidden-desktop">
+          <%= link_to search_path do %><i class="icon-search"></i> Search<% end %>
+        </li>
       </ul>
 
       <ul class="nav pull-right visible-tablet">
@@ -23,17 +28,29 @@
           <%= render :partial => 'shared/notifications' %>
         </li>
         <li class='<%= "admin" if current_user.admin? %>' >
-          <%= link_to (current_user.username? ? current_user.username : current_user.email.split('@')[0]), user_path(current_user) %> 
+          
+          <%= link_to user_path(current_user) do %>
+            <i class="icon-user"></i> <%= (current_user.username? ? current_user.username : current_user.email.split('@')[0]) %>
+          <% end %> 
         </li>
       </ul>
       <% end %>
       <div class="nav-collapse subnav-collapse"> 
         <% if signed_in? %>
           <ul class="nav">
-            <li><%= link_to 'Subscribed courses', my_courses_path, :title => 'My Courses', class: 'visible-phone' %></li>
-            <li><%= link_to 'Courses by term', terms_path, :title => 'Faculties' %></li>
-            <li><%= link_to 'Faculty', faculties_path, :title => 'Faculties' %></li>
-            <% if help = Course.find_by_name('Support Center') %><li><%= link_to 'Help', course_path(help) %></li><% end %>
+            <li class="visible-phone">
+          <%= link_to my_courses_path do %><i class="icon-th-large"></i> My courses<% end %>
+            </li>
+            <li>
+              <%= link_to terms_path do %><i class="icon-time"></i> Semester<% end %>
+            </li>
+            <li>
+              <%= link_to faculties_path do %><i class="icon-beaker"></i> Faculty<% end %>
+            </li>
+            
+            <% if help = Course.find_by_name('Support Center') %>
+              <li><%= link_to course_path(help) do %><i class="icon-question-sign"></i> Help<% end %></li>
+            <% end %>
           </ul>
           <ul class="nav pull-right">
             <%= form_tag search_path, :method => 'get', :class => 'navbar-search visible-desktop',:remote => false do %>
@@ -42,12 +59,15 @@
             <li class="notification-button visible-phone visible-desktop"><%= render :partial => 'shared/notifications' %></li>
             
             <li class='<%= "admin" if current_user.admin? %> hidden-tablet' >
-              <%= link_to (current_user.username? ? current_user.username : current_user.email.split('@')[0]), user_path(current_user) %> 
+              <%= link_to user_path(current_user) do %>
+                <i class="icon-user"></i> <%= (current_user.username? ? current_user.username : current_user.email.split('@')[0]) %>
+              <% end %> 
             </li>
-            <li><%= link_to 'Settings', edit_user_registration_path %></li>
-
             <li>
-              <%= link_to 'Log out', destroy_user_session_path, :method => :delete %>
+              <%= link_to edit_user_registration_path do %><i class="icon-cog"></i> Settings<% end %>
+            </li>
+            <li>
+              <%= link_to destroy_user_session_path, :method => :delete do %><i class="icon-off"></i> Log out<% end %>
             </li>
           </ul>    
         <% else %>
