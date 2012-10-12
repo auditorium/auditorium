@@ -10,6 +10,9 @@
       <ul class="nav">
         <li><%= link_to 'auditorium', home_path, class: 'brand hidden-desktop' %></li>
         <li><%= link_to 'Home', home_path %></li>
+      </ul>
+      <% if signed_in? %>
+      <ul class="nav">  
         <li><%= link_to 'Subscribed courses', my_courses_path, :title => 'My Courses', class: 'hidden-phone' %></li>
         <li><%= link_to 'Search', search_path, class: 'hidden-desktop' %></li>
       </ul>
@@ -22,7 +25,7 @@
           <%= link_to (current_user.username? ? current_user.username : current_user.email.split('@')[0]), user_path(current_user) %> 
         </li>
       </ul>
-
+      <% end %>
       <div class="nav-collapse subnav-collapse"> 
         <% if signed_in? %>
           <ul class="nav">
@@ -47,12 +50,9 @@
             </li>
           </ul>    
         <% else %>
-          <ul class="nav">
-            <li><%= link_to 'Home', home_path %></li>
-          </ul>  
           <ul class="nav pull-right">
             <li><%= link_to 'Sign in', new_user_session_path %></li>
-            <li><%= link_to 'or sign up', new_user_registration_path %></li>
+            <li><%= link_to 'Sign up', new_user_registration_path %></li>
           </ul>
         <% end %>  
       </div><!-- /.nav-collapse --> 
