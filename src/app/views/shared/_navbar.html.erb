@@ -3,7 +3,7 @@
     <div class="container"> 
       <% if signed_in? %>
         <button class="btn btn-navbar btn-small visible-phone" data-toggle="collapse" data-target=".nav-collapse">
-          <%= 'more' %> <i class="icon-caret-down"></i>
+          <span class="hidden-little-phone">more </span><i class="icon-caret-down"></i>
         </button>
         <% end %>
       
@@ -30,7 +30,7 @@
           <% if help = Course.find_by_name('Support Center') %>
             <li class="hidden-phone"><%= link_to course_path(help) do %><i class="icon-question-sign"></i> Help<% end %></li>
           <% end %>
-          <li class="hidden-desktop"><%= link_to search_path do %><i class="icon-search"></i> Search<% end %></li>
+          <li class="hidden-desktop"><%= link_to search_path do %><i class="icon-search"></i> <span class="hidden-little-phone">Search</span><% end %></li>
           <li class=" notification-button visible-phone"><%= render :partial => 'shared/notifications' %></li>
         </ul>
         <ul class="nav pull-right hidden-phone">
@@ -61,6 +61,7 @@
 
         <div class="nav-collapse subnav-collapse"> 
           <ul class="nav visible-phone">
+            <li><%= link_to my_courses_path do %><i class="icon-th-large"></i> My courses<% end %></li>
             <li><%= link_to courses_path do %><i class="icon-th"></i> Courses<% end %></li>
             <li><%= link_to terms_path do %><i class="icon-time"></i> Semester<% end %></li>
             <li><%= link_to lectures_path do %><i class="icon-book"></i> Lectures<% end %></li>
