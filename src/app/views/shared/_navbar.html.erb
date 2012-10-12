@@ -1,82 +1,86 @@
 <div class="navbar navbar-inverse" id='navigation'>
   <div class="navbar-inner"> 
     <div class="container"> 
-      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      
-      <ul class="nav">
-        <li class="hidden-desktop"><%= link_to 'auditorium', home_path, class: 'brand' %></li>
-        <li class="visible-desktop">
-          <%= link_to home_path do %><i class="icon-home"></i> Home<% end %>
-        </li>
-      </ul>
       <% if signed_in? %>
-      <ul class="nav">  
-        <li class="hidden-phone">
-          <%= link_to my_courses_path do %><i class="icon-th-large"></i> My courses<% end %>
-        </li>
-        <li class="hidden-desktop">
-          <%= link_to search_path do %><i class="icon-search"></i> Search<% end %>
-        </li>
-      </ul>
-
-      <ul class="nav pull-right visible-tablet">
-        <li class="notification-button">
-          <%= render :partial => 'shared/notifications' %>
-        </li>
-        <li class='<%= "admin" if current_user.admin? %>' >
-          
-          <%= link_to user_path(current_user) do %>
-            <i class="icon-user"></i> <%= (current_user.username? ? current_user.username : current_user.email.split('@')[0]) %>
-          <% end %> 
-        </li>
-      </ul>
-      <% end %>
-      <div class="nav-collapse subnav-collapse"> 
+        <button class="btn btn-navbar btn-small visible-phone" data-toggle="collapse" data-target=".nav-collapse">
+          <%= 'more' %> <i class="icon-caret-down"></i>
+        </button>
+        <% end %>
+      
+        <ul class="nav">
+          <li class="hidden-desktop"><%= link_to 'auditorium', home_path, class: 'brand' %></li>
+          <li class="visible-desktop"><%= link_to home_path do %><i class="icon-home"></i> Home<% end %></li>
+        </ul>
         <% if signed_in? %>
-          <ul class="nav">
-            <li class="visible-phone">
-          <%= link_to my_courses_path do %><i class="icon-th-large"></i> My courses<% end %>
-            </li>
-            <li>
-              <%= link_to terms_path do %><i class="icon-time"></i> Semester<% end %>
-            </li>
-            <li>
-              <%= link_to faculties_path do %><i class="icon-beaker"></i> Faculty<% end %>
-            </li>
-            
-            <% if help = Course.find_by_name('Support Center') %>
-              <li><%= link_to course_path(help) do %><i class="icon-question-sign"></i> Help<% end %></li>
-            <% end %>
+        <ul class="nav">
+          <li class="hidden-phone dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Browse <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to courses_path do %><i class="icon-th"></i> Courses<% end %></li>
+              <li><%= link_to terms_path do %><i class="icon-time"></i> Semester<% end %></li>
+              <li><%= link_to lectures_path do %><i class="icon-book"></i> Lectures<% end %></li>
+              <li><%= link_to chairs_path do %><i class="icon-list"></i> Chairs<% end %></li>
+              <li><%= link_to institutes_path do %><i class="icon-sitemap"></i> Institutes<% end %></li>
+              <li><%= link_to faculties_path do %><i class="icon-beaker"></i> Faculty<% end %></li>
+            </ul>
+          </li>  
+
+          <li class="hidden-phone"><%= link_to my_courses_path do %><i class="icon-th-large"></i> My courses<% end %></li>
+          
+          <% if help = Course.find_by_name('Support Center') %>
+            <li class="hidden-phone"><%= link_to course_path(help) do %><i class="icon-question-sign"></i> Help<% end %></li>
+          <% end %>
+          <li class="hidden-desktop"><%= link_to search_path do %><i class="icon-search"></i> Search<% end %></li>
+          <li class=" notification-button visible-phone"><%= render :partial => 'shared/notifications' %></li>
+        </ul>
+
+        <ul class="nav pull-right">
+          <%= form_tag search_path, :method => 'get', :class => 'navbar-search visible-desktop',:remote => false do %>
+            <%= text_field_tag :query, nil, :placeholder => 'Search', :id => 'searchbar', class: 'search-query span2' %>
+          <% end %>
+          <li class="notification-button hidden-phone"><%= render :partial => 'shared/notifications' %></li>
+          <li class="hidden-phone dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b></a>
+            <ul class="dropdown-menu hidden-phone">
+              <li class='<%= "admin" if current_user.admin? %>' >
+                <%= link_to user_path(current_user) do %><i class="icon-user"></i> <%= (current_user.username? ? current_user.username : current_user.email.split('@')[0]) %>
+                <% end %> 
+              </li>
+              <li><%= link_to edit_user_registration_path do %><i class="icon-cog"></i> Settings<% end %></li>
+              <li>
+                <%= link_to destroy_user_session_path, :method => :delete do %><i class="icon-off"></i> Log out<% end %>
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <div class="nav-collapse subnav-collapse"> 
+          <ul class="nav visible-phone">
+            <li><%= link_to courses_path do %><i class="icon-th"></i> Courses<% end %></li>
+            <li><%= link_to terms_path do %><i class="icon-time"></i> Semester<% end %></li>
+            <li><%= link_to lectures_path do %><i class="icon-book"></i> Lectures<% end %></li>
+            <li><%= link_to chairs_path do %><i class="icon-list"></i> Chairs<% end %></li>
+            <li><%= link_to institutes_path do %><i class="icon-sitemap"></i> Institutes<% end %></li>
+            <li><%= link_to faculties_path do %><i class="icon-beaker"></i> Faculty<% end %></li>
+            <li class="divider"></li>  
           </ul>
-          <ul class="nav pull-right">
-            <%= form_tag search_path, :method => 'get', :class => 'navbar-search visible-desktop',:remote => false do %>
-              <%= text_field_tag :query, nil, :placeholder => 'Search', :id => 'searchbar', class: 'search-query span2' %>
-            <% end %>
-            <li class="notification-button visible-phone visible-desktop"><%= render :partial => 'shared/notifications' %></li>
-            
-            <li class='<%= "admin" if current_user.admin? %> hidden-tablet' >
-              <%= link_to user_path(current_user) do %>
-                <i class="icon-user"></i> <%= (current_user.username? ? current_user.username : current_user.email.split('@')[0]) %>
+          <ul class="nav pull-right visible-phone">
+            <li class='<%= "admin" if current_user.admin? %>' >
+              <%= link_to user_path(current_user) do %><i class="icon-user"></i> <%= (current_user.username? ? current_user.username : current_user.email.split('@')[0]) %>
               <% end %> 
             </li>
-            <li>
-              <%= link_to edit_user_registration_path do %><i class="icon-cog"></i> Settings<% end %>
-            </li>
+            <li><%= link_to edit_user_registration_path do %><i class="icon-cog"></i> Settings<% end %></li>
             <li>
               <%= link_to destroy_user_session_path, :method => :delete do %><i class="icon-off"></i> Log out<% end %>
-            </li>
-          </ul>    
-        <% else %>
-          <ul class="nav pull-right">
-            <li><%= link_to 'Sign in', new_user_session_path %></li>
-            <li><%= link_to 'Sign up', new_user_registration_path %></li>
-          </ul>
-        <% end %>  
-      </div><!-- /.nav-collapse --> 
+            </li>      
+          </ul>  
+        </div><!-- /.nav-collapse --> 
+      <% else %>
+      <ul class="nav pull-right">
+        <li><%= link_to 'Sign in', new_user_session_path %></li>
+        <li><%= link_to 'Sign up', new_user_registration_path %></li>
+      </ul>
+      <% end %>
     </div> 
   </div>
   <%= render "shared/breadcrumbs" %>

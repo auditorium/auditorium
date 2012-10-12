@@ -1,3 +1,2 @@
-<%= link_to current_user.unread_notifications.count, notifications_path, :class=>"hidden-phone notification-button #{'red' if current_user.unread_notifications.count > 0}", title: "#{current_user.unread_notifications.count} unread notifications" %>
-<%= link_to pluralize(current_user.unread_notifications.count, 'notification'), notifications_path, :class=>"visible-phone #{'red' if current_user.unread_notifications.count > 0}", title: "#{current_user.unread_notifications.count} unread notifications" %>
+<%= link_to current_user.unread_notifications.count, notifications_path, :class=>"notification-button #{'red' if current_user.unread_notifications.count > 0}", title: "#{current_user.unread_notifications.count} unread notifications" %>
 

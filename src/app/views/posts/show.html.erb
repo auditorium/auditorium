@@ -1,6 +1,14 @@
 <div class="center span8">
-<%= render :partial => 'post', :locals => {:post => @post } %>
+<h4 class="hint">
+	<%= (@post.post_type.eql? 'info') ? 'An announcement in' : 'A question in' %>
+	<% if current_user.subscribed_to?(@post.course) %>
+	  <%= link_to " #{@post.course.name_with_term}", course_path(@post.course), title: 'You have subscribed to this course.', class: 'icon-star' %>
+	<% else %>
+	  <%= link_to "#{@post.course.name_with_term}", course_path(@post.course) %>
+	<% end %>
+</h4>
 
+<%= render :partial => 'post', :locals => {:post => @post } %>
 
 <% if @post.answers.count > 0 %>
 <h3>Answers <small>sorted by rating</small></h3>
@@ -8,8 +16,6 @@
 <% @post.answers.each do |answer| %>
   <%= render :partial => 'posts/post', :locals => { :post => answer }%>
 <% end %>
-
-
 
 <% if @post.post_type.eql? 'question' %>
   <%= render :partial => 'posts/answer_form', :locals => { :post => @post }%>

@@ -18,6 +18,9 @@
       <% end %>
       <td colspan="1">
         <% if not post.post_type.eql? 'answer' %>
+        <div class="post-course-name">
+          <%= link_to " #{post.course.name_with_term}", course_path(post.course), title: 'You have subscribed to this course.', class: "#{'icon-star' if current_user.subscribed_to?(post.course)}" %>
+        </div>
         <h3 class="post-subject">
           <% if post.top_rated? %>
             <span class="icon-star highlight-icon" style='color:#fff900' title='This post is top rated.'></span>

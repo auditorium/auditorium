@@ -20,14 +20,11 @@
       <% post = notification.notifyable_object %>
       <% if not post.nil? %>
         <%= link_to post do %>
-         
-        
           <% if notification.read %>
           <tr class='clickable read'>
           <% else %>
           <tr class='clickable unread'>
           <% end %>
-            
             <td><%= I18n.localize(notification.created_at, :format => :short)%></td>
             <td><%= "New #{post.post_type} by #{post.author}:" %><%= link_to post.subject, notification %></td>
             <td><%= post.course.name_with_term %></td>

@@ -20,26 +20,20 @@
   <% end %>
   &middot;
   <%= link_to "#{distance_of_time_in_words(Time.now, post.created_at)} ago", post_url(post.origin, :anchor => "post-#{post.id}"), :class => 'permalink', 'data-id' => "#{post.id}", :id => "post-#{post.id}", title: 'Get permalink for this post.' %>
-  &middot;
-  <% if current_user.subscribed_to?(post.course) %>
-    <%= link_to " #{post.course.name_with_term}", course_path(post.course), title: 'You have subscribed to this course.', class: 'icon-star' %>
-  <% else %>
-    <%= link_to "#{post.course.name_with_term}", course_path(post.course) %>
-  <% end %>
 
-  <% if !params[:controller].eql? 'home' and !params[:controller].eql? 'courses' %>
+  <% if current_user.admin? or (!params[:controller].eql? 'home' and !params[:controller].eql? 'courses') %>
   <span class="pull-right">
     <% if can? :report, post %>
-      <%= link_to ' report', '#', :class => "submit-report", 'data-id' => post.id %>
+      <%= link_to '#', :class => "submit-report", 'data-id' => post.id do %><i class="icon-flag"></i> report<% end %>
       
     <% end %> 
     <% if can? :destroy, post  %>
       &middot; 
-      <%= link_to " remove", post, :data => { :confirm => 'Are you sure that you want to remove this post?' }, method: :delete %>
+      <%= link_to post, :data => { :confirm => 'Are you sure that you want to remove this post?' }, method: :delete do %><i class="icon-remove"></i> remove<% end %>
     <% end %>
     <% if can? :update, post %>
       &middot;
-      <%= link_to ' edit', edit_post_path(post) %> <%= "(#{distance_of_time_in_words(Time.now, post.updated_at) } ago)" if (post.updated_at.to_i - post.created_at.to_i) > 0 %>
+      <%= link_to edit_post_path(post) do %><i class="icon-edit"></i> edit<% end %> <%= "(#{distance_of_time_in_words(Time.now, post.updated_at) } ago)" if (post.updated_at.to_i - post.created_at.to_i) > 0 %>
     <% else %>
       &middot;
       <%= "edit #{distance_of_time_in_words(Time.now, post.updated_at) } ago" if (post.updated_at.to_i - post.created_at.to_i) > 0 %>

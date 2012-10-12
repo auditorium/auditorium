@@ -31,7 +31,7 @@
         <dt>admin</dt>
         <dd><i class="icon-user"></i> <%= link_to 'moderation', users_moderation_path %></dd>
         <dd><i class="icon-comment-alt"></i> <%= link_to "feedback (#{Feedback.where(read: false).count})", feedbacks_path %></dd>
-        <dd><i class="icon-eye-open-open"></i> <%= link_to "reports", reports_path %></dd>
+        <dd><i class="icon-eye-open-open"></i> <%= link_to reports_path do %><i class="icon-flag"></i> reports<% end %></dd>
         <dd><i class="icon-twitter"></i> <%= link_to "twitter", 'http://twitter.com/_auditorium' %></dd>
         <dd><i class="icon-github"></i> <%= link_to "github", "https://github.com/auditorium/auditorium" %></dd>
       </dl>
