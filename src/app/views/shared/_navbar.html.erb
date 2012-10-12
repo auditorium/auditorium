@@ -39,7 +39,7 @@
             <%= form_tag search_path, :method => 'get', :class => 'navbar-search visible-desktop',:remote => false do %>
               <%= text_field_tag :query, nil, :placeholder => 'Search', :id => 'searchbar', class: 'search-query span2' %>
             <% end %>
-            <li class="notification-button visible-desktop"><%= render :partial => 'shared/notifications' %></li>
+            <li class="notification-button visible-phone visible-desktop"><%= render :partial => 'shared/notifications' %></li>
             
             <li class='<%= "admin" if current_user.admin? %> hidden-tablet' >
               <%= link_to (current_user.username? ? current_user.username : current_user.email.split('@')[0]), user_path(current_user) %> 
