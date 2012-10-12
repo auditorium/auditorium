@@ -1,4 +1,4 @@
-<div class="modal" id="feedbackModal">
+<div class="modal" id="feedbackModal" class="hidden-phone">
   <%= form_for(@feedback = Feedback.new, remote: true) do |f| %>
 	  <div class="modal-header">
 	    <%= link_to 'x', '#', :class => 'close closeButton' %>
