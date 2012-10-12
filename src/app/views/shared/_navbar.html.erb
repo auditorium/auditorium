@@ -33,6 +33,13 @@
           <li class="hidden-desktop"><%= link_to search_path do %><i class="icon-search"></i> Search<% end %></li>
           <li class=" notification-button visible-phone"><%= render :partial => 'shared/notifications' %></li>
         </ul>
+        <ul class="nav pull-right hidden-phone">
+          <li>
+            <%= link_to destroy_user_session_path, :method => :delete do %>
+            <i class="icon-off"></i><span class="hidden-tablet">Log out</span>
+            <% end %>
+          </li>  
+        </ul> 
 
         <ul class="nav pull-right">
           <%= form_tag search_path, :method => 'get', :class => 'navbar-search visible-desktop',:remote => false do %>
@@ -47,12 +54,10 @@
                 <% end %> 
               </li>
               <li><%= link_to edit_user_registration_path do %><i class="icon-cog"></i> Settings<% end %></li>
-              <li>
-                <%= link_to destroy_user_session_path, :method => :delete do %><i class="icon-off"></i> Log out<% end %>
-              </li>
             </ul>
           </li>
         </ul>
+
 
         <div class="nav-collapse subnav-collapse"> 
           <ul class="nav visible-phone">
@@ -62,18 +67,20 @@
             <li><%= link_to chairs_path do %><i class="icon-list"></i> Chairs<% end %></li>
             <li><%= link_to institutes_path do %><i class="icon-sitemap"></i> Institutes<% end %></li>
             <li><%= link_to faculties_path do %><i class="icon-beaker"></i> Faculty<% end %></li>
-            <li class="divider"></li>  
           </ul>
           <ul class="nav pull-right visible-phone">
             <li class='<%= "admin" if current_user.admin? %>' >
               <%= link_to user_path(current_user) do %><i class="icon-user"></i> <%= (current_user.username? ? current_user.username : current_user.email.split('@')[0]) %>
               <% end %> 
             </li>
-            <li><%= link_to edit_user_registration_path do %><i class="icon-cog"></i> Settings<% end %></li>
+            <li><%= link_to edit_user_registration_path do %><i class="icon-cog"></i> Settings<% end %></li> 
             <li>
-              <%= link_to destroy_user_session_path, :method => :delete do %><i class="icon-off"></i> Log out<% end %>
-            </li>      
-          </ul>  
+              <%= link_to destroy_user_session_path, :method => :delete do %>
+              <i class="icon-off"></i><span class="hidden-tablet">Log out</span>
+              <% end %>
+            </li>     
+          </ul> 
+
         </div><!-- /.nav-collapse --> 
       <% else %>
       <ul class="nav pull-right">
