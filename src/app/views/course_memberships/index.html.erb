@@ -95,7 +95,7 @@
 
 
               <div class="subtle pull-right" style="text-align:right;">
-                <%= course.participants.count %>/ <%= pluralize(course.followers.count, 'active member') %>
+                <%= pluralize(course.participants.count, 'participant') %>/ <%= pluralize(course.followers.count, 'active member') %>
               </div>
               </div>
 

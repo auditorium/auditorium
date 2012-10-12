@@ -43,15 +43,11 @@ class Course < ActiveRecord::Base
   end
   
   def followers
-    self.course_memberships.map {|membership|
-      membership.user
-    }
+    self.course_memberships.map {|membership| membership.user }
   end
 
   def participants
-    posts = Post.find_all_by_course_id self.id
-    participants = posts.map {|p| p.author }
-    participants.uniq
+    self.posts.map {|p| p.author }.uniq
   end
   
   def moderators

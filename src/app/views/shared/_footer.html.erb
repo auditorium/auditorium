@@ -4,11 +4,12 @@
     <div class="span4">
       <dl class="dl-horizontal">
         <dt>browse</dt>
-        <dd><i class="icon-time"></i> <%= link_to "Courses by terms", terms_path %></dd>
-        <dd><i class="icon-list"></i> <%= link_to "Lectures", lectures_path %></dd>
-        <dd><i class="icon-list"></i> <%= link_to "Chairs", chairs_path %></dd>
-        <dd><i class="icon-list"></i> <%= link_to "Institutes", institutes_path %></dd>
-        <dd><i class="icon-list"></i> <%= link_to "Faculties", faculties_path %></dd>
+        <dd><%= link_to courses_path do %><i class="icon-th"></i> Courses<% end %></dd>
+        <dd><%= link_to terms_path do %><i class="icon-time"></i> Semester<% end %></dd>
+        <dd><%= link_to lectures_path do %><i class="icon-book"></i> Lectures<% end %></dd>
+        <dd><%= link_to chairs_path do %><i class="icon-list"></i> Chairs<% end %></dd>
+        <dd><%= link_to institutes_path do %><i class="icon-sitemap"></i> Institutes<% end %></dd>
+        <dd><%= link_to faculties_path do %><i class="icon-beaker"></i> Faculty<% end %></li>
       </dl>     
     </div>
 
