@@ -6,26 +6,38 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-
-      <ul class="nav"> 
+      
+      <ul class="nav">
+        <li><%= link_to 'auditorium', home_path, class: 'brand hidden-desktop' %></li>
         <li><%= link_to 'Home', home_path %></li>
+        <li><%= link_to 'Subscribed courses', my_courses_path, :title => 'My Courses', class: 'hidden-phone' %></li>
+        <li><%= link_to 'Search', search_path, class: 'hidden-desktop' %></li>
       </ul>
+
+      <ul class="nav pull-right visible-tablet">
+        <li class="notification-button">
+          <%= render :partial => 'shared/notifications' %>
+        </li>
+        <li class='<%= "admin" if current_user.admin? %>' >
+          <%= link_to (current_user.username? ? current_user.username : current_user.email.split('@')[0]), user_path(current_user) %> 
+        </li>
+      </ul>
+
       <div class="nav-collapse subnav-collapse"> 
         <% if signed_in? %>
           <ul class="nav">
-            <li><%= link_to 'Subscribed courses', my_courses_path, :title => 'My Courses' %></li>
+            <li><%= link_to 'Subscribed courses', my_courses_path, :title => 'My Courses', class: 'visible-phone' %></li>
             <li><%= link_to 'Courses by term', terms_path, :title => 'Faculties' %></li>
             <li><%= link_to 'Faculty', faculties_path, :title => 'Faculties' %></li>
-            <% if Course.find_by_name('Support Center') %><li><%= link_to 'Help', course_path(@help) %></li><% end %>
+            <% if @help %><li><%= link_to 'Help', course_path(@help) %></li><% end %>
           </ul>
           <ul class="nav pull-right">
-            <%= form_tag search_path, :method => 'get', :class => 'navbar-search',:remote => false do %>
+            <%= form_tag search_path, :method => 'get', :class => 'navbar-search visible-desktop',:remote => false do %>
               <%= text_field_tag :query, nil, :placeholder => 'Search', :id => 'searchbar', class: 'search-query span2' %>
             <% end %>
+            <li class="notification-button visible-desktop"><%= render :partial => 'shared/notifications' %></li>
             
-            <%= render :partial => 'shared/notifications' %>
-
-            <li class='<%= "admin" if current_user.admin? %>' >
+            <li class='<%= "admin" if current_user.admin? %> hidden-tablet' >
               <%= link_to (current_user.username? ? current_user.username : current_user.email.split('@')[0]), user_path(current_user) %> 
             </li>
             <li><%= link_to 'Settings', edit_user_registration_path %></li>
