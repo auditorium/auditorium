@@ -54,7 +54,7 @@ jQuery ->
 	$('a.submit-report').click ->
 		data_id = $(this).data('id')
 		$('input#report_post_id').val(data_id)
-		$('.modal').show()
+		$('#reportModal').show()
 		$('#reportModal').css('visibility', 'visible')
 		return false
 
