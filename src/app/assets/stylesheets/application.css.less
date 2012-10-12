@@ -61,6 +61,20 @@ h5, h6
   min-height:360px;
 }
 
+.fixed-navbar {
+  width:100%;
+  left:0;
+  top:0;
+  padding:0;
+  margin:0;
+  position:fixed;
+  #shadow > .inset-top();
+
+  .navbar-inner {
+    border-radius:0;
+  }
+}
+
 /* media */
 /****** resonse overrides ******/
 
@@ -141,7 +155,9 @@ h5, h6
 }
 
 // Portrait tablet to landscape and desktop
-@media (min-width: 768px) and (max-width: 979px) {}
+@media (min-width: 768px) and (max-width: 979px) {
+
+}
 
 @media (min-width: 768px) {
   body {
