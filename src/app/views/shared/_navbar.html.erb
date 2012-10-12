@@ -8,11 +8,12 @@
       </button>
       
       <ul class="nav">
-        <li><%= link_to 'auditorium', home_path, class: 'brand hidden-desktop' %></li>
-        <li><%= link_to 'Home', home_path %></li>
+        <li class="hidden-desktop"><%= link_to 'auditorium', home_path, class: 'brand' %></li>
+        <li class="hidden-phone"><%= link_to 'Home', home_path, class: "hidden-phone" %></li>
       </ul>
       <% if signed_in? %>
       <ul class="nav">  
+
         <li><%= link_to 'Subscribed courses', my_courses_path, :title => 'My Courses', class: 'hidden-phone' %></li>
         <li><%= link_to 'Search', search_path, class: 'hidden-desktop' %></li>
       </ul>
