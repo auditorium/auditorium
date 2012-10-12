@@ -9,6 +9,7 @@ class Ability
     alias_action :rating, :to => :rate
     alias_action :answered, :to => :mark_as_answered
     alias_action :search_courses, :to => :search_for_courses
+    alias_action :announcements, :to => :read_announcements
 
 
     user ||= User.new # guest user (not logged in)
@@ -26,7 +27,8 @@ class Ability
       cannot :search, User
 
       can :create,   Post
-      
+      can :read_announcements, Course
+
       can :update,   Post do |post|
         post.author_id == user.id or post.course.moderators.include? user or post.course.editors.include? user
       end
