@@ -6,8 +6,9 @@ scrollToPost = (offset) ->
 jQuery ->
   $(window).load ->
     @old_position = $('div#navigation').position().top
-  # $(window).resize ->
-  #   @old_position = $('div#navigation').position().top
+  $(window).resize ->
+    @old_position = $('div#navigation').position().top
+
   # when page is loaded with hash
   if $.browser.safari 
     $(window).load -> scrollToPost(70)
@@ -20,8 +21,7 @@ window.onscroll = ->
     offset = $('html, body').scrollTop() - @old_position
   else 
     offset = document.body.scrollTop - @old_position
-  
-  console.log offset
+
   if offset >= 0
     navigation.addClass('fixed-navbar')
   else
