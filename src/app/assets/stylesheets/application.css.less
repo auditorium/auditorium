@@ -26,7 +26,8 @@ html {
 
 body {
   height:100%;
-  background: @grayDark url('low_contrast_linen.png');
+  background-color: @white;
+  background-image: url('low_contrast_linen.png');
 }
 
 /* headers */
@@ -88,6 +89,10 @@ h5, h6
   filter:alpha(opacity=90); /* For IE8 and earlier */
   .navbar-inner {
     border-radius:0;
+  }
+
+  .breadcrumb {
+    margin:0;
   }
 }
 
@@ -187,7 +192,7 @@ h5, h6
       padding-top: @body-padding-top;
       background-size: 100% auto;
       background-position-y:-50px;
-      height:185px;
+      height:220px;
 
       h1 {
         font-size:4.5em;
