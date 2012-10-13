@@ -5,15 +5,12 @@
 	    <h3 id='feedbackModalLabel'>What's your feedback?</h3>
 	  </div>
 	  <div class="modal-body">
-	     <center><%= f.text_area :content, class: 'span5', :size => '10x4' %></center>
+	     <%= f.text_area :content, class: 'span5', :size => '10x4' %>
 	  </div>
 	  <div class="modal-footer">
-	    
 	    <%= f.submit 'Submit feedback', class: 'btn btn-primary', :id => 'submit-feedback' %>
-			<% end %>
 	    <%= link_to 'Close', '#', :class => 'btn closeButton', :id => 'hide-feedback-modal' %>
 	  	<p class="hint">It's anonymous. We don't save who submits the feedback.</p>
 	  </div>
-
-
+	<% end %>
 </div>
