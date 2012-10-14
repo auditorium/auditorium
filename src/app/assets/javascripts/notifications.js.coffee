@@ -7,6 +7,5 @@ jQuery ->
 	$('div.expandable').expander
     slicePoint:       80,  # default is 100
     expandText:       '[read more]', # default is 'read more...'
-    collapseTimer:    5000, # re-collapses after 5 seconds; default is 0, so no re-collapsing
     userCollapseText: '[less]'  # default is '[collapse expanded text]'
 	
