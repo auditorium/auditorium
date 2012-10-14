@@ -28,7 +28,7 @@
       <td colspan="3"><% if not post.post_type.eql? 'answer' %>
         
         <h3 class="post-subject">
-          <span class="gravatar">
+          <span class="gravatar pull-right">
             <%= link_to user_path(post.author) do %>
               <%= gravatar_image_tag(post.author.alternative_email, :alt => post.author.full_name, :gravatar => {:default => :wavatar, :size => 40, :secure => true })%>
             <% end %>
