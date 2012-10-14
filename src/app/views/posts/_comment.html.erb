@@ -20,8 +20,10 @@
         &middot;
         <%= link_to edit_post_path(comment) do %><i class="icon-edit"></i> edit<% end %> <%= "(#{distance_of_time_in_words(Time.now, comment.updated_at) } ago)" if (comment.updated_at.to_i - comment.created_at.to_i) > 0 %>
       <% else %>
-        &middot;
-        <%= "edit #{distance_of_time_in_words(Time.now, comment.updated_at) } ago" if (comment.updated_at.to_i - comment.created_at.to_i) > 0 %>
+        <% if (comment.updated_at.to_i - comment.created_at.to_i) > 0 %>
+          &middot;
+          <%= "edit #{distance_of_time_in_words(Time.now, comment.updated_at) } ago"  %>
+        <% end %>
       <% end %>
   	</span>
   </span>

@@ -6,4 +6,8 @@ module PostsHelper
       when "comment" then "label-inverse"
     end
   end
+
+  def highlight_post(user, course)
+  	user.is_course_editor? course or user.is_course_maintainer? course
+  end
 end

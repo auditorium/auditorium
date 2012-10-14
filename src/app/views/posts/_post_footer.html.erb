@@ -18,14 +18,16 @@
   <% else %>
     <%= link_to "by #{post.author_name}", post.author %>
   <% end %>
+  
   &middot;
   <%= link_to "#{distance_of_time_in_words(Time.now, post.created_at)} ago", post_url(post.origin, :anchor => "post-#{post.id}"), :class => 'permalink', 'data-id' => "#{post.id}", :id => "post-#{post.id}", title: 'Get permalink for this post.' %>
 
   <% if current_user.admin? or (!params[:controller].eql? 'home' and !params[:controller].eql? 'courses') %>
   <span class="pull-right">
     <% if can? :report, post %>
-      <%= link_to '#', :class => "submit-report", 'data-id' => post.id do %><i class="icon-flag"></i> report<% end %>
-      
+      <%= link_to '#', :class => "submit-report", 'data-id' => post.id do %>
+        <i class="icon-flag"></i> report
+      <% end %>
     <% end %> 
     <% if can? :destroy, post  %>
       &middot; 
@@ -35,8 +37,10 @@
       &middot;
       <%= link_to edit_post_path(post) do %><i class="icon-edit"></i> edit<% end %> <%= "(#{distance_of_time_in_words(Time.now, post.updated_at) } ago)" if (post.updated_at.to_i - post.created_at.to_i) > 0 %>
     <% else %>
-      &middot;
-      <%= "edit #{distance_of_time_in_words(Time.now, post.updated_at) } ago" if (post.updated_at.to_i - post.created_at.to_i) > 0 %>
+      <% if (post.updated_at.to_i - post.created_at.to_i) > 0 %>
+        &middot;
+        <%= "edit #{distance_of_time_in_words(Time.now, post.updated_at) } ago"  %>
+      <% end %>
     <% end %>
   </span>
   <% end %>

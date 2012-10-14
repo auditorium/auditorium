@@ -1,13 +1,13 @@
 <%= form_tag "#{post_path(post)}/rate", :method => "post", :class => 'button_to', :remote => true do %> 
 <p class="rating-button">
   <%= button_tag :type => "submit", :name => 'up', :class => "btn-rating", :disabled => should_be_disabled? do %>
-    <i class="icon-arrow-up"></i>
+    <i class="icon-chevron-up"></i>
   <% end %>
 </p>
 <p class="rating-points" id='<%= "post-#{post.id}-rating" %>'><%= "#{post.rating}" %></p>
 <p class="rating-button">
   <%= button_tag :type => 'submit', :name => 'down', :class => "btn-rating", :disabled => should_be_disabled? do %>
-    <i class="icon-arrow-down"></i>
+    <i class="icon-chevron-down"></i>
   <% end %>
 </p>
 <% end %>

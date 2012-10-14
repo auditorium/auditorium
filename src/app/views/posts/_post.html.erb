@@ -1,38 +1,22 @@
-<table class="table-posts" id="post-<%= post.id %>" id='<%= post.id %>'>
+<table class="table-posts <%= 'highlight' if highlight_post(post.author, post.course) %>" id="post-<%= post.id %>" data-id='<%= post.id %>'>
   <tbody>
     <tr>
       <% if post.post_type.eql? 'question' %>
-        <% if post.is_private? %>
-          <td rowspan="3" class="post-badge private-question-badge">&nbsp;</td> 
-        <% else %>
-          <td rowspan="3" class="post-badge question-badge">&nbsp;</td> 
-        <% end %>
+        <td rowspan="3" class="post-badge <%= 'private-' if post.is_private? %>question-badge">&nbsp;</td> 
       <% elsif post.post_type.eql? 'info' %>
         <td rowspan="3" class="post-badge info-badge">&nbsp;</td>
       <% elsif post.post_type.eql? 'answer' %>
-        <% if post.origin.is_private %>
-          <td rowspan='3' class='post-badge private-answer-badge <%= "not" if post.answer_to_id.nil? %> answered'>&nbsp;</td>
-        <% else %>
-          <td rowspan='3' class='post-badge answer-badge <%= "not" if post.answer_to_id.nil? %> answered'>&nbsp;</td>
-        <% end %>
+        <td rowspan='3' class='post-badge <%= 'private-' if post.origin.is_private? %>answer-badge <%= "not" if post.answer_to_id.nil? %> answered'>&nbsp;</td>
       <% end %>
       <td rowspan="3" class="post-rating">
-        <center>
           <%= render :partial => 'posts/rating', :locals => { :post => post } %>
-          <% if post.post_type.eql? 'answer' and can? :mark_as_answered, post %>
           <%= render :partial => 'posts/answered', :locals => { :post => post } %>
-          <% end %>
-        </center>
       </td>
 
       <td colspan="3"><% if not post.post_type.eql? 'answer' %>
         
         <h3 class="post-subject">
-          <span class="gravatar pull-right">
-            <%= link_to user_path(post.author) do %>
-              <%= gravatar_image_tag(post.author.alternative_email, :alt => post.author.full_name, :gravatar => {:default => :wavatar, :size => 40, :secure => true })%>
-            <% end %>
-          </span>
+          <div class="pull-right"><%= render 'posts/gravatar', :post => post %></div>
           <%= content_tag('i', '', class: 'icon-eye-open private-question', title: 'Private question', rel: 'tooltip') if post.is_private %>
           <%= link_to post.subject, post_path(post) %>
         </h3>
@@ -52,12 +36,9 @@
   <tfoot><td><%= render :partial => 'posts/comment_form', :locals => {:post => post } %></td></tfoot>
   <tbody>
   <% post.comments.each do |comment| %>
-    <tr><td><%= render :partial => 'posts/comment', :locals => {:comment => comment }%></td></tr>
+    <tr class="<%= 'highlight' if highlight_post(comment.author, comment.course) %>"><td><%= render :partial => 'posts/comment', :locals => {:comment => comment }%></td></tr>
   <% end %>
-  
   </tbody>
-  
-  
 </table>    
 <% end %>
 

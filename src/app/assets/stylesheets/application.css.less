@@ -641,6 +641,8 @@ table.announcement-teaser {
   width:30px;
   margin:5px;
   padding:0;
+  margin:10px auto;
+  text-align: center;
 }
 
 .post-subject, .post-body, .post-footer {
@@ -650,7 +652,7 @@ table.announcement-teaser {
 
 h3.post-subject {
   padding:0 10px;
-  margin:0 0 10px 0;
+  margin:3px 0 10px 0;
 }
 
 .post-course-name {
@@ -683,6 +685,10 @@ table.table-posts {
   }
 }
 
+.highlight {
+  background-color: lighten(@red, 55%);
+}
+
 table.table-comments {
   margin:0 0 20px 0;
   width: 90%;
@@ -707,7 +713,6 @@ table.table-comments {
       margin:0;
     }
   }
-  
   
 }
 
@@ -888,7 +893,12 @@ td > a
 
 li.dropdown-fallback { display: none; }
 
-.icon-ok.answered , .icon-check.answered { color:@green; }
+.icon-ok.answered , .icon-check.answered { 
+  color:@green; 
+  &:hover {
+    color:@green;
+  }
+}
 
 
 /* course */
@@ -977,12 +987,17 @@ ul.horizontal {
 }
 
 p.rating-button, p.answered-button {
-  margin:0 5px;
+  margin:0;
   padding:0;
-
+  line-height: 1;
+  text-align: center;
   form {
     margin:0;
   }
+}
+
+.gravatar {
+  vertical-align: bottom;
 }
 
 .well-search {
@@ -994,11 +1009,12 @@ p.rating-button, p.answered-button {
 }
 
 p.rating-points {
-  margin:3px 0;
+  margin:0;
   padding:0;
   font-size:24px;
   font-weight:100;
   color:@black;
+  text-align: center;
 }
 
 .center {
