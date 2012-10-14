@@ -76,4 +76,8 @@ class ApplicationController < ActionController::Base
   def set_current_user
     User.current = current_user
   end
+
+  def after_sign_in_path_for(resource_or_scope)
+    home_path
+  end
 end

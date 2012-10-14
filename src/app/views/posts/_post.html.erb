@@ -1,4 +1,4 @@
-<table class="table-posts <%= 'highlight' if highlight_post(post.author, post.course) %>" id="post-<%= post.id %>" data-id='<%= post.id %>'>
+<table class="table-posts <%= 'highlight' if highlight_post(post, post.course) %>" id="post-<%= post.id %>" data-id='<%= post.id %>'>
   <tbody>
     <tr>
       <% if post.post_type.eql? 'question' %>
@@ -36,7 +36,7 @@
   <tfoot><td><%= render :partial => 'posts/comment_form', :locals => {:post => post } %></td></tfoot>
   <tbody>
   <% post.comments.each do |comment| %>
-    <tr class="<%= 'highlight' if highlight_post(comment.author, comment.course) %>"><td><%= render :partial => 'posts/comment', :locals => {:comment => comment }%></td></tr>
+    <tr class="<%= 'highlight' if highlight_post(comment, comment.course) %>"><td><%= render :partial => 'posts/comment', :locals => {:comment => comment }%></td></tr>
   <% end %>
   </tbody>
 </table>    

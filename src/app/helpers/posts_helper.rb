@@ -7,7 +7,7 @@ module PostsHelper
     end
   end
 
-  def highlight_post(user, course)
-  	user.is_course_editor? course or user.is_course_maintainer? course
+  def highlight_post(post, course)
+  	!post.post_type.eql? 'info' and (post.author.is_course_editor? course or post.author.is_course_maintainer? course)
   end
 end

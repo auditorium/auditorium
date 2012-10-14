@@ -77,6 +77,14 @@
           <%= f.password_field :password_confirmation, :autocomplete => "off", :class => "span8" %>
         </div>
       </div>
+
+      <div class="control-group">
+        <%= f.label :current_password, 'Current password', :class => 'control-label'%>
+        <div class="controls">
+          <%= f.password_field :current_password, :autocomplete => "off", :class => "span8" %>
+          <p class="hint">If you have changed your password, type in your current password for verification.</p>
+        </div>
+      </div>
       
       <hr />
       
