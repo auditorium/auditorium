@@ -57,10 +57,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
         if resource.respond_to?(:pending_reconfirmation?) && resource.pending_reconfirmation?
           flash_key = :update_needs_confirmation
         end
-        set_flash_message :info, flash_key || :updated
+        set_flash_message :success, flash_key || :updated
       end
       sign_in resource_name, resource, :bypass => true
-      set_flash_message :success, :updated
       respond_with resource
     else
       clean_up_passwords resource
