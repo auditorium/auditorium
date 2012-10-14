@@ -31,7 +31,9 @@
               <% if post.post_type.eql? 'question' or post.post_type.eql? 'info' %>
               <p><b><%= post.subject %></b></p>
               <% end %>
-              <p><%= markdown post.body %></p>
+              <div class="expandable">
+                <%= markdown post.body %>
+              </div>
             </div>
           </td>
           <td class="span2"><%= post.course.name_with_term %></td>
