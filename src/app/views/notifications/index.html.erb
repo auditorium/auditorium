@@ -19,17 +19,23 @@
     <% if notification.notifyable_type.eql? 'Post' %>
       <% post = notification.notifyable_object %>
       <% if not post.nil? %>
-        <%= link_to post do %>
-          <% if notification.read %>
-          <tr class='clickable read'>
-          <% else %>
-          <tr class='clickable unread'>
-          <% end %>
-            <td><%= I18n.localize(notification.created_at, :format => :short)%></td>
-            <td><%= "New #{post.post_type} by #{post.author}:" %><%= link_to post.subject, notification %></td>
-            <td><%= post.course.name_with_term %></td>
-          </tr>
-        <% end %>  
+        <% if notification.read %>
+        <tr class='clickable read'>
+        <% else %>
+        <tr class='clickable unread'>
+        <% end %>
+          <td class="span2"><%= I18n.localize(notification.created_at, :format => :short)%></td>
+          <td class="span6">
+            <p><big><%= link_to notification do %><%= "New #{post.post_type} by #{post.author}" %><% end %></big><p>
+            <div class="notification-details">
+              <% if post.post_type.eql? 'question' or post.post_type.eql? 'info' %>
+              <p><b><%= post.subject %></b></p>
+              <% end %>
+              <p><%= markdown post.body %></p>
+            </div>
+          </td>
+          <td class="span2"><%= post.course.name_with_term %></td>
+        </tr>
       <% end %>
     <% end %>
   <% end %>

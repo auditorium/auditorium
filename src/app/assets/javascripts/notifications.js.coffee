@@ -2,8 +2,11 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 jQuery ->
-	$('.clickable').click ->
-    window.location = $(this).find('a').attr('href')
-	$('.clickable').hover ->
-    	$(this).toggleClass('hover')
+
+
+	$('div.notification-details p').expander
+    slicePoint:       80,  # default is 100
+    expandText:       '[read more]', # default is 'read more...'
+    collapseTimer:    5000, # re-collapses after 5 seconds; default is 0, so no re-collapsing
+    userCollapseText: '[less]'  # default is '[collapse expanded text]'
 	

@@ -735,10 +735,20 @@ td.comment-button p {
 .unread, .unread a { color:@grayDarker; }
 
 tr.clickable {
+
+  .notification-details {
+    background-color:@grayLighter;
+    padding:5px;
+  }
+
   &:hover {
-    cursor:pointer;
-    background:@grayLighter;
+    background:whitesmoke;
     color: @black;
+
+    .notification-details {
+      border:1px solid lighten(@grayLight, 30%);
+      background-color:@white;
+    }
 
     a {
       color: @blue;
