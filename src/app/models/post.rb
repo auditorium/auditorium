@@ -9,7 +9,9 @@ class Post < ActiveRecord::Base
   belongs_to :author, class_name: 'User'
    
   has_many :tags 
-   
+  
+  scope :not_answered, where(:answer_to_id => nil, :post_type => 'question')
+
   attr_accessible :body, :subject, :post_type, :parent_id, :course_id, :author_id, :answer_to_id, :is_private
 
   validates :post_type, presence: true, inclusion: { in: %w{question answer info comment} }
