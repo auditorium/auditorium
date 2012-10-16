@@ -31,13 +31,21 @@ body {
 }
 
 /* icons */
-[class^="icon-"], [class*="icon-"], a.pull-right [class^="icon-"] {
+[class^="icon-"], [class*="icon-"], 
+a [class^="icon-"], a [class*="icon-"], a.pull-right [class^="icon-"] {
+  display: inline;
+  vertical-align: middle;
+}
+
+.navbar [class^="icon-"], .navbar [class*="icon-"] {
+  vertical-align: bottom;
   display: inline;
 }
 
 h3 [class*="icon-"], [class="icon-"] {
   vertical-align: bottom;
 }
+
 
 /* headers */
 h1, h2, h3, h4, h5, h6{
