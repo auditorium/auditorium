@@ -1,17 +1,18 @@
 /*
 *= require_self
 *= require jquery.ui.all
-*= require_tree .
 */
+@import "variables";
+@import "caviar-dreams";
+@import "my_faculties.css";
+@import "feedbacks.css";
+@import "fontawesome";
 
 // Bootstrap
 @import "twitter/bootstrap/bootstrap";
 @import "twitter/bootstrap/responsive";
 @import "twitter/bootstrap/variables";
 @import "twitter/bootstrap/mixins";
-@import "fontawesome";
-@import "variables";
-@import "caviar-dreams";
 
 // Font Awesome - for Glyphs
 @fontAwesomeEotPath:  'fontawesome-webfont.eot';
@@ -19,6 +20,22 @@
 @fontAwesomeTtfPath:  'fontawesome-webfont.ttf';
 @fontAwesomeSvgzPath: 'fontawesome-webfont.svgz';
 @fontAwesomeSvgPath:  'fontawesome-webfont.svg';
+
+[class^="icon-"],
+[class*=" icon-"] {
+  display: inline;
+  line-height: inherit;
+  vertical-align: inherit;
+  background-position: 14px 14px;
+  background-repeat: no-repeat;
+  *margin-right: 5px;
+}
+
+.btn > [class^="icon-"],
+.btn > [class*=" icon-"] {
+  display:inline;
+  *margin-right: 5px;
+}
 
 html {
   height:100%;
@@ -29,23 +46,6 @@ body {
   background-color: @white;
   background-image: url('low_contrast_linen.png');
 }
-
-/* icons */
-[class^="icon-"], [class*="icon-"], 
-a [class^="icon-"], a [class*="icon-"], a.pull-right [class^="icon-"] {
-  display: inline;
-  vertical-align: middle;
-}
-
-.navbar [class^="icon-"], .navbar [class*="icon-"] {
-  vertical-align: bottom;
-  display: inline;
-}
-
-h3 [class*="icon-"], [class="icon-"] {
-  vertical-align: bottom;
-}
-
 
 /* headers */
 h1, h2, h3, h4, h5, h6{

@@ -3,12 +3,12 @@
     <div class="span4">
       <dl class="dl-horizontal">
         <dt>browse</dt>
-        <dd><%= link_to courses_path do %><i class="icon-th"></i> Courses<% end %></dd>
-        <dd><%= link_to terms_path do %><i class="icon-time"></i> Semester<% end %></dd>
-        <dd><%= link_to lectures_path do %><i class="icon-book"></i> Lectures<% end %></dd>
-        <dd><%= link_to chairs_path do %><i class="icon-list"></i> Chairs<% end %></dd>
-        <dd><%= link_to institutes_path do %><i class="icon-sitemap"></i> Institutes<% end %></dd>
-        <dd><%= link_to faculties_path do %><i class="icon-beaker"></i> Faculty<% end %></dd>
+        <dd><i class="icon-th"></i> <%= link_to 'Courses', courses_path %></dd>
+        <dd><i class="icon-time"></i> <%= link_to 'Terms', terms_path %></dd>
+        <dd><i class="icon-book"></i> <%= link_to 'Lectures', lectures_path %></dd>
+        <dd><i class="icon-list"></i> <%= link_to 'Chairs', chairs_path %></dd>
+        <dd><i class="icon-sitemap"></i> <%= link_to 'Institutes', institutes_path %></dd>
+        <dd><i class="icon-beaker"></i> <%= link_to 'Faculty', faculties_path %></dd>
       </dl>     
     </div>
 
@@ -31,7 +31,7 @@
         <dt>admin</dt>
         <dd><i class="icon-user"></i> <%= link_to 'moderation', users_moderation_path %></dd>
         <dd><i class="icon-comment-alt"></i> <%= link_to "feedback (#{Feedback.where(read: false).count})", feedbacks_path %></dd>
-        <dd><i class="icon-eye-open-open"></i> <%= link_to reports_path do %><i class="icon-flag"></i> reports<% end %></dd>
+        <dd><i class="icon-flag"></i> <%= link_to 'reports', reports_path %></dd>
         <dd><i class="icon-twitter"></i> <%= link_to "twitter", 'http://twitter.com/_auditorium' %></dd>
         <dd><i class="icon-github"></i> <%= link_to "github", "https://github.com/auditorium/auditorium" %></dd>
       </dl>
