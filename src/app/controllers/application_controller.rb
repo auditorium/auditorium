@@ -10,7 +10,17 @@ class ApplicationController < ActionController::Base
     else
       redirect_to home_path, {:exception => exception, :notice => "Sorry, you don't have permissions to access this page." }
     end
- end
+  end
+
+  # redirect admin users
+  def authenticate_admin_user! #use predefined method name
+    redirect_to '/' and return if user_signed_in? && !current_user.is_admin? 
+    authenticate_user! 
+  end 
+  def current_admin_user #use predefined method name
+    return nil if user_signed_in? && !current_user.is_admin? 
+    current_user 
+  end 
 
   # possible values for params: email, password, first_name, last_name, display_name, person_identifier
   def create_user params, send_info_email = false
