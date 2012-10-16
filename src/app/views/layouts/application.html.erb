@@ -3,13 +3,12 @@
   <head lang="en">
     <title>auditorium</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <%= stylesheet_link_tag    "application", :media => "all" %>
-    <%= javascript_include_tag "application" %>
-    <%= csrf_meta_tags %>
-    
     <!--[if lt IE 9]>
     <script src="/assets/html5shiv.js"></script>
     <![endif]-->
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
     
     <% if mathjax_should_load %>
     <script type="text/x-mathjax-config">
