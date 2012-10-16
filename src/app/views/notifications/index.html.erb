@@ -7,9 +7,9 @@
 <table class="table notifications">
   <thead>
     <tr>
-      <th>When?</th>
-      <th>What?</th>
+      <th class="hidden-phone">When?</th>
       <th>Course</th>
+      <th>What?</th>
     </tr>
   </thead>
 
@@ -20,12 +20,26 @@
       <% post = notification.notifyable_object %>
       <% if not post.nil? %>
         <% if notification.read %>
-        <tr class='clickable read'>
+        <tr class='clickable read' id="<%= "notification-#{notification.id}"%>">
         <% else %>
-        <tr class='clickable unread'>
+        <tr class='clickable unread' id="<%= "notification-#{notification.id}"%>">
         <% end %>
-          <td class="span2"><%= I18n.localize(notification.created_at, :format => :short)%></td>
+          <td class="span1">
+            <p><%= I18n.localize(notification.created_at, :format => :short)%></p>
+            <div id="<%= "notification-#{notification.id}-icon"%>">
+              <% unless notification.read? %>
+              <%= button_to 'mark as read', mark_notification_as_read_path(notification), class: 'btn btn-mini btn-primary', :id => "notification-#{notification.id}-mark-as-read", remote: true %>
+              <% else %>
+              <i class='icon-ok'></i>
+              <% end %>
+            </div>
+          </td>
+          <td class="span2 hidden-phone">
+            <%= link_to post.course.name_with_term, course_path(post.course) %> 
+          </td>
           <td class="span6">
+            <span class="pull-right"><%= link_to content_tag('i', '', class: 'icon-remove'), notification, :data => { :confirm => "Are you sure that you want to delete this notification?" }, method: :delete, class: 'pull-right' %></span>
+            <p class="visible-phone"><small><%= post.course.name_with_term %> </small></p>
             <p><big><%= link_to notification do %><%= "New #{post.post_type} by #{post.author}" %><% end %></big><p>
             <div class="notification-details">
               <% if post.post_type.eql? 'question' or post.post_type.eql? 'info' %>
@@ -35,8 +49,9 @@
                 <%= markdown post.body %>
               </div>
             </div>
+
           </td>
-          <td class="span2"><%= post.course.name_with_term %></td>
+          
         </tr>
       <% end %>
     <% end %>

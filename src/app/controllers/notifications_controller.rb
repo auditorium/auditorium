@@ -95,4 +95,18 @@ class NotificationsController < ApplicationController
       format.html { redirect_to notifications_path, success: 'Marked all notifications as read.' }
     end
   end
+
+  def mark_as_read
+    @notification = Notification.find(params[:id])
+
+    @notification.read = true
+    
+    respond_to do |format|
+      if @notification.save
+        format.js
+      else
+        format.html{ redirect_to notifications_path, flash: { success: 'Something went wrong, try again in a little while.' } }  
+      end
+    end
+  end
 end

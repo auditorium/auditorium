@@ -6,8 +6,8 @@ Auditorium::Application.routes.draw do
   devise_for :users, :controllers => { :confirmations => "users/confirmations", :sessions => "users/sessions", :registrations => "users/registrations" }
 
   resources :feedbacks
-  post 'feedback/:id/mark_as_read' => 'feedback#mark_as_read', :as => :mark_feedback_as_read
-
+  post 'feedbacks/:id/mark_as_read' => 'feedbacks#mark_as_read', :as => :mark_feedback_as_read
+  post 'notifications/:id/mark_as_read' => 'notifications#mark_as_read', :as => :mark_notification_as_read
   mathjax 'mathjax'
   
   resources :email_settings
