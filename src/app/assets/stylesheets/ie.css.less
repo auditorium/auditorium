@@ -1,0 +1,58 @@
+@import 'variables';
+/* if lt ie 9 */
+.ie-header
+{
+  color: @headerColor;
+  background-color:@headerBackground;
+  background-image:@headerBackgroundImage;
+  background-repeat:no-repeat;
+  padding-top: @body-padding-top;
+  background-size: 100% auto;
+  background-position-y:-50px;
+  height:220px;
+  border-bottom:1px solid @grayLight;
+  filter: dropshadow(color=@grayDark,strength=2);
+
+  h1 {
+    font-size:4.5em;
+    font-weight: bold;
+    font-family: 'CaviarDreams';
+    filter: progid:DXImageTransform.Microsoft.Shadow(color=@grayDark,strength=2);
+    margin:5px 0;
+    padding:10px 5px 0 5px;
+    a { color: @headerColor; }
+    a:hover { color: @headerColor; text-decoration: none; }
+    
+    span {
+      z-index: 5;
+      font-family: @baseFontFamily;
+      position: absolute;
+      dispaly:block;
+      vertical-align: center;
+      margin:0;
+      margin-left:-10px;
+      margin-top:-15px;
+      color: @white;
+
+      em {
+        display: block;
+        z-index: 10;
+        font-size: .4em;
+        position: absolute;
+        margin-left: -10px;
+        padding-top: 15px;
+      }
+    }
+  }
+
+  p {
+    margin:5px 0;
+    padding:5px 10px;
+    filter: progid:DXImageTransform.Microsoft.Shadow(color=@grayDark,strength=1);
+    font-weight: 400;
+    font-size:1.3em;
+    small {
+      font-size:1.0em;
+    }
+  }
+} /* ie lt 9 */
