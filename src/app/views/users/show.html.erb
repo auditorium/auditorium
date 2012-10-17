@@ -42,10 +42,13 @@ end
 	</div>
 </section>
 <hr />
+
+<% if @courses.count > 0 %>
 <section>
 	<h3>Maintainer or editor of these courses</h3>
 	<%= render 'courses/courses-list' %>
 </section>
+<% end %>
 
 <% if can? :manage, @user %>
 	<p>
