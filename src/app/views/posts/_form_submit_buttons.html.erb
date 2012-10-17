@@ -1,7 +1,7 @@
 <% if params[:controller].eql? 'home' or (post and post.post_type.eql? 'question') or params[:post_type].eql? 'question' %>
   <!-- questions -->
   <label class="checkbox">
-  <%= f.check_box :is_private %><%= "Check to ask a private question. Private question may only be seen by maintainers and editors of this course." %>
+  <%= f.check_box :is_private %><%= "Check to ask a private question. Private question may only be seen by maintainers and editors of this course. If not available admins will receive your message." %>
   </label>
   <% if params[:action].eql? 'edit' %>
     <%= f.submit "Update question", { :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>

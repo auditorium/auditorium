@@ -8,11 +8,16 @@
   <% @chairs.each do |chair| %>
     <div class="span<%=cols%> well" >
       <h3><%= link_to chair.name, chair %></h3>
-      <p class="hint"><%= link_to chair.parent.name, chair.parent %></p>
       <hr />
-      <h4><%= pluralize(chair.lectures.count, 'Lecture') %></h4>
-      <table class="table table-striped">
-        <% chair.lectures.first(5).each do |lecture| %>
+      <h4><%= pluralize(chair.lectures.count, 'Lecture') %> 
+        <span class="pull-right"><small>
+          <%= link_to '#', :class => "toggle-lectures", 'data-id' => chair.id do %>
+            show lectures <i class="icon-caret-down"></i> 
+          <% end %>
+        </small></span>
+      </h4>
+      <table class="table table-striped lectures-table" id="lectures-for-chair-<%= chair.id %>-table">
+        <% chair.lectures.each do |lecture| %>
         <tr>
           <td>
             <b><%= link_to lecture.name, lecture %></b>
@@ -31,9 +36,7 @@
         <% end %>
       </table>
 
-      <% if chair.lectures.count > 5 %>
-        <p class="hint"><%=link_to 'Show all lectures of this chair', lectures_path(:chair_id => chair.id) %></p>
-      <% else %>
+      <% if chair.lectures.count == 0 %>
         <p class='hint'>You can't find the correct lecture? <%= link_to 'Create it!', new_lecture_path %>.</p>
       <% end %>
 

@@ -1,12 +1,10 @@
-<header>
 <h2>Institutes</h2>
-<h3><%= %></h3>
-</header>
 
 <table class="table table-striped">
   <thead>
   <tr>
     <th>Name</th>
+    <th>Chairs</th>
     <th>Fakultät</th>
     <th></th>
   </tr>
@@ -15,6 +13,7 @@
 <% @institutes.each do |institute| %>
   <tr>
     <td><%= link_to institute.name, institute %></td>
+    <td><%= link_to pluralize(institute.chairs.count, 'Chair'), chairs_path(:institute_id => institute.id) %></td>
     <td><%= link_to institute.faculty.name, institute.faculty %></td>
     <% if current_user and current_user.admin?  %>
       <td>

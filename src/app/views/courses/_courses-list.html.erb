@@ -3,7 +3,9 @@
 	<thead>
 		<tr>
 			<th>Course name</th>
-			<th>Faculty</th>
+			<th>Chair</th>
+			<th class="hidden-phone">Institute </th>
+			<th class="hidden-phone">Faculty</th>
 			<th>
 				<% if params[:controller].eql? 'course_memberships' %>
 					<%= link_to content_tag('i', '', class: 'icon-remove'), my_courses_path, id: 'close-results-table', class: 'pull-right' %>
@@ -28,13 +30,16 @@
 					<%= pluralize(course.infos.count, 'info') %>
 				</em></small>
 			</td>
-			<td>
+
 			<% if course.faculty %>
-				<%=link_to course.faculty.name, faculty_path(course.faculty) %>
+			<td><%=link_to course.parent, chair_path(course.parent) %></td>
+			<td class="hidden-phone"><%=link_to course.parent.parent, institute_path(course.parent.parent) %></td>
+			<td class="hidden-phone"><%=link_to course.faculty.name, faculty_path(course.faculty) %></td>
 			<% else %>
-				This course does not contain to a faculty.
+			<td></td>
+			<td class="hidden-phone"></td>
+			<td class="hidden-phone">This course does not contain to a faculty.</td>
 			<% end %>
-			</td>
 			<td>
 				<div class='<%= "follow-button follow-button-#{course.id}" %>'>
 					<%= render :partial => 'shared/follow_button', :locals => { :course => course } %>

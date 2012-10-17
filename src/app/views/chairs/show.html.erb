@@ -1,15 +1,27 @@
-<header>
 <h2><%= @chair.name %></h2>
-<h3><%= @chair.institute.name %></h3>
-</header>
 
-<%= render "shared/grid", :objects => @chair.lectures %>
-
-<footer>
-<%= link_to chairs_path, :class => 'btn btn-mini' do %>
-  <span class="icon-arrow-left"> back</span>
-<% end %>
-|  
-
-<%= render "chairs/access_buttons", :chair=> @chair %>
-</footer>
+<table class="table table-striped">
+	<thead>
+		<th>Lecture name</th>
+		<th>Semester</th>
+		<% if can? :manage, @chair.lectures %><th></th><% end %>
+	</thead>
+	<tbody>
+		<% @chair.lectures.order(:name).each do |lecture| %>
+		<tr>
+			<td><%= link_to lecture.name, lecture_path(lecture) %></td>
+			<td>
+				<% lecture.courses.sort.each do |course| %>
+          <span><%= link_to course.term.code, course_path(course) %><%= "," unless lecture.courses.last == course %></span>
+        <% end %>
+     	</td>
+			<% if can? :manage, lecture %>
+			<td>
+				<%= link_to 'edit', edit_lecture_path(lecture), class: 'btn btn-warning btn-mini' %>
+      	<%= link_to 'delete', lecture, confirm: "Are you sure that you want to delete this lecture?<br />#{lecture.name}", method: :delete, :class => "btn btn-mini btn-danger" %>
+			</td>
+			<% end %>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

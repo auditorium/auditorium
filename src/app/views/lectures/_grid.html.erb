@@ -8,7 +8,6 @@
   <% @lectures.each do |lecture| %>
     <div class="span<%=cols%> well" >
       <h3><%= link_to lecture.name, lecture %></h3>
-      <em><%= lecture.parent.name %></em>
       <hr />
       <% if lecture.courses.count > 0 %>
         <p><%= "Go to course in:" %>
@@ -22,7 +21,7 @@
       <% end %>
       <% if current_user and current_user.admin? %>
         <p>
-          <%= link_to 'new course', new_course_path(:lecture_id => lecture.id), :class => 'btn btn-small btn-primary' %>
+          <%= link_to 'new semester', new_course_path(:lecture_id => lecture.id), :class => 'btn btn-small btn-primary' %>
           <%= link_to 'edit lecture', edit_lecture_path(lecture) , { :class => 'btn btn-small btn-warning' }  %>
         </p>
       <% end %>
