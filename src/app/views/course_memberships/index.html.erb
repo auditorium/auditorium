@@ -18,18 +18,18 @@
 
             <h3 style="min-height:50px;"> <%= link_to course.name, course %><br/> </h3>
             <% if course.maintainers.count > 0 %>
-              <div>Maintainer:<br /> 
+              <div><%= pluralize(course.maintainers.count, 'Maintainer') %><br /> 
                 
                 <% course.maintainers.each do |m| %>
-                  <%=link_to m.user.full_name, user_path(m) %><%= ',' unless course.maintainers.last == m %>
+                  <%=link_to m.user.full_name, user_path(m.user) %><%= ',' unless course.maintainers.last == m %>
                 <% end %>
               </div>
             <% end %>
 
             <% if course.editors.count > 0 %>
-              <div>Editor:<br /> 
+              <div><%= pluralize(course.editors.count, 'Editor') %><br /> 
                 <% course.editors.each do |e| %>
-                <%=link_to e.user.full_name, user_path(e) %><%= ',' unless course.editors.last == e %>
+                <%=link_to e.user.full_name, user_path(e.user) %><%= ',' unless course.editors.last == e %>
                 <% end %>
               </div>
             <% end %>
