@@ -22,14 +22,13 @@
     <%= link_to "make me editor", new_post_path(:post_type => 'question', :course_id => @course.id, :is_private => true, :subject => "Ich bin Tutor des Kurses.", :body => "Hallo,\nIch bin ein Tutor des Kurses. Bitte authorisieren Sie mich.\nDanke #{current_user.full_name}") %>
   </td>
 <% else %>
+  <td>
   <% @course.editors.each do |editor| %>
-    
-    <td>
     <% if !editor.user.nil? %>
       <%= editor.user.full_name %><%= "," unless @course.editors.last == editor %>
     <% end %>
-    </td>
   <% end %>
+  </td>
 <% end %>
 </tr>
 

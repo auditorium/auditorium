@@ -29,6 +29,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @courses = CourseMembership.where('user_id = ? and (membership_type = ? or membership_type = ?)', @user.id, 'editor', 'maintainer').map(&:course)
+
+    @courses = Kaminari.paginate_array(@courses).page(params[:page]).per(5)
     respond_to do |format|
       format.html
       format.json
