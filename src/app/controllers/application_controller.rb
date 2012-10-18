@@ -12,38 +12,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # used for dynamic error pages
-  unless Rails.application.config.consider_all_requests_local
-    rescue_from Exception, with: :render_500
-    rescue_from ActionController::RoutingError, with: :render_404
-    rescue_from ActionController::UnknownController, with: :render_404
-    rescue_from AbstractController::ActionNotFound, with: :render_404 # To prevent Rails 3.2.8 deprecation warnings
-    rescue_from ActiveRecord::RecordNotFound, with: :render_404
-  end
-
-  def render_500
-    render_exception(500, exception.message, exception)
-  end
-
-
-  def render_404(exception = nil)
-    render_exception(404, 'Page not found', exception)
-  end
-
-
-  def render_exception(status = 500, message = 'Server error', exception)
-
-    if exception
-      Rails.logger.fatal "\n#{exception.class.to_s} (#{exception.message})"
-      Rails.logger.fatal exception.backtrace.join("\n")
-    else
-      Rails.logger.fatal "No route matches [#{env['REQUEST_METHOD']}] #{env['PATH_INFO'].inspect}"
-    end
-
-    render template: "errors/#{status}", formats: [:html], layout: 'error', status: @status
-  end
-  
-
   # redirect admin users
   def authenticate_admin_user! #use predefined method name
     redirect_to '/' and return if user_signed_in? && !current_user.is_admin? 
