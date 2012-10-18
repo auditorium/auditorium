@@ -15,6 +15,10 @@ jQuery ->
   else
     $(window).load -> scrollToPost(140)
 
+  $('a.copy-link').click (e) ->
+    e.preventDefault
+    false
+
 window.onscroll = ->
   navigation = $('div#navigation')
   if $.browser.mozilla

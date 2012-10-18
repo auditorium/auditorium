@@ -8,7 +8,6 @@
     <%= submit_tag 'Search', class: 'btn btn-info span2 hidden-phone' %>
   </div>
   <p class='hint hidden-phone'>
-  	<%= link_to 'Share link to search results.', request.url, 'onclick' => "javascript:window.prompt('Copy link to clipboard: CTRL+C or CMD+C', '#{request.url}')", class: 'copy-link' %>
   	You can't find the correct course? <%= link_to 'Search for the lecture first!', lectures_path(:q => params[:q]), :class=>'search-for-lecture' %></p>
 <% end %>
 </div>

@@ -15,15 +15,16 @@
       &middot;
     <% end %> 
   <% end %>
-  
+
+  <%= link_to content_tag('i', '', class: 'icon-link'), '#', title: 'Get permalink for this post.', 'onclick' => "javascript:window.prompt('Copy link to clipboard: CTRL+C or CMD+C', '#{post_url(post.origin, :anchor => "post-#{post.id}")}'); return false" %>
+  &middot;
   <% if post.author.id == current_user.id %>
     <%= link_to "by me", post.author %> 
   <% else %>
     <%= link_to "by #{post.author_name}", post.author %>
   <% end %>
-  
   &middot;
-  <%= link_to "#{distance_of_time_in_words(Time.now, post.created_at)} ago", post_url(post.origin, :anchor => "post-#{post.id}"), :class => 'permalink copy-link', 'data-id' => "#{post.id}", :id => "post-#{post.id}", title: 'Get permalink for this post.', 'onclick' => "javascript:window.prompt('Copy link to clipboard: CTRL+C or CMD+C', '#{post_url(post.origin, :anchor => "post-#{post.id}")}')" %>
+  <%= "#{distance_of_time_in_words(Time.now, post.created_at)} ago" %>
 
   <% if current_user.admin? or (!params[:controller].eql? 'home' and !params[:controller].eql? 'courses') %>
   <span class="pull-right">

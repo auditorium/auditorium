@@ -8,7 +8,6 @@
   </div>
 
   <p class='hint'>
-  	<%= link_to 'Share link to search results.', request.url, 'onclick' => "javascript:window.prompt('Copy link to clipboard: CTRL+C or CMD+C', '#{request.url}')", class: 'copy-link' %>
   	You can't find the correct lecture? <%= link_to 'Create it!', new_lecture_path %>.</p>
 <% end %>
 </div>

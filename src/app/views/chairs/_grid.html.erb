@@ -1,4 +1,6 @@
 <% if @chairs.count > 0 %>
+<% if params[:q] %><h3>Search results</h3><% end %>
+
 <%
   cols = 3 if cols.nil?
   cols = 12/cols

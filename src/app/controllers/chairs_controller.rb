@@ -96,7 +96,7 @@ class ChairsController < ApplicationController
 
     respond_to do |format|
       format.js
-      format.html { redirect_to search_path(:query => params[:q]) }
+      format.html { redirect_to search_url(:query => params[:q]) }
     end
   end
 end
