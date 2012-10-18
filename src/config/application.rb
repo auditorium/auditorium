@@ -56,5 +56,10 @@ module Auditorium
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # 404 catcher
+    config.after_initialize do |app|
+      app.routes.append{ match '*a', :to => 'application#render_404' } unless config.consider_all_requests_local
+    end
   end
 end
