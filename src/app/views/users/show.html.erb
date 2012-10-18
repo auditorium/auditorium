@@ -7,8 +7,12 @@ end
 %>
 <div class="container">
 <h2>
-	<%= link_to 'https://de.gravatar.com/emails', 'target' => '_blank', :title => 'Click to change or create your gravatar', :rel => "tooltip", :class => 'change-gravatar' do %>
-	<%= gravatar_image_tag(@user.alternative_email, :alt => @user.full_name, :gravatar => {:default => :wavatar, :size => 50, :secure => true })%>
+	<% if current_user.id == @user.id %>
+		<%= link_to edit_user_registration_path(:anchor => 'user_alternative_email'), :title => 'Click to change your gravatar.', :rel => "tooltip", :class => 'change-gravatar' do %>
+		<%= gravatar_image_tag(@user.alternative_email, :alt => @user.full_name, :gravatar => {:default => :wavatar, :size => 50, :secure => true })%>
+		<% end %>	
+	<% else %>
+		<%= gravatar_image_tag(@user.alternative_email, :alt => @user.full_name, :gravatar => {:default => :wavatar, :size => 50, :secure => true })%>
 	<% end %>
 	<% if @user.admin? %><i class="icon-certificate" title='Admin of auditorium' rel="tooltip" style="cursor:pointer;"></i><% end %> 
 	Profile of <%= @user.full_name %>
