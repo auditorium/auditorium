@@ -1,9 +1,10 @@
-
+<% if @chairs.count > 0 %>
 <%
   cols = 3 if cols.nil?
   cols = 12/cols
   i = 0
 %>
+
 <div class="row-fluid" id="grid" >
   <% @chairs.each do |chair| %>
     <div class="span<%=cols%> well" >
@@ -56,6 +57,7 @@
 
   <% end %>
 </div>
-  <%=paginate @chairs %>
-
-
+<%=paginate @chairs %>
+<% else %>
+<p class="hint">No courses were found.</p>
+<% end %>

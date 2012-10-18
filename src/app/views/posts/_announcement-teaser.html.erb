@@ -1,7 +1,2 @@
-<tr>
-<td>
-  <b><%= link_to post.subject, post_path(post) %></b>
-  <small class="pull-right"><%= "#{distance_of_time_in_words(Time.now, post.created_at)} ago" %>, <%= link_to pluralize(post.comments.count, 'commment'), post_path(post) %></small>
-</td>
-</tr>  
+
 

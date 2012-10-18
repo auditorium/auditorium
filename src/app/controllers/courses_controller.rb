@@ -12,9 +12,12 @@ class CoursesController < ApplicationController
     if params[:term_id]
       @term = Term.find(params[:term_id]) if params[:term_id]
       @courses = Course.where('term_id = ?', @term.id).order('term_id DESC, name DESC')
+    elsif params[:q]
+      @courses = Course.where('name LIKE ?', "%#{params[:q]}%").limit(20)
     else
       @courses = Course.order('term_id DESC, name DESC')
     end
+
     @courses.sort! { |x,y| y.followers.count <=> x.followers.count }
     @courses = Kaminari.paginate_array(@courses).page(params[:page]).per(20)
 

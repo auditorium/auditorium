@@ -1,5 +1,5 @@
 jQuery ->
-	$('i.icon-certificate').hover ->
+	$('.change-gravatar, i.icon-certificate').hover ->
     $(this).tooltip('show')
 
   $('#signup-email-address, #signup-password, #confirm-email-address').focus ->

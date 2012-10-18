@@ -19,7 +19,6 @@
             <h3 style="min-height:50px;"> <%= link_to course.name, course %><br/> </h3>
             <% if course.maintainers.count > 0 %>
               <div><%= pluralize(course.maintainers.count, 'Maintainer') %><br /> 
-                
                 <% course.maintainers.each do |m| %>
                   <%=link_to m.user.full_name, user_path(m.user) %><%= ',' unless course.maintainers.last == m %>
                 <% end %>
@@ -145,8 +144,11 @@
     <%= text_field_tag :q, params[:q], :placeholder => "Type in the name of the course, you're searching for...", class: 'span10' %>
     <%= submit_tag 'Search', class: 'btn btn-info span2 hidden-phone' %>
   </div>
-
-  <p class='hint hidden-phone'>You can't find the correct course? <%= link_to 'Search for the lecture first!', lectures_path(:q => params[:q]), :class=>'search-for-lecture' %></p>
+  
+  <p class='hint hidden-phone'>
+    <%= link_to 'Share link to search results.', request.url, 'onclick' => "javascript:window.prompt('Copy link to clipboard: CTRL+C or CMD+C', '#{request.url}')", class: 'copy-link' %>
+    You can't find the correct course? <%= link_to 'Search for the lecture first!', lectures_path(:q => params[:q]), :class=>'search-for-lecture' %>
+  </p>
 <% end %>
 </div>
 

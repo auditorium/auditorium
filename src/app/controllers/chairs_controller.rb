@@ -7,6 +7,8 @@ class ChairsController < ApplicationController
   def index
     if params[:institute_id] 
       @chairs = Chair.where('institute_id = ?', params[:institute_id]).order(:name)
+    elsif params[:q]
+      @chairs = Chair.where('name LIKE ?', "%#{params[:q]}%").limit(42)
     else
       @chairs = Chair.order("name")
     end
@@ -90,11 +92,11 @@ class ChairsController < ApplicationController
   end
 
   def search
-
-    @chairs = Chair.where('name LIKE ?', "%#{params[:q]}%").limit(40).page(params[:page]).per(9)
+    @chairs = Chair.where('name LIKE ?', "%#{params[:q]}%").limit(42).page(params[:page]).per(9)
 
     respond_to do |format|
       format.js
+      format.html { redirect_to search_path(:query => params[:q]) }
     end
   end
 end

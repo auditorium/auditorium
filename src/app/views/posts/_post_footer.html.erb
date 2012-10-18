@@ -4,6 +4,9 @@
       <span class="icon-ok answered" title="This question was answered."></span>
       &middot;
     <% end %>
+
+    <%= link_to (post.rating > 0 ? "+#{pluralize(post.rating, 'vote')}" : pluralize(post.rating, 'vote')), post_path(post) %>
+    &middot;
     <% if post.post_type.eql? 'question' %>
       <%= link_to pluralize(post.answers.count, 'answer'), post_path(post) %> 
        &middot;
@@ -20,7 +23,7 @@
   <% end %>
   
   &middot;
-  <%= link_to "#{distance_of_time_in_words(Time.now, post.created_at)} ago", post_url(post.origin, :anchor => "post-#{post.id}"), :class => 'permalink', 'data-id' => "#{post.id}", :id => "post-#{post.id}", title: 'Get permalink for this post.' %>
+  <%= link_to "#{distance_of_time_in_words(Time.now, post.created_at)} ago", post_url(post.origin, :anchor => "post-#{post.id}"), :class => 'permalink copy-link', 'data-id' => "#{post.id}", :id => "post-#{post.id}", title: 'Get permalink for this post.', 'onclick' => "javascript:window.prompt('Copy link to clipboard: CTRL+C or CMD+C', '#{post_url(post.origin, :anchor => "post-#{post.id}")}')" %>
 
   <% if current_user.admin? or (!params[:controller].eql? 'home' and !params[:controller].eql? 'courses') %>
   <span class="pull-right">

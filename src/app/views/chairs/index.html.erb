@@ -6,6 +6,7 @@
     <%= text_field_tag :q, params[:q], :placeholder => "Type in the name of the chair, you're searching for...", class: 'span10' %>
     <%= submit_tag 'Search', class: 'btn btn-info span2 hidden-phone' %>
   </div>
+  <p class="hint"><%= link_to 'Share link to search results.', request.url, 'onclick' => "javascript:window.prompt('Copy link to clipboard: CTRL+C or CMD+C', '#{request.url}')", class: 'copy-link' %></p>
 <% end %>
 </div>
 

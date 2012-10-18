@@ -1,4 +1,4 @@
-
+<% if @lectures.count > 0 %>
 <%
   cols = 3 if cols.nil?
   cols = 12/cols
@@ -35,5 +35,7 @@
 
   <% end %>
 </div>
-  <%=paginate @lectures %>
-
+<%=paginate @lectures %>
+<% else %>
+<p class="hint">No lectures were found. If this lecture should exist <%= link_to 'create it!', new_lecture_path %>.</p>
+<% end %>

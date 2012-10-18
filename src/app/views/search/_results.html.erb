@@ -3,7 +3,6 @@
 <% elsif @results[:posts].empty? and @results[:lectures].empty? and @results[:courses].empty? %>
   <p class="hint">No results found!</p>
 <% else %>
-
 <% rows = 3 %>
 <% rows -= 1 if @results[:lectures].empty? %>
 <% rows -= 1 if @results[:courses].empty? %>

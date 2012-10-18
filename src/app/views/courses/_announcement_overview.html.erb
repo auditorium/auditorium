@@ -8,7 +8,17 @@
 <% else %> 
 	<table class="table announcement-teaser">
   <% @infos.first(5).each do |info| %>
-    <%= render :partial => 'posts/announcement-teaser', :locals => { :post => info} %>
+    <tr>
+    	<td>
+    		<b><%= (info.rating > 0 ? "+#{info.rating}" : "#{info.rating}") %></b>	
+    	</td>
+			<td>
+			  <b><%= link_to info.subject, post_path(info) %></b>
+			  <small class="pull-right">
+			  	<%= "#{distance_of_time_in_words(Time.now, info.created_at)} ago" %>, <%= link_to pluralize(info.comments.count, 'commment'), post_path(info) %>
+			  </small>
+			</td>
+		</tr>  
   <% end %>
 </table>
 <% end %>

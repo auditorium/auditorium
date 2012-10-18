@@ -7,6 +7,8 @@ class LecturesController < ApplicationController
   def index
     if params[:chair_id]
       @lectures = Lecture.where('chair_id = ?', params[:chair_id]) 
+    elsif params[:q]
+      @lectures = Lecture.where('name LIKE ?', "%#{params[:q]}%").limit(20)
     else
       @lectures = Lecture.all
     end
@@ -127,6 +129,7 @@ class LecturesController < ApplicationController
 
     respond_to do |format|
       format.js
+      format.html { redirect_to search_path(:query => params[:q]) }
     end
   end
 end
