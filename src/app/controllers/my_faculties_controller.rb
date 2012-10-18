@@ -5,6 +5,5 @@ class MyFacultiesController < ApplicationController
   def index
     @faculties = current_user.faculties
     @faculties_with_courses = current_user.faculties_with_courses
-
   end
 end

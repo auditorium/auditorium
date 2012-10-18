@@ -1,40 +1,31 @@
+<div class="span<%=cols%> well-small">
+  <h4> <%= link_to faculty, faculty %> </h4>
+  <%if  faculty.children.count > 0 %>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Institute name</th>
+          <th>Chairs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% faculty.children.each do |institute| %>
+        <tr>
+          <td><%= link_to institute.name, chairs_path(:institute_id => institute.id) %></td>
+          <td><%= pluralize(institute.children.count, 'Chair') %></td>
+        </tr> 
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
 
-<%
-  cols = 3 if cols.nil?
-  cols = 12/cols
-  i = 0
-%>
-<div class="row-fluid" id="grid">
-  <% objects.each do |object| %>
-    <div class="span<%=cols%> well" >
-
-      <div class="row-fluid" >
-
-        <div class="span12" >
-          <h3><%= link_to object.name, object %></h3>
-          <h4> <%= object.parent.name unless object.parent.nil? %></h4>
-          <br />
-          <%if  object.children.count > 0 %>
-            <ul class="unstyled">
-              <% object.children.each do |l| %>
-                <li><%= link_to l, l %></li>
-              <% end %>
-            </ul>
-          <% end %>
-        </div>
-        <div class="span12" >
-        <%= render "faculties/access_buttons", :faculty => object %>
-
-        </div>
-      </div>
-
-    </div>
-    <% i=i+1 %>
-    <% if i % (12/cols) == 0 %>
-    </div>
-
-    <div class="row-fluid" >
-    <% end %>
-
+  <hr/>
+  <% unless courses.nil? %>
+    <em> <%= link_to "#{courses.size} courses subscribed", "my_courses##{faculty}" %>  </em>
   <% end %>
 </div>
+
+<% i=i+1 %>
+<% if i % (12/cols) == 0 %>
+</div> <div class="row-fluid" >
+<% end %>

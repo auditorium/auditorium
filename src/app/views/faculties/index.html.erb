@@ -3,19 +3,18 @@
 <% cols = 2; cols = 12/cols; i = 0 %>
 
 <div class="row-fluid" >
-  <% if @faculties_with_courses.count > 0 %>
+  <% if @faculties.count > 0 %>
 
-    <% @faculties_with_courses.each do |faculty, courses|%>
-      <%= render "my_faculties/grid", :faculty => faculty, :courses => courses, cols:cols, i:i  %>
+    <% @faculties.each do |faculty|%>
+      <%= render "faculties/grid", :faculty => faculty, :courses => nil, cols:cols, i:i  %>
     <% end %>
 
   <% else %>
 
     <% if @faculties.count > 0 %>
       <% @faculties.each do |faculty| %>
-        <%= render "my_faculties/grid", :faculty => faculty, :courses => nil, cols:cols, i:i  %>
+        <%= render "faculties/grid", :faculty => faculty, :courses => nil, cols:cols, i:i  %>
       <% end %>
-
     <% else %>
       <p class="hint"> You should sign up for your faculties.  </p>
       <p class="hint"> See <%= link_to "Settings", edit_user_registration_path %> to associate with a faculty</p>
