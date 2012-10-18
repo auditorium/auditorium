@@ -19,6 +19,13 @@
       </div>
     </div>
 
+    <div class="control-group">
+      <div class="controls">
+        <%= f.label :remember_me do %>
+          <%= f.check_box :remember_me %> <%= 'Remember me for 14 days.' %>
+        <% end %>   
+      </div>
+    </div>
     
     <div class="controls">
         <%= f.submit "Sign in", :class => 'btn btn-large btn-primary span3', 'data-disable-with' => 'Signing in...' %>
