@@ -33,19 +33,21 @@ class HomeController < ApplicationController
 
         cookies[:course_filter] = 'subscribed'
         @posts = Post.order('last_activity DESC, updated_at DESC, created_at DESC').where(@post_filter).keep_if{|post| !current_user.course_membership(post.course).nil?}
-        @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(20)
+        @posts = Kaminari.paginate_array(@posts)
       elsif params[:course_filter].eql? 'all'
         cookies[:course_filter] = 'all'
-        @posts = Post.order('last_activity DESC, updated_at DESC, created_at DESC').where(@post_filter).page(params[:page]).per(20)
+        @posts = Post.order('last_activity DESC, updated_at DESC, created_at DESC').where(@post_filter)
       else
         case cookies[:course_filter]
         when 'subscribed'
           @posts = Post.order('last_activity DESC, updated_at DESC, created_at DESC').where(@post_filter).keep_if{|post| !current_user.course_membership(post.course).nil?}
-          @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(20)
         else 
-          @posts = Post.order('last_activity DESC, updated_at DESC, created_at DESC').where(@post_filter).page(params[:page]).per(20)
+          @posts = Post.order('last_activity DESC, updated_at DESC, created_at DESC').where(@post_filter)
         end
       end
+
+      @posts = @posts.keep_if{|p| can? :read, p}
+      @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(20)
 
       respond_to do |format|
       format.html # index.html.erb
