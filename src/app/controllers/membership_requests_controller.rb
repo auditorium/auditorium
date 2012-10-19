@@ -42,6 +42,7 @@ class MembershipRequestsController < ApplicationController
 
     if membership = CourseMembership.find_by_user_id_and_course_id(@membership_request.user.id, @membership_request.course.id)
       membership.membership_type = @membership_request.membership_type
+      membership.save!
     else
       membership = CourseMembership.create(:user_id => @membership_request.user.id, :course_id => @membership_request.course.id, :membership_type => @membership_request.membership_type)
     end

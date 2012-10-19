@@ -14,6 +14,7 @@
   <body>
     <h1 style="font-weight:100;">Hello, <%= @user.full_name %></h1>
     
+    <% if @membership_request.confirmed %>
     <p>You are now a maintainer of the course <%= link_to @course.name_with_term, @url %>. As maintainer you can access the course with additional privileges:</p>
       <ul>
         <li>make announcements for this course,</li>
@@ -25,6 +26,10 @@
     </p>
       Go to <%= link_to @course.name_with_term, @url %> and see what you can do.  
     </p>
+
+    <% else %>
+    <p>Your membership request as <%= @membership_request.membership_type %> for <%= link_to @course.name_with_term, course_url(@course) %> has been rejected.</p>
+    <% end %>
 
     <p>Have a great day!</p>
     <em>The auditorium team</em>

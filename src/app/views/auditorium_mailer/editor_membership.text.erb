@@ -1,6 +1,7 @@
 Hello, <%= @user.full_name %>
 =======================================================
-    
+   
+<% if @membership_request.confirmed %> 
 You are now an editor of the course <%=  @course.name_with_term %> <%= @url %> As editor you can access the course with additional privileges:
 
 - make announcements for this course,
@@ -8,6 +9,10 @@ You are now an editor of the course <%=  @course.name_with_term %> <%= @url %> A
 - edit the course.
 
 Go to <%= @course.name_with_term %> <%= @url %> and see what you can do.  
+<% else %>
+Your membership request as <%= @membership_request.membership_type %> for <%=  @course.name_with_term %> <%=course_url(@course) %> has been rejected.
+<% end %>
+
 
 Have a great day!
 The auditorium team
