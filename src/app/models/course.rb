@@ -7,6 +7,7 @@ class Course < ActiveRecord::Base
   has_many :events, :dependent => :destroy
   has_many :course_memberships, :dependent => :destroy
   has_many :users, through: :course_memberships
+  has_many :membership_requests
   
   attr_accessible :description, :name, :beginDate, :endDate, :creator_id, :term_id, :lecture_id, :sws, :url
 

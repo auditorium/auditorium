@@ -45,6 +45,21 @@
       <p><%= link_to 'Ask a public question', new_post_path(:post_type => 'question', :course_id => @course.id), :class => 'btn btn-small btn-block btn-primary' %></p>
       <p><%= link_to 'Ask a private question', new_post_path(:post_type => 'question', :course_id => @course.id, :is_private => true), class: 'btn btn-small btn-block' %></p>
       <hr />
+      
+      <h3>Membership request</h3>
+      <% if current_user.is_course_maintainer? @course or current_user.admin? %>
+      <p><%= link_to pluralize(@course.membership_requests.keep_if{|m| !m.read?}.count, 'unapproved request'), membership_requests_path %></p>
+      <% end %>
+      <% unless current_user.admin? %>
+        <% unless current_user.is_course_maintainer? @course %>
+        <p><%= button_to "Make me maintainer", create_membership_request_path(:course_id => @course.id, :membership_type => 'maintainer'), :class => "btn btn-small btn-primary btn-block", 'data-disable-with' => 'loading...' %></p>
+        <% end %>
+        <% unless current_user.is_course_editor? @course or current_user.is_course_maintainer? @course %>
+        <p><%= button_to "Make me editor", create_membership_request_path(:course_id => @course.id, :membership_type => 'editor'), :class => "btn btn-small btn-block", 'data-disable-with' => 'loading...' %></p>
+        <% end %>
+      <% end %>
+      <hr />
+
     
     <% if can? :manage, @course %>
       <h3>Manage course</h3>
@@ -59,7 +74,6 @@
       <% end %>
       <hr />
     <% end %>
-
     <h3>About</h3>
     <table class="table table-borderless">
       <tr>

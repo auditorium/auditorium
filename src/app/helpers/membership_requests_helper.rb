@@ -1,0 +1,2 @@
+module MembershipRequestsHelper
+end

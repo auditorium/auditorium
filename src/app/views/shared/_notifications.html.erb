@@ -1,2 +1,6 @@
-<%= link_to current_user.unread_notifications.count, notifications_path, :class=>"notification-button #{'red' if current_user.unread_notifications.count > 0}", title: "#{current_user.unread_notifications.count} unread notifications" %>
+<% 
+count = current_user.unread_notifications.count
+count += unread_membership_requests.count if unread_membership_requests
+%> 
+<%= link_to count, notifications_path, :class=>"notification-button #{'red' if count > 0}", title: "#{count} unread notifications" %>
 

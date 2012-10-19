@@ -1,0 +1,34 @@
+<table class="table table-striped">
+		<thead>
+			<th>Status?</th>
+			<th>User</th>
+			<th>Course</th>
+			<th>Membership</th>
+			<th></th>
+		</thead>
+		<tbody>
+			<% mr.each do |m| %>
+
+			<tr>
+				<td><%= m.read? ? (m.confirmed? ? content_tag('span', 'confirmed', class: 'label label-success') : content_tag('span', 'rejected', class: 'label label-important')) : content_tag('span', 'no', class: 'label') %></td>
+				<td>
+					<% if m.user.username %>
+          	<b><%=link_to m.user.username, m.user %></b>
+          <% else %>
+            <b><%=link_to m.user.email.split('@')[0], m.user %></b>
+          <% end %>
+          <br/><%= "#{m.user.first_name} #{m.user.last_name}" %></td>
+				<td><%= link_to m.course.name_with_term, course_path(m.course) %></td>
+				<td><%= m.membership_type %></td>
+				<% unless m.read? %>
+				<td><%= button_to "confirm", confirm_membership_request_path(m), :class => "btn btn-success btn-mini", 'data-disable-with' => 'loading...' %> </td>
+				<td><%= button_to "reject", reject_membership_request_path(m), :class => "btn btn-danger btn-mini", 'data-disable-with' => 'loading...' %> </td>
+				<% else %>
+					<td></td>
+					<td><%= link_to content_tag('i', '', class: 'icon-remove'), m, :data => { :confirm => "Are you sure that you want to delete this membership request?" }, method: :delete, class: 'pull-right' %></td>
+				<% end %>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<%= paginate mr,:param_name => :mr_page %>

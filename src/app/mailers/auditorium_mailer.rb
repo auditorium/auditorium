@@ -90,4 +90,17 @@ class AuditoriumMailer < ActionMailer::Base
     @user = user
     mail(to: @user.email, subject: 'You are now admin of auditorium!')
   end
+
+  def confirm_membership_request(membership_request)
+    @membership_request = membership_request
+    @user = @membership_request.user
+    @url = course_url(@membership_request.course)
+    @course = @membership_request.course
+    @confirmed = @membership_request.confirmed ? 'confirmed' : 'rejected' 
+
+    mail(to: @membership_request.user.email, 
+      subject: "Your #{@membership_request.membership_type} request in #{@membership_request.course.name_with_term} has been #{@confirmed}.", 
+      template_path: "auditorium_mailer",
+      template_name: "#{@membership_request.membership_type}_membership")
+  end
 end

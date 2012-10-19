@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121015211437) do
+ActiveRecord::Schema.define(:version => 20121018220932) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -177,6 +177,19 @@ ActiveRecord::Schema.define(:version => 20121015211437) do
   end
 
   add_index "lectures", ["chair_id"], :name => "index_lectures_on_chair_id"
+
+  create_table "membership_requests", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "course_id"
+    t.string   "membership_type"
+    t.boolean  "read",            :default => false
+    t.boolean  "confirmed",       :default => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+  end
+
+  add_index "membership_requests", ["course_id"], :name => "index_membership_requests_on_course_id"
+  add_index "membership_requests", ["user_id"], :name => "index_membership_requests_on_user_id"
 
   create_table "memberships", :force => true do |t|
     t.integer  "user_id"

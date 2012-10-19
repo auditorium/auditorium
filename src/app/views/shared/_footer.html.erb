@@ -29,6 +29,7 @@
     <div class="span4 ">
       <dl class="dl-horizontal">
         <dt>admin</dt>
+        <dd><i class="icon-user"></i> <%= link_to "membership requests (#{unread_membership_requests.count})", membership_requests_path %></dd>
         <dd><i class="icon-user"></i> <%= link_to 'moderation', users_moderation_path %></dd>
         <dd><i class="icon-comment-alt"></i> <%= link_to "feedback (#{Feedback.where(read: false).count})", feedbacks_path %></dd>
         <dd><i class="icon-flag"></i> <%= link_to 'reports', reports_path %></dd>

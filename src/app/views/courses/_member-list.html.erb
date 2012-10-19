@@ -1,10 +1,6 @@
 <tr><td><b><%= pluralize(@course.maintainers.count, 'maintainer') %>:</b></td></tr>
 <tr>  
-  <% if @course.maintainers.empty? %>
-    <td>
-      <%= link_to "make me maintainer", new_post_path(:post_type => 'question', :course_id => @course.id, :is_private => true, :subject => "Ich bin Betreuer des Kurses.", :body => "Hallo,\nich bin der Betreuer des Kurses. Bitte authorisieren Sie mich. \nDanke #{current_user.full_name}") %>
-    </td>
-  <% else %>
+  <% unless @course.maintainers.empty? %>
     <td>
     <% @course.maintainers.each do |maintainer| %>
       <% if !maintainer.user.nil? %>
@@ -17,11 +13,7 @@
 
 <tr><td><b><%= pluralize(@course.editors.count, 'editor') %>:</b></td></tr>
 <tr>
-<% if @course.editors.empty? %>
-  <td>
-    <%= link_to "make me editor", new_post_path(:post_type => 'question', :course_id => @course.id, :is_private => true, :subject => "Ich bin Tutor des Kurses.", :body => "Hallo,\nIch bin ein Tutor des Kurses. Bitte authorisieren Sie mich.\nDanke #{current_user.full_name}") %>
-  </td>
-<% else %>
+<% unless @course.editors.empty? %>
   <td>
   <% @course.editors.each do |editor| %>
     <% if !editor.user.nil? %>

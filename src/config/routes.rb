@@ -1,6 +1,12 @@
 Auditorium::Application.routes.draw do
   ActiveAdmin.routes(self)
 
+  resources :membership_requests, :only => [:index, :create, :destroy]
+
+  post "membership_requests/create", :to => 'membership_requests#create', :as => :create_membership_request
+  match "membership_requests/:id/confirm", :to => 'membership_requests#confirm', :as => :confirm_membership_request
+  match "membership_requests/:id/reject", :to => 'membership_requests#reject', :as => :reject_membership_request
+
   devise_for :admin_users, ActiveAdmin::Devise.config
 
   devise_for :users, :controllers => { :confirmations => "users/confirmations", :sessions => "users/sessions", :registrations => "users/registrations" }
@@ -46,6 +52,7 @@ Auditorium::Application.routes.draw do
   
 
   resources :courses
+
   match 'courses/:id/manage_users', :to => 'courses#manage_users', :as => :manage_users
   match 'courses/:id/announcements', :to => 'courses#announcements', :as => :course_announcements
   match 'courses/:id/search_users', to: 'courses#search_users', as: :search_users_to_manage

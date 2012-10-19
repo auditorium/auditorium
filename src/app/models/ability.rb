@@ -92,6 +92,11 @@ class Ability
       can :read, Term
       can :search_for_courses, Term
       can :search, User
+
+      can :create, MembershipRequest
+      can :manage, MembershipRequest do |mr|
+        user.is_course_maintainer? mr.course or user.admin
+      end
       
     else # Gäste
       cannot :read, :all

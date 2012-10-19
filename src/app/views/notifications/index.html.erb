@@ -1,9 +1,11 @@
-<h2>
-  Your Notifications
-  <%= button_to 'mark all as read', mark_all_as_read_path, :name => 'mark_all_as_read', :class => "inline-button btn btn-mini" %>
-</h2>
+<% if unread_membership_requests.count > 0 %>
+<h3>Membership requests</h3>
+  <%= render 'membership_requests/membership_requests_table', :mr => unread_membership_requests %>
+  <hr />
+<% end %>
 
 <% if @notifications.count > 0 %>
+<h3>Notifications <%= button_to 'mark all as read', mark_all_as_read_path, :name => 'mark_all_as_read', :class => "btn btn-link" %></h3>
 <table class="table notifications">
   <thead>
     <tr>

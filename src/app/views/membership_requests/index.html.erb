@@ -1,0 +1,7 @@
+<h2>Membership requests</h2>
+
+<% if @membership_requests.count > 0 %>
+	<%= render 'membership_requests/membership_requests_table', :mr => @membership_requests %>
+<% else %>
+<p class="hint">No membership requests, yet.</p>
+<% end %>

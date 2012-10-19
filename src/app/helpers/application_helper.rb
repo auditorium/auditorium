@@ -155,4 +155,9 @@ module ApplicationHelper
 
   end
 
+  def unread_membership_requests
+    membership_requests = MembershipRequest.where(:read => false).keep_if { |m| can? :manage, m and !m.read? } 
+    membership_requests = Kaminari.paginate_array(membership_requests).page(params[:mr_page]).per(10)
+  end
+
 end
