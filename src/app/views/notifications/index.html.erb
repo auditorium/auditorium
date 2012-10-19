@@ -5,7 +5,7 @@
 <% end %>
 
 <% if @notifications.count > 0 %>
-<h3>Notifications <%= button_to 'mark all as read', mark_all_as_read_path, :name => 'mark_all_as_read', :class => "btn btn-link" %></h3>
+<h3>Notifications <%= button_to 'mark all as read', mark_all_as_read_path, :name => 'mark_all_as_read', :class => "btn btn-mini" %></h3>
 <table class="table notifications">
   <thead>
     <tr>
