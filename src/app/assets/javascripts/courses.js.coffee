@@ -13,11 +13,18 @@ jQuery ->
   $('#follow-button-membership-type').mouseenter ->
   	$('#follow-button-membership-type').tooltip('show')
 
+  $('#saved-changes').hide()
+  $('input#save-changes').attr("disabled", "disabled")
+
   # follow button tooltips
   $('.follow-button').hover -> 
     $(this).tooltip('show')
   $('.follow-button').click -> 
     $(this).tooltip('hide')
+
+  $('input#save-changes').click -> 
+    $('#saved-changes').show()
+    $('#saved-changes').html('loading...')
 
   # backward compatability for non-js user -.-
   $('#lecture_name').css('display', 'inline')

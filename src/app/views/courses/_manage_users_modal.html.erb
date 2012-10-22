@@ -4,7 +4,7 @@
     <h3>Manage users in this course</h3>
   </div>
   <div class="modal-body">
-
+    <div class="alert alert-info" id="saved-changes"></div>
     <%= form_tag search_users_to_manage_path, :method => 'get', class: 'form-search', :remote => true do %>
     <div class="controls">
       <%= text_field_tag :q, params[:q], :placeholder => "Search for the user..." %>
@@ -14,12 +14,16 @@
 
     <%= form_tag manage_users_path, :method => 'post', :id => 'manage-users-form', :remote => true do %>
     <div class="manage-user-table">
+      <% if params[:q] %>
       <%= render 'course/manage-users-table' %>
+      <% else %>
+      <p class="hint">Type in the username, real name or email of the user.</p>
+      <% end %>
     </div>
   </div>
   <div class="modal-footer">
+    <%= submit_tag 'Save changes', :class => 'btn btn-primary', :id => 'save-changes' %>
     <%= button_tag 'Close', 'data-dismiss' => 'modal', :class => 'btn' %>
-    <%= submit_tag 'Save changes', :data => { :disable_with => 'Submitting...' }, :class => 'btn btn-primary' %>
   </div>
   <% end %>
 </div>

@@ -6,11 +6,12 @@
           <% if user.username %>
           <b><%= user.username %></b>
           <% end %>
-          
-          <% if user.first_name and user.last_name%>
-            <br/><%= "#{user.first_name} #{user.last_name}" %>
-          <% else %>
-            <br/><%= user_from_email(user) %>
+          <% if !user.username or user.username.empty? %>
+            <% if user.first_name and user.last_name%>
+              <p><%= "#{user.first_name} #{user.last_name}" %></p>
+            <% else %>
+              <p><%= user_from_email(user) %></p>
+            <% end %>
           <% end %>
         </td>
         <td class="alert alert-info">
@@ -34,6 +35,6 @@
       </tr>
     <% end %>
   <% else %>
-  <p class="hint">No user found.</p>
+  <p class="hint">Type in the name of the user you are searching for.</p>
   <% end %>
 </table>

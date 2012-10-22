@@ -25,7 +25,8 @@ class User < ActiveRecord::Base
   
   validates_uniqueness_of :email
   validates_uniqueness_of :username
-  
+  validates :username, :presence => true
+
   define_index do
     indexes email
     indexes title

@@ -176,8 +176,10 @@ class CoursesController < ApplicationController
   
   def manage_users
     @course = Course.find(params[:id])
-    
-    User.all.each do |user|
+
+    params.keep_if{|p| p.match /membership/}.each do |p|
+      user = User.find(p[0].split('_')[1])
+
       membership_type = params["membership_#{user.id}"]
       membership = CourseMembership.find_by_course_id_and_user_id(@course.id, user.id)
 

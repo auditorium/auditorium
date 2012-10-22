@@ -36,7 +36,10 @@
 
     <section>
       <div class="container" id="content">
+        <% if current_user and !(current_user.username or current_user.first_name or current_user.last_name) and params[:controller].eql? 'home' %>
 
+          <p class="alert alert-info">You haven't set a username yet. Plase add your username or real name in your <%= link_to 'profile settings', edit_user_registration_path %>.</p>
+        <% end %>
         <% flash.each do |key, value| %>
           <div class="alert alert-<%= key %>"><%= value %></div>
         <% end %>

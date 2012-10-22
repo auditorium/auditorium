@@ -1,7 +1,7 @@
 Hello, <%= @user.full_name %>
 =======================================================
  
-<% if @membership_request.confirmed %>   
+<% if @membership_request.nil? or @membership_request.confirmed %>   
 You are now a maintainer of the course <%= @course.name_with_term %> <%= @url %> As maintainer you can access the course with additional privileges:
 
 - make announcements for this course,
