@@ -10,7 +10,7 @@
           <% if user.first_name and user.last_name%>
             <br/><%= "#{user.first_name} #{user.last_name}" %>
           <% else %>
-            <br/><%= "#{user.email}" %>
+            <br/><%= user_from_email(user) %>
           <% end %>
         </td>
         <td class="alert alert-info">

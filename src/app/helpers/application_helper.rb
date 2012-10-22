@@ -160,4 +160,13 @@ module ApplicationHelper
     membership_requests = Kaminari.paginate_array(membership_requests).page(params[:mr_page]).per(10)
   end
 
+  def user_from_email(user)
+    if !user.email.match /@mail.zih.tu-dresden.de$/
+      prefix = user.email.split('@')[0]
+      "#{prefix.split('.')[0].to_s.titleize} #{prefix.split('.')[1].to_s.titleize}"
+    else
+      prefix = user.email.split('@')[0]
+    end
+  end
+
 end
