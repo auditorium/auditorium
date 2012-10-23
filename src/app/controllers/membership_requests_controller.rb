@@ -35,6 +35,30 @@ class MembershipRequestsController < ApplicationController
     end
   end
 
+  def add_as_member
+    @membership_request = MembershipRequest.find(params[:id])
+    @membership_request.read = true
+    @membership_request.confirmed = false
+    mtype = 'member'
+
+    AuditoriumMailer.reject_membership_request_add_as_member(@membership_request).deliver
+    
+    if membership = CourseMembership.find_by_user_id_and_course_id(@membership_request.user.id, @membership_request.course.id)
+      membership.membership_type = mtype
+      membership.save!
+    else
+      membership = CourseMembership.create(:user_id => @membership_request.user.id, :course_id => @membership_request.course.id, :membership_type => mtype)
+    end
+
+    respond_to do |format|
+      if @membership_request.save!
+        format.html { redirect_to membership_requests_path, :flash => { :success => "The membership request has been rejected. The user is now a normal member of this course." } }
+      else
+        format.html { redirect_to membership_requests_path, :flash => { :error => "Something went wrong." } }
+      end
+    end
+  end
+
   def confirm
     @membership_request = MembershipRequest.find(params[:id])
     @membership_request.read = true

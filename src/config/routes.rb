@@ -6,7 +6,7 @@ Auditorium::Application.routes.draw do
   post "membership_requests/create", :to => 'membership_requests#create', :as => :create_membership_request
   match "membership_requests/:id/confirm", :to => 'membership_requests#confirm', :as => :confirm_membership_request
   match "membership_requests/:id/reject", :to => 'membership_requests#reject', :as => :reject_membership_request
-
+  match "membership_requests/:id/add_as_member", :to => 'membership_requests#add_as_member', :as => :add_as_member_membership_request
   devise_for :admin_users, ActiveAdmin::Devise.config
 
   devise_for :users, :controllers => { :confirmations => "users/confirmations", :sessions => "users/sessions", :registrations => "users/registrations" }

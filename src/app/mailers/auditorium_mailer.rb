@@ -103,4 +103,16 @@ class AuditoriumMailer < ActionMailer::Base
       template_path: "auditorium_mailer",
       template_name: "#{@membership_request.membership_type}_membership")
   end
+
+  def reject_membership_request_add_as_member(membership_request)
+    @membership_request = membership_request
+    @user = @membership_request.user
+    @url = course_url(@membership_request.course)
+    @course = @membership_request.course
+
+    mail(to: @membership_request.user.email, 
+      subject: "You're now a member of #{@membership_request.course.name_with_term}.", 
+      template_path: "auditorium_mailer",
+      template_name: "member_membership")  
+  end
 end
