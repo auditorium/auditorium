@@ -6,13 +6,19 @@
       body {
         padding:20px;
       }
+
+      h1 {
+        font-size:1.1em;
+        font-weight:200;
+      }
+
       p {
         font-weight:200;
       }
     </style>
   </head>
   <body>
-    <h1 style="font-weight:100;">Hello, <%= @user.full_name %></h1>
+    <h1>Hello, <%= @user.full_name %></h1>
     
     <p>A new course was suggested, because it did not exist before.</p>
     

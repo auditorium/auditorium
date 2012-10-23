@@ -2,9 +2,23 @@
 <html>
   <head>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <style>
+      body {
+        padding:20px;
+      }
+
+      h1 {
+        font-size:1.1em;
+        font-weight:200;
+      }
+
+      p {
+        font-weight:200;
+      }
+    </style>
   </head>
   <body>
-    <h1 style="font-weight:100;">Welcome to auditorium, <%= @user.full_name %></h1>
+    <h1>Welcome to auditorium, <%= @user.full_name %></h1>
     <p>
       You have successfully signed up to <%= link_to 'auditorium', @url %>.
       You can log in with your email address: <%= @user.email %>.<br/>

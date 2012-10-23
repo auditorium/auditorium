@@ -8,7 +8,8 @@
       }
 
       h1 {
-        font-weight:100;
+        font-weight:200;
+        font-size:1.1em;
       }
 
       p {
@@ -47,6 +48,6 @@
 
     <p><%= link_to 'Edit', edit_post_url(@post) %>, <%= link_to "View, answer or comment on #{@post.origin.author}'s question.", post_url(@post.origin, :anchor => "post-#{@post.id}") %><p>
 
-    <p class="email-footer"><small>You receive this email, because you're <%= @membership_type %> in <%= link_to @post.course.name_with_term, course_url(@post.course) %>. <%= link_to 'Change', edit_user_registration_url %> what emails auditorium sends you.</small></p>
+    <p class="email-footer">You receive this email, because you're <%= @membership_type %> in <%= link_to @post.course.name_with_term, course_url(@post.course) %>. <%= link_to 'Change', edit_user_registration_url %> what emails auditorium sends you.</p>
   </body>
 </html>
