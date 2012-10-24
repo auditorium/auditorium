@@ -162,7 +162,7 @@ class PostsController < ApplicationController
   def answering
     @parent = Post.find(params[:parent_id])
     body = params[:body]
-    subject = body[0..20]
+    subject = body.length > 100 ? "#{body[0..100]}..." : body
     @post = Post.new(:subject => subject,
                      :body => params[:body], 
                      :parent_id => params[:parent_id], 
@@ -191,7 +191,7 @@ class PostsController < ApplicationController
     end
     
     body = params[:body]
-    subject = body[0..20]
+    subject = body.length > 100 ? "#{body[0..100]}..." : body
     @comment = Post.new(:subject => subject,
                      :body => body, 
                      :parent_id => params[:parent_id], 
