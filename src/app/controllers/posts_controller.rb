@@ -222,7 +222,7 @@ class PostsController < ApplicationController
       redirect_url = @post
     end
     
-    if params['up']
+    if params[:vote].eql? 'up'
       if @rating_by_user.nil?
         Rating.create(:user_id => current_user.id, :post_id => @post.id, :points => 1)
         @post.rating += 1
@@ -235,7 +235,7 @@ class PostsController < ApplicationController
       else
         already_voted = true
       end
-    elsif params['down']
+    elsif params[:vote].eql? 'down'
       if @rating_by_user.nil?
         Rating.create(:user_id => current_user.id, :post_id => @post.id, :points => -1)
         @post.rating -= 1

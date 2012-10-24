@@ -1,2 +1,2 @@
-$('.member-list').html('<%= escape_javascript(render :partial => "courses/member-list") %>');
+$('.member-list').html('<%= j(render :partial => "courses/member-list") %>');
 $('#saved-changes').html('Saved changes. Users will receive updates via email.').show();

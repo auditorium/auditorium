@@ -1,13 +1,9 @@
 <%= form_tag "#{post_path(post)}/rate", :method => "post", :class => 'button_to', :remote => true do %> 
 <p class="rating-button">
-  <%= button_tag :type => "submit", :name => 'up', :class => "btn-rating", :disabled => should_be_disabled? do %>
-    <i class="icon-chevron-up"></i>
-  <% end %>
+  <%= link_to content_tag('i', '', class: 'icon-chevron-up'), rate_post_path(post, :vote => 'up'), :title => 'Up vote this question.', :method => 'post', remote: true, class: 'btn-vote' %>
 </p>
-<p class="rating-points" id='<%= "post-#{post.id}-rating" %>'><%= "#{post.rating}" %></p>
+<p class="rating-points" id='<%= "post-#{post.id}-rating" %>'><%= rating_points(post.rating) %></p>
 <p class="rating-button">
-  <%= button_tag :type => 'submit', :name => 'down', :class => "btn-rating", :disabled => should_be_disabled? do %>
-    <i class="icon-chevron-down"></i>
-  <% end %>
+  <%= link_to content_tag('i', '', class: 'icon-chevron-down'), rate_post_path(post, :vote => 'down'), :title => 'Down vote this question.', :method => 'post', remote: true, class: 'btn-vote' %>
 </p>
 <% end %>

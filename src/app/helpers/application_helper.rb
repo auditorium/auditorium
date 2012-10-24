@@ -189,4 +189,8 @@ module ApplicationHelper
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
   end
+
+  def rating_points(points)
+    points.to_i > 0 ? "+#{points}" : points 
+  end
 end

@@ -2,6 +2,12 @@
   <%= comment_markdown(comment.body) %>
   <span class="comment-metadata">
 
+    <span class="comment-rating">
+      <span class="rating-points" id='<%= "post-#{comment.id}-rating" %>'><%= rating_points(comment.rating) %></span> &middot;
+       <%= link_to content_tag('i', '', class: 'icon-thumbs-up'), rate_post_path(comment, :vote => 'up'), :title => 'Up vote this question.', :method => 'post', remote: true, class: 'btn-vote' %>
+        <%= link_to content_tag('i', '', class: 'icon-thumbs-down'), rate_post_path(comment, :vote => 'down'), :title => 'Down vote this question.', :method => 'post', remote: true, class: 'btn-vote' %> &middot;
+    </span>
+
     <%= link_to content_tag('i', '', class: 'icon-link'), '#', title: 'Get permalink for this comment.', 'onclick' => "javascript:window.prompt('Copy link to clipboard: CTRL+C or CMD+C', '#{post_url(comment.origin, :anchor => "post-#{comment.id}")}'); return false" %>
     &middot;
     <% if comment.author.id == current_user.id %>

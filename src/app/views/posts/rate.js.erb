@@ -1,1 +1,1 @@
-$('<%= "#post-#{@post.id}-rating" %>').html('<%= escape_javascript "#{@post.rating}" %>').effect('highlight', {}, 1200);
+$('<%= "#post-#{@post.id}-rating" %>').html('<%= j "#{rating_points(@post.rating)}" %>').effect('highlight', {}, 1200);
