@@ -63,6 +63,7 @@ Auditorium::Application.routes.draw do
   match 'courses/:id/unfollow', :to => 'courses#following', :unfollow => 'true'
 
   match 'posts/maintainer_request', :to => 'posts#maintainer_request', :as => :maintainer_request
+  post 'posts/:id/convert', :to => 'posts#convert', :as => :convert_post
   match 'posts/:id/rate', :to => 'posts#rate', :as => :rate_post
   match 'posts/:id/answered', :to => 'posts#answered', :as => :answered_post
   match 'posts/:parent_id/answering', :to => 'posts#answering'

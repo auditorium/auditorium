@@ -7,15 +7,14 @@
        <%= link_to content_tag('i', '', class: 'icon-thumbs-up'), rate_post_path(comment, :vote => 'up'), :title => 'Up vote this question.', :method => 'post', remote: true, class: 'btn-vote' %>
         <%= link_to content_tag('i', '', class: 'icon-thumbs-down'), rate_post_path(comment, :vote => 'down'), :title => 'Down vote this question.', :method => 'post', remote: true, class: 'btn-vote' %> &middot;
     </span>
-
-    <%= link_to content_tag('i', '', class: 'icon-link'), '#', title: 'Get permalink for this comment.', 'onclick' => "javascript:window.prompt('Copy link to clipboard: CTRL+C or CMD+C', '#{post_url(comment.origin, :anchor => "post-#{comment.id}")}'); return false" %>
-    &middot;
     <% if comment.author.id == current_user.id %>
       <%= link_to "by me", comment.author %> 
     <% else %>
       <%= link_to "by #{comment.author_name}", comment.author %>
     <% end %>
      &middot; <%= "#{distance_of_time_in_words(Time.now, comment.created_at)} ago" %>
+     &middot;
+      <%= link_to content_tag('i', '', class: 'icon-link'), '#', title: 'Get permalink for this comment.', 'onclick' => "javascript:window.prompt('Copy link to clipboard: CTRL+C or CMD+C', '#{post_url(comment.origin, :anchor => "post-#{comment.id}")}'); return false" %>
   	<span class="pull-right">
       <% if can? :report, comment %>
         <%= link_to '#', :class => "submit-report", 'data-id' => comment.id do %><i class="icon-flag"></i> report<% end %>	
@@ -33,6 +32,17 @@
           <%= "edit #{distance_of_time_in_words(Time.now, comment.updated_at) } ago"  %>
         <% end %>
       <% end %>
+      <% if can? :convert, comment %>
+        &middot;
+        <%= link_to "#convert-modal-#{comment.id}", 'data-toggle' => 'modal', :class => "convert-post", 'data-id' => comment.id do %>
+          <i class="icon-cog"></i> convert
+        <% end %> 
+    <% end %>
   	</span>
+
+
   </span>
 </div>
+<% if can? :convert, comment %>
+<%= render 'posts/convert', :post => comment %>
+<% end %>

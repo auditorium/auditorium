@@ -254,16 +254,40 @@ class PostsController < ApplicationController
       if not already_voted
         format.js 
         format.html { redirect_to redirect_url, :flash => { :success => 'Dein Rating wurde erfolgreich abgegeben!' } }
-        format.json { render json: @post, status: :following, location: redirect_url }
       else
         
         format.js 
         format.html { redirect_to redirect_url, :flash => { :error => 'Du hast den Post bereits bewertet!' } }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
   end
 
+  def convert 
+    @post = Post.find(params[:id])
+    
+    # convert comment -> answer
+    if @post.post_type.eql? 'comment' and params[:post_type].eql? 'answer'
+      @post.post_type = params[:post_type]
+      @post.parent_id = @post.origin.id
+    # convert answer -> comment
+    elsif @post.post_type.eql? 'answer' and params[:post_type].eql? 'comment'
+      @post.post_type = params[:post_type]
+      @post.parent_id = @post.origin.id 
 
+      @post.comments.each do |comment|
+        comment.parent_id = @post.parent_id
+        comment.save!
+      end
+    # convert comment or answer -> follow up question
+    elsif !@post.post_type.eql? 'question' and params[:post_type].eql? 'question'
+      @post.post_type = params[:post_type]
+      @post.parent_id = nil
+    end
+    @post.origin.last_activity = DateTime.now
+    @post.save!
 
+    respond_to do |format|
+      format.html { redirect_to post_path(@post.origin, :anchor => "post-#{@post.id}"), :flash => { :success =>  "The post has been successfully converted." } }
+    end
+  end
 end

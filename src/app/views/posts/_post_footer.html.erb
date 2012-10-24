@@ -16,8 +16,6 @@
     <% end %> 
   <% end %>
 
-  <%= link_to content_tag('i', '', class: 'icon-link'), '#', title: 'Get permalink for this post.', 'onclick' => "javascript:window.prompt('Copy link to clipboard: CTRL+C or CMD+C', '#{post_url(post.origin, :anchor => "post-#{post.id}")}'); return false" %>
-  &middot;
   <% if post.author.id == current_user.id %>
     <%= link_to "by me", post.author %> 
   <% else %>
@@ -26,6 +24,9 @@
   &middot;
   <%= "#{distance_of_time_in_words(Time.now, post.created_at)} ago" %>
 
+  &middot;
+  <%= link_to content_tag('i', '', class: 'icon-link'), '#', title: 'Get permalink for this post.', 'onclick' => "javascript:window.prompt('Copy link to clipboard: CTRL+C or CMD+C', '#{post_url(post.origin, :anchor => "post-#{post.id}")}'); return false" %>
+  
   <% if current_user.admin? or (!params[:controller].eql? 'home' and !params[:controller].eql? 'courses') %>
   <span class="pull-right">
     <% if can? :report, post %>
@@ -46,6 +47,16 @@
         <%= "edit #{distance_of_time_in_words(Time.now, post.updated_at) } ago"  %>
       <% end %>
     <% end %>
+    <% if post.post_type.eql? 'answer' and can? :convert, post %>
+      &middot;
+      <%= link_to "#convert-modal-#{post.id}", 'data-toggle' => 'modal', :class => "convert-post", 'data-id' => post.id do %>
+        <i class="icon-cog"></i> convert
+      <% end %> 
+    <% end %>
   </span>
   <% end %>
 </span>
+
+<% if post.post_type.eql? 'answer' and can? :convert, post %>
+<%= render 'posts/convert', :post => post %>
+<% end %>

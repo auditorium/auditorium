@@ -1,4 +1,3 @@
-
 <% if post.errors.any? %>
 <div class="alert alert-error">
   Something went wrong
@@ -11,8 +10,7 @@
 <% end %>
 
 <div class="row center span8 well">
-
-    <%= form_for (post), :class => 'form-horizontal', :remote => false do |f| %>
+    <%= form_for (post), :class => 'form-horizontal' do |f| %>
       <div class="control-group">
       <% if signed_in? %>
         <div class="controls">
@@ -40,8 +38,6 @@
           <p class="help-block"><%= link_to 'Not an account yet? Sign up.', '/users/sign_up'%></p>
         </div>
       <% end %>
-
-      
       </div>
       <% if params[:controller].eql? 'home' %>
         <%= f.hidden_field :post_type, :value => 'question' %>

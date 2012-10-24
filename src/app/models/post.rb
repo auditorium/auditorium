@@ -70,7 +70,7 @@ class Post < ActiveRecord::Base
   end
 
   def origin
-    if self.parent.nil?
+    if self.post_type.eql? 'question' or self.parent_id.nil?
       self
     else
       if self.parent.parent.nil?

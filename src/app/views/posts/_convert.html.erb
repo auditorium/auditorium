@@ -1,0 +1,23 @@
+<div class="modal" id="convert-modal-<%= post.id %>" tabindex="-1" role="dialog" aria-labelledby="convert-modal-label" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>How to convert this <%= post.post_type %>?</h3>
+  </div>
+  <div class="modal-body">
+    <% if post.post_type.eql? 'comment' %>
+    
+    <%= link_to 'Convert to answer', convert_post_path(post, :post_type => 'answer'), :method => 'post', data: { confirm: "Are you sure to convert this #{post.post_type} to an answer?" }, class: 'btn btn-primary' %>
+    <p class="hint">You can convert this comment to an answer of this question.</p>
+    <% else %>
+    
+    <%= link_to 'Convert to comment', convert_post_path(post, :post_type => 'comment'), :method => 'post', data: { confirm: "Are you sure to convert this #{post.post_type} to a comment?" }, class: 'btn btn-primary' %>
+    <p class="hint">You can convert this answer to a comment for this question. That means all comments below this answer will also convertet to comments below this one to prevent breaking the diskussion.</p>
+    <% end %>
+    
+    <%= link_to 'Extract to follow up question', convert_post_path(post, :post_type => 'question'), :method => 'post', data: { confirm: "Are you sure to convert this #{post.post_type} to a follow up question?" }, class: 'btn' %>
+    <p class="hint">You can extract this <%= post.post_type %> as new follow up question. That means this <%= post.post_type %> will become a new question in this course.</p>
+  </div>
+  <div class="modal-footer">
+    <%= link_to 'Cancel', '#', 'data-dismiss' => 'modal', 'aria-hidden' => true, class: 'btn' %>
+  </div>
+</div>
