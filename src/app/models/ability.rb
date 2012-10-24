@@ -57,7 +57,7 @@ class Ability
       end
 
       can :convert, Post do |post|
-        user.admin? or user.author.id == post.author.id or user.is_course_moderator? post.course
+        user.admin? or post.author.id == post.author.id or user.is_course_moderator? post.course
       end
 
       # can :post_in, Course do |course|
