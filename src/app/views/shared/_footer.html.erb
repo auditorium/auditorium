@@ -1,18 +1,10 @@
 <div class="container">
   <div class="row">
+    <% if signed_in? and current_user.admin? %>
     <div class="span4">
-      <dl class="dl-horizontal">
-        <dt>browse</dt>
-        <dd><i class="icon-th"></i> <%= link_to 'Courses', courses_path %></dd>
-        <dd><i class="icon-time"></i> <%= link_to 'Terms', terms_path %></dd>
-        <dd><i class="icon-book"></i> <%= link_to 'Lectures', lectures_path %></dd>
-        <dd><i class="icon-list"></i> <%= link_to 'Chairs', chairs_path %></dd>
-        <dd><i class="icon-sitemap"></i> <%= link_to 'Institutes', institutes_path %></dd>
-        <dd><i class="icon-beaker"></i> <%= link_to 'Faculty', faculties_path %></dd>
-      </dl>     
-    </div>
-
-    <div class="span4">
+    <% else %>
+    <div class="span6">
+    <% end %>
       <dl class="dl-horizontal">
         <dt>navigate</dt>
         <dd><i class="icon-home"></i> <%= link_to "Home", root_path %></dd>
@@ -23,24 +15,11 @@
         <% end %>
       </dl>
     </div>
-
-    <% if !current_user.nil? and current_user.admin? %>
-
-    <div class="span4 ">
-      <dl class="dl-horizontal">
-        <dt>admin</dt>
-        <dd><i class="icon-user"></i> <%= link_to "membership requests (#{unread_membership_requests.count})", membership_requests_path %></dd>
-        <dd><i class="icon-user"></i> <%= link_to 'moderation', users_moderation_path %></dd>
-        <dd><i class="icon-comment-alt"></i> <%= link_to "feedback (#{Feedback.where(read: false).count})", feedbacks_path %></dd>
-        <dd><i class="icon-flag"></i> <%= link_to 'reports', reports_path %></dd>
-        <dd><i class="icon-twitter"></i> <%= link_to "twitter", 'http://twitter.com/_auditorium' %></dd>
-        <dd><i class="icon-github"></i> <%= link_to "github", "https://github.com/auditorium/auditorium" %></dd>
-      </dl>
-    </div>
-
-    <% else %>
-
+    <% if signed_in? and current_user.admin? %>
     <div class="span4">
+    <% else %>
+    <div class="span6">
+    <% end %>
       <dl class="dl-horizontal">
         <dt>
         need help?
@@ -51,6 +30,16 @@
       </dl>
     </div>
 
+    <% if signed_in? and current_user.admin? %>
+    <div class="span4">
+      <dl class="dl-horizontal">
+        <dt>manage</dt>
+        <dd><i class="icon-user"></i> <%= link_to "requests (#{unread_membership_requests.count})", membership_requests_path %></dd>
+        <dd><i class="icon-user"></i> <%= link_to 'moderation', users_moderation_path %></dd>
+        <dd><i class="icon-comment-alt"></i> <%= link_to "feedback (#{Feedback.where(read: false).count})", feedbacks_path %></dd>
+      </dl>
+
+    </div>
     <% end %>
 
   </div>

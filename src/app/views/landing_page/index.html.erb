@@ -7,8 +7,18 @@
 <p>Questions are the center of auditorium. You want to know how to solve a specific problem? You have a question to a specific lecture? You want to know what other people are interested in?</p>
 
 <p>
-	<%= link_to "Register with your TU Dresden email address",new_user_registration_path, :class => 'btn btn-primary btn-large' %>
-	<%= link_to 'Already have an account?', new_user_session_path, :class => 'btn btn-large' %>
+	<%= link_to "Register with your TU Dresden email address",new_user_registration_path, :class => 'btn btn-primary btn-large hidden-phone' %>
+	<%= link_to 'Already have an account?', new_user_session_path, :class => 'btn btn-large hidden-phone' %>
+	<%= link_to "Register with your TU Dresden email address",new_user_registration_path, :class => 'btn btn-primary visible-phone' %>
+	<div class="login-form visible-phone">
+		<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), class: "form-inline") do |f| %>
+	    <%= f.label :email, 'Email address', :class => 'accessibility'%>
+	    <%= f.text_field :email, :placeholder => 'Email address', class: 'input-small' %>
+	    <%= f.label :password, 'Password', :class => 'accessibility'%>
+	    <%= f.password_field :password, :placeholder => 'Password', class: 'input-small' %>
+	    <%= f.submit "Sign in", :class => 'btn btn-primary', 'data-disable-with' => 'Signing in...' %>
+  	<% end %>
+	</div>
 </p>
 
 <p>You need to register with your TU Dresden email address. You don't have such an email address? You can <a href="mailto:auditorium@inftex.net">write us an email</a> and explain why you need access to auditorium.</p>

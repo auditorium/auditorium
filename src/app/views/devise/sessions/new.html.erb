@@ -1,21 +1,21 @@
-<div class="center container span4">
+<div class="center container span6">
   <% devise_error_messages! %>
   
 
   <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <fieldset class="well span3">
+  <fieldset class="well span5">
     <h2>Sign in!</h2>
     <div class="control-group">
         <%= f.label :email, 'Email address', :class => 'accessibility'%>
       <div class="controls">
-        <%= f.text_field :email, :placeholder => 'Email address', :class => "span3"%>
+        <%= f.text_field :email, :placeholder => 'Email address', :class => "span5"%>
       </div>
     </div>
 
     <div class="control-group">
         <%= f.label :password, 'Password', :class => 'accessibility'%>
       <div class="controls">
-        <%= f.password_field :password, :placeholder => 'Password', :class => "span3"%>
+        <%= f.password_field :password, :placeholder => 'Password', :class => "span5"%>
       </div>
     </div>
 
@@ -28,7 +28,7 @@
     </div>
     
     <div class="controls">
-        <%= f.submit "Sign in", :class => 'btn btn-large btn-primary span3', 'data-disable-with' => 'Signing in...' %>
+        <%= f.submit "Sign in", :class => 'btn btn-large btn-primary span5', 'data-disable-with' => 'Signing in...' %>
     </div>
 
      <p class="hint"><a href="mailto:auditorium@inftex.net">Registered with a non-TU Dresden email address? Send us an email!</a></p>

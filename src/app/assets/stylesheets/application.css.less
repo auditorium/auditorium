@@ -521,8 +521,20 @@ form.button_to .btn-block{
   display:inline;
 }
 
+.login-form {
+  width:100%;
+  input {
+    margin:0;
+    width:30%;
+  }
+}
+
 #navigation
 {
+  .navbar-inner {
+    padding:0 10px;
+  }
+
   li a {
     color: @white;
     margin:0;
@@ -538,6 +550,13 @@ form.button_to .btn-block{
     font-weight:bold;
   }
 
+  input {
+    margin:5px 0 0 0;
+  }
+
+  form {
+    margin:0;
+  }
   .btn-navbar
   {
     &:hover, span:hover { text-decoration: none;}

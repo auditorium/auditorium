@@ -79,9 +79,15 @@
 
         </div><!-- /.nav-collapse --> 
       <% else %>
-      <ul class="nav pull-right">
-        <li><%= link_to 'Log in', new_user_session_path %></li>
-        <li><%= link_to 'Register', new_user_registration_path %></li>
+
+      <ul class="nav pull-right hidden-phone">
+        <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), class: "form-inline") do |f| %>
+          <%= f.label :email, 'Email address', :class => 'accessibility'%>
+          <%= f.text_field :email, :placeholder => 'Email address', class: 'input-small span3' %>
+          <%= f.label :password, 'Password', :class => 'accessibility'%>
+          <%= f.password_field :password, :placeholder => 'Password', class: 'input-small span2' %>
+          <%= f.submit "Sign in", :class => 'btn btn-primary', 'data-disable-with' => 'Signing in...' %>
+        <% end %>
       </ul>
       <% end %>
     </div> 
