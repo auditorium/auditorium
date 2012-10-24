@@ -48,8 +48,8 @@ class Ability
         user.id != post.author.id
       end
       can :answer,   Post
-      cannot :rate,     Post do |post|
-        user.id == post.author.id
+      can :rate, Post do |post|
+        !(user.id == post.author.id)
       end
 
       can :mark_as_answered, Post do |post|
