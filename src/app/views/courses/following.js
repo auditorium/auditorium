@@ -1,3 +1,5 @@
+<%  %>
+
 $('.follow-button-<%= @course.id %>').html('<%= j(render :partial => "shared/follow_button", :locals => { :course => @course }) %>');
 
 $('.subscribed-course-<%= @course.id %>').remove();

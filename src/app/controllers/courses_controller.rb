@@ -136,7 +136,6 @@ class CoursesController < ApplicationController
   def following
     
     @course = Course.find(params[:id])
-   
     
     if params['unfollow']
       course_membership = CourseMembership.find_by_user_id_and_course_id(current_user.id, @course.id)

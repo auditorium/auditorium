@@ -14,7 +14,7 @@
             <% end %>
           <% end %>
         </td>
-        <% unless user.is_course_member?(@course) %>
+        <% unless user.is_course_member?(@course) or user.is_moderator? @course %>
         <td>Not a member</td>
         <% else %>
         <td></td>

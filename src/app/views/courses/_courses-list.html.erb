@@ -12,9 +12,6 @@
 					<%= link_to content_tag('i', '', class: 'icon-remove'), my_courses_path, id: 'close-results-table', class: 'pull-right' %>
 				<% end %>
 			</th>
-			<% if can? :manage, Course %>
-			<th></th>
-			<% end %>
 		</tr>
 	</thead>
 <tbody>
@@ -33,7 +30,7 @@
 			</td>
 
 			<% if course.faculty %>
-			<td><%=link_to course.parent, chair_path(course.parent) %></td>
+			<td class="hidden-phone"><%=link_to course.parent, chair_path(course.parent) %></td>
 			<td class="hidden-phone"><%=link_to course.parent.parent, institute_path(course.parent.parent) %></td>
 			<td class="hidden-phone"><%=link_to course.faculty.name, faculty_path(course.faculty) %></td>
 			<% else %>
@@ -42,16 +39,15 @@
 			<td class="hidden-phone">This course does not contain to a faculty.</td>
 			<% end %>
 			<td>
-				<div class='<%= "follow-button follow-button-#{course.id}" %>'>
+				<p class='<%= "follow-button wide follow-button-#{course.id}" %>'>
 					<%= render :partial => 'shared/follow_button', :locals => { :course => course } %>
-				</div>
+				</p>
+				<% if can? :manage, course %>
+					<%= link_to 'edit', edit_course_path(course), class: 'btn btn-warning btn-mini span1' %>
+      		<%= link_to 'delete', course, confirm: "Are you sure that you want to delete this course?<br />#{course.name_with_term}", method: :delete, :class => "btn btn-mini btn-danger span1" %>
+				<% end %>
 			</td>
-			<% if can? :manage, course %>
-			<td>
-				<%= link_to 'edit', edit_course_path(course), class: 'btn btn-warning btn-mini span1' %>
-      	<%= link_to 'delete', course, confirm: "Are you sure that you want to delete this course?<br />#{course.name_with_term}", method: :delete, :class => "btn btn-mini btn-danger span1" %>
-			</td>
-			<% end %>
+			
 		</tr>
 	<% end %>
 </tbody>

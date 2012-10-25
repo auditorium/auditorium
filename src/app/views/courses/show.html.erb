@@ -47,6 +47,12 @@
       <hr />
       
       <h3>Membership request</h3>
+      <% unless current_user.is_moderator? @course %>
+        <div class='<%= "follow-button follow-button-#{@course.id}" %>'>
+            <%= render :partial => 'shared/follow_button', :locals => { :course => @course, :block => true } %>
+        </div>
+      <% end %>
+
       <% if current_user.is_course_maintainer? @course or current_user.admin? %>
       <p><%= link_to pluralize(@course.membership_requests.keep_if{|m| !m.read?}.count, 'unapproved request'), membership_requests_path %></p>
       <% end %>
@@ -76,13 +82,6 @@
     <% end %>
     <h3>About</h3>
     <table class="table table-borderless">
-      <tr>
-        <td><b>Membership</b></td>
-        <td><div class='<%= "follow-button follow-button-#{@course.id}" %>'>
-          <%= render :partial => 'shared/follow_button', :locals => { :course => @course } %>
-        </div>
-        </td>
-      </tr>
       <tr>
         <td><b>Website</b></td>
         <td>
