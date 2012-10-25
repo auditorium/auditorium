@@ -7,6 +7,9 @@
 	  <%= link_to "#{@post.course.name_with_term}", course_path(@post.course) %>
 	<% end %>
 </h4>
+<% if @post.post_type.eql? 'question' and !@post.parent.nil? %>
+<p class="hint">Follow up question to the <%= link_to post_type?(@post.parent), @post.parent %> from <%= link_to @post.parent.author.full_name, @post.author %>.</p>
+<% end %>
 
 <%= render :partial => 'post', :locals => {:post => @post } %>
 
@@ -22,5 +25,32 @@
 <% elsif current_user.nil? and @post.post_type.eql? 'info'%>
   <p class="hint">Please <%= link_to 'Sign in', '/users/sign_in' %> or <%= link_to 'Sign up', '/users/sign_up' %> to comment this information.</p>
 <% end %>
+
+<div class="clearfix"></div>
+<% if @post.follow_up_questions.count > 0 %>
+<section id="follow-up-questions" class="clearfix">
+
+<h3>Follow up questions</h3>
+<table class="table"> 
+  <tbody>
+  <% @post.follow_up_questions.each do |question| %>
+    <tr>
+      <td>
+        <b><%= (rating_points(question.rating)) %></b>  
+      </td>
+      <td>
+        <b><%= link_to question.subject, post_path(question) %></b>
+        <small class="pull-right">
+        	<%= link_to question.author.full_name, question.author %>,
+          <%= "#{distance_of_time_in_words(Time.now, question.created_at)} ago" %>, <%= link_to pluralize(question.answers.count, 'answer'), post_path(question) %>
+        </small>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>  
+</section>
+<% end %>
+
 </div>
 

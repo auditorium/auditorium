@@ -32,23 +32,27 @@ class Post < ActiveRecord::Base
   end
   
   # get answers and comments to this post if any
-   def answers
-     answers = Post.find_all_by_post_type_and_parent_id('answer', self.id)
-     answers.sort{|x,y| y.rating <=> x.rating }
-   end
+  def answers
+   answers = Post.find_all_by_post_type_and_parent_id('answer', self.id)
+   answers.sort{|x,y| y.rating <=> x.rating }
+  end
 
-   def answered?
-    !self.answer_to_id.nil?
-   end
+  def answered?
+  !self.answer_to_id.nil?
+  end
 
-   def comments
-     Post.find_all_by_post_type_and_parent_id('comment', self.id)
-   end
-  
-   def is_parent?
-     self.parent_id == nil
-   end
-  
+  def comments
+   Post.find_all_by_post_type_and_parent_id('comment', self.id)
+  end
+
+  def follow_up_questions 
+    Post.find_all_by_post_type_and_parent_id('question', self.id)
+  end
+
+  def is_parent?
+   self.parent_id == nil
+  end
+
   def author_name
     if not self.author.nil?
       return self.author.full_name
@@ -76,12 +80,16 @@ class Post < ActiveRecord::Base
       if self.parent.parent.nil?
         self.parent # answer or comment
       else
-        self.parent.parent # comment to an answer
+        unless self.parent.post_type.eql? 'question'
+          self.parent.parent  # comment to an answer
+        else
+          self.parent
+        end
       end
     end
   end
 
-# methods for autocompletion
+  # methods for autocompletion
   def course_name=(name)
     course = Course.find_by_name(name)
     if course
@@ -90,7 +98,7 @@ class Post < ActiveRecord::Base
       errors[:course_name] << "Invalid name entered"
     end
   end
-  
+
   def course_name
     Course.find(course_id).name if course_id
   end

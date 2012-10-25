@@ -193,4 +193,8 @@ module ApplicationHelper
   def rating_points(points)
     points.to_i > 0 ? "+#{points}" : points 
   end
+
+  def post_type?(post)
+    post.post_type.eql?('info') ? 'announcement' : post.post_type 
+  end
 end

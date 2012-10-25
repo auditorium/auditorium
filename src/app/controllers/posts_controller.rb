@@ -264,15 +264,15 @@ class PostsController < ApplicationController
 
   def convert 
     @post = Post.find(params[:id])
-    
+    @post.parent_id = @post.origin.id
+
     # convert comment -> answer
     if @post.post_type.eql? 'comment' and params[:post_type].eql? 'answer'
       @post.post_type = params[:post_type]
-      @post.parent_id = @post.origin.id
+      
     # convert answer -> comment
     elsif @post.post_type.eql? 'answer' and params[:post_type].eql? 'comment'
       @post.post_type = params[:post_type]
-      @post.parent_id = @post.origin.id 
 
       @post.comments.each do |comment|
         comment.parent_id = @post.parent_id
@@ -281,7 +281,6 @@ class PostsController < ApplicationController
     # convert comment or answer -> follow up question
     elsif !@post.post_type.eql? 'question' and params[:post_type].eql? 'question'
       @post.post_type = params[:post_type]
-      @post.parent_id = nil
     end
     @post.origin.last_activity = DateTime.now
     @post.save!
