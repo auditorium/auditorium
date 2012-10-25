@@ -8,12 +8,12 @@
       <% if post.post_type.eql? 'comment' %>
       
         <%= link_to 'Convert to answer', convert_post_path(post, :post_type => 'answer'), :method => 'post', data: { confirm: "Are you sure to convert this #{post.post_type} to an answer?" }, class: 'btn btn-primary' %>
-        <p class="hint">You can convert this comment to an answer of this question.</p>
+        <p class="hint">You can convert this comment to an answer for this question.</p>
       
       <% else %>
 
         <%= link_to 'Convert to comment', convert_post_path(post, :post_type => 'comment'), :method => 'post', data: { confirm: "Are you sure to convert this #{post.post_type} to a comment?" }, class: 'btn btn-primary' %>
-        <p class="hint">You can convert this answer to a comment for this question. That means all comments below this answer will also convertet to comments below this one to prevent breaking the diskussion.</p>
+        <p class="hint">You can convert this answer to a comment for this question. That means all comments below this answer will also converted to comments below this question to prevent breaking the diskussion.</p>
       
       <% end %>
     <% end %>
