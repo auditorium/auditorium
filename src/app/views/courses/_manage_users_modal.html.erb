@@ -7,7 +7,7 @@
     <div class="alert alert-info" id="saved-changes"></div>
     <%= form_tag search_users_to_manage_path, :method => 'get', class: 'form-search', :remote => true do %>
     <div class="controls">
-      <%= text_field_tag :q, params[:q], :placeholder => "Search for the user..." %>
+      <%= text_field_tag :q, params[:q], :placeholder => "Search ny username, real name or email...", class: 'span8' %>
       <%= submit_tag 'Search', class: 'btn btn-info hidden-phone' %>
     </div>
     <% end %>
