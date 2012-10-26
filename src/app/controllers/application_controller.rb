@@ -87,7 +87,16 @@ class ApplicationController < ActionController::Base
     User.current = current_user
   end
 
+  def stored_location_for(resource_or_scope)
+    scope = Devise::Mapping.find_scope!(resource_or_scope)
+    
+    url = session.delete("#{scope}_return_to")
+
+    "#{url}#{params[:url_hash]}" if params[:url_hash]
+    
+  end
+
   def after_sign_in_path_for(resource_or_scope)
-    home_path
+    stored_location_for(resource_or_scope) || signed_in_root_path(resource_or_scope)
   end
 end

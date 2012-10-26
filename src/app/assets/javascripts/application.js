@@ -39,3 +39,4 @@
 //= require search
 //= require terms
 //= require users
+//= require url_helper

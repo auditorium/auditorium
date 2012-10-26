@@ -78,8 +78,7 @@
           </ul> 
 
         </div><!-- /.nav-collapse --> 
-      <% else %>
-
+      <% elsif not (params[:controller].eql? 'users/sessions' and params[:action].eql? 'new') %>
       <ul class="nav pull-right hidden-phone">
         <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), class: "form-inline") do |f| %>
           <%= f.label :email, 'Email address', :class => 'accessibility'%>

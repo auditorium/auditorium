@@ -34,5 +34,6 @@
      <p class="hint"><a href="mailto:auditorium@inftex.net">Registered with a non-TU Dresden email address? Send us an email!</a></p>
       <p class='help-block'><%= render :partial => "devise/shared/links" %></p>
   </fieldset>
+  <%= hidden_field_tag :url_hash, :value => "" %>
   <% end %>
 </div>
