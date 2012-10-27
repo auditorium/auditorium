@@ -7,7 +7,11 @@
 
     <h2>Email Settings</h2>
     <div class="well">
-      <%= render 'email_settings/form', :user => resource %>
+      <% email_setting = EmailSetting.where(:user_id => current_user.id).first_or_initialize %>
+      <%= render 'email_settings/form', :user => resource, :email_setting => email_setting %>
+      <% if email_setting.emails_for_subscribtions? %>
+        <%= render 'email_settings/course_subscriptions', :user => resource %>
+      <% end %>
     </div>
   </div>
   <div class="container span6">

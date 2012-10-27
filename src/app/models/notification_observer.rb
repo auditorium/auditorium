@@ -1,19 +1,17 @@
 class NotificationObserver < ActiveRecord::Observer
   observe :user,:post, :rating, :course, :course_membership, :lecture_membership, :faculty_membership
 
+  def deliver_email_notification(post, user)
+    email_setting = EmailSetting.find_by_user_id(user.id)
 
-  def send_course_updates_to?(receiver, course)
-    email_setting = EmailSetting.find_by_user_id(receiver.id)
-    
-    if course.moderators.include? receiver
-      return true
-    end
-
-    if email_setting.nil?
-      return true
-
+    if email_setting 
+      if email_setting.emails_for_subscribtions and membership = CourseMembership.find_by_user_id_and_course_id(user.id, post.course.id) 
+        membership.receive_emails  
+      else
+        email_setting.notification_when_author
+      end  
     else
-      email_setting.emails_for_subscribtions
+      true
     end
   end
 
@@ -29,20 +27,22 @@ class NotificationObserver < ActiveRecord::Observer
 
         if post.origin.is_private?
           receivers = post.course.moderators
-          receivers << post.origin.author if !post.course.moderators.include? post.origin.author
+          receivers << post.origin.author
+          receivers = receivers.uniq
         else
           receivers = post.course.users
-          receivers << post.origin.author if not receivers.include? post.origin.author 
+          receivers += post.origin.all_authors.to_a
+          receivers = receivers.uniq
         end
 
         receivers.delete_if {|receiver| receiver.id == post.author_id}
         sender = post.author
-        
+
         receivers.each do |receiver|
           notification = Notification.create!(:receiver => receiver, :sender => sender, :notifyable_id => post.id, :notifyable_type => post.class.name)
           
           # send emails to subscribers
-          AuditoriumMailer.update_in_course(receiver, post).deliver if send_course_updates_to?(receiver, post.course) 
+          AuditoriumMailer.update_in_course(receiver, post).deliver if deliver_email_notification(post, receiver)
         end
       when 'Course'
         course = model

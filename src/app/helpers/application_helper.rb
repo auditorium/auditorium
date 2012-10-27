@@ -197,4 +197,8 @@ module ApplicationHelper
   def post_type?(post)
     post.post_type.eql?('info') ? 'announcement' : post.post_type 
   end
+
+  def send_notification_email_to?(user, course)
+
+  end
 end

@@ -1,0 +1,15 @@
+<h3>Receive email notifications for</h3>
+<%= form_tag change_email_settings_for_subscriptions_path, :method => 'post', :remote => false do %>
+	<div class="control-group">
+    <div class="controls">
+    	<% user.course_memberships.each do |membership| %>
+	      <label class="checkbox">
+	      <%= check_box_tag "course_#{membership.course.id}", nil, membership.receive_emails %><%= membership.course.name_with_term %>
+	      </label>
+      <% end %>
+    </div>
+  </div>
+  <div class="controls">
+     <%= submit_tag "save email settings for subscriptions", :class => 'btn btn-primary', 'data-disable-with' => 'Saving...' %>
+  </div>
+<% end %>

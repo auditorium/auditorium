@@ -114,4 +114,18 @@ class Post < ActiveRecord::Base
   def too_many_reports?
     self.reports.count >= 4
   end
+
+  def all_authors
+    @authors = Array.new
+    @authors << self.author
+
+    self.children.each do |child|
+      @authors << child.author
+      child.children.each do |grandchild| 
+        @authors << grandchild.author
+      end
+    end
+
+    @authors.uniq
+  end
 end

@@ -17,6 +17,7 @@ Auditorium::Application.routes.draw do
   mathjax 'mathjax'
   
   resources :email_settings
+  match 'email_settings/subscriptions', :to => 'email_settings#change_emails_for_subscriptions', :as => :change_email_settings_for_subscriptions
 
   get "ajax/courses"
   get "ajax/lectures"

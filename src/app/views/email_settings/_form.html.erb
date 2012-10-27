@@ -1,23 +1,31 @@
-	<% email_setting = EmailSetting.where(:user_id => current_user.id).first_or_initialize %>
-
-  <%= form_for(email_setting, :class => 'form-horizontal') do |f| %>
-    <div class="control-group">
-      
-      <div class="controls">
-      	<!--<label class="checkbox">
-        <%= f.check_box :html_format %><%= "Receive emails in HTML Format" %>
-        </label>-->
-
-        <label class="checkbox">
-        <%= f.check_box :emails_for_subscribtions %><%= "Receive emails with updates for every subscribed course" %>
-        </label>
-
-        <!-- <label class="checkbox">
-        <%= f.check_box :weekly %><%= "Receive weekly emails with updates on auditorium" %>
-        </label> -->
-      </div>
-    </div>
+<h3>General email settings</h3>
+<%= form_for(email_setting, :class => 'form-horizontal') do |f| %>
+  <div class="control-group">
+    
     <div class="controls">
-       <%= f.submit "Save email settings", :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Saving...' %>
-    </div> 
+    	
+      <label class="checkbox">
+      <%= f.check_box :emails_for_subscribtions %><%= "Receive emails with updates for subscribed course" %>
+      </label>
+      <p class="hint">You can specify for which course to receive email notifications.</p>
+
+      <label class="checkbox">
+      <%= f.check_box :notification_when_author %><%= "Receive email notifications on new comments and answers." %>
+      </label>
+      <p class="hint">You will receive email notifications for posts where you were author also if you are not subscribing the containing course.</p>
+
+      <!-- <label class="checkbox">
+      <%= f.check_box :daily %><%= "Receive a daily email with updates in your courses." %>
+      </label>
+      <p class="hint">You will receive an overview of all updates in your subscribed courses in one email every day.</p>
+
+      <label class="checkbox">
+      <%= f.check_box :weekly %><%= "Receive weekly emails with updates on auditorium." %>
+      </label>
+      <p class="hint">You will receive an overview of all updates on auditorium in one email every friday.</p> -->
+    </div>
+  </div>
+  <div class="controls">
+     <%= f.submit "Save general email settings", :class => 'btn btn-primary', 'data-disable-with' => 'Saving...' %>
+  </div> 
 <% end %>

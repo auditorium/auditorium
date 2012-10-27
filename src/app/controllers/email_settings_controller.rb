@@ -36,4 +36,20 @@ class EmailSettingsController < ApplicationController
 
   def destroy
   end
+
+  def change_emails_for_subscriptions
+    course_params = params.keep_if{|p| p.match /^course_/ }
+
+    course_params.each do |course_param|
+      course_id = course_param[0].split('_')[1]
+      membership = CourseMembership.find_by_course_id_and_user_id(course_id, current_user.id)
+
+      membership.receive_emails = (course_param[1] == 'on' ? true : false) 
+      membership.save
+    end
+
+    respond_to do |format|
+      format.html { redirect_to edit_user_registration_path, :flash => {:success => 'Updated email settings for subscriptions.'} }
+    end  
+  end
 end

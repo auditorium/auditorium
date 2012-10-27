@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121018220932) do
+ActiveRecord::Schema.define(:version => 20121027220338) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -89,11 +89,12 @@ ActiveRecord::Schema.define(:version => 20121018220932) do
 
   create_table "email_settings", :force => true do |t|
     t.integer  "user_id"
-    t.boolean  "html_format",              :default => true
+    t.boolean  "daily",                    :default => true
     t.boolean  "emails_for_subscribtions", :default => true
     t.boolean  "weekly",                   :default => true
     t.datetime "created_at",                                 :null => false
     t.datetime "updated_at",                                 :null => false
+    t.boolean  "notification_when_author", :default => true
   end
 
   add_index "email_settings", ["user_id"], :name => "index_email_settings_on_user_id"
