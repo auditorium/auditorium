@@ -56,14 +56,15 @@
         <p><%= link_to 'Make an announcement', new_post_path(:post_type => 'info', :course_id => @course.id), :class => 'btn btn-small btn-block btn-warning' %></p>
       <% end %> 
       <p><%= link_to 'Ask a public question', new_post_path(:post_type => 'question', :course_id => @course.id), :class => 'btn btn-small btn-block btn-primary' %></p>
+
       <p><%= link_to 'Ask a private question', new_post_path(:post_type => 'question', :course_id => @course.id, :is_private => true), class: 'btn btn-small btn-block' %></p>
       <hr />
       
       <h3>Membership request</h3>
       <% unless current_user.is_moderator? @course %>
-        <div class='<%= "follow-button follow-button-#{@course.id}" %>'>
+        <p><div class='<%= "follow-button follow-button-#{@course.id}" %>'>
             <%= render :partial => 'shared/follow_button', :locals => { :course => @course, :block => true } %>
-        </div>
+        </div></p>
       <% end %>
 
       <% if current_user.is_course_maintainer? @course or current_user.admin? %>
