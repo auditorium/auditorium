@@ -6,7 +6,6 @@
 	      <label class="checkbox">
 	      <%= hidden_field_tag "course_#{membership.course.id}", nil %>
         <%= check_box_tag "course_#{membership.course.id}", nil, membership.receive_emails? %><%= membership.course.name_with_term %>
-        <%= debug membership.receive_emails? %>
 	      </label>
       <% end %>
     </div>

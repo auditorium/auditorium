@@ -7,7 +7,7 @@ class NotificationObserver < ActiveRecord::Observer
 
     unless email_setting.nil? 
       if email_setting.emails_for_subscribtions and not membership.nil?
-        membership.receive_emails  
+        membership.receive_emails or email_setting.notification_when_author
       else
         email_setting.notification_when_author
       end  

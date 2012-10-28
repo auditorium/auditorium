@@ -5,14 +5,14 @@
     <div class="controls">
     	
       <label class="checkbox">
-      <%= f.check_box :emails_for_subscribtions %><%= "Receive emails with updates for subscribed course" %>
+      <%= f.check_box :emails_for_subscribtions %><%= "Email notifications for updates in subscribed courses." %>
       </label>
-      <p class="hint">You can specify for which course to receive email notifications.</p>
+      <p class="hint">You can specify for which course you will receive email notifications below, after saving.</p>
 
       <label class="checkbox">
-      <%= f.check_box :notification_when_author %><%= "Receive email notifications on new comments and answers." %>
+      <%= f.check_box :notification_when_author %><%= "Email notifications on new comments and answers." %>
       </label>
-      <p class="hint">You will receive email notifications for posts where you were author also if you are not subscribing the containing course.</p>
+      <p class="hint">You will receive email notifications on new comments and answers in posts were you have participated in.</p>
 
       <!-- <label class="checkbox">
       <%= f.check_box :daily %><%= "Receive a daily email with updates in your courses." %>
