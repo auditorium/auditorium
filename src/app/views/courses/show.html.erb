@@ -28,7 +28,7 @@
       <%= link_to 'Visit the website', @course.url, :target => '_blank' %> at the TU Dresden webpage for course material.
     <% end %>
   </li>
-    <li><%= link_to "List all courses of #{@course.lecture.name}", lecture_path(@course.lecture, :noredirect => true) %>.</li></ul>
+    <li>List <%= link_to "courses of all semester in #{@course.lecture.name}", lecture_path(@course.lecture, :noredirect => true) %>.</li></ul>
   </p>
   
 </div>
