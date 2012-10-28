@@ -14,10 +14,23 @@
     <small><%=link_to "(#{@course.term.code})", term_path(@course.term) %></small>
   </h2>
   <% unless @course.description.nil? or @course.description.empty? %>
-      <%= markdown(@course.description) %>
-      <% else %>
-      <%= link_to 'Add a description to the course', edit_course_path(@course) if can? :manage, @course %> 
+    <%= markdown(@course.description) %>
+    <% else %>
+    <%= link_to 'Add a description to the course', edit_course_path(@course) if can? :manage, @course %> 
+  <% end %>
+
+<hr />
+  <h5><b>Further information</b></h5>
+  <ul>  
+    <li><% if @course.url.empty? %>
+      <b><%= (can? :manage, @course) ? (link_to 'Add website url to the course', edit_course_path(@course)) : 'Not available yet' %></b> 
+    <% else %>
+      <%= link_to 'Visit the website', @course.url, :target => '_blank' %> at the TU Dresden webpage for course material.
     <% end %>
+  </li>
+    <li><%= link_to "List all courses of #{@course.lecture.name}", lecture_path(@course.lecture, :noredirect => true) %>.</li></ul>
+  </p>
+  
 </div>
 
 <div class="row-fluid">
@@ -54,7 +67,7 @@
       <% end %>
 
       <% if current_user.is_course_maintainer? @course or current_user.admin? %>
-      <p><%= link_to pluralize(@course.membership_requests.keep_if{|m| !m.read?}.count, 'unapproved request'), membership_requests_path %></p>
+      <p><%= link_to pluralize(@course.membership_requests.keep_if{|m| !m.read?}.count, 'unapproved request'), membership_requests_path, class: 'btn btn-block btn-small' %></p>
       <% end %>
       <% unless current_user.admin? %>
         <% unless current_user.is_course_maintainer? @course %>
@@ -80,26 +93,6 @@
       <% end %>
       <hr />
     <% end %>
-    <h3>About</h3>
-    <table class="table table-borderless">
-      <tr>
-        <td><b>Website</b></td>
-        <td>
-          <% if @course.url.empty? %>
-            <%= (can? :manage, @course) ? (link_to 'add url to the course', edit_course_path(@course)) : 'Not available yet' %>  
-          <% else %>
-            <%= link_to @course.url, @course.url %>
-          <% end %>
-        </td>
-      </tr>
-      <tr>
-        <td><b>All courses</b></td>
-        <td>
-          <%= link_to @course.lecture.name, lecture_path(@course.lecture, :noredirect => true) %>
-        </td>
-      </tr>
-    </table>
-    <hr />
     <h3>Member</h3>
     <table class="table table-borderless member-list">
       <%= render 'courses/member-list' %>
