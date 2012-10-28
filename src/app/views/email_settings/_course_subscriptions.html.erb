@@ -4,7 +4,9 @@
     <div class="controls">
     	<% user.course_memberships.each do |membership| %>
 	      <label class="checkbox">
-	      <%= check_box_tag "course_#{membership.course.id}", nil, membership.receive_emails %><%= membership.course.name_with_term %>
+	      <%= hidden_field_tag "course_#{membership.course.id}", nil %>
+        <%= check_box_tag "course_#{membership.course.id}", nil, membership.receive_emails? %><%= membership.course.name_with_term %>
+        <%= debug membership.receive_emails? %>
 	      </label>
       <% end %>
     </div>
@@ -13,3 +15,4 @@
      <%= submit_tag "save email settings for subscriptions", :class => 'btn btn-primary', 'data-disable-with' => 'Saving...' %>
   </div>
 <% end %>
+

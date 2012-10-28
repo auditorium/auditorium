@@ -3,9 +3,10 @@ class NotificationObserver < ActiveRecord::Observer
 
   def deliver_email_notification(post, user)
     email_setting = EmailSetting.find_by_user_id(user.id)
+    membership = CourseMembership.find_by_user_id_and_course_id(user.id, post.course.id) 
 
-    if email_setting 
-      if email_setting.emails_for_subscribtions and membership = CourseMembership.find_by_user_id_and_course_id(user.id, post.course.id) 
+    unless email_setting.nil? 
+      if email_setting.emails_for_subscribtions and not membership.nil?
         membership.receive_emails  
       else
         email_setting.notification_when_author

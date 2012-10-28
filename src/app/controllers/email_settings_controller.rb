@@ -45,7 +45,7 @@ class EmailSettingsController < ApplicationController
       membership = CourseMembership.find_by_course_id_and_user_id(course_id, current_user.id)
 
       membership.receive_emails = (course_param[1] == 'on' ? true : false) 
-      membership.save
+      membership.save!
     end
 
     respond_to do |format|

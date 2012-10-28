@@ -9,7 +9,7 @@
     <div class="well">
       <% email_setting = EmailSetting.where(:user_id => current_user.id).first_or_initialize %>
       <%= render 'email_settings/form', :user => resource, :email_setting => email_setting %>
-      <% if email_setting.emails_for_subscribtions? %>
+      <% if email_setting.emails_for_subscribtions? and current_user.course_memberships.count > 0 %>
         <%= render 'email_settings/course_subscriptions', :user => resource %>
       <% end %>
     </div>
