@@ -5,7 +5,7 @@
 <% end %>
 
 <% if @notifications.count > 0 %>
-<h3>Notifications <%= button_to 'mark all as read', mark_all_as_read_path, :name => 'mark_all_as_read', :class => "btn btn-mini" %></h3>
+<h3>Notifications <% unless params[:course_id] %><%= button_to 'mark all as read', mark_all_as_read_path, :name => 'mark_all_as_read', :class => "btn btn-mini" %> <%= button_to 'delete all notifications', delete_all_notifications_path, :name => 'remove_all_notifications', :class => "btn btn-mini btn-danger", :data => { :confirm => 'Are you sure, that you want delete all notifications?'} %><% end %></h3>
 <table class="table notifications">
   <thead>
     <tr>

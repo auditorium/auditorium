@@ -8,7 +8,7 @@ jQuery ->
 
   $('.my-courses').hide()
 
-  $('a.remove-cross').hover ->
+  $('a.remove-cross, a.my-courses-notification-button').hover ->
     $(this).tooltip('show')
 
   $(".question-details").hide()

@@ -198,7 +198,7 @@ module ApplicationHelper
     post.post_type.eql?('info') ? 'announcement' : post.post_type 
   end
 
-  def send_notification_email_to?(user, course)
-
+  def notifications_for_user_in(course)
+    current_user.notifications.keep_if{|n| !n.read? and course.posts.map(&:id).include? n.notifyable_id if n.notifyable_type.eql? 'Post'}
   end
 end

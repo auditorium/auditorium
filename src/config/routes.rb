@@ -50,7 +50,8 @@ Auditorium::Application.routes.draw do
   get 'users/:id/answers' => 'users#answers', :as => :users_answers
   match 'users/:id/confirm' => 'users#confirm', :as => :confirm_user
   post 'notifications/mark_all_as_read' => 'notifications#mark_all_as_read', :as => :mark_all_as_read
-  
+  post 'notifications/delete_all_notifications' => 'notifications#delete_all_notifications', :as => :delete_all_notifications
+  match 'notifications' => 'notifications#index', :as => :notifications_for_course
 
   resources :courses
 

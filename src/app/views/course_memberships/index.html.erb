@@ -16,7 +16,12 @@
               <% end %>
             </div>
 
-            <h3 style="min-height:50px;"> <%= link_to course.name, course %><br/> </h3>
+            <h3>
+              <% if notifications_for_user_in(course).count > 0 %>
+              <%= link_to notifications_for_user_in(course).count, notifications_for_course_path(:course_id => course.id), class: "my-courses-notification-button", 'data-placement' => 'top', :title => 'Unread updates in course.',:rel => "tooltip" %>
+              <% end %>
+              <%= link_to course.name_with_term, course %></h3>
+
             <% if course.maintainers.count > 0 %>
               <div><%= pluralize(course.maintainers.count, 'Maintainer') %><br /> 
                 <% course.maintainers.each do |m| %>

@@ -106,8 +106,8 @@ h5, h6
         filter:
           progid:DXImageTransform.Microsoft.Shadow(color=#000,direction=135,strength=5);
 
-  opacity:0.9;
-  filter:alpha(opacity=90); /* For IE8 and earlier */
+  opacity:0.95;
+  filter:alpha(opacity=95); /* For IE8 and earlier */
   .navbar-inner {
     border-radius:0;
   }
@@ -507,7 +507,6 @@ form.button_to {
   
 form.button_to div, form.button_to div input {
   display:inline;
-  width:100px;
 }
 form.button_to .btn-block{
   display:inline;
@@ -788,6 +787,18 @@ td.comment-button p {
 
 
 /* notifications */
+.my-courses-notification-button {
+  background:lighten(@red, 10%);
+  color:@white;
+  font-size:0.7em;
+  padding:3px;
+  text-align: center;
+
+  &:hover {
+    color:@white;
+    background:lighten(@red, 20%);
+  }
+}
 .read, .read a { color:@grayLight; }
 .unread, .unread a { color:@grayDarker; }
 

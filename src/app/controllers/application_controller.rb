@@ -92,8 +92,7 @@ class ApplicationController < ActionController::Base
     
     url = session.delete("#{scope}_return_to")
 
-    "#{url}#{params[:url_hash]}" if params[:url_hash]
-    
+    "#{url}#{params[:url_hash] if params[:url_hash].match /post-/}" 
   end
 
   def after_sign_in_path_for(resource_or_scope)
