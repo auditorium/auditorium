@@ -20,6 +20,7 @@ class Ability
 
       can :read, :all #if user.confirmed?
       can :mark_all_as_read, Notification
+      can :delete_all_notifications, Notification
       can :mark_as_read, Notification
       can :destroy, Notification
       cannot :read, Report
