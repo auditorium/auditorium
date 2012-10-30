@@ -134,4 +134,8 @@ class Course < ActiveRecord::Base
   def lecture_name
     Lecture.find(lecture_id).name if lecture_id
   end
+
+  def membership_of(user)
+    CourseMembership.find_by_user_id_and_course_id(user.id, self.id)
+  end
 end

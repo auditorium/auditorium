@@ -61,11 +61,6 @@
       <hr />
       
       <h3>Membership request</h3>
-      <% unless current_user.is_moderator? @course %>
-        <p><div class='<%= "follow-button follow-button-#{@course.id}" %>'>
-            <%= render :partial => 'shared/follow_button', :locals => { :course => @course, :block => true } %>
-        </div></p>
-      <% end %>
 
       <% if current_user.is_course_maintainer? @course or current_user.admin? %>
       <p><%= link_to pluralize(@course.membership_requests.keep_if{|m| !m.read?}.count, 'unapproved request'), membership_requests_path, class: 'btn btn-block btn-small' %></p>
@@ -78,6 +73,9 @@
         <p><%= button_to "Make me editor", create_membership_request_path(:course_id => @course.id, :membership_type => 'editor'), :class => "btn btn-small btn-block", 'data-disable-with' => 'loading...' %></p>
         <% end %>
       <% end %>
+      <p><div class='<%= "follow-button follow-button-#{@course.id}" %>'>
+        <%= render :partial => 'shared/follow_button', :locals => { :course => @course, :block => true } %>
+      </div></p>
       <hr />
 
     

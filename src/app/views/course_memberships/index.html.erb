@@ -20,7 +20,11 @@
               <% if notifications_for_user_in(course).count > 0 %>
               <%= link_to notifications_for_user_in(course).count, notifications_for_course_path(:course_id => course.id), class: "my-courses-notification-button", 'data-placement' => 'top', :title => 'Unread updates in course.',:rel => "tooltip" %>
               <% end %>
-              <%= link_to course.name_with_term, course %></h3>
+              <%= link_to course.name_with_term, course %>
+              <% unless course.membership_of(current_user).membership_type.eql? 'member' %>
+              <small><p class="hint"><%= "You are #{course.membership_of(current_user).membership_type} in this course." %></p></small>
+              <% end %>
+            </h3>
 
             <% if course.maintainers.count > 0 %>
               <div><%= pluralize(course.maintainers.count, 'Maintainer') %><br /> 
