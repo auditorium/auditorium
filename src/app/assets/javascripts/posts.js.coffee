@@ -84,7 +84,7 @@ jQuery ->
 		return false
 
 	$('a.general-question').click ->
-		$('#course_name').val('Allgemeine und organisatorische Angelegenheiten').focus()
+		$('#course_name').val('Allgemeine und sonstige Fragen').focus()
 		$('#course_name').autocomplete('search', $('#course_name').val())
 		return false
 
