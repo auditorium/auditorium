@@ -16,7 +16,14 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @post = Post.find(params[:id])
-    
+
+    mark_notifications_as_read_for(@post)
+
+    unless @post.author.id == current_user.id
+      @post.views += 1
+      @post.save!
+    end
+
     respond_to do |format|
       format.html 
       format.json { render json: @post }
@@ -288,6 +295,18 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to post_path(@post.origin, :anchor => "post-#{@post.id}"), :flash => { :success =>  "The post has been successfully converted." } }
+    end
+  end
+
+  def mark_notifications_as_read_for(post)
+
+    unless current_user.unread_notifications.count == 0
+      current_user.unread_notifications.each do |notification|
+        if notification.notifyable_type.eql? 'Post' and Post.find(notification.notifyable_id).origin.id == post.id
+          notification.read = true 
+          notification.save!
+        end
+      end
     end
   end
 end

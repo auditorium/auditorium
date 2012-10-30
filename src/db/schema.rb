@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121027220338) do
+ActiveRecord::Schema.define(:version => 20121030085339) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -247,6 +247,7 @@ ActiveRecord::Schema.define(:version => 20121027220338) do
     t.boolean  "needs_review",    :default => false
     t.boolean  "is_private",      :default => false
     t.datetime "last_activity"
+    t.integer  "views",           :default => 0
   end
 
   add_index "posts", ["answer_to_id"], :name => "index_posts_on_answer_to_id"
