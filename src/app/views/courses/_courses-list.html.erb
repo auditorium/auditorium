@@ -39,9 +39,10 @@
 			<td class="hidden-phone">This course does not contain to a faculty.</td>
 			<% end %>
 			<td>
-				<p class='<%= "follow-button wide follow-button-#{course.id}" %>'>
+				<p>
+				<div class='<%= "follow-button wide follow-button-#{course.id}" %>'>
 					<%= render :partial => 'shared/follow_button', :locals => { :course => course } %>
-				</p>
+				</div></p>
 				<% if can? :manage, course %>
 					<%= link_to 'edit', edit_course_path(course), class: 'btn btn-warning btn-mini span1' %>
       		<%= link_to 'delete', course, confirm: "Are you sure that you want to delete this course?<br />#{course.name_with_term}", method: :delete, :class => "btn btn-mini btn-danger span1" %>
