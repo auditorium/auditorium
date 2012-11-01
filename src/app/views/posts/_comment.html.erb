@@ -25,7 +25,7 @@
       <% end %>
       <% if can? :update, comment %>
         &middot;
-        <%= link_to edit_post_path(comment) do %><i class="icon-edit"></i> edit<% end %> <%= "(#{distance_of_time_in_words(Time.now, comment.last_activity) } ago)" if comment.last_activity.to_i %>
+        <%= link_to edit_post_path(comment) do %><i class="icon-edit"></i> edit<% end %> <%= "(#{distance_of_time_in_words(Time.now, comment.last_activity) } ago)" if comment.last_activity %>
       <% else %>
         <% if (comment.updated_at.to_i - comment.created_at.to_i) > 0 %>
           &middot;

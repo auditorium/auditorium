@@ -15,7 +15,8 @@
 			<td>
 			  <b><%= link_to info.subject, post_path(info) %></b>
 			  <small class="pull-right">
-			  	<%= "#{distance_of_time_in_words(Time.now, info.created_at)} ago" %>, <%= link_to pluralize(info.comments.count, 'commment'), post_path(info) %>
+          <%= pluralize(info.views, "view") %> &middot; 
+			  	<%= "#{distance_of_time_in_words(Time.now, info.last_activity ? info.last_activity : info.updated_at)} ago" %>, <%= link_to pluralize(info.comments.count, 'commment'), post_path(info) %>
 			  </small>
 			</td>
 		</tr>  

@@ -4,9 +4,8 @@
       <span class="icon-ok answered" title="This question has been answered."></span>
       &middot;
     <% end %>
+    <%= (post.rating > 0 ? "+#{pluralize(post.rating, 'vote')}" : pluralize(post.rating, 'vote')) %> &middot;
     <%= pluralize(post.views, "view") %> &middot;
-    <%= (post.rating > 0 ? "+#{pluralize(post.rating, 'vote')}" : pluralize(post.rating, 'vote')) %>
-    &middot;
     <% if post.post_type.eql? 'question' %>
       <%= pluralize(post.answers.count, 'answer') %> 
        &middot;
@@ -42,7 +41,7 @@
       &middot;
       <%= link_to edit_post_path(post) do %><i class="icon-edit"></i> edit<% end %> <%= "(#{distance_of_time_in_words(Time.now, post.last_activity) } ago)" if post.last_activity %>
     <% else %>
-      <% if (post.last_activity.to_i - post.created_at.to_i) > 0 %>
+      <% if post.last_activity and (post.last_activity - post.created_at) > 0 %>
         &middot;
         <%= "edit #{distance_of_time_in_words(Time.now, post.last_activity) } ago"  %>
       <% end %>
