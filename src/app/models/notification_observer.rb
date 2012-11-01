@@ -5,19 +5,17 @@ class NotificationObserver < ActiveRecord::Observer
     email_setting = EmailSetting.find_by_user_id(user.id)
     membership = CourseMembership.find_by_user_id_and_course_id(user.id, post.course.id) 
 
-    unless email_setting.nil? 
-      if email_setting.emails_for_subscribtions
-        if membership.nil?
-          email_setting.notification_when_author
-        else
-          membership.receive_emails
-        end
-      else
-        email_setting.notification_when_author
-      end  
-    else
-      true
-    end
+    # if new user who does not changed settings receives emails (opt-out)
+    return true if email_setting.nil?
+
+    # if user wants emails for this post thread when user is author of comment, answer or origin past
+    return true if email_setting.notification_when_author and post.origin.all_authors.include? user
+  
+    # if user has subscribed to course and wants emails for this subscription
+    return true if membership and email_setting.emails_for_subscribtions
+
+    # otherwise
+    return false
   end
 
   def after_create(model)
