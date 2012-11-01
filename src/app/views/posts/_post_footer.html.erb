@@ -4,14 +4,14 @@
       <span class="icon-ok answered" title="This question has been answered."></span>
       &middot;
     <% end %>
-
-    <%= link_to (post.rating > 0 ? "+#{pluralize(post.rating, 'vote')}" : pluralize(post.rating, 'vote')), post_path(post) %>
+    <%= pluralize(post.views, "view") %> &middot;
+    <%= (post.rating > 0 ? "+#{pluralize(post.rating, 'vote')}" : pluralize(post.rating, 'vote')) %>
     &middot;
     <% if post.post_type.eql? 'question' %>
-      <%= link_to pluralize(post.answers.count, 'answer'), post_path(post) %> 
+      <%= pluralize(post.answers.count, 'answer') %> 
        &middot;
     <% else %>
-      <%= link_to pluralize(post.comments.count, 'comment'), post_path(post) %>
+      <%= pluralize(post.comments.count, 'comment') %>
       &middot;
     <% end %> 
   <% end %>
@@ -40,11 +40,11 @@
     <% end %>
     <% if can? :update, post %>
       &middot;
-      <%= link_to edit_post_path(post) do %><i class="icon-edit"></i> edit<% end %> <%= "(#{distance_of_time_in_words(Time.now, post.updated_at) } ago)" if (post.updated_at.to_i - post.created_at.to_i) > 0 %>
+      <%= link_to edit_post_path(post) do %><i class="icon-edit"></i> edit<% end %> <%= "(#{distance_of_time_in_words(Time.now, post.last_activity) } ago)" if post.last_activity %>
     <% else %>
-      <% if (post.updated_at.to_i - post.created_at.to_i) > 0 %>
+      <% if (post.last_activity.to_i - post.created_at.to_i) > 0 %>
         &middot;
-        <%= "edit #{distance_of_time_in_words(Time.now, post.updated_at) } ago"  %>
+        <%= "edit #{distance_of_time_in_words(Time.now, post.last_activity) } ago"  %>
       <% end %>
     <% end %>
     <% if post.post_type.eql? 'answer' and can? :convert, post %>

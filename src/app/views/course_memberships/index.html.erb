@@ -57,7 +57,7 @@
                     <% course.infos.first(4).each do |info| %>
 
                       <li>
-                      <span class="hidden-phone-tight post-date pull-right"> <%= "#{distance_of_time_in_words(Time.now, info.updated_at)} ago" %> </span>
+                      <span class="hidden-phone-tight post-date pull-right"> <%= "#{distance_of_time_in_words(Time.now, info.last_activity ? info.last_activity : info.updated_at)} ago" %> </span>
                       <strong> <%= link_to "#{info.subject}", info %> </strong> <br/>
                       </li>
 
@@ -101,7 +101,7 @@
                       <span class="subtle">
                         <em> <%= question.author %> </em> |
                         <em> <%= pluralize question.answers.count, 'answer' %> </em> |
-                        <em> <%= "#{distance_of_time_in_words(Time.now, question.updated_at)}" %> ago </em>
+                        <em> <%= "#{distance_of_time_in_words(Time.now, question.last_activity ? question.updated_at : question.updated_at)}" %> ago </em>
                       </span>
 
                       </li>

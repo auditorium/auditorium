@@ -82,7 +82,7 @@
             <% if post.origin.is_private? %><%= "private" %><% end %> <%= post.post_type %>,
             <%= pluralize(post.answers.count, 'answer') %>,
             <%=link_to "written by #{post.author.full_name}", user_path(post.author) %>
-          <span class="pull-right"><%= "last activity: #{distance_of_time_in_words(Time.now, post.updated_at) } ago"%></span>
+          <span class="pull-right"><%= "last activity: #{distance_of_time_in_words(Time.now, post.last_acitivty ? post.last_acitivty : post.updated_at) } ago"%></span>
           </em></small>
         </td>
       </tr>
