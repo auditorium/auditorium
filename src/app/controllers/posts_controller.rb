@@ -302,7 +302,7 @@ class PostsController < ApplicationController
 
     unless current_user.unread_notifications.count == 0
       current_user.unread_notifications.each do |notification|
-        p = Post.find(notification.notifyable_id)
+        p = Post.find_by_id(notification.notifyable_id)
         
         if !p.nil? and notification.notifyable_type.eql? 'Post' and p.origin.id == post.id
           notification.read = true 
