@@ -17,7 +17,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
 
-    mark_notifications_as_read_for(@post)
+    mark_notifications_as_read_for(@post) unless @post.nil?
 
     unless @post.author.id == current_user.id
       @post.views += 1
@@ -302,10 +302,13 @@ class PostsController < ApplicationController
 
     unless current_user.unread_notifications.count == 0
       current_user.unread_notifications.each do |notification|
-        if notification.notifyable_type.eql? 'Post' and Post.find(notification.notifyable_id).origin.id == post.id
+        p = Post.find(notification.notifyable_id)
+        
+        if !p.nil? and notification.notifyable_type.eql? 'Post' and p.origin.id == post.id
           notification.read = true 
           notification.save!
         end
+      
       end
     end
   end

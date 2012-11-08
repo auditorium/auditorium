@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   
   validates_uniqueness_of :email
   validates_uniqueness_of :username
-  validates :username, :presence => true
+  validates :username, :presence => true, :format => { :with => /^[A-Za-z0-9_\-\.]+$/, :message => "contains unsupported signs. Plese only use those signs: [A-Za-z0-9_-.]." }
 
   define_index do
     indexes email

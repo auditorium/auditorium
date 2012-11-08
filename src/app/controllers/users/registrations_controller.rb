@@ -54,10 +54,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     if update_resource(resource_params)
       if is_navigational_format?
-        if resource.respond_to?(:pending_reconfirmation?) && resource.pending_reconfirmation?
-          flash_key = :update_needs_confirmation
-        end
-        set_flash_message :success, flash_key || :updated
+        set_flash_message :success, :updated
       end
       sign_in resource_name, resource, :bypass => true
       respond_with resource
