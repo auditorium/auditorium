@@ -1,6 +1,8 @@
 module ApplicationHelper
   class CodeRayify < Redcarpet::Render::HTML
     def block_code(code, language='ruby')
+      language = "c" unless language.match /^\w+$/
+
       CodeRay.scan(code, language).div
     end
 
