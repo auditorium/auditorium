@@ -26,24 +26,24 @@
   &middot;
   <%= link_to content_tag('i', '', class: 'icon-link'), '#', title: 'Get permalink for this post.', 'onclick' => "javascript:window.prompt('Copy link to clipboard: CTRL+C or CMD+C', '#{post_url(post.origin, :anchor => "post-#{post.id}")}'); return false" %>
   
-  <% if current_user.admin? or (!params[:controller].eql? 'home' and !params[:controller].eql? 'courses') %>
   <span class="pull-right">
-    <% if can? :report, post %>
-      <%= link_to '#', :class => "submit-report", 'data-id' => post.id do %>
-        <i class="icon-flag"></i> report
+    <% if (!params[:controller].eql? 'home' and !params[:controller].eql? 'courses') %>
+      <% if can? :report, post %>
+        <%= link_to '#', :class => "submit-report", 'data-id' => post.id do %>
+          <i class="icon-flag"></i> report
+        <% end %>
+        &middot;
+      <% end %> 
+      <% if can? :destroy, post  %>
+        <%= link_to post, :data => { :confirm => 'Are you sure that you want to remove this post?' }, method: :delete do %><i class="icon-remove"></i> remove<% end %>
+        &middot;
       <% end %>
-    <% end %> 
-    <% if can? :destroy, post  %>
-      &middot; 
-      <%= link_to post, :data => { :confirm => 'Are you sure that you want to remove this post?' }, method: :delete do %><i class="icon-remove"></i> remove<% end %>
     <% end %>
     <% if can? :update, post %>
-      &middot;
       <%= link_to edit_post_path(post) do %><i class="icon-edit"></i> edit<% end %> <%= "(#{distance_of_time_in_words(Time.now, post.last_activity) } ago)" if post.last_activity %>
     <% else %>
       <% if post.last_activity and (post.last_activity - post.created_at) > 0 %>
-        &middot;
-        <%= "edit #{distance_of_time_in_words(Time.now, post.last_activity) } ago"  %>
+        <%= "(update #{distance_of_time_in_words(Time.now, post.last_activity) } ago)"  %>
       <% end %>
     <% end %>
     <% if post.post_type.eql? 'answer' and can? :convert, post %>
@@ -53,7 +53,6 @@
       <% end %> 
     <% end %>
   </span>
-  <% end %>
 </span>
 
 <% if post.post_type.eql? 'answer' and can? :convert, post %>
