@@ -18,6 +18,7 @@ gem 'kaminari'
 gem 'font-awesome-rails'
 gem 'whenever'
 gem 'mathjax-rails'
+gem 'therubyracer' ~>'0.11.0'
 
 #active admin
 gem 'activeadmin'
