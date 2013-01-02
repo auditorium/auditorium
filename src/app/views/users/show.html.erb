@@ -15,7 +15,7 @@ end
 		<%= gravatar_image_tag(@user.alternative_email, :alt => @user.full_name, :gravatar => {:default => :wavatar, :size => 50, :secure => true })%>
 	<% end %>
 	<% if @user.admin? %><i class="icon-certificate" title='Admin of auditorium' rel="tooltip" style="cursor:pointer;"></i><% end %> 
-	Profile of <%= @user.full_name %>
+	<%= link_to "(#{@user.score}p)", users_path %> <%= "#{@user.full_name}" %>
 </h2>
 
 <section class="row-fluid">

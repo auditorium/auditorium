@@ -18,6 +18,7 @@
 	  
     <%= render :partial => 'posts/posts_stream'%>
 
-    <%= paginate @posts %>Still can't find your question? <%= link_to "Submit your question.", '#', id: 'show_question_form' %>
+    Still can't find your question? <%= link_to "Submit your question.", '#', id: 'show_question_form' %>
+    <%= paginate @posts %> 
   </div>
 </section>

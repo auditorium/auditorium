@@ -16,10 +16,10 @@
   <% end %>
 
   <% if post.author.id == current_user.id %>
-    <%= link_to "by me", post.author %> 
+    <%= link_to "by me (#{post.author.score}p)", post.author %>
   <% else %>
-    <%= link_to "by #{post.author_name}", post.author %>
-  <% end %>
+    <%= link_to "by #{post.author_name} (#{post.author.score}p)", post.author %> 
+  <% end %>  
   &middot;
   <%= "#{distance_of_time_in_words(Time.now, post.created_at)} ago" %>
 

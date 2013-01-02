@@ -11,15 +11,17 @@
       </tr>
     </thead>
     <tbody class="table-condensed table-striped">
-      <% User.order('score DESC').limit(10).each_with_index do |user, i| %>
-      <% if user.confirmed? %>
+
+      <% params[:page].nil? ? page = 0 : page = params[:page].to_i-1 %> 
+      <% @users.each_with_index do |user, i| %>
         <tr>
-          <td width="35" style="border:0px; text-align:center;"><%= i + 1 %></td>
-          <td><%= user.full_name %></td>
+          <td width="35" style="border:0px; text-align:center;"><%= i + 1 + 10*page %></td>
+          <td><%= link_to user.full_name, users_path(user) %></td>
           <td><%= user.score %></td>
         </tr>
       <% end %>
-      <% end %>
     </tbody>
   </table>
+
+  <%= paginate @users %>
 </div>

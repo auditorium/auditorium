@@ -2,6 +2,9 @@ class UsersController < ApplicationController
   load_and_authorize_resource
 
   def index
+    @users = User.order('score DESC').keep_if{ |u| u.confirmed? }
+
+    @users = Kaminari.paginate_array(@users).page(params[:page]).per(10)
   end
 
   def edit
