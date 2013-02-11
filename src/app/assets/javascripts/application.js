@@ -14,6 +14,7 @@
 //= require jquery.ui.all
 //= require jquery_ujs
 //= require jquery.expander.min
+//= require jquery-migrate-1.1.0.min
 //= dontrequire zepto
 //= require twitter/bootstrap
 //= require ajax
