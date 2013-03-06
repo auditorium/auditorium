@@ -1,4 +1,4 @@
-<p class="hint hidden-post post-<%= post.id %> <%= 'hidden' unless (post.rating < current_user.rating_minimum or post.too_many_reports?) %>">This post got to many negative feedback. That's why it is hidden. <%= link_to 'Show this post anyway.', '#',  'data-id' => post.id %></p>
+<p class="hint hidden-post post-<%= post.id %> <%= 'hidden' unless (post.rating < current_user.rating_minimum or post.too_many_reports?) %>">This post got too many negative feedback. That's why it's hidden. <%= link_to 'Show this post anyway.', '#',  'data-id' => post.id %></p>
 
 <% if current_user.subscribed_to?(post.course) and params[:controller].eql? 'home' %>
   <table class="table-posts subscribed <%= 'hidden' if (post.rating < current_user.rating_minimum or post.too_many_reports?) %> post-<%= post.id %>" data-id='<%= post.id %>'>
