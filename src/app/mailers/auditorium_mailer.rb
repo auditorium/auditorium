@@ -1,7 +1,9 @@
 class AuditoriumMailer < ActionMailer::Base
   add_template_helper(ApplicationHelper)
 
-  default from: "auditorium <notification+#{('a'..'z').to_a.shuffle[0..7].join}@auditorium.inf.tu-dresden.de>"
+  default from: "auditorium <notification@auditorium.inf.tu-dresden.de>",
+          'message-id' => "<notification@auditorium.inf.tu-dresden.de>"
+
 
   def welcome_email(user)
   	@user = user
@@ -35,9 +37,10 @@ class AuditoriumMailer < ActionMailer::Base
     end
 
   	mail(to: @user.email,
-  		subject: "[private question] #{@post.subject[0..100]}... - #{@post.course.name_with_term}",
+  		subject: "New private question in #{@post.course.name_with_term}",
   		template_path: 'auditorium_mailer',
-  		template_name: @template)
+  		template_name: @template,
+      'message-id' => "<notification-#{@post.id}@auditorium.inf.tu-dresden.de>")
   end
 
   def update_in_course(user, post) 
@@ -51,21 +54,28 @@ class AuditoriumMailer < ActionMailer::Base
     case post.post_type
 
     when 'info'
-      subject = "[#{private_flag}announcement] #{@post.subject[0..100]}... - #{@post.course.name_with_term}"
+      subject = "New #{private_flag}announcement in #{@post.course.name_with_term}"
+      in_reply_to = nil
     when 'question'
-      subject = "[#{private_flag}question] #{@post.subject[0..100]}... - #{@post.course.name_with_term}" 
+      subject = "New #{private_flag}question in #{@post.course.name_with_term}" 
+      in_reply_to = nil
     when 'comment'
-      subject = "[#{private_flag}comment] #{@post.body[0..100]}... - #{@post.course.name_with_term}"
+      subject = "New #{private_flag}comment in #{@post.course.name_with_term}"
+      in_reply_to = "<notification-#{@post.parent().id}@auditorium.inf.tu-dresden.de>"
     when 'answer'
-      subject = "[#{private_flag}answer] #{@post.body[0..100]}... - #{@post.course.name_with_term}"
+      subject = "New #{private_flag}answer in #{@post.course.name_with_term}"
+      in_reply_to = "<notification-#{@post.parent().id}@auditorium.inf.tu-dresden.de>"
     else
-      subject = "#{@post.author.full_name} posted something - #{@course.name_with_term}."
+      subject = "New post in #{@course.name_with_term}."
+      in_reply_to = nil
     end
 
+    headers['in-reply-to'] = in_reply_to if in_reply_to.presence
     mail(to: @user.email,
       subject: subject,
       template_path: 'auditorium_mailer',
-      template_name: 'update_in_course')
+      template_name: 'update_in_course',
+      'message-id' => "<notification-#{@post.id}@auditorium.inf.tu-dresden.de>")
   end
 
   def new_course_to_approve(course, admin)
