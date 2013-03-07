@@ -61,10 +61,10 @@ class AuditoriumMailer < ActionMailer::Base
       in_reply_to = nil
     when 'comment'
       subject = "New #{private_flag}comment in #{@post.course.name_with_term}"
-      in_reply_to = "<notification-#{@post.parent().id}@auditorium.inf.tu-dresden.de>"
+      in_reply_to = "<notification-#{@post.parent().id}@auditorium.inf.tu-dresden.de>" if @post.parent().presence
     when 'answer'
       subject = "New #{private_flag}answer in #{@post.course.name_with_term}"
-      in_reply_to = "<notification-#{@post.parent().id}@auditorium.inf.tu-dresden.de>"
+      in_reply_to = "<notification-#{@post.parent().id}@auditorium.inf.tu-dresden.de>" if @post.parent().presence
     else
       subject = "New post in #{@course.name_with_term}."
       in_reply_to = nil
