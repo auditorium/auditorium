@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130321105607) do
+ActiveRecord::Schema.define(:version => 20130322173426) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(:version => 20130321105607) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.string   "url"
+    t.integer  "jexam_id"
   end
 
   add_index "chairs", ["institute_id"], :name => "index_chairs_on_institute_id"
@@ -81,6 +82,7 @@ ActiveRecord::Schema.define(:version => 20130321105607) do
     t.string   "url",         :default => ""
     t.boolean  "approved",    :default => true
     t.integer  "creator_id"
+    t.integer  "jexam_id"
   end
 
   add_index "courses", ["creator_id"], :name => "index_courses_on_creater_id"
@@ -175,6 +177,7 @@ ActiveRecord::Schema.define(:version => 20130321105607) do
     t.integer  "sws",          :default => 0
     t.integer  "creditpoints", :default => 0
     t.text     "description"
+    t.integer  "jexam_id"
   end
 
   add_index "lectures", ["chair_id"], :name => "index_lectures_on_chair_id"
@@ -292,8 +295,9 @@ ActiveRecord::Schema.define(:version => 20130321105607) do
     t.string   "term_type"
     t.date     "beginDate"
     t.date     "endDate"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.integer  "jexam_id",   :default => 0
   end
 
   create_table "users", :force => true do |t|

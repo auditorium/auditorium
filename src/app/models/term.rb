@@ -1,6 +1,6 @@
 class Term < ActiveRecord::Base
   has_many :courses
-  attr_accessible :term_type, :beginDate, :endDate
+  attr_accessible :term_type, :beginDate, :endDate, :jexam_id
 
   validates :term_type,  presence: true,
                     inclusion: { in: %w{ss ws tri1 tri2 tri3} }
@@ -41,8 +41,20 @@ class Term < ActiveRecord::Base
     self.beginDate <= Date.today and  Date.today <= self.endDate
   end
 
-   def current
+  def current
     Term.where('beginDate <= ? and  ? <= endDate', Date.today, Date.today)
+  end
+
+  def short_name
+    "#{self.term_type.uppercase} #{self.year}"
+  end
+
+  def long_name
+    if self.term_type.eql? 'ss'
+      "Sommersemester #{self.year}"
+    else
+      "Wintersemester #{self.year}"
+    end
   end
 
 end
