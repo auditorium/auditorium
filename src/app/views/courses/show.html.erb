@@ -22,7 +22,7 @@
 <hr />
   <h5><b>Further information</b></h5>
   <ul>  
-    <li><% if @course.url.empty? %>
+    <li><% if @course.url.presence %>
       <b><%= (can? :manage, @course) ? (link_to 'Add website url to the course', edit_course_path(@course)) : 'Not available yet' %></b> 
     <% else %>
       <%= link_to 'Visit the website', @course.url, :target => '_blank' %> at the TU Dresden webpage for course material.
