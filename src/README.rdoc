@@ -1,4 +1,4 @@
-# Install auditorium on Unix
+== Install auditorium on Unix
 
 1. sudo apt-get install git
 2. sudo apt-get install curl
