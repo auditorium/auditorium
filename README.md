@@ -6,7 +6,7 @@ For further information just write an email to auditorium |at| inftex.net (tempo
 
 If you want to install this app locally, just go to the src folder for further instructions.
 
-auditorium-Team
+*auditorium-Team*
 
-Lars Beier (sn3ek)
-Hendrik Sollich (hoodie)
+Lars Beier (https://github.com/sn3ek)
+Hendrik Sollich (https://github.com/hoodie)
