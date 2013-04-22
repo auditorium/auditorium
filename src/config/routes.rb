@@ -1,5 +1,5 @@
 Auditorium::Application.routes.draw do
-  ActiveAdmin.routes(self)
+  
 
   resources :membership_requests, :only => [:index, :create, :destroy]
 
@@ -100,6 +100,8 @@ Auditorium::Application.routes.draw do
 #  resources :jexamwebservice
 
   root to: "landing_page#index"
+
+  ActiveAdmin.routes(self)
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
