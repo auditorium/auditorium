@@ -1,0 +1,27 @@
+<h2><%= t('recordings.headline.index') %></h2>
+
+<% if can? :create, @course.recordings %>
+	<p><%= link_to t('recordings.action.add'), new_course_recording_path, class: 'btn btn-primary' %></p>
+<% end %>
+
+<% if @recordings.size > 0 %>
+	<div class="row-fluid" id="grid">
+		<% @recordings.each_with_index do |recording, index| %>
+			<div class="span4">
+				<div class="well-small">
+					<%= link_to image_tag("https://img.youtube.com/vi/#{recording.code.to_s}/1.jpg", class: 'youtube-preview'), [@course, recording] %>
+					<h3><%= link_to recording.subject, [@course, recording] %></h3>
+					<p><%= truncate recording.body, length: 100 %></p>
+				</div>
+			</div>
+
+			<% if index+1%3 == 0 %>
+				</div>
+				<div class="fluid-row" id="grid">
+			<% end %> 
+		<% end %>
+	</div>
+<% else %>
+<hr />
+	<p class="hint">No recordings available, yet. <%= link_to "#{t('recordings.action.new')}.", new_course_recording_path if can? :create, @course.recordings.build %></p>
+<% end %>

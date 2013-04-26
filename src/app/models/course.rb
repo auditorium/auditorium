@@ -8,6 +8,9 @@ class Course < ActiveRecord::Base
   has_many :course_memberships, :dependent => :destroy
   has_many :users, through: :course_memberships
   has_many :membership_requests
+
+  # refactoring!
+  has_many :recordings, conditions: { post_type: 'recording' }
   
   attr_accessible :description, :name, :beginDate, :endDate, :creator_id, :term_id, :lecture_id, :sws, :url, :jexam_id
 

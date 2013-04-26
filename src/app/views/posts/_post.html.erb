@@ -7,6 +7,8 @@
         <td rowspan="3" class="post-badge info-badge">&nbsp;</td>
       <% elsif post.post_type.eql? 'answer' %>
         <td rowspan='3' class='post-badge <%= 'private-' if post.origin.is_private? %>answer-badge <%= "not" if post.answer_to_id.nil? %> answered'>&nbsp;</td>
+      <% elsif post.post_type.eql? 'recording' %>
+        <td rowspan="3" class="post-badge <%= 'private-' if post.is_private? %>recording-badge">&nbsp;</td> 
       <% end %>
       <td rowspan="3" class="post-rating">
           <%= render :partial => 'posts/rating', :locals => { :post => post } %>
@@ -22,14 +24,20 @@
         </h3>
       <% end %>
       </td>
-    <tr><td class="post-body" colspan="2"><%= markdown(post.body) %></td></tr>
+    <tr><td class="post-body" colspan="2">
+      <% if post.post_type.eql? 'recording' %>
+        <iframe class="youtube-player" src="http://www.youtube.com/embed/<%= post.code %>" frameborder="0" allowfullscreen></iframe>
+      <% end %>
+      <%= markdown(post.body) %>
+
+    </td></tr>
     <tr><td class="post-footer" colspan="3">
       <%= render :partial => 'posts/post_footer', :locals => { :post => post } %>
     </td></tr>
   </tbody>
 </table>
 
-<% if params[:controller].eql? 'posts'%>
+<% if params[:controller].eql? 'posts' or params[:controller].eql? 'recordings'%>
 <table class="table table-comments"> 
   <thead><th>Comments</th></thead>
   <tfoot><td><%= render :partial => 'posts/comment_form', :locals => {:post => post } %></td></tfoot>

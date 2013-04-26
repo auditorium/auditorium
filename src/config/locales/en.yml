@@ -2,4 +2,12 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  recordings:
+    action:
+      new: 'Add a new recording'
+      submit: 'Submit recording'
+      update: 'Updage recording'
+      comment: 'Add comment'
+    headline:
+      index: 'Recordings overview'
+      new: 'Add a recording'

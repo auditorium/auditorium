@@ -102,6 +102,12 @@ class Ability
       can :manage, MembershipRequest do |mr|
         user.is_course_maintainer? mr.course or user.admin
       end
+
+      can :read, Recording
+      can :comment, Recording
+      can :manage, Recording do |recording|
+        user.is_course_maintainer? recording.course
+      end
       
     else # Gäste
       cannot :read, :all

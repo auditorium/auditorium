@@ -14,7 +14,7 @@ class Post < ActiveRecord::Base
 
   attr_accessible :body, :subject, :post_type, :parent_id, :course_id, :author_id, :answer_to_id, :is_private
 
-  validates :post_type, presence: true, inclusion: { in: %w{question answer info comment} }
+  validates :post_type, presence: true, inclusion: { in: %w{question answer info comment recording} }
   validates :subject, presence: true
   validates :course, presence: true
   validates :body, presence: true
@@ -127,5 +127,13 @@ class Post < ActiveRecord::Base
     end
 
     @authors.uniq
+  end
+
+  def code
+    if self.post_type.eql? 'recording' 
+      Rack::Utils.parse_query(URI(self.url).query)['v']
+    else
+      "No recording."
+    end
   end
 end

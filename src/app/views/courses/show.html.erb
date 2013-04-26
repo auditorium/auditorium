@@ -28,7 +28,15 @@
       <%= link_to 'Visit the website', @course.url, :target => '_blank' %> at the TU Dresden webpage for course material.
     <% end %>
   </li>
-    <li>List <%= link_to "courses of all semester in #{@course.lecture.name}", lecture_path(@course.lecture, :noredirect => true) %>.</li></ul>
+    <li>List <%= link_to "courses of all semester in #{@course.lecture.name}", lecture_path(@course.lecture, :noredirect => true) %>.</li>
+    <li><b class="new-feature">New!</b> 
+      <% if can? :manage, @course.recordings %>
+        <%= link_to 'Add recordings of this course.', course_recordings_path(@course) %>
+      <% else %>
+        <%= link_to "View #{pluralize @course.recordings.size, 'recordings'} for this course.", course_recordings_path(@course) %>
+      <% end %>
+    </li>
+  </ul>
   </p>
   
 </div>
