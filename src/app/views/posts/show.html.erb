@@ -1,6 +1,12 @@
 <div class="center span8">
 <h4 class="hint">
-	<%= (@post.post_type.eql? 'info') ? 'An announcement in' : 'A question in' %>
+	<% if @post.post_type.eql? 'info' %>
+    <%= 'An announcement in' %>
+  <% elsif @post.post_type.eql? 'question' %>
+    <%= 'A question in' %>
+  <% else @post.post_type.eql? 'recording' %>
+    <%= 'A recording in' %>
+  <% end %>
 	<% if current_user.subscribed_to?(@post.course) %>
 	  <%= link_to " #{@post.course.name_with_term}", course_path(@post.course), title: 'You have subscribed to this course.', class: 'icon-star' %>
 	<% else %>

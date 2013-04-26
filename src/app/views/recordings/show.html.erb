@@ -1,0 +1,63 @@
+<div class="center span8">
+<h4 class="hint">
+	<% if @recording.post_type.eql? 'info' %>
+		<%= 'An announcement in' %>
+	<% elsif @recording.post_type.eql? 'question' %>
+		<%= 'A question in' %>
+	<% else @recording.post_type.eql? 'recording' %>
+		<%= 'A recording in' %>
+	<% end %>
+	<% if current_user.subscribed_to?(@course) %>
+	  <%= link_to " #{@course.name_with_term}", course_path(@course), title: 'You have subscribed to this course.', class: 'icon-star' %>
+	<% else %>
+	  <%= link_to "#{@course.name_with_term}", course_path(@course) %>
+	<% end %>
+  &middot; <%= link_to "View #{pluralize @course.recordings.published.size, 'recording'}", course_recordings_path(@course), class: 'hint' %>
+</h4>
+<% if @recording.post_type.eql? 'question' and !@recording.parent.nil? %>
+<p class="hint">Follow up question to the <%= link_to post_type?(@recording.parent), @recording.parent %> from <%= link_to @recording.parent.author.full_name, @recording.author %>.</p>
+<% end %>
+
+<%= render :partial => 'posts/post', :locals => {:post => @recording } %>
+
+<% if @recording.answers.count > 0 %>
+<h3>Answers <small>sorted by rating</small></h3>
+<% end %>
+<% @recording.answers.each do |answer| %>
+  <%= render :partial => 'posts/post', :locals => { :post => answer }%>
+<% end %>
+
+<% if @recording.post_type.eql? 'question' %>
+  <%= render :partial => 'posts/answer_form', :locals => { :post => @recording }%>
+<% elsif current_user.nil? and @recording.post_type.eql? 'info'%>
+  <p class="hint">Please <%= link_to 'Sign in', '/users/sign_in' %> or <%= link_to 'Sign up', '/users/sign_up' %> to comment this information.</p>
+<% end %>
+
+<div class="clearfix"></div>
+<% if @recording.follow_up_questions.count > 0 %>
+<section id="follow-up-questions" class="clearfix">
+
+<h3>Follow up questions</h3>
+<table class="table"> 
+  <tbody>
+  <% @recording.follow_up_questions.each do |question| %>
+    <tr>
+      <td>
+        <b><%= (rating_points(question.rating)) %></b>  
+      </td>
+      <td>
+        <b><%= link_to question.subject, post_path(question) %></b>
+        <small class="pull-right">
+        	<%= link_to question.author.full_name, question.author %>,
+          <%= "#{distance_of_time_in_words(Time.now, question.created_at)} ago" %>, <%= link_to pluralize(question.answers.count, 'answer'), post_path(question) %>
+        </small>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>  
+</section>
+<% end %>
+
+</div>
+

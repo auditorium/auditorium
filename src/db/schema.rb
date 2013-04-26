@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130417122706) do
+ActiveRecord::Schema.define(:version => 20130423134613) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -251,6 +251,7 @@ ActiveRecord::Schema.define(:version => 20130417122706) do
     t.boolean  "is_private",      :default => false
     t.datetime "last_activity"
     t.integer  "views",           :default => 0
+    t.string   "url"
   end
 
   add_index "posts", ["answer_to_id"], :name => "index_posts_on_answer_to_id"
@@ -325,17 +326,5 @@ ActiveRecord::Schema.define(:version => 20130417122706) do
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
-
-  create_table "videos", :force => true do |t|
-    t.string   "title"
-    t.text     "description"
-    t.integer  "course_id"
-    t.string   "uri"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.string   "code"
-  end
-
-  add_index "videos", ["course_id"], :name => "index_videos_on_course_id"
 
 end
