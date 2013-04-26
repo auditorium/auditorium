@@ -1,5 +1,7 @@
 class Recording < Post
   default_scope where(:post_type => 'recording')
+  scope :published, where(is_private: false)
+
   belongs_to :course
   attr_accessible :url
 

@@ -12,6 +12,7 @@
 	<% else %>
 	  <%= link_to "#{@course.name_with_term}", course_path(@course) %>
 	<% end %>
+  &middot; <%= link_to "View #{pluralize @course.recordings.published.size, 'recording'}", course_recordings_path(@course), class: 'hint' %>
 </h4>
 <% if @recording.post_type.eql? 'question' and !@recording.parent.nil? %>
 <p class="hint">Follow up question to the <%= link_to post_type?(@recording.parent), @recording.parent %> from <%= link_to @recording.parent.author.full_name, @recording.author %>.</p>

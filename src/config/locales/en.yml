@@ -4,10 +4,12 @@
 en:
   recordings:
     action:
-      new: 'Add a new recording'
+      add: 'Add a new recording'
       submit: 'Submit recording'
       update: 'Updage recording'
       comment: 'Add comment'
+      delete: 'Remove recording'
+      edit: 'Edit recording'
     headline:
       index: 'Recordings overview'
       new: 'Add a recording'

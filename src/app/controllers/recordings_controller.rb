@@ -34,9 +34,26 @@ class RecordingsController < ApplicationController
 	end
 
 	def update
+		@recording = Recording.find(params[:id])
+
+    respond_to do |format|
+      if @recording.update_attributes(params[:recording])
+        format.html { redirect_to course_recording_path(@course, @recording), :flash => { :success =>  'Recording was successfully updated.' } }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit", :flash => { :error => "Recording couldn't be updated!" } }
+        format.json { render json: @recording.errors, status: :unprocessable_entity }
+      end
+    end
 	end
 
 	def destroy
+		@recording = Recording.find(params[:id])
+		@recording.destroy
+		respond_to do |format|
+			format.html { redirect_to course_recordings_path(@course), notice: t('recordings.flash.destroyed') }
+			format.json { head :no_content }
+		end
 	end
 
 	def comment

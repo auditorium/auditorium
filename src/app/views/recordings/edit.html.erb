@@ -1,1 +1,7 @@
-<h1>Edit recording</h1>
+<div class="container span8 center">
+<h2><%= t('recordings.headline.edit') %></h2>
+<p class="hint">update the recording for <%= link_to @course.name_with_term, @course %></p>
+
+
+<%= render 'recordings/form' %>
+</div>
