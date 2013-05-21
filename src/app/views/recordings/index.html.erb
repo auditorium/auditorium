@@ -6,7 +6,10 @@
 
 <% if (can? :manage, @course and @recordings.size > 0) or @recordings.published.size > 0 %>
 	<div class="row-fluid" id="grid">
-		<% @recordings.each_with_index do |recording, index| %>
+		<% i = 0 %>
+		<% @recordings.each do |recording| %>
+		<% i+=1 %>
+
 		<% unless recording.is_private? and not current_user.is_course_maintainer? @course %>
 			<div class="span4">
 				<div class="well-small <%= "private" if recording.is_private? %>">
@@ -20,11 +23,12 @@
 					<% end %>
 				</div>
 			</div>
+			
 			<% end %>
 
-			<% if index+1%3 == 0 %>
+			<% if i%3 == 0 %>
 				</div>
-				<div class="fluid-row" id="grid">
+				<div class="row-fluid" id="grid">
 			<% end %> 
 		<% end %>
 	</div>

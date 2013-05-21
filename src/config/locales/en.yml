@@ -6,7 +6,7 @@ en:
     action:
       add: 'Add a new recording'
       submit: 'Submit recording'
-      update: 'Updage recording'
+      update: 'Update recording'
       comment: 'Add comment'
       delete: 'Remove recording'
       edit: 'Edit recording'

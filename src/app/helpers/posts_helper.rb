@@ -8,6 +8,6 @@ module PostsHelper
   end
 
   def highlight_post(post, course)
-  	!post.post_type.eql? 'info' and (post.author.is_course_editor? course or post.author.is_course_maintainer? course)
+  	!(post.post_type.eql? 'info' or post.post_type.eql? 'recording') and (post.author.is_course_editor? course or post.author.is_course_maintainer? course)
   end
 end

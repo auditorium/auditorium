@@ -16,7 +16,6 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @post = Post.find(params[:id])
-
     mark_notifications_as_read_for(@post) unless @post.nil?
 
     unless @post.author.id == current_user.id
@@ -69,6 +68,14 @@ class PostsController < ApplicationController
   # GET /posts/1/edit
   def edit
     @post = Post.find(params[:id])
+
+    respond_to do |format|
+      unless @post.post_type.eql? 'recording'
+        format.html
+      else
+        format.html { redirect_to edit_course_recording_path(@post.course, @post), flash: { notice: "You've been redirected." } }
+      end
+    end
   end
 
   # POST /posts

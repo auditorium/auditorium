@@ -700,6 +700,10 @@ table.announcement-teaser {
     background: @yellow url("info-badge.png") top no-repeat;
   }
 
+  &.private-recording-badge {
+    background: lighten(@orange, 30%) url("recording-badge.png") top no-repeat;
+  }
+
   &.recording-badge {
     background: @orange url("recording-badge.png") top no-repeat;
   }
@@ -1146,6 +1150,7 @@ p.rating-points {
   border-radius:none;
   padding: 10px;
   border:1px solid @grayLighter;
+  margin:10px 0;
 
   &:hover {
     background: @grayLighter;
