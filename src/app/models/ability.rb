@@ -46,7 +46,7 @@ class Ability
 
       can :comment,  Post
       can :report,   Post do |post|
-        user.id != post.author.id
+        user.id != post.author.id if post.author.presence
       end
       can :answer,   Post
       can :rate, Post do |post|
@@ -54,11 +54,11 @@ class Ability
       end
 
       can :mark_as_answered, Post do |post|
-        user.id == post.parent.author.id or user.is_course_editor? post.course or user.is_course_maintainer? post.course
+        post.parent.author.presence and (user.id == post.parent.author.id or user.is_course_editor? post.course or user.is_course_maintainer? post.course)
       end
 
       can :convert, Post do |post|
-        user.admin? or user.id == post.author.id or user.is_moderator? post.course
+        user.admin? or (post.author.presence and user.id == post.author.id) or user.is_moderator? post.course
       end
 
       # can :post_in, Course do |course|

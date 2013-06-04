@@ -14,7 +14,11 @@
 	<% end %>
 </h4>
 <% if @post.post_type.eql? 'question' and !@post.parent.nil? %>
-<p class="hint">Follow up question to the <%= link_to post_type?(@post.parent), @post.parent %> from <%= link_to @post.parent.author.full_name, @post.author %>.</p>
+  <% if @post.author.presence %>
+  <p class="hint">Follow up question to the <%= link_to post_type?(@post.parent), @post.parent %> from <%= link_to @post.parent.author.full_name, @post.author %>.</p>
+  <% else %>
+    <p class="hint">Follow up question to the <%= link_to post_type?(@post.parent), @post.parent %>.</p>
+  <% end %>
 <% end %>
 
 <%= render :partial => 'post', :locals => {:post => @post } %>
@@ -47,7 +51,9 @@
       <td>
         <b><%= link_to question.subject, post_path(question) %></b>
         <small class="pull-right">
-        	<%= link_to question.author.full_name, question.author %>,
+          <% if question.author.presence %>
+        	 <%= link_to question.author.full_name, question.author %>,
+          <% end %>
           <%= "#{distance_of_time_in_words(Time.now, question.created_at)} ago" %>, <%= link_to pluralize(question.answers.count, 'answer'), post_path(question) %>
         </small>
       </td>
