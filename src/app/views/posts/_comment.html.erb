@@ -7,10 +7,14 @@
        <%= link_to content_tag('i', '', class: 'icon-chevron-up'), rate_post_path(comment, :vote => 'up'), :title => 'Up vote this question.', :method => 'post', remote: true, class: 'btn-vote' %>
         <%= link_to content_tag('i', '', class: 'icon-chevron-down'), rate_post_path(comment, :vote => 'down'), :title => 'Down vote this question.', :method => 'post', remote: true, class: 'btn-vote' %> &middot;
     </span>
-    <% if comment.author.id == current_user.id %>
-      <%= link_to "by me (#{comment.author.score}p)", comment.author %> 
+    <% if comment.author.presence %>
+      <% if comment.author.id == current_user.id %>
+        <%= link_to "by me (#{comment.author.score}p)", comment.author %>
+      <% else %>
+        <%= link_to "by #{comment.author_name} (#{comment.author.score}p)", comment.author %> 
+      <% end %> 
     <% else %>
-      <%= link_to "by #{comment.author_name} (#{comment.author.score}p)", comment.author %>
+      <%= 'deleted person' %>
     <% end %>
      &middot; <%= "#{distance_of_time_in_words(Time.now, comment.created_at)} ago" %>
      &middot;

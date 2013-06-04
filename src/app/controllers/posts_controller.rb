@@ -18,7 +18,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     mark_notifications_as_read_for(@post) unless @post.nil?
 
-    unless @post.author.id == current_user.id
+    if @post.author.presence and not (@post.author.id == current_user.id)
       @post.views += 1
       @post.save!
     end
