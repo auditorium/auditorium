@@ -1,9 +1,11 @@
 class User < ActiveRecord::Base
+  before_save :ensure_authentication_token
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable, :trackable
   # TODO turn on confirmable in production
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable
+         :recoverable, :rememberable, :validatable, :confirmable, :token_authenticatable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :remember_me, :email, :alternative_email, :password, :password_confirmation
