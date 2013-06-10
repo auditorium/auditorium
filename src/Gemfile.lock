@@ -285,10 +285,9 @@ GEM
     treetop (1.4.14)
       polyglot
       polyglot (>= 0.3.1)
-    twitter-bootstrap-rails (2.2.7)
+    twitter-bootstrap-rails (2.2.6)
       actionpack (>= 3.1)
       execjs
-      rails (>= 3.1)
       railties (>= 3.1)
     tzinfo (0.3.37)
     uglifier (2.1.1)
@@ -345,7 +344,7 @@ DEPENDENCIES
   therubyracer (~> 0.11.0)
   thin
   thinking-sphinx (~> 2.0.12)
-  twitter-bootstrap-rails
+  twitter-bootstrap-rails (= 2.2.6)
   uglifier (>= 1.0.3)
   whenever
   yaml_db
