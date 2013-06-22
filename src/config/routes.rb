@@ -5,7 +5,6 @@ Auditorium::Application.routes.draw do
   match "membership_requests/:id/confirm", :to => 'membership_requests#confirm', :as => :confirm_membership_request
   match "membership_requests/:id/reject", :to => 'membership_requests#reject', :as => :reject_membership_request
   match "membership_requests/:id/add_as_member", :to => 'membership_requests#add_as_member', :as => :add_as_member_membership_request
-  devise_for :admin_users, ActiveAdmin::Devise.config
 
   devise_for :users, :controllers => { :confirmations => "users/confirmations", :sessions => "users/sessions", :registrations => "users/registrations" }
 
@@ -103,7 +102,6 @@ Auditorium::Application.routes.draw do
 
   root to: "landing_page#index"
 
-  ActiveAdmin.routes(self)
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

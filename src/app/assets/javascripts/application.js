@@ -11,33 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require jquery.ui.all
 //= require jquery_ujs
-//= require jquery.expander.min
-//= require jquery-migrate-1.1.0.min
-//= dontrequire zepto
-//= require twitter/bootstrap
-//= require ajax
-//= require bootstrap
-//= require chairs
-//= require course_memberships
-//= require courses
-//= require email_settings
-//= require events
-//= require faculties
-//= require feedbacks
-//= require follow-button
-//= require home
-//= require ie
-//= require institutes
-//= require jquery.placeholder.min
-//= require landing_page
-//= require lectures
-//= require my_faculties
-//= require notifications
-//= require periods
-//= require posts
-//= require search
-//= require terms
-//= require users
-//= require url_helper
+//= require foundation
+//= require_tree .
+$(function(){ $(document).foundation(); });

@@ -20,9 +20,6 @@ gem 'whenever'
 gem 'mathjax-rails'
 gem 'libv8', '~> 3.11.8'
 
-#active admin
-gem 'activeadmin'
-gem "meta_search",    '>= 1.1.0.pre'
 
 # for markdown rich text
 gem 'redcarpet', '~> 2.1.1'
@@ -49,22 +46,17 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'less-rails'
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'execjs'
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer', '~> 0.11.0'
 
   gem 'uglifier', '>= 1.0.3'
 
-  gem 'twitter-bootstrap-rails'
-
-  gem 'jquery-ui-rails'
-  gem 'jquery-ui-themes'
+  gem 'zurb-foundation'
 end
 
-gem "jquery-rails", "2.3.0"
+gem 'jquery-rails'
 gem 'savon', '~> 1.2.0'
 
 # To use ActiveModel has_secure_password

@@ -1,63 +1,30 @@
 <!DOCTYPE html>
-<html>
-  <head lang="en">
-    <title>auditorium</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--[if lt IE 9]>
-    <script src="/assets/html5shiv.js"></script>
-    <![endif]-->
-    <%= stylesheet_link_tag    "application", :media => "all" %>
-    <%= javascript_include_tag "application" %>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7 ]> <html class="ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+  <head>
+  	<meta charset="utf-8" />
+
+  	<!-- Uncomment to make IE8 render like IE7 -->
+  	<!-- <meta http-equiv="X-UA-Compatible" content="IE=7" /> -->
+
+  	<!-- Set the viewport width to device width for mobile -->
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  	<title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+
+  	<%= stylesheet_link_tag    "application" %>
+  	<%= javascript_include_tag "vendor/custom.modernizr" %>
     <%= csrf_meta_tags %>
-    
-    <% if mathjax_should_load %>
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-       tex2jax: {
-         inlineMath: [ ['$','$'] ],
-         processEscapes: true
-       }
-      });
-    </script>
-    <%= mathjax_tag config: 'TeX-AMS_HTML.js' %>
-    <% end %>
   </head>
+
   <body>
-    <header id="header">
+
+    <%= yield %>
+
     
-      <div class="container visible-desktop">
-        <%= render "shared/head" %>
-      </div>
-      <div class="container">
-        <%= render "shared/navbar" %>
-      </div>
-    </header>
-
-    <section>
-      <div class="container" id="content">
-        <% if current_user and !(current_user.username or current_user.first_name or current_user.last_name) and params[:controller].eql? 'home' %>
-
-          <p class="alert alert-info">You haven't set a username yet. Plase add your username or real name in your <%= link_to 'profile settings', edit_user_registration_path %>.</p>
-        <% end %>
-        <% flash.each do |key, value| %>
-          <div class="alert alert-<%= key %>"><%= value %></div>
-        <% end %>
-        <%= yield %>
-      </div>
-    </section>
-    <footer id="footer">
-      <%= render :partial => 'shared/footer' %>
-    </footer>
-    <% if can? :create, Feedback %>
-    <div class="hidden-phone" id="feedback">
-      <%= link_to 'feedback', '#feedbackModal', 'data-toggle'=>"modal", 'role' => 'button' %>
-    </div>
-    <% end %>
-   
-    <!--[if lt IE 10]>
-     <a id="tooCool" href="http://abetterbrowser.org" target="_blank">Too cool for Internet Explorer?</a>
-    <![endif]-->
-    <%= render 'feedbacks/feedback_modal' %>
+    <%= javascript_include_tag "application" %>
   </body>
 </html>
-
