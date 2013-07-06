@@ -21,9 +21,28 @@
   </head>
 
   <body>
+    <div class="contain-to-grid sticky">
+      <nav class="top-bar">
+        <ul class="title-area">
+          <!--Title area -->
+          <li class="name"><h1><a href="#">auditorium</a></h1></li>
+          <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+        </ul>
 
-    <%= yield %>
+        <section class="top-bar-section">
+          <!-- left nav section -->
+          <ul class="left">
+            <li class="divider"></li>
+            <li class="active"><a href="#">Main Item 1</a></li>
+          </ul>
+        </section>
+      </nav>
+    </div>
 
+    <div class="row">
+      <div class="small-8 columns"><%= yield %></div>
+      <div class="small-4 columns">SIDEBAR</div>
+    </div>
     
     <%= javascript_include_tag "application" %>
   </body>
