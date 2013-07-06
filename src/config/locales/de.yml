@@ -2,6 +2,7 @@
 # FUER INDENT BITTE SPACES NUTZEN!!!
 
 de:
+  sidebar: 'SEITENLEISTE'
   welcome: 'Willkommen auf auditorium!'
   profile: 'Profil von'
   posts:

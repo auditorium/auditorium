@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :create_user
   before_filter :set_current_user
+  before_filter :set_locale
 
   rescue_from CanCan::AccessDenied do |exception|
     unless current_user
@@ -98,4 +99,15 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource_or_scope)
     stored_location_for(resource_or_scope) || signed_in_root_path(resource_or_scope)
   end
+
+  # localization settings
+  def set_locale
+    I18n.locale = params[:locale] if params[:locale].present?
+  end
+
+  def default_url_options(options = {})
+    {locale: I18n.locale}
+  end 
+
+
 end
