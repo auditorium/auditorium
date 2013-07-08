@@ -14,3 +14,10 @@ en:
     headline:
       index: 'Recordings overview'
       new: 'Add a recording'
+  groups:
+    new: 
+      title: 'Create a new group'
+      submit: 'Submit group'
+    create:
+      success: 'The group has been created successfully.'
+      failure: 'There was a problem creating this group. Please try again.'

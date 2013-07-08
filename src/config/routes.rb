@@ -1,7 +1,10 @@
 Auditorium::Application.routes.draw do
   scope ':locale', locale: /#{I18n.available_locales.join("|")}/ do 
+    
+    get 'tags/:tag', to: 'groups#index', as: :tag
     resources :groups
-
+    
+    
     resources :membership_requests, :only => [:index, :create, :destroy]
 
     post "membership_requests/create", :to => 'membership_requests#create', :as => :create_membership_request
@@ -103,6 +106,6 @@ Auditorium::Application.routes.draw do
     root to: "landing_page#index"
   end
 
-  match "*path", to: redirect("/#{I18n.default_locale}/%{path}")
-  match "", to: redirect("/#{I18n.default_locale}")
+  match '*path', to: redirect("/#{I18n.default_locale}/%{path}")
+  match '', to: redirect("/#{I18n.default_locale}")
 end

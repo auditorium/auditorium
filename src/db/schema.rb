@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130622125240) do
+ActiveRecord::Schema.define(:version => 20130707213410) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -290,14 +290,24 @@ ActiveRecord::Schema.define(:version => 20130622125240) do
 
   add_index "reports", ["reporter_id"], :name => "index_reports_on_reporter_id"
 
-  create_table "tags", :force => true do |t|
-    t.string   "name"
-    t.integer  "post_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  create_table "taggings", :force => true do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
-  add_index "tags", ["post_id"], :name => "index_tags_on_post_id"
+  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
+  add_index "taggings", ["taggable_id"], :name => "index_taggings_on_taggable_id"
+  add_index "taggings", ["taggable_type"], :name => "index_taggings_on_taggable_type"
+
+  create_table "tags", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.text     "description"
+  end
 
   create_table "terms", :force => true do |t|
     t.string   "term_type"

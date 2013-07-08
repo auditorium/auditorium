@@ -8,7 +8,7 @@ class Post < ActiveRecord::Base
   belongs_to :course
   belongs_to :author, class_name: 'User'
    
-  has_many :tags 
+  has_many :tags, through: :taggings
   
   scope :not_answered, where(:answer_to_id => nil, :post_type => 'question')
 
