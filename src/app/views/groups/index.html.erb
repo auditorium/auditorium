@@ -11,8 +11,11 @@
 			<td><%= group.title %></td>
 			<td><%= group.description %></td>
 			<td>
-				<%= raw group.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %>
+				<%= tag_list_delimited(group.tags) %>
 			</td>
+			<td><%= link_to t('groups.edit.link') %></td>
 		</tr>
 	<% end %>
 </table>
+
+<%= link_to t('groups.new.link'), new_group_path, class: 'small button' %>

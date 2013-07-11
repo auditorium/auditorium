@@ -8,6 +8,15 @@ class GroupsController < ApplicationController
 		end
 	end
 
+	def show
+		@group = Group.find(params[:id])
+
+		respond_to do |format|
+			format.html
+			format.json { render json: @group }
+		end
+	end
+
 	def new
 		@group = Group.new
 
@@ -26,5 +35,23 @@ class GroupsController < ApplicationController
 				format.html { redirect_to 'new', error: t('groups.create.failure') }
 			end
 		end
+	end
+
+	def edit
+		@group = Group.find(params[:id])
+	end
+
+	def update
+		@group = Group.find(params[:id])
+
+    respond_to do |format|
+      if @group.update_attributes(params[:group])
+        format.html { redirect_to @group, notice: t('groups.update.success') }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit", error: t('groups.update.failure') }
+        format.json { render json: @group.errors, status: :unprocessable_entity }
+      end
+    end
 	end
 end

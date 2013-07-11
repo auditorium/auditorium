@@ -1,26 +1,5 @@
 <h1><%= t('groups.new.title') %></h1>
 
-<%= form_for(@group) do |f| %>
-
-
-    <div class="row">
-        <%= f.label :title %>
-        <%= f.text_field :title, class: 'large-12 columns' %>
-    </div>
-
-    <div class="row">
-        <%= f.label :description %>
-        <%= f.text_area :description, class: 'large-12 columns' %>
-    </div>
-
-    <div class="row">
-    		<%= f.label :tag_list %>
-    		<%= f.text_field :tag_list, class: 'large-12 columns' %>
-    </div>
-
-    <div class="row">
-       <%= f.submit t('groups.new.submit'), class: 'small button' %>
-    </div>
-<% end %>
+<%= render 'groups/form' %>
 
 

@@ -15,9 +15,18 @@ en:
       index: 'Recordings overview'
       new: 'Add a recording'
   groups:
+    menu_item: 'Groups'
     new: 
       title: 'Create a new group'
       submit: 'Submit group'
+      link: 'Create a new group'
+    edit:
+      link: 'Edit group'
+      title: 'Edit group'
+      submit: 'Update group'
+    update:
+      sucess: 'The group has been updated.'
+      failure: 'There was a problem while updating the groups data. Please try again.'
     create:
       success: 'The group has been created successfully.'
       failure: 'There was a problem creating this group. Please try again.'

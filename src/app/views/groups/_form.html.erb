@@ -1,0 +1,25 @@
+<%= form_for(@group) do |f| %>
+
+  <div class="row">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'large-12 columns' %>
+  </div>
+
+  <div class="row">
+    <%= f.label :description %>
+    <%= f.text_area :description, class: 'large-12 columns' %>
+  </div>
+
+  <div class="row">
+    <%= f.label :tag_list %>
+    <%= f.text_field :tag_list, class: 'large-12 columns' %>
+  </div>
+
+  <div class="row">
+    <% if params[:action] == 'new' %>
+      <%= f.submit t('groups.new.submit'), class: 'small button' %>
+    <% elsif params[:action] == 'edit' %>
+      <%= f.submit t('groups.edit.submit'), class: 'small button' %>
+    <% end %>
+  </div>
+<% end %>

@@ -205,4 +205,9 @@ module ApplicationHelper
   def notifications_for_user_in(course)
     current_user.notifications.keep_if{|n| !n.read? and course.posts.map(&:id).include? n.notifyable_id if n.notifyable_type.eql? 'Post'}
   end
+
+  def tag_list_delimited(tag_array)
+    tag_array.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ').html_safe
+  end
+
 end
