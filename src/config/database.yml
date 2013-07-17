@@ -6,7 +6,7 @@
 development:
   adapter: mysql2
   encoding: utf8
-  database: auditorium 
+  database: auditorium_next
   pool: 5
   username: auditorium
   password: test
