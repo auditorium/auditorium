@@ -3,7 +3,10 @@ class Group < ActiveRecord::Base
   has_many :tags, through: :taggings
   has_many :taggings, as: :taggable
 
-  attr_accessible :description, :title, :tag_list
+  attr_accessible :description, :title, :group_type, :tag_tokens
+  attr_reader :tag_tokens
+
+  validates :group_type, presence: true, inclusion: { in: %w{lecture topic learning} }
 
   def self.tagged_with(name)
   	Tag.find_by_name!(name).groups
@@ -18,4 +21,8 @@ class Group < ActiveRecord::Base
   		Tag.where(name: n.strip).first_or_create!
   	end 
   end 
+
+  def tag_tokens=(tokens)  
+    self.tag_ids = Tag.ids_from_tokens(tokens)  
+  end  
 end

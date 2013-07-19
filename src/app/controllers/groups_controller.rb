@@ -54,4 +54,13 @@ class GroupsController < ApplicationController
       end
     end
 	end
+
+	# for ajax calls
+	def change_group_type
+		@group = Group.new(group_type: params[:group_type])
+		respond_to do |format|
+			format.js
+		end
+	end
+
 end

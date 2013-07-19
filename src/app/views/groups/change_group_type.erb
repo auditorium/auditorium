@@ -1,0 +1,3 @@
+<% @tags_hint = t("groups.group_types.#{@group.group_type}.tags_hint") %>
+$('#group-basic-information .tags_hint').html('<%=j @tags_hint %>');
+$('input#group_group_type').val('<%=j @group.group_type %>');

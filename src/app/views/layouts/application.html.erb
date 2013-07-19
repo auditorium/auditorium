@@ -6,7 +6,6 @@
 <!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
   <head>
   	<meta charset="utf-8" />
-
   	<!-- Uncomment to make IE8 render like IE7 -->
   	<!-- <meta http-equiv="X-UA-Compatible" content="IE=7" /> -->
 
@@ -40,8 +39,8 @@
     </div>
 
     <div class="row">
-      <div class="small-8 columns"><%= yield %></div>
-      <div class="small-4 columns"><%= t 'sidebar' %></div>
+      <%= yield %>
+      <!-- <div class="small-4 columns"><%= t 'sidebar' %></div> -->
     </div>
     
     <%= javascript_include_tag "application" %>

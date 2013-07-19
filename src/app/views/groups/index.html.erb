@@ -4,16 +4,19 @@
 	<tr>
 		<th>Title</th>
 		<th>Description</th>
+		<th>Type</th>
 		<th>Tags</th>
 	</tr>
 	<% @groups.each do |group| %>
 		<tr>
 			<td><%= group.title %></td>
 			<td><%= group.description %></td>
+			
+			<td><%= group.group_type.capitalize %></td>
 			<td>
 				<%= tag_list_delimited(group.tags) %>
 			</td>
-			<td><%= link_to t('groups.edit.link') %></td>
+			<td><%= link_to t('groups.edit.link'), edit_group_path(group), class: 'button secondary tiny' %></td>
 		</tr>
 	<% end %>
 </table>

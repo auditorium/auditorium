@@ -44,14 +44,22 @@ $default-float: left;
 
 // Colors
 
-// $primary-color: #2ba6cb;
-// $secondary-color: #e9e9e9;
-// $alert-color: #c60f13;
-// $success-color: #5da423;
+// Color palette http://www.colourlovers.com/palette/1930/cheer_up_emo_kid by http://www.colourlovers.com/lover/electrikmonk/loveNote
+
+$green: #A3A948;
+$yellow: #EDB92E;
+$orange: #F85931;
+$red: #CE1836;
+$blue: #009989;
+$gray: #e9e9e9;
+// $primary-color: #009989;
+// $secondary-color: #EDB92E;
+// $alert-color: #CE1836;
+// $success-color: #A3A948;
 
 // Make sure border radius matches unless we want it different.
 
-// $global-radius: 3px;
+$global-radius: 5px;
 // $global-rounded: 1000px;
 
 // Inset shadow shiny edges and depressions.
@@ -354,7 +362,7 @@ $default-float: left;
 
 // Radius used throughout the core.
 
-// $button-radius: $global-radius;
+$button-radius: $global-radius;
 
 // Opacity for disabled buttons.
 
@@ -1270,3 +1278,45 @@ $default-float: left;
 // $topbar-sticky-class: ".sticky";
 
 @import 'foundation';
+
+.button {
+  @include radius;
+}
+
+.block {
+  border: 1px solid $secondary-color;
+  padding:20px;
+
+  &:after {
+    display:block;
+    text-algin:center;
+    margin:0 auto;
+    width:2px;
+    height:30px;
+    border-left:1px solid $gray;
+    border-right:1px solid $gray;
+  }
+
+}
+
+.choosable {
+  @include button-base;
+  @include button-style($gray, 0, false);
+  width:33%;
+  height:200px;
+  padding:10px;
+
+  h1 {
+    font-size:1.2em;
+  }
+
+  &.selected {
+    background-color: darken($gray, 10%);
+  }
+}
+
+.hint {
+  color: darken($gray, 20%);
+  font-size: 0.9em;
+  font-style: italic;
+}

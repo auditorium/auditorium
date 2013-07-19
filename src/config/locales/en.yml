@@ -15,6 +15,25 @@ en:
       index: 'Recordings overview'
       new: 'Add a recording'
   groups:
+    group-basic-information:
+      placeholder: 'Choose a type for your new group...'
+    choose-type:
+      title: 'Please choose the type of your group'
+    group_types:
+      general:
+        tags_hint: 'Please enter tags to describe your group and improve the groups search ranking.'
+      lecture:
+        title: 'Lecture Group'
+        description: 'Choose this group type for lectures.'
+        tags_hint: 'Please enter tags for faculty, institute, chair and semester so that users can find your group more easily.'
+      learning:
+        title: 'Learning Group'
+        description: 'Choose this group type to create a learning group for you and your fellows.'
+        tags_hint: 'Please enter tags to describe the group.'
+      topic:
+        title: 'Topic Group'
+        description: 'Choose this group type for discussions and general questions and events.'
+        tags_hint: 'Please enter tags to describe the group.'
     menu_item: 'Groups'
     new: 
       title: 'Create a new group'
@@ -30,3 +49,9 @@ en:
     create:
       success: 'The group has been created successfully.'
       failure: 'There was a problem creating this group. Please try again.'
+  tags:
+    new_entry: 'Create the new tag: %{name}'
+  tokeninput:
+    hint_text: "Type in a search term"
+    no_results_text: "No tags found."
+    searching_text: "Searching for available tags..."

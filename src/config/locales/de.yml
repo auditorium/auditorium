@@ -2,8 +2,47 @@
 # FUER INDENT BITTE SPACES NUTZEN!!!
 
 de:
-  sidebar: 'SEITENLEISTE'
-  welcome: 'Willkommen auf auditorium!'
-  profile: 'Profil von'
-  posts:
-    headline: 'Beitrag'
+  sidebar: 'Seitenleiste'
+  recordings:
+    action:
+      add: 'Füge eine Videoaufzeichnung hinzu'
+      submit: 'Fertigstellen'
+      update: 'Fertigstellen'
+      comment: 'Kommentar hinzufügen'
+      delete: 'Entferne Videoaufzeichnung'
+      edit: 'Bearbeite Videoaufzeichnung'
+    headline:
+      index: 'Übersicht der Videoaufzeichnungen'
+      new: 'Füge eine neue Videoaufzeichnung hinzu'
+  groups:
+    group_types:
+      lecture:
+        title: 'Lehrveranstaltung'
+        description: 'Choose this group type for lectures.'
+      learning:
+        title: 'Lerngruppe'
+        description: 'Choose this group type to create a learning group for you and your fellows.'
+      topic:
+        title: 'Themengebiet'
+        description: 'Choose this group type for discussions and general questions and events.'
+    menu_item: 'Gruppen'
+    new: 
+      title: 'Eine neue Gruppe erstellen'
+      submit: 'Fertigstellen'
+      link: 'Erstelle eine neue Gruppe'
+    edit:
+      link: 'Gruppe bearbeiten'
+      title: 'Gruppe bearbeiten'
+      submit: 'Fertigstellen'
+    update:
+      sucess: 'The group has been updated.'
+      failure: 'There was a problem while updating the groups data. Please try again.'
+    create:
+      success: 'The group has been created successfully.'
+      failure: 'There was a problem creating this group. Please try again.'
+  tags:
+    new_entry: 'Erstellen Sie einen neuen Tag mit dem namen: %{name}'
+  tokeninput:
+    hint_text: "Geben Sie den Namen eines Tags ein."
+    no_results_text: "Es wurden keine Tags gefunden."
+    searching_text: "Es wird gerade nach verfügbaren Tags gesucht..."

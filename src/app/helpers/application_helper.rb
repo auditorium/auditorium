@@ -67,6 +67,10 @@ module ApplicationHelper
   def post_types
     ['answer', 'question', 'comment']
   end
+
+  def group_types
+    ['lecture', 'learning', 'topic']
+  end
   
   def term_types
     { "ss" => "Summer Semester", "ws" => "Winter Semester", "tri1" => "1. Trisemester", "tri2" => "2. Trisemester", "tri3" => '3. Trisemester' }

@@ -1,5 +1,24 @@
 <h1><%= t('groups.new.title') %></h1>
 
-<%= render 'groups/form' %>
+<section class="block row" id="group-choose-type">
+  <header>
+    <h2><%= t('groups.choose-type.title') %></h2>
+  </header>
+  <% group_types.each do |group_type| %>
+    <div class="large-4 columns choosable" data-id='<%= group_type %>'>
+      <h1><%= t("groups.group_types.#{group_type}.title") %></h1>
+      <p><%= t("groups.group_types.#{group_type}.description") %></p>
+    </div>
+  <% end %>
+</section>
 
+<section class="block row" id="group-basic-information">
+  <div class="large-12 columns">
+    <%= render 'groups/form' %>
+  </div>
+</section>
+
+<section class="block row" id="group-invite-people">
+  Invite People  
+</section>
 

@@ -11,8 +11,9 @@
   </div>
 
   <div class="row">
-    <%= f.label :tag_list %>
-    <%= f.text_field :tag_list, class: 'large-12 columns' %>
+    <%= f.label :tag_tokens %>
+    <%= f.text_field :tag_tokens, data: {load: @group.tags}, class: 'large-12 columns' %>
+    <p class="tags_hint hint"><%= t('groups.group_types.general.tags_hint')%></p>
   </div>
 
   <div class="row">
@@ -22,4 +23,6 @@
       <%= f.submit t('groups.edit.submit'), class: 'small button' %>
     <% end %>
   </div>
+
+  <%= f.hidden_field :group_type %>
 <% end %>
