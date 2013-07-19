@@ -14,6 +14,8 @@ class Tag < ActiveRecord::Base
     tags = where("name LIKE ?", "%#{query}%")
     if tags.empty?
       [{ id: "<<<#{query}>>>", name: I18n.translate('tags.new_entry', name: query)}]
+    else
+      tags
     end
   end
 
