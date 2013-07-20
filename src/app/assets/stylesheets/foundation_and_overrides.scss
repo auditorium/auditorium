@@ -1300,18 +1300,10 @@ $button-radius: $global-radius;
 }
 
 .choosable {
-  @include button-base;
-  @include button-style($gray, 0, false);
-  width:33%;
   height:200px;
-  padding:10px;
-
-  h1 {
-    font-size:1.2em;
-  }
-
+  cursor: pointer;
   &.selected {
-    background-color: darken($gray, 10%);
+     background-color: darken($gray, 10%);
   }
 }
 

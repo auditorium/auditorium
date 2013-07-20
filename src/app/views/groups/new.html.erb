@@ -1,22 +1,47 @@
 <h1><%= t('groups.new.title') %></h1>
 
 <section class="block row" id="group-choose-type">
-  <header>
+  <header id="first-stop">
     <h2><%= t('groups.choose-type.title') %></h2>
   </header>
   <% group_types.each do |group_type| %>
-    <div class="large-4 columns choosable" data-id='<%= group_type %>'>
-      <h1><%= t("groups.group_types.#{group_type}.title") %></h1>
-      <p><%= t("groups.group_types.#{group_type}.description") %></p>
+    <div class="large-4 columns choosable panel" data-id='<%= group_type %>'>
+      <dl>
+        <dt><%= t("groups.group_types.#{group_type}.title") %></dt>
+        <dd><%= t("groups.group_types.#{group_type}.description") %></dd>
+      </dl>
     </div>
   <% end %>
 </section>
 
 <section class="block row" id="group-basic-information">
-  <header>
+  <header id="numero1">
     <h2><%= t('groups.choose-type.title') %></h2>
   </header>
   <div class="large-12 columns">
     <%= render 'groups/form' %>
   </div>
 </section>
+
+
+<!-- guide via joyride plugin -->
+
+<!-- <ol class="joyride-list" data-joyride>
+  <li data-id="first-stop" data-class="custom so-awesome" data-text="Next">
+    <h4>Just a test</h4>
+    <p>Hello and welcome to the Joyride documentation page.</p>
+  </li>
+  <li data-id="numero1" data-class="custom so-awesome" data-text="Next">
+    <h4>Stop #1</h4>
+    <p>You can control all the details for you tour stop. Any valid HTML will work inside of Joyride.</p>
+  </li>
+  <li data-id="numero2" data-button="Next" data-options="tipLocation:top;tipAnimation:fade">
+    <h4>Stop #2</h4>
+    <p>Get the details right by styling Joyride with a custom stylesheet!</p>
+  </li>
+  <li data-button="Next">
+    <h4>Stop #4</h4>
+    <p>It works as a modal too!</p>
+  </li>
+</ol>
+ -->

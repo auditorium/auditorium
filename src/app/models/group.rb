@@ -3,7 +3,9 @@ class Group < ActiveRecord::Base
   has_many :tags, through: :taggings
   has_many :taggings, as: :taggable
 
-  attr_accessible :description, :title, :group_type, :tag_tokens
+  belongs_to :creator, class_name: 'User'
+
+  attr_accessible :description, :title, :group_type, :tag_tokens, :creator_id
   attr_reader :tag_tokens
 
   validates :group_type, presence: true, inclusion: { in: %w{lecture topic learning} }

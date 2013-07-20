@@ -2,6 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
+$(document).foundation('joyride', 'start');
+
 $('.choosable').on 'click', (event) ->
   event.preventDefault()
   selected_group = $(this)

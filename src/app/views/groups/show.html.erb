@@ -3,3 +3,5 @@
 <p><%= @group.description %></p>
 
 <%= tag_list_delimited(@group.tags) %>
+
+<%= @group.creator.full_name if @group.creator.presence %>

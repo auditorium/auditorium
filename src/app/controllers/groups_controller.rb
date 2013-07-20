@@ -27,7 +27,8 @@ class GroupsController < ApplicationController
 
 	def create
 		@group = Group.new(params[:group])
-
+		@group.creator = current_user
+		
 		respond_to do |format|
 			if @group.save!
 				format.html { redirect_to @group, notice: t('groups.create.success') }
