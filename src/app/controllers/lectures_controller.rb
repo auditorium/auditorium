@@ -13,7 +13,7 @@ class LecturesController < ApplicationController
       @lectures = Lecture.all
     end
 
-    @lectures = Kaminari.paginate_array(@lectures).page(params[:page]).per(9)
+    @lectures = Kaminari.paginate_array(@lectures).page(params[:page]).per(18)
 
     respond_to do |format|
       format.html # index.html.erb
