@@ -1,4 +1,7 @@
 Auditorium::Application.routes.draw do
+  resources :announcements
+
+
   get "tags/index"
 
   scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do 

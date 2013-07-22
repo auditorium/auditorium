@@ -1,9 +1,7 @@
 class Post < ActiveRecord::Base
   scope :not_answered, where(:answer_to_id => nil, :post_type => 'question')
-  attr_accessible :body, :subject, :parent_id, :course_id, :author_id, :answer_to_id, :is_private, :tag_tokens
+  attr_accessible :body, :subject, :parent_id, :course_id, :author_id, :answer_to_id, :is_private, :tag_tokens, :post_type
   attr_reader :tag_tokens
-  attr_protected :post_type
-
 
   has_many :tags, through: :taggings
   has_many :taggings, as: :taggable
