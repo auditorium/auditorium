@@ -17,12 +17,12 @@
       <tr>
         <td><%= question.subject %></td>
         <td><%= question.body %></td>
-        <td><%= link_to t('questions.actions.edit'), edit_question_path(question), class: 'button' %></td>
+        <td><%= link_to t('questions.actions.edit'), edit_question_path(question), class: 'small button' %></td>
         <td><%= link_to t('questions.actions.delete'), question, method: :delete, confirm: 'Are you sure to delete this question?', class: 'button alert' %></td>
       </tr>
       <% end %>  
     </tbody>
   </table>
 
-  <%= link_to t('questions.actions.new'), new_group_question_path(@group), class: 'button' %>
+  <%= link_to t('questions.actions.new'), new_group_question_path(@group), class: 'small button' %>
 </section>

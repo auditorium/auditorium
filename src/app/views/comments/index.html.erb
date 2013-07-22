@@ -1,0 +1,22 @@
+<h1>Comments</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Comment</th>
+      <th>Author</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @comments.each do |comment| %>
+      <tr>
+        <th><%= comment %></th>
+        <th><%= comment.author.full_name %></th>
+        <th><%= link_to t('comments.actions.delete'), comment, method: :delete, confirm: 'Are you sure?', class: 'small button alert' %></th>
+        <th><%= link_to t('comments.actions.edit'), edit_comment_path, class: 'small button' %></th>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

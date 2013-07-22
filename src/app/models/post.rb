@@ -3,6 +3,8 @@ class Post < ActiveRecord::Base
   attr_accessible :body, :subject, :parent_id, :course_id, :author_id, :answer_to_id, :is_private, :tag_tokens, :post_type
   attr_reader :tag_tokens
 
+  has_many :comments, as: :commentable
+
   has_many :tags, through: :taggings
   has_many :taggings, as: :taggable
 

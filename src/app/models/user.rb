@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
   has_many :courses,    :through => :course_memberships  # as student or course-editor (tutor,  professor,  etc.)
   has_many :faculties,  :through => :faculty_memberships
   has_many :posts, :foreign_key => :author_id
+  has_many :comments, :foreign_key => :author_id
   has_many :notifications, :foreign_key => :receiver_id
   has_one :email_setting, :dependent => :destroy
   

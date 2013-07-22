@@ -22,7 +22,6 @@ class AnswersController < ApplicationController
 
   def create
     @answer = @question.answers.new(params[:answer])
-    @answer.question = @question
     @answer.post_type = 'answer'
     @answer.author = current_user
 
@@ -38,11 +37,11 @@ class AnswersController < ApplicationController
   end
 
   def edit 
-    @answer = Question.find(params[:id])
+    @answer = Answer.find(params[:id])
   end
 
   def update
-    @answer = Question.find(params[:id])
+    @answer = Answer.find(params[:id])
 
     respond_to do |format|
       if @question.update_attributes(params[:answer])

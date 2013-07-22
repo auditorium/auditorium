@@ -1,0 +1,20 @@
+<section class="row">
+  <header id="first-stop">
+    <h2><%= t('comments.new.title') %></h2>
+  </header>
+  <%= form_for([@commentable, @comment]) do |f| %>
+
+  <div class="row">
+    <%= f.label :content %>
+    <%= f.text_area :content, class: 'large-12 columns' %>
+  </div>
+
+  <div class="row">
+    <% if params[:action] == 'new' %>
+      <%= f.submit t('comments.new.submit'), class: 'small button' %>
+    <% elsif params[:action] == 'edit' %>
+      <%= f.submit t('comments.edit.submit'), class: 'small button' %>
+    <% end %>
+  </div>
+<% end %>
+</section>

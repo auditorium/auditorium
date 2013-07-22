@@ -2,4 +2,4 @@
 
 <%= tag_list_delimited(@answer.tags) %>
 
-<%= debug @answer %>
+<%= link_to t('comments.actions.new'), new_answer_comment_path(@answer) %>
