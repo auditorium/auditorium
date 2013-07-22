@@ -2,13 +2,21 @@ Auditorium::Application.routes.draw do
   get "tags/index"
 
   scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do 
-    
+
     get 'tags/:tag', to: 'groups#index', as: :tag
     resources :tags, only: ['index']
     
     get 'groups/change_group_type', to: 'groups#change_group_type'
-    resources :groups
-    
+    shallow do 
+      resources :groups do
+        resources :questions do
+          resources :comments
+          resources :answers do
+            resources :comments
+          end
+        end
+      end
+    end
     
     resources :membership_requests, :only => [:index, :create, :destroy]
 

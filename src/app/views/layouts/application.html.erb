@@ -50,6 +50,6 @@
     
     <%= javascript_include_tag "application" %>
 
-    <%= "<div class='panel'>#{debug current_user}</div>".html_safe if Rails.env.development? %>
+    <% "<div class='panel'>#{debug current_user}</div>".html_safe if Rails.env.development? %>
   </body>
 </html>

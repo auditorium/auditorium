@@ -15,6 +15,14 @@ en:
       index: 'Recordings overview'
       new: 'Add a recording'
   groups:
+    show:
+      questions:
+        header: 'Questions'
+        new: 'Ask a question'
+      topics:
+        header: 'Topics'
+        new: 'Create a new topic'
+
     group-basic-information:
       placeholder: 'Choose a type for your new group...'
     choose-type:

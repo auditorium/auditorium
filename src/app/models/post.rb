@@ -1,4 +1,13 @@
 class Post < ActiveRecord::Base
+  scope :not_answered, where(:answer_to_id => nil, :post_type => 'question')
+  attr_accessible :body, :subject, :parent_id, :course_id, :author_id, :answer_to_id, :is_private, :tag_tokens
+  attr_reader :tag_tokens
+  attr_protected :post_type
+
+
+  has_many :tags, through: :taggings
+  has_many :taggings, as: :taggable
+
   belongs_to :parent, class_name: 'Post'
   has_many :children, foreign_key: :parent_id, class_name: 'Post', :dependent => :destroy
 
@@ -6,19 +15,12 @@ class Post < ActiveRecord::Base
   has_one :answer, foreign_key: :answer_to_id, class_name: 'Post'
 
   belongs_to :course
+  belongs_to :group
   belongs_to :author, class_name: 'User'
    
   has_many :tags, through: :taggings
   
-  scope :not_answered, where(:answer_to_id => nil, :post_type => 'question')
-
-  attr_accessible :body, :subject, :post_type, :parent_id, :course_id, :author_id, :answer_to_id, :is_private
-
-  validates :post_type, presence: true, inclusion: { in: %w{question answer info comment recording} }
-  validates :subject, presence: true
-  validates :course, presence: true
-  validates :body, presence: true
-  validates :author, presence: true
+ 
 
   define_index do
     indexes subject
@@ -31,6 +33,26 @@ class Post < ActiveRecord::Base
     author.update_score if rating_changed?
   end
   
+  # tagging
+  def self.tagged_with(name)
+    Tag.find_by_name!(name).posts
+  end
+
+  def tag_list
+    self.tags.map(&:name).join(", ")
+  end
+
+  def tag_list=(names)
+    self.tags = names.split(",").map do |n|
+      Tag.where(name: n.strip).first_or_create!
+    end 
+  end 
+
+  def tag_tokens=(tokens)  
+    self.tag_ids = Tag.ids_from_tokens(tokens)  
+  end  
+
+
   # get answers and comments to this post if any
   def answers
    answers = Post.find_all_by_post_type_and_parent_id('answer', self.id)

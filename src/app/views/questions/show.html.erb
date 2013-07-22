@@ -1,0 +1,51 @@
+<h1><%= @question.subject %></h1>
+
+<p class="hint"><%= link_to @question.group.title, @question.group %></p>
+
+<p><%= markdown @question.body %></p>
+
+<%= tag_list_delimited(@question.tags) %>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th><%= t('answers.body') %></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @question.answers.each do |answer| %>
+    <tr>
+      <td><%= markdown answer.body %></td>
+      <td><%= link_to t('answers.actions.edit'), edit_answer_path(answer) %></td>
+      <td><%= link_to t('answers.actions.delete'), answer, method: :delete, confirm: 'Are you sure to delete this answer?', class: 'button alert' %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('answers.actions.new'), new_question_answer_path(@question), class: 'button' %>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th><%= t('comments.body') %></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @question.comments.each do |comment| %>
+    <tr>
+      <td><%= markdown comment.body %></td>
+      <td><%= link_to t('comments.actions.edit'), edit_comment_path(comment) %></td>
+      <td><%= link_to t('comments.actions.delete'), comment, method: :delete, confirm: 'Are you sure to delete this comment?', class: 'button alert' %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('comments.actions.new'), new_question_comment_path(@question), class: 'button' %>

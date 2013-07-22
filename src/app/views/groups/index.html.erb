@@ -9,7 +9,7 @@
 	</tr>
 	<% @groups.each do |group| %>
 		<tr>
-			<td><%= group.title %></td>
+			<td><%= link_to group.title, group_path(group) %></td>
 			<td><%= group.description %></td>
 			
 			<td><%= group.group_type.capitalize %></td>

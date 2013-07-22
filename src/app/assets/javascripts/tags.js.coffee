@@ -2,8 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-$('#group_tag_tokens').tokenInput '/tags.json',  
-  prePopulate: $('#group_tag_tokens').data('load') 
+$('#group_tag_tokens, #question_tag_tokens, #answer_tag_tokens').tokenInput '/tags.json',  
+  prePopulate: $('#group_tag_tokens, #question_tag_tokens, #answer_tag_tokens').data('load') 
   theme: 'facebook'
   crossDomain: false
   hintText: i18n_tokeninput_hint_text

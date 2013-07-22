@@ -1,11 +1,4 @@
 <section>
-  <header><h1><%= @group.title %></h1></header> 
-
-  <p><%= @group.description %></p> 
-  <%= tag_list_delimited(@group.tags) %>
-</section>
-
-<section>
   <header>
     <h2><%= t('groups.show.questions.header') %></h2>
   </header>
@@ -20,13 +13,13 @@
       </tr>
     </thead>
     <tbody>
-      <% @group.questions.each do |question| %>
+      <% @questions.each do |question| %>
       <tr>
-        <td><%= link_to question.subject, question %></td>
+        <td><%= question.subject %></td>
         <td><%= question.body %></td>
         <td><%= link_to t('questions.actions.edit'), edit_question_path(question), class: 'button' %></td>
         <td><%= link_to t('questions.actions.delete'), question, method: :delete, confirm: 'Are you sure to delete this question?', class: 'button alert' %></td>
-        </tr>
+      </tr>
       <% end %>  
     </tbody>
   </table>

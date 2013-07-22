@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130720220857) do
+ActiveRecord::Schema.define(:version => 20130722112550) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -153,9 +153,11 @@ ActiveRecord::Schema.define(:version => 20130720220857) do
     t.datetime "updated_at",                         :null => false
     t.string   "group_type",  :default => "lecture"
     t.integer  "creator_id",  :default => 1
+    t.integer  "post_id"
   end
 
   add_index "groups", ["creator_id"], :name => "index_groups_on_creator_id"
+  add_index "groups", ["post_id"], :name => "index_groups_on_post_id"
 
   create_table "institutes", :force => true do |t|
     t.string   "name"
@@ -263,11 +265,13 @@ ActiveRecord::Schema.define(:version => 20130720220857) do
     t.datetime "last_activity"
     t.integer  "views",           :default => 0
     t.string   "url"
+    t.integer  "group_id"
   end
 
   add_index "posts", ["answer_to_id"], :name => "index_posts_on_answer_to_id"
   add_index "posts", ["author_id"], :name => "index_posts_on_author_id"
   add_index "posts", ["course_id"], :name => "index_posts_on_course_id"
+  add_index "posts", ["group_id"], :name => "index_posts_on_group_id"
   add_index "posts", ["parent_id"], :name => "index_posts_on_child_id"
 
   create_table "ratings", :force => true do |t|

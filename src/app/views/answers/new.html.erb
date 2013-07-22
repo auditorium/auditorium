@@ -1,0 +1,25 @@
+<section class="row">
+  <header id="first-stop">
+    <h2><%= t('answers.new.title') %></h2>
+  </header>
+  <%= form_for([@question, @answer]) do |f| %>
+
+  <div class="row">
+    <%= f.label :body %>
+    <%= f.text_area :body, class: 'large-12 columns' %>
+  </div>
+
+  <div class="row">
+    <%= f.label :tag_tokens %>
+    <%= f.text_field :tag_tokens, data: {load: @answer.tags}, class: 'large-12 columns' %>
+  </div>
+
+  <div class="row">
+    <% if params[:action] == 'new' %>
+      <%= f.submit t('answers.new.submit'), class: 'small button' %>
+    <% elsif params[:action] == 'edit' %>
+      <%= f.submit t('answers.edit.submit'), class: 'small button' %>
+    <% end %>
+  </div>
+<% end %>
+</section>

@@ -3,7 +3,10 @@ class Group < ActiveRecord::Base
   has_many :tags, through: :taggings
   has_many :taggings, as: :taggable
 
+  has_many :questions, conditions: { post_type: 'question' }
+
   belongs_to :creator, class_name: 'User'
+
 
   attr_accessible :description, :title, :group_type, :tag_tokens, :creator_id
   attr_reader :tag_tokens
