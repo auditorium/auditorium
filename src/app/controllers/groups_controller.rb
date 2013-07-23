@@ -56,6 +56,16 @@ class GroupsController < ApplicationController
     end
 	end
 
+	def destroy
+		@group = Group.find(params[:id])
+		@group.destroy
+
+		respond_to do |format|
+			format.html { redirect_to groups_path, notice: t('groups.destroy.success') }
+			format.json { head :no_content }
+		end
+	end
+
 	# for ajax calls
 	def change_group_type
 		@group = Group.new(group_type: params[:group_type])

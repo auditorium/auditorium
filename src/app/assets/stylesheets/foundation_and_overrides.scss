@@ -1,6 +1,7 @@
 //
 // Foundation Variables
 //
+@import 'custom_webfonts';
 
 // The default font-size is set to 100% of the browser style sheet (usually 16px)
 // for compatibility with browser-based text zoom or user-set defaults.
@@ -28,15 +29,15 @@ $em-base: 16px !default;
 
 $default-float: left;
 
-$body-bg: #fff;
-// $body-font-color: #222;
-// $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-// $body-font-weight: normal;
-// $body-font-style: normal;
+$body-bg: #f9f9f9;
+$body-font-color: #222;
+$body-font-family:  "Helvetica", "Helvetica Neue", Helvetica, sans-serif;
+$body-font-weight: normal;
+$body-font-style: normal;
 
 // Font-smoothing
 
-$font-smoothing: antialiased;
+// $font-smoothing: antialiased;
 
 // Text direction settings
 
@@ -57,6 +58,7 @@ $secondary-color: #FC9800;
 $alert-color: #BF0404;
 $success-color: #8BD936;
 $warning-color: #F2DB00;
+$notice-color: lighten($primary-color, 20%);
 
 // Make sure border radius matches unless we want it different.
 
@@ -86,7 +88,7 @@ $global-radius: 5px;
 // $include-html-reveal-classes: $include-html-classes;
 // $include-html-joyride-classes: $include-html-classes;
 // $include-html-clearing-classes: $include-html-classes;
-// $include-html-alert-classes: $include-html-classes;
+$include-html-alert-classes: $include-html-classes;
 $include-html-nav-classes: $include-html-classes;
 $include-html-top-bar-classes: $include-html-classes;
 // $include-html-label-classes: $include-html-classes;
@@ -145,8 +147,8 @@ $include-html-top-bar-classes: $include-html-classes;
 
 // Heading font styles
 
-// $header-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-// $header-font-weight: bold;
+$header-font-family: 'Georgia',serif;
+$header-font-weight: normal;
 // $header-font-style: normal;
 // $header-font-color: #222;
 // $header-line-height: 1.4;
@@ -329,27 +331,27 @@ $include-html-top-bar-classes: $include-html-classes;
 
 // Padding for buttons.
 
-// $button-tny: emCalc(7px);
-// $button-sml: emCalc(9px);
-// $button-med: emCalc(12px);
-// $button-lrg: emCalc(16px);
+$button-tny: emCalc(10px);
+$button-sml: emCalc(12px);
+$button-med: emCalc(14px);
+$button-lrg: emCalc(18px);
 
 // Display property.
 
 // $button-display: inline-block;
-// $button-margin-bottom: emCalc(20px);
+$button-margin-bottom: emCalc(2px);
 
 // Button text styles.
 
 // $button-font-family: inherit;
 // $button-font-color: #fff;
 // $button-font-color-alt: #333;
-// $button-font-med: emCalc(16px);
-// $button-font-tny: emCalc(11px);
-// $button-font-sml: emCalc(13px);
-// $button-font-lrg: emCalc(20px);
-// $button-font-weight: bold;
-// $button-font-align: center;
+$button-font-med: emCalc(18px);
+$button-font-tny: emCalc(12px);
+$button-font-sml: emCalc(14px);
+$button-font-lrg: emCalc(22px);
+$button-font-weight: bold;
+$button-font-align: center;
 
 // Various hover effects.
 
@@ -1280,8 +1282,27 @@ $topbar-divider-border-bottom: none;
 
 @import 'foundation';
 
+.alert-box {
+  margin:10px;
+}
+
+.notice, .error {
+  @include alert-base;
+  .close { @include alert-close; }
+}
+
+.error {
+  background-color: $alert-color;
+  border-color: darken($alert-color, 10%);
+}
+
+.notice {
+  background-color: $notice-color;
+  border-color: darken($notice-color, 10%);
+}
+
 .top-bar {
-  box-shadow: 0 2px 4px lighten($primary-color, 20%);
+  box-shadow: 0 2px 4px darken($gray, 20%);
 }
 
 .top-bar-section li a:not(.button):hover {
@@ -1289,11 +1310,20 @@ $topbar-divider-border-bottom: none;
 }
 
 .button {
-  @include radius;
+  vertical-align: baseline;
+  border:none;
+
+  &.secondary {
+    background-color: darken($gray, 20%);
+
+    &:hover {
+      background-color: darken($gray, 30%);
+    }
+  }
 }
 
 .block {
-  border: 1px solid $secondary-color;
+  border: 1px solid $gray;
   padding:20px;
 
   &:after {

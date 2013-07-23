@@ -20,6 +20,9 @@
   </head>
 
   <body>
+
+    <noscript><div class="alert-box">Please enable javascript.</div></noscript>
+
     <div class="sticky">
       <nav class="top-bar" data-options='is_hover:false'>
         <ul class="title-area">
@@ -47,7 +50,15 @@
       </nav>
     </div>
 
-    <noscript><div class="alert-box">Please enable javascript.</div></noscript>
+    <!-- flash messages -->
+    <% [:error, :success, :notice].each do |key| %>
+      <% if flash[key] %>
+      <div data-alert class="alert-box <%= key %>" id="flash">
+        <%= flash[key] %>
+        <a href="#" class="close">&times;</a>
+      </div>
+      <% end %>
+    <% end %>    
 
     <div class="row">
       <%= yield %>

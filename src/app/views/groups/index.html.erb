@@ -17,6 +17,7 @@
 				<%= tag_list_delimited(group.tags) %>
 			</td>
 			<td><%= link_to t('groups.edit.link'), edit_group_path(group), class: 'button secondary tiny' %></td>
+			<td><%= link_to t('groups.delete.link'), group, method: :delete, class: 'button alert tiny' %></td>
 		</tr>
 	<% end %>
 </table>
