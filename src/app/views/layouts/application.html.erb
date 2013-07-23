@@ -12,7 +12,7 @@
   	<!-- Set the viewport width to device width for mobile -->
   	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  	<title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+  	<title><%= content_for?(:title) ? yield(:title) : "auditorium next" %></title>
 
   	<%= stylesheet_link_tag    "application" %>
   	<%= javascript_include_tag "vendor/custom.modernizr" %>
@@ -20,23 +20,28 @@
   </head>
 
   <body>
-    <div class="contain-to-grid sticky">
-      <nav class="top-bar">
+    <div class="sticky">
+      <nav class="top-bar" data-options='is_hover:false'>
         <ul class="title-area">
           <!--Title area -->
-          <li class="name"><h1><a href="#">auditorium</a></h1></li>
+          <li class="name"><h1><%= link_to 'auditorium', root_path %></h1></li>
           <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
         </ul>
 
         <section class="top-bar-section">
           <!-- left nav section -->
           <ul class="left">
-            <li class="divider"></li>
+            <li><%= link_to t('navigation.home'), root_path %></li>
             <li><%= link_to t('groups.menu_item'), groups_path %></li>
           </ul>
 
           <ul class="right">
-            <li><%= link_to current_user.full_name, user_path(current_user) %></li>
+            <% if current_user.presence %>
+              <li><%= link_to current_user.full_name, user_path(current_user) %></li>
+              <li><%= link_to t('users.sign_out'), destroy_user_session_path, method: :delete %></li>
+            <% else %>
+              <li><%= link_to t('users.sign_in'), new_user_session_path %></li>
+            <% end %>
           </ul>
         </section>
       </nav>
