@@ -16,12 +16,11 @@ class QuestionsController < ApplicationController
   end
 
   def new
-    @question = @group.questions.build(post_type: 'question')
+    @question = @group.questions.build
   end
 
   def create
     @question = @group.questions.new(params[:question])
-    @question.post_type = 'question'
     @question.author = current_user
 
     respond_to do |format|

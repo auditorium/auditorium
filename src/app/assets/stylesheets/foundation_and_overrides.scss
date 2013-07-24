@@ -56,7 +56,7 @@ $primary-color: #3474B8;
 $secondary-color: #FC9800;
 $alert-color: #BF0404;
 $success-color: #8BD936;
-$warning-color: #F2DB00;
+$warning-color: #F2CB13;
 $notice-color: lighten($primary-color, 20%);
 
 // Make sure border radius matches unless we want it different.
@@ -1213,7 +1213,7 @@ $button-radius: $global-radius;
 
 // Background color for the top bar
 
-$topbar-bg: darken($primary-color, 20%) !default;
+$topbar-bg: black !default;
 
 // Height and margin
 
@@ -1319,6 +1319,14 @@ $topbar-divider-border-bottom: none;
       background-color: darken($gray, 30%);
     }
   }
+
+  &.warning {
+    background-color: $warning-color;
+
+    &:hover {
+      background-color: darken($warning-color, 10%);
+    }
+  }
 }
 
 .block {
@@ -1377,6 +1385,12 @@ ul.token-input-list-facebook {
   }
 }
 
+li.token-input-token-facebook {
+  margin:5px 0 5px 5px;
+  padding:1px 5px;
+  border-radius: 0;
+}
+
 li.token-input-input-token-facebook input {
   background: none;
   border: none;
@@ -1385,5 +1399,20 @@ li.token-input-input-token-facebook input {
 
   &:focus {
     background:none;
+  }
+}
+
+.stripe {
+  height:3px;
+  margin:0;
+  padding:0;
+  content: '';
+  .alert { background-color: $alert-color; height:3px; width:12.5%; dispaly:inline-block; float:left; }
+  .success { background-color: $success-color;  height:3px; width:12.5%; dispaly:inline-block; float:left; }
+  .warning { background-color: $warning-color; height:3px; width:12.5%; dispaly:inline-block; float:left; }
+  .primary { background-color: $primary-color; height:3px; width:12.5%; dispaly:inline-block; float:left; }
+  .secondary { background-color: $secondary-color;  height:3px; width:12.5%; dispaly:inline-block; float:left; }
+  &:after {
+    clear:both;
   }
 }

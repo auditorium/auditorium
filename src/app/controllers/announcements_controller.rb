@@ -16,12 +16,11 @@ class AnnouncementsController < ApplicationController
   end
 
   def new
-    @announcement = @group.announcements.build(post_type: 'announcement')
+    @announcement = @group.announcements.build
   end
 
   def create
     @announcement = @group.announcements.new(params[:announcement])
-    @announcement.post_type = 'announcement'
     @announcement.author = current_user
 
     respond_to do |format|

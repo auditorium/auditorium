@@ -1,12 +1,32 @@
-class Announcement < Post
-  default_scope where(:post_type => 'announcement')
-
+class Announcement < ActiveRecord::Base 
   belongs_to :group
-  has_many :comments, as: :commentable, :dependent => :destroy
+  belongs_to :author, class_name: 'User'
 
-  validates :post_type, presence: true, inclusion: { in: %w{announcement} }
+  has_many :comments, as: :commentable, dependent: :destroy
+
+  has_many :tags, through: :taggings
+  has_many :taggings, as: :taggable
+
   validates :subject, presence: true
   validates :group, presence: true
-  validates :body, presence: true
+  validates :content, presence: true
   validates :author, presence: true
+
+  def self.tagged_with(name)
+    Tag.find_by_name!(name).announcement
+  end
+
+  def tag_list
+    self.tags.map(&:name).join(", ")
+  end
+
+  def tag_list=(names)
+    self.tags = names.split(",").map do |n|
+      Tag.where(name: n.strip).first_or_create!
+    end 
+  end 
+
+  def tag_tokens=(tokens)  
+    self.tag_ids = Tag.ids_from_tokens(tokens)  
+  end  
 end

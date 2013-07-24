@@ -17,12 +17,11 @@ class AnswersController < ApplicationController
   end
 
   def new
-    @answer = @question.answers.build(post_type: 'answer')
+    @answer = @question.answers.build
   end
 
   def create
     @answer = @question.answers.new(params[:answer])
-    @answer.post_type = 'answer'
     @answer.author = current_user
 
     respond_to do |format|

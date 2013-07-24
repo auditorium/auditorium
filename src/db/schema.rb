@@ -11,7 +11,32 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130722223435) do
+ActiveRecord::Schema.define(:version => 20130724130650) do
+
+  create_table "announcements", :force => true do |t|
+    t.string   "subject"
+    t.text     "content"
+    t.integer  "rating"
+    t.integer  "views"
+    t.boolean  "is_private"
+    t.integer  "author_id"
+    t.integer  "group_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "announcements", ["author_id", "group_id"], :name => "index_announcements_on_author_id_and_group_id"
+
+  create_table "answers", :force => true do |t|
+    t.text     "content"
+    t.integer  "rating"
+    t.integer  "question_id"
+    t.integer  "author_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "answers", ["author_id", "question_id"], :name => "index_answers_on_author_id_and_question_id"
 
   create_table "chairs", :force => true do |t|
     t.string   "name"
@@ -254,6 +279,20 @@ ActiveRecord::Schema.define(:version => 20130722223435) do
   add_index "posts", ["group_id"], :name => "index_posts_on_group_id"
   add_index "posts", ["parent_id"], :name => "index_posts_on_child_id"
 
+  create_table "questions", :force => true do |t|
+    t.string   "subject"
+    t.text     "content"
+    t.integer  "rating"
+    t.integer  "views"
+    t.boolean  "is_private"
+    t.integer  "author_id"
+    t.integer  "group_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "questions", ["author_id", "group_id"], :name => "index_questions_on_author_id_and_group_id"
+
   create_table "ratings", :force => true do |t|
     t.integer  "user_id"
     t.integer  "post_id"
@@ -266,6 +305,21 @@ ActiveRecord::Schema.define(:version => 20130722223435) do
 
   add_index "ratings", ["post_id"], :name => "index_ratings_on_post_id"
   add_index "ratings", ["user_id"], :name => "index_ratings_on_user_id"
+
+  create_table "recordings", :force => true do |t|
+    t.string   "subject"
+    t.text     "content"
+    t.integer  "rating"
+    t.integer  "views"
+    t.string   "url"
+    t.boolean  "is_private"
+    t.integer  "author_id"
+    t.integer  "group_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "recordings", ["author_id", "group_id"], :name => "index_recordings_on_author_id_and_group_id"
 
   create_table "reports", :force => true do |t|
     t.integer  "reporter_id"

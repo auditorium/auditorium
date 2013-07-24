@@ -23,7 +23,7 @@
       <% @group.questions.each do |question| %>
       <tr>
         <td><%= link_to question.subject, question %></td>
-        <td><%= question.body %></td>
+        <td><%= question.content %></td>
         <td><%= link_to t('questions.actions.edit'), edit_question_path(question), class: 'small button' %></td>
         <td><%= link_to t('questions.actions.delete'), question, method: :delete, confirm: 'Are you sure to delete this question?', class: 'small button alert' %></td>
         </tr>

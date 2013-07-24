@@ -1,10 +1,11 @@
-class Answer < Post
-  default_scope where(:post_type => 'answer')
-  belongs_to :question, foreign_key: :parent_id, class_name: 'Question'
-  has_many :comments, as: :commentable, :dependent => :destroy
+class Answer < ActiveRecord::Base 
+  belongs_to :question
+  belongs_to :author, class_name: 'User'
+  has_many :comments, as: :commentable, dependent: :destroy
 
-  validates :post_type, presence: true, inclusion: { in: %w{answer} }
+  attr_accessible :content, :question, :author
+
   validates :question, presence: true
-  validates :body, presence: true
+  validates :content, presence: true
   validates :author, presence: true
 end

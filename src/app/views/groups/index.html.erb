@@ -10,7 +10,7 @@
 	<% @groups.each do |group| %>
 		<tr>
 			<td><%= link_to group.title, group_path(group) %></td>
-			<td><%= group.description %></td>
+			<td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</td>
 			
 			<td><%= group.group_type.capitalize %></td>
 			<td>
@@ -23,3 +23,9 @@
 </table>
 
 <%= link_to t('groups.new.link'), new_group_path, class: 'small button' %>
+<p>
+<%= link_to 'Test', '#', class: 'small button' %> 
+<%= link_to 'Test', '#', class: 'small button secondary' %> 
+<%= link_to 'Test', '#', class: 'small button warning' %>
+<%= link_to 'Test', '#', class: 'small button success' %> 
+<%= link_to 'Test', '#', class: 'small button alert' %></p> 

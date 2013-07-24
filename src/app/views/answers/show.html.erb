@@ -1,5 +1,3 @@
-<p><%= markdown @answer.body %></p>
-
-<%= tag_list_delimited(@answer.tags) %>
+<p><%= markdown @answer.content %></p>
 
 <%= link_to t('comments.actions.new'), new_answer_comment_path(@answer) %>

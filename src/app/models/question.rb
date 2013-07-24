@@ -1,14 +1,37 @@
-class Question < Post
-  default_scope where(:post_type => 'question')
+class Question < ActiveRecord::Base 
   # attr_accessible :title, :body
   belongs_to :group
-  has_many :answers, foreign_key: :parent_id, :dependent => :destroy
+  belongs_to :author, class_name: 'User'
+
+  has_many :answers, :dependent => :destroy
   has_many :comments, as: :commentable, :dependent => :destroy
 
-  validates :post_type, presence: true, inclusion: { in: %w{question} }
+  has_many :tags, through: :taggings
+  has_many :taggings, as: :taggable
+
   validates :subject, presence: true
   validates :group, presence: true
-  validates :body, presence: true
+  validates :content, presence: true
   validates :author, presence: true
 
+  attr_accessible :subject, :content, :group, :tag_tokens
+  attr_reader :tag_tokens
+
+  def self.tagged_with(name)
+    Tag.find_by_name!(name).question
+  end
+
+  def tag_list
+    self.tags.map(&:name).join(", ")
+  end
+
+  def tag_list=(names)
+    self.tags = names.split(",").map do |n|
+      Tag.where(name: n.strip).first_or_create!
+    end 
+  end 
+
+  def tag_tokens=(tokens)  
+    self.tag_ids = Tag.ids_from_tokens(tokens)  
+  end  
 end

@@ -5,13 +5,8 @@
   <%= form_for([@question, @answer]) do |f| %>
 
   <div class="row">
-    <%= f.label :body %>
-    <%= f.text_area :body, class: 'large-12 columns' %>
-  </div>
-
-  <div class="row">
-    <%= f.label :tag_tokens %>
-    <%= f.text_field :tag_tokens, data: {load: @answer.tags}, class: 'large-12 columns' %>
+    <%= f.label :content %>
+    <%= f.text_area :content, class: 'large-12 columns' %>
   </div>
 
   <div class="row">
