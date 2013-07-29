@@ -31,7 +31,14 @@ group :test, :development do
   gem 'mailcatcher'
   gem 'rspec-rails', '~> 2.13.0'
   gem "factory_girl_rails", "~> 4.2.1"
+  gem "shoulda-matchers"
   gem 'debugger'
+  gem 'rb-fsevent'
+  gem 'guard-rspec'
+
+  gem 'spork-rails', github: 'sporkrb/spork-rails'
+  gem 'guard-spork'
+  gem 'childprocess'
 end
 
 group :test do

@@ -1,0 +1,17 @@
+FactoryGirl.define do
+  factory :group do
+    title { Faker::Lorem.words.join(" ").titleize }
+    description { Faker::Lorem.sentences.join(" ") }
+    factory :lecture_group do
+      group_type 'lecture'
+    end
+
+    factory :learning_group do
+      group_type 'learning'
+    end
+
+    factory :topic_group do
+      group_type 'topic'
+    end
+  end
+end
