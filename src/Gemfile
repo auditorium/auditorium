@@ -6,10 +6,8 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'nokogiri'
-gem 'sqlite3'
-gem 'devise', '~>2.1'
+gem 'devise'
 gem 'devise-encryptable'
-gem 'rspec-rails', :group => [:test, :development]
 gem "thinking-sphinx", "~> 2.0.12"
 gem 'mysql2'
 gem 'cancan'
@@ -18,7 +16,6 @@ gem 'kaminari'
 gem 'font-awesome-rails'
 gem 'whenever'
 gem 'mathjax-rails'
-gem 'libv8', '~> 3.11.8'
 
 
 # for markdown rich text
@@ -32,15 +29,17 @@ end
 
 group :test, :development do
   gem 'mailcatcher'
-  gem 'spork', '~> 1.0rc'
-  gem 'guard-spork'
-  gem "factory_girl_rails", "~> 3.0"
-  #gem "capybara"
-  gem "guard-rspec"
-  gem 'shoulda-matchers'
-  gem 'yaml_db'
-  gem 'railroady'
+  gem 'rspec-rails', '~> 2.13.0'
+  gem "factory_girl_rails", "~> 4.2.1"
   gem 'debugger'
+end
+
+group :test do
+  gem "capybara", '~> 2.0.2'
+  gem "faker", "~> 1.1.2"
+  gem "database_cleaner", "~> 0.9.1" 
+  gem "launchy", "~> 2.2.0"
+  gem 'sqlite3'
 end
 
 # Gems used only for assets and not required
