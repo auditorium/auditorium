@@ -16,6 +16,8 @@ Spork.prefork do
   RSpec.configure do |config|
     # Include Factory Girl syntax to simplify calls to factories 
     config.include FactoryGirl::Syntax::Methods
+    config.include ValidUserHelper, :type => :controller
+    config.include ValidUserRequestHelper, :type => :request
 
     # ## Mock Framework
     #

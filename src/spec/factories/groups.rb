@@ -13,5 +13,9 @@ FactoryGirl.define do
     factory :topic_group do
       group_type 'topic'
     end
+
+    factory :invalid_group do
+      group_type nil
+    end
   end
 end

@@ -30,10 +30,10 @@ class GroupsController < ApplicationController
 		@group.creator = current_user
 		
 		respond_to do |format|
-			if @group.save!
-				format.html { redirect_to @group, notice: t('groups.create.success') }
+			if @group.save
+				format.html { redirect_to group_path(@group), notice: t('groups.create.success') }
 			else
-				format.html { redirect_to 'new', error: t('groups.create.failure') }
+				format.html { render action: :new, error: t('groups.create.failure') }
 			end
 		end
 	end

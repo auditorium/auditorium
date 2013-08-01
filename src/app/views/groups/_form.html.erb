@@ -17,11 +17,7 @@
   </div>
 
   <div class="row">
-    <% if params[:action] == 'new' %>
-      <%= f.submit t('groups.new.submit'), class: 'small button' %>
-    <% elsif params[:action] == 'edit' %>
-      <%= f.submit t('groups.edit.submit'), class: 'small button' %>
-    <% end %>
+    <%= f.submit t('groups.new.submit'), class: 'small button' %>
   </div>
 
   <%= f.hidden_field :group_type %>
