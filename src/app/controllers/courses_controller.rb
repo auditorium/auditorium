@@ -1,8 +1,6 @@
 class CoursesController < ApplicationController
 
-  load_and_authorize_resource
-
-  
+  load_and_authorize_resource  
   include ActionView::Helpers::DateHelper 
 
   # GET /courses

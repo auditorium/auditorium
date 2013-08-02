@@ -7,6 +7,13 @@ module ValidUserHelper
     @user.save
     sign_in @user
   end
+
+  def signed_in_as_a_valid_admin
+    @admin ||= FactoryGirl.create :admin
+    @admin.confirm!
+    @admin.save
+    sign_in @admin
+  end
 end
 
 # module for helping request specs

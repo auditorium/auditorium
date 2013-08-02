@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+	authorize_resource
 
 	def index
 		if params[:tag]
