@@ -3,6 +3,8 @@ Auditorium::Application.routes.draw do
 
   scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do 
 
+    devise_for :users, :controllers => { :confirmations => "users/confirmations", :sessions => "users/sessions", :registrations => "users/registrations" }
+
     get 'tags/:tag', to: 'groups#index', as: :tag
     resources :tags, only: ['index']
     
@@ -28,8 +30,6 @@ Auditorium::Application.routes.draw do
     match "membership_requests/:id/confirm", :to => 'membership_requests#confirm', :as => :confirm_membership_request
     match "membership_requests/:id/reject", :to => 'membership_requests#reject', :as => :reject_membership_request
     match "membership_requests/:id/add_as_member", :to => 'membership_requests#add_as_member', :as => :add_as_member_membership_request
-
-    devise_for :users, :controllers => { :confirmations => "users/confirmations", :sessions => "users/sessions", :registrations => "users/registrations" }
 
     resources :feedbacks
     post 'feedbacks/:id/mark_as_read' => 'feedbacks#mark_as_read', :as => :mark_feedback_as_read

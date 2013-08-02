@@ -2,11 +2,65 @@ require 'spec_helper'
 
 describe GroupsController do
 
-  describe 'logged in as admin' do
-    before(:each) { signed_in_as_a_valid_admin }
-
+  describe 'guest user access' do
     describe 'GET #index' do
-      it 'populates and array of groups' do
+      it 'redirects to the login page' do
+        get :index
+        expect(response).to redirect_to new_user_session_path(locale: nil)
+      end
+    end
+
+    describe 'GET #show' do
+      it 'redirects to the login page' do
+        group = create(:topic_group)     
+        get :show, id: group
+        expect(response).to redirect_to new_user_session_path(locale: nil)
+      end
+    end
+
+    describe 'GET #new' do
+      it 'redirects to the login page' do
+        get :new
+        expect(response).to redirect_to new_user_session_path(locale: nil)
+      end
+    end
+
+    describe 'GET #edit' do
+      it 'redirects to the login page' do
+        group = create(:learning_group)
+        get :edit, id: group
+        expect(response).to redirect_to new_user_session_path(locale: nil)
+      end
+    end
+
+    describe 'POST #create' do
+      it 'redirects to the login page' do
+        post :create, group: attributes_for(:topic_group)
+        expect(response).to redirect_to new_user_session_path(locale: nil)
+      end
+    end
+
+    describe 'PUT #update' do
+      it 'redirects to the login page' do 
+        @group = create(:topic_group, title: 'Topic Group')
+        put :update, id: @group, group: attributes_for(:topic_group)
+        expect(response).to redirect_to new_user_session_path(locale: nil)
+      end
+
+    end
+
+    describe 'DELETE #destroy' do
+      it 'redirects to the login page' do
+        @group = create(:topic_group)
+        delete :destroy, id: @group
+        expect(response).to redirect_to new_user_session_path(locale: nil)
+      end
+    end
+  end
+
+  shared_examples('member access to groups') do
+    describe 'GET #index' do
+      it 'populates an array of groups' do
         group = create(:topic_group)
         get :index
         expect(assigns(:groups)).to match_array [group]
@@ -31,6 +85,58 @@ describe GroupsController do
         expect(response).to render_template :show
       end
     end
+  end
+
+  describe 'logged in as member' do
+    before(:each) { login create(:user) }
+
+    it_behaves_like "member access to groups"
+
+    describe 'GET #new' do
+      it 'denies access' do
+        get :new
+        expect(response).to redirect_to home_url
+      end
+    end
+
+    describe 'GET #edit' do
+      it 'denies access' do
+        group = create(:learning_group)
+        get :edit, id: group
+        expect(response).to redirect_to home_url
+      end
+    end
+
+    describe 'POST #create' do
+      it 'denies access' do
+        post :create, group: attributes_for(:topic_group)
+        expect(response).to redirect_to home_url
+      end
+    end
+
+    describe 'PUT #update' do
+      it 'denies access' do 
+        @group = create(:topic_group, title: 'Topic Group')
+        put :update, id: @group, group: attributes_for(:topic_group)
+        expect(response).to redirect_to home_url
+      end
+
+    end
+
+    describe 'DELETE #destroy' do
+
+      it 'denies access' do
+        @group = create(:topic_group)
+        delete :destroy, id: @group
+        expect(response).to redirect_to home_path
+      end
+    end
+  end
+
+  describe 'logged in as admin' do
+    before(:each) { login create(:admin) }
+
+    it_behaves_like "member access to groups"
 
     describe 'GET #new' do
       it 'assigns a new Group to @group' do
@@ -137,77 +243,6 @@ describe GroupsController do
       it 'redirects to the groups index page' do
         delete :destroy, id: @group
         expect(response).to redirect_to groups_path
-      end
-    end
-  end
-
-  describe 'logged in as member' do
-    before(:each) { signed_in_as_a_valid_user }
-
-    describe 'GET #index' do
-      it 'populates and array of groups' do
-        group = create(:topic_group)
-        get :index
-        expect(assigns(:groups)).to match_array [group]
-      end
-
-      it 'renders the index view' do
-        get :index
-        expect(response).to render_template :index
-      end
-    end
-
-    describe 'GET #show' do
-      it 'assigns the requested group to @group' do
-        group = create(:topic_group)
-        get :show, id: group
-        expect(assigns(:group)).to eq group
-      end
-      
-      it 'renders the :show template' do
-        group = create(:topic_group)     
-        get :show, id: group
-        expect(response).to render_template :show
-      end
-    end
-
-    describe 'GET #new' do
-      it 'denies access' do
-        get :new
-        expect(response).to redirect_to home_url
-      end
-    end
-
-    describe 'GET #edit' do
-      it 'denies access' do
-        group = create(:learning_group)
-        get :edit, id: group
-        expect(response).to redirect_to home_url
-      end
-    end
-
-    describe 'POST #create' do
-      it 'denies access' do
-        post :create, group: attributes_for(:topic_group)
-        expect(response).to redirect_to home_url
-      end
-    end
-
-    describe 'PUT #update' do
-      it 'denies access' do 
-        @group = create(:topic_group, title: 'Topic Group')
-        put :update, id: @group, group: attributes_for(:topic_group)
-        expect(response).to redirect_to home_url
-      end
-
-    end
-
-    describe 'DELETE #destroy' do
-
-      it 'denies access' do
-        @group = create(:topic_group)
-        delete :destroy, id: @group
-        expect(response).to redirect_to home_path
       end
     end
   end
