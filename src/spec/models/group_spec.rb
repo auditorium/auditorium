@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Group do 
 
-  it "is valid with a title, description and group type" do
+  it "is valid with a title, description and group type and a user as creator" do
     group = build(:lecture_group)
     expect(group).to be_valid
   end
@@ -22,12 +22,18 @@ describe Group do
     expect(group).to have(2).errors_on(:group_type) # 2 errors because of the inclusion validation
   end
 
+  it "is invalid without a creator" do
+    group = build(:group)
+    group.creator = nil
+    expect(group).to have(1).errors_on(:creator)
+  end
+
   it "is invalid with group_type other than 'learning', 'lecture', 'topic'" do
     group = build(:group, group_type: 'invalid_type')
     expect(group).to have(1).errors_on(:group_type)
   end
 
-  it { should have_many(:questions) }
+  it { should have_many(:questions).dependent(:destroy) }
   it { should belong_to(:creator) }
   it { should have_many(:tags) }
 end

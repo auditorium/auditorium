@@ -33,15 +33,15 @@ en:
       lecture:
         title: 'Lecture Group'
         description: 'Choose this group type for lectures.'
-        tags_hint: 'Please enter tags for faculty, institute, chair and semester so that users can find your group more easily.'
+        tags_hint: 'Please enter tags for faculty, institute, chair and semester so that users can find your lecture group more easily.'
       learning:
         title: 'Learning Group'
         description: 'Choose this group type to create a learning group for you and your fellows.'
-        tags_hint: 'Please enter tags to describe the group.'
+        tags_hint: 'Please enter tags to describe your learning group.'
       topic:
         title: 'Topic Group'
         description: 'Choose this group type for discussions and general questions and events.'
-        tags_hint: 'Please enter tags to describe the group.'
+        tags_hint: 'Please enter tags to describe your topic group.'
     menu_item: 'Groups'
     new: 
       title: 'Create a new group'

@@ -2,6 +2,11 @@ FactoryGirl.define do
   factory :group do
     title { Faker::Lorem.words.join(" ").titleize }
     description { Faker::Lorem.sentences.join(" ") }
+
+    after(:build) do |group|
+      group.creator = create(:user)
+    end
+
     factory :lecture_group do
       group_type 'lecture'
     end
