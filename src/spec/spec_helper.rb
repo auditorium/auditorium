@@ -9,6 +9,11 @@ Spork.prefork do
   require 'rspec/rails'
   require 'rspec/autorun'
   require 'capybara/rspec'
+  require 'capybara/poltergeist'
+
+  Capybara.register_driver :poltergeist do |app|
+    Capybara::Poltergeist::Driver.new(app, { debug: true })
+  end
 
   # Requires supporting ruby files with custom matchers and macros, etc,
   # in spec/support/ and its subdirectories.
@@ -33,7 +38,7 @@ Spork.prefork do
     # If you're not using ActiveRecord, or you'd prefer not to run each of your
     # examples within a transaction, remove the following line or assign false
     # instead of true.
-    config.use_transactional_fixtures = true
+    config.use_transactional_fixtures = false
 
     config.before(:suite) do
       DatabaseCleaner.strategy = :truncation

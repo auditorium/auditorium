@@ -51,9 +51,6 @@ GEM
       rack-test (>= 0.5.4)
       selenium-webdriver (~> 2.0)
       xpath (~> 1.0.0)
-    capybara-webkit (1.0.0)
-      capybara (~> 2.0, >= 2.0.2)
-      json
     childprocess (0.3.9)
       ffi (~> 1.0, >= 1.0.11)
     chronic (0.9.1)
@@ -100,6 +97,8 @@ GEM
       railties (>= 3.0.0)
     faker (1.1.2)
       i18n (~> 0.5)
+    faye-websocket (0.4.7)
+      eventmachine (>= 0.12.0)
     ffi (1.9.0)
     font-awesome-rails (3.2.1.2)
       railties (>= 3.2, < 5.0)
@@ -124,6 +123,7 @@ GEM
     haml (4.0.3)
       tilt
     hike (1.2.3)
+    http_parser.rb (0.5.3)
     httpi (1.1.1)
       rack
     i18n (0.6.1)
@@ -167,6 +167,10 @@ GEM
       mini_portile (~> 0.5.0)
     nori (1.1.5)
     orm_adapter (0.4.0)
+    poltergeist (1.1.2)
+      capybara (~> 2.0.1)
+      faye-websocket (~> 0.4.4)
+      http_parser.rb (~> 0.5.3)
     polyglot (0.3.3)
     pry (0.9.12.2)
       coderay (~> 1.0.5)
@@ -298,7 +302,6 @@ PLATFORMS
 DEPENDENCIES
   cancan
   capybara (~> 2.0.2)
-  capybara-webkit
   childprocess
   coderay (~> 1.0.7)
   coffee-rails (~> 3.2.1)
@@ -322,6 +325,7 @@ DEPENDENCIES
   memcache-client
   mysql2
   nokogiri
+  poltergeist
   rails (= 3.2.13)
   rb-fsevent
   redcarpet (~> 2.1.1)

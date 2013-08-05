@@ -1,5 +1,13 @@
 <%= form_for(@group) do |f| %>
 
+  <% @group.errors.full_messages.each do |msg| %>
+    <div data-alert class="alert-box error" id="flash">
+      <%= msg %>
+      <a href="#" class="close">&times;</a>
+    </div>
+  <% end %>
+
+
   <div class="row">
     <%= f.label :title %>
     <%= f.text_field :title, class: 'large-12 columns' %>
@@ -17,7 +25,7 @@
   </div>
 
   <div class="row">
-    <%= f.submit t('groups.new.submit'), class: 'small button' %>
+    <%= f.submit t('groups.new.submit'), id: 'submit', class: 'small button' %>
   </div>
 
   <%= f.hidden_field :group_type %>
