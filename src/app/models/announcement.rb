@@ -12,8 +12,11 @@ class Announcement < ActiveRecord::Base
   validates :content, presence: true
   validates :author, presence: true
 
+  attr_accessible :subject, :content, :group, :tag_tokens
+  attr_reader :tag_tokens
+
   def self.tagged_with(name)
-    Tag.find_by_name!(name).announcement
+    Tag.find_by_name!(name).question
   end
 
   def tag_list

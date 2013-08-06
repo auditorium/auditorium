@@ -1,28 +1,3 @@
-<section>
-  <header>
-    <h2><%= t('groups.show.questions.header') %></h2>
-  </header>
-
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Subject</th>
-        <th>Content</th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @questions.each do |question| %>
-      <tr>
-        <td><%= question.subject %></td>
-        <td><%= question.body %></td>
-        <td><%= link_to t('questions.actions.edit'), edit_question_path(question), class: 'small button' %></td>
-        <td><%= link_to t('questions.actions.delete'), question, method: :delete, confirm: 'Are you sure to delete this question?', class: 'button alert' %></td>
-      </tr>
-      <% end %>  
-    </tbody>
-  </table>
-
-  <%= link_to t('questions.actions.new'), new_group_question_path(@group), class: 'small button' %>
-</section>
+<section id="questions">
+  <%= render 'shared/questions' %>
+</section> 

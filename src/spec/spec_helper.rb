@@ -9,11 +9,19 @@ Spork.prefork do
   require 'rspec/rails'
   require 'rspec/autorun'
   require 'capybara/rspec'
-  require 'capybara/poltergeist'
-
-  Capybara.register_driver :poltergeist do |app|
-    Capybara::Poltergeist::Driver.new(app, { debug: true })
+  
+  Capybara.register_driver :selenium_with_long_timeout do |app|
+    client = Selenium::WebDriver::Remote::Http::Default.new
+    client.timeout = 120
+    Capybara::Driver::Selenium.new(app, :browser => :firefox, :http_client => client)
   end
+  
+  Capybara.configure do |config|
+    config.match = :prefer_exact
+    config.ignore_hidden_elements = false
+  end
+
+  Capybara.javascript_driver = :webkit
 
   # Requires supporting ruby files with custom matchers and macros, etc,
   # in spec/support/ and its subdirectories.
@@ -39,17 +47,21 @@ Spork.prefork do
     # examples within a transaction, remove the following line or assign false
     # instead of true.
     config.use_transactional_fixtures = false
-
+    
     config.before(:suite) do
-      DatabaseCleaner.strategy = :truncation
+      DatabaseCleaner.clean_with :truncation
     end
 
     config.before(:each) do
+      if example.metadata[:js]
+        DatabaseCleaner.strategy = :truncation
+      else
+        DatabaseCleaner.strategy = :transaction
+      end
       DatabaseCleaner.start
     end
 
     config.after(:each) do
-      Warden.test_reset! 
       DatabaseCleaner.clean
     end
     # If true, the base class of anonymous controllers will be inferred

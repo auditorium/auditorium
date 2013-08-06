@@ -9,6 +9,7 @@ class Ability
 
     if user.id? # registrierte Benutzer
       can :read, :all
+      can :create, Question
       #cannot :manage, :all
     else # Gäste
       cannot :read, :all

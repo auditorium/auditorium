@@ -46,3 +46,6 @@ de:
     hint_text: "Geben Sie den Namen eines Tags ein."
     no_results_text: "Es wurden keine Tags gefunden."
     searching_text: "Es wird gerade nach verfügbaren Tags gesucht..."
+  questions:
+    input:
+      subject: 'Wie lautet der Betreff deiner Frage?'

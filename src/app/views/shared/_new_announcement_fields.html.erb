@@ -1,0 +1,14 @@
+<li class="input-fields" class="input-fields">
+  <noscript><%= f.label :content %></noscript>
+  <%= f.text_area :content %>
+</li>
+
+<li class="input-fields">
+  <noscript><%= f.label :tag_tokens %></noscript>
+  <%= f.text_field :tag_tokens, data: {load: @announcement.tags} %>
+</li>
+
+<li class="input-fields">
+  <%= f.submit t('announcements.new.submit'),id: 'submit-announcement', class: 'tiny button right alert' %>
+  <div class="clearfix"></div>
+</li>

@@ -1,0 +1,36 @@
+<header>
+  <h2 class="subheader"><%= t('groups.show.questions.header') %></h2>
+</header>
+
+<%= form_for([@group, @question = Question.new]) do |f| %>
+  <ul class="no-style question">
+    <li class="input-fields" class="input-fields">
+      <noscript><%= f.label :subject %></noscript>
+      <%= f.text_field :subject, placeholder: t('questions.input.new') %>
+    </li>
+    <div id='new-question-fields' data-id='new-question-fields'><%= render 'shared/new_question_fields', f: f %></div>  
+  </ul>
+<% end %>
+
+<ul class="no-style question">
+<% limit ||= nil %>
+  <% @group.questions.limit(limit).each_with_index do |question| %>
+    <li>
+      <span class="rating"><%= question.rating %></span>
+      <span class="subject"><%= link_to question.subject, question %></span>
+      <span class="right">
+        <small><%= l(question.created_at, format: :short) %></small>
+        <% if can? :manage, question %>
+        <span class="actions">
+          <%= link_to content_tag('i', '', class: 'icon-pencil'), edit_question_path(question), alt: "#{t('questions.actions.edit')}", title: "#{t('questions.actions.edit')}" %>
+          <%= link_to content_tag('i', '', class: 'icon-remove'), question, alt: "#{t('questions.actions.delete')}", title: "#{t('questions.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this question?' %>
+          </span>
+        <% end %>
+      </span>
+    </li>
+  <% end %>
+</ul> 
+
+<% unless limit.nil? %>
+  <span class="right"><small><%= link_to t('questions.show_all'), group_questions_path(@group) %></small></span>
+<% end %>

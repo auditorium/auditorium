@@ -13,7 +13,6 @@ gem 'mysql2'
 gem 'cancan'
 gem 'gravatar_image_tag'
 gem 'kaminari'
-gem 'font-awesome-rails'
 gem 'whenever'
 gem 'mathjax-rails'
 
@@ -42,13 +41,14 @@ group :test, :development do
 end
 
 group :test do
-  gem "capybara", '~> 2.0.2'
-  #gem 'capybara-webkit'
-  gem 'poltergeist'
+  gem "capybara"
   gem "faker", "~> 1.1.2"
   gem "database_cleaner", "~> 0.9.1" 
   gem "launchy", "~> 2.2.0"
   gem 'sqlite3'
+  gem 'selenium-webdriver'
+  gem 'capybara-webkit'
+  #gem 'poltergeist'
 end
 
 # Gems used only for assets and not required
@@ -63,6 +63,7 @@ group :assets do
 
   gem 'compass-rails'
   gem 'zurb-foundation', '~> 4.0.0'
+  gem 'font-awesome-rails'
 end
 
 gem 'jquery-rails'

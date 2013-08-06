@@ -8,13 +8,15 @@
       <noscript><%= f.label :subject %></noscript>
       <%= f.text_field :subject, placeholder: t('announcements.input.new') %>
     </li>
-    <div id='new-announcement-fields' data-id='new-announcement-fields'><%= render 'new_announcement_fields', f: f %></div>  
+    <div id='new-announcement-fields' data-id='new-announcement-fields'><%= render 'shared/new_announcement_fields', f: f %></div>  
   </ul>
 <% end %>
 
 <ul class="no-style announcement">
   
-<% @group.announcements.each_with_index do |announcement| %>
+<% limit ||= nil%>
+
+<% @group.announcements.limit(limit).each_with_index do |announcement| %>
   <li>
     <span class="rating"><%= announcement.rating %></span>
     <span class="subject"><%= link_to announcement.subject, announcement %></span>
@@ -30,3 +32,7 @@
   </li>
 <% end %>
 </ul>  
+
+<% unless limit.nil? %>
+  <span class="right"><small><%= link_to t('announcements.show_all'), group_announcements_path(@group) %></small></span>
+<% end %>

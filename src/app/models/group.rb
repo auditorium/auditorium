@@ -3,6 +3,7 @@ class Group < ActiveRecord::Base
   has_many :tags, through: :taggings
   has_many :taggings, as: :taggable
   has_many :questions, dependent: :destroy
+  has_many :announcements, dependent: :destroy
 
   belongs_to :creator, class_name: 'User'
 

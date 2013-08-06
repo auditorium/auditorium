@@ -21,7 +21,7 @@
 
   <div class="row">
     <% if params[:action] == 'new' %>
-      <%= f.submit t('questions.new.submit'), class: 'small button' %>
+      <%= f.submit t('questions.new.submit'),id: 'submit', class: 'small button' %>
     <% elsif params[:action] == 'edit' %>
       <%= f.submit t('questions.edit.submit'), class: 'small button' %>
     <% end %>

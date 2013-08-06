@@ -12,5 +12,6 @@
  *= require token-input
  *= require token-input-facebook
  *= require foundation_and_overrides
+ *= require font-awesome
  *= require_tree .
 */

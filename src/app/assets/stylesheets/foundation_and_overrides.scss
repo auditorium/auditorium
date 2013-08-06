@@ -59,6 +59,13 @@ $success-color: #8BD936;
 $warning-color: #F2CB13;
 $notice-color: lighten($primary-color, 20%);
 
+$question-color: $primary-color;
+$announcement-color: $alert-color;
+$event-color: $secondary-color;
+$topic-color: $notice-color;
+
+
+
 // Make sure border radius matches unless we want it different.
 
 $global-radius: 5px;
@@ -1280,6 +1287,15 @@ $topbar-divider-border-bottom: none;
 // $topbar-sticky-class: ".sticky";
 
 @import 'foundation';
+@import "font-awesome";
+
+[role='main'] {
+  padding:15px;
+}
+
+.clearfix {
+  clear:both;
+}
 
 .alert-box {
   margin:10px;
@@ -1327,6 +1343,41 @@ $topbar-divider-border-bottom: none;
       background-color: darken($warning-color, 10%);
     }
   }
+
+  &.notice {
+    background-color: $notice-color;
+    &:hover {
+      background-color: darken($notice-color, 10%);
+    }
+  }
+
+  &.question {
+    background-color: $question-color;
+    &:hover {
+      background-color: darken($question-color, 10%);
+    }
+  }
+
+  &.announcement {
+    background-color: $announcement-color;
+    &:hover {
+      background-color: darken($announcement-color, 10%);
+    }
+  }
+
+  &.notice {
+    background-color: $notice-color;
+    &:hover {
+      background-color: darken($notice-color, 10%);
+    }
+  }
+
+  &.event {
+    background-color: $event-color;
+    &:hover {
+      background-color: darken($event-color, 10%);
+    }
+  }
 }
 
 .block {
@@ -1359,46 +1410,125 @@ $topbar-divider-border-bottom: none;
   font-style: italic;
 }
 
-/* Token input field style */
-ul.token-input-list-facebook {
-  background-color: white;
-  font-family: inherit;
-  border: 1px solid #cccccc;
-  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-  color: rgba(0, 0, 0, 0.75);
-  display: block;
-  font-size: 0.875em;
-  margin: 0 0 1em 0;
-  padding: 0;
-  height: 2.3125em;
-  width: 100%;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-transition: all 0.15s linear;
-  -moz-transition: all 0.15s linear;
-  transition: all 0.15s linear;
+ul.no-style {
+  list-style: none;
 
-  &:focus {
-    border-color: black;
+  &.question, &.announcement {
+    background-color: #fff;
+    box-shadow: 1px 1px 4px darken($gray, 20%);
+  }
+
+  &.question {
+    border-left: 4px solid $question-color
+  }
+
+  &.announcement {
+    border-left: 4px solid $announcement-color;
+  }
+
+  li {
+    border-bottom: 1px solid $gray;
+    padding:4px 10px 4px 10px;
+
+    &:nth-child(even) {
+      background-color: lighten($primary-color, 50%);
+    }
+
+    &.input-fields {
+      border:none;
+      margin:0;
+
+      a {
+        color: darken($gray, 20%);
+        width:100%;
+        height:100%;
+        display:block;
+        &:hover {
+          color: darken($gray, 50%);
+        }
+      }
+
+      &:nth-child(even) {
+        background-color: #fff;
+      }
+
+      input[type='text'], textarea {
+        padding:5px 10px;
+        margin:0;
+        border: 1px solid $gray;
+        box-shadow:none;
+
+        &:focus {
+          background:none;
+        }
+      } 
+    }
+
+    
+    span.actions {
+      margin-left:10px;
+    }
   }
 }
 
-li.token-input-token-facebook {
-  margin:5px 0 5px 5px;
-  padding:1px 5px;
-  border-radius: 0;
+#new-question-fields, #new-announcement-fields {
+  display: none;
 }
 
-li.token-input-input-token-facebook input {
-  background: none;
-  border: none;
-  outline: none;
-  box-shadow: none;
+/* Token input field style */
+ul.token-input-list {
+  padding:0;
+  margin:0;
+  border: 1px solid $gray;
+  box-shadow:none;
+  width: 100%;
+  vertical-align: middle;
 
-  &:focus {
-    background:none;
+  li.token-input-token {
+    background-color: $gray;
+    display:inline-block;
+    margin:2px;
+    padding:2px 4px;
+    border-radius: 0;
+    font-size: 0.9em;
+    float:left;
+
+    span {
+      margin-left:5px;
+    }
+  }
+
+  li.token-input-input-token {
+    background: none;
+    border: none;
+    outline: none;
+    box-shadow: none;  
+    display:inline-block;
+    margin:0;
+    padding:0;
+
+    & input {
+      margin:0;
+      padding:0;
+      border:none;
+    }
+  }
+}
+
+div.token-input-dropdown {
+  position: absolute;
+  width: 400px;
+  background-color: #fff;
+  overflow: hidden;
+  box-shadow: 1px 1px 1px $gray;
+  border:none;
+  cursor: default;
+  font-size: 12px;
+  font-family: Verdana, sans-serif;
+  z-index: 1;
+
+  ul li.token-input-selected-dropdown-item {
+    background-color: lighten($primary-color, 50%);
   }
 }
 
@@ -1415,4 +1545,38 @@ li.token-input-input-token-facebook input {
   &:after {
     clear:both;
   }
+}
+
+.table {
+  width:100%;
+}
+
+/* group style */
+#content-nav {
+
+  a {
+    color: #fff;
+
+    &:hover {
+
+    }
+  }
+  #questions-section {
+    background-color: $question-color;
+  }
+  #announcements-section {
+    background-color: $announcement-color;
+  }
+  #topics-section {
+    background-color: $topic-color;
+  }
+  #events-section {
+    background-color: $event-color;
+  }
+}
+
+.information {
+  background-color: #fff;
+  box-shadow: 1px 1px 4px darken($gray, 20%);
+  padding:10px;
 }

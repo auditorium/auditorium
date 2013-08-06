@@ -1,35 +1,19 @@
+
 <section>
   <header><h1><%= @group.title %></h1></header> 
 
-  <p><%= @group.description %></p> 
-  <%= tag_list_delimited(@group.tags) %>
+  <div class="information">
+    <p><%= @group.description %></p> 
+    <%= tag_list_delimited(@group.tags) %>
+  </div>
 </section>
 
-<section>
-  <header>
-    <h2><%= t('groups.show.questions.header') %></h2>
-  </header>
-
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Subject</th>
-        <th>Content</th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @group.questions.each do |question| %>
-      <tr>
-        <td><%= link_to question.subject, question %></td>
-        <td><%= question.content %></td>
-        <td><%= link_to t('questions.actions.edit'), edit_question_path(question), class: 'small button' %></td>
-        <td><%= link_to t('questions.actions.delete'), question, method: :delete, confirm: 'Are you sure to delete this question?', class: 'small button alert' %></td>
-        </tr>
-      <% end %>  
-    </tbody>
-  </table>
-
-  <%= link_to t('questions.actions.new'), new_group_question_path(@group), class: 'small button' %>
+<section id="announcements">
+  <%= render 'shared/announcements', limit: 10 %>
 </section>
+
+<section id="questions">
+  <%= render 'shared/questions', limit: 10 %>
+</section>
+
+

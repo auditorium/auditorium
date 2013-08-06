@@ -17,3 +17,12 @@ $('.choosable').on 'click', (event) ->
       console.log errorThrown
     success: 
       $("html, body").animate({ scrollTop: $('#group-basic-information').offset().top }, 1000);
+
+
+$('.input-fields input#question_subject').on 'focus', (e) ->
+  $('#question_subject').attr('placeholder', i18n_question_subject_placeholder)
+  $('#new-question-fields').slideDown()
+
+$('.input-fields input#announcement_subject').on 'focus', (e) ->
+  $('#announcement_subject').attr('placeholder', i18n_announcement_subject_placeholder)
+  $('#new-announcement-fields').slideDown()

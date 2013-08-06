@@ -1,0 +1,38 @@
+<header>
+  <h2 class="subheader"><%= t('groups.show.topics.header') %></h2>
+</header>
+
+<%= form_for([@group, @topic = Topic.new]) do |f| %>
+  <ul class="no-style topic">
+    <li class="input-fields" class="input-fields">
+      <noscript><%= f.label :subject %></noscript>
+      <%= f.text_field :subject, placeholder: t('topics.input.new') %>
+    </li>
+    <div id='new-topic-fields' data-id='new-topic-fields'><%= render 'shared/new_topic_fields', f: f %></div>  
+  </ul>
+<% end %>
+
+<ul class="no-style topic">
+  
+<% limit ||= nil%>
+
+<% @group.topics.limit(limit).each_with_index do |topic| %>
+  <li>
+    <span class="rating"><%= topic.rating %></span>
+    <span class="subject"><%= link_to topic.subject, topic %></span>
+    <span class="right">
+      <small><%= l(topic.created_at, format: :short) %></small>
+      <% if can? :manage, topic %>
+      <span class="actions">
+        <%= link_to content_tag('i', '', class: 'icon-pencil'), edit_topic_path(topic), alt: "#{t('topics.actions.edit')}", title: "#{t('topics.actions.edit')}" %>
+        <%= link_to content_tag('i', '', class: 'icon-remove'), topic, alt: "#{t('topics.actions.delete')}", title: "#{t('topics.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this topic?' %>
+        </span>
+      <% end %>
+    </span>
+  </li>
+<% end %>
+</ul>  
+
+<% unless limit.nil? %>
+  <span class="right"><small><%= link_to t('topics.show_all'), group_topics_path(@group) %></small></span>
+<% end %>

@@ -1,6 +1,0 @@
-<% if user_signed_in? %>
-  <%= form_tag '/search', :method => 'get', :class => 'navbar-search form-search hidden-phone',:remote => false do %>
-    <%= text_field_tag :query, nil, :placeholder => 'Search', :id => 'searchbar' %>
-  <% end %>
-  s
-<% end %>
