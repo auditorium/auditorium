@@ -26,3 +26,7 @@ $('.input-fields input#question_subject').on 'focus', (e) ->
 $('.input-fields input#announcement_subject').on 'focus', (e) ->
   $('#announcement_subject').attr('placeholder', i18n_announcement_subject_placeholder)
   $('#new-announcement-fields').slideDown()
+
+$('.input-fields input#group_subject').on 'focus', (e) ->
+  $('#group_subject').attr('placeholder', i18n_group_subject_placeholder)
+  $('#new-group-fields').slideDown()

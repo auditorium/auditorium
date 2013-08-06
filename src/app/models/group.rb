@@ -32,4 +32,8 @@ class Group < ActiveRecord::Base
   def tag_tokens=(tokens)  
     self.tag_ids = Tag.ids_from_tokens(tokens)  
   end  
+
+  def topics 
+    self.questions
+  end
 end

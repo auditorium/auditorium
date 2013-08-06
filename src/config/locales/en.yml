@@ -75,3 +75,9 @@ en:
       subject: 'What is the content of your announcement?'
     new:
       submit: 'Submit announcement'
+  topics:
+    input: 
+      new: 'Write an topic'
+      subject: 'What is the content of your topic?'
+    new:
+      submit: 'Submit topic'

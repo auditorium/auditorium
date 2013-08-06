@@ -62,7 +62,7 @@ $notice-color: lighten($primary-color, 20%);
 $question-color: $primary-color;
 $announcement-color: $alert-color;
 $event-color: $secondary-color;
-$topic-color: $notice-color;
+$topic-color: $success-color;
 
 
 
@@ -1289,8 +1289,21 @@ $topbar-divider-border-bottom: none;
 @import 'foundation';
 @import "font-awesome";
 
+/* ================== general styles ================= */
+
 [role='main'] {
   padding:15px;
+}
+
+input, textarea {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+.hint {
+  color: darken($gray, 20%);
+  font-size: 0.9em;
+  font-style: italic;
 }
 
 .clearfix {
@@ -1316,17 +1329,13 @@ $topbar-divider-border-bottom: none;
   border-color: darken($notice-color, 10%);
 }
 
-.top-bar {
-  box-shadow: 0 2px 4px darken($gray, 20%);
-}
 
-.top-bar-section li a:not(.button):hover {
-  background: darken($primary-color, 30%);
-}
+/* ================= custom button styles ===================== */
 
 .button {
   vertical-align: baseline;
   border:none;
+  -webkit-appearance: none;
 
   &.secondary {
     background-color: darken($gray, 20%);
@@ -1365,10 +1374,10 @@ $topbar-divider-border-bottom: none;
     }
   }
 
-  &.notice {
-    background-color: $notice-color;
+  &.topic {
+    background-color: $topic-color;
     &:hover {
-      background-color: darken($notice-color, 10%);
+      background-color: darken($topic-color, 10%);
     }
   }
 
@@ -1393,7 +1402,6 @@ $topbar-divider-border-bottom: none;
     border-left:1px solid $gray;
     border-right:1px solid $gray;
   }
-
 }
 
 .choosable {
@@ -1404,78 +1412,11 @@ $topbar-divider-border-bottom: none;
   }
 }
 
-.hint {
-  color: darken($gray, 20%);
-  font-size: 0.9em;
-  font-style: italic;
-}
-
-ul.no-style {
-  list-style: none;
-
-  &.question, &.announcement {
-    background-color: #fff;
-    box-shadow: 1px 1px 4px darken($gray, 20%);
-  }
-
-  &.question {
-    border-left: 4px solid $question-color
-  }
-
-  &.announcement {
-    border-left: 4px solid $announcement-color;
-  }
-
-  li {
-    border-bottom: 1px solid $gray;
-    padding:4px 10px 4px 10px;
-
-    &:nth-child(even) {
-      background-color: lighten($primary-color, 50%);
-    }
-
-    &.input-fields {
-      border:none;
-      margin:0;
-
-      a {
-        color: darken($gray, 20%);
-        width:100%;
-        height:100%;
-        display:block;
-        &:hover {
-          color: darken($gray, 50%);
-        }
-      }
-
-      &:nth-child(even) {
-        background-color: #fff;
-      }
-
-      input[type='text'], textarea {
-        padding:5px 10px;
-        margin:0;
-        border: 1px solid $gray;
-        box-shadow:none;
-
-        &:focus {
-          background:none;
-        }
-      } 
-    }
-
-    
-    span.actions {
-      margin-left:10px;
-    }
-  }
-}
-
 #new-question-fields, #new-announcement-fields {
   display: none;
 }
 
-/* Token input field style */
+/* ================= Token input field style ================== */
 ul.token-input-list {
   padding:0;
   margin:0;
@@ -1532,6 +1473,16 @@ div.token-input-dropdown {
   }
 }
 
+/* =================== Topbar Style ===================== */
+
+.top-bar {
+  box-shadow: 0 2px 4px darken($gray, 20%);
+}
+
+.top-bar-section li a:not(.button):hover {
+  background: darken($primary-color, 30%);
+}
+
 .stripe {
   height:3px;
   margin:0;
@@ -1551,7 +1502,7 @@ div.token-input-dropdown {
   width:100%;
 }
 
-/* group style */
+/* ======================== group style ===================== */
 #content-nav {
 
   a {
@@ -1575,8 +1526,84 @@ div.token-input-dropdown {
   }
 }
 
-.information {
+.group-information {
   background-color: #fff;
   box-shadow: 1px 1px 4px darken($gray, 20%);
   padding:10px;
+}
+
+/* ======================== post styles ====================== */
+
+ul.no-style {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  &.question, &.announcement, &.topic {
+    background-color: #fff;
+    box-shadow: 1px 1px 4px darken($gray, 20%);
+  }
+
+  &.question {
+    border-left: 4px solid $question-color;
+    li:nth-child(even) {
+      background-color: lighten($primary-color, 50%);
+    }
+  }
+
+  &.announcement {
+    border-left: 4px solid $announcement-color;
+
+    li:nth-child(even) {
+      background-color: lighten($announcement-color, 60%);
+    }
+  }
+
+  &.topic {
+    border-left: 4px solid $topic-color;
+
+    li:nth-child(even) {
+      background-color: lighten($topic-color, 40%);
+    }
+  }
+
+  li {
+    border-bottom: 1px solid $gray;
+    padding:4px 10px 4px 10px;
+
+    &.input-fields {
+      border:none;
+      margin:0;
+
+      a {
+        color: darken($gray, 20%);
+        width:100%;
+        height:100%;
+        display:block;
+        &:hover {
+          color: darken($gray, 50%);
+        }
+      }
+
+      &:nth-child(even) {
+        background-color: #fff;
+      }
+
+      input[type='text'], textarea {
+        padding:5px 10px;
+        margin:0;
+        border: 1px solid $gray;
+        box-shadow:none;
+
+        &:focus {
+          background:none;
+        }
+      } 
+    }
+
+    
+    span.actions {
+      margin-left:10px;
+    }
+  }
 }

@@ -2,7 +2,7 @@
 <section>
   <header><h1><%= @group.title %></h1></header> 
 
-  <div class="information">
+  <div class="group-information">
     <p><%= @group.description %></p> 
     <%= tag_list_delimited(@group.tags) %>
   </div>
@@ -14,6 +14,10 @@
 
 <section id="questions">
   <%= render 'shared/questions', limit: 10 %>
+</section>
+
+<section id="topic">
+  <%= render 'shared/topics', limit: 10 %>
 </section>
 
 
