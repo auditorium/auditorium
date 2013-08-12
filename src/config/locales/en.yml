@@ -22,6 +22,9 @@ en:
       topics:
         header: 'Topics'
         new: 'Create a new topic'
+      links: 
+        delete: 'Delete'
+        edit: 'Edit'
 
     group-basic-information:
       placeholder: 'Choose a type for your new group...'

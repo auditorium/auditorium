@@ -64,6 +64,7 @@ group :assets do
   gem 'compass-rails'
   gem 'zurb-foundation', '~> 4.0.0'
   gem 'font-awesome-rails'
+  gem 'mathjax-rails'
 end
 
 gem 'jquery-rails'

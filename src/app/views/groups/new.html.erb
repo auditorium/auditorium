@@ -5,7 +5,7 @@
     <h2><%= t('groups.choose-type.title') %></h2>
   </header>
   <% group_types.each do |group_type| %>
-    <div class="large-4 columns choosable panel" data-id='<%= group_type %>' id='<%= group_type %>'>
+    <div class="large-4 columns choosable panel" data-id='<%= group_type %>' id='<%= group_type %>-group'>
       <dl>
         <dt><%= t("groups.group_types.#{group_type}.title") %></dt>
         <dd><%= t("groups.group_types.#{group_type}.description") %></dd>

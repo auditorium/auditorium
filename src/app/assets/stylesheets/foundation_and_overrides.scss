@@ -70,6 +70,10 @@ $topic-color: $cyan;
 $answer-color: $gray;
 $recording-color: $orange;
 
+$lecture-group-color: $alert-color;
+$learning-group-color: $success-color;
+$topic-group-color: $cyan;
+
 
 
 // Make sure border radius matches unless we want it different.
@@ -1547,6 +1551,26 @@ div.token-input-dropdown {
   background-color: #fff;
   box-shadow: 1px 1px 2px darken($gray, 20%);
   padding:10px;
+}
+
+.group {
+  background-color: #fff;
+  box-shadow: 1px 1px 2px darken($gray, 20%);
+  padding:10px;
+  margin:5px 0;
+  height:200px;
+
+  &.lecture-group {
+    border-left: 5px solid $lecture-group-color;
+  }
+
+  &.learning-group {
+    border-left: 5px solid $learning-group-color;
+  }
+
+  &.topic-group {
+    border-left: 5px solid $topic-group-color;
+  }
 }
 
 /* ======================== post styles ====================== */

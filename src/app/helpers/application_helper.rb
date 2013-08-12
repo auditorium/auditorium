@@ -56,6 +56,16 @@ module ApplicationHelper
     markdown_to_html.render(text).html_safe
   end
 
+  def mathjax_should_load
+    %w{questions announcements topics groups home}.include? params[:controller]
+  end
+
+  #==========
+  # below old stuff...
+
+
+
+
   def weekdays
     %w{monday tuesday wednesday thursday friday saturday sunday}
   end
@@ -146,10 +156,7 @@ module ApplicationHelper
     User.find_all(:admin => true)
   end
 
-  def mathjax_should_load
-    %w{posts courses home reports}.include? params[:controller]
-  end
-
+  
   def available_title
     %w{Dr. Prof. Doz.}
   end
