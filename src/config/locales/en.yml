@@ -19,12 +19,17 @@ en:
       questions:
         header: 'Questions'
         new: 'Ask a question'
+      announcements:
+        header: 'Announcements'
+        new: 'Write an announcement'
       topics:
         header: 'Topics'
         new: 'Create a new topic'
       links: 
         delete: 'Delete'
         edit: 'Edit'
+    index:
+      header: 'Groups'
 
     group-basic-information:
       placeholder: 'Choose a type for your new group...'

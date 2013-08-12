@@ -4,7 +4,7 @@
 	</header>
 
 	<div class="row">
-		<% @groups.each_with_index do |group, index| %>
+		<% @groups.each do |group| %>
 			<div class="small-12 medium-6 large-4 columns">
 				<article class="group <%= group.group_type %>-group">
 					<header class="subheader">

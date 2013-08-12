@@ -201,8 +201,8 @@ $header-font-weight: normal;
 // $subheader-line-height: 1.4;
 // $subheader-font-color: lighten($header-font-color, 30%);
 // $subheader-font-weight: 300;
-// $subheader-top-margin: .2em;
-// $subheader-bottom-margin: .5em;
+$subheader-top-margin: .5em;
+$subheader-bottom-margin: .1em;
 
 // A general <small> styling
 
@@ -1331,14 +1331,18 @@ $topbar-link-font-size: emCalc(15);
   padding:15px;
 }
 
+form {
+  margin:0 0 0.4em;
+}
+
 input, textarea {
   -webkit-appearance: none;
   border-radius: 0;
 }
 
 input[type='text'], textarea {
-  padding:5px 10px;
-  margin:5px 0;
+  padding:5px 5px;
+  margin:0;
   border: 1px solid $gray;
   box-shadow:none;
 
@@ -1627,7 +1631,7 @@ ul.no-style {
   &.announcement {
     border-left: 4px solid $announcement-color;
 
-    li:nth-child(even) {
+    & > li:nth-child(even) {
       background-color: lighten($announcement-color, 60%);
     }
   }
@@ -1635,18 +1639,20 @@ ul.no-style {
   &.topic {
     border-left: 4px solid $topic-color;
 
-    li:nth-child(even) {
+    & > li:nth-child(even) {
       background-color: lighten($topic-color, 40%);
     }
   }
 
   li {
     border-bottom: 1px solid $gray;
-    padding:4px 10px 4px 10px;
+    padding:3px 5px 3px 2px;
+    margin:0;
 
     &.input-fields {
       border:none;
       margin:0;
+      padding:3px 4px;
 
       a {
         color: darken($gray, 20%);
@@ -1663,7 +1669,6 @@ ul.no-style {
       }
     }
 
-    
     span.actions {
       margin-left:10px;
     }
