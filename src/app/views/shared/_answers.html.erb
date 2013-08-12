@@ -1,0 +1,26 @@
+<header>
+    <h2 class="subheader"><%= "#{t('posts.general.answers')}" %></h2>
+</header>
+
+<% @question.answers.each do |answer| %>
+  <article id="answer">
+    <div class="post-content">
+      <%= markdown answer.content %>
+    </div>
+  </article>
+
+  <section class="comments">
+    <%= render 'shared/comments', commentable: answer %>
+  </section>
+<% end %>
+
+
+<header>
+  <h3><%= t('answers.actions.new') %></h3>
+</header>
+<%= form_for([@question, @answer = Answer.new]) do |f| %>
+  <noscript><%= f.label :content, t('answers.label.content') %></noscript>
+  <%= f.text_area :content, placeholder: t('answers.placeholder.content'), required: true %>
+  <%= f.submit t('answers.actions.submit'), id: 'submit-answer', class: 'tiny button right answer' %>
+  <div class="clearfix"></div>
+<% end %>

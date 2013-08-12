@@ -1,56 +1,22 @@
-<h1><%= @question.subject %></h1>
+<article id="question">
+  <header class="post-header">
+    <h2><%= @question.subject %></h2>    
+  </header>
 
-<p class="hint"><%= link_to @question.group.title, @question.group %></p>
+  <div class="post-content">
+    <%= markdown @question.content %>
+  </div>
 
-<p><%= markdown @question.content %></p>
+  <div class="post-footer">
+    <%= "#{t('posts.general.group')}:" %> 
+    <%= link_to @question.group.title, group_path(@question.group) %>
+  </div>
+</article>
 
-<%= tag_list_delimited(@question.tags) %>
+<section class="comments">
+  <%= render 'shared/comments', commentable: @question %>
+</section>
 
-
-<h3>Answers</h3>
-<table class="table">
-  <thead>
-    <tr>
-      <th>Link</th>
-      <th><%= t('answers.body') %></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @question.answers.each do |answer| %>
-    <tr>
-      <td><%= link_to 'View answer', answer %></td>
-      <td><%= markdown answer.content %></td>
-      <td><%= link_to t('answers.actions.edit'), edit_answer_path(answer), class: 'small button' %></td>
-      <td><%= link_to t('answers.actions.delete'), answer, method: :delete, confirm: 'Are you sure to delete this answer?', class: 'small button alert' %></td>
-      <td><%= link_to "Comments: #{answer.comments.size}", answer_comments_path(answer) %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
-
-<%= link_to t('answers.actions.new'), new_question_answer_path(@question), class: 'small button' %>
-
-
-<h3>Comments</h3>
-<table class="table">
-  <thead>
-    <tr>
-      <th><%= t('comments.content') %></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @question.comments.each do |comment| %>
-    <tr>
-      <td><%= markdown comment.content %></td>
-      <td><%= link_to t('comments.actions.edit'), edit_comment_path(comment) %></td>
-      <td><%= link_to t('comments.actions.delete'), comment, method: :delete, confirm: 'Are you sure to delete this comment?', class: 'small button alert' %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
-
-<%= link_to t('comments.actions.new'), new_question_comment_path(@question), class: 'small button' %>
+<section class="answers">
+  <%= render 'shared/answers' %>
+</section>

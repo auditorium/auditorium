@@ -85,15 +85,24 @@ en:
   comments: 
     actions:
       submit: 'Add your comment'
+      new: 'Add your comment'
     label:
       content: 'Content of your comment:'
     placeholder:
       content: 'Write a comment...'
 
+  answers:
+    actions:
+      new: 'Write an answer'
+      submit: 'Submit your answer'
+    placeholder:
+      content: 'Click here and begin writing your answer...'
+
   posts:
     general:
       group: 'Group'
       comments: 'Comments'
+      answers: 'Answers'
       upvote:
         title: 'Click when you find this post helpful.'
         alt_text: 'upvote'
