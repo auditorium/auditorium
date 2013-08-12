@@ -17,8 +17,4 @@
 //= require foundation
 //= require translations
 //= require_tree .
-$(function() { 
-  $(document).foundation(); 
-});
-
- 
+$(function(){ $(document).foundation(); });

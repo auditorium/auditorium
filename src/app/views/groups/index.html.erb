@@ -5,7 +5,7 @@
 
 	<div class="row">
 		<% @groups.each_with_index do |group, index| %>
-			<div class="small-12 middle-4 large-4 columns">
+			<div class="small-12 medium-6 large-4 columns">
 				<article class="group <%= group.group_type %>-group">
 					<header class="subheader">
 						<h4><%= link_to group.title, group_path(group) %></h4>
@@ -18,9 +18,6 @@
 			    </footer>
 				</article>
 
-				<% if (index+1)%3 == 0 %>
-				</div><div class="row">
-				<% end %>
 			</div>
 			
 		<% end %>
