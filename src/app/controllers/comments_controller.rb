@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save!
-        format.html { redirect_to @comment, notice: t('answer.action.created') }
+        format.html { redirect_to @comment.commentable, notice: t('answer.action.created') }
         format.json { render json: @comment, status: :created, location: [@commentable, @comment] }
       else
         format.html { render action: 'new' }
@@ -51,14 +51,36 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
-    @commentable = @comment.commentable
     @comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to @commentable, notice: t('answers.flash.destroyed') }
+      format.html { redirect_to @comment.commentable, notice: t('answers.flash.destroyed') }
       format.json { head :no_content }
     end
   end
+
+  def upvote 
+    @comment = Comment.find(params[:id])
+    @comment.rating += 1
+    @comment.save
+
+    respond_to do |format|
+      format.html { redirect_to @comment.commentable, notice: t('posts.general.upvote.notice') }
+      format.json { head :no_content }
+    end
+  end
+
+  def downvote 
+    @comment = Comment.find(params[:id])
+    @comment.rating -= 1
+    @comment.save
+
+    respond_to do |format|
+      format.html { redirect_to @comment.commentable, notice: t('posts.general.downvote.notice') }
+      format.json { head :no_content }
+    end
+  end
+
 
   private
 

@@ -81,3 +81,24 @@ en:
       subject: 'What is the content of your topic?'
     new:
       submit: 'Submit topic'
+
+  comments: 
+    actions:
+      submit: 'Add your comment'
+    label:
+      content: 'Content of your comment:'
+    placeholder:
+      content: 'Write a comment...'
+
+  posts:
+    general:
+      group: 'Group'
+      comments: 'Comments'
+      upvote:
+        title: 'Click when you find this post helpful.'
+        alt_text: 'upvote'
+        notice: 'Post has been up voted.'
+      downvote:
+        title: 'Click if the post is not helpful.'
+        alt_text: 'downvote'
+        notice: 'Post has been down voted.'

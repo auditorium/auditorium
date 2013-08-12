@@ -15,12 +15,67 @@ Auditorium::Application.routes.draw do
         resources :announcements do
           resources :comments
         end
+        
+        resources :topics do
+          resources :comments
+        end
+        
         resources :questions do
           resources :comments
           resources :answers do
             resources :comments
           end
         end
+      end
+    end
+
+    resources :announcements do
+      member do 
+        post 'upvote'
+        post 'downvote'
+      end
+    end
+
+    resources :topics do
+      member do 
+        post 'upvote'
+        post 'downvote'
+      end
+    end
+
+
+    resources :questions do
+      member do 
+        post 'upvote'
+        post 'downvote'
+      end
+    end
+
+    resources :answers do
+      member do 
+        post 'upvote'
+        post 'downvote'
+      end
+    end
+
+    resources :topics do
+      member do 
+        post 'upvote'
+        post 'downvote'
+      end
+    end
+
+    resources :recordings do
+      member do 
+        post 'upvote'
+        post 'downvote'
+      end
+    end
+
+    resources :comments do
+      member do 
+        post 'upvote'
+        post 'downvote'
       end
     end
     

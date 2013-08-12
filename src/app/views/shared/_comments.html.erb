@@ -1,0 +1,36 @@
+<header>
+    <h3 class="subheader"><%= "#{t('posts.general.comments')}" %></h3>
+  </header>
+  <ul class="no-style">
+    <% commentable.comments.each do |comment| %>
+      <li>
+        <div class="content"><%= comment.content %></div>
+        <div class="comment-footer">
+          <span class="rating">
+            <%= link_to content_tag('i', '', class: 'icon-chevron-up'), upvote_comment_path(comment), method: :post, alt: t('posts.general.upvote.alt_text'), title: t('posts.general.upvote.title') %>
+            <b><%= comment.rating.presence && comment.rating > 0 ? "+#{comment.rating}" : comment.rating %></b>
+            <%= link_to content_tag('i', '', class: 'icon-chevron-down'), downvote_comment_path(comment), method: :post, alt: t('posts.general.downvote.alt_text'), title: t('posts.general.downvote.title') %>
+          </span>
+          <span class="right">
+            <%= comment.author.full_name %> &middot;
+            <%= l(comment.created_at, format: :short) %>
+            <% if can? :manage, comment %>
+            <span class="actions">
+              <%= link_to content_tag('i', '', class: 'icon-pencil'), edit_comment_path(comment), alt: "#{t('comments.actions.edit')}", title: "#{t('comments.actions.edit')}" %>
+              <%= link_to content_tag('i', '', class: 'icon-remove'), comment, alt: "#{t('comments.actions.delete')}", title: "#{t('comments.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this comment?' %>
+              </span>
+            <% end %>
+          </span>
+        </div>
+      </li>
+    <% end %>
+
+    <%= form_for([commentable, @comment = Comment.new]) do |f| %>
+    <li>
+      <noscript><%= f.label :content, t('comments.label.content') %></noscript>
+      <%= f.text_area :content, placeholder: t('comments.placeholder.content'), required: true %>
+      <%= f.submit t('comments.actions.submit'), id: 'submit-comment', class: 'tiny button right comment' %>
+      <div class="clearfix"></div>
+    </li>
+    <% end %>
+  </ul>

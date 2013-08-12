@@ -2,7 +2,7 @@
   <h2 class="subheader"><%= t('groups.show.topics.header') %></h2>
 </header>
 
-<%= form_for([@group, @topic = Question.new]) do |f| %>
+<%= form_for([@group, @topic = Topic.new]) do |f| %>
   <ul class="no-style topic">
     <li class="input-fields" class="input-fields">
       <noscript><%= f.label :subject %></noscript>
@@ -22,7 +22,7 @@
         <small><%= l(topic.created_at, format: :short) %></small>
         <% if can? :manage, topic %>
         <span class="actions">
-          <%= link_to content_tag('i', '', class: 'icon-pencil'), edit_question_path(topic), alt: "#{t('topics.actions.edit')}", title: "#{t('topics.actions.edit')}" %>
+          <%= link_to content_tag('i', '', class: 'icon-pencil'), edit_topic_path(topic), alt: "#{t('topics.actions.edit')}", title: "#{t('topics.actions.edit')}" %>
           <%= link_to content_tag('i', '', class: 'icon-remove'), topic, alt: "#{t('topics.actions.delete')}", title: "#{t('topics.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this topic?' %>
           </span>
         <% end %>
@@ -32,5 +32,5 @@
 </ul> 
 
 <% unless limit.nil? %>
-  <span class="right"><small><%= link_to t('topics.show_all'), group_questions_path(@group) %></small></span>
+  <span class="right"><small><%= link_to t('topics.show_all'), group_topics_path(@group) %></small></span>
 <% end %>

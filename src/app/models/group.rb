@@ -4,6 +4,7 @@ class Group < ActiveRecord::Base
   has_many :taggings, as: :taggable
   has_many :questions, dependent: :destroy
   has_many :announcements, dependent: :destroy
+  has_many :topics, dependent: :destroy
 
   belongs_to :creator, class_name: 'User'
 
@@ -32,8 +33,4 @@ class Group < ActiveRecord::Base
   def tag_tokens=(tokens)  
     self.tag_ids = Tag.ids_from_tokens(tokens)  
   end  
-
-  def topics 
-    self.questions
-  end
 end

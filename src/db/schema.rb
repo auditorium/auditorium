@@ -11,29 +11,29 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130729135532) do
+ActiveRecord::Schema.define(:version => 20130812092315) do
 
   create_table "announcements", :force => true do |t|
     t.string   "subject"
     t.text     "content"
-    t.integer  "rating"
+    t.integer  "rating",     :default => 0
     t.integer  "views"
     t.boolean  "is_private"
     t.integer  "author_id"
     t.integer  "group_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
   add_index "announcements", ["author_id", "group_id"], :name => "index_announcements_on_author_id_and_group_id"
 
   create_table "answers", :force => true do |t|
     t.text     "content"
-    t.integer  "rating"
+    t.integer  "rating",      :default => 0
     t.integer  "question_id"
     t.integer  "author_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
 
   add_index "answers", ["author_id", "question_id"], :name => "index_answers_on_author_id_and_question_id"
@@ -52,11 +52,11 @@ ActiveRecord::Schema.define(:version => 20130729135532) do
   create_table "comments", :force => true do |t|
     t.integer  "author_id"
     t.text     "content"
-    t.integer  "rating"
+    t.integer  "rating",           :default => 0
     t.integer  "commentable_id"
     t.string   "commentable_type"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
@@ -282,13 +282,13 @@ ActiveRecord::Schema.define(:version => 20130729135532) do
   create_table "questions", :force => true do |t|
     t.string   "subject"
     t.text     "content"
-    t.integer  "rating"
+    t.integer  "rating",     :default => 0
     t.integer  "views"
     t.boolean  "is_private"
     t.integer  "author_id"
     t.integer  "group_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
   add_index "questions", ["author_id", "group_id"], :name => "index_questions_on_author_id_and_group_id"
@@ -309,14 +309,14 @@ ActiveRecord::Schema.define(:version => 20130729135532) do
   create_table "recordings", :force => true do |t|
     t.string   "subject"
     t.text     "content"
-    t.integer  "rating"
+    t.integer  "rating",     :default => 0
     t.integer  "views"
     t.string   "url"
     t.boolean  "is_private"
     t.integer  "author_id"
     t.integer  "group_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
   add_index "recordings", ["author_id", "group_id"], :name => "index_recordings_on_author_id_and_group_id"
@@ -359,6 +359,21 @@ ActiveRecord::Schema.define(:version => 20130729135532) do
     t.datetime "updated_at",                :null => false
     t.integer  "jexam_id",   :default => 0
   end
+
+  create_table "topics", :force => true do |t|
+    t.string   "subject"
+    t.string   "content"
+    t.integer  "rating"
+    t.integer  "views"
+    t.boolean  "private"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "group_id"
+    t.integer  "author_id"
+  end
+
+  add_index "topics", ["author_id"], :name => "index_topics_on_author_id"
+  add_index "topics", ["group_id"], :name => "index_topics_on_group_id"
 
   create_table "users", :force => true do |t|
     t.string   "username"

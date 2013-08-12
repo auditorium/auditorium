@@ -1,0 +1,18 @@
+<article id="announcement">
+  <header class="post-header">
+    <h2><%= @announcement.subject %></h2>    
+  </header>
+
+  <div class="post-content">
+    <%= markdown @announcement.content %>
+  </div>
+
+  <div class="post-footer">
+    <%= "#{t('posts.general.group')}:" %> 
+    <%= link_to @announcement.group.title, group_path(@announcement.group) %>
+  </div>
+</article>
+
+<section class="comments">
+  <%= render 'shared/comments', commentable: @announcement %>
+</section>

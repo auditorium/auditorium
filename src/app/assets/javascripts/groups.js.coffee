@@ -27,6 +27,6 @@ $('.input-fields input#announcement_subject').on 'focus', (e) ->
   $('#announcement_subject').attr('placeholder', i18n_announcement_subject_placeholder)
   $('#new-announcement-fields').slideDown()
 
-$('.input-fields input#group_subject').on 'focus', (e) ->
-  $('#group_subject').attr('placeholder', i18n_group_subject_placeholder)
-  $('#new-group-fields').slideDown()
+$('.input-fields input#topic_subject').on 'focus', (e) ->
+  $('#topic_subject').attr('placeholder', i18n_topic_subject_placeholder)
+  $('#new-topic-fields').slideDown()
