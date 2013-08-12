@@ -131,14 +131,14 @@ $include-html-top-bar-classes: $include-html-classes;
 
 // Media Queries
 
-// $small-screen: 768px;
-// $medium-screen: 1280px;
-// $large-screen: 1440px;
+$small-screen: 768px;
+$medium-screen: 1280px;
+$large-screen: 1440px;
 
 // $screen: "only screen";
-// $small: "only screen and (min-width: #{$small-screen})";
-// $medium: "only screen and (min-width: #{$medium-screen})";
-// $large: "only screen and (min-width: #{$large-screen})";
+$small: "only screen and (min-width: #{$small-screen})";
+$medium: "only screen and (min-width: #{$medium-screen})";
+$large: "only screen and (min-width: #{$large-screen})";
 // $landscape: "only screen and (orientation: landscape)";
 // $portrait: "only screen and (orientation: portrait)";
 
@@ -1734,12 +1734,28 @@ ul.no-style {
     textarea {
       resize: vertical;
       height: 150px;
+      margin:5px 0;
     }
   }
 }
-.comments {
-  margin:20px 0 10px 40px;
 
+
+
+
+
+@media only screen and (min-width: #{$medium-screen}) {
+  .comments { margin:5px 0 30px 40px; }
+}
+
+@media only screen and (max-width: #{$medium-screen}) {
+  .comments { margin:5px 0 30px 20px; }
+}
+
+@media only screen and (max-width: #{$small-screen}) {
+  .comments { margin:5px 0 30px 10px; }
+}
+
+.comments {
   ul {
     border:none;
 
@@ -1748,6 +1764,19 @@ ul.no-style {
       box-shadow: 1px 1px 2px darken($gray, 20%);
       padding:5px 10px;
       margin:2px 0;
+
+      &.link {
+        background: none;
+        box-shadow: none;
+        border: none;
+        padding:0 10px;
+        margin:0;
+        font-size:0.9em;
+      }
+
+      textarea {
+        margin:5px 0;
+      }
     }
   }
 

@@ -1,6 +1,8 @@
+<% unless commentable.class.name.eql? 'Question' or commentable.class.name.eql? 'Answer' %>
 <header>
   <h4 class="subheader"><%= t('posts.general.comments') %></h4>
 </header>
+<% end %>
 <ul class="no-style">
   <% commentable.comments.each do |comment| %>
     <li>
@@ -26,12 +28,14 @@
   <% end %>
 
   <% if commentable.instance_of?(Question) or commentable.instance_of?(Answer) %>
-    <%= link_to t('comments.actions.new'), '#', 'data-commentable_id' => commentable.id, 'data-commentable_type' => commentable.class.name %> 
+    <li class="link">
+      <%= link_to t('comments.actions.new'), '#', 'data-commentable_id' => commentable.id, 'data-commentable_type' => commentable.class.name %>
+    </li>
 
     <%= form_for([commentable, @comment = Comment.new], html: { class: "hidden #{commentable.id} #{commentable.class.name}" }) do |f| %>
       <li>
         <noscript><%= f.label :content, t('comments.label.content') %></noscript>
-        <%= f.text_area :content, placeholder: t('comments.placeholder.content'), required: true %>
+        <%= f.text_area :content, placeholder: t('comments.placeholder.content'), required: true, autofocus: true %>
         <%= f.submit t('comments.actions.submit'), id: 'submit-comment', class: 'tiny button right comment' %>
         <div class="clearfix"></div>
       </li>
@@ -40,7 +44,7 @@
     <%= form_for([commentable, @comment = Comment.new]) do |f| %>
       <li>
         <noscript><%= f.label :content, t('comments.label.content') %></noscript>
-        <%= f.text_area :content, placeholder: t('comments.placeholder.content'), required: true %>
+        <%= f.text_area :content, placeholder: t('comments.placeholder.content'), required: true, autofocus: true %>
         <%= f.submit t('comments.actions.submit'), id: 'submit-comment', class: 'tiny button right comment' %>
         <div class="clearfix"></div>
       </li>

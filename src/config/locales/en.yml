@@ -93,7 +93,7 @@ en:
   comments: 
     actions:
       submit: 'Add your comment'
-      new: 'Add your comment'
+      new: 'Write a comment'
     label:
       content: 'Content of your comment:'
     placeholder:
