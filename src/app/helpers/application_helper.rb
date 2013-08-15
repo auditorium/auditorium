@@ -60,6 +60,14 @@ module ApplicationHelper
     %w{questions announcements topics groups home}.include? params[:controller]
   end
 
+  def tag_list_delimited(tag_array)
+    tag_array.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ').html_safe
+  end
+
+  def followers_list_delimited(followers_array)
+    followers_array.map(&:full_name).map { |user| link_to user, user_path(user) }.join(', ').html_safe
+  end
+
   #==========
   # below old stuff...
 
@@ -217,8 +225,6 @@ module ApplicationHelper
     current_user.notifications.keep_if{|n| !n.read? and course.posts.map(&:id).include? n.notifyable_id if n.notifyable_type.eql? 'Post'}
   end
 
-  def tag_list_delimited(tag_array)
-    tag_array.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ').html_safe
-  end
+  
 
 end

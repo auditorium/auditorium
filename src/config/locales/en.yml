@@ -72,18 +72,24 @@ en:
     no_results_text: "No tags found."
     searching_text: "Searching for available tags..."
   questions:
+    links:
+      to_content: 'Questions'
     input: 
       new: 'Ask a new question'
       subject: 'What is the subject of your question?'
     new:
       submit: 'Ask question'
   announcements:
+    links:
+      to_content: 'Announcements'
     input: 
       new: 'Write an announcement'
       subject: 'What is the content of your announcement?'
     new:
       submit: 'Submit announcement'
   topics:
+    links:
+      to_content: 'Topics'
     input: 
       new: 'Write an topic'
       subject: 'What is the content of your topic?'
@@ -107,6 +113,12 @@ en:
       content: 'Click here and begin writing your answer...'
 
   posts:
+    links:
+      goto:
+        title: 'Go to:'
+        questions: 'Questions'
+        announcements: 'Announcements'
+        topics: 'Topics'
     general:
       group: 'Group'
       comments: 'Comments'

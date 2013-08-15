@@ -75,4 +75,36 @@ class GroupsController < ApplicationController
 		end
 	end
 
+	def follow
+		@group = Group.find(params[:id])
+
+		respond_to do |format|
+      unless @group.followers.include? current_user
+      	@group.followers << current_user
+      	
+        format.html { redirect_to groups_path, flash: { success:  'You now follow the group.' } }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to groups_path, flash: { error: "You alread follow this group." } }
+        format.json { render json: @group.errors, status: :unprocessable_entity }
+      end
+    end
+	end
+
+	def unfollow
+		@group = Group.find(params[:id])
+
+		respond_to do |format|
+      if @group.followers.include? current_user
+      	@group.followers.delete current_user
+      	
+        format.html { redirect_to groups_path, flash: { success:  'You are not follow this group anymore' } }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to groups_path, flash: { error: "You alread unfollowed this group." } }
+        format.json { render json: @group.errors, status: :unprocessable_entity }
+      end
+    end
+	end
+
 end

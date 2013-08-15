@@ -7,4 +7,12 @@ class Comment < ActiveRecord::Base
   validates :commentable, presence: true
   validates :content, presence: true
   validates :author, presence: true
+
+  def origin
+    if self.commentable.instance_of?(Answer)
+      self.commentable.question
+    else
+      self.commentable
+    end
+  end
 end

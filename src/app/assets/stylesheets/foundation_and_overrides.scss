@@ -1328,7 +1328,8 @@ $topbar-link-font-size: emCalc(15);
 }
 
 [role='main'] {
-  padding:15px;
+  padding:5px 10px;
+  margin:0;
 }
 
 form {
@@ -1384,7 +1385,6 @@ small {
   background-color: $notice-color;
   border-color: darken($notice-color, 10%);
 }
-
 
 /* ================= custom button styles ===================== */
 
@@ -1534,6 +1534,7 @@ div.token-input-dropdown {
 
 .top-bar {
   box-shadow: 0 2px 4px darken($gray, 20%);
+  margin-bottom: 0;
 }
 
 .top-bar-section li a:not(.button):hover {
@@ -1609,6 +1610,23 @@ div.token-input-dropdown {
   }
 }
 
+.subnav {
+  border-bottom: 1px solid $gray;
+  margin:4px 0;
+  padding:2px 0;
+
+  ul {
+    margin:0;
+    padding:0;
+
+    li {
+      margin:0;
+      padding:4px 10px 4px 0;
+      font-size:0.9em;
+    }
+  }
+}
+
 /* ======================== post styles ====================== */
 
 ul.no-style {
@@ -1646,7 +1664,7 @@ ul.no-style {
 
   li {
     border-bottom: 1px solid $gray;
-    padding:3px 5px 3px 2px;
+    padding:3px 10px;
     margin:0;
 
     &.input-fields {
@@ -1738,10 +1756,6 @@ ul.no-style {
     }
   }
 }
-
-
-
-
 
 @media only screen and (min-width: #{$medium-screen}) {
   .comments { margin:5px 0 30px 40px; }

@@ -5,7 +5,7 @@
 <% end %>
 <ul class="no-style">
   <% commentable.comments.each do |comment| %>
-    <li>
+    <li id="<%= dom_id(comment) %>">
       <div class="content"><%= comment.content %></div>
       <div class="comment-footer">
         <span class="rating">

@@ -16,7 +16,7 @@ $('.choosable').on 'click', (event) ->
     error: (jqXHR, textStatus, errorThrown) ->
       console.log errorThrown
     success: 
-      $("html, body").animate({ scrollTop: $('#group-basic-information').offset().top }, 1000);
+      $("html, body").stop().animate({ scrollTop: $('#group-basic-information').offset().top }, 1000);
 
 
 $('.input-fields input#question_subject').on 'focus', (e) ->
@@ -30,3 +30,58 @@ $('.input-fields input#announcement_subject').on 'focus', (e) ->
 $('.input-fields input#topic_subject').on 'focus', (e) ->
   $('#topic_subject').attr('placeholder', i18n_topic_subject_placeholder)
   $('#new-topic-fields').slideDown()
+
+$('.goto a').on 'click', (e) ->
+      e.preventDefault()
+
+      target = this.hash
+      $target = $(target)
+
+      $('html, body').stop().animate { scrollTop: $target.offset().top - 40 }, 900
+
+$('#announcement_subject, #announcement_content').on 'input', (e) ->
+  console.log 'changed'
+  $.ajax 
+    url: '/ajax/preview'
+    type: 'POST'
+    data: { 
+      post_type: 'announcement'
+      subject: $('#announcement_subject').val()
+      content: $('#announcement_content').val()
+    }
+    error: (jqXHR, textStatus, errorThrown) ->
+      console.log errorThrown
+    success:
+      console.log 'Update preview'
+      
+
+
+$('#question_subject, #question_content').on 'input', (e) ->
+  console.log 'changed'
+  $.ajax 
+    url: '/ajax/preview'
+    type: 'POST'
+    data: { 
+      post_type: 'question'
+      subject: $('#question_subject').val()
+      content: $('#question_content').val()
+    }
+    error: (jqXHR, textStatus, errorThrown) ->
+      console.log errorThrown
+    success: 
+      console.log 'Update preview'
+
+$('#topic_subject, #topic_content').on 'input', (e) ->
+  console.log 'changed'
+  $.ajax 
+    url: '/ajax/preview'
+    type: 'POST'
+    data: { 
+      post_type: 'topic'
+      subject: $('#topic_subject').val()
+      content: $('#topic_content').val()
+    }
+    error: (jqXHR, textStatus, errorThrown) ->
+      console.log errorThrown
+    success: 
+      console.log 'Update preview'

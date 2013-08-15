@@ -68,6 +68,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'savon', '~> 1.2.0'
 #gem 'turbolinks'
 

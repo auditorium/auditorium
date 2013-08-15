@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130812092315) do
+ActiveRecord::Schema.define(:version => 20130815105729) do
 
   create_table "announcements", :force => true do |t|
     t.string   "subject"
@@ -150,6 +150,18 @@ ActiveRecord::Schema.define(:version => 20130812092315) do
     t.datetime "updated_at",                    :null => false
     t.boolean  "read",       :default => false
   end
+
+  create_table "followings", :force => true do |t|
+    t.integer  "follower_id"
+    t.integer  "followerable_id"
+    t.string   "followerable_type"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "followings", ["follower_id"], :name => "index_followings_on_follower_id"
+  add_index "followings", ["followerable_id"], :name => "index_followings_on_followerable_id"
+  add_index "followings", ["followerable_type"], :name => "index_followings_on_followerable_type"
 
   create_table "groups", :force => true do |t|
     t.string   "title"

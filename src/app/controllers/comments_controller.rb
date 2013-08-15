@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
 
   # load_and_authorize_resource :question
-  # load_and_authorize_resource :answer, :through => :question
+  # load_and_authorize_resource :comment, :through => :commentable
   before_filter :get_commentable, only: ['new', 'create', 'index']
 
   def index 
@@ -22,7 +22,8 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save!
-        format.html { redirect_to @comment.commentable, notice: t('answer.action.created') }
+        redirect_path =  
+        format.html { redirect_to  "#{url_for @comment.origin}##{dom_id(@comment)}", notice: t('comment.action.created') }
         format.json { render json: @comment, status: :created, location: [@commentable, @comment] }
       else
         format.html { render action: 'new' }
@@ -39,7 +40,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
 
     respond_to do |format|
-      if @commentable.update_attributes(params[:answer])
+      if @commentable.update_attributes(params[:comment])
         format.html { redirect_to @comment, flash: { success:  'Comment was successfully updated.' } }
         format.json { head :no_content }
       else
@@ -51,10 +52,11 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
+    origin = @comment.origin
     @comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to @comment.commentable, notice: t('answers.flash.destroyed') }
+      format.html { redirect_to url_for(origin), notice: t('comments.flash.destroyed') }
       format.json { head :no_content }
     end
   end
@@ -65,7 +67,7 @@ class CommentsController < ApplicationController
     @comment.save
 
     respond_to do |format|
-      format.html { redirect_to @comment.commentable, notice: t('posts.general.upvote.notice') }
+      format.html { redirect_to "#{url_for @comment.origin}##{dom_id(@comment)}", notice: t('posts.general.upvote.notice') }
       format.json { head :no_content }
     end
   end
@@ -76,7 +78,7 @@ class CommentsController < ApplicationController
     @comment.save
 
     respond_to do |format|
-      format.html { redirect_to @comment.commentable, notice: t('posts.general.downvote.notice') }
+      format.html { redirect_to "#{url_for @comment.origin}##{dom_id(@comment)}", notice: t('posts.general.downvote.notice') }
       format.json { head :no_content }
     end
   end

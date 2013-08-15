@@ -8,8 +8,12 @@
   <%= f.text_field :tag_tokens, data: {load: @question.tags} %>
 </li>
 
+<li>
+  <%= link_to t('general.link.show_preview'), '#' %>
+  <div id="question-preview"></div>
+</li>
+
 <li class="input-fields">
   <%= f.submit t('questions.new.submit'), id: 'submit-question', class: 'tiny button right question' %>
   <div class="clearfix"></div>
-  
 </li>

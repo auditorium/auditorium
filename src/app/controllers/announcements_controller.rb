@@ -63,4 +63,11 @@ class AnnouncementsController < ApplicationController
     end
   end
 
+  def preview
+    @post = { subject: params[:subject], content: params[:content]}
+
+    respond_to do |format|
+      format.js
+    end
+  end
 end

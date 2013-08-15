@@ -13,8 +13,10 @@
 
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.all
 //= require jquery.tokeninput
 //= require foundation
 //= require translations
+//= require posts
 //= require_tree .
 $(function(){ $(document).foundation(); });

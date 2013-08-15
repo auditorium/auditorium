@@ -25,6 +25,8 @@ class User < ActiveRecord::Base
   has_many :comments, :foreign_key => :author_id
   has_many :notifications, :foreign_key => :receiver_id
   has_one :email_setting, :dependent => :destroy
+
+  has_many :groups, through: :followings
   
   validates_uniqueness_of :email
   validates_uniqueness_of :username

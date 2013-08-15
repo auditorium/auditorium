@@ -1,6 +1,4 @@
 Auditorium::Application.routes.draw do
-  get "tags/index"
-
   scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do 
 
     devise_for :users, :controllers => { :confirmations => "users/confirmations", :sessions => "users/sessions", :registrations => "users/registrations" }
@@ -12,6 +10,11 @@ Auditorium::Application.routes.draw do
     
     shallow do 
       resources :groups do
+        member do
+          post 'follow'
+          post 'unfollow'
+        end
+
         resources :announcements do
           resources :comments
         end
@@ -97,6 +100,7 @@ Auditorium::Application.routes.draw do
     get "ajax/courses"
     get "ajax/lectures"
     get "ajax/chairs"
+    post "ajax/preview", to: 'ajax#preview'
 
     match 'intro', :to => 'landing_page#index'
     match 'home', :to => 'home#index'

@@ -31,4 +31,12 @@ class AjaxController < ApplicationController
     list = chairs.map {|c| Hash[ id: c.id, label: c.name, name: c.name]}
     render json: list
   end
+
+  def preview
+    @post = { subject: params[:subject], content: params[:content], type: params[:post_type] }
+
+    respond_to do |format|
+      format.js
+    end
+  end
 end
