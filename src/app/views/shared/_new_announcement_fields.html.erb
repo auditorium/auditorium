@@ -8,10 +8,9 @@
   <%= f.text_field :tag_tokens, data: {load: @announcement.tags} %>
 </li>
 
-
-<li>
-  <%= link_to t('general.link.show_preview'), '#' %>
-  <div id="announcement-preview"></div>
+<li class="preview">
+  <small><%= link_to t('general.links.show_preview'), '#', class: 'toggle-preview', 'data-id' => 'announcement' %></small>
+  <div id="announcement-preview" ></div>
 </li>
 
 <li class="input-fields">

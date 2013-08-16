@@ -14,6 +14,11 @@ en:
     headline:
       index: 'Recordings overview'
       new: 'Add a recording'
+
+  general:
+    links:
+      show_preview: 'show preview'
+      hide_preview: 'hide preivew'
   groups:
     show:
       questions:

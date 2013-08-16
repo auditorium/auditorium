@@ -45,8 +45,12 @@
       <li>
         <noscript><%= f.label :content, t('comments.label.content') %></noscript>
         <%= f.text_area :content, placeholder: t('comments.placeholder.content'), required: true, autofocus: true %>
+
         <%= f.submit t('comments.actions.submit'), id: 'submit-comment', class: 'tiny button right comment' %>
         <div class="clearfix"></div>
+
+        <small><%= link_to t('general.links.show_preview'), '#', class: 'toggle-preview', 'data-id' => 'comment' %></small>
+        <div id="comment-preview" ></div>
       </li>
     <% end %>
   <% end %>

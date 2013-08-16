@@ -1695,6 +1695,19 @@ ul.no-style {
 
 /* ============ Post styles =========== */
 
+li.preview {
+  border: none!important;
+  & > div {
+    margin:5px;
+    padding:10px;
+    border:1px dashed $gray;
+  }
+}
+
+#comment-preview, #announcement-preview, #question-preview, #topic-preview {
+  display:none;
+}
+
 .post-header {
 
 }
