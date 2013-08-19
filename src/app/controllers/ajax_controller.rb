@@ -33,7 +33,15 @@ class AjaxController < ApplicationController
   end
 
   def preview
-    @post = { subject: params[:subject], content: params[:content], type: params[:post_type] }
+    @preview = { subject: params[:subject], content: params[:content], type: params[:post_type]}
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def comment_preview
+    @preview = { content: params[:content], id: params[:id]}
 
     respond_to do |format|
       format.js

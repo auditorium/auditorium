@@ -21,6 +21,12 @@
 <%= form_for([@question, @answer = Answer.new]) do |f| %>
   <noscript><%= f.label :content, t('answers.label.content') %></noscript>
   <%= f.text_area :content, placeholder: t('answers.placeholder.content'), required: true %>
+  
+  <div class="preview">
+    <div id="answer-preview"></div>
+  </div>
+
   <%= f.submit t('answers.actions.submit'), id: 'submit-answer', class: 'tiny button right answer' %>
+  <%= link_to t('general.links.show_preview'), '#', class: 'toggle-preview tiny button review-button right', 'data-id' => 'answer' %>
   <div class="clearfix"></div>
 <% end %>

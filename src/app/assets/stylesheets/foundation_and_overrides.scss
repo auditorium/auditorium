@@ -83,12 +83,17 @@ $question-color: $primary-color;
 $announcement-color: $alert-color;
 $event-color: $notice-color;
 $topic-color: $cyan;
-$answer-color: $gray;
+$answer-color: darken($gray, 10%);
+$comment-color: darken($gray, 20%);
 $recording-color: $orange;
 
 $lecture-group-color: $alert-color;
 $learning-group-color: $success-color;
 $topic-group-color: $cyan;
+
+$topic-group-color: $cyan;
+$learning-group-color: $success-color;
+$lecture-group-color: $alert-color;
 
 // Make sure border radius matches unless we want it different.
 
@@ -1417,27 +1422,94 @@ small {
     }
   }
 
-  &.question, &.announcement, &.topic, &.event {
-    background-color: $dark-gray;
-    &:hover {
-      background-color: darken($dark-gray, 10%);
-    }  
+  &.question, 
+  &.answer, 
+  &.comment, 
+  &.announcement, 
+  &.topic, 
+  &.event, 
+  &.learning-group, 
+  &.topic-group, 
+  &.lecture-group,
+  &.review-button {
+    background-color: #fff;
+    color: #333;
   }
 
   &.question {
+    border:1px solid $question-color;
     border-left: 3px solid $question-color;
+
+    &:hover {
+      background-color: lighten($question-color, 40%);
+    }  
+  }
+
+  &.answer {
+    border:1px solid $answer-color;
+    border-left: 3px solid $answer-color;
+
+    &:hover {
+      background-color: lighten($answer-color, 10%);
+    }  
+  }
+
+  &.comment {
+    border:1px solid $comment-color;
+    border-left: 3px solid $comment-color;
+
+    &:hover {
+      background-color: lighten($comment-color, 20%);
+    }  
+  }
+
+  &.review-button {
+    border:1px solid $comment-color;
+    border-left: 3px solid $comment-color;
+    margin-right:10px;
+
+    &:hover {
+      background-color: lighten($comment-color, 20%);
+    }  
   }
 
   &.announcement {
+    border:1px solid $announcement-color;
     border-left: 3px solid $announcement-color;
+
+    &:hover {
+      background-color: lighten($announcement-color, 50%);
+    }  
   }
 
   &.topic {
+    border:1px solid $topic-color;
     border-left: 3px solid $topic-color;
+
+    &:hover {
+      background-color: lighten($topic-color, 30%);
+    }  
   }
 
   &.event {
+    border:1px solid $event-color;
     border-left: 3px solid $event-color;
+
+    &:hover {
+      background-color: lighten($event-color, 40%);
+    }  
+  }
+
+  &.topic-group {
+    border-left: 3px solid $topic-group-color;
+  }
+
+  &.lecture-group {
+    border-left: 3px solid $lecture-group-color;
+  }
+
+  &.learning-group {
+    border-left: 3px solid $learning-group-color;
   }
 }
 
@@ -1595,7 +1667,7 @@ div.token-input-dropdown {
   box-shadow: 1px 1px 2px darken($gray, 20%);
   padding:10px;
   margin:5px 0;
-  height:200px;
+  height:140px;
 
   &.lecture-group {
     border-left: 5px solid $lecture-group-color;
@@ -1608,6 +1680,16 @@ div.token-input-dropdown {
   &.topic-group {
     border-left: 5px solid $topic-group-color;
   }
+
+  .group-footer {
+    position: absolute; 
+    bottom: 10px; 
+    left: 30px;
+  }
+
+  p {
+    margin:5px 0;
+  } 
 }
 
 .subnav {
@@ -1674,8 +1756,6 @@ ul.no-style {
 
       a {
         color: darken($gray, 20%);
-        width:100%;
-        height:100%;
         display:block;
         &:hover {
           color: darken($gray, 50%);
@@ -1695,16 +1775,21 @@ ul.no-style {
 
 /* ============ Post styles =========== */
 
-li.preview {
+.preview {
   border: none!important;
+  padding:3px 5px;
   & > div {
-    margin:5px;
-    padding:10px;
+    min-height:20px;
+    margin:5px 0;
+    padding:0 5px;
     border:1px dashed $gray;
   }
 }
-
-#comment-preview, #announcement-preview, #question-preview, #topic-preview {
+ 
+#announcement-preview, 
+#question-preview, 
+#topic-preview, 
+#answer-preview {
   display:none;
 }
 

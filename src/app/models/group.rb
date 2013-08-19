@@ -12,12 +12,12 @@ class Group < ActiveRecord::Base
 
   belongs_to :creator, class_name: 'User'
 
-  attr_accessible :description, :title, :group_type, :tag_tokens, :creator
+  attr_accessible :description, :title, :group_type, :tag_tokens, :creator_id
   attr_reader :tag_tokens
 
   validates :title, presence: true
   validates :description, presence: true
-  validates :creator, presence: true
+  validates :creator_id, presence: true
   validates :group_type, presence: true, inclusion: { in: %w{lecture topic learning} }
   
   def self.tagged_with(name)

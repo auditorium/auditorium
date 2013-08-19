@@ -1,2 +1,2 @@
-$('#<%= @post[:type] %>-preview').html('<%= j render "shared/preview" %>');
+$('<%= "##{@preview[:type]}-preview" %>').html('<%= j render "shared/preview_content" %>');
 MathJax.Hub.Queue(["Typeset",MathJax.Hub]);

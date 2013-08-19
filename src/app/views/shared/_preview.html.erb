@@ -1,7 +1,4 @@
-<header class="post-header">
-  <h2><%= @post[:subject] %></h2>    
-</header>
-
-<div class="post-content">
-  <%= markdown @post[:content] %>
+<div class="preview">
+  <small><%= link_to t('general.links.show_preview'), '#', class: 'toggle-preview', 'data-id' => data_id %></small>
+  <div id="<%= data_id %>-preview"></div>
 </div>

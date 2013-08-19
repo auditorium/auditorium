@@ -1,0 +1,9 @@
+<% if @preview[:subject].presence %>
+  <header class="post-header">
+    <h2><%= @preview[:subject] %></h2>    
+  </header>
+<% end %>
+
+<div class="post-content">
+  <%= markdown @preview[:content] %>
+</div>

@@ -8,12 +8,13 @@
   <%= f.text_field :tag_tokens, data: {load: @announcement.tags} %>
 </li>
 
-<li class="preview">
-  <small><%= link_to t('general.links.show_preview'), '#', class: 'toggle-preview', 'data-id' => 'announcement' %></small>
-  <div id="announcement-preview" ></div>
-</li>
+<div class="preview">
+  <div id="announcement-preview"></div>
+</div>
 
 <li class="input-fields">
-  <%= f.submit t('announcements.new.submit'),id: 'submit-announcement', class: 'tiny button right announcement' %>
+    <%= f.submit t('announcements.new.submit'),id: 'submit-announcement', class: 'tiny button announcement right' %>
+    <%= link_to t('general.links.show_preview'), '#', class: 'toggle-preview tiny button review-button right', 'data-id' => 'announcement' %>
+
   <div class="clearfix"></div>
 </li>

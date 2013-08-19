@@ -2,6 +2,13 @@
 	<header>
 		<h1><%= t('groups.index.header') %></h1>
 	</header>
+<!-- TODO
+	<nav class="groups-filter">
+		<%= t('general.filter.group-types') %>
+		<%= link_to t('general.filter.lecture-group'), '#', class: 'button tiny lecture-group' %>
+		<%= link_to t('general.filter.learning-group'), '#', class: 'button tiny learning-group' %>
+		<%= link_to t('general.filter.topic-group'), '#', class: 'button tiny topic-group' %>
+	</nav> -->
 
 	<div class="row">
 		<% @groups.each do |group| %>
@@ -19,9 +26,9 @@
 							</small>
 						</h4>
 					</header>
-			    <p class="group-description"><%= markdown group.description %></p>
+			   
 			    <p class="group-tags"><%= tag_list_delimited(group.tags) %></p>
-			    <footer>
+			    <footer class="group-footer">
 			    	<%= link_to t('groups.links.edit'), edit_group_path(group), class: 'button secondary tiny' %>
 			    	<%= link_to t('groups.links.delete'), group, method: :delete, class: 'button secondary tiny' %>
 			    </footer>

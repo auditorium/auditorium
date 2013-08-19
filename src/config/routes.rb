@@ -101,6 +101,7 @@ Auditorium::Application.routes.draw do
     get "ajax/lectures"
     get "ajax/chairs"
     post "ajax/preview", to: 'ajax#preview'
+    post 'ajax/comment_preview', to: 'ajax#comment_preview'
 
     match 'intro', :to => 'landing_page#index'
     match 'home', :to => 'home#index'

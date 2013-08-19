@@ -4,7 +4,7 @@ $.renderPreview = (id) ->
     type: 'POST'
     data: { 
       post_type: id
-      subject: $('#'+id+'_subject').val()
+      subject: $('#'+id+'_subject').val() if id != 'answer'
       content: $('#'+id+'_content').val()
     }
     error: (jqXHR, textStatus, errorThrown) ->
@@ -32,5 +32,5 @@ $('#question_subject, #question_content').on 'input', (e) ->
 $('#topic_subject, #topic_content').on 'input', (e) ->
   $.renderPreview('topic') if $('#topic-preview').is(":visible")
 
-$('#comment_content').on 'input', (e) ->
-  $.renderPreview('comment') if $('#comment-preview').is(":visible")
+$('#answer_content').on 'input', (e) ->
+  $.renderPreview('answer') if $('#answer-preview').is(":visible")

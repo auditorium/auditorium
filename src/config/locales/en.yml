@@ -19,6 +19,11 @@ en:
     links:
       show_preview: 'show preview'
       hide_preview: 'hide preivew'
+    filter:
+      group-types: 'Select or deselect to filter groups:'
+      learning-group: 'Learning groups'
+      lecture-group: 'Lecture groups'
+      topic-group: 'Topic groups'
   groups:
     show:
       questions:
