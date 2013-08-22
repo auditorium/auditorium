@@ -19,12 +19,15 @@ en:
     links:
       show_preview: 'show preview'
       hide_preview: 'hide preivew'
+      more: 'more ...'
     filter:
       group-types: 'Select or deselect to filter groups:'
       learning-group: 'Learning groups'
       lecture-group: 'Lecture groups'
       topic-group: 'Topic groups'
   groups:
+    no_groups_available: 'There is no group available yet.'
+    most_active: 'Most active groups'
     show:
       questions:
         header: 'Questions'

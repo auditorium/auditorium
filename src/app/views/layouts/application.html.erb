@@ -36,7 +36,7 @@
     <noscript><div class="alert-box">Please enable javascript.</div></noscript>
 
     <div class="sticky">
-      <div class="stripe">
+      <!-- <div class="stripe">
         <div class="success"></div>
         <div class="alert"></div>
         <div class="warning"></div>
@@ -45,8 +45,8 @@
         <div class="alert"></div>
         <div class="warning"></div>
         <div class="primary"></div>
-      </div>
-      <nav class="top-bar" data-options='is_hover:false'>
+      </div> -->
+      <nav class="top-bar <%= params[:controller] %>" data-options='is_hover:false'>
         <ul class="title-area">
           <!--Title area -->
           <li class="name"><h1><%= link_to 'auditorium', root_path %></h1></li>
@@ -56,8 +56,8 @@
         <section class="top-bar-section">
           <!-- left nav section -->
           <ul class="left">
-            <li><%= link_to t('navigation.home'), root_path %></li>
-            <li><%= link_to t('groups.menu_item'), groups_path %></li>
+            <li><%= nav_link t('navigation.home'), home_path, { class: 'home' } %></li>
+            <li><%= nav_link t('groups.menu_item'), groups_path, { class: 'groups' } %></li>
           </ul>
 
           <ul class="right">

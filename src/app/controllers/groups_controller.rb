@@ -3,7 +3,7 @@ class GroupsController < ApplicationController
 
 	def index
 		if params[:tag]
-			@groups = Group.tagged_with(params[:tag])
+			@groups = Group.tagged_with(params[:tag]).order(:title)
 		else
 			@groups = Group.order(:title)
 		end

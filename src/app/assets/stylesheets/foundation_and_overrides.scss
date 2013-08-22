@@ -78,7 +78,8 @@ $success-color: #8BD936;
 $warning-color: #F2CB13;
 $notice-color: lighten($primary-color, 20%);
 
-
+$home-color: $notice-color;
+$group-color: $success-color;
 $question-color: $primary-color;
 $announcement-color: $alert-color;
 $event-color: $notice-color;
@@ -188,8 +189,8 @@ $header-font-weight: normal;
 // $header-font-style: normal;
 // $header-font-color: #222;
 // $header-line-height: 1.4;
-// $header-top-margin: .2em;
-// $header-bottom-margin: .5em;
+$header-top-margin: .1em;
+$header-bottom-margin: .1em;
 // $header-text-rendering: optimizeLegibility;
 
 // Control header font sizes
@@ -1257,11 +1258,11 @@ $button-radius: $global-radius;
 
 // Background color for the top bar
 
-$topbar-bg: black !default;
+$topbar-bg: #333 !default;
 
 // Height and margin
 
-$topbar-height: 50px;
+$topbar-height: 55px;
 // $topbar-margin-bottom: emCalc(30);
 
 // Control Input height for top bar
@@ -1334,7 +1335,7 @@ $topbar-link-font-size: emCalc(15);
 
 [role='main'] {
   padding:5px 10px;
-  margin:0;
+  margin:10px 0 50px 0;
 }
 
 form {
@@ -1607,11 +1608,41 @@ div.token-input-dropdown {
 .top-bar {
   box-shadow: 0 2px 4px darken($gray, 20%);
   margin-bottom: 0;
+
+  &.home { border-bottom:2px solid $home-color; }
+  &.groups { border-bottom:2px solid $topic-color; }
+  &.groups { border-bottom:2px solid $group-color; }
+  &.events { border-bottom:2px solid $event-color; }
+  &.questions { border-bottom:2px solid $question-color; }
 }
 
-.top-bar-section li a:not(.button):hover {
-  background: darken($primary-color, 30%);
+.top-bar-section ul {
+  
+  background-color: #333;
+
+  li a {
+    height:53px;
+    &.active {
+
+      &.home { color: $home-color; }
+      &.groups { color: $topic-color; }
+      &.groups { color: $group-color; }
+      &.events { color: $event-color; }
+      &.questions { color: $question-color; }
+    }
+
+    &:not(.button):hover {
+      background-color: #333;
+
+      &.home { color: $home-color; }
+      &.groups { color: $topic-color; }
+      &.groups { color: $group-color; }
+      &.events { color: $event-color; }
+      &.questions { color: $question-color; }
+    }
+  }
 }
+
 
 .stripe {
   height:3px;

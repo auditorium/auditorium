@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :tag do
-    name { Faker::Lorem.word }
-    description { Faker::Lorem.words.join(' ') }
+    name { 'aTag' }
+    description { 'Description of the tag.' }
   end
 end

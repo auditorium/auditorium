@@ -1,0 +1,28 @@
+<header>
+  <h1><%= t('home.title') %></h1>
+</header>
+
+<%= form_tag 'ajax/browse', method: 'post' do %>
+  <noscript><%= label_tag :query %></noscript>
+  <%= text_field_tag :query %>
+<% end %>
+
+<section id="activity">
+
+<!-- new groups -->
+  <header>
+    <h2 class="subheader">
+      <%= t('groups.most_active') %>
+    </h2>
+  </header>
+
+  <div id="groups" class="row">
+    <%= render(@groups.limit(4)) || t('groups.no_groups_available') %>
+    <% if @groups.size > 4 %>
+      <%= link_to t('general.links.more'), groups_path, class: 'right' %>
+    <% end %>
+  </div>
+
+<!-- new posts -->
+
+</section>

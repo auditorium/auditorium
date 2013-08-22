@@ -1,6 +1,9 @@
 Auditorium::Application.routes.draw do
   scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do 
 
+    post "ajax/preview", to: 'ajax#preview'
+    post 'ajax/browse', to: 'ajax#browse'
+
     devise_for :users, :controllers => { :confirmations => "users/confirmations", :sessions => "users/sessions", :registrations => "users/registrations" }
 
     get 'tags/:tag', to: 'groups#index', as: :tag
@@ -97,11 +100,7 @@ Auditorium::Application.routes.draw do
     resources :email_settings
     match 'email_settings/subscriptions', :to => 'email_settings#change_emails_for_subscriptions', :as => :change_email_settings_for_subscriptions
 
-    get "ajax/courses"
-    get "ajax/lectures"
-    get "ajax/chairs"
-    post "ajax/preview", to: 'ajax#preview'
-    post 'ajax/comment_preview', to: 'ajax#comment_preview'
+   
 
     match 'intro', :to => 'landing_page#index'
     match 'home', :to => 'home#index'

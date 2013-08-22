@@ -231,7 +231,7 @@ describe GroupsController do
 
     describe 'DELETE #destroy' do
       before(:each) do
-        @group = create(:topic_group)
+        @group = create(:learning_group)
       end
 
       it 'deletes the group from the database' do

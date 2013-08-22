@@ -25,7 +25,7 @@
 
 
 <!-- guide via joyride plugin -->
-
+<% unless Rails.env.eql? 'test' %>
 <ol class="joyride-list" data-joyride>
   <li data-id="first-stop" data-class="custom so-awesome" data-text="Next">
     <h4>Just a test</h4>
@@ -44,3 +44,4 @@
     <p>It works as a modal too!</p>
   </li>
 </ol>
+<% end %>

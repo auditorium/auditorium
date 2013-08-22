@@ -25,6 +25,14 @@ module ApplicationHelper
     end
   end
 
+  def nav_link(title, path, options={}) 
+    if current_page?(path)
+      link_to title, path, class: "active #{options[:class]}" 
+    else
+      link_to title, path, class: options[:class]
+    end
+  end
+
   def markdown(text)
     coderayified = CodeRayify.new()
 

@@ -12,7 +12,7 @@ feature 'Manage groups' do
     expect(page).to have_content('Create a new group')
 
     find('#group_group_type', visible: false).value.should eq ''
-    find('#lecture').click
+    find('#lecture-group').click
     find('#group_group_type', visible: false).value.should eq 'lecture'
 
     find('#group_title').set 'Group title'

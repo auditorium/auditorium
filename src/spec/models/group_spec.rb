@@ -25,7 +25,7 @@ describe Group do
   it "is invalid without a creator" do
     group = build(:group)
     group.creator = nil
-    expect(group).to have(1).errors_on(:creator)
+    expect(group).to have(1).errors_on(:creator_id)
   end
 
   it "is invalid with group_type other than 'learning', 'lecture', 'topic'" do
@@ -33,7 +33,10 @@ describe Group do
     expect(group).to have(1).errors_on(:group_type)
   end
 
+  it { should have_many(:announcements).dependent(:destroy) }
   it { should have_many(:questions).dependent(:destroy) }
+  it { should have_many(:topics).dependent(:destroy) }
+
   it { should belong_to(:creator) }
   it { should have_many(:tags) }
 end

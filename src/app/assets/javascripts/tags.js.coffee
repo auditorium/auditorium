@@ -9,3 +9,4 @@ $('#group_tag_tokens, #question_tag_tokens, #answer_tag_tokens, #announcement_ta
   noResultsText: i18n_tokeninput_no_results_text
   searchingText: i18n_tokeninput_searching_text
   animateDropdown: false
+  preventDuplicates: true
