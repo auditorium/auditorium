@@ -14,7 +14,11 @@ en:
     headline:
       index: 'Recordings overview'
       new: 'Add a recording'
-
+  home:
+    placeholder: 
+      browse: 'Click here and start your search for posts or groups...'
+    titles:
+      browse: 'Search'
   general:
     links:
       show_preview: 'show preview'
@@ -25,6 +29,7 @@ en:
       learning-group: 'Learning groups'
       lecture-group: 'Lecture groups'
       topic-group: 'Topic groups'
+      posts: 'Filter posts'
   groups:
     no_groups_available: 'There is no group available yet.'
     most_active: 'Most active groups'
@@ -104,7 +109,7 @@ en:
     links:
       to_content: 'Topics'
     input: 
-      new: 'Write an topic'
+      new: 'Create a topic'
       subject: 'What is the content of your topic?'
     new:
       submit: 'Submit topic'

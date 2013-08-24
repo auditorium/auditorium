@@ -1,9 +1,12 @@
 class SearchController < ApplicationController
   def index
     query = "*#{params[:query]}*"
-    lectures = Lecture.search(query, match_mode: :any).page(params[:lecture_page]).per(20)
-    courses = Course.search(query, match_mode: :any).page(params[:course_page]).per(20)
-    
+    questions = Question.search(query, match_mode: :any).page(params[:qpage]).per(20)
+    announcements = Announcement.search(query, match_mode: :any).page(params[:annpage]).per(20)
+    topics = Topic.search(query, match_mode: :any).page(params[:topicpage]).per(20)
+    answers = Answer.search(query, match_mode: :any).page(params[:anspage]).per(20)
+    comments = Comment.search(query, match_mode: :any).page(params[:cpage]).per(20)
+
     posts = Post.search query, match_mode: :any
     posts.keep_if{|p| can? :read, p.origin}
 

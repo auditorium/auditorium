@@ -57,105 +57,8 @@ class User < ActiveRecord::Base
     full_name
   end
 
-  # how many points has the user gained with his posts?
-  def update_score
-    self.score = posts.inject(0) { |score, post| score += post.rating }
-    save
-  end
-
-  def lecture_membership course
-    LectureMembership.find_by_user_id_and_lecture_id(self.id, course.id)
-  end
-
-  def course_membership course
-    CourseMembership.find_by_user_id_and_course_id(self.id, course.id)
-  end
-
-  def membership_type(course)
-    membership = self.course_membership course
-    membership.membership_type if membership
-  end
-  
-  def subscribed_to?(course)
-    membership = self.course_membership course
-  end
-
-  def is_admin?
-    self.admin
-  end
-  
-  def is_course_member?(course)
-    membership = self.course_membership course
-    membership.membership_type.eql? 'member' if membership
-  end
-  
-  def is_course_maintainer?(course)
-    membership = self.course_membership course
-    return membership.membership_type.eql? 'maintainer' if membership
-  end
-  
-  def is_course_editor?(course)
-    membership = self.course_membership course
-    return membership.membership_type.eql? 'editor' if membership
-  end
-  
-  def is_lecture_member?(lecture)
-    membership = self.lecture_membership lecture
-    return membership.membership_type.eql? 'member' if membership
-  end
-  
-  def is_lecture_maintainer?(lecture)
-    membership = self.lecture_membership lecture
-    membership.membership_type.eql? 'maintainer' if membership
-  end
-  
-  def is_lecture_editor?(lecture)
-    membership = self.lecture_membership lecture
-    membership.membership_type.eql? 'editor' if membership
-  end
-  
-  def membership_type(course)
-    membership = CourseMembership.find_by_user_id_and_course_id(self.id, course.id)
-    membership.membership_type if membership
-  end
-
-  def may_edit_course course
-    self.admin? or self.is_course_editor?(course) or self.is_course_maintainer?(course) or self.may_edit_lecture(course.lecture)
-  end
-
-  def may_edit_lecture lecture
-    self.admin? or self.is_lecture_editor?(lecture) or self.is_lecture_maintainer?(lecture)
-  end
-
-  def faculty_id
-    if self.faculties.empty?
-      nil
-    else
-      self.faculties.first.id 
-    end
-  end
-  
-  def faculties_with_courses 
-    fwc = self.courses.keep_if{ |course| !course.lecture.nil? }
-    fwc.group_by{ |course| course.lecture.chair.institute.faculty if course.lecture }
-  end
-  
-  def courses_by_faculty
-    self.courses.group_by{ |course| course.lecture.chair.institute.faculty.name if course.lecture }
-  end
-  
-  def posts_of_followed_courses_per_day
-    posts = Post.order('created_at DESC').where('post_type = ? or post_type = ?', 'question', 'info').all
-    posts = posts.select{|post| self.courses.include? post.course }
-    posts.group_by{ |post| post.created_at.to_date.beginning_of_day }
-  end
-  
-  def unread_notifications
-    self.notifications.select { |notification| notification.read == false }
-  end
-
-  def notifications
-    Notification.where('receiver_id = ?', self.id).order('created_at DESC')
+  def is_follower?(post)
+    post.group.followers.include? self
   end
 
   # A callback method used to deliver confirmation
@@ -177,23 +80,5 @@ class User < ActiveRecord::Base
     end
   end
 
-  def is_moderator?(course)
-    course.moderators.include? self if !course.moderators.nil? 
-  end
-
-  def can_see(post)
-    not ((post.is_private || post.origin.is_private) && self != post.author && !self.is_moderator?(post.course) && !self.admin?)
-  end
-
-  def rating_minimum
-    -6 # todo: customizable in future releases
-  end
-
-  def questions(limit=nil)
-    questions = Post.where(author_id: self.id, post_type: 'question').limit(limit)
-  end
-
-  def answers(limit=nil)
-    answers = Post.where(author_id: self.id, post_type: 'answer').limit(limit)
-  end
+  
 end

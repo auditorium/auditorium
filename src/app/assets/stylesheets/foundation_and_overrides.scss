@@ -70,7 +70,7 @@ $body-bg: #f9f9f9;
 $gray: #e9e9e9;
 $dark-gray: darken($gray, 20%);
 $cyan: #66bfa9;
-$orange: #fda754;
+$orange: #FC9800;
 $primary-color: #3474B8;
 $secondary-color: #FC9800;
 $alert-color: #BF0404;
@@ -95,6 +95,10 @@ $topic-group-color: $cyan;
 $topic-group-color: $cyan;
 $learning-group-color: $success-color;
 $lecture-group-color: $alert-color;
+
+$filter-button-color: darken($gray, 20%);
+
+$following-color: lighten($warning-color, 45%);
 
 // Make sure border radius matches unless we want it different.
 
@@ -1258,7 +1262,7 @@ $button-radius: $global-radius;
 
 // Background color for the top bar
 
-$topbar-bg: #333 !default;
+$topbar-bg: rgba(#fff, 0.95) !default;
 
 // Height and margin
 
@@ -1276,20 +1280,20 @@ $topbar-title-font-size: emCalc(22);
 
 // Style the top bar dropdown elements
 
-// $topbar-dropdown-bg: #222;
+$topbar-dropdown-bg: rgba(#fff, 0.95);
 // $topbar-dropdown-link-color: #fff;
 // $topbar-dropdown-link-bg: lighten($topbar-bg, 5%);
 // $topbar-dropdown-toggle-size: 5px;
-// $topbar-dropdown-toggle-color: #fff;
+$topbar-dropdown-toggle-color: #333;
 // $topbar-dropdown-toggle-alpha: 0.5;
 
 // Set the link colors and styles for top-level nav
 
-// $topbar-link-color: #fff;
+$topbar-link-color: #333;
 // $topbar-link-color-hover: #fff;
 // $topbar-link-color-active: #fff;
 $topbar-link-weight: normal;
-$topbar-link-font-size: emCalc(15);
+$topbar-link-font-size: emCalc(14);
 // $topbar-link-hover-lightness: -30%; // Darken by 30%
 // $topbar-link-bg-hover: darken($topbar-bg, 3%);
 // $topbar-link-bg-active: darken($topbar-bg, 3%);
@@ -1302,12 +1306,12 @@ $topbar-link-font-size: emCalc(15);
 // Top menu icon styles
 
 // $topbar-menu-link-transform: uppercase;
-// $topbar-menu-link-font-size: emCalc(13);
-// $topbar-menu-link-weight: bold;
-// $topbar-menu-link-color: #fff;
-// $topbar-menu-icon-color: #fff;
-// $topbar-menu-link-color-toggled: #888;
-// $topbar-menu-icon-color-toggled: #888;
+$topbar-menu-link-font-size: emCalc(14);
+$topbar-menu-link-weight: normal;
+$topbar-menu-link-color: #888;
+$topbar-menu-icon-color: #888;
+$topbar-menu-link-color-toggled: #333;
+$topbar-menu-icon-color-toggled: #333;
 
 // Transitions and breakpoint styles
 
@@ -1432,7 +1436,8 @@ small {
   &.learning-group, 
   &.topic-group, 
   &.lecture-group,
-  &.review-button {
+  &.review-button,
+  &.filter-button {
     background-color: #fff;
     color: #333;
   }
@@ -1461,6 +1466,15 @@ small {
 
     &:hover {
       background-color: lighten($comment-color, 20%);
+    }  
+  }
+
+  &.filter-button {
+    border:1px solid $filter-button-color;
+    border-left: 3px solid $filter-button-color;
+
+    &:hover {
+      background-color: lighten($filter-button-color, 20%);
     }  
   }
 
@@ -1608,20 +1622,25 @@ div.token-input-dropdown {
 .top-bar {
   box-shadow: 0 2px 4px darken($gray, 20%);
   margin-bottom: 0;
+  border-bottom:3px solid $home-color;
 
-  &.home { border-bottom:2px solid $home-color; }
-  &.groups { border-bottom:2px solid $topic-color; }
-  &.groups { border-bottom:2px solid $group-color; }
-  &.events { border-bottom:2px solid $event-color; }
-  &.questions { border-bottom:2px solid $question-color; }
+  &.home { border-color: $home-color; }
+  &.groups { border-color: $topic-color; }
+  &.groups { border-color: $group-color; }
+  &.events { border-color: $event-color; }
+  &.questions { border-color: $question-color; }
+  &.announcements { border-color: $announcement-color; }
+
 }
 
 .top-bar-section ul {
   
-  background-color: #333;
+  background-color: rgba(#fff, 0.95);
 
   li a {
-    height:53px;
+    height:50px;
+    color: #333;
+
     &.active {
 
       &.home { color: $home-color; }
@@ -1632,7 +1651,7 @@ div.token-input-dropdown {
     }
 
     &:not(.button):hover {
-      background-color: #333;
+      background-color: rgba(#fff, 0.95);
 
       &.home { color: $home-color; }
       &.groups { color: $topic-color; }
@@ -1644,20 +1663,21 @@ div.token-input-dropdown {
 }
 
 
-.stripe {
-  height:3px;
-  margin:0;
-  padding:0;
-  content: '';
-  .alert { background-color: $alert-color; height:3px; width:12.5%; dispaly:inline-block; float:left; }
-  .success { background-color: $success-color;  height:3px; width:12.5%; dispaly:inline-block; float:left; }
-  .warning { background-color: $warning-color; height:3px; width:12.5%; dispaly:inline-block; float:left; }
-  .primary { background-color: $primary-color; height:3px; width:12.5%; dispaly:inline-block; float:left; }
-  .secondary { background-color: $secondary-color;  height:3px; width:12.5%; dispaly:inline-block; float:left; }
-  &:after {
-    clear:both;
-  }
-}
+
+// .stripe {
+//   height:3px;
+//   margin:0;
+//   padding:0;
+//   content: '';
+//   .alert { background-color: $alert-color; height:3px; width:12.5%; dispaly:inline-block; float:left; }
+//   .success { background-color: $success-color;  height:3px; width:12.5%; dispaly:inline-block; float:left; }
+//   .warning { background-color: $warning-color; height:3px; width:12.5%; dispaly:inline-block; float:left; }
+//   .primary { background-color: $primary-color; height:3px; width:12.5%; dispaly:inline-block; float:left; }
+//   .secondary { background-color: $secondary-color;  height:3px; width:12.5%; dispaly:inline-block; float:left; }
+//   &:after {
+//     clear:both;
+//   }
+// }
 
 .table {
   width:100%;
@@ -1741,6 +1761,96 @@ div.token-input-dropdown {
 }
 
 /* ======================== post styles ====================== */
+
+ul.posts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    padding:3px 10px;
+    margin:4px 0;
+    line-height:30px;
+
+    &.question, &.announcement, &.topic {
+      background-color: #fff;
+      box-shadow: 1px 1px 2px darken($gray, 20%);
+      border-left: 4px solid $question-color;
+    }
+
+    &.question { border-color: $question-color; }
+    &.announcement { border-color: $announcement-color; }
+    &.topic { border-color: $topic-color; }
+
+    &.following { background-color: $following-color; }
+
+    span.actions {
+      margin-left:10px;
+    }
+  }
+}
+
+.post-actions {
+  margin: 0 0 20px 0;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 1px 1px 2px darken($gray, 20%);
+
+  ul {
+    list-style: none;
+    margin:5px 0;
+
+    li {
+      display: inline-block;
+      margin: 0 20px 0 0;
+      padding: 0; 
+
+      &.right {
+        margin-right:0;
+
+      }
+    }
+  }
+}
+
+#post-form {
+  display: none;
+}
+
+a.show-form:after {
+  font-family: FontAwesome;
+  padding-left:5px;
+  content: "\f078"
+}
+
+a.hide-form:after {
+  font-family: FontAwesome;
+  padding-left:5px;
+  content: "\f077"
+}
+
+ul.filter-list {
+  a { 
+    color: darken($dark-gray, 20%);
+
+    &:hover {
+      color: #333;
+    }
+
+    &:before {
+      padding-right: 5px;
+      font-family: FontAwesome;
+      content: "\f096"; // icon-check-empty
+      color: #333;
+    }
+    &.selected:before {
+      padding-right: 5px;
+      font-family: FontAwesome;
+      content: "\f14a";  // icon-check-sign
+      color: #333;
+    }
+  }
+}
 
 ul.no-style {
   list-style: none;

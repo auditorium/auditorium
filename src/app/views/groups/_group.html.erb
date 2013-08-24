@@ -1,4 +1,5 @@
 <div class="small-12 medium-6 large-6 columns">
+
   <article class="group <%= group.group_type %>-group">
     <header class="subheader">
       <h4><%= link_to group.title, group_path(group) %>
@@ -15,9 +16,11 @@
    
     <p class="group-tags"><%= tag_list_delimited(group.tags) %></p>
     <footer class="group-footer">
-      <%= link_to t('groups.links.edit'), edit_group_path(group), class: 'button secondary tiny' %>
-      <%= link_to t('groups.links.delete'), group, method: :delete, class: 'button secondary tiny' %>
+      <% if can? :manage, group %>
+        <%= link_to t('groups.links.edit'), edit_group_path(group), class: 'button secondary tiny' %>
+        <%= link_to t('groups.links.delete'), group, method: :delete, class: 'button secondary tiny' %>
+      <% end %>
     </footer>
-  </article>
 
+  </article>
 </div>

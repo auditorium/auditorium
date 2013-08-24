@@ -11,6 +11,12 @@ class Ability
       can :read, :all
       can :create, Question
       #cannot :manage, :all
+
+      # user is group moderator
+      can :manage, Group do |group|
+        group.is_moderator? user
+      end
+
     else # Gäste
       cannot :read, :all
     end

@@ -8,4 +8,10 @@ class Answer < ActiveRecord::Base
   validates :question, presence: true
   validates :content, presence: true
   validates :author, presence: true
+
+  define_index do
+    indexes content
+    set_property :enable_star => true
+    set_property :min_infix_len => 2
+  end
 end

@@ -36,17 +36,8 @@
     <noscript><div class="alert-box">Please enable javascript.</div></noscript>
 
     <div class="sticky">
-      <!-- <div class="stripe">
-        <div class="success"></div>
-        <div class="alert"></div>
-        <div class="warning"></div>
-        <div class="primary"></div>
-        <div class="success"></div>
-        <div class="alert"></div>
-        <div class="warning"></div>
-        <div class="primary"></div>
-      </div> -->
-      <nav class="top-bar <%= params[:controller] %>" data-options='is_hover:false'>
+
+      <nav class="top-bar <%= params[:controller] %>">
         <ul class="title-area">
           <!--Title area -->
           <li class="name"><h1><%= link_to 'auditorium', root_path %></h1></li>
@@ -86,7 +77,7 @@
       <%= yield %>
     </div>
     </section>
-    
+
     <%= javascript_include_tag "application" %>
   </body>
 </html>

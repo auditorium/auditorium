@@ -1,28 +1,56 @@
-<header>
-  <h1><%= t('home.title') %></h1>
-</header>
 
-<%= form_tag 'ajax/browse', method: 'post' do %>
-  <noscript><%= label_tag :query %></noscript>
-  <%= text_field_tag :query %>
-<% end %>
+
+<section id="browse">
+  <header>
+    <h2><%= t('home.titles.browse') %></h2>
+  </header>
+  <%= form_tag 'ajax/browse', method: 'post' do %>
+    <noscript><%= label_tag :query %></noscript>
+    <%= text_field_tag :query, nil, { placeholder: t('home.placeholder.browse') }%>
+  <% end %>
+
+  <div id="browse-results"></div>
+</section>
+
+<section id="participate">
+  
+</section>
 
 <section id="activity">
 
-<!-- new groups -->
-  <header>
-    <h2 class="subheader">
-      <%= t('groups.most_active') %>
-    </h2>
+  <!-- new posts -->
+  <header id="recent-posts">
+    <h2><%= t('home.titles.recent-posts') %></h2>
   </header>
 
-  <div id="groups" class="row">
-    <%= render(@groups.limit(4)) || t('groups.no_groups_available') %>
-    <% if @groups.size > 4 %>
-      <%= link_to t('general.links.more'), groups_path, class: 'right' %>
-    <% end %>
+  <div class="post-actions">
+    <ul>
+      <li><%= link_to t('announcements.input.new'), '#', class: 'button small announcement show-form', id: 'new-announcement' %></li>
+      <li><%= link_to t('questions.input.new'), '#', class: 'button small question show-form', id: 'new-question' %></li>
+      <li><%= link_to t('topics.input.new'), '#', class: 'button small topic show-form', id: 'new-topic' %></li>
+      <li class="right"><%= link_to t('general.filter.posts'), '#', class: 'button small filter-button show-form', id: 'filter-posts' %></li>
+    </ul>
+
+    <div id="post-form">
+      <%= render 'shared/filter_form' %>
+    </div>
   </div>
 
-<!-- new posts -->
-
+  <ul class="posts">
+    <% @posts.each do |post| %>
+      <li class="<%= post.class.name.parameterize %> <%= 'following' if current_user.is_follower?(post) %>">
+        <span class="rating"><%= post.rating %></span>
+        <span class="subject"><%= link_to post.subject, post %></span>
+        <span class="right">
+          <small><%= l(post.created_at, format: :short) %></small>
+          <% if can? :manage, post %>
+          <span class="actions">
+            <%= link_to content_tag('i', '', class: 'icon-pencil'), edit_post_path(post), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %>
+            <%= link_to content_tag('i', '', class: 'icon-remove'), post, alt: "#{t('posts.actions.delete')}", title: "#{t('posts.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this post?' %>
+            </span>
+          <% end %>
+        </span>
+      </li>
+    <% end %>
+  </ul>
 </section>

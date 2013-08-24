@@ -2,6 +2,7 @@ Auditorium::Application.routes.draw do
   scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do 
 
     post "ajax/preview", to: 'ajax#preview'
+    post "ajax/posts_filter", to: 'ajax#posts_filter'
     post 'ajax/browse', to: 'ajax#browse'
 
     devise_for :users, :controllers => { :confirmations => "users/confirmations", :sessions => "users/sessions", :registrations => "users/registrations" }
