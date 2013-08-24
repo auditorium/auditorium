@@ -1,33 +1,34 @@
-$.loadAnnouncementForm = ->
-  alert('Announcement')
+$.loadForm = (form_type) ->
+  $.ajax
+    type: 'post'
+    url: 'ajax/load_form'
+    data: { form_type: form_type }
+    error: (jqXHR, textStatus, errorThrown) ->
+      console.log errorThrown
+    success:
+      $('#post-form').slideDown()
 
-$.loadQuestionForm = ->
-  alert('Question')
+$.requestSearchResults = (query) ->
+  $.ajax
+    url: '/ajax/search'
+    type: 'get'
+    data: { query: query }
+    error: (jqXHR, textStatus, errorThrown) ->
+      console.log errorThrown
+    success:
+      $('#search-results').show()
 
-$.loadTopicForm = ->
-  alert('Topic')
-
-# $.loadFilterForm = ->
-#   $.ajax 
-#     url: 'ajax/posts_filter'
-#     type: 'POST'
-#     error: (jqXHR, textStatus, errorThrown) ->
-#       console.log errorThrown
-#     success: 
-#       $('#post-form').slideDown()
-
-$('a#new-announcement, a#new-topic, a#new-question, a#filter-posts').on 'click', (e) ->
+$('a#new-announcement, a#new-topic, a#new-question').on 'click', (e) ->
   e.preventDefault()
 
   switch($(this).attr('id'))
-    when 'new-announcement' then $.loadAnnouncementForm()
-    when 'new-question' then $.loadQuestionForm()
-    when 'new-topic' then $.loadTopicForm()
-    when 'filter-posts' 
-      if $(this).hasClass('show-form')
-        $(this).removeClass('show-form').addClass('hide-form')
-        $('#post-form').slideDown()
-      else
-        $(this).removeClass('hide-form').addClass('show-form')
-        $('#post-form').slideUp()
+    when 'new-announcement' then $.loadForm('new_announcement')
+    when 'new-question' then $.loadForm('new_question')
+    when 'new-topic' then $.loadForm('new_topic')
+
+
+$('#query').on 'input', (e) ->
+  query = $('#query').val()
+  $.requestSearchResults(query) 
+
       

@@ -38,8 +38,21 @@ class AjaxController < ApplicationController
     respond_to :js
   end
 
-  def posts_filter 
+  def load_form 
+    @form_type = params[:form_type]
     respond_to :js
+  end
+
+  def search
+    unless params[:query].empty?
+      query = "%#{params[:query]}%" 
+      @questions = Question.where("subject LIKE ? or content LIKE ?", query, query)
+      @announcements = Announcement.where("subject LIKE ? or content LIKE ?", query, query)
+      @topics = Topic.where("subject LIKE ? or content LIKE ?", query, query)
+      @groups = Group.where("title LIKE ? or description LIKE ?", query, query)
+    end
+    
+    respond_to :js, :html
   end
 
 end

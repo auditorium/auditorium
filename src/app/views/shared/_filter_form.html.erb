@@ -5,5 +5,5 @@
 
   <li><%= link_to t('general.filter.show_topics'), params.merge({ show_topics: (params[:show_topics] == 'no' ? 'yes' : 'no')  }), class: "#{'selected' unless params[:show_topics] == 'no'}" %></li>
 
-  <li><%= link_to t('general.filter.only_subscribed'), params.merge({ only_subscribed: ('no' || params[:only_subscribed] == 'no' ? 'yes' : 'no')  }), class: "#{'selected' if params[:only_subscribed] == 'yes'}" %></li>
+  <li><%= link_to t('general.filter.only_subscribed'), params.merge({ only_subscribed: (params[:only_subscribed] == 'no' || params[:only_subscribed].nil? ? 'yes' : 'no')  }), class: "#{'selected' if params[:only_subscribed] == 'yes'}" %></li>
 </ul>

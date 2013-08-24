@@ -1,21 +1,3 @@
-
-
-<section id="browse">
-  <header>
-    <h2><%= t('home.titles.browse') %></h2>
-  </header>
-  <%= form_tag 'ajax/browse', method: 'post' do %>
-    <noscript><%= label_tag :query %></noscript>
-    <%= text_field_tag :query, nil, { placeholder: t('home.placeholder.browse') }%>
-  <% end %>
-
-  <div id="browse-results"></div>
-</section>
-
-<section id="participate">
-  
-</section>
-
 <section id="activity">
 
   <!-- new posts -->
@@ -24,33 +6,19 @@
   </header>
 
   <div class="post-actions">
-    <ul>
-      <li><%= link_to t('announcements.input.new'), '#', class: 'button small announcement show-form', id: 'new-announcement' %></li>
-      <li><%= link_to t('questions.input.new'), '#', class: 'button small question show-form', id: 'new-question' %></li>
-      <li><%= link_to t('topics.input.new'), '#', class: 'button small topic show-form', id: 'new-topic' %></li>
-      <li class="right"><%= link_to t('general.filter.posts'), '#', class: 'button small filter-button show-form', id: 'filter-posts' %></li>
-    </ul>
-
-    <div id="post-form">
-      <%= render 'shared/filter_form' %>
-    </div>
+    <div id="filter"><%= render 'shared/filter_form' %></div>
+<!--     <ul>
+      <li><%= link_to t('announcements.input.new'), '#', class: 'button small announcement', id: 'new-announcement' %></li>
+      <li><%= link_to t('questions.input.new'), '#', class: 'button small question', id: 'new-question' %></li>
+      <li><%= link_to t('topics.input.new'), '#', class: 'button small topic', id: 'new-topic' %></li>
+    </ul> -->
+    
+    <div id="post-form"></div>
   </div>
 
   <ul class="posts">
     <% @posts.each do |post| %>
-      <li class="<%= post.class.name.parameterize %> <%= 'following' if current_user.is_follower?(post) %>">
-        <span class="rating"><%= post.rating %></span>
-        <span class="subject"><%= link_to post.subject, post %></span>
-        <span class="right">
-          <small><%= l(post.created_at, format: :short) %></small>
-          <% if can? :manage, post %>
-          <span class="actions">
-            <%= link_to content_tag('i', '', class: 'icon-pencil'), edit_post_path(post), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %>
-            <%= link_to content_tag('i', '', class: 'icon-remove'), post, alt: "#{t('posts.actions.delete')}", title: "#{t('posts.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this post?' %>
-            </span>
-          <% end %>
-        </span>
-      </li>
+      <%= render 'shared/post', post: post %>
     <% end %>
   </ul>
 </section>

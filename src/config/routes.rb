@@ -2,9 +2,9 @@ Auditorium::Application.routes.draw do
   scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do 
 
     post "ajax/preview", to: 'ajax#preview'
-    post "ajax/posts_filter", to: 'ajax#posts_filter'
-    post 'ajax/browse', to: 'ajax#browse'
-
+    post "ajax/load_form", to: 'ajax#load_form'
+    get 'ajax/search', to: 'ajax#search', as: :search
+    
     devise_for :users, :controllers => { :confirmations => "users/confirmations", :sessions => "users/sessions", :registrations => "users/registrations" }
 
     get 'tags/:tag', to: 'groups#index', as: :tag
@@ -118,9 +118,6 @@ Auditorium::Application.routes.draw do
     get 'terms/:id/search', to: 'terms#search_courses', as: :search_courses_in_term
     get 'lectures/search', to: 'lectures#search', as: :search_lectures
 
-    controller :search do
-      get 'search' => :index, as: :search
-    end
 
     
     get 'users/moderation' => 'users#moderation', :as => :users_moderation

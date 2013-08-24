@@ -36,7 +36,7 @@ class Group < ActiveRecord::Base
 
   def tag_tokens=(tokens)  
     self.tag_ids = Tag.ids_from_tokens(tokens)  
-  end  
+  end 
 
   def moderators
     self.followings.where(role: 'moderator').collect { |f| User.find(f.follower_id) }

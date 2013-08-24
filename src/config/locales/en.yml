@@ -15,11 +15,13 @@ en:
       index: 'Recordings overview'
       new: 'Add a recording'
   home:
-    placeholder: 
-      browse: 'Click here and start your search for posts or groups...'
-    titles:
-      browse: 'Search'
+    
   general:
+    search: 
+      placeholder: 'Click here and start your search for posts or groups...'
+      submit: 'Search'
+      results:
+        title: 'Search results for %{query}'
     links:
       show_preview: 'show preview'
       hide_preview: 'hide preivew'

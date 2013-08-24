@@ -372,10 +372,10 @@ $input-box-shadow: none;
 
 // We use these to build padding for buttons.
 
-// $button-med: emCalc(12);
-// $button-tny: emCalc(7);
-// $button-sml: emCalc(9);
-// $button-lrg: emCalc(16);
+$button-med: emCalc(12);
+$button-tny: emCalc(7);
+$button-sml: emCalc(11);
+$button-lrg: emCalc(16);
 
 // We use this to control the display property.
 
@@ -1427,6 +1427,8 @@ small {
     }
   }
 
+  &.home,
+  &.group,
   &.question, 
   &.answer, 
   &.comment, 
@@ -1440,6 +1442,24 @@ small {
   &.filter-button {
     background-color: #fff;
     color: #333;
+  }
+
+  &.home {
+    border:1px solid $home-color;
+    border-left: 3px solid $home-color;
+
+    &:hover {
+      background-color: lighten($home-color, 30%);
+    }    
+  }
+
+  &.group {
+    border:1px solid $group-color;
+    border-left: 3px solid $group-color;
+
+    &:hover {
+      background-color: lighten($group-color, 40%);
+    }    
   }
 
   &.question {
@@ -1623,9 +1643,11 @@ div.token-input-dropdown {
   box-shadow: 0 2px 4px darken($gray, 20%);
   margin-bottom: 0;
   border-bottom:3px solid $home-color;
+  height: 55px;
+  overflow: hidden;
 
   &.home { border-color: $home-color; }
-  &.groups { border-color: $topic-color; }
+  &.topics { border-color: $topic-color; }
   &.groups { border-color: $group-color; }
   &.events { border-color: $event-color; }
   &.questions { border-color: $question-color; }
@@ -1634,15 +1656,11 @@ div.token-input-dropdown {
 }
 
 .top-bar-section ul {
-  
-  background-color: rgba(#fff, 0.95);
 
   li a {
-    height:50px;
     color: #333;
 
     &.active {
-
       &.home { color: $home-color; }
       &.groups { color: $topic-color; }
       &.groups { color: $group-color; }
@@ -1650,14 +1668,15 @@ div.token-input-dropdown {
       &.questions { color: $question-color; }
     }
 
-    &:not(.button):hover {
-      background-color: rgba(#fff, 0.95);
+    &:not(.button) { 
 
-      &.home { color: $home-color; }
-      &.groups { color: $topic-color; }
-      &.groups { color: $group-color; }
-      &.events { color: $event-color; }
-      &.questions { color: $question-color; }
+      &:hover {
+        &.home { color: $home-color; }
+        &.groups { color: $topic-color; }
+        &.groups { color: $group-color; }
+        &.events { color: $event-color; }
+        &.questions { color: $question-color; }
+      }
     }
   }
 }
@@ -1683,7 +1702,56 @@ div.token-input-dropdown {
   width:100%;
 }
 
+/* ======================== search results style ===================== */
+
+#search-form {
+  form {
+    padding: 0;
+    margin: 0;
+  }
+
+  background-color: #fff;
+  box-shadow: 1px 1px 2px darken($gray, 20%); 
+  padding: 10px 0; 
+}
+
+#search-results {
+  margin-top: 20px;
+}
+
 /* ======================== group style ===================== */
+
+// Style for search results page
+ul.groups {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    padding:3px 10px;
+    margin:4px 0;
+    line-height:30px;
+
+    &.topic, &.learning, &.lecture {
+      background-color: #fff;
+      box-shadow: 1px 1px 2px darken($gray, 20%);
+      border-left: 4px solid $question-color;
+    }
+
+    &.question { border-color: $question-color; }
+    &.announcement { border-color: $announcement-color; }
+    &.topic { border-color: $topic-color; }
+
+    &.following { background-color: $following-color; }
+
+    span.actions {
+      margin-left:10px;
+    }
+  }
+}
+
+
+
 #content-nav {
 
   a {
@@ -1707,13 +1775,13 @@ div.token-input-dropdown {
   }
 }
 
-.group-information {
+div.group-information {
   background-color: #fff;
   box-shadow: 1px 1px 2px darken($gray, 20%);
   padding:10px;
 }
 
-.group {
+article.group {
   background-color: #fff;
   box-shadow: 1px 1px 2px darken($gray, 20%);
   padding:10px;
@@ -1760,7 +1828,7 @@ div.token-input-dropdown {
   }
 }
 
-/* ======================== post styles ====================== */
+/* ======================== group styles ====================== */
 
 ul.posts {
   list-style: none;
@@ -1817,10 +1885,18 @@ ul.posts {
   display: none;
 }
 
-a.show-form:after {
-  font-family: FontAwesome;
-  padding-left:5px;
-  content: "\f078"
+#filter {
+  font-size: 0.9em;
+}
+
+a.show-form {
+
+  &:after {
+    font-family: FontAwesome;
+    padding-left:10px;
+    font-size: 0.9em;
+    content: "\f078"
+  }
 }
 
 a.hide-form:after {

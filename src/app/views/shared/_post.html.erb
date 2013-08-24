@@ -1,0 +1,13 @@
+<li class="<%= post.class.name.parameterize %> <%= 'following' if current_user.is_follower?(post) %>">
+  <span class="rating"><%= post.rating %></span>
+  <span class="subject"><%= link_to post.subject, post %></span>
+  <span class="right">
+    <small><%= l(post.created_at, format: :short) %></small>
+    <% if can? :manage, post %>
+    <span class="actions">
+      <%= link_to content_tag('i', '', class: 'icon-pencil'), edit_post_path(post), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %>
+      <%= link_to content_tag('i', '', class: 'icon-remove'), post, alt: "#{t('posts.actions.delete')}", title: "#{t('posts.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this post?' %>
+      </span>
+    <% end %>
+  </span>
+</li>
