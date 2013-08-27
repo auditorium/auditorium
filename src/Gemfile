@@ -70,6 +70,8 @@ end
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'savon', '~> 1.2.0'
+
+gem 'sidekiq'
 #gem 'turbolinks'
 
 # To use ActiveModel has_secure_password

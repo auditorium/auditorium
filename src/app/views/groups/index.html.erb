@@ -1,19 +1,41 @@
-<section id="groups">
-	<header>
-		<h1><%= t('groups.index.header') %></h1>
-	</header>
-<!-- TODO
-	<nav class="groups-filter">
-		<%= t('general.filter.group-types') %>
-		<%= link_to t('general.filter.lecture-group'), '#', class: 'button tiny lecture-group' %>
-		<%= link_to t('general.filter.learning-group'), '#', class: 'button tiny learning-group' %>
-		<%= link_to t('general.filter.topic-group'), '#', class: 'button tiny topic-group' %>
-	</nav> -->
+<nav class="subnav">
+  <ul class="inline-list goto">
+    <li><%= t('groups.links.goto.title') %></li>
+    <li><%= link_to t('links.goto.lecture-groups'), anchor: 'lectures' %></li>
+    <li><%= link_to t('links.goto.learning-groups'), anchor: 'learnings' %></li>
+    <li><%= link_to t('links.goto.topic-groups'), anchor: 'topics' %></li>
+  </ul>
+</nav>
 
-	<div class="row">
-		<%= render(@groups) || t('groups.no_groups_available') %>
-	</div>
-</section>
+	
+
+	<section id="lectures">
+		<header class="subheader lecture-group">
+			<h2><%= t('groups.lectures.title')%></h2>
+		</header>
+  	<div class="row">
+			<%= render(@groups.where(group_type: 'lecture')) || t('groups.no_groups_available') %>
+		</div>
+	</section>
+
+	<section id="learnings">
+		<header class="subheader learning-group">
+			<h2><%= t('groups.learnings.title')%></h2>
+		</header>
+	  <div class="row">
+			<%= render(@groups.where(group_type: 'learning')) || t('groups.no_groups_available') %>
+		</div>
+	</section>
+
+	<section id="topics">
+		<header class="subheader topic-group">
+			<h2><%= t('groups.topics.title')%></h2>
+		</header>
+	  <div class="row">
+			<%= render(@groups.where(group_type: 'topic')) || t('groups.no_groups_available') %>
+		</div>
+	</section>
+
 
 
 <%= link_to t('groups.new.link'), new_group_path, class: 'small button' %>

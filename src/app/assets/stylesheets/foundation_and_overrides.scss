@@ -74,7 +74,7 @@ $orange: #FC9800;
 $primary-color: #3474B8;
 $secondary-color: #FC9800;
 $alert-color: #BF0404;
-$success-color: #8BD936;
+$success-color: #7AC02D;
 $warning-color: #F2CB13;
 $notice-color: lighten($primary-color, 20%);
 
@@ -83,16 +83,13 @@ $group-color: $success-color;
 $question-color: $primary-color;
 $announcement-color: $alert-color;
 $event-color: $notice-color;
-$topic-color: $cyan;
+$topic-color: $warning-color;
 $answer-color: darken($gray, 10%);
 $comment-color: darken($gray, 20%);
 $recording-color: $orange;
 
-$lecture-group-color: $alert-color;
-$learning-group-color: $success-color;
-$topic-group-color: $cyan;
 
-$topic-group-color: $cyan;
+$topic-group-color: $topic-color;
 $learning-group-color: $success-color;
 $lecture-group-color: $alert-color;
 
@@ -374,7 +371,7 @@ $input-box-shadow: none;
 
 $button-med: emCalc(12);
 $button-tny: emCalc(7);
-$button-sml: emCalc(11);
+$button-sml: emCalc(10);
 $button-lrg: emCalc(16);
 
 // We use this to control the display property.
@@ -1332,7 +1329,6 @@ $topbar-menu-icon-color-toggled: #333;
 @import "font-awesome";
 
 /* ================== general styles ================= */
-
 [class*="column"] + [class*="column"]:last-child {
   float:left;
 }
@@ -1640,7 +1636,7 @@ div.token-input-dropdown {
 /* =================== Topbar Style ===================== */
 
 .top-bar {
-  box-shadow: 0 2px 4px darken($gray, 20%);
+  box-shadow: 0 2px 2px darken($gray, 20%);
   margin-bottom: 0;
   border-bottom:3px solid $home-color;
   height: 55px;
@@ -1711,7 +1707,7 @@ div.token-input-dropdown {
   }
 
   background-color: #fff;
-  box-shadow: 1px 1px 2px darken($gray, 20%); 
+  box-shadow: 1px 1px 1px darken($gray, 20%); 
   padding: 10px 0; 
 }
 
@@ -1731,12 +1727,24 @@ ul.groups {
     padding:3px 10px;
     margin:4px 0;
     line-height:30px;
+    //border-left: 5px solid $group-color;
 
-    &.topic, &.learning, &.lecture {
-      background-color: #fff;
-      box-shadow: 1px 1px 2px darken($gray, 20%);
-      border-left: 4px solid $question-color;
-    }
+    background-color: #fff;
+    box-shadow: 1px 1px 1px darken($gray, 20%);
+
+    span.label {
+      color: #fff;
+      font-weight: normal;
+      font-size: 0.8em;
+      border-radius: 2px;
+      padding: 3px 5px;
+      margin: 0 10px 0 5px;
+      width: 75px;
+
+      &.lecture-group { background-color: $lecture-group-color; }
+      &.learning-group { background-color: $learning-group-color; }
+      &.topic-group { background-color: $topic-group-color; }
+    } 
 
     &.question { border-color: $question-color; }
     &.announcement { border-color: $announcement-color; }
@@ -1777,13 +1785,13 @@ ul.groups {
 
 div.group-information {
   background-color: #fff;
-  box-shadow: 1px 1px 2px darken($gray, 20%);
+  box-shadow: 1px 1px 1px darken($gray, 20%);
   padding:10px;
 }
 
 article.group {
   background-color: #fff;
-  box-shadow: 1px 1px 2px darken($gray, 20%);
+  box-shadow: 1px 1px 1px darken($gray, 20%);
   padding:10px;
   margin:5px 0;
   height:140px;
@@ -1842,7 +1850,7 @@ ul.posts {
 
     &.question, &.announcement, &.topic {
       background-color: #fff;
-      box-shadow: 1px 1px 2px darken($gray, 20%);
+      box-shadow: 1px 1px 1px darken($gray, 20%);
       border-left: 4px solid $question-color;
     }
 
@@ -1862,7 +1870,7 @@ ul.posts {
   margin: 0 0 20px 0;
   padding: 10px;
   background-color: #fff;
-  box-shadow: 1px 1px 2px darken($gray, 20%);
+  box-shadow: 1px 1px 1px darken($gray, 20%);
 
   ul {
     list-style: none;
@@ -1935,7 +1943,7 @@ ul.no-style {
 
   &.question, &.announcement, &.topic {
     background-color: #fff;
-    box-shadow: 1px 1px 2px darken($gray, 20%);
+    box-shadow: 1px 1px 1px darken($gray, 20%);
   }
 
   &.question {
@@ -2030,7 +2038,7 @@ ul.no-style {
 
 #announcement, #question, #answer, #recording, #topic {
   background-color: #fff;
-  box-shadow: 1px 1px 2px darken($gray, 20%);
+  box-shadow: 1px 1px 1px darken($gray, 20%);
   padding:10px;
 }
 
@@ -2060,7 +2068,7 @@ ul.no-style {
 
   & > form {
     background-color: #fff;
-    box-shadow: 1px 1px 2px #b6b6b6;
+    box-shadow: 1px 1px 1px darken($gray, 20%);
     padding: 5px 10px;
     margin: 2px 0;
 
@@ -2090,7 +2098,7 @@ ul.no-style {
 
     li {
       background-color: #fff;
-      box-shadow: 1px 1px 2px darken($gray, 20%);
+      box-shadow: 1px 1px 1px darken($gray, 20%);
       padding:5px 10px;
       margin:2px 0;
 

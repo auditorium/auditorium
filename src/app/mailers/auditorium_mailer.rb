@@ -4,6 +4,17 @@ class AuditoriumMailer < ActionMailer::Base
   default from: "auditorium <notification@auditorium.inf.tu-dresden.de>",
           'message-id' => "<notification@auditorium.inf.tu-dresden.de>"
 
+  # ------ new --------
+
+  def new_comment(comment)
+    @user = comment.author
+    @comment = comment
+    mail(to: @user.email, subject: 'New comment.')
+  end
+
+
+  # ------ old --------
+
 
   def welcome_email(user)
   	@user = user

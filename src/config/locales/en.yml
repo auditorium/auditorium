@@ -32,7 +32,15 @@ en:
       lecture-group: 'Lecture groups'
       topic-group: 'Topic groups'
       posts: 'Filter posts'
+
   groups:
+    label: '%{type}'
+    lectures: 
+      title: 'Lectures'
+    learnings: 
+      title: 'Learning Groups'
+    topics:
+      title: 'Topic Groups'
     no_groups_available: 'There is no group available yet.'
     most_active: 'Most active groups'
     show:
@@ -85,6 +93,7 @@ en:
     create:
       success: 'The group has been created successfully.'
       failure: 'There was a problem creating this group. Please try again.'
+
   tags:
     new_entry: 'Create the new tag: %{name}'
   tokeninput:
@@ -132,13 +141,17 @@ en:
     placeholder:
       content: 'Click here and begin writing your answer...'
 
+  links:
+    goto:
+      title: 'Go to:'
+      questions: 'Questions'
+      announcements: 'Announcements'
+      topics: 'Topics'
+      lecture-groups: 'Lectures'
+      learning-groups: 'Learning Groups'
+      topic-groups: 'Topic Groups'
+
   posts:
-    links:
-      goto:
-        title: 'Go to:'
-        questions: 'Questions'
-        announcements: 'Announcements'
-        topics: 'Topics'
     general:
       group: 'Group'
       comments: 'Comments'
