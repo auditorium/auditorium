@@ -1,5 +1,7 @@
 <li class="group <%= 'following' if group.followers.include? current_user %>">
-  <span class="label radius <%= group.group_type %>-group"><%= t('groups.label', type: group.group_type.capitalize) %></i></span>
+  <span class="label radius <%= group.group_type %>-group">
+    <%= t('groups.label', type: group.group_type.capitalize) %>
+  </span>
   <span class="title"><%= link_to group.title, group_path(group) %></span>
   <span class="right">
     <% if can? :manage, group %>

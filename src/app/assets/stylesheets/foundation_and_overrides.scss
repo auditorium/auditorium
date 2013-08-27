@@ -1399,6 +1399,9 @@ small {
   border:none;
   box-shadow: none;
   -webkit-appearance: none;
+  font-family: Verdana, sans-serif;
+  font-weight: normal;
+  padding: 3px 5px;
 
   &.secondary {
     background-color: darken($gray, 20%);
@@ -1717,6 +1720,20 @@ div.token-input-dropdown {
 
 /* ======================== group style ===================== */
 
+.label {
+  color: #fff;
+  font-weight: normal;
+  font-size: 0.8em;
+  border-radius: 2px;
+  padding: 3px 5px;
+  margin: 0 10px 0 5px;
+  width: 75px;
+
+  &.lecture-group { background-color: $lecture-group-color; }
+  &.learning-group { background-color: $learning-group-color; }
+  &.topic-group { background-color: $topic-group-color; }
+}
+
 // Style for search results page
 ul.groups {
   list-style: none;
@@ -1727,24 +1744,10 @@ ul.groups {
     padding:3px 10px;
     margin:4px 0;
     line-height:30px;
-    //border-left: 5px solid $group-color;
+    border-left: 5px solid darken($gray, 10%);
 
     background-color: #fff;
-    box-shadow: 1px 1px 1px darken($gray, 20%);
-
-    span.label {
-      color: #fff;
-      font-weight: normal;
-      font-size: 0.8em;
-      border-radius: 2px;
-      padding: 3px 5px;
-      margin: 0 10px 0 5px;
-      width: 75px;
-
-      &.lecture-group { background-color: $lecture-group-color; }
-      &.learning-group { background-color: $learning-group-color; }
-      &.topic-group { background-color: $topic-group-color; }
-    } 
+    box-shadow: 1px 1px 1px darken($gray, 20%); 
 
     &.question { border-color: $question-color; }
     &.announcement { border-color: $announcement-color; }
@@ -1796,17 +1799,7 @@ article.group {
   margin:5px 0;
   height:140px;
 
-  &.lecture-group {
-    border-left: 5px solid $lecture-group-color;
-  }
-
-  &.learning-group {
-    border-left: 5px solid $learning-group-color;
-  }
-
-  &.topic-group {
-    border-left: 5px solid $topic-group-color;
-  }
+  border-left: 5px solid darken($gray, 10%);
 
   .group-footer {
     position: absolute; 
