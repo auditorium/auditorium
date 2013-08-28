@@ -27,9 +27,18 @@ module ApplicationHelper
 
   def nav_link(title, path, options={}) 
     if params[:controller].eql? options[:class]
-      link_to title, path, class: "active #{options[:class]}" 
+      link_to title, path, class: "active #{color_scheme}" 
     else
-      link_to title, path, class: options[:class]
+      link_to title, path, class: color_scheme
+    end
+  end
+
+  def color_scheme
+    if params[:controller].eql? 'groups' and params[:action].eql? 'show'
+      group = Group.find(params[:id]) if params[:id].presence
+      "#{group.group_type}-group" if group.presence
+    else
+      params[:controller]
     end
   end
 

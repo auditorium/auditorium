@@ -34,7 +34,7 @@
   <body>
     <div class="sticky">
 
-      <nav class="top-bar <%= params[:controller] %>">
+      <nav class="top-bar <%= color_scheme %>">
         <ul class="title-area">
           <!--Title area -->
           <li class="name"><h1><%= link_to 'auditorium', root_path %></h1></li>
@@ -78,7 +78,7 @@
           <div class="small-12 large-10 columns">
             <%= text_field_tag :query, nil, { placeholder: t('general.search.placeholder')}%>
           </div>
-          <div class="hide-for-small large-2 columns"><%= submit_tag t('general.search.submit'), class: "button expand small #{params[:controller].singularize}" %></div>
+          <div class="hide-for-small large-2 columns"><%= submit_tag t('general.search.submit'), class: "button expand small #{color_scheme}" %></div>
         <% end %>
       </div>
       <div class="row" id="search-results"></div>

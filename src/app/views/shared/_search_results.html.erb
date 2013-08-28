@@ -6,9 +6,7 @@
 
     <% if @groups.size > 0 %>
       <ul class="groups">
-        <% @groups.each do |group| %>
-          <%= render 'shared/group', group: group %>
-        <% end %>
+        <%= render(@groups) || t('groups.no_groups_available') %>
       </ul>
     <% else %>
       <p class="hint"><%= t('groups.search.no_result') %> <%= link_to t('groups.search.create_new_group'), new_group_path(title: params[:query]) %>

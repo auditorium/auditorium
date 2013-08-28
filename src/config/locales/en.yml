@@ -152,6 +152,7 @@ en:
       topic-groups: 'Topic Groups'
 
   posts:
+    label: '%{type}'
     general:
       group: 'Group'
       comments: 'Comments'

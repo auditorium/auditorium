@@ -1,26 +1,14 @@
-<div class="small-12 medium-6 large-6 columns">
-
-  <article class="group <%= group.group_type %>-group">
-    <header>
-      <h4>
-        <%= link_to group.title, group_path(group) %>
-        <small class="right">
-          <% unless group.followers.include? current_user %>
-            <%= link_to t('general.follow'), follow_group_path(group), method: :post, class: 'button tiny alert' %>
-          <% else %>
-            <%= link_to t('general.unfollow'), unfollow_group_path(group), method: :post, class: 'button tiny' %>
-          <% end %>
-        </small>
-      </h4>
-    </header>
-   
-    <p class="group-tags"><%= tag_list_delimited(group.tags) %></p>
-    <footer class="group-footer">
-      <% if can? :manage, group %>
-        <%= link_to t('groups.links.edit'), edit_group_path(group), class: 'button secondary tiny' %>
-        <%= link_to t('groups.links.delete'), group, method: :delete, class: 'button secondary tiny' %>
-      <% end %>
-    </footer>
-
-  </article>
-</div>
+<li class="group <%= group.group_type %>-group <%= 'following' if group.followers.include? current_user %>">
+  <span class="legend">
+    <%= t('groups.label', type: group.group_type.capitalize) %>
+  </span>
+  <span class="content"><%= link_to group.title, group_path(group) %></span>
+  <span class="right">
+    <% if can? :manage, group %>
+    <span class="actions">
+      <%= link_to content_tag('i', '', class: 'icon-pencil'), edit_group_path(group), alt: "#{t('groups.actions.edit')}", title: "#{t('groups.actions.edit')}" %>
+      <%= link_to content_tag('i', '', class: 'icon-remove'), group, alt: "#{t('groups.actions.delete')}", title: "#{t('groups.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this group?' %>
+      </span>
+    <% end %>
+  </span>
+</li>

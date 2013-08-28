@@ -90,8 +90,8 @@ $recording-color: $orange;
 
 
 $topic-group-color: $topic-color;
-$learning-group-color: $success-color;
-$lecture-group-color: $alert-color;
+$learning-group-color: $question-color;
+$lecture-group-color: $announcement-color;
 
 $filter-button-color: darken($gray, 20%);
 
@@ -1427,13 +1427,13 @@ small {
   }
 
   &.home,
-  &.group,
-  &.question, 
+  &.group,&.groups,
+  &.question, &.questions,
   &.answer, 
   &.comment, 
-  &.announcement, 
-  &.topic, 
-  &.event, 
+  &.announcement, &.announcements,
+  &.topic, &.topics,
+  &.event, &.events,
   &.learning-group, 
   &.topic-group, 
   &.lecture-group,
@@ -1452,7 +1452,7 @@ small {
     }    
   }
 
-  &.group {
+  &.group, &.groups {
     border:1px solid $group-color;
     border-left: 3px solid $group-color;
 
@@ -1461,12 +1461,39 @@ small {
     }    
   }
 
-  &.question {
+  &.question, &.questions,&.learning-group {
     border:1px solid $question-color;
     border-left: 3px solid $question-color;
 
     &:hover {
       background-color: lighten($question-color, 40%);
+    }  
+  }
+
+  &.announcement, &.announcements, &.lecture-group {
+    border:1px solid $announcement-color;
+    border-left: 3px solid $announcement-color;
+
+    &:hover {
+      background-color: lighten($announcement-color, 50%);
+    }  
+  }
+
+  &.topic, &.topics, &.topic-group {
+    border:1px solid $topic-color;
+    border-left: 3px solid $topic-color;
+
+    &:hover {
+      background-color: lighten($topic-color, 30%);
+    }  
+  }
+
+  &.event, &.events {
+    border:1px solid $event-color;
+    border-left: 3px solid $event-color;
+
+    &:hover {
+      background-color: lighten($event-color, 40%);
     }  
   }
 
@@ -1505,45 +1532,6 @@ small {
     &:hover {
       background-color: lighten($comment-color, 20%);
     }  
-  }
-
-  &.announcement {
-    border:1px solid $announcement-color;
-    border-left: 3px solid $announcement-color;
-
-    &:hover {
-      background-color: lighten($announcement-color, 50%);
-    }  
-  }
-
-  &.topic {
-    border:1px solid $topic-color;
-    border-left: 3px solid $topic-color;
-
-    &:hover {
-      background-color: lighten($topic-color, 30%);
-    }  
-  }
-
-  &.event {
-    border:1px solid $event-color;
-    border-left: 3px solid $event-color;
-
-    &:hover {
-      background-color: lighten($event-color, 40%);
-    }  
-  }
-
-  &.topic-group {
-    border-left: 3px solid $topic-group-color;
-  }
-
-  &.lecture-group {
-    border-left: 3px solid $lecture-group-color;
-  }
-
-  &.learning-group {
-    border-left: 3px solid $learning-group-color;
   }
 }
 
@@ -1648,6 +1636,9 @@ div.token-input-dropdown {
   &.home { border-color: $home-color; }
   &.topics { border-color: $topic-color; }
   &.groups { border-color: $group-color; }
+  &.lecture-group { border-color: $lecture-group-color; }
+  &.learning-group { border-color: $learning-group-color; }
+  &.topic-group { border-color: $topic-group-color; }
   &.events { border-color: $event-color; }
   &.questions { border-color: $question-color; }
   &.announcements { border-color: $announcement-color; }
@@ -1661,20 +1652,28 @@ div.token-input-dropdown {
 
     &.active {
       &.home { color: $home-color; }
-      &.groups { color: $topic-color; }
       &.groups { color: $group-color; }
+      &.lecture-group { color: $lecture-group-color; }
+      &.learning-group { color: $learning-group-color; }
+      &.topic-group { color: $topic-color; }
       &.events { color: $event-color; }
       &.questions { color: $question-color; }
+      &.announcements { color: $announcement-color; }
+      &.topics { color: $topic-color; }
     }
 
     &:not(.button) { 
 
       &:hover {
         &.home { color: $home-color; }
-        &.groups { color: $topic-color; }
         &.groups { color: $group-color; }
+        &.lecture-group { color: $lecture-group-color; }
+        &.learning-group { color: $learning-group-color; }
+        &.topic-group { color: $topic-color; }
         &.events { color: $event-color; }
         &.questions { color: $question-color; }
+        &.announcements { color: $announcement-color; }
+        &.topics { color: $topic-color; }
       }
     }
   }
@@ -1718,50 +1717,83 @@ div.token-input-dropdown {
   margin-top: 20px;
 }
 
-/* ======================== group style ===================== */
-
-.label {
-  color: #fff;
-  font-weight: normal;
-  font-size: 0.8em;
-  border-radius: 2px;
-  padding: 3px 5px;
-  margin: 0 10px 0 5px;
-  width: 75px;
-
-  &.lecture-group { background-color: $lecture-group-color; }
-  &.learning-group { background-color: $learning-group-color; }
-  &.topic-group { background-color: $topic-group-color; }
-}
+/* ======================== group and post list style ===================== */
 
 // Style for search results page
-ul.groups {
+ul.groups, ul.posts {
   list-style: none;
   margin: 0;
   padding: 0;
 
   li {
-    padding:3px 10px;
+    padding:0;
     margin:4px 0;
-    line-height:30px;
-    border-left: 5px solid darken($gray, 10%);
+    height: 35px;
+    line-height:35px;
 
     background-color: #fff;
     box-shadow: 1px 1px 1px darken($gray, 20%); 
 
+    position: relative;
+
+    border-top: none;
+    border-left: 4px solid $question-color;
+
+    &.lecture-group { border-color: $lecture-group-color; }
+    &.learning-group { border-color: $learning-group-color; }
+    &.topic-group { border-color: $topic-group-color; }
     &.question { border-color: $question-color; }
     &.announcement { border-color: $announcement-color; }
     &.topic { border-color: $topic-color; }
 
     &.following { background-color: $following-color; }
 
-    span.actions {
-      margin-left:10px;
+    span {
+      margin-left: 5px;
+      margin-right: 5px;
+
+      &.rating { margin-left: 10px; }
     }
+
+    span.legend {
+      margin: 0;
+      display: none;
+    }
+
+    &.lecture-group span.legend, 
+    &.announcement span.legend { 
+      background-color: $lecture-group-color; 
+    }
+
+    &.learning-group span.legend,
+    &.question span.legend { 
+      background-color: $learning-group-color; 
+    }
+    
+    &.topic-group span.legend,
+    &.topic span.legend {
+      background-color: $topic-group-color; 
+    }
+
+    &:hover span.legend {
+      display: inline-block;
+      color: #fff;
+      padding: 0 10px;
+      font-size: 0.8em;
+      line-height:23px;
+    } 
+
+    span.actions {
+      display: none;
+    }
+
+    &:hover span.actions {
+      display: inline-block;
+    } 
   }
 }
 
-
+/* ===================== GROUP STYLE =================== */
 
 #content-nav {
 
@@ -1831,33 +1863,6 @@ article.group {
 
 /* ======================== group styles ====================== */
 
-ul.posts {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-
-  li {
-    padding:3px 10px;
-    margin:4px 0;
-    line-height:30px;
-
-    &.question, &.announcement, &.topic {
-      background-color: #fff;
-      box-shadow: 1px 1px 1px darken($gray, 20%);
-      border-left: 4px solid $question-color;
-    }
-
-    &.question { border-color: $question-color; }
-    &.announcement { border-color: $announcement-color; }
-    &.topic { border-color: $topic-color; }
-
-    &.following { background-color: $following-color; }
-
-    span.actions {
-      margin-left:10px;
-    }
-  }
-}
 
 .post-actions {
   margin: 0 0 20px 0;
