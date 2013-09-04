@@ -15,6 +15,12 @@
     <p><%= @group.description %></p> 
     <%= tag_list_delimited(@group.tags) %>
   </div>
+
+  <div class="group-management">
+    <%= link_to t('groups.actions.edit'), edit_group_path(@group), class: 'button secondary' %>
+    <%= link_to t('groups.actions.manage_users'), edit_group_path(@group), class: 'button secondary' %>
+    <%= link_to t('groups.actions.edit'), edit_group_path(@group), class: 'button secondary' %>
+  </div>
 </section>
 
 <section id="announcements">

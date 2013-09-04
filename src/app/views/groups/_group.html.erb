@@ -2,7 +2,7 @@
   <span class="legend">
     <%= t('groups.label', type: group.group_type.capitalize) %>
   </span>
-  <span class="content"><%= link_to group.title, group_path(group) %></span>
+  <span class="content"><%= link_to truncate(group.title, length: 150), group_path(group) %></span>
   <span class="right">
     <% if can? :manage, group %>
     <span class="actions">

@@ -1,0 +1,1 @@
+$('.rating[data-id="<%= j @post.class.name.pluralize.downcase %>-<%= @post.id %>"]').html('<%= j render "shared/rating", post: @post %>');

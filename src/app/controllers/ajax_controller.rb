@@ -55,4 +55,44 @@ class AjaxController < ApplicationController
     respond_to :js, :html
   end
 
+  def upvote 
+    case params[:type]
+      when 'comments' then @post = Comment.find(params[:id])
+      when 'answers' then @post = Answer.find(params[:id])
+      when 'questions' then @post = Question.find(params[:id])
+      when 'announcements' then @post = Announcement.find(params[:id])
+      when 'topics' then @post = Topic.find(params[:id])
+      else @post = nil
+    end
+    
+    @post.rating += 1
+    @post.save
+
+    respond_to do |format|
+      format.js
+      format.html { redirect_to "#{url_for @post.origin}##{dom_id(@post)}", error: @post.errors }
+    end
+  end
+
+  def downvote 
+    case params[:type]
+      when 'comments' then @post = Comment.find(params[:id])
+      when 'answers' then @post = Answer.find(params[:id])
+      when 'questions' then @post = Question.find(params[:id])
+      when 'announcements' then @post = Announcement.find(params[:id])
+      when 'topics' then @post = Topic.find(params[:id])
+      else @post = nil
+    end
+    
+    puts "POST: #{@post}"
+
+    @post.rating -= 1
+    @post.save
+
+    respond_to do |format|
+      format.js
+      format.html { redirect_to "#{url_for @post.origin}##{dom_id(@post)}", notice: t('posts.general.upvote.notice') }
+    end
+  end
+
 end

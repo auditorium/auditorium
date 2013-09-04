@@ -26,7 +26,7 @@ class AnswersController < ApplicationController
 
     respond_to do |format|
       if @answer.save!
-        format.html { redirect_to @answer, notice: t('answer.action.created') }
+        format.html { redirect_to question_path(@answer.question), notice: t('answer.action.created') }
         format.json { render json: @answer, status: :created, location: [@question, @answer] }
       else
         format.html { render action: 'new' }
@@ -39,28 +39,4 @@ class AnswersController < ApplicationController
     @answer = Answer.find(params[:id])
   end
 
-  def update
-    @answer = Answer.find(params[:id])
-
-    respond_to do |format|
-      if @question.update_attributes(params[:answer])
-        format.html { redirect_to @answer, flash: { success:  'Answer was successfully updated.' } }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit", flash: { error: "Answer couldn't be updated!" } }
-        format.json { render json: @answer.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  def destroy
-    @answer = Answer.find(params[:id])
-    @question = @answer.question
-    @answer.destroy
-
-    respond_to do |format|
-      format.html { redirect_to @question, notice: t('answers.flash.destroyed') }
-      format.json { head :no_content }
-    end
-  end
 end

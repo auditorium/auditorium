@@ -4,6 +4,10 @@
 
 <% @question.answers.each do |answer| %>
   <article id="answer">
+
+    <div class="rating" data-id='answers-<%= answer.id %>'>
+      <%= render 'shared/rating', post: answer %>
+    </div>
     <div class="post-content">
       <%= markdown answer.content %>
     </div>

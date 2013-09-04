@@ -3,7 +3,7 @@
     <%= t('posts.label', type: post.class.name.singularize.capitalize) %>
   </span>
   <span class="rating"><%= post.rating %></span>
-  <span class="content"><%= link_to post.subject, post %></span>
+  <span class="content"><%= link_to truncate(post.subject, length: 150), post %></span>
   <span class="right">
     <small><%= l(post.created_at, format: :short) %></small>
     <% if can? :manage, post %>

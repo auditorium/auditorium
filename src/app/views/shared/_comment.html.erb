@@ -1,10 +1,8 @@
 <li id="<%= dom_id(comment) %>">
   <div class="content"><%= comment.content %></div>
   <div class="comment-footer">
-    <span class="rating">
-      <%= link_to content_tag('i', '', class: 'icon-chevron-up'), upvote_comment_path(comment), method: :post, alt: t('posts.general.upvote.alt_text'), title: t('posts.general.upvote.title') %>
-      <b><%= comment.rating.presence && comment.rating > 0 ? "+#{comment.rating}" : comment.rating %></b>
-      <%= link_to content_tag('i', '', class: 'icon-chevron-down'), downvote_comment_path(comment), method: :post, alt: t('posts.general.downvote.alt_text'), title: t('posts.general.downvote.title') %>
+    <span data-id='comments-<%= comment.id %>' class="rating">
+      <%= render 'shared/rating', post: comment %>
     </span>
     <span class="right">
       <%= comment.author.full_name %> &middot;

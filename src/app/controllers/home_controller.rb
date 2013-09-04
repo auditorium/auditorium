@@ -9,9 +9,13 @@ class HomeController < ApplicationController
     questions = Question.all unless params[:show_questions] == 'no'
     topics = Topic.all unless params[:show_topics] == 'no'
 
-    @posts += announcements if announcements.presence
-    @posts += questions if questions.presence
-    @posts += topics if topics.presence
+
+
+    @posts += announcements if announcements.present?
+    @posts += questions if questions.present?
+    @posts += topics if topics.present?
     @posts = @posts.sort { |x,y| y.created_at <=> x.created_at }
+
+    @posts.keep_if { |p| p.subscribed?(current_user) } if params[:only_subscribed] == 'yes'
   end
 end

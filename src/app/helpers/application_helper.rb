@@ -88,9 +88,6 @@ module ApplicationHelper
   #==========
   # below old stuff...
 
-
-
-
   def weekdays
     %w{monday tuesday wednesday thursday friday saturday sunday}
   end

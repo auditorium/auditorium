@@ -1818,10 +1818,11 @@ ul.groups, ul.posts {
   }
 }
 
-div.group-information {
+div.group-information, div.group-management {
   background-color: #fff;
   box-shadow: 1px 1px 1px darken($gray, 20%);
   padding:10px;
+  margin-top:10px;
 }
 
 article.group {

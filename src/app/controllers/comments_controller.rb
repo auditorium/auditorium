@@ -62,28 +62,29 @@ class CommentsController < ApplicationController
   end
 
   def upvote 
-    @comment = Comment.find(params[:id])
-    @comment.rating += 1
-    @comment.save
+    @post = Comment.find(params[:id])
+    @post.rating += 1
+    @post.save
 
     respond_to do |format|
-      format.html { redirect_to "#{url_for @comment.origin}##{dom_id(@comment)}", notice: t('posts.general.upvote.notice') }
-      format.json { head :no_content }
+      format.js
+      #format.html { redirect_to "#{url_for @post.origin}##{dom_id(@post)}", error: @post.errors }
     end
+
   end
 
   def downvote 
-    @comment = Comment.find(params[:id])
-    @comment.rating -= 1
-    @comment.save
+    @post = Comment.find(params[:id])
+    
+    @post.rating -= 1
+    @post.save
 
     respond_to do |format|
-      format.html { redirect_to "#{url_for @comment.origin}##{dom_id(@comment)}", notice: t('posts.general.downvote.notice') }
-      format.json { head :no_content }
+      format.js
+      #format.html { redirect_to "#{url_for @post.origin}##{dom_id(@post)}", notice: t('posts.general.upvote.notice') }
     end
   end
-
-
+  
   private
 
   def get_commentable

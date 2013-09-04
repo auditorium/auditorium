@@ -4,6 +4,8 @@ Auditorium::Application.routes.draw do
     post "ajax/preview", to: 'ajax#preview'
     post "ajax/load_form", to: 'ajax#load_form'
     get 'ajax/search', to: 'ajax#search', as: :search
+    post ':type/:id/upvote', to: 'ajax#upvote', as: :upvote
+    post ':type/:id/downvote', to: 'ajax#downvote', as: :downvote
     
     devise_for :users, :controllers => { :confirmations => "users/confirmations", :sessions => "users/sessions", :registrations => "users/registrations" }
 
@@ -33,56 +35,6 @@ Auditorium::Application.routes.draw do
             resources :comments
           end
         end
-      end
-    end
-
-    resources :announcements do
-      member do 
-        post 'upvote'
-        post 'downvote'
-      end
-    end
-
-    resources :topics do
-      member do 
-        post 'upvote'
-        post 'downvote'
-      end
-    end
-
-
-    resources :questions do
-      member do 
-        post 'upvote'
-        post 'downvote'
-      end
-    end
-
-    resources :answers do
-      member do 
-        post 'upvote'
-        post 'downvote'
-      end
-    end
-
-    resources :topics do
-      member do 
-        post 'upvote'
-        post 'downvote'
-      end
-    end
-
-    resources :recordings do
-      member do 
-        post 'upvote'
-        post 'downvote'
-      end
-    end
-
-    resources :comments do
-      member do 
-        post 'upvote'
-        post 'downvote'
       end
     end
     

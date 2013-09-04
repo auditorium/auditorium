@@ -70,4 +70,5 @@ class AnnouncementsController < ApplicationController
       format.js
     end
   end
+
 end

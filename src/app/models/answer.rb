@@ -14,4 +14,8 @@ class Answer < ActiveRecord::Base
     set_property :enable_star => true
     set_property :min_infix_len => 2
   end
+
+  def origin
+    self.question
+  end
 end
