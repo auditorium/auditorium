@@ -26,3 +26,9 @@ $('.goto a').on 'click', (e) ->
   target = this.hash
   $target = $(target)
   $('html, body').stop().animate { scrollTop: $target.offset().top - 40 }, 900
+
+$('.flip').on 'click', (e) ->
+  e.preventDefault()
+  group_id = $(this).data('id')
+  $('.group[data-id="'+group_id+'"]').addClass('flipped').mouseleave ->
+    $(this).removeClass('flipped')

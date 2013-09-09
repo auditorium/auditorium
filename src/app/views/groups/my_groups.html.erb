@@ -6,9 +6,26 @@
   <div class="row">
     <% @groups.each_with_index do |group| %>
       <div class="small-12 medium-6 large-4 columns">
-        <div class="block group">
-          <%= group.title %>
+        <div class="card group" data-id="<%= dom_id(group) %>">
+          <div class="front <%= group.group_type %>-group">
+            <div class="content">
+              <div class="right">
+                <% if group.followers.include?(current_user) %>
+                  <%= link_to content_tag('i', '', class: 'icon-star'), following_group_path(group, method: 'unfollow'), remote: true, method: :post, title: t('groups.unfollow_link_text') %>
+                <% else %>
+                  <%= link_to content_tag('i', '', class: 'icon-star-empty'), following_group_path(group, method: 'follow'), remote: true, method: :post, title: t('groups.follow_link_text') %>
+                <% end %>
+              </div>
+              <h5><%= link_to group.title, group_path(group) %></h5>
+              <div class="bottom"><%= link_to t('group.link.details'), '#', class: 'flip', 'data-id' => dom_id(group) %></div>
+            </div>
+            
+          </div>
+          <div class="back <%= group.group_type %>-group">
+            <%= truncate(group.description, length:300) %>
+          </div>
         </div>
+
       </div>
     <% end %>
   </div>

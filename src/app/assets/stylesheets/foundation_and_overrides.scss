@@ -1364,7 +1364,7 @@ input[type='text'], textarea {
 } 
 
 textarea {
-  height:auto;
+  height:100px;
 }
 
 small {
@@ -1880,16 +1880,88 @@ i.icon-star, i.icon-star-empty  {
   vertical-align: middle;
 }
 
-.block {
+
+
+.card {
   box-shadow: 1px 1px 1px darken($gray, 20%);
   background-color: #fff;
-  padding:10px;
   margin: 10px 0;
+  
+  -webkit-transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 500px;
+  -webkit-transition: 0.5s;
+  
+  -moz-transform-style: preserve-3d;
+  -moz-backface-visibility: hidden;
+  -moz-perspective: 500px;
+  -moz-transition: 0.5s;
+  
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  perspective: 500px;
+  transition: 0.5s;
 
   &.group {
     height:200px;
+    
+    .content {
+      position:relative;
+      width:100%;
+      height:100%;
+      
+      .bottom {
+        position: absolute;
+        bottom: 0px; 
+        right: 0px;
+      }
+    }
+
+  }
+
+  &.flipped {
+    -webkit-transform: rotatey(-180deg);
+    -moz-transform: rotatey(-180deg);
+    transform: rotatey(-180deg);
+  }
+
+  .front {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    cursor: pointer;
+    padding: 10px;
+
+    border-left: 5px solid $lecture-group-color;
+
+    &.lecture-group { border-color: $lecture-group-color; }
+    &.learning-group { border-color: $learning-group-color; }
+    &.topic-group { border-color: $topic-group-color; }
+  }
+
+  .back {
+    color: #fff;
+    position: absolute;
+    height:100%;
+    width: 100%;
+    z-index: 2;
+    cursor: pointer;
+    -webkit-transform: rotatey(-180deg);
+    -webkit-backface-visibility: hidden;
+    -moz-transform: rotatey(-180deg);
+    -moz-backface-visibility: hidden;
+
+    transform: rotatey(-180deg);
+    backface-visibility: hidden;
+    padding:10px;
+
+    &.lecture-group { background-color: $lecture-group-color; }
+    &.learning-group { background-color: $learning-group-color; }
+    &.topic-group { background-color: $topic-group-color; }
   }
 }
+
 
 
 #group-form {
