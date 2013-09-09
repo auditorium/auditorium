@@ -1,3 +1,4 @@
+
 <%= form_for(@group) do |f| %>
 
   <% @group.errors.full_messages.each do |msg| %>
@@ -7,28 +8,51 @@
     </div>
   <% end %>
 
+  <section id="group-type">
+    <header>
+      <h4><%= t('groups.choose-type.title') %></h4>
+    </header>
 
-  <div class="row">
-    <%= f.label :title %>
-    <%= f.text_field :title, class: 'large-12 columns' %>
-  </div>
+    <% group_types.each do |group_type| %>
+      <%= f.label :group_type, nil, value: group_type do %>
+        <div class="large-4 columns choosable <%= 'selected' if @group.group_type.eql? group_type %> panel" data-id='<%= group_type %>' id='<%= group_type %>-group'>
+          <%= f.radio_button :group_type, group_type %>
+          <dl>
+            <dt><%= t("groups.group_types.#{group_type}.title") %></dt>
+            <dd><%= t("groups.group_types.#{group_type}.description") %></dd>
+          </dl>
+        </div>
+      <% end %>
+    <% end %>
+    <div class="clearfix" />
+  </section>
 
-  <div class="row">
-    <%= f.label :description %>
-    <%= f.text_area :description, class: 'large-12 columns' %>
-  </div>
+  <section id="group-details">
+    <header>
+      <h4><%= t('groups.choose-type.title') %></h4>
+    </header>
 
-  <div class="row">
-    <%= f.label :tag_tokens %>
-    <%= f.text_field :tag_tokens, data: {load: @group.tags}, class: 'large-12 columns' %>
-    <p class="tags_hint hint"><%= t('groups.group_types.general.tags_hint')%></p>
-  </div>
-
-  <div class="row">
-    <%= f.submit t('groups.new.submit'), id: 'submit', class: 'small button' %>
-  </div>
-
-  <%= f.hidden_field :group_type %>
+    <ul class="no-style">
+      <li class="input-fields">
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+      </li>
+      
+      <li class="input-fields">
+        <%= f.label :description %>
+        <%= f.text_area :description %>
+      </li>
+      
+      <li class="input-fields">
+        <%= f.label :tag_tokens %>
+        <%= f.text_field :tag_tokens, data: {load: @group.tags} %>
+        <p class="tags_hint hint"><%= t('groups.group_types.general.tags_hint')%></p>
+      </li>
+      
+      <li class="input-fields">
+        <%= f.submit t('groups.new.submit'), id: 'submit', class: 'small button' %>
+      </li>
+    </ul>
+  </section>
 <% end %>
 
-<%= debug @group %>

@@ -5,19 +5,9 @@
 $(document).foundation('joyride', 'start');
 
 $('.choosable').on 'click', (event) ->
-  event.preventDefault()
   selected_group = $(this)
   $('.choosable').removeClass('selected')
   selected_group.addClass('selected')
-  console.log selected_group
-  $.ajax 
-    url: '/groups/change_group_type'
-    data: { group_type: $(selected_group).data('id') }
-    error: (jqXHR, textStatus, errorThrown) ->
-      console.log errorThrown
-    success: 
-      $("html, body").stop().animate({ scrollTop: $('#group-basic-information').offset().top }, 1000);
-
 
 $('.input-fields input#question_subject').on 'focus', (e) ->
   $('#question_subject').attr('placeholder', i18n_question_subject_placeholder)

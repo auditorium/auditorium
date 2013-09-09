@@ -8,7 +8,9 @@
       <noscript><%= f.label :subject %></noscript>
       <%= f.text_field :subject, placeholder: t('announcements.input.new') %>
     </li>
-    <div id='new-announcement-fields' data-id='new-announcement-fields'><%= render 'shared/new_announcement_fields', f: f %></div>  
+    <div id='new-announcement-fields' data-id='new-announcement-fields'>
+      <%= render 'shared/new_announcement_fields', f: f %>
+    </div>  
   </ul>
 <% end %>
 

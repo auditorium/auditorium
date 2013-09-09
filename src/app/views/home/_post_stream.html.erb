@@ -1,0 +1,5 @@
+<ul class="posts">
+  <% @posts.each do |post| %>
+    <%= render 'shared/post', post: post %>
+  <% end %>
+</ul>

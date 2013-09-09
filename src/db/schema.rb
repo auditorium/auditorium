@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130823092439) do
+ActiveRecord::Schema.define(:version => 20130904135246) do
 
   create_table "announcements", :force => true do |t|
     t.string   "subject"
@@ -168,15 +168,14 @@ ActiveRecord::Schema.define(:version => 20130823092439) do
   create_table "groups", :force => true do |t|
     t.string   "title"
     t.text     "description"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
     t.string   "group_type"
-    t.integer  "creator_id",  :default => 1
-    t.integer  "post_id"
+    t.integer  "creator_id",    :default => 1
+    t.boolean  "private_posts"
   end
 
   add_index "groups", ["creator_id"], :name => "index_groups_on_creator_id"
-  add_index "groups", ["post_id"], :name => "index_groups_on_post_id"
 
   create_table "institutes", :force => true do |t|
     t.string   "name"

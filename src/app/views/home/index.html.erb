@@ -5,20 +5,11 @@
     <h2><%= t('home.titles.recent-posts') %></h2>
   </header>
 
-  <div class="post-actions">
-    <div id="filter"><%= render 'shared/filter_form' %></div>
-<!--     <ul>
-      <li><%= link_to t('announcements.input.new'), '#', class: 'button small announcement', id: 'new-announcement' %></li>
-      <li><%= link_to t('questions.input.new'), '#', class: 'button small question', id: 'new-question' %></li>
-      <li><%= link_to t('topics.input.new'), '#', class: 'button small topic', id: 'new-topic' %></li>
-    </ul> -->
-    
-    <div id="post-form"></div>
+  <div class="post-filter">
+    <%= render 'shared/post_filter' %>
   </div>
 
-  <ul class="posts">
-    <% @posts.each do |post| %>
-      <%= render 'shared/post', post: post %>
-    <% end %>
-  </ul>
+  <div id="post-stream">
+    <%= render 'post_stream' %>
+  </div>
 </section>

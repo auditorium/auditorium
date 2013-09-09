@@ -17,5 +17,7 @@ class HomeController < ApplicationController
     @posts = @posts.sort { |x,y| y.created_at <=> x.created_at }
 
     @posts.keep_if { |p| p.subscribed?(current_user) } if params[:only_subscribed] == 'yes'
+
+    respond_to :html #, :js
   end
 end

@@ -1347,6 +1347,10 @@ input, textarea {
   border-radius: 0;
 }
 
+input[type='radio'] {
+  -webkit-appearance: radio;
+}
+
 input[type='text'], textarea {
   padding:5px 5px;
   margin:0;
@@ -1358,6 +1362,10 @@ input[type='text'], textarea {
     box-shadow:none;
   }
 } 
+
+textarea {
+  height:auto;
+}
 
 small {
   font-size:0.8em;
@@ -1551,10 +1559,20 @@ small {
 }
 
 .choosable {
-  height:200px;
+  height:150px;
   cursor: pointer;
+  text-align: center;
+
+  dt {
+    font-size:1.4em;
+    font-weight: normal;
+  }
   &.selected {
-     background-color: darken($gray, 10%);
+     background-color: $primary-color;
+     color: white;
+     box-shadow: inset 0 0 4px black;
+     border: none;
+     text-shadow: none;
   }
 }
 
@@ -1865,7 +1883,17 @@ article.group {
 /* ======================== group styles ====================== */
 
 
-.post-actions {
+#group-form {
+  #group-type, #group-details {
+    box-shadow: 1px 1px 1px darken($gray, 20%);
+    background-color: #fff;
+    padding:10px;
+    margin: 0 0 20px 0;
+  }
+
+}
+
+.post-filter {
   margin: 0 0 20px 0;
   padding: 10px;
   background-color: #fff;
@@ -1886,10 +1914,6 @@ article.group {
       }
     }
   }
-}
-
-#post-form {
-  display: none;
 }
 
 #filter {
@@ -1940,7 +1964,7 @@ ul.no-style {
   margin: 0;
   padding: 0;
 
-  &.question, &.announcement, &.topic {
+  &.question, &.announcement, &.topic, &.group {
     background-color: #fff;
     box-shadow: 1px 1px 1px darken($gray, 20%);
   }
