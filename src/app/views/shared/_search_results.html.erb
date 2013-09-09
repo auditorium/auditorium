@@ -6,7 +6,11 @@
 
     <% if @groups.size > 0 %>
       <ul class="groups">
-        <%= render(@groups) || t('groups.no_groups_available') %>
+        <% @groups.each do |group| %>
+          <li class="group <%= group.group_type %>-group <%= 'following' if group.followers.include? current_user %>" data-id="<%= dom_id(group) %>">
+            <%= render 'groups/group', group: group %>
+          </li>
+        <% end %>
       </ul>
     <% else %>
       <p class="hint"><%= t('groups.search.no_result') %> <%= link_to t('groups.search.create_new_group'), new_group_path(title: params[:query]) %>

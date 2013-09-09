@@ -34,6 +34,8 @@ en:
       posts: 'Filter posts'
 
   groups:
+    unfollow_link_text: "Click to unsubscribe group's activity." 
+    follow_link_text: "Click to subscribe group's activity."
     label: '%{type}'
     lectures: 
       title: 'Lectures'
@@ -78,7 +80,6 @@ en:
         title: 'Topic Group'
         description: 'Choose this group type for discussions and general questions and events.'
         tags_hint: 'Please enter tags to describe your topic group.'
-    menu_item: 'Groups'
     new: 
       title: 'Create a new group'
       submit: 'Submit group'

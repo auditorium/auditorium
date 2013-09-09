@@ -9,6 +9,10 @@ class GroupsController < ApplicationController
 		end
 	end
 
+  def my_groups
+    @groups = current_user.groups
+  end
+
 	def show
 		@group = Group.find(params[:id])
 
@@ -75,34 +79,22 @@ class GroupsController < ApplicationController
 		end
 	end
 
-	def follow
+	def following
 		@group = Group.find(params[:id])
+    method = params[:method]
 
-		respond_to do |format|
-      unless @group.followers.include? current_user
-      	@group.followers << current_user
-      	
+    
+		respond_to do |format|	
+      if method.eql? 'follow'
+        @group.followers << current_user unless @group.followers.include? current_user
+
         format.html { redirect_to groups_path, flash: { success:  'You now follow the group.' } }
-        format.json { head :no_content }
-      else
-        format.html { redirect_to groups_path, flash: { error: "You alread follow this group." } }
-        format.json { render json: @group.errors, status: :unprocessable_entity }
-      end
-    end
-	end
+        format.js
+      elsif method.eql? 'unfollow' 
+        @group.followers.delete current_user if @group.followers.include? current_user
 
-	def unfollow
-		@group = Group.find(params[:id])
-
-		respond_to do |format|
-      if @group.followers.include? current_user
-      	@group.followers.delete current_user
-      	
         format.html { redirect_to groups_path, flash: { success:  'You are not follow this group anymore' } }
-        format.json { head :no_content }
-      else
-        format.html { redirect_to groups_path, flash: { error: "You alread unfollowed this group." } }
-        format.json { render json: @group.errors, status: :unprocessable_entity }
+        format.js
       end
     end
 	end

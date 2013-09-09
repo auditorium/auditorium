@@ -1543,21 +1543,6 @@ small {
   }
 }
 
-.block {
-  border: 1px solid $gray;
-  padding:20px;
-
-  &:after {
-    display:block;
-    text-algin:center;
-    margin:0 auto;
-    width:2px;
-    height:30px;
-    border-left:1px solid $gray;
-    border-right:1px solid $gray;
-  }
-}
-
 .choosable {
   height:150px;
   cursor: pointer;
@@ -1768,7 +1753,15 @@ ul.groups, ul.posts {
 
     span {
       margin-left: 5px;
-      margin-right: 5px;
+      margin-right: 0;
+
+      &:last-child {
+        margin-right:10px;
+      }
+
+      &.bookmark {
+        margin-left:8px;
+      }
 
       &.rating { margin-left: 10px; }
     }
@@ -1798,7 +1791,7 @@ ul.groups, ul.posts {
       color: #fff;
       padding: 0 10px;
       font-size: 0.8em;
-      line-height:23px;
+      line-height:1.5em;
     } 
 
     span.actions {
@@ -1881,6 +1874,22 @@ article.group {
 }
 
 /* ======================== group styles ====================== */
+
+i.icon-star, i.icon-star-empty  {
+  color: $warning-color;
+  vertical-align: middle;
+}
+
+.block {
+  box-shadow: 1px 1px 1px darken($gray, 20%);
+  background-color: #fff;
+  padding:10px;
+  margin: 10px 0;
+
+  &.group {
+    height:200px;
+  }
+}
 
 
 #group-form {

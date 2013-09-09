@@ -1,0 +1,15 @@
+<section id="groups">
+  <header class="subheader topic-group">
+    <h2><%= t('groups.index.title')%></h2>
+  </header>
+  
+  <div class="row">
+    <% @groups.each_with_index do |group| %>
+      <div class="small-12 medium-6 large-4 columns">
+        <div class="block group">
+          <%= group.title %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>

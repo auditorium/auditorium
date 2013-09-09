@@ -1,0 +1,1 @@
+$('li[data-id="group_<%= @group.id %>"]').html('<%= j render "groups/group", group: @group %>').toggleClass('following');

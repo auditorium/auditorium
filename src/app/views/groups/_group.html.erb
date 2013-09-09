@@ -1,14 +1,22 @@
-<li class="group <%= group.group_type %>-group <%= 'following' if group.followers.include? current_user %>">
-  <span class="legend">
-    <%= t('groups.label', type: group.group_type.capitalize) %>
-  </span>
-  <span class="content"><%= link_to truncate(group.title, length: 150), group_path(group) %></span>
-  <span class="right">
-    <% if can? :manage, group %>
+<span class="bookmark">
+  <% if group.followers.include?(current_user) %>
+    <%= link_to content_tag('i', '', class: 'icon-star'), following_group_path(group, method: 'unfollow'), remote: true, method: :post, title: t('groups.unfollow_link_text') %>
+  <% else %>
+    <%= link_to content_tag('i', '', class: 'icon-star-empty'), following_group_path(group, method: 'follow'), remote: true, method: :post, title: t('groups.follow_link_text') %>
+  <% end %>
+</span>
+
+<span class="legend">
+  <%= t('groups.label', type: group.group_type.capitalize) %>
+</span>
+
+
+<span class="content"><%= link_to truncate(group.title, length: 150), group_path(group) %></span>
+<span class="right">
+  <% if can? :manage, group %>
     <span class="actions">
       <%= link_to content_tag('i', '', class: 'icon-pencil'), edit_group_path(group), alt: "#{t('groups.actions.edit')}", title: "#{t('groups.actions.edit')}" %>
       <%= link_to content_tag('i', '', class: 'icon-remove'), group, alt: "#{t('groups.actions.delete')}", title: "#{t('groups.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this group?' %>
-      </span>
-    <% end %>
-  </span>
-</li>
+    </span>
+  <% end %>
+</span>

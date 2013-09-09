@@ -13,12 +13,11 @@ Auditorium::Application.routes.draw do
     resources :tags, only: ['index']
     
     get 'groups/change_group_type', to: 'groups#change_group_type'
-    
+    get 'my_groups', to: 'groups#my_groups', as: :my_groups
     shallow do 
       resources :groups do
         member do
-          post 'follow'
-          post 'unfollow'
+          post 'following'
         end
 
         resources :announcements do
