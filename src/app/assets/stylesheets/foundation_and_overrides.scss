@@ -811,7 +811,7 @@ $button-radius: $global-radius;
 
 // We use these to style the label text
 
-// $label-font-sizing: emCalc(14);
+$label-font-sizing: emCalc(10);
 // $label-font-weight: bold;
 // $label-font-color: #333;
 // $label-font-color-alt: #fff;
@@ -1400,6 +1400,36 @@ small {
   border-color: darken($notice-color, 10%);
 }
 
+.block {
+  background-color: #fff;
+  box-shadow: 1px 1px 1px darken($gray, 20%);
+  padding:10px;
+  margin-top:10px;
+}
+
+.label {
+  vertical-align: middle;
+  background-color: $primary-color;
+  line-height:1;
+
+  &.member {
+    background-color: $primary-color;
+  }
+
+  &.moderator {
+    background-color: $alert-color;
+  }
+
+  &.no_member {
+    background-color: darken($gray, 10%);
+  }
+}
+
+a.disabled {
+  cursor: not-allowed;
+  color: $gray;
+}
+
 /* ================= custom button styles ===================== */
 
 .button {
@@ -1829,13 +1859,6 @@ ul.groups, ul.posts {
   }
 }
 
-div.group-information, div.group-management {
-  background-color: #fff;
-  box-shadow: 1px 1px 1px darken($gray, 20%);
-  padding:10px;
-  margin-top:10px;
-}
-
 article.group {
   background-color: #fff;
   box-shadow: 1px 1px 1px darken($gray, 20%);
@@ -1880,7 +1903,9 @@ i.icon-star, i.icon-star-empty  {
   vertical-align: middle;
 }
 
-
+#manage-members {
+  display:none;
+}
 
 .card {
   box-shadow: 1px 1px 1px darken($gray, 20%);
@@ -2039,6 +2064,7 @@ ul.filter-list {
     }
   }
 }
+
 
 ul.no-style {
   list-style: none;

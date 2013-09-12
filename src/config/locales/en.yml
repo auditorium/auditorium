@@ -15,7 +15,7 @@ en:
       index: 'Recordings overview'
       new: 'Add a recording'
   home:
-    
+
   general:
     search: 
       placeholder: 'Click here and start your search for posts or groups...'
@@ -34,6 +34,12 @@ en:
       posts: 'Filter posts'
 
   groups:
+    member:
+      member: 'Member'
+      moderator: 'Moderator'
+      no_member: 'Not a member'
+      add_to_members: 'Add to members'
+      add_to_moderators: 'Add to moderators'
     unfollow_link_text: "Click to unsubscribe group's activity." 
     follow_link_text: "Click to subscribe group's activity."
     label: '%{type}'

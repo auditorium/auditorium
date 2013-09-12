@@ -79,6 +79,51 @@ class GroupsController < ApplicationController
 		end
 	end
 
+  def manage_members 
+    @group = Group.find(params[:id])
+    @members = @group.followers
+    respond_to :js
+  end
+
+  def search_members
+    @group = Group.find(params[:group_id].to_i)
+
+    unless params[:member_query].empty?
+      query = "%#{params[:member_query]}%"
+      @members = User.where('email LIKE ? or first_name LIKE ? or last_name LIKE ?', query, query, query).order('username ASC, first_name ASC, last_name ASC').limit(10)
+    else
+      @members = @group.followers
+    end
+
+    respond_to :js
+  end
+
+  def manage_membership
+    method = params[:method]
+    role = params[:role]
+    @group = Group.find(params[:group_id])
+    @member = User.find(params[:member_id])
+
+    if method.eql? 'add'
+      if role.eql? 'member'
+        @group.add_member @member
+      elsif role.eql? 'moderator'
+        @group.add_moderator @member
+      end
+    elsif method.eql? 'remove'
+      if role.eql? 'member'
+        @group.remove_member @member
+      elsif role.eql? 'moderator'
+        @group.remove_moderator @member
+      end
+    end
+
+    respond_to do |format| 
+      format.html {redirect_to @group }
+      format.js
+    end
+  end
+
 	def following
 		@group = Group.find(params[:id])
     method = params[:method]

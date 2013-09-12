@@ -1,6 +1,13 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+$.searchMembers = (group_id, query) ->
+  $.ajax
+    url: '/groups/search_members'
+    type: 'post'
+    data: { member_query: query, group_id: group_id }
+    error: (jqXHR, textStatus, errorThrown) ->
+      console.log errorThrown
 
 $(document).foundation('joyride', 'start');
 
@@ -32,3 +39,11 @@ $('.flip').on 'click', (e) ->
   group_id = $(this).data('id')
   $('.group[data-id="'+group_id+'"]').addClass('flipped').mouseleave ->
     $(this).removeClass('flipped')
+
+$('#member_query').on 'input', (e) ->
+  member_query = $('#member_query').val()
+  group_id = $('#group_id').val()
+  $.searchMembers(group_id, member_query)
+  
+
+
