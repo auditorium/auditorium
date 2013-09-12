@@ -53,4 +53,29 @@ class Group < ActiveRecord::Base
   def is_member?(user)
     self.members.include? user
   end
+
+  def add_member(user)
+    membership = self.followings.find_or_initialize_by_follower_id(user.id)
+    membership.role = 'member'
+    membership.save!
+  end
+
+  def add_moderator(user)
+    membership = self.followings.find_or_initialize_by_follower_id(user.id)
+
+    membership.role = 'moderator'
+    membership.save
+  end
+
+  def remove_member(user)
+    membership = self.followings.where(follower_id: user.id).first
+    membership.destroy if membership.present?
+  end
+
+  def remove_moderator(user)
+    membership = self.followings.find_or_initialize_by_follower_id(user.id)
+
+    membership.role = 'member'
+    membership.save
+  end
 end

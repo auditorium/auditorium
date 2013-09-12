@@ -65,6 +65,14 @@ class User < ActiveRecord::Base
     post.group.followers.include? self
   end
 
+  def role_in_group(group)
+    if group.followers.include? self
+      group.followings.find_by_follower_id(self.id).role 
+    else
+      'no_member'
+    end
+  end
+
   # A callback method used to deliver confirmation
   # instructions on creation. This can be overriden
   # in models to map to a nice sign up e-mail.

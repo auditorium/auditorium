@@ -30,5 +30,4 @@ $('a#new-announcement, a#new-topic, a#new-question').on 'click', (e) ->
 $('#query').on 'input', (e) ->
   query = $('#query').val()
   $.requestSearchResults(query) 
-
       

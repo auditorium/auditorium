@@ -11,15 +11,26 @@
 <section>
   <header><h1><%= @group.title %></h1></header> 
 
-  <div class="group-information">
+  <div class="block group-information">
     <p><%= @group.description %></p> 
     <%= tag_list_delimited(@group.tags) %>
   </div>
+  <div class="block">
+    <div class="group-management">
+      <%= link_to t('groups.actions.edit'), edit_group_path(@group), class: 'button secondary' %>
+      <%= link_to t('groups.actions.manage_users'), manage_members_group_path, class: 'button secondary', method: :post, remote: true %>
+      <%= link_to t('groups.actions.edit'), edit_group_path(@group), class: 'button secondary' %>
+    </div>
 
-  <div class="group-management">
-    <%= link_to t('groups.actions.edit'), edit_group_path(@group), class: 'button secondary' %>
-    <%= link_to t('groups.actions.manage_users'), edit_group_path(@group), class: 'button secondary' %>
-    <%= link_to t('groups.actions.edit'), edit_group_path(@group), class: 'button secondary' %>
+    <div id="manage-members">
+      <div id="searchbar">
+        <%= form_tag search_members_path, method: :post, remote: true do %> 
+          <%= text_field_tag :member_query, params[:member_query], :placeholder => "Search for users name or email...", :class => "span8" %>
+          <%= hidden_field_tag :group_id, @group.id %>
+        <% end %>
+      </div>
+      <div id="members"></div>
+    </div>
   </div>
 </section>
 
