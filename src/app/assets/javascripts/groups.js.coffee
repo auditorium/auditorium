@@ -44,6 +44,6 @@ $('#member_query').on 'input', (e) ->
   member_query = $('#member_query').val()
   group_id = $('#group_id').val()
   $.searchMembers(group_id, member_query)
-  
+
 
 
