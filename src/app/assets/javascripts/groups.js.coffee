@@ -34,11 +34,15 @@ $('.goto a').on 'click', (e) ->
   $target = $(target)
   $('html, body').stop().animate { scrollTop: $target.offset().top - 40 }, 900
 
-$('.flip').on 'click', (e) ->
+$('.flip-to-back').on 'click', (e) ->
   e.preventDefault()
   group_id = $(this).data('id')
-  $('.group[data-id="'+group_id+'"]').addClass('flipped').mouseleave ->
-    $(this).removeClass('flipped')
+  $('.flip-container[data-id="'+group_id+'"]').addClass('flipped')
+
+$('.flip-to-front').on 'click', (e) ->
+  e.preventDefault()
+  group_id = $(this).data('id')
+  $('.flip-container[data-id="'+group_id+'"]').removeClass('flipped')
 
 $('#member_query').on 'input', (e) ->
   member_query = $('#member_query').val()
