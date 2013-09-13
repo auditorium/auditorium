@@ -15,7 +15,7 @@
 
     <% group_types.each do |group_type| %>
       <%= f.label :group_type, nil, value: group_type do %>
-        <div class="large-4 columns choosable <%= 'selected' if @group.group_type.eql? group_type %> panel" data-id='<%= group_type %>' id='<%= group_type %>-group'>
+        <div class="large-4 columns choosable <%= 'selected' if @group.group_type.eql? group_type %> panel <%= group_type %>-group" data-id='<%= group_type %>' >
           <%= f.radio_button :group_type, group_type %>
           <dl>
             <dt><%= t("groups.group_types.#{group_type}.title") %></dt>

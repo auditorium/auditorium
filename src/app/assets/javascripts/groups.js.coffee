@@ -37,6 +37,7 @@ $('.goto a').on 'click', (e) ->
 $('.flip-to-back').on 'click', (e) ->
   e.preventDefault()
   group_id = $(this).data('id')
+  console.log(group_id)
   $('.flip-container[data-id="'+group_id+'"]').addClass('flipped')
 
 $('.flip-to-front').on 'click', (e) ->

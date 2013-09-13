@@ -1586,11 +1586,15 @@ a.disabled {
     font-weight: normal;
   }
   &.selected {
-     background-color: $primary-color;
-     color: white;
-     box-shadow: inset 0 0 4px black;
-     border: none;
-     text-shadow: none;
+    background-color: $primary-color;
+    color: white;
+    box-shadow: inset 0 0 4px #333;
+    border: none;
+    text-shadow: none;
+
+    &.lecture-group { background-color: $lecture-group-color; }
+    &.learning-group { background-color: $learning-group-color; }
+    &.topic-group { background-color: $topic-group-color; }
   }
 }
 

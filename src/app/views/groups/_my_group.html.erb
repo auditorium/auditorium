@@ -1,0 +1,27 @@
+<div class="flip-container" data-id="<%= dom_id(group) %>">
+  <div class="flipper">
+    <div class="group front <%= group.group_type %>-group">
+      <!-- front content -->
+      <div class="content">
+        <div class="right">
+          <% if group.followers.include?(current_user) %>
+            <%= link_to content_tag('i', '', class: 'icon-star'), following_group_path(group, method: 'unfollow'), remote: true, method: :post, title: t('groups.unfollow_link_text') %>
+          <% else %>
+            <%= link_to content_tag('i', '', class: 'icon-star-empty'), following_group_path(group, method: 'follow'), remote: true, method: :post, title: t('groups.follow_link_text') %>
+          <% end %>
+        </div>
+        <h5><%= link_to group.title, group_path(group) %></h5>
+        <div class="bottom"><%= link_to content_tag('i', '', class: 'icon-long-arrow-right'), '#', class: 'flip-to-back', 'data-id' => dom_id(group) %></div>
+      </div>
+    </div>
+    <div class="group back <%= group.group_type %>-group">
+      <!-- back content -->
+      <div class="content">
+        
+        <h5><%= link_to group.title, group_path(group) %></h5>
+        <div><%= truncate(group.description, length:300) %></div>
+        <div class="bottom"><%= link_to content_tag('i', '', class: 'icon-long-arrow-right'), '#', class: 'flip-to-front', 'data-id' => dom_id(group) %></div>
+      </div>
+    </div>
+  </div>
+</div>
