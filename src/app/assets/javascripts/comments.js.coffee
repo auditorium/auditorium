@@ -11,9 +11,9 @@ $ ->
 
 
   $('.hidden').hide()
-  $('.comments a').on 'click', (e) ->
+  $('.comments-section a.toggle-comment-form').on 'click', (e) ->
     e.preventDefault()
     $(this).hide()
     commentable_id = $(this).data('commentable_id')
     commentable_type = $(this).data('commentable_type')
-    $(".comments form.#{commentable_id}.#{commentable_type}").show()
+    $(".comments-section form.#{commentable_id}.#{commentable_type}").show()

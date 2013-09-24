@@ -1,17 +1,5 @@
-<h2>Courses <%= "in #{term_types()[@term.type]} #{@term.year}" unless @term.nil? %></h2>
+<h2>Courses</h2>
 
-<div class="well">
-<label for='q'>Search and subscribe to new courses</label>
-<%= form_tag search_courses_path, :method => 'get', class: 'form-search', :remote => true do %>
-  <div class="controls">
-    <%= text_field_tag :q, params[:q], :placeholder => "Type in the name of the course, you're searching for...", class: 'span10' %>
-    <%= submit_tag 'Search', class: 'btn btn-info span2 hidden-phone' %>
-  </div>
-  <p class='hint hidden-phone'>
-  	You can't find the correct course? <%= link_to 'Search for the lecture first!', lectures_path(:q => params[:q]), :class=>'search-for-lecture' %></p>
+<% @courses.each do |course| %>
+  <li><%= course.name %>, <%= course.jexam_id %>, <%= course.term %></li>
 <% end %>
-</div>
-
-<div class="courses-table">
-  <%= render 'courses/courses-list' %>
-</div>

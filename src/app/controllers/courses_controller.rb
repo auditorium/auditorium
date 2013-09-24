@@ -16,8 +16,8 @@ class CoursesController < ApplicationController
       @courses = Course.order('term_id DESC, name DESC')
     end
 
-    @courses.sort! { |x,y| y.followers.count <=> x.followers.count }
-    @courses = Kaminari.paginate_array(@courses).page(params[:page]).per(20)
+    #@courses.sort! { |x,y| y.followers.count <=> x.followers.count }
+    #@courses = Kaminari.paginate_array(@courses).page(params[:page]).per(20)
 
     respond_to do |format|
       format.html # index.html.erb

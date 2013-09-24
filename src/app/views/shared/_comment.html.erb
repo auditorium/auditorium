@@ -9,7 +9,7 @@
       <%= l(comment.created_at, format: :short) %>
       <% if can? :manage, comment %>
       <span class="actions">
-        <%= link_to content_tag('i', '', class: 'icon-pencil'), edit_comment_path(comment), alt: "#{t('comments.actions.edit')}", title: "#{t('comments.actions.edit')}" %>
+        <%= link_to content_tag('i', '', class: 'icon-pencil'), edit_comment_path(comment) %>
         <%= link_to content_tag('i', '', class: 'icon-remove'), comment, alt: "#{t('comments.actions.delete')}", title: "#{t('comments.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this comment?' %>
         </span>
       <% end %>

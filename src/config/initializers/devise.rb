@@ -220,4 +220,10 @@ Devise.setup do |config|
   #   manager.intercept_401 = false
   #   manager.default_strategies(:scope => :user).unshift :some_external_strategy
   # end
+
+  # for production needs to be changed
+  config.secret_key = 'eeb5f1154e5d59646969e9ced21b963442a7225dda828c61e3771c214812514871468b97c94ed8de8c9132aceeb0dfdf1f2396cdf5dd21295d662cf6afbac75d'
+
+  # just for a couple of days
+  config.allow_insecure_token_lookup = true
 end

@@ -1682,7 +1682,7 @@ div.token-input-dropdown {
   &.events { border-color: $event-color; }
   &.questions { border-color: $question-color; }
   &.announcements { border-color: $announcement-color; }
-
+  &.comments { border-color: $comment-color; }
 }
 
 .top-bar-section ul {
@@ -2171,10 +2171,14 @@ ul.no-style {
   margin-right:10px;
 }
 
-#announcement, #question, #answer, #recording, #topic {
+#announcement, #question, #answer, #recording, #topic, #comment {
   background-color: #fff;
   box-shadow: 1px 1px 1px darken($gray, 20%);
   padding:10px;
+}
+
+#comment {
+  border-left: 4px solid $comment-color;
 }
 
 #announcement {
@@ -2216,18 +2220,18 @@ ul.no-style {
 }
 
 @media only screen and (min-width: #{$medium-screen}) {
-  .comments { margin:5px 0 30px 40px; }
+  .comments-section { margin:5px 0 30px 40px; }
 }
 
 @media only screen and (max-width: #{$medium-screen}) {
-  .comments { margin:5px 0 30px 20px; }
+  .comments-section { margin:5px 0 30px 20px; }
 }
 
 @media only screen and (max-width: #{$small-screen}) {
-  .comments { margin:5px 0 30px 10px; }
+  .comments-section { margin:5px 0 30px 10px; }
 }
 
-.comments {
+.comments-section {
   ul {
     border:none;
 

@@ -27,6 +27,7 @@ config/deploy.rb
 config/environments/production.rb
 config/environments/secret_token.rb
 config/jexam.wsdl
+config/initializers/devise.rb
 lib/tasks/jexam.rake
 lib/tasks/old_jexam.rake
 app/models/jexam.rb
