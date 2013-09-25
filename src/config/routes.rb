@@ -35,6 +35,7 @@ Auditorium::Application.routes.draw do
   get 'my_courses/search', to: 'terms#search_courses', as: :search_my_courses
   get 'terms/:id/search', to: 'terms#search_courses', as: :search_courses_in_term
   get 'lectures/search', to: 'lectures#search', as: :search_lectures
+  post 'courses/:id/clone', to: 'courses#new', as: :clone_course
 
   controller :search do
     get 'search' => :index, as: :search
