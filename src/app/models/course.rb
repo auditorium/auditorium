@@ -68,7 +68,7 @@ class Course < ActiveRecord::Base
   end
 
   def faculty
-    self.lecture.chair.institute.faculty if self.lecture
+    self.lecture.chair.institute.faculty
   end
 
   def questions
