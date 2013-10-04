@@ -49,8 +49,13 @@ class CoursesController < ApplicationController
   # GET /courses/new.json
   def new
     if params[:id].present?
-      @course = Course.find(params[:id])
+      course = Course.find(params[:id])
+      @course = Course.new
       @course.term_id = Term.last.id
+      @course.lecture_id = course.lecture_id
+      @course.url = course.url
+      @course.name = course.name
+      course.description = course.description
     elsif params[:course_id]
       @course = Course.find(params[:course_id])
     else
