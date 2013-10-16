@@ -38,7 +38,7 @@
   <body>
     <h1>Hi, <%= @user.full_name %></h1>
     
-    <p>There is a new <%= @post.post_type %> in <i><%= @post.course.name_with_term %><i> written by <%= @post.author.full_name %>.</p>
+    <p>There is a new <%= @post.post_type %> in <i><%= @post.course.name_with_term %><i> written by <%= @post.author.present? ? @post.author.full_name : 'deleted person' %>.</p>
 
     
     <div class="post-details">
