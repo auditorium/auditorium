@@ -1719,23 +1719,6 @@ div.token-input-dropdown {
   }
 }
 
-
-
-// .stripe {
-//   height:3px;
-//   margin:0;
-//   padding:0;
-//   content: '';
-//   .alert { background-color: $alert-color; height:3px; width:12.5%; dispaly:inline-block; float:left; }
-//   .success { background-color: $success-color;  height:3px; width:12.5%; dispaly:inline-block; float:left; }
-//   .warning { background-color: $warning-color; height:3px; width:12.5%; dispaly:inline-block; float:left; }
-//   .primary { background-color: $primary-color; height:3px; width:12.5%; dispaly:inline-block; float:left; }
-//   .secondary { background-color: $secondary-color;  height:3px; width:12.5%; dispaly:inline-block; float:left; }
-//   &:after {
-//     clear:both;
-//   }
-// }
-
 .table {
   width:100%;
 }
@@ -1767,9 +1750,7 @@ ul.groups, ul.posts {
 
   li {
     padding:0;
-    margin:4px 0;
-    height: 35px;
-    line-height:35px;
+    margin:10px 0;
 
     background-color: #fff;
     box-shadow: 1px 1px 1px darken($gray, 20%); 
@@ -1778,6 +1759,54 @@ ul.groups, ul.posts {
 
     border-top: none;
     border-left: 4px solid $question-color;
+
+    .ribbon
+    {
+      position: relative;
+      font-size: 0.8em;
+      font-weight: normal;
+      padding: 3px 10px 3px 10px;
+      margin: 15px 10px 10px -13px;
+      color: #fff;
+      text-shadow: 0 1px 1px #666666;
+      -webkit-box-shadow: 1px 1px 2px #333;
+      -moz-box-shadow: 1px 1px 2px #333;
+      box-shadow: 1px 1px 2px #333;
+
+       &:after
+      {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+        left: 0px;
+        top: 100%;
+        border-width: 5px 5px;
+        border-style: solid;
+        border-color: #666 #666 transparent transparent;
+      }
+
+    }
+
+    &.lecture-group span.ribbon, 
+    &.announcement span.ribbon { 
+      background-color: $lecture-group-color; 
+    }
+
+    &.learning-group span.ribbon,
+    &.question span.ribbon { 
+      background-color: $learning-group-color; 
+    }
+
+    &.topic-group span.ribbon,
+    &.topic span.ribbon {
+      background-color: $topic-group-color; 
+    }
+
+
+    .content {
+      padding:3px;
+    }
 
     &.lecture-group { border-color: $lecture-group-color; }
     &.learning-group { border-color: $learning-group-color; }
@@ -1793,51 +1822,48 @@ ul.groups, ul.posts {
       margin-right: 0;
 
       &:last-child {
-        margin-right:10px;
+        margin-right:5px;
       }
 
       &.bookmark {
         margin-left:8px;
       }
 
-      &.rating { margin-left: 10px; }
+      &.rating { 
+        font-size:1.0em;
+        margin-left: 10px; 
+        display:inline-block;
+        vertical-align:middle;
+      }
     }
 
-    span.legend {
-      margin: 0;
-      display: none;
+    .footer span, .footer a {
+      color: #666;
+      font-style: italic;
+      font-size:0.8em;
+      display:inline-block;
+      &:first-child {
+        margin-left:10px;
+      }
     }
 
-    &.lecture-group span.legend, 
-    &.announcement span.legend { 
-      background-color: $lecture-group-color; 
+    .footer a:hover { 
+      text-decoration: underline;
     }
 
-    &.learning-group span.legend,
-    &.question span.legend { 
-      background-color: $learning-group-color; 
-    }
-    
-    &.topic-group span.legend,
-    &.topic span.legend {
-      background-color: $topic-group-color; 
+    span.created_at {
+      font-size:0.8em;
+      margin:0;
     }
 
-    &:hover span.legend {
-      display: inline-block;
-      color: #fff;
-      padding: 0 10px;
-      font-size: 0.8em;
-      line-height:1.5em;
-    } 
-
-    span.actions {
-      display: none;
+    .title h2 {
+      font-size:1.2em;
+      margin:0;
+      padding:0;
+      display:inline;
+      vertical-align:middle;
+      text-wrap: normal;
     }
-
-    &:hover span.actions {
-      display: inline-block;
-    } 
   }
 }
 
@@ -1904,25 +1930,15 @@ article.group {
 }
 
 /* ======================== my group card style =============== */
-
 .group {
   box-shadow: 1px 1px 1px darken($gray, 20%);
   background-color: #fff;
 }
 
-.content {
-  position:relative;
-  width:100%;
-  height:100%;
-  
-  .bottom {
-    position: absolute;
-    bottom: 0px; 
-    right: 0px;
-  }
-}
+
 
 /* entire container, keeps perspective */
+
 .flip-container {
   margin: 10px 0;
   perspective: 1000;
@@ -1951,6 +1967,24 @@ article.group {
   position: absolute;
   width:100%;
   padding: 10px;
+
+  .content {
+    position:relative;
+    width:100%;
+    height:100%;
+    
+    .bottom {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+
+    h2 {
+      font-size: 1.2em;
+      margin-top:10px;
+    }
+  }
+
 }
 
 /* front pane, placed above back */
@@ -1958,9 +1992,58 @@ article.group {
   z-index: 2;
   border-left: 5px solid $lecture-group-color;
 
-  &.lecture-group { border-color: $lecture-group-color; }
-  &.learning-group { border-color: $learning-group-color; }
-  &.topic-group { border-color: $topic-group-color; }
+  &.lecture-group, &.lecture-group span.ribbon { border-color: $lecture-group-color; }
+  &.learning-group, &.learning-group span.ribbon { border-color: $learning-group-color; }
+  &.topic-group, &.topic-group span.ribbon { border-color: $topic-group-color; }
+
+  .ribbon
+  {
+    position: relative;
+    font-size: 0.8em;
+    font-weight: normal;
+    padding: 3px 10px 3px 10px;
+    margin: 15px 10px 10px -25px;
+    color: #fff;
+    text-shadow: 0 1px 1px #666666;
+    -webkit-box-shadow: 1px 1px 2px #333;
+    -moz-box-shadow: 1px 1px 2px #333;
+    box-shadow: 1px 1px 2px #333;
+
+     &:after
+    {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      left: 0px;
+      top: 100%;
+      border-width: 5px 5px;
+      border-style: solid;
+      border-color: #666 #666 transparent transparent;
+    }
+
+  }
+
+  &.lecture-group span.ribbon{ 
+    background-color: $lecture-group-color; 
+  }
+
+  &.learning-group span.ribbon { 
+    background-color: $learning-group-color; 
+  }
+
+  &.topic-group span.ribbon {
+    background-color: $topic-group-color; 
+  }
+
+  .bookmark {
+    display:none;
+  }
+
+  &:hover .bookmark {
+    display:inline-block;
+  }
+
 }
 
 /* back, initially hidden pane */
@@ -1978,6 +2061,12 @@ article.group {
   &.lecture-group { background-color: $lecture-group-color; }
   &.learning-group { background-color: $learning-group-color; }
   &.topic-group { background-color: $topic-group-color; }
+
+  .content .bottom {
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+  }
 }
 
 
@@ -2175,6 +2264,37 @@ ul.no-style {
   background-color: #fff;
   box-shadow: 1px 1px 1px darken($gray, 20%);
   padding:10px;
+
+  .ribbon
+  {
+    position: relative;
+    font-size: 0.8em;
+    font-weight: normal;
+    padding: 3px 10px 3px 10px;
+    margin: 5px 10px 5px -24px;
+    color: #fff;
+    text-shadow: 0 1px 1px #666666;
+    -webkit-box-shadow: 1px 1px 2px #333;
+    -moz-box-shadow: 1px 1px 2px #333;
+    box-shadow: 1px 1px 2px #333;
+
+     &:after
+    {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      left: 0px;
+      top: 100%;
+      border-width: 5px 5px;
+      border-style: solid;
+      border-color: #666 #666 transparent transparent;
+    }
+
+  }
+ 
+  
+
 }
 
 #comment {
@@ -2183,10 +2303,14 @@ ul.no-style {
 
 #announcement {
   border-left: 4px solid $announcement-color;
+
+  .ribbon { background-color: $announcement-color; }
 }
 
 #question {
   border-left: 4px solid $question-color;
+
+  .ribbon { background-color: $question-color; }
 }
 
 #answer {
@@ -2195,10 +2319,14 @@ ul.no-style {
 
 #topic {
   border-left: 4px solid $topic-color;
+
+  .ribbon { background-color: $topic-color; }
 }
 
 #recording {
   border-left: 4px solid $recording-color;
+
+  .ribbon { background-color: $recording-color; }
 }
 
 .answers {

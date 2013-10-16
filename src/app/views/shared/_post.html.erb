@@ -1,16 +1,27 @@
 <li class="<%= post.class.name.parameterize %> <%= 'following' if current_user.is_follower?(post) %>">
-  <span class="legend">
-    <%= t('posts.label', type: post.class.name.singularize.capitalize) %>
+  <span class="ribbon">
+    <%= t('posts.label', type: post.class.name) %>
   </span>
-  <span class="rating"><%= post.rating %></span>
-  <span class="content"><%= link_to truncate(post.subject, length: 150), post %></span>
-  <span class="right">
-    <small><%= l(post.created_at, format: :short) %></small>
-    <% if can? :manage, post %>
-    <span class="actions">
-      <%= link_to content_tag('i', '', class: 'icon-pencil'), edit_post_path(post), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %>
-      <%= link_to content_tag('i', '', class: 'icon-remove'), post, alt: "#{t('posts.actions.delete')}", title: "#{t('posts.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this post?' %>
-      </span>
-    <% end %>
-  </span>
+  <div class="content"> 
+    <span class="rating"><%= post.rating %></span>
+    <span class="title"><h2><%= link_to truncate(post.subject, length: 150), post %></h2></span>
+
+  </div>
+  <div class="footer hide-for-small">
+    <span class="post-details">
+      <%= link_to post.group.title, group_path(post.group), class: 'group-link' %> &middot;
+      <%= pluralize(post.views, 'view') %> &middot;
+      <% if post.class.name.eql? 'Question' %><%= pluralize(post.answers.size, 'answer') %> &middot;<% end %>
+      <%= pluralize(post.comments.size, 'comment') %>
+    </span>
+    <span class="right">
+      <span class="created_at"><%= l(post.created_at, format: :short) %></span>
+      <% if can? :manage, post %>
+        <span class="actions">
+          <%= link_to content_tag('i', '', class: 'icon-pencil'), edit_post_path(post), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %>
+          <%= link_to content_tag('i', '', class: 'icon-remove'), post, alt: "#{t('posts.actions.delete')}", title: "#{t('posts.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this post?' %>
+        </span>
+      <% end %>
+    </span>
+  </div>
 </li>

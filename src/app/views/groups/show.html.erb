@@ -12,7 +12,7 @@
   <header><h1><%= @group.title %></h1></header> 
 
   <div class="block group-information">
-    <p><%= @group.description %></p> 
+    <p><%= markdown @group.description %></p> 
     <%= tag_list_delimited(@group.tags) %>
   </div>
   <div class="block">

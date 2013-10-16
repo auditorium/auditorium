@@ -50,7 +50,7 @@ module ApplicationHelper
       :no_intra_emphasis => true,
       :autolink => true,
       :strikethrough => true,
-      :lax_html_blocks => true,
+      #:lax_html_blocks => true,
       #:superscript => true
     }
 

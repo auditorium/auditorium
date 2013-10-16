@@ -42,7 +42,7 @@ en:
       add_to_moderators: 'Add to moderators'
     unfollow_link_text: "Click to unsubscribe group's activity." 
     follow_link_text: "Click to subscribe group's activity."
-    label: '%{type}'
+    label: '%{type} Group'
     lectures: 
       title: 'Lectures'
     learnings: 
