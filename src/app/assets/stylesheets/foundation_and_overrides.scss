@@ -51,7 +51,7 @@ $em-base: 16 !default;
 
 $default-float: left;
 
-$body-bg: #f9f9f9;
+$body-bg: #f4f2ea;
 // $body-font-color: #222;
 // $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 // $body-font-weight: normal;
@@ -95,7 +95,7 @@ $lecture-group-color: $announcement-color;
 
 $filter-button-color: darken($gray, 20%);
 
-$following-color: lighten($warning-color, 45%);
+$following-color: #f9f9f9;
 
 // Make sure border radius matches unless we want it different.
 
@@ -1742,7 +1742,40 @@ div.token-input-dropdown {
 
 /* ======================== group and post list style ===================== */
 
+.footer {
+  vertical-align: middle;
+  line-height: 1.2em;
+}
+
+.footer span, .footer a {
+  color: #666;
+  font-style: italic;
+  font-size:0.8em;
+  display:inline-block;
+  &:first-child {
+    margin-left:10px;
+  }
+}
+
+.footer a:hover { 
+  text-decoration: underline;
+}
+
+
 // Style for search results page
+ul.posts.condensed li {
+  margin:2px 0;
+
+  &.announcement:nth-child(even) { background-color: lighten($announcement-color, 60%); }
+  &.question:nth-child(even) { background-color: lighten($question-color, 50%); }
+  &.topic:nth-child(even) { background-color: lighten($topic-color, 50%); }
+  &.recording:nth-child(even) { background-color: lighten($recording-color, 50%); }
+}
+
+ul.posts li,ul.groups li {
+  margin:10px 0;
+}
+
 ul.groups, ul.posts {
   list-style: none;
   margin: 0;
@@ -1750,7 +1783,6 @@ ul.groups, ul.posts {
 
   li {
     padding:0;
-    margin:10px 0;
 
     background-color: #fff;
     box-shadow: 1px 1px 1px darken($gray, 20%); 
@@ -1758,6 +1790,7 @@ ul.groups, ul.posts {
     position: relative;
 
     border-top: none;
+    border-bottom: none;
     border-left: 4px solid $question-color;
 
     .ribbon
@@ -1831,26 +1864,13 @@ ul.groups, ul.posts {
 
       &.rating { 
         font-size:1.0em;
-        margin-left: 10px; 
+        //margin-left: 10px; 
         display:inline-block;
         vertical-align:middle;
       }
     }
 
-    .footer span, .footer a {
-      color: #666;
-      font-style: italic;
-      font-size:0.8em;
-      display:inline-block;
-      &:first-child {
-        margin-left:10px;
-      }
-    }
-
-    .footer a:hover { 
-      text-decoration: underline;
-    }
-
+    
     span.created_at {
       font-size:0.8em;
       margin:0;
@@ -2172,25 +2192,14 @@ ul.no-style {
 
   &.question {
     border-left: 4px solid $question-color;
-    & > li:nth-child(even) {
-      background-color: lighten($primary-color, 50%);
-    }
   }
 
   &.announcement {
     border-left: 4px solid $announcement-color;
-
-    & > li:nth-child(even) {
-      background-color: lighten($announcement-color, 60%);
-    }
   }
 
   &.topic {
     border-left: 4px solid $topic-color;
-
-    & > li:nth-child(even) {
-      background-color: lighten($topic-color, 40%);
-    }
   }
 
   li {

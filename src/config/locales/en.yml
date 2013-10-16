@@ -34,6 +34,19 @@ en:
       posts: 'Filter posts'
 
   groups:
+    follower_count: 
+      one: 'one follower'
+      other: '%{count} followers'
+    question_count: 
+      one: 'one question'
+      other: '%{count} questions'
+    announcement_count: 
+      one: 'one announcement'
+      other: '%{count} announcements'
+    topic_count: 
+      one: 'one topic'
+      other: '%{count} topics'
+
     member:
       member: 'Member'
       moderator: 'Moderator'

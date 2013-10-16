@@ -1,14 +1,7 @@
 <span class="ribbon">
   <%= t('groups.label', type: group.group_type.capitalize) %>
 </span>
-<span class="right">
-  <% if can? :manage, group %>
-    <span class="actions">
-      <%= link_to content_tag('i', '', class: 'icon-pencil'), edit_group_path(group), alt: "#{t('groups.actions.edit')}", title: "#{t('groups.actions.edit')}" %>
-      <%= link_to content_tag('i', '', class: 'icon-remove'), group, alt: "#{t('groups.actions.delete')}", title: "#{t('groups.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this group?' %>
-    </span>
-  <% end %>
-</span>
+
 <div class="content">
   <span class="bookmark">
   <% if group.followers.include?(current_user) %>
@@ -19,4 +12,22 @@
 </span>
 
   <span class="title"><h2><%= link_to truncate(group.title, length: 150), group_path(group) %></h2></span>
+
+</div>
+
+<div class="footer hide-for-small">
+  <span class="group-details">
+    <%= t('groups.follower_count', count: group.followers.size) %> &middot;
+    <%= t('groups.announcement_count', count: group.announcements.size) %> &middot;
+    <%= t('groups.question_count', count: group.questions.size) %> &middot;
+    <%= t('groups.topic_count', count: group.topics.size) %>
+  </span>
+  <span class="right">
+  <% if can? :manage, group %>
+    <span class="actions">
+      <%= link_to content_tag('i', ' edit', class: 'icon-pencil'), edit_group_path(group), alt: "#{t('groups.actions.edit')}", title: "#{t('groups.actions.edit')}" %> &middot;
+      <%= link_to content_tag('i', ' remove', class: 'icon-remove'), group, alt: "#{t('groups.actions.delete')}", title: "#{t('groups.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this group?' %>
+    </span>
+  <% end %>
+</span>
 </div>

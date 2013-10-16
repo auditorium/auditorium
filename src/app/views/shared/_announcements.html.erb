@@ -14,23 +14,35 @@
   </ul>
 <% end %>
 
-<ul class="no-style announcement">
+<ul class="posts condensed">
   
 <% limit ||= nil%>
 
 <% @group.announcements.limit(limit).each_with_index do |announcement| %>
-  <li>
+  <li class="announcement">
+    <div class="content"> 
     <span class="rating"><%= announcement.rating %></span>
-    <span class="subject"><%= link_to announcement.subject, announcement %></span>
+    <span class="title"><h2><%= link_to truncate(announcement.subject, length: 150), announcement %></h2></span>
+
+  </div>
+  <div class="footer hide-for-small">
+    <span class="post-details">
+      <%= link_to announcement.group.title, group_path(announcement.group), class: 'group-link' %> &middot;
+      <%= pluralize(announcement.views, 'view') %> &middot;
+      <% if announcement.class.name.eql? 'Question' %><%= pluralize(announcement.answers.size, 'answer') %> &middot;<% end %>
+      <%= pluralize(announcement.comments.size, 'comment') %>
+    </span>
     <span class="right">
-      <small><%= l(announcement.created_at, format: :short) %></small>
-      <% if can? :manage, announcement %>
-      <span class="actions">
-        <%= link_to content_tag('i', '', class: 'icon-pencil'), edit_announcement_path(announcement), alt: "#{t('announcements.actions.edit')}", title: "#{t('announcements.actions.edit')}" %>
-        <%= link_to content_tag('i', '', class: 'icon-remove'), announcement, alt: "#{t('announcements.actions.delete')}", title: "#{t('announcements.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this announcement?' %>
+      <span class="created_at"><%= l(announcement.created_at, format: :short) %></span>
+      <% if can? :manage, announcement %> 
+        <span class="actions">
+          &middot;
+          <%= link_to content_tag('i', ' edit', class: 'icon-pencil'), edit_announcement_path(announcement), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %> &middot;
+          <%= link_to content_tag('i', ' remove', class: 'icon-remove'), announcement, alt: "#{t('announcements.actions.delete')}", title: "#{t('posts.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this post?' %>
         </span>
       <% end %>
     </span>
+  </div>
   </li>
 <% end %>
 </ul>  

@@ -12,22 +12,34 @@
   </ul>
 <% end %>
 
-<ul class="no-style question">
+<ul class="posts condensed">
 <% limit ||= nil %>
   <% @group.questions.limit(limit).each_with_index do |question| %>
-    <li>
+    <li class="question">
+      <div class="content"> 
       <span class="rating"><%= question.rating %></span>
-      <span class="subject"><%= link_to question.subject, question %></span>
+      <span class="title"><h2><%= link_to truncate(question.subject, length: 150), question %></h2></span>
+
+    </div>
+    <div class="footer hide-for-small">
+      <span class="post-details">
+        <%= link_to question.group.title, group_path(question.group), class: 'group-link' %> &middot;
+        <%= pluralize(question.views, 'view') %> &middot;
+        <% if question.class.name.eql? 'Question' %><%= pluralize(question.answers.size, 'answer') %> &middot;<% end %>
+        <%= pluralize(question.comments.size, 'comment') %>
+      </span>
       <span class="right">
-        <small><%= l(question.created_at, format: :short) %></small>
-        <% if can? :manage, question %>
-        <span class="actions">
-          <%= link_to content_tag('i', '', class: 'icon-pencil'), edit_question_path(question), alt: "#{t('questions.actions.edit')}", title: "#{t('questions.actions.edit')}" %>
-          <%= link_to content_tag('i', '', class: 'icon-remove'), question, alt: "#{t('questions.actions.delete')}", title: "#{t('questions.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this question?' %>
+        <span class="created_at"><%= l(question.created_at, format: :short) %></span>
+        <% if can? :manage, question %> 
+          <span class="actions">
+            &middot;
+            <%= link_to content_tag('i', ' edit', class: 'icon-pencil'), edit_question_path(question), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %> &middot;
+            <%= link_to content_tag('i', ' remove', class: 'icon-remove'), question, alt: "#{t('questions.actions.delete')}", title: "#{t('posts.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this post?' %>
           </span>
         <% end %>
       </span>
-    </li>
+    </div>
+  </li>
   <% end %>
 </ul> 
 

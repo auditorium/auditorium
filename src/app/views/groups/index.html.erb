@@ -7,7 +7,7 @@
 
   <ul class="groups">
   	<% @groups.each do |group| %>
-      <li class="group <%= group.group_type %>-group <%= 'following' if group.followers.include? current_user %>" data-id="<%= dom_id(group) %>">
+      <li class="group <%= group.group_type %>-group" data-id="<%= dom_id(group) %>">
         <%= render 'groups/group', group: group %>
       </li>
     <% end %>

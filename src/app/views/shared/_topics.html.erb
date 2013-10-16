@@ -12,7 +12,7 @@
 <% end %>
 
 <%= form_for([@group, @topic = Topic.new]) do |f| %>
-  <ul class="no-style topic">
+  <ul class="no-style posts">
     <li class="input-fields" class="input-fields">
       <noscript><%= f.label :subject %></noscript>
       <%= f.text_field :subject, placeholder: t('topics.input.new') %>
@@ -21,21 +21,32 @@
   </ul>
 <% end %>
 
-<ul class="no-style topic">
+<ul class="posts condensed">
 <% limit ||= nil %>
   <% @group.topics.limit(limit).each_with_index do |topic| %>
-    <li>
-      <span class="rating"><%= topic.rating %></span>
-      <span class="subject"><%= link_to topic.subject, topic %></span>
-      <span class="right">
-        <small><%= l(topic.created_at, format: :short) %></small>
-        <% if can? :manage, topic %>
-        <span class="actions">
-          <%= link_to content_tag('i', '', class: 'icon-pencil'), edit_topic_path(topic), alt: "#{t('topics.actions.edit')}", title: "#{t('topics.actions.edit')}" %>
-          <%= link_to content_tag('i', '', class: 'icon-remove'), topic, alt: "#{t('topics.actions.delete')}", title: "#{t('topics.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this topic?' %>
-          </span>
-        <% end %>
-      </span>
+    <li class="topic">
+      <div class="content"> 
+        <span class="rating"><%= topic.rating %></span>
+        <span class="title"><h2><%= link_to truncate(topic.subject, length: 150), topic %></h2></span>
+      </div>
+      <div class="footer hide-for-small">
+        <span class="post-details">
+          <%= link_to topic.group.title, group_path(topic.group), class: 'group-link' %> &middot;
+          <%= pluralize(topic.views, 'view') %> &middot;
+          <% if topic.class.name.eql? 'Question' %><%= pluralize(topic.answers.size, 'answer') %> &middot;<% end %>
+          <%= pluralize(topic.comments.size, 'comment') %>
+        </span>
+        <span class="right">
+          <span class="created_at"><%= l(topic.created_at, format: :short) %></span>
+          <% if can? :manage, topic %> 
+            <span class="actions">
+              &middot;
+              <%= link_to content_tag('i', ' edit', class: 'icon-pencil'), edit_topic_path(topic), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %> &middot;
+              <%= link_to content_tag('i', ' remove', class: 'icon-remove'), topic, alt: "#{t('topics.actions.delete')}", title: "#{t('posts.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this post?' %>
+            </span>
+          <% end %>
+        </span>
+      </div>
     </li>
   <% end %>
 </ul> 
