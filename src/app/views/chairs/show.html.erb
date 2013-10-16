@@ -1,5 +1,6 @@
 <h2><%= @chair.name %></h2>
 
+<% if @chair.lectures.size > 0 %>
 <table class="table table-striped">
 	<thead>
 		<th>Lecture name</th>
@@ -25,3 +26,8 @@
 		<% end %>
 	</tbody>
 </table>
+<% else %>
+<p class="hint">There are no lectures available, yet.</p>
+<% end %>
+
+<p>Feel free to <%= link_to 'add a new lecture', new_lecture_path(chair_id: @chair.id), class: "btn" %> for this chair.</p>
