@@ -81,7 +81,11 @@
           <small><em>
             <% if post.origin.is_private? %><%= "private" %><% end %> <%= post.post_type %>,
             <%= pluralize(post.answers.count, 'answer') %>,
-            <%=link_to "written by #{post.author.present? ? post.author.full_name : 'deleted person'}", user_path(post.author) %>
+            <% if post.author.present? %>
+            <%=link_to "written by #{post.author.full_name}", user_path(post.author) %>
+            <% else %>
+               deleted person
+            <% end %>
           <span class="pull-right"><%= "last activity: #{distance_of_time_in_words(Time.now, post.last_activity ? post.last_activity : post.updated_at) } ago"%></span>
           </em></small>
         </td>
