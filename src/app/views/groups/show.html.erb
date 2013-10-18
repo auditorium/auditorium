@@ -1,19 +1,12 @@
-<nav class="subnav">
-  <ul class="inline-list goto">
-    <li><%= t('posts.links.goto.title') %></li>
-    <li><%= link_to t('posts.links.goto.announcements'), anchor: 'announcements' %></li>
-    <li><%= link_to t('posts.links.goto.questions'), anchor: 'questions' %></li>
-    <li><%= link_to t('posts.links.goto.topics'), anchor: 'topics' %></li>
-  </ul>
-</nav>
+
 
 
 <section>
   <header><h1><%= @group.title %></h1></header> 
 
   <div class="block group-information">
-    <p><%= markdown @group.description %></p> 
-    <%= tag_list_delimited(@group.tags) %>
+    <%= markdown @group.description %>
+    <p class="hint"><%= t('groups.tags') %> <%= tag_list_delimited(@group.tags) %></p>
   </div>
   <div class="block">
     <div class="group-management">

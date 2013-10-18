@@ -1375,6 +1375,15 @@ small {
   color: darken($gray, 20%);
   font-size: 0.9em;
   font-style: italic;
+
+  &.inverted {
+    color: #fff;
+    margin-right: 20px;
+  }
+
+  a {
+    text-decoration: underline;
+  }
 }
 
 .clearfix {
@@ -2003,6 +2012,10 @@ article.group {
       font-size: 1.2em;
       margin-top:10px;
     }
+
+    ul {
+      list-style: none;
+    }
   }
 
 }
@@ -2085,7 +2098,12 @@ article.group {
   .content .bottom {
     position: absolute;
     right: 0;
-    bottom: 10px;
+    bottom: 0;
+  }
+
+  .content .body {
+    overflow-y: scroll;
+    height:160px;
   }
 }
 
@@ -2099,6 +2117,11 @@ i.icon-star, i.icon-star-empty  {
 
 #manage-members {
   display:none;
+
+  #members {
+    overflow-y: scroll;
+    height:300px;
+  }
 }
 
 

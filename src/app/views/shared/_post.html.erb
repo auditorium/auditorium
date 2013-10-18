@@ -1,6 +1,14 @@
-<li class="<%= post.class.name.parameterize %> <%= 'following' if current_user.is_follower?(post) %>">
+<li class="<%= post.class.name.parameterize %>" data-id="<%= post.id %>" data-group-id="<%= dom_id(post.group) %>">
   <span class="ribbon">
     <%= t('posts.label', type: post.class.name) %>
+
+    <span class="bookmark">
+      <% if current_user.is_follower?(post) %>
+        <%= link_to content_tag('i', '', class: 'icon-star'), following_group_path(post.group, method: 'unfollow'), remote: true, method: :post, title: t('groups.unfollow_link_text') %>
+      <% else %>
+        <%= link_to content_tag('i', '', class: 'icon-star-empty'), following_group_path(post.group, method: 'follow'), remote: true, method: :post, title: t('groups.follow_link_text') %>
+      <% end %>
+      </span>
   </span>
   <div class="content"> 
     <span class="rating"><%= post.rating %></span>
@@ -9,6 +17,8 @@
   </div>
   <div class="footer hide-for-small">
     <span class="post-details">
+
+      
       <%= link_to post.group.title, group_path(post.group), class: 'group-link' %> &middot;
       <%= pluralize(post.views, 'view') %> &middot;
       <% if post.class.name.eql? 'Question' %><%= pluralize(post.answers.size, 'answer') %> &middot;<% end %>

@@ -7,32 +7,50 @@
 
       <!-- front content -->
       <div class="content">
-        <span class="ribbon">
-          <%= t('groups.label', type: group.group_type.capitalize) %>
-        </span>
+        <div class="header">
+          <span class="ribbon">
+            <%= t('groups.label', type: group.group_type.capitalize) %>
+          </span>
 
-        <div class="right">
-          <div class="bookmark">
-          <% if group.followers.include?(current_user) %>
-            <%= link_to content_tag('i', '', class: 'icon-star'), following_group_path(group, method: 'unfollow'), remote: true, method: :post, title: t('groups.unfollow_link_text') %>
-          <% else %>
-            <%= link_to content_tag('i', '', class: 'icon-star-empty'), following_group_path(group, method: 'follow'), remote: true, method: :post, title: t('groups.follow_link_text') %>
-          <% end %>
+          <div class="right">
+            <div class="bookmark">
+            <% if group.followers.include?(current_user) %>
+              <%= link_to content_tag('i', '', class: 'icon-star'), following_group_path(group, method: 'unfollow'), remote: true, method: :post, title: t('groups.unfollow_link_text') %>
+            <% else %>
+              <%= link_to content_tag('i', '', class: 'icon-star-empty'), following_group_path(group, method: 'follow'), remote: true, method: :post, title: t('groups.follow_link_text') %>
+            <% end %>
+            </div>
           </div>
         </div>
 
-        <h2><%= link_to group.title, group_path(group) %></h2>
-        <div class="bottom"><%= link_to content_tag('i', '', class: 'icon-long-arrow-right'), '#', class: 'flip-to-back', 'data-id' => dom_id(group) %></div>
+        <div class="body">
+          <h2><%= link_to group.title, group_path(group) %></h2>
+
+          <ul class="group-details">
+            <li><%= t('groups.announcement_count', count: group.announcements.size) %></li>
+            <li><%= t('groups.question_count', count: group.questions.size) %></li>
+            <li><%= t('groups.topic_count', count: group.topics.size) %></li>
+          </ul>
+        </div>
+
+        <div class="bottom">
+          <%= link_to content_tag('i', '', class: 'icon-long-arrow-right'), '#', class: 'flip-to-back', 'data-id' => dom_id(group) %>
+        </div>
       </div>
     </div>
 
     <div class="group back <%= group.group_type %>-group">
       <!-- back content -->
       <div class="content">
-        
-        <h2><%= link_to group.title, group_path(group) %></h2>
-        <div><%= truncate(group.description, length:300) %></div>
-        <div class="bottom"><%= link_to content_tag('i', '', class: 'icon-long-arrow-right'), '#', class: 'flip-to-front', 'data-id' => dom_id(group) %></div>
+        <div class="body">
+          <h2><%= link_to group.title, group_path(group) %></h2>
+          <p class="hint inverted"><%= t('groups.follower_count', count: group.followers.size) %></p>
+          <p class="hint inverted"><%= t('groups.tags') %> <%= tag_list_delimited(group.tags) %></p>
+        </div>
+        <div class="bottom">
+        <span class="hint inverted left"><%= t('groups.creator', name: group.creator) %></span>
+        <%= link_to content_tag('i', '', class: 'icon-long-arrow-right'), '#', class: 'flip-to-front', 'data-id' => dom_id(group) %>
+        </div>
       </div>
     </div>
   </div>

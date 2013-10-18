@@ -34,16 +34,23 @@ en:
       posts: 'Filter posts'
 
   groups:
+    creator: 'Created by %{name}'
+    tags: 'Tags:'
+    followers: 'Followers:'
     follower_count: 
+      zero: 'no followers'
       one: 'one follower'
       other: '%{count} followers'
     question_count: 
+      zero: 'no question'
       one: 'one question'
       other: '%{count} questions'
     announcement_count: 
+      zero: 'no announcements'
       one: 'one announcement'
       other: '%{count} announcements'
     topic_count: 
+      zero: 'no topics'
       one: 'one topic'
       other: '%{count} topics'
 
