@@ -10,6 +10,7 @@ class CreateQuestions < ActiveRecord::Migration
 
       t.integer :author_id
       t.integer :group_id
+      
       t.timestamps
     end
     add_index :questions, [:author_id, :group_id]

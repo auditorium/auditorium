@@ -1,4 +1,8 @@
 Auditorium::Application.routes.draw do
+  get "medias/new"
+
+  get "medias/edit"
+
   scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do 
 
     devise_for :users, :controllers => { :confirmations => "users/confirmations", :sessions => "users/sessions", :registrations => "users/registrations" }
