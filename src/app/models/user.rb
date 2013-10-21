@@ -33,8 +33,9 @@ class User < ActiveRecord::Base
   end
   
   validates_uniqueness_of :email
-  validates_uniqueness_of :username
-  validates :username, :presence => true, :format => { :with => /^[A-Za-z0-9_\-\.]+$/, :message => "contains unsupported signs. Plese only use those signs: [A-Za-z0-9_-.]." }
+  #validates :username, :presence => true, :format => { :with => /^[A-Za-z0-9_\-\.]+$/, :message => "contains unsupported signs. Plese only use those signs: [A-Za-z0-9_-.]." }
+  #validates_uniqueness_of :username
+  
 
   define_index do
     indexes email
@@ -78,7 +79,7 @@ class User < ActiveRecord::Base
   # in models to map to a nice sign up e-mail.
   def send_on_create_confirmation_instructions
     if self.email.match /tu-dresden.de$/
-      send_devise_notification(:confirmation_instructions)
+      send_confirmation_instructions
     else
       false
     end
@@ -86,7 +87,7 @@ class User < ActiveRecord::Base
 
   def send_unlock_instructions
     if self.email.match /tu-dresden.de$/
-      send_devise_notification(:confirmation_instructions)
+      send_confirmation_instructions
     else
       false
     end

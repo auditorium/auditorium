@@ -1,28 +1,16 @@
-<div class="center container span5">
-  <% devise_error_messages! %>
-  
+<h2>Change your password</h2>
 
-  <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
-  <fieldset class="well span4">
-    <h2>Change your password</h2>
-    <div class="control-group">
-        <%= f.label :password, 'New password', :class => 'accessibility'%>
-      <div class="controls">
-        <%= f.password_field :password, :placeholder => 'New password', :class => "span4"%>
-    </div>
-
-    <div class="control-group">
-        <%= f.label :password_confirmation, 'Confirm new password', :class => 'accessibility'%>
-      <div class="controls">
-        <%= f.password_field :password_confirmation, :placeholder => 'Confirm new password', :class => "span4" %>
-    </div>
-    
-    <div class="controls">
-      <%= f.submit "Change my password", :class => 'btn btn-large btn-primary span4', 'data-disable-with' => 'Changing password...' %>
-    </div>
-    <hr />
-      <p class='help-block'><%= render :partial => "devise/shared/links" %></p>
-  </fieldset>
+<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
+  <%= devise_error_messages! %>
   <%= f.hidden_field :reset_password_token %>
-  <% end %>
-</div>
+
+  <div><%= f.label :password, "New password" %><br />
+  <%= f.password_field :password, :autofocus => true %></div>
+
+  <div><%= f.label :password_confirmation, "Confirm new password" %><br />
+  <%= f.password_field :password_confirmation %></div>
+
+  <div><%= f.submit "Change my password" %></div>
+<% end %>
+
+<%= render "devise/shared/links" %>

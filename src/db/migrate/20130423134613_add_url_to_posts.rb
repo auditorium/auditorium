@@ -1,4 +1,4 @@
-class AddUrltoPosts < ActiveRecord::Migration
+class AddUrlToPosts < ActiveRecord::Migration
   def change
   	add_column :posts, :url, :string
   end

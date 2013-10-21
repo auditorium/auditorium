@@ -1,13 +1,15 @@
 Auditorium::Application.routes.draw do
   scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do 
 
+    devise_for :users, :controllers => { :confirmations => "users/confirmations", :sessions => "users/sessions", :registrations => "users/registrations" }
+
     post "ajax/preview", to: 'ajax#preview'
     post "ajax/load_form", to: 'ajax#load_form'
     get 'ajax/search', to: 'ajax#search', as: :search
     post ':type/:id/upvote', to: 'ajax#upvote', as: :upvote
     post ':type/:id/downvote', to: 'ajax#downvote', as: :downvote
     
-    devise_for :users, :controllers => { :confirmations => "users/confirmations", :sessions => "users/sessions", :registrations => "users/registrations" }
+    
 
     get 'tags/:tag', to: 'groups#index', as: :tag
     resources :tags, only: ['index']

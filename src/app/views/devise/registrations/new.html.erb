@@ -1,44 +1,21 @@
-<div class="center container span6">
-  <% devise_error_messages! %>
-  
-  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+<h2>Sign up</h2>
 
-    <fieldset class="well span5">
-      <h2>Sign up!</h2>
-    <div class="control-group">
-        <%= f.label :username, 'Username', :class => 'accessibility'%>
-      <div class="controls">
-       <%= f.text_field :username, :placeholder => 'Username', :class => "span5"%>
-      </div>
-    </div>
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
 
-    <div class="control-group">
-        <%= f.label :email, 'Email address', :class => 'accessibility'%>
-      <div class="controls">
-        <%= f.email_field :email, :placeholder => 'Email address', :class => "span5", :title => 'Use your TU Dresden email address,<br/>e.g. sNumber@mail.zih.tu-dresden.de', :rel => 'tooltip', :id => 'signup-email-address', 'data-placement' => 'right' %>
-      </div>
-    </div>
+  <div><%= f.label :username %><br />
+  <%= f.text_field :username, :autofocus => true %></div>
 
-    <div class="control-group">
-        <%= f.label :password, 'Password', :class => 'accessibility'%>
-      <div class="controls">
-        <%= f.password_field :password, :placeholder => 'Password', :class => "span5", :title => 'Minimum six characters', :rel => 'tooltip', :id => 'signup-password', 'data-placement' => 'right'%>
-      </div>
-    </div>
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email, :autofocus => true %></div>
 
-    <div class="control-group">
-        <%= f.label :password_confirmation, 'Confirm password', :class => 'accessibility'%>
-      <div class="controls">
-        <%= f.password_field :password_confirmation, :placeholder => 'Password confirmation', :class => "span5" %>
-      </div>
-    </div>
+  <div><%= f.label :password %><br />
+  <%= f.password_field :password %></div>
 
-    
-    <div class="controls">
-      <%= f.submit "Sign up", :class => 'btn btn-large btn-primary span5', 'data-disable-with' => 'Signing up...' %>
-    </div>
-    <hr />
-      <p class='help-block'><%= render :partial => "devise/shared/links" %></p>
-  </fieldset>
-  <% end %>
-</div>
+  <div><%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation %></div>
+
+  <div><%= f.submit "Sign up" %></div>
+<% end %>
+
+<%= render "devise/shared/links" %>

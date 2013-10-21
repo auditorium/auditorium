@@ -1,124 +1,29 @@
-<div class="row-fluid">
-  <div class="span6 container">
-    <h2>Your courses</h2>
-    <div class="well">
-      <%= render 'course_memberships/list_simple', :user => resource %>
-    </div>
+<h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-    <h2>Email Settings</h2>
-    <div class="well">
-      <% email_setting = EmailSetting.where(:user_id => current_user.id).first_or_initialize %>
-      <%= render 'email_settings/form', :user => resource, :email_setting => email_setting %>
-      <% if email_setting.emails_for_subscribtions? and current_user.course_memberships.count > 0 %>
-        <%= render 'email_settings/course_subscriptions', :user => resource %>
-      <% end %>
-    </div>
-  </div>
-  <div class="container span6">
-    <% devise_error_messages! %>
-    <h2>Your account</h2>
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+  <%= devise_error_messages! %>
 
-    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-horizontal' }) do |f| %>
-    <fieldset class="well">
-      <div class="control-group">
-        <%= f.label :username, 'Username', :class => 'control-label'%>
-        <div class="controls">
-          <%= f.text_field :username, :class => "span8" %>
-        </div>
-      </div>
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email, :autofocus => true %></div>
 
-      <div class="control-group">
-        <%= f.label :title, 'Title', :class => 'control-label'%>
-        <div class="controls">
-          <%= f.select :title, options_for_select(available_title), :include_blank => true, :class => 'span8' %>
-        </div>
-      </div>
-      
-      <div class="control-group">
-        <%= f.label :first_name, 'First name', :class => 'control-label'%> 
-        <div class="controls">
-          <%= f.text_field :first_name, :class => "span8"%>
-        </div>
-      </div>
-      
-      <div class="control-group">
-        <%= f.label :last_name, 'Last name', :class => 'control-label'%>
-        <div class="controls">
-          <%= f.text_field :last_name, :class => "span8" %>
-        </div>
-      </div>
-      
-      <hr />
-      
-      <% if can? :manage, User %>
-      <div class="control-group">
-        <%= f.label :email, 'Email address', :class => 'control-label'%>
-        <div class="controls"> 
-          <%= f.email_field :email, :class => "span8"%>
-        </div>
-      </div>
-      <% end %>
-      
-      <div class="control-group">
-        <%= f.label :alternative_email, 'Email for your gravatar', :class => 'control-label'%>
-        <div class="controls"> 
-          <%= f.email_field :alternative_email, :class => "span8"%>
-        <span class="label">used for gravatar</span>
-        <p class="hint"><%= link_to ' Click to change or create your gravatar', 'https://de.gravatar.com/emails', 'target' => '_blank', class: 'icon-external-link' %></p> 
-        </div> 
-      </div>
-      
-      <div class="control-group">
-        <%= f.label :password, 'New password', :class => 'control-label'%>
-        <div class="controls">
-          <%= f.password_field :password, :autocomplete => "off", :class => "span8"%>
-        </div>
-      </div>
-      
-      <div class="control-group">
-        <%= f.label :password_confirmation, 'Confirm new password', :class => 'control-label'%>
-        <div class="controls">
-          <%= f.password_field :password_confirmation, :autocomplete => "off", :class => "span8" %>
-        </div>
-      </div>
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
 
-      <div class="control-group">
-        <%= f.label :current_password, 'Current password', :class => 'control-label'%>
-        <div class="controls">
-          <%= f.password_field :current_password, :autocomplete => "off", :class => "span8" %>
-          <p class="hint">If you have changed your password, type in your current password for verification.</p>
-        </div>
-      </div>
-      
-      <hr />
-      
-      <div class="control-group"> 
-        <%= f.label 'Edit your faculties', :class => 'control-label', id: 'your-faculties'%>
-        <div class="controls">
-          <% resource.faculties.each do |faculty| %>
-          <p><%= select_tag("faculty_id[#{faculty.id}]".to_sym, options_from_collection_for_select(Faculty.select("id, name"), :id, :name, faculty.id.to_i), {include_blank: '-- please choose a faculty --', :class => 'span8'}) %></p>
-          <% end %>
-          <%= select_tag("faculty_id[new]".to_sym, options_from_collection_for_select(Faculty.select("id, name"), :id, :name), include_blank: '-- please choose a faculty --', :class => 'span8') %>
-        </div>
-      </div>
-      
-      <hr />
-      
-      <div class="controls">
-        <%= f.submit "Save changes", :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Saving...' %>
-        <p class='help-block'>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), 'data-confirm' => "Are you sure?", :method => :delete %></p>
-      </div>
+  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+  <%= f.password_field :password, :autocomplete => "off" %></div>
 
-    </div>
+  <div><%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation %></div>
 
-    <% end %>
-  </fieldset>
-</div>
-</div>​
-</div>
+  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+  <%= f.password_field :current_password %></div>
 
+  <div><%= f.submit "Update" %></div>
+<% end %>
 
+<h3>Cancel my account</h3>
 
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %></p>
 
-
-
+<%= link_to "Back", :back %>
