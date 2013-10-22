@@ -32,8 +32,10 @@
     
     <% if can? :manage, @course.recordings.build %>
        <li><%= link_to "Currently there are #{pluralize @course.recordings.published.size, 'recording'} available.", course_recordings_path(@course) %> - <%= link_to 'You can add a recording to this course.', new_course_recording_path(@course) %></li>
-    <% else %> 
-      <li><%= link_to "View #{pluralize @course.recordings.published.size, 'recording'} for this course.", course_recordings_path(@course) if @course.recordings.published.size > 0 %></li>
+    <% else %>
+      <% if @course.recordings.published.size > 0 %>
+      <li><%= link_to "View #{pluralize @course.recordings.published.size, 'recording'} for this course.", course_recordings_path(@course)  %></li>
+      <% end %>
     <% end %>
   </ul>
   </p>
