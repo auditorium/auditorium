@@ -1,9 +1,9 @@
-<ul class="filter-list">
-  <li><%= link_to t('general.filter.show_questions'), params.merge({ show_questions: (params[:show_questions] == 'no' ? 'yes' : 'no') }), class: "#{'selected' unless params[:show_questions] == 'no'}" %></li>
+<ul class="filter-list link-list">
+  <li><%= link_to t('general.filter.show_questions'), params.merge({ show_questions: (params[:show_questions] == 'no' ? 'yes' : 'no') }), class: "filter #{'selected' unless params[:show_questions] == 'no'}" %></li>
 
-  <li><%= link_to t('general.filter.show_announcements'), params.merge({ show_announcements: (params[:show_announcements] == 'yes' ? 'no' : 'yes') }), class: "#{'selected' unless params[:show_announcements] == 'no'}" %></li>
+  <li><%= link_to t('general.filter.show_announcements'), params.merge({ show_announcements: (params[:show_announcements] == 'no' ? 'yes' : 'no') }), class: "filter #{'selected' unless params[:show_announcements] == 'no'}" %></li>
 
-  <li><%= link_to t('general.filter.show_topics'), params.merge({ show_topics: (params[:show_topics] == 'no' ? 'yes' : 'no')  }), class: "#{'selected' unless params[:show_topics] == 'no'}" %></li>
+  <li><%= link_to t('general.filter.show_topics'), params.merge({ show_topics: (params[:show_topics] == 'no' ? 'yes' : 'no')  }), class: "filter #{'selected' unless params[:show_topics] == 'no'}" %></li>
 
-  <li><%= link_to t('general.filter.only_subscribed'), params.merge({ only_subscribed: (params[:only_subscribed] == 'no' || params[:only_subscribed].nil? ? 'yes' : 'no')  }), class: "#{'selected' if params[:only_subscribed] == 'yes'}" %></li>
+  <li><%= link_to t('general.filter.only_subscribed'), params.merge({ only_subscribed: (params[:only_subscribed] == 'no' || params[:only_subscribed].nil? ? 'yes' : 'no')  }), class: "filter #{'selected' if params[:only_subscribed] == 'yes'}" %></li>
 </ul>

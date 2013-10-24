@@ -813,8 +813,8 @@ $button-radius: $global-radius;
 
 $label-font-sizing: emCalc(10);
 // $label-font-weight: bold;
-// $label-font-color: #333;
-// $label-font-color-alt: #fff;
+$label-font-color: $dark-gray;
+$label-font-color-alt: #fff;
 
 //
 // Magellan Variables
@@ -1714,6 +1714,7 @@ div.token-input-dropdown {
     &:not(.button) { 
 
       &:hover {
+        background-color: #fff;
         &.home { color: $home-color; }
         &.groups { color: $group-color; }
         &.lecture-group { color: $lecture-group-color; }
@@ -2136,11 +2137,17 @@ i.icon-star, i.icon-star-empty  {
 
 }
 
+@mixin link-list {
+  border-top: 1px dotted #888;
+  border-bottom: 1px dotted #888;
+}
+
 .post-filter {
-  margin: 0 0 20px 0;
-  padding: 10px;
-  background-color: #fff;
-  box-shadow: 1px 1px 1px darken($gray, 20%);
+  // margin: 0 0 20px 0;
+  padding: 0 10px;
+  // background-color: #fff;
+  // box-shadow: 1px 1px 1px darken($gray, 20%);
+  @include link-list;
 
   ul {
     list-style: none;
@@ -2187,13 +2194,13 @@ ul.filter-list {
       color: #333;
     }
 
-    &:before {
+    &.filter:before {
       padding-right: 5px;
       font-family: FontAwesome;
       content: "\f096"; // icon-check-empty
       color: #333;
     }
-    &.selected:before {
+    &.filter.selected:before {
       padding-right: 5px;
       font-family: FontAwesome;
       content: "\f14a";  // icon-check-sign
