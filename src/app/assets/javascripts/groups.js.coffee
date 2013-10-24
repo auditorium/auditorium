@@ -34,13 +34,13 @@ $('.goto a').on 'click', (e) ->
   $target = $(target)
   $('html, body').stop().animate { scrollTop: $target.offset().top - 40 }, 900
 
-$('.flip-to-back').on 'click', (e) ->
+$('a.flip-to-back ').on 'click', (e) ->
   e.preventDefault()
   group_id = $(this).data('id')
   console.log(group_id)
   $('.flip-container[data-id="'+group_id+'"]').addClass('flipped')
 
-$('.flip-to-front').on 'click', (e) ->
+$('a.flip-to-front').on 'click', (e) ->
   e.preventDefault()
   group_id = $(this).data('id')
   $('.flip-container[data-id="'+group_id+'"]').removeClass('flipped')

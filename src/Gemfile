@@ -38,11 +38,11 @@ group :test, :development do
   gem 'spork-rails', github: 'sporkrb/spork-rails'
   gem 'guard-spork'
   gem 'childprocess'
+  gem "faker", "~> 1.1.2"
 end
 
 group :test do
   gem "capybara"
-  gem "faker", "~> 1.1.2"
   gem "database_cleaner", "~> 0.9.1" 
   gem "launchy", "~> 2.2.0"
   gem 'sqlite3'

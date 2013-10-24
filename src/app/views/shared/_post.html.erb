@@ -4,9 +4,9 @@
 
     <span class="bookmark">
       <% if current_user.is_follower?(post) %>
-        <%= link_to content_tag('i', '', class: 'icon-star'), following_group_path(post.group, method: 'unfollow'), remote: true, method: :post, title: t('groups.unfollow_link_text') %>
+        <%= link_to fa_icon('star'), following_group_path(post.group, method: 'unfollow'), remote: true, method: :post, title: t('groups.unfollow_link_text') %>
       <% else %>
-        <%= link_to content_tag('i', '', class: 'icon-star-empty'), following_group_path(post.group, method: 'follow'), remote: true, method: :post, title: t('groups.follow_link_text') %>
+        <%= link_to fa_icon('star-o'), following_group_path(post.group, method: 'follow'), remote: true, method: :post, title: t('groups.follow_link_text') %>
       <% end %>
       </span>
   </span>
@@ -29,8 +29,8 @@
       <% if can? :manage, post %> 
         <span class="actions">
           &middot;
-          <%= link_to content_tag('i', ' edit', class: 'icon-pencil'), edit_post_path(post), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %> &middot;
-          <%= link_to content_tag('i', ' remove', class: 'icon-remove'), post, alt: "#{t('posts.actions.delete')}", title: "#{t('posts.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this post?' %>
+          <%= link_to fa_icon('pencil', text: 'edit'), edit_post_path(post), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %> &middot;
+          <%= link_to fa_icon('times', text: 'remove'), post, alt: "#{t('posts.actions.delete')}", title: "#{t('posts.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this post?' %>
         </span>
       <% end %>
     </span>

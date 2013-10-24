@@ -19,7 +19,7 @@
       </td>
       <td>
         <div class="subtle pull-right">
-              <%= link_to "#{course_path(course)}/unfollow", 'data-placement' => 'right', :title => "#{current_user.is_moderator?(course) ? 'Click to cancel your membership as moderator of this course. Your subscription will also be canceled.' : 'Click to unsubscribe'}" ,:rel => "tooltip", :class => "icon-remove remove-cross btn btn-mini btn-link", 'data-id' => "#{course.id}", 'data-name' => "#{course.name}", :data => { :confirm => "Are you sure that you want to unsubscribe to #{course.name_with_term}?" }  do %>
+              <%= link_to "#{course_path(course)}/unfollow", 'data-placement' => 'right', :title => "#{current_user.is_moderator?(course) ? 'Click to cancel your membership as moderator of this course. Your subscription will also be canceled.' : 'Click to unsubscribe'}" ,:rel => "tooltip", :class => "fa-remove remove-cross btn btn-mini btn-link", 'data-id' => "#{course.id}", 'data-name' => "#{course.name}", :data => { :confirm => "Are you sure that you want to unsubscribe to #{course.name_with_term}?" }  do %>
               <% end %>
             </div>
       </td>

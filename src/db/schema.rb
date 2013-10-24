@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131021114947) do
+ActiveRecord::Schema.define(:version => 20131024171111) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -206,6 +206,7 @@ ActiveRecord::Schema.define(:version => 20131021114947) do
     t.string   "group_type"
     t.integer  "creator_id",    :default => 1
     t.boolean  "private_posts"
+    t.string   "url"
   end
 
   add_index "groups", ["creator_id"], :name => "index_groups_on_creator_id"
@@ -245,21 +246,6 @@ ActiveRecord::Schema.define(:version => 20131021114947) do
   end
 
   add_index "lectures", ["chair_id"], :name => "index_lectures_on_chair_id"
-
-  create_table "media", :force => true do |t|
-    t.text     "content"
-    t.string   "subject"
-    t.string   "url"
-    t.integer  "views"
-    t.boolean  "is_private"
-    t.integer  "author_id"
-    t.integer  "group_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "media", ["author_id"], :name => "index_media_on_author_id"
-  add_index "media", ["group_id"], :name => "index_media_on_group_id"
 
   create_table "membership_requests", :force => true do |t|
     t.integer  "user_id"
@@ -423,7 +409,7 @@ ActiveRecord::Schema.define(:version => 20131021114947) do
 
   create_table "topics", :force => true do |t|
     t.string   "subject"
-    t.string   "content"
+    t.text     "content"
     t.integer  "rating"
     t.integer  "views"
     t.boolean  "is_private"
@@ -463,5 +449,20 @@ ActiveRecord::Schema.define(:version => 20131021114947) do
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "videos", :force => true do |t|
+    t.text     "content"
+    t.string   "subject"
+    t.string   "url"
+    t.integer  "views"
+    t.boolean  "is_private"
+    t.integer  "author_id"
+    t.integer  "group_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "videos", ["author_id"], :name => "index_media_on_author_id"
+  add_index "videos", ["group_id"], :name => "index_media_on_group_id"
 
 end

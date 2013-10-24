@@ -19,7 +19,7 @@
         
         <h3 class="post-subject">
           <div class="pull-right"><%= render 'posts/gravatar', :post => post %></div>
-          <%= content_tag('i', '', class: 'icon-eye-open private-question', title: 'Private question', rel: 'tooltip') if post.is_private %>
+          <%= content_tag('i', '', class: 'fa-eye-open private-question', title: 'Private question', rel: 'tooltip') if post.is_private %>
           <%= link_to post.subject, post_path(post) %>
         </h3>
       <% end %>

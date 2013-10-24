@@ -4,8 +4,8 @@
 
     <span class="comment-rating">
       <span class="rating-points" id='<%= "post-#{comment.id}-rating" %>'><%= rating_points(comment.rating) %></span> &middot;
-       <%= link_to content_tag('i', '', class: 'icon-chevron-up'), rate_post_path(comment, :vote => 'up'), :title => 'Up vote this question.', :method => 'post', remote: true, class: 'btn-vote' %>
-        <%= link_to content_tag('i', '', class: 'icon-chevron-down'), rate_post_path(comment, :vote => 'down'), :title => 'Down vote this question.', :method => 'post', remote: true, class: 'btn-vote' %> &middot;
+       <%= link_to content_tag('i', '', class: 'fa-chevron-up'), rate_post_path(comment, :vote => 'up'), :title => 'Up vote this question.', :method => 'post', remote: true, class: 'btn-vote' %>
+        <%= link_to content_tag('i', '', class: 'fa-chevron-down'), rate_post_path(comment, :vote => 'down'), :title => 'Down vote this question.', :method => 'post', remote: true, class: 'btn-vote' %> &middot;
     </span>
     <% if comment.author.presence %>
       <% if comment.author.id == current_user.id %>
@@ -18,18 +18,18 @@
     <% end %>
      &middot; <%= "#{distance_of_time_in_words(Time.now, comment.created_at)} ago" %>
      &middot;
-      <%= link_to content_tag('i', '', class: 'icon-link'), '#', title: 'Get permalink for this comment.', 'onclick' => "javascript:window.prompt('Copy link to clipboard: CTRL+C or CMD+C', '#{post_url(comment.origin, :anchor => "post-#{comment.id}")}'); return false" %>
+      <%= link_to content_tag('i', '', class: 'fa-link'), '#', title: 'Get permalink for this comment.', 'onclick' => "javascript:window.prompt('Copy link to clipboard: CTRL+C or CMD+C', '#{post_url(comment.origin, :anchor => "post-#{comment.id}")}'); return false" %>
   	<span class="pull-right">
       <% if can? :report, comment %>
-        <%= link_to '#', :class => "submit-report", 'data-id' => comment.id do %><i class="icon-flag"></i> report<% end %>	
+        <%= link_to '#', :class => "submit-report", 'data-id' => comment.id do %><i class="fa-flag"></i> report<% end %>	
 	  	<% end %>
       <% if can? :destroy, comment  %>
         &middot;
-        <%= link_to comment, :data => { :confirm => 'Are you sure that you want to remove this comment?' }, method: :delete do %><i class="icon-remove"></i> remove<% end %>
+        <%= link_to comment, :data => { :confirm => 'Are you sure that you want to remove this comment?' }, method: :delete do %><i class="fa-remove"></i> remove<% end %>
       <% end %>
       <% if can? :update, comment %>
         &middot;
-        <%= link_to edit_post_path(comment) do %><i class="icon-edit"></i> edit<% end %> <%= "(#{distance_of_time_in_words(Time.now, comment.last_activity) } ago)" if comment.last_activity %>
+        <%= link_to edit_post_path(comment) do %><i class="fa-edit"></i> edit<% end %> <%= "(#{distance_of_time_in_words(Time.now, comment.last_activity) } ago)" if comment.last_activity %>
       <% else %>
         <% if (comment.updated_at.to_i - comment.created_at.to_i) > 0 %>
           &middot;
@@ -39,7 +39,7 @@
       <% if can? :convert, comment %>
         &middot;
         <%= link_to "#convert-modal-#{comment.id}", 'data-toggle' => 'modal', :class => "convert-post", 'data-id' => comment.id do %>
-          <i class="icon-cog"></i> convert
+          <i class="fa-cog"></i> convert
         <% end %> 
     <% end %>
   	</span>

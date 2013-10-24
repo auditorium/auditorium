@@ -4,10 +4,10 @@
 			<% answered = 'not answered' %>
 			<% answered = 'answered' unless post.answer_to_id.nil? %>
 		  <%= button_tag :type => "submit", :name => 'is answer', :title => 'This answers my question.', :class => "btn-answered #{answered}", :id => "post-#{post.id}-answered" do %>
-		    <i class="icon-ok"></i>
+		    <i class="fa-ok"></i>
 		  <% end %>
 		</p>
 	<% end %>
 <% else %>
-	<% if not post.answer_to_id.nil? %><i class="icon-ok btn-answered answered" title="This post answeres the questions."></i><% end %>
+	<% if not post.answer_to_id.nil? %><i class="fa-ok btn-answered answered" title="This post answeres the questions."></i><% end %>
 <% end %>

@@ -4,9 +4,16 @@
   </header>
   
   <div class="row">
+    <% if @groups.size > 0 %>
     <% @groups.each do |group| %>
       <div class="small-12 medium-6 large-4 columns" data-id="my_<%= dom_id(group)%>">
         <%= render 'groups/my_group', group: group %>
+      </div>
+    <% end %>
+
+    <% else %>
+      <div class="block">
+        <%= t('my_groups.no_groups_subscribed') %>
       </div>
     <% end %>
   </div>

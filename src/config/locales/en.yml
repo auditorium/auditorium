@@ -15,7 +15,8 @@ en:
       index: 'Recordings overview'
       new: 'Add a recording'
   home:
-
+    titles:
+      recent-posts: 'Recent activity'
   general:
     search: 
       placeholder: 'Click here and start your search for posts or groups...'
@@ -32,8 +33,13 @@ en:
       lecture-group: 'Lecture groups'
       topic-group: 'Topic groups'
       posts: 'Filter posts'
+      only_subscribed: 'Show only posts from subscribed groups'
+      show_topics: 'Show topics'
+      show_announcements: 'Show announcements'
+      show_questions: 'Show questions'
 
   groups:
+    link_label: 'Group:'
     creator: 'Created by %{name}'
     tags: 'Tags:'
     followers: 'Followers:'
@@ -122,11 +128,16 @@ en:
       failure: 'There was a problem creating this group. Please try again.'
 
   tags:
+    label: 'Tags:'
     new_entry: 'Create the new tag: %{name}'
   tokeninput:
     hint_text: "Type in a search term"
     no_results_text: "No tags found."
     searching_text: "Searching for available tags..."
+
+  videos:
+    titles:
+      new: 'Add a new recording to the group'
   questions:
     links:
       to_content: 'Questions'
@@ -135,6 +146,8 @@ en:
       subject: 'What is the subject of your question?'
     new:
       submit: 'Ask question'
+    placeholder:
+      content: 'Click here to insert the content of your question...'
   announcements:
     links:
       to_content: 'Announcements'
@@ -143,6 +156,8 @@ en:
       subject: 'What is the content of your announcement?'
     new:
       submit: 'Submit announcement'
+    placeholder:
+      content: 'Click here to insert the content of your announcement...'
   topics:
     links:
       to_content: 'Topics'
@@ -151,6 +166,8 @@ en:
       subject: 'What is the content of your topic?'
     new:
       submit: 'Submit topic'
+    placeholder:
+      content: 'Click here to insert the content of your topic...'
 
   comments: 
     actions:

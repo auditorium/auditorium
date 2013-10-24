@@ -1,5 +1,5 @@
 <% if @lectures.count > 0 %>
-<% if params[:q] %><h3>Search results <small><%= link_to content_tag('i', '', class: 'icon-link'), '#', 'onclick' => "javascript:window.prompt('Copy link to clipboard: CTRL+C or CMD+C', '#{search_url(:query => params[:q])}'); return false", class: 'copy-link' %></small></h3><% end %>
+<% if params[:q] %><h3>Search results <small><%= link_to content_tag('i', '', class: 'fa-link'), '#', 'onclick' => "javascript:window.prompt('Copy link to clipboard: CTRL+C or CMD+C', '#{search_url(:query => params[:q])}'); return false", class: 'copy-link' %></small></h3><% end %>
 <%
   cols = 3 if cols.nil?
   cols = 12/cols

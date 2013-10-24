@@ -33,8 +33,8 @@
         <% if can? :manage, question %> 
           <span class="actions">
             &middot;
-            <%= link_to content_tag('i', ' edit', class: 'icon-pencil'), edit_question_path(question), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %> &middot;
-            <%= link_to content_tag('i', ' remove', class: 'icon-remove'), question, alt: "#{t('questions.actions.delete')}", title: "#{t('posts.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this post?' %>
+            <%= link_to fa_icon('pencil', text: 'edit'), edit_question_path(question), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %> &middot;
+            <%= link_to fa_icon('times', text: 'remove'), question, alt: "#{t('questions.actions.delete')}", title: "#{t('posts.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this post?' %>
           </span>
         <% end %>
       </span>

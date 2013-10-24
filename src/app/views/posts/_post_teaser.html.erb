@@ -19,13 +19,13 @@
       <td colspan="1">
         <% if not post.post_type.eql? 'answer' %>
         <div class="post-course-name">
-          <%= link_to " #{post.course.name_with_term}", course_path(post.course), title: "#{current_user.subscribed_to?(post.course) ? 'You\'ve subscribed to this course.'  :  'Visit the course for more information.'}", class: "#{'icon-star' if current_user.subscribed_to?(post.course)}" %>
+          <%= link_to " #{post.course.name_with_term}", course_path(post.course), title: "#{current_user.subscribed_to?(post.course) ? 'You\'ve subscribed to this course.'  :  'Visit the course for more information.'}", class: "#{'fa-star' if current_user.subscribed_to?(post.course)}" %>
         </div>
         <h3 class="post-subject">
           <% if post.top_rated? %>
-            <span class="icon-star highlight-icon" style='color:#fff900' title='This post is top rated.'></span>
+            <span class="fa-star highlight-icon" style='color:#fff900' title='This post is top rated.'></span>
           <% end %>
-          <%= content_tag('i', '', class: 'icon-eye-open private-question', title: 'Private question', rel: 'tooltip') if post.is_private %>
+          <%= content_tag('i', '', class: 'fa-eye-open private-question', title: 'Private question', rel: 'tooltip') if post.is_private %>
           <%= link_to post.subject, post_path(post) %> </h3>
       <% end %>
     <tr><td class="post-footer"><%= render :partial => 'posts/post_footer', :locals => { :post => post } %></td></tr>

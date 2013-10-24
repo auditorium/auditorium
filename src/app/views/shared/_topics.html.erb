@@ -12,7 +12,7 @@
 <% end %>
 
 <%= form_for([@group, @topic = Topic.new]) do |f| %>
-  <ul class="no-style posts">
+  <ul class="no-style topic">
     <li class="input-fields" class="input-fields">
       <noscript><%= f.label :subject %></noscript>
       <%= f.text_field :subject, placeholder: t('topics.input.new') %>
@@ -41,8 +41,8 @@
           <% if can? :manage, topic %> 
             <span class="actions">
               &middot;
-              <%= link_to content_tag('i', ' edit', class: 'icon-pencil'), edit_topic_path(topic), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %> &middot;
-              <%= link_to content_tag('i', ' remove', class: 'icon-remove'), topic, alt: "#{t('topics.actions.delete')}", title: "#{t('posts.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this post?' %>
+              <%= link_to fa_icon('pencil', text: 'edit'), edit_topic_path(topic), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %> &middot;
+              <%= link_to fa_icon('times', text: 'remove'), topic, alt: "#{t('topics.actions.delete')}", title: "#{t('posts.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this post?' %>
             </span>
           <% end %>
         </span>

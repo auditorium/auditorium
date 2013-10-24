@@ -4,7 +4,7 @@
     <td></td>
   <% else %>
     <tr class='unread'>
-    <td><%= link_to '', mark_report_as_read_path(report.id), :title =>'mark report as read', :class=>"icon-ok" %></td>
+    <td><%= link_to '', mark_report_as_read_path(report.id), :title =>'mark report as read', :class=>"fa-ok" %></td>
   <% end %>
 
   <td>
@@ -16,11 +16,11 @@
     <td><em><%= link_to report.post.body, report.post %></em></td>
     <td><%= distance_of_time_in_words(Time.now, report.post.created_at) %> ago</td>
     <td>
-      <%= link_to ' read', mark_report_as_read_path(report.id), :title =>'mark report as read', :class=>"icon-ok" %>
+      <%= link_to ' read', mark_report_as_read_path(report.id), :title =>'mark report as read', :class=>"fa-ok" %>
       &middot;
-      <%= link_to ' edit', edit_post_path(report.post), class: 'icon-edit' %>
+      <%= link_to ' edit', edit_post_path(report.post), class: 'fa-edit' %>
       &middot;
-      <%= link_to ' delete', report.post, :data => { :confirm => 'Are you sure that you want to remove this post?' }, method: :delete, class: 'icon-trash' %>
+      <%= link_to ' delete', report.post, :data => { :confirm => 'Are you sure that you want to remove this post?' }, method: :delete, class: 'fa-trash' %>
     </td>
   </tr>
 <% end %>

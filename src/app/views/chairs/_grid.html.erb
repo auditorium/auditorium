@@ -14,8 +14,7 @@
       <hr />
       <h4><%= pluralize(chair.lectures.count, 'Lecture') %> 
         <span class="pull-right"><small>
-          <%= link_to '#', :class => "toggle-lectures", 'data-id' => chair.id do %>
-            show lectures <i class="icon-caret-down"></i> 
+          <%= link_to content_tag('i', fa_icon('caret-down', text: "show lectures")),'#', :class => "toggle-lectures", 'data-id' => chair.id %>
           <% end %>
         </small></span>
       </h4>

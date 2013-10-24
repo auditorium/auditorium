@@ -25,12 +25,12 @@
  					</td>
 
 				<% else %>
-				<td><span class="icon-ok"></span></td>
+				<td><span class="fa-ok"></span></td>
 				<% end %>
 				<td><%= user.id %></td>
 				<td>
 					<% if user.admin? %>
-					<i class="icon-certificate" title='Admin of auditorium' rel="tooltip" style="cursor:pointer;"></i>
+					<i class="fa-certificate" title='Admin of auditorium' rel="tooltip" style="cursor:pointer;"></i>
 					<% end %>
 					<% if user.username %>
           <b><%=link_to user.username, user %></b>

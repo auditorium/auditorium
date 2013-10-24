@@ -8,7 +8,7 @@
 		<%= 'A recording in' %>
 	<% end %>
 	<% if current_user.subscribed_to?(@course) %>
-	  <%= link_to " #{@course.name_with_term}", course_path(@course), title: 'You have subscribed to this course.', class: 'icon-star' %>
+	  <%= link_to " #{@course.name_with_term}", course_path(@course), title: 'You have subscribed to this course.', class: 'fa-star' %>
 	<% else %>
 	  <%= link_to "#{@course.name_with_term}", course_path(@course) %>
 	<% end %>

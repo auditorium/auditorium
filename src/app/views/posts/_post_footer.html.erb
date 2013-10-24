@@ -1,7 +1,7 @@
 <span class="post-metadata">
   <% if params[:controller].eql? 'home' or params[:controller].eql? 'courses' %>
     <% if post.answered? %>
-      <span class="icon-ok answered" title="This question has been answered."></span>
+      <span class="fa-ok answered" title="This question has been answered."></span>
       &middot;
     <% end %>
     <%= (post.rating > 0 ? "+#{pluralize(post.rating, 'vote')}" : pluralize(post.rating, 'vote')) %> &middot;
@@ -29,23 +29,23 @@
   <%= "#{distance_of_time_in_words(Time.now, post.created_at)} ago" %>
 
   &middot;
-  <%= link_to content_tag('i', '', class: 'icon-link'), '#', title: 'Get permalink for this post.', 'onclick' => "javascript:window.prompt('Copy link to clipboard: CTRL+C or CMD+C', '#{post_url(post.origin, :anchor => "post-#{post.id}")}'); return false" %>
+  <%= link_to content_tag('i', '', class: 'fa-link'), '#', title: 'Get permalink for this post.', 'onclick' => "javascript:window.prompt('Copy link to clipboard: CTRL+C or CMD+C', '#{post_url(post.origin, :anchor => "post-#{post.id}")}'); return false" %>
   
   <span class="pull-right">
     <% if (!params[:controller].eql? 'home' and !params[:controller].eql? 'courses') %>
       <% if can? :report, post %>
         <%= link_to '#', :class => "submit-report", 'data-id' => post.id do %>
-          <i class="icon-flag"></i> report
+          <i class="fa-flag"></i> report
         <% end %>
         &middot;
       <% end %> 
       <% if can? :destroy, post  %>
-        <%= link_to post, :data => { :confirm => 'Are you sure that you want to remove this post?' }, method: :delete do %><i class="icon-remove"></i> remove<% end %>
+        <%= link_to post, :data => { :confirm => 'Are you sure that you want to remove this post?' }, method: :delete do %><i class="fa-remove"></i> remove<% end %>
         &middot;
       <% end %>
     <% end %>
     <% if can? :update, post %>
-      <%= link_to edit_post_path(post) do %><i class="icon-edit"></i> edit<% end %> <%= "(#{distance_of_time_in_words(Time.now, post.last_activity) } ago)" if post.last_activity %>
+      <%= link_to edit_post_path(post) do %><i class="fa-edit"></i> edit<% end %> <%= "(#{distance_of_time_in_words(Time.now, post.last_activity) } ago)" if post.last_activity %>
     <% else %>
       <% if post.last_activity and (post.last_activity - post.created_at) > 0 %>
         <%= "(update #{distance_of_time_in_words(Time.now, post.last_activity) } ago)"  %>
@@ -54,7 +54,7 @@
     <% if post.post_type.eql? 'answer' and can? :convert, post %>
       &middot;
       <%= link_to "#convert-modal-#{post.id}", 'data-toggle' => 'modal', :class => "convert-post", 'data-id' => post.id do %>
-        <i class="icon-cog"></i> convert
+        <i class="fa-cog"></i> convert
       <% end %> 
     <% end %>
   </span>

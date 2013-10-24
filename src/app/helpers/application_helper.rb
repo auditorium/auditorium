@@ -12,7 +12,7 @@ module ApplicationHelper
       if link.match /^https?:\/\/auditorium.inf.tu-dresden.de/
         "<a href=\"#{link}\">#{alt_text}</a>"
       else
-        "<a target=\"_blank\" href=\"#{link}\"  title='external link to #{link}'> <i class='icon-external-link'></i> #{alt_text}</a>"
+        "<a target=\"_blank\" href=\"#{link}\"  title='external link to #{link}'> <i class='fa fa-external-link'></i> #{alt_text}</a>"
       end
     end
 
@@ -20,7 +20,7 @@ module ApplicationHelper
       if link.match /^https?:\/\/auditorium.inf.tu-dresden.de/
         "<a href=\"#{link}\">#{link}</i></a>"
       else
-        "<a target=\"_blank\" href=\"#{link}\" title='external link to #{link}'><i class='icon-external-link'></i> #{link}</a>"
+        "<a target=\"_blank\" href=\"#{link}\" title='external link to #{link}'><i class='fa fa-external-link'></i> #{link}</a>"
       end
     end
   end
@@ -144,7 +144,7 @@ module ApplicationHelper
     title ||= column.titleize
     direction = (column == params[:sort] && params[:direction] == "asc") ? "desc" : "asc"
     link_to title, :sort => column, :direction => direction
-    link_to title, {:sort => column, :direction => direction}, {:class => "icon-caret-down sort_#{direction}"}
+    link_to title, {:sort => column, :direction => direction}, {:class => "fa fa-caret-down sort_#{direction}"}
   end
   
   def should_be_disabled?

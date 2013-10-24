@@ -1,5 +1,5 @@
 $(function() {
 	$('#notification-<%= @notification.id %>').removeClass('unread').addClass('read');
-	$('div#notification-<%= @notification.id %>-icon').html('<i class="icon-ok"></i>');
+	$('div#notification-<%= @notification.id %>-icon').html('<i class="fa-ok"></i>');
 	$('.notification-button').html('<%= j(render :partial => "shared/notifications") %>');
 });

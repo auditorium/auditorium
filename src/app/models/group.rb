@@ -6,13 +6,14 @@ class Group < ActiveRecord::Base
   has_many :questions, dependent: :destroy
   has_many :announcements, dependent: :destroy
   has_many :topics, dependent: :destroy
+  has_many :videos, dependent: :destroy
 
   has_many :followers, through: :followings
   has_many :followings, as: :followerable
 
   belongs_to :creator, class_name: 'User'
 
-  attr_accessible :description, :title, :group_type, :tag_tokens, :creator_id
+  attr_accessible :description, :title, :group_type, :tag_tokens, :url
   attr_reader :tag_tokens
 
   validates :title, presence: true

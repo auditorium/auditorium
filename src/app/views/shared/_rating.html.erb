@@ -1,6 +1,6 @@
 <% type = post.class.name.pluralize.downcase %>
-<%= link_to content_tag('i', '', class: 'icon-chevron-up'), upvote_path(type: type, id: post.id), method: :post, remote: true, alt: t('posts.general.upvote.alt_text'), title: t('posts.general.upvote.title') %>
+<%= link_to content_tag('i', fa_icon("chevron-up")), upvote_path(type: type, id: post.id), method: :post, remote: true, alt: t('posts.general.upvote.alt_text'), title: t('posts.general.upvote.title') %>
 
 <b><%= post.rating.presence && post.rating > 0 ? "+#{post.rating}" : post.rating %></b>
 
-<%= link_to content_tag('i', '', class: 'icon-chevron-down'), downvote_path(type: type, id: post.id), method: :post, remote: true, alt: t('posts.general.downvote.alt_text'), title: t('posts.general.downvote.title') %>
+<%= link_to content_tag('i', fa_icon("chevron-down")), downvote_path(type: type, id: post.id), method: :post, remote: true, alt: t('posts.general.downvote.alt_text'), title: t('posts.general.downvote.title') %>

@@ -1,7 +1,9 @@
-class Announcement < ActiveRecord::Base 
+class Video < ActiveRecord::Base
 
   include Taggable
   include ParentPost
+
+  attr_accessible :private, :url
 
   define_index do
     indexes subject
@@ -11,6 +13,7 @@ class Announcement < ActiveRecord::Base
   end
 
   def self.tagged_with(name)
-    Tag.find_by_name!(name).announcement
+    Tag.find_by_name!(name).video
   end
+ 
 end

@@ -1,0 +1,9 @@
+<ul class="video-strip">
+<% if @group.videos.size > 0 %>
+  <% @group.videos.each do |video| %>
+    <li><%= video.subject %></li> 
+  <% end %>
+<% else %>
+<li><%= link_to t('groups.video.new'), new_group_video_path(@group), class: 'new-video' %></li>
+<% end %>
+</ul>
