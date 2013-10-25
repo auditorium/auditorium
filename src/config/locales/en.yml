@@ -138,6 +138,8 @@ en:
   videos:
     titles:
       new: 'Add a new recording to the group'
+    new:
+      link_title: 'Add a new recording to the group.'
   questions:
     links:
       to_content: 'Questions'

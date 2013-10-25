@@ -1,0 +1,20 @@
+<article id="video">
+  <header class="post-header">
+    <span class="ribbon"><%= t('posts.types.video') %></span>
+    <h2><%= @video.subject %></h2>    
+  </header>
+
+  <div class="post-content">
+    <iframe class="youtube-player" src="http://www.youtube.com/embed/<%= @video.code %>" frameborder="0" allowfullscreen></iframe>
+    <%= markdown @video.content %>
+  </div>
+
+  <div class="post-footer">
+    <%= "#{t('posts.general.group')}:" %> 
+    <%= link_to @video.group.title, group_path(@video.group) %>
+  </div>
+</article>
+
+<section class="comments-section">
+  <%= render 'shared/comments', commentable: @video %>
+</section>

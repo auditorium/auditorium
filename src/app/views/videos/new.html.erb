@@ -9,20 +9,19 @@
   <section id="video-details">
     <header>
       <h4><%= t('videos.titles.new') %></h4>
-      <p class="hint"><%= t('groups.link_label') %> <%= link_to @group.title, group_path(@group) %></p>
     </header>
     <div class="block">
     <ul class="no-style">
+      <li class="input-fields">
+        <%= f.label :url %>
+        <%= f.text_field :url %>
+      </li>
+
       <li class="input-fields">
         <%= f.label :subject %>
         <%= f.text_field :subject %>
       </li>
 
-      <li class="input-fields">
-        <%= f.label :url %>
-        <%= f.text_field :url %>
-      </li>
-      
       <li class="input-fields">
         <%= f.label :content %>
         <%= f.text_area :content %>
@@ -30,7 +29,7 @@
       
       <li class="input-fields">
         <%= f.label :tag_tokens %>
-        <%= f.text_field :tag_tokens, data: {load: @group.tags} %>
+        <%= f.text_field :tag_tokens, data: {load: @video.tags} %>
       </li>
       
       <li class="input-fields">
@@ -40,11 +39,3 @@
     </div>
   </section>
 <% end %>
-
-
-
-<%= form_for(@group) do |f| %>
-
-  
-<% end %>
-

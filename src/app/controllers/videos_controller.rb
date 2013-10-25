@@ -7,9 +7,9 @@ class VideosController < ApplicationController
   #   @videos = @group.videos.order(:created_at)
   # end
 
-  # def show
-  #   @video = Video.find(params[:id])
-  # end
+  def show
+    @video = Video.find(params[:id])
+  end
 
   def new
     @video = @group.videos.build

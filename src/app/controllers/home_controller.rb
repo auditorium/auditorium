@@ -17,7 +17,7 @@ class HomeController < ApplicationController
       @posts = @posts.sort { |x,y| y.created_at <=> x.created_at }
 
       @posts.keep_if { |p| p.subscribed?(current_user) } if params[:only_subscribed] == 'yes'
-
+      @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(20)
       respond_to :html #, :js
     else
       redirect_to root_url

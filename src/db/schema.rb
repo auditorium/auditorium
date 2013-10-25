@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131024171111) do
+ActiveRecord::Schema.define(:version => 20131025214838) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -460,6 +460,7 @@ ActiveRecord::Schema.define(:version => 20131024171111) do
     t.integer  "group_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "code"
   end
 
   add_index "videos", ["author_id"], :name => "index_media_on_author_id"

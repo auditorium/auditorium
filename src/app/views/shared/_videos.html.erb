@@ -1,9 +1,22 @@
-<ul class="video-strip">
-<% if @group.videos.size > 0 %>
+<header>
+  <h2 class="subheader"><%= t('groups.show.videos.header') %></h2>
+</header>
+
+<ul class="video-strip block">
+  <li>
+    <div class="video-thumbnail new">
+      <%= link_to fa_icon('plus'), new_group_video_path(@group), title: t('videos.new.link_title') %>
+    </div>
+  </li>
   <% @group.videos.each do |video| %>
-    <li><%= video.subject %></li> 
+    <li>
+      <div class="video-thumbnail">
+        <%= link_to image_tag("https://img.youtube.com/vi/#{video.code.to_s}/0.jpg", class: 'youtube-preview'), video_path(video) %>
+        <div class="video-details">
+          <p class="title"><%= link_to video.subject, video_path(video) %></p>
+          <p class="time"><%= l(video.created_at, format: :short) %></p>
+        </div>
+      </div>
+    </li> 
   <% end %>
-<% else %>
-<li><%= link_to t('groups.video.new'), new_group_video_path(@group), class: 'new-video' %></li>
-<% end %>
 </ul>

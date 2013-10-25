@@ -7,6 +7,8 @@ class GroupsController < ApplicationController
 		else
 			@groups = Group.order(:title)
 		end
+
+    @groups = Kaminari.paginate_array(@groups).page(params[:page]).per(20)
 	end
 
   def my_groups
