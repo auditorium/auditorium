@@ -2321,12 +2321,16 @@ ul.video-strip {
   }
 }
 
+
 .video-thumbnail {
   width:150px;
+  vertical-align: middle;
+  height: 112px;
   opacity: 0.5;
   position: relative;
   margin: 0 5px;
   div.video-details {
+    min-width: 150px;
     display:none;
     
     padding: 0 5px;
@@ -2337,8 +2341,12 @@ ul.video-strip {
       margin:0;
       padding:0;
     }
+
+    p.title{
+      font-size: 0.7em;
+    } 
     p.time {
-      font-size:0.7em;
+      font-size:0.6em;
       font-style: italic;
     }
   }
@@ -2362,8 +2370,8 @@ ul.video-strip {
     font-size: 3em;
     text-align: center;
     border: 1px dotted $dark-gray;
-    height: 110px;
-    width: 110px;
+    height: 112px;
+    width: 112px;
 
     i {
       vertical-align: bottom;
