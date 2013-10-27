@@ -1,15 +1,33 @@
 <header>
+
     <h2 class="subheader"><%= "#{t('posts.general.answers')}" %></h2>
 </header>
 
 <% @question.answers.each do |answer| %>
   <article id="answer">
 
-    <div class="rating" data-id='answers-<%= answer.id %>'>
-      <%= render 'shared/rating', post: answer %>
-    </div>
+     <span class="ribbon bigger">
+      <%= t('posts.types.answer') %>
+      <span data-id="<%= dom_id(answer) %>" class="rating bright"><%= render 'shared/rating', post: answer %></span>
+    </span>
     <div class="post-content">
       <%= markdown answer.content %>
+    </div>
+
+    <div class="post-footer">
+      <span data-id='<%= dom_id(answer) %>'>
+        ### TODO  Checkmark###
+      </span>
+      <span class="right">
+        <%= answer.author.full_name %> &middot;
+        <%= l(answer.created_at, format: :short) %>
+        <% if can? :manage, answer %>
+        <span class="actions">
+          <%= link_to fa_icon('pencil'), edit_answer_path(answer) %>
+          <%= link_to fa_icon('times'), answer, alt: "#{t('answers.actions.delete')}", title: "#{t('answers.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this answer?' %>
+          </span>
+        <% end %>
+      </span>
     </div>
   </article>
 

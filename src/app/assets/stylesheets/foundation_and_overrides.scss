@@ -70,12 +70,12 @@ $body-bg: #f4f2ea;
 $gray: #e9e9e9;
 $dark-gray: darken($gray, 20%);
 $cyan: #66bfa9;
-$orange: #FC9800;
-$primary-color: #3474B8;
-$secondary-color: #FC9800;
-$alert-color: #BF0404;
-$success-color: #7AC02D;
-$warning-color: #F2CB13;
+$orange: #df601b; // #FC9800;
+$primary-color: #64868f; //#3474B8;
+$secondary-color: #4d957a;//#FC9800;
+$alert-color: #c04735; //#BF0404;
+$success-color: #5ca259;//#7AC02D;
+$warning-color: #ecbd4b; //#F2CB13;
 $notice-color: lighten($primary-color, 20%);
 
 $home-color: $notice-color;
@@ -83,7 +83,7 @@ $group-color: $warning-color;
 $question-color: $primary-color;
 $announcement-color: $alert-color;
 $event-color: $notice-color;
-$topic-color: lighten($warning-color, 10%);
+$topic-color: $success-color;
 $answer-color: darken($gray, 10%);
 $comment-color: darken($gray, 20%);
 $recording-color: $orange;
@@ -2306,6 +2306,10 @@ ul.no-style {
   display:none;
 }
 
+.post-content {
+  margin-top:10px;
+}
+
 .post-footer {
   font-style: italic;
   font-size: 0.9em;
@@ -2416,7 +2420,17 @@ ul.video-strip {
   }
 }
 
-#announcement, #question, #answer, #recording, #video, #topic, #comment {
+#announcement, 
+#question, 
+#answer, 
+#recording, 
+#video, 
+#topic, 
+#comment, 
+#answer, 
+#learning-group, 
+#lecture-group, 
+#topic-group {
   background-color: #fff;
   box-shadow: 1px 1px 1px darken($gray, 20%);
   padding:10px;
@@ -2427,7 +2441,7 @@ ul.video-strip {
     font-size: 0.8em;
     font-weight: normal;
     padding: 3px 10px 3px 10px;
-    margin: 5px 10px 5px -24px;
+    margin: 5px 10px 10px -24px;
     color: #fff;
     text-shadow: 0 1px 1px #666666;
     -webkit-box-shadow: 1px 1px 2px #333;
@@ -2448,14 +2462,20 @@ ul.video-strip {
     }
 
     &.bigger {
-      font-size: 1.2em;
-      padding: 5px 20px;
+      font-size: 1.1em;
+      padding: 3px 20px;
     }
   }
 }
 
 #comment {
   border-left: 4px solid $comment-color;
+}
+
+#answer {
+  border-left: 4px solid $answer-color;
+
+  .ribbon { background-color: $answer-color; }
 }
 
 #announcement {
@@ -2474,7 +2494,7 @@ ul.video-strip {
   border-left: 4px solid $answer-color;
 }
 
-#topic {
+#topic, #topic-group {
   border-left: 4px solid $topic-color;
 
   .ribbon { background-color: $topic-color; }
@@ -2484,6 +2504,18 @@ ul.video-strip {
   border-left: 4px solid $recording-color;
 
   .ribbon { background-color: $recording-color; }
+}
+
+#learning-group {
+  border-left: 4px solid $learning-group-color;
+
+  .ribbon { background-color: $learning-group-color; }
+}
+
+#lecture-group {
+  border-left: 4px solid $lecture-group-color;
+
+  .ribbon { background-color: $lecture-group-color; }
 }
 
 .answers {
