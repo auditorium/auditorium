@@ -1,0 +1,9 @@
+<ul class="filter-list link-list">
+  <li><%= link_to t('general.filter.show_lecture_groups'), params.merge({ show_lecture_groups: (cookies[:show_lecture_groups] == 'no' ? 'yes' : 'no') }), class: "filter #{'selected' unless cookies[:show_lecture_groups] == 'no'}" %></li>
+
+  <li><%= link_to t('general.filter.show_topic_groups'), params.merge({ show_topic_groups: (cookies[:show_topic_groups] == 'no' ? 'yes' : 'no') }), class: "filter #{'selected' unless cookies[:show_topic_groups] == 'no'}" %></li>
+
+  <li><%= link_to t('general.filter.show_learning_groups'), params.merge({ show_learning_groups: (cookies[:show_learning_groups] == 'no' ? 'yes' : 'no')  }), class: "filter #{'selected' unless cookies[:show_learning_groups] == 'no' }" %></li>
+
+  <li><%= link_to t('general.filter.show_only_subscribed_groups'), params.merge({ show_only_subscribed_groups: (cookies[:show_only_subscribed_groups] == 'no' || params[:show_only_subscribed_groups].nil? ? 'yes' : 'no')  }), class: "filter #{'selected' if cookies[:show_only_subscribed_groups] == 'yes'}" %></li>
+</ul>

@@ -1,27 +1,33 @@
 <section>
-  <header><h1><%= @group.title %></h1></header> 
-
-  <div class="block group-information">
-    <%= markdown @group.description %>
-    <p class="hint"><%= t('groups.tags') %> <%= tag_list_delimited(@group.tags) %></p>
-  </div>
-  <div class="block">
-    <div class="group-management">
-      <%= link_to t('groups.actions.edit'), edit_group_path(@group), class: 'button secondary' %>
-      <%= link_to t('groups.actions.manage_users'), manage_members_group_path, class: 'button secondary', method: :post, remote: true %>
-      <%= link_to t('groups.actions.edit'), edit_group_path(@group), class: 'button secondary' %>
-    </div>
-
-    <div id="manage-members">
-      <div id="searchbar">
-        <%= form_tag search_members_path, method: :post, remote: true do %> 
-          <%= text_field_tag :member_query, params[:member_query], :placeholder => "Search for users name or email...", :class => "span8" %>
-          <%= hidden_field_tag :group_id, @group.id %>
-        <% end %>
-      </div>
-      <div id="members"></div>
+  <div id="<%= @group.group_type %>" class="block">
+    <header>
+       <span class="ribbon">
+        <%= t('groups.label', type: @group.group_type.capitalize) %>
+      </span>
+      <h1><%= @group.title %></h1>
+    </header> 
+  
+    <div class="group-information">
+      <%= markdown @group.description %>
+      <p class="hint"><%= t('groups.tags') %> <%= tag_list_delimited(@group.tags) %></p>
     </div>
   </div>
+
+  <div class="group-management">
+    <%= link_to t('groups.actions.edit'), edit_group_path(@group), class: 'button secondary' %>
+    <%= link_to t('groups.actions.manage_users'), manage_members_group_path, class: 'button secondary', method: :post, remote: true %>
+    <%= link_to t('groups.actions.edit'), edit_group_path(@group), class: 'button secondary' %>
+  </div>
+  <div id="manage-members" class="block">
+    <div id="searchbar">
+      <%= form_tag search_members_path, method: :post, remote: true do %> 
+        <%= text_field_tag :member_query, params[:member_query], :placeholder => "Search for users name or email...", :class => "span8" %>
+        <%= hidden_field_tag :group_id, @group.id %>
+      <% end %>
+    </div>
+    <div id="members"></div>
+  </div>
+
 </section>
 
 <section id="videos">

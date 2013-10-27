@@ -62,9 +62,10 @@ class AjaxController < ApplicationController
       when 'questions' then @post = Question.find(params[:id])
       when 'announcements' then @post = Announcement.find(params[:id])
       when 'topics' then @post = Topic.find(params[:id])
+      when 'videos' then @post = Video.find(params[:id])
       else @post = nil
     end
-    
+    @post.rating = 0 if @post.rating.nil?
     @post.rating += 1
     @post.save
 
@@ -81,11 +82,12 @@ class AjaxController < ApplicationController
       when 'questions' then @post = Question.find(params[:id])
       when 'announcements' then @post = Announcement.find(params[:id])
       when 'topics' then @post = Topic.find(params[:id])
+      when 'videos' then @post = Video.find(params[:id])
       else @post = nil
     end
     
     puts "POST: #{@post}"
-
+    @post.rating = 0 if @post.rating.nil?
     @post.rating -= 1
     @post.save
 

@@ -4,10 +4,14 @@ class HomeController < ApplicationController
   def index
     if signed_in?
       @posts = Array.new  
+      cookies[:show_announcements] = params[:show_announcements] if params[:show_announcements].present?
+      cookies[:show_questions] = params[:show_questions] if params[:show_questions].present?
+      cookies[:show_topics] = params[:show_topics] if params[:show_topics].present?
+      cookies[:only_subscribed] = params[:only_subscribed] if params[:only_subscribed].present?
 
-      announcements = Announcement.all unless params[:show_announcements] == 'no'
-      questions = Question.all unless params[:show_questions] == 'no'
-      topics = Topic.all unless params[:show_topics] == 'no'
+      announcements = Announcement.all unless cookies[:show_announcements] == 'no'
+      questions = Question.all unless cookies[:show_questions] == 'no'
+      topics = Topic.all unless cookies[:show_topics] == 'no'
 
 
 
@@ -16,7 +20,7 @@ class HomeController < ApplicationController
       @posts += topics if topics.present?
       @posts = @posts.sort { |x,y| y.created_at <=> x.created_at }
 
-      @posts.keep_if { |p| p.subscribed?(current_user) } if params[:only_subscribed] == 'yes'
+      @posts.keep_if { |p| p.subscribed?(current_user) } if cookies[:only_subscribed] == 'yes'
       @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(20)
       respond_to :html #, :js
     else

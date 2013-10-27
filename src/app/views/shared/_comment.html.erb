@@ -1,7 +1,7 @@
 <li id="<%= dom_id(comment) %>">
   <div class="content"><%= comment.content %></div>
   <div class="comment-footer">
-    <span data-id='comments-<%= comment.id %>' class="rating">
+    <span data-id='<%= dom_id(comment) %>' class="rating dark">
       <%= render 'shared/rating', post: comment %>
     </span>
     <span class="right">

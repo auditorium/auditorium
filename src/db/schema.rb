@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131025214838) do
+ActiveRecord::Schema.define(:version => 20131027111206) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -410,11 +410,11 @@ ActiveRecord::Schema.define(:version => 20131025214838) do
   create_table "topics", :force => true do |t|
     t.string   "subject"
     t.text     "content"
-    t.integer  "rating"
+    t.integer  "rating",     :default => 0
     t.integer  "views"
     t.boolean  "is_private"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
     t.integer  "group_id"
     t.integer  "author_id"
   end
@@ -458,9 +458,10 @@ ActiveRecord::Schema.define(:version => 20131025214838) do
     t.boolean  "is_private"
     t.integer  "author_id"
     t.integer  "group_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
     t.string   "code"
+    t.integer  "rating",     :default => 0
   end
 
   add_index "videos", ["author_id"], :name => "index_media_on_author_id"
