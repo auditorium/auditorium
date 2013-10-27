@@ -11,7 +11,7 @@
       </span>
   </span>
   <div class="content"> 
-    <span class="rating"><%= post.rating %></span>
+    <span class="rating"><%= post.rating.nil? ? 0 : (post.rating > 0 ? "+#{post.rating}" : post.rating) %></span>
     <span class="title"><h2><%= link_to truncate(post.subject, length: 150), post %></h2></span>
 
   </div>

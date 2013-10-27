@@ -1467,13 +1467,6 @@ a.disabled {
   font-weight: normal;
   padding: 3px 5px;
 
-  &.secondary {
-    background-color: darken($gray, 20%);
-
-    &:hover {
-      background-color: darken($gray, 30%);
-    }
-  }
 
   &.warning {
     background-color: $warning-color;
@@ -1488,6 +1481,18 @@ a.disabled {
     &:hover {
       background-color: darken($notice-color, 10%);
     }
+  }
+
+  &.secondary {
+    color: darken($comment-color, 20%);
+    border:1px solid $comment-color;
+    border-left: 3px solid $comment-color;
+    background: none;
+
+    &:hover {
+      background-color: lighten($comment-color, 20%);
+      color: darken($comment-color, 40%);
+    }  
   }
 
   &.home,
@@ -2125,9 +2130,20 @@ article.group {
 
 /* ======================== group styles ====================== */
 
+@mixin link-list {
+  border-top: 1px dotted #888;
+  border-bottom: 1px dotted #888;
+}
+
 i.fa-star, i.fa-star-o  {
   color: $warning-color;
   vertical-align: middle;
+}
+
+.group-management {
+  margin:10px 0;
+  padding: 5px 5px 0 5px;
+  @include link-list;
 }
 
 #manage-members {
@@ -2151,12 +2167,7 @@ i.fa-star, i.fa-star-o  {
 
 }
 
-@mixin link-list {
-  border-top: 1px dotted #888;
-  border-bottom: 1px dotted #888;
-}
-
-.post-filter {
+.post-filter, .group-filter {
   // margin: 0 0 20px 0;
   padding: 0 10px;
   // background-color: #fff;
@@ -2295,26 +2306,45 @@ ul.no-style {
   display:none;
 }
 
-.post-header {
-
-}
-
-.post-content {
-
-}
-
 .post-footer {
   font-style: italic;
   font-size: 0.9em;
 }
 
 .rating {
-  font-size:0.8em;
-  margin-right:10px;
+
+
+  &.bright {
+    margin-left: 10px;
+    a {
+      color: #fff;
+      &:hover {
+        color: $gray;
+      }
+      &.active {
+        color: red;
+      }
+    }
+  }
+
+  &.dark {
+    font-size:1.2em;
+    a {
+      color: darken($dark-gray, 40%);
+      &:hover {
+        color: darken($dark-gray, 50%);
+      }
+      &.active {
+        color: red;
+      }
+    } 
+  }
 }
 
 ul.video-strip {
   list-style: none;
+  overflow-x:scroll;
+  white-space:nowrap;
 
   li {
     display: inline-block;
@@ -2417,10 +2447,11 @@ ul.video-strip {
       border-color: #666 #666 transparent transparent;
     }
 
+    &.bigger {
+      font-size: 1.2em;
+      padding: 5px 20px;
+    }
   }
- 
-  
-
 }
 
 #comment {

@@ -1,8 +1,11 @@
 <article id="video">
   <header class="post-header">
-    <span class="ribbon"><%= t('posts.types.video') %></span>
-    <h2><%= @video.subject %></h2>    
-  </header>
+    <span class="ribbon bigger">
+      <%= t('posts.types.video') %>
+      <span data-id="<%= dom_id(@video) %>" class="rating bright"><%= render 'shared/rating', post: @video %></span>
+    </span>
+    <h2><%= @video.subject %></h2>   
+ </header>
 
   <div class="post-content">
 

@@ -16,7 +16,7 @@ en:
       new: 'Add a recording'
   home:
     titles:
-      recent-posts: 'Recent activity'
+      recent-posts: 'Stream with recent acitivities'
   general:
     search: 
       placeholder: 'Click here and start your search for posts or groups...'
@@ -91,7 +91,8 @@ en:
         delete: 'Delete'
         edit: 'Edit'
     index:
-      header: 'Groups'
+      header: 'Groups overview'
+
 
     group-basic-information:
       placeholder: 'Choose a type for your new group...'

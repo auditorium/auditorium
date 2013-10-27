@@ -1,9 +1,11 @@
 <section id="groups">
 	<header class="subheader topic-group">
-		<h2><%= t('groups.index.title')%></h2>
+		<h2><%= t('groups.index.header')%></h2>
 	</header>
 
-	<%= link_to t('groups.new.link'), new_group_path, class: 'small button' %>
+  <div class="group-filter">
+    <%= render 'shared/group_filter' %>
+  </div>
 
   <ul class="groups">
   	<% @groups.each do |group| %>

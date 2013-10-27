@@ -1,6 +1,9 @@
 <article id="question">
   <header class="post-header">
-    <span class="ribbon"><%= t('posts.types.question') %></span>
+    <span class="ribbon bigger">
+      <%= t('posts.types.question') %>
+      <span data-id="<%= dom_id(@question) %>" class="rating bright"><%= render 'shared/rating', post: @question %></span>
+    </span>
     <h2><%= @question.subject %></h2>    
   </header>
 

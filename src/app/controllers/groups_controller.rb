@@ -5,7 +5,17 @@ class GroupsController < ApplicationController
 		if params[:tag]
 			@groups = Group.tagged_with(params[:tag]).order(:title)
 		else
-			@groups = Group.order(:title)
+      cookies[:show_topic_groups] = params[:show_topic_groups] if params[:show_topic_groups]
+      cookies[:showlearning_groups] = params[:showlearning_groups] if params[:showlearning_groups]
+      cookies[:show_lecture_groups] = params[:show_lecture_groups] if params[:show_lecture_groups]
+      cookies[:show_only_subscribed_groups] = params[:show_only_subscribed_groups] if params[:show_only_subscribed_groups]
+
+      group_types = Array.new
+			group_types << ['topic'] unless cookies[:show_topic_groups] == 'no'
+      group_types << ['learning'] unless cookies[:show_learning_groups] == 'no'
+      group_types << ['lecture'] unless cookies[:show_lecture_groups] == 'no'
+      @groups = Group.where(group_type: group_types).order(:title)
+      @groups = @groups.keep_if{ |g| g.followers.include? current_user } if cookies[:show_only_subscribed_groups] == 'yes'
 		end
 
     @groups = Kaminari.paginate_array(@groups).page(params[:page]).per(20)
