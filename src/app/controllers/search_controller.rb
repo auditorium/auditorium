@@ -1,21 +1,14 @@
 class SearchController < ApplicationController
   def index
-    query = "*#{params[:query]}*"
-    questions = Question.search(query, match_mode: :any).page(params[:qpage]).per(20)
-    announcements = Announcement.search(query, match_mode: :any).page(params[:annpage]).per(20)
-    topics = Topic.search(query, match_mode: :any).page(params[:topicpage]).per(20)
-    answers = Answer.search(query, match_mode: :any).page(params[:anspage]).per(20)
-    comments = Comment.search(query, match_mode: :any).page(params[:cpage]).per(20)
-
-    posts = Post.search query, match_mode: :any
-    posts.keep_if{|p| can? :read, p.origin}
-
-    Kaminari.paginate_array(posts).page(params[:post_page]).per(20)
-
-    @results = {:posts => posts, :courses => courses, :lectures => lectures}
-
+    unless params[:query].empty?
+      query = "%#{params[:query]}%" 
+      @questions = Question.where("subject LIKE ? or content LIKE ?", query, query)
+      @announcements = Announcement.where("subject LIKE ? or content LIKE ?", query, query)
+      @topics = Topic.where("subject LIKE ? or content LIKE ?", query, query)
+      @groups = Group.where("title LIKE ? or description LIKE ?", query, query)
+    end
+    
     respond_to do |format|
-      format.js
       format.html
     end
   end

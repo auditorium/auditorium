@@ -1,1 +1,5 @@
-$('#search-results').html('<%= j render "shared/search_results" %>');
+if($('#alternative-search-form').is(':visible')){
+  $('#alternative-search-results').html('<%= j render "shared/search_results" %>').fadeIn();
+} else {
+  $('#search-results').html('<%= j render "shared/search_results" %>').slideDown();
+}

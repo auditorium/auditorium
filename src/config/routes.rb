@@ -11,7 +11,7 @@ Auditorium::Application.routes.draw do
 
   get 'tags/:tag', to: 'groups#index', as: :tag
   resources :tags, only: ['index']
-  
+  get 'search', to: 'search#index', as: :alternative_search
   get 'groups/change_group_type', to: 'groups#change_group_type'
   post 'groups/search_members', to: 'groups#search_members', as: :search_members
   post 'groups/manage_membership', to: 'groups#manage_membership', as: :manage_membership

@@ -19,10 +19,18 @@ en:
       recent-posts: 'Stream with recent acitivities'
   general:
     search: 
-      placeholder: 'Click here and start your search for posts or groups...'
+      press_enter: 'After typing in your search, click on the search button.'
+      header: 'Sidewide search'
+      placeholder:
+        short: 'Search' 
+        long: 'Click here and start your search for posts or groups...'
       submit: 'Search'
       results:
-        title: 'Search results for %{query}'
+        header: 'Search results for `%{query}`'
+        found: 'I was able to find:'
+        zero: 'no %{type}s'
+        one: 'one %{type}'
+        other: '%{count} %{type}s'
     links:
       show_preview: 'show preview'
       hide_preview: 'hide preivew'
@@ -141,6 +149,7 @@ en:
       new: 'Add a new recording to the group'
     new:
       link_title: 'Add a new recording to the group.'
+
   questions:
     links:
       to_content: 'Questions'
@@ -151,6 +160,7 @@ en:
       submit: 'Ask question'
     placeholder:
       content: 'Click here to insert the content of your question...'
+
   announcements:
     links:
       to_content: 'Announcements'
@@ -161,6 +171,7 @@ en:
       submit: 'Submit announcement'
     placeholder:
       content: 'Click here to insert the content of your announcement...'
+
   topics:
     links:
       to_content: 'Topics'

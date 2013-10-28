@@ -10,9 +10,10 @@
   	<!-- <meta http-equiv="X-UA-Compatible" content="IE=7" /> -->
 
   	<!-- Set the viewport width to device width for mobile -->
-  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  	
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
 
-  	<title><%= content_for?(:title) ? yield(:title) : "auditorium next" %></title>
+  	<title><%= "auditorium next | #{yield(:title)}" %></title>
 
   	<%= stylesheet_link_tag    "application" %>
   	<%= javascript_include_tag "vendor/custom.modernizr" %>
@@ -45,6 +46,7 @@
           <!-- left nav section -->
           <ul class="left">
             <li><%= nav_link t('navigation.home'), home_path, { class: 'home' } %></li>
+            <li ><%= nav_link t('navigation.search'), alternative_search_path, { class: 'search' } %></li>
             <li><%= nav_link t('navigation.groups'), groups_path, { class: 'groups' } %></li>
             <li><%= nav_link t('navigation.my_groups'), my_groups_path, { class: 'groups' } %></li>
           </ul>
@@ -73,17 +75,11 @@
         <% end %>
       <% end %>    
 
-      <div class="row" id='search-form'>
-        <%= form_tag search_path, method: 'get', remote: true do %>
-          <div class="small-12 large-10 columns">
-            <%= text_field_tag :query, nil, { placeholder: t('general.search.placeholder')}%>
-          </div>
-          <div class="hide-for-small large-2 columns"><%= submit_tag t('general.search.submit'), class: "button expand small #{color_scheme}" %></div>
-        <% end %>
-      </div>
-      <div class="row" id="search-results"></div>
+      
       <div class="row"><%= yield %></div>
     </section>
+
+    <%= render 'shared/search_bar' %>
 
     <%= javascript_include_tag "application" %>
   </body>

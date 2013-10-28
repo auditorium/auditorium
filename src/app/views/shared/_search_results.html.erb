@@ -1,66 +1,71 @@
-<% unless params[:query].empty? %>
-  <article id='groups'>
-    <header class='sub-header'>
-      <h4><%= t('search.titles.groups') %></h4>
-    </header>
+<% if params[:query].present? %>
+  <header><h2><%= t('general.search.results.header', query: params[:query]) %></h2></header>
 
-    <% if @groups.size > 0 %>
-      <ul class="groups">
-        <% @groups.each do |group| %>
-          <li class="group <%= group.group_type %>-group <%= 'following' if group.followers.include? current_user %>" data-id="<%= dom_id(group) %>">
-            <%= render 'groups/group', group: group %>
-          </li>
-        <% end %>
-      </ul>
-    <% else %>
-      <p class="hint"><%= t('groups.search.no_result') %> <%= link_to t('groups.search.create_new_group'), new_group_path(title: params[:query]) %>
-    <% end %>
-  </article>
+  <ul class="search-results-list">
+    <li><b><%= t('general.search.results.found') %></b></li>
+    <li><%= t('general.search.results', type: 'group', count: @groups.size) %></li>
+    <li><%= t('general.search.results', type: 'question', count: @questions.size) %></li>
+    <li><%= t('general.search.results', type: 'announcement', count: @announcements.size) %></li>
+    <li><%= t('general.search.results', type: 'topic', count: @topics.size) %></li>
+  </ul>
 
-  <article id='questions'>
-    <header class='sub-header'>
-      <h4><%= t('search.titles.questions') %></h4>
-    </header>
+  <% if @groups.size > 0 %>
+    <article id='groups'>
+      <header class='sub-header'>
+        <h4><%= t('search.titles.groups') %></h4>
+      </header>
+        <ul class="groups">
+          <% @groups.limit(5).each do |group| %>
+            <li class="group <%= group.group_type %>-group <%= 'following' if group.followers.include? current_user %>" data-id="<%= dom_id(group) %>">
+              <%= render 'groups/group', group: group %>
+            </li>
+          <% end %>
+        </ul>
+    </article>
+  <% end %>
 
-    <% if @questions.size > 0 %>
-      <ul class="posts">
-        <% @questions.each do |question| %>
-          <%= render 'shared/post', post: question %>
-        <% end %>
-      </ul>
-    <% else %>
-      <p class="hint"><%= t('questions.search.no_result') %>
-    <% end %>
-  </article>
+  <% if @questions.size > 0 %>
+    <article id='questions'>
+      <header class='sub-header'>
+        <h4><%= t('search.titles.questions') %></h4>
+      </header>
 
-  <article id='announcements'>
-    <header class='sub-header'>
-      <h4><%= t('search.titles.announcements') %></h4>
-    </header>
-    <% if @announcements.size > 0 %>
-      <ul class="posts">
-        <% @announcements.each do |announcement| %>
-          <%= render 'shared/post', post: announcement %>
-        <% end %>
-      </ul>
-    <% else %>
-      <p class="hint"><%= t('questions.search.no_result') %>
-    <% end %>
-  </article>
+      
+        <ul class="posts">
+          <% @questions.limit(5).each do |question| %>
+            <%= render 'shared/post', post: question %>
+          <% end %>
+        </ul>
+      
+    </article>
+  <% end %>
+  
+  <% if @announcements.size > 0 %>
+    <article id='announcements'>
+      <header class='sub-header'>
+        <h4><%= t('search.titles.announcements') %></h4>
+      </header>
+      
+        <ul class="posts">
+          <% @announcements.limit(5).each do |announcement| %>
+            <%= render 'shared/post', post: announcement %>
+          <% end %>
+        </ul>
+    </article>
+  <% end %>
 
-  <article id='topics'>
-    <header class='sub-header'>
-      <h4><%= t('search.titles.topics') %></h4>
-    </header>
-    <% if @topics.size > 0 %>
-      <ul class="posts">
-        <% @topics.each do |topic| %>
-          <%= render 'shared/post', post: topic %>
-        <% end %>
-      </ul>
-    <% else %>
-      <p class="hint"><%= t('topics.search.no_result') %>
-    <% end %>
-  </article>
-
+  <% if @topics.size > 0 %>
+    <article id='topics'>
+      <header class='sub-header'>
+        <h4><%= t('search.titles.topics') %></h4>
+      </header>
+      
+        <ul class="posts">
+          <% @topics.limit(5).each do |topic| %>
+            <%= render 'shared/post', post: topic %>
+          <% end %>
+        </ul>
+      
+    </article>
+  <% end %>
 <% end %>

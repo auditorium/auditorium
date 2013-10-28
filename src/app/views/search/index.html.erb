@@ -1,14 +1,19 @@
-<h2>Search through auditorium</h2>
-<div class="well">
-<%= form_tag search_path, :method => 'get', class: 'form-search', :remote => true do %>
-  <div class="controls">
-    <%= text_field_tag :query, params[:query], :placeholder => "Type in the name of the course, you're searching for...", class: 'span10' %>
-    <%= submit_tag 'Search', class: 'btn btn-info span2 hidden-phone' %>
-  </div>
-<% end %>
-</div>
+<% title "Sidewide search" %>
+<h1><%= t('general.search.header')%></h1>
+<section id='alternative-search-form' class="row block">
+  <%= form_tag search_path, method: 'get', remote: true do %>
+    <div class="large-10 columns">
+      <%= text_field_tag :query, params[:query], { id: 'alternative-query', placeholder: t('general.search.placeholder.long')} %>
+    </div>
+    <div class="hide-for-small large-2 columns">
+      <%= submit_tag t('general.search.submit'), class: "button expand small #{color_scheme}" %>
+    </div>
+  <% end %>
+</section>
 
-<h3>Search results</h3>
-<div class="search-results">
-<%= render 'search/results' %>
-</div>
+
+
+<p id="search-hint" class="hint bigger"><%= t('general.search.press_enter') %></p>
+<section id="alternative-search-results">
+  <%= render 'shared/search_results' %>
+</section>
