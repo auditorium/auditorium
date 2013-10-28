@@ -1,5 +1,7 @@
 class Video < ActiveRecord::Base
   before_save :set_code
+  
+  include Votable
   include Taggable
   include ParentPost
 

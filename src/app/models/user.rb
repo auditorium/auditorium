@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   
   # attr_accessible :title, :body
   
+  has_many :votings
+
   has_many :events, foreign_key: :tutor_id # as tutor
   has_many :lecture_memberships, :dependent => :destroy
   has_many :course_memberships, :dependent => :destroy

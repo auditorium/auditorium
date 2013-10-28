@@ -67,30 +67,6 @@ class VideosController < ApplicationController
     end
   end
 
-  def upvote 
-    @post = Comment.find(params[:id])
-    @post.rating += 1
-    @post.save
-
-    respond_to do |format|
-      format.js
-      #format.html { redirect_to "#{url_for @post.origin}##{dom_id(@post)}", error: @post.errors }
-    end
-
-  end
-
-  def downvote 
-    @post = Comment.find(params[:id])
-    
-    @post.rating -= 1
-    @post.save
-
-    respond_to do |format|
-      format.js
-      #format.html { redirect_to "#{url_for @post.origin}##{dom_id(@post)}", notice: t('posts.general.upvote.notice') }
-    end
-  end
-
   private 
   def get_group
     @group = Group.find(params[:group_id])

@@ -1,5 +1,5 @@
 class Topic < ActiveRecord::Base 
-
+  include Votable
   include Taggable
   include ParentPost
 

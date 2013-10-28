@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131027111206) do
+ActiveRecord::Schema.define(:version => 20131028100157) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -466,5 +466,18 @@ ActiveRecord::Schema.define(:version => 20131027111206) do
 
   add_index "videos", ["author_id"], :name => "index_media_on_author_id"
   add_index "videos", ["group_id"], :name => "index_media_on_group_id"
+
+  create_table "votings", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "value"
+    t.integer  "votable_id"
+    t.string   "votable_type"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "votings", ["user_id"], :name => "index_votings_on_user_id"
+  add_index "votings", ["votable_id"], :name => "index_votings_on_votable_id"
+  add_index "votings", ["votable_type"], :name => "index_votings_on_votable_type"
 
 end

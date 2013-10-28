@@ -1,5 +1,5 @@
 class Announcement < ActiveRecord::Base 
-
+  include Votable
   include Taggable
   include ParentPost
 

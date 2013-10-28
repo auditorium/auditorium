@@ -1,5 +1,5 @@
 class Question < ActiveRecord::Base 
-
+  include Votable
   include Taggable
   include ParentPost
   include Notifiable
