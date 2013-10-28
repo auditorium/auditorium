@@ -2,6 +2,11 @@
   <header class="subheader topic-group">
     <h2><%= t('groups.index.title')%></h2>
   </header>
+
+  <div class="group-filter">
+    <%= render 'shared/my_groups_filter' %>
+  </div>
+
   
   <div class="row">
     <% if @groups.size > 0 %>

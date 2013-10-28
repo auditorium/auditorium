@@ -1,13 +1,13 @@
 <% if params[:action].eql? 'index' %>
   <header>
-    <h2 class="subheader">
+    <h2>
       <%= t('groups.show.topics.header') %>
       <small><%= link_to @group.title, group_path(@group) %></small>
     </h2>
   </header>
 <% else %>
   <header>
-  <h2 class="subheader"><%= t('groups.show.topics.header') %></h2>
+  <h2><%= t('groups.show.topics.header') %></h2>
 </header>
 <% end %>
 

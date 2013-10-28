@@ -1,7 +1,15 @@
-<header>
-  <h2 class="subheader"><%= t('groups.show.videos.header') %></h2>
+<% if params[:action].eql? 'index' %>
+  <header>
+    <h2>
+      <%= t('groups.show.videos.header') %>
+      <small><%= link_to @group.title, group_path(@group) %></small>
+    </h2>
+  </header>
+<% else %>
+  <header>
+  <h2><%= t('groups.show.videos.header') %></h2>
 </header>
-
+<% end %>
 <ul class="video-strip block">
   <li>
     <div class="video-thumbnail new">

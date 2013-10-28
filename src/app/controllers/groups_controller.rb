@@ -22,7 +22,15 @@ class GroupsController < ApplicationController
 	end
 
   def my_groups
-    @groups = current_user.groups
+    cookies[:show_topic_groups] = params[:show_topic_groups] if params[:show_topic_groups].present?
+    cookies[:show_learning_groups] = params[:show_learning_groups] if params[:show_learning_groups].present?
+    cookies[:show_lecture_groups] = params[:show_lecture_groups] if params[:show_lecture_groups].present?
+
+    group_types = Array.new
+    group_types << ['topic'] unless cookies[:show_topic_groups] == 'no'
+    group_types << ['learning'] unless cookies[:show_learning_groups] == 'no'
+    group_types << ['lecture'] unless cookies[:show_lecture_groups] == 'no'
+    @groups = current_user.groups.where(group_type: group_types).order(:title)
   end
 
 	def show

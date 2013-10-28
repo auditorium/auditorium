@@ -1,7 +1,7 @@
 $.loadForm = (form_type) ->
   $.ajax
     type: 'post'
-    url: 'ajax/load_form'
+    url: 'ajax/load_post_form'
     data: { form_type: form_type }
     error: (jqXHR, textStatus, errorThrown) ->
       console.log errorThrown
@@ -29,7 +29,8 @@ $('a.show-search').on 'click', (e) ->
   $(this).hide()
   $search_form = $('#search-form')
   $($search_form).find('form').show()
-  $($search_form).css({'width': '100%'})
+  $($search_form).css({'width': '100%', 'background-color': '#494949'})
+  $($search_form).find('input').css({'background-color': '#494949'})
   $($search_form).find('input').focus()
 
 # $('a.hide-search').on 'click', (e) ->

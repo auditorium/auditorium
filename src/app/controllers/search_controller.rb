@@ -1,6 +1,6 @@
 class SearchController < ApplicationController
   def index
-    unless params[:query].empty?
+    if params[:query].present?
       query = "%#{params[:query]}%" 
       @questions = Question.where("subject LIKE ? or content LIKE ?", query, query)
       @announcements = Announcement.where("subject LIKE ? or content LIKE ?", query, query)

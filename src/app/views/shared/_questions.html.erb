@@ -1,6 +1,15 @@
-<header>
-  <h2 class="subheader"><%= t('groups.show.questions.header') %></h2>
-</header>
+<% if params[:action].eql? 'index' %>
+  <header>
+    <h2>
+      <%= t('groups.show.questions.header') %>
+      <small><%= link_to @group.title, group_path(@group) %></small>
+    </h2>
+  </header>
+<% else %>
+  <header>
+    <h2><%= t('groups.show.questions.header') %></h2>
+  </header>
+<% end %>
 
 <%= form_for([@group, @question = Question.new]) do |f| %>
   <ul class="no-style question">

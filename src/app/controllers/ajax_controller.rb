@@ -38,7 +38,7 @@ class AjaxController < ApplicationController
     respond_to :js
   end
 
-  def load_form 
+  def load_post_form 
     @form_type = params[:form_type]
     respond_to :js
   end
