@@ -85,6 +85,16 @@ module ApplicationHelper
     followers_array.map(&:full_name).map { |user| link_to user, user_path(user) }.join(', ').html_safe
   end
 
+  def already_upvoted?(post)
+    vote = current_user.votings.where(votable_id: post.id, votable_type: post.class.name).first
+    vote.present? and vote.value == 1
+  end
+
+  def already_downvoted?(post)
+    vote = current_user.votings.where(votable_id: post.id, votable_type: post.class.name).first
+    vote.present? and vote.value == -1
+  end
+
   #==========
   # below old stuff...
 

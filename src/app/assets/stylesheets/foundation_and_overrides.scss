@@ -2317,7 +2317,9 @@ ul.no-style {
 
 .rating {
 
-
+  .voted i {
+    color: $warning-color;
+  }
   &.bright {
     margin-left: 10px;
     a {

@@ -1,7 +1,7 @@
 <% type = post.class.name.pluralize.downcase %>
 
 <span class="upvote">
-<%= link_to fa_icon("thumbs-up"), upvote_path(type: type, id: post.id), method: :post, remote: true, alt: t('posts.general.upvote.alt_text'), title: t('posts.general.upvote.title') %>
+<%= link_to fa_icon("thumbs-up"), upvote_path(type: type, id: post.id), method: :post, remote: true, alt: t('posts.general.upvote.alt_text'), title: t('posts.general.upvote.title'), class: "#{'voted' if already_upvoted?(post)}" %>
 </span>
 <span class="value">
   <% if post.rating.presence %> 
@@ -11,5 +11,5 @@
   <% end %>
 </span>
 <span class="downvote">
-  <%= link_to fa_icon("thumbs-down"), downvote_path(type: type, id: post.id), method: :post, remote: true, alt: t('posts.general.downvote.alt_text'), title: t('posts.general.downvote.title') %>
+  <%= link_to fa_icon("thumbs-down"), downvote_path(type: type, id: post.id), method: :post, remote: true, alt: t('posts.general.downvote.alt_text'), title: t('posts.general.downvote.title'), class: "#{'voted' if already_downvoted?(post)}" %>
 </span>
