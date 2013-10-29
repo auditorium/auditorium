@@ -19,6 +19,7 @@ en:
       recent-posts: 'Stream with recent acitivities'
   general:
     search: 
+      label: 'Search'
       press_enter: 'After typing in your search, click on the search button.'
       header: 'Sidewide search'
       placeholder:
@@ -26,7 +27,7 @@ en:
         long: 'Click here and start your search for posts or groups...'
       submit: 'Search'
       results:
-        header: 'Search results for `%{query}`'
+        header: 'Search results for "%{query}"'
         found: 'I was able to find:'
         zero: 'no %{type}s'
         one: 'one %{type}'
