@@ -65,6 +65,7 @@ group :assets do
   gem 'zurb-foundation'
   gem 'font-awesome-rails'
   gem 'mathjax-rails'
+  gem 'premailer-rails'
 end
 
 gem 'jquery-rails'

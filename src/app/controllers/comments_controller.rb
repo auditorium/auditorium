@@ -22,7 +22,6 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save!
-        redirect_path =  
         format.html { redirect_to  "#{url_for @comment.origin}##{dom_id(@comment)}", notice: t('comment.action.created') }
         format.json { render json: @comment, status: :created, location: [@commentable, @comment] }
       else
