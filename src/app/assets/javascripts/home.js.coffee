@@ -33,11 +33,14 @@ $('a.show-search').on 'click', (e) ->
   $($search_form).find('input').css({'background-color': '#494949'})
   $($search_form).find('input').focus()
 
-# $('a.hide-search').on 'click', (e) ->
+# $('i.times').on 'click', (e) ->
 #   e.preventDefault()
-#   $('#search-form a.show-search').show()
-#   $('#search-form form').hide()
-#   $('#search-form').css({'width': '50px'})
+#   alert('close')
+#   $search_form = $('#search-form')
+  
+#   $($search_form).find('form').hide()
+#   $('a.show-search').show()
+#   $($search_form).css({'width': '50px', 'background-color': '#c04735'})
 
 $('#search-results').hide();
 $('#query').on 'input', (e) ->

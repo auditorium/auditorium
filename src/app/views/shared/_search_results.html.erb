@@ -1,4 +1,5 @@
 <% if params[:query].present? %>
+  <!-- <span class="right"><%= link_to fa_icon('times'), '#', class: 'close-search-results' %></span> -->
   <header><h2><%= t('general.search.results.header', query: params[:query]) %></h2></header>
 
   <ul class="search-results-list">

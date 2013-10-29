@@ -4,6 +4,9 @@
        <span class="ribbon">
         <%= t('groups.label', type: @group.group_type.capitalize) %>
       </span>
+      <span class="right" id="follow_button">
+        <%= render 'groups/follow_button' %>
+      </span>
       <h1><%= @group.title %></h1>
     </header> 
   

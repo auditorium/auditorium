@@ -74,6 +74,8 @@ en:
       no_member: 'Not a member'
       add_to_members: 'Add to members'
       add_to_moderators: 'Add to moderators'
+    follow: 'follow'
+    unfollow: 'following'
     unfollow_link_text: "Click to unsubscribe group's activity." 
     follow_link_text: "Click to subscribe group's activity."
     label: '%{type} Group'
@@ -145,12 +147,14 @@ en:
     searching_text: "Searching for available tags..."
 
   videos:
+    page_title: "Videos from %{group}"
     titles:
       new: 'Add a new recording to the group'
     new:
       link_title: 'Add a new recording to the group.'
 
   questions:
+    page_title: "Questions from %{group}"
     links:
       to_content: 'Questions'
     input: 
@@ -162,6 +166,7 @@ en:
       content: 'Click here to insert the content of your question...'
 
   announcements:
+    page_title: "Announcements from %{group}"
     links:
       to_content: 'Announcements'
     input: 
@@ -173,6 +178,7 @@ en:
       content: 'Click here to insert the content of your announcement...'
 
   topics:
+    page_title: "Topics from %{group}"
     links:
       to_content: 'Topics'
     input: 
