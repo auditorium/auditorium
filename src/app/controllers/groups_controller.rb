@@ -1,10 +1,11 @@
 class GroupsController < ApplicationController
 	authorize_resource
 
+  
 	def index
 		if params[:tag]
 			@groups = Group.tagged_with(params[:tag]).order(:title)
-		else
+    else
       cookies[:show_topic_groups] = params[:show_topic_groups] if params[:show_topic_groups].present?
       cookies[:show_learning_groups] = params[:show_learning_groups] if params[:show_learning_groups].present?
       cookies[:show_lecture_groups] = params[:show_lecture_groups] if params[:show_lecture_groups].present?
@@ -16,9 +17,19 @@ class GroupsController < ApplicationController
       group_types << ['lecture'] unless cookies[:show_lecture_groups] == 'no'
       @groups = Group.where(group_type: group_types).order(:title)
       @groups = @groups.keep_if{ |g| g.followers.include? current_user } if cookies[:show_only_subscribed_groups] == 'yes'
+      if params[:tags]
+        cookies[:group_filter_tag_ids] = params[:tags]
+        tag_ids = params[:tags].split(',').collect { |i| i.to_i }.to_set
+        @groups = @groups.keep_if { |g| tag_ids.subset? g.tags.map(&:id).to_set  }
+      elsif cookies[:group_filter_tag_ids]
+        tag_ids = cookies[:group_filter_tag_ids].split(',').collect { |i| i.to_i }.to_set
+        @groups = @groups.keep_if { |g| tag_ids.subset? g.tags.map(&:id).to_set  }
+      end
 		end
 
-    @groups = Kaminari.paginate_array(@groups).page(params[:page]).per(20)
+    @groups = Kaminari.paginate_array(@groups).page(params[:page]).per(20) 
+
+    respond_to :js, :html
 	end
 
   def my_groups

@@ -17,6 +17,10 @@ class Ability
         group.is_moderator? user
       end
 
+      can :manage, User do |visited_user|
+        (visited_user.id == user.id)
+      end
+
     else # Gäste
       cannot :read, :all
     end

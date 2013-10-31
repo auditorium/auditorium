@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131028100157) do
+ActiveRecord::Schema.define(:version => 20131030160524) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -379,6 +379,15 @@ ActiveRecord::Schema.define(:version => 20131028100157) do
 
   add_index "reports", ["reporter_id"], :name => "index_reports_on_reporter_id"
 
+  create_table "settings", :force => true do |t|
+    t.boolean  "receive_email", :default => true
+    t.integer  "user_id"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+  end
+
+  add_index "settings", ["user_id"], :name => "index_settings_on_user_id"
+
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
@@ -443,6 +452,7 @@ ActiveRecord::Schema.define(:version => 20131028100157) do
     t.string   "alternative_email"
     t.integer  "score",                  :default => 0
     t.string   "authentication_token"
+    t.string   "role"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true

@@ -75,3 +75,8 @@ Topic.all.each do |topic|
     puts comment.inspect
   end
 end
+
+(1..20).each do |i|
+  tag =Tag.create(name: Faker::Name.name, description: Faker::Lorem.words(20).join(' '))
+  puts tag.inspec
+end

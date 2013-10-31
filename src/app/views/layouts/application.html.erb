@@ -46,12 +46,12 @@
           <!-- left nav section -->
           <ul class="left">
             <li><%= nav_link t('navigation.home'), home_path, { class: 'home' } %></li>
-            <li ><%= nav_link t('navigation.search'), alternative_search_path, { class: 'search' } %></li>
             <li><%= nav_link t('navigation.groups'), groups_path, { class: 'groups' } %></li>
             <li><%= nav_link t('navigation.my_groups'), my_groups_path, { class: 'groups' } %></li>
           </ul>
 
           <ul class="right">
+            <li ><%= nav_link t('navigation.search'), alternative_search_path, { class: 'search' } %></li>
             <% if current_user.presence %>
               <li><%= link_to current_user.full_name, user_path(current_user) %></li>
               <li><%= link_to t('users.sign_out'), destroy_user_session_path, method: :delete %></li>
@@ -77,6 +77,10 @@
 
       
       <div class="row"><%= yield %></div>
+
+      <footer id="footer">
+        FOOTER
+      </footer>
     </section>
 
     <%= render 'shared/search_bar' %>

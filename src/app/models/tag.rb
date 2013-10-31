@@ -11,10 +11,10 @@ class Tag < ActiveRecord::Base
   validates :name,  presence: true
   # validates :description, presence: true
 
-  def self.tokens(query)
-    tags = where("name LIKE ?", "%#{query}%")
-    if tags.empty?
-      [{ id: "<<<#{query}>>>", name: I18n.translate('tags.new_entry', name: query)}]
+  def self.tokens(options = {})
+    tags = where("name LIKE ?", "%#{options[:query]}%")
+    if tags.empty? and options[:filter]
+      [{ id: "<<<#{options[:query]}>>>", name: I18n.translate('tags.new_entry', name: options[:query])}]
     else
       tags
     end

@@ -1,7 +1,27 @@
-<h2><%= @user %></h2>
+<section class="row">
+<header class="large-10 columns">
+  <h2><%= @user %></h2>
+</header>
 
-<ul class="groups">
-<% @user.groups.each do |group| %>
-	<li><%= group.title %></li> 
-<% end %>
-</ul>
+<div class="large-2 columns">
+
+  <%= gravatar_image_tag(@user.alternative_email, :alt => @user, :gravatar => {:default => :wavatar, :size => 150, :secure => true },  class: 'profile-picture')%>
+</div >
+</section>
+
+<section class="tabs-wrapper">
+  <ul class="tabs">
+    <li data-tab-content="about" class="active"><%= link_to t('users.tabs.about'), '#' %></li>
+    <li data-tab-content="groups"><%= link_to t('users.tabs.groups'), '#' %></li>
+    <li data-tab-content="questions"><%= link_to t('users.tabs.questions'), '#' %></li>
+    <li data-tab-content="announcements"><%= link_to t('users.tabs.announcements'), '#' %></li>
+    <li data-tab-content="topics"><%= link_to t('users.tabs.topics'), '#' %></li>
+    <% if can? :update, @user %>
+    <li data-tab-content="settings"><%= link_to t('users.tabs.settings'), '#' %></li>
+    <% end %>
+  </ul>
+
+  <div class="tab-content">
+    <%= render 'users/about' %>
+  </div>
+</section>

@@ -8,6 +8,8 @@ Auditorium::Application.routes.draw do
   get 'ajax/search', to: 'ajax#search', as: :search
   post ':type/:id/upvote', to: 'ajax#upvote', as: :upvote
   post ':type/:id/downvote', to: 'ajax#downvote', as: :downvote
+  post 'ajax/tab_content', to: 'ajax#tab_content', as: :tab_content
+  post 'ajax/filter_groups', to: 'ajax#filter_groups', as: :filter_groups
 
   get 'tags/:tag', to: 'groups#index', as: :tag
   resources :tags, only: ['index']

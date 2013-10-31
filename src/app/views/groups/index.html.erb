@@ -1,19 +1,19 @@
+
+
 <section id="groups">
-	<header class="subheader topic-group">
-		<h2><%= t('groups.index.header')%></h2>
-	</header>
+  <header class="subheader topic-group">
+    <h2><%= t('groups.index.title')%></h2>
+  </header>
 
   <div class="group-filter">
     <%= render 'shared/group_filter' %>
-  </div>
-
-  <ul class="groups">
-  	<% @groups.each do |group| %>
-      <li class="group <%= group.group_type %>-group" data-id="<%= dom_id(group) %>">
-        <%= render 'groups/group', group: group %>
-      </li>
+    
+    <%= form_tag filter_groups_path, method: 'get' do %>
+    <%= t('general.tags.title') %> 
+    <%= text_field_tag :tag_tokens, nil, data: {load: Tag.where(id: cookies[:group_filter_tag_ids])}, id: 'filter_tag_tokens' %>
     <% end %>
-  </ul>
-
-  <span class="right"><%= paginate @groups %></span>
+  </div>
+  <div id="groups-grid">
+    <%= render 'groups/groups_grid' %>
+  </div>
 </section>
