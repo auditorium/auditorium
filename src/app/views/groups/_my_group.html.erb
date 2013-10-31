@@ -43,7 +43,7 @@
         <div class="body">
           <h2><%= link_to group.title, group_path(group) %></h2>
           <p class="hint inverted"><%= t('groups.follower_count', count: group.followers.size) %></p>
-          <p class="hint inverted"><%= t('groups.tags') %> <%= tag_list_delimited(group.tags) %></p>
+          <p class="hint inverted"><%= t('groups.tags.label') %> <%= tag_list_delimited(group.tags) %></p>
         </div>
         <div class="bottom">
         <span class="hint inverted left"><%= t('groups.creator', name: group.creator) %></span>

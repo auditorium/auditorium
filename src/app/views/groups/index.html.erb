@@ -5,13 +5,17 @@
     <h2><%= t('groups.index.title')%></h2>
   </header>
 
-  <div class="group-filter">
-    <%= render 'shared/group_filter' %>
-    
-    <%= form_tag filter_groups_path, method: 'get' do %>
-    <%= t('general.tags.title') %> 
-    <%= text_field_tag :tag_tokens, nil, data: {load: Tag.where(id: cookies[:group_filter_tag_ids])}, id: 'filter_tag_tokens' %>
-    <% end %>
+  <div class="filter-block">
+    <div class="group-filter">
+      <%= render 'shared/group_filter' %>
+    </div>
+
+    <div class="tag-filter">
+      <%= form_tag groups_path, method: 'get' do %>
+        <%= text_field_tag :tag_tokens, nil, data: {load: Tag.where(id: cookies[:group_filter_tag_ids])}, id: 'group_filter_tag_tokens' %>
+        <%= label_tag :tag_tokens, t('groups.tags.filter'), class: 'hint' %> 
+      <% end %>
+    </div>
   </div>
   <div id="groups-grid">
     <%= render 'groups/groups_grid' %>

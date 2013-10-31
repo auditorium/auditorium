@@ -4,12 +4,19 @@
   <header id="recent-posts">
     <h2><%= t('home.titles.recent-posts') %></h2>
   </header>
+  <div class="filter-block">
+    <div class="post-filter">
+      <%= render 'shared/post_filter' %>
+    </div>
 
-  <div class="post-filter">
-    <%= render 'shared/post_filter' %>
+    <div class="tag-filter">
+      <%= form_tag home_path, method: 'get' do %>
+        <%= text_field_tag :tag_tokens, nil, data: {load: Tag.where(id: cookies[:post_filter_tag_ids])}, id: 'post_filter_tag_tokens' %>
+        <%= label_tag :tag_tokens, t('posts.tags.filter'), class: 'hint' %> 
+      <% end %>
+    </div>
   </div>
-
   <div id="post-stream">
-    <%= render 'post_stream' %>
+    <%= render 'home/post_stream' %>
   </div>
 </section>

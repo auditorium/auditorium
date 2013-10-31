@@ -1364,6 +1364,13 @@ input[type='text'], textarea {
   }
 } 
 
+label.hint {
+  font-style: italic;
+  font-size: 0.8em;
+  font-color: #333;
+  margin:2px 5px 5px;
+}
+
 textarea {
   height:100px;
 }
@@ -1716,6 +1723,7 @@ div.token-input-dropdown {
     background-color: lighten($primary-color, 50%);
   }
 }
+
 
 /* =================== Topbar Style ===================== */
 
@@ -2326,13 +2334,12 @@ i.fa-star, i.fa-star-o  {
 
 }
 
-.post-filter, .group-filter {
+.post-filter, .group-filter, .tag-filter {
   // margin: 0 0 20px 0;
   padding: 0 10px;
   // background-color: #fff;
   // box-shadow: 1px 1px 1px darken($gray, 20%);
-  @include link-list;
-
+  
   ul {
     list-style: none;
     margin:5px 0;
@@ -2348,6 +2355,10 @@ i.fa-star, i.fa-star-o  {
       }
     }
   }
+}
+
+.filter-block {
+  @include link-list;
 }
 
 #filter {

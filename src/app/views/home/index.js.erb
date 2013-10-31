@@ -1,2 +1,3 @@
-$('#post-filter').html('<%= j render "shared/post_filter" %>')
-$('#post-stream').html('<%= j render "home/post_stream" %>')
+$('#post-stream').fadeOut(function() {
+  $('#post-stream').fadeIn().html('<%= j render "home/post_stream" %>');
+});
