@@ -1,5 +1,3 @@
-
-
 <section id="groups">
   <header class="subheader topic-group">
     <h2><%= t('groups.index.title')%></h2>
@@ -12,7 +10,7 @@
 
     <div class="tag-filter">
       <%= form_tag groups_path, method: 'get' do %>
-        <%= text_field_tag :tag_tokens, nil, data: {load: Tag.where(id: cookies[:group_filter_tag_ids])}, id: 'group_filter_tag_tokens' %>
+        <%= text_field_tag :tag_tokens, nil, data: {load: Tag.where(id: cookies[:group_filter_tag_ids].split(','))}, id: 'group_filter_tag_tokens' %>
         <%= label_tag :tag_tokens, t('groups.tags.filter'), class: 'hint' %> 
       <% end %>
     </div>

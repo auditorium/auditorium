@@ -18,6 +18,8 @@ class HomeController < ApplicationController
       @posts += topics if topics.present?
       @posts = @posts.sort { |x,y| y.created_at <=> x.created_at }
 
+      
+
       @posts.keep_if { |p| p.subscribed?(current_user) } if cookies[:only_subscribed] == 'yes'
 
       if params[:tags]
@@ -29,8 +31,9 @@ class HomeController < ApplicationController
         @posts = @posts.keep_if { |g| tag_ids.subset? g.tags.map(&:id).to_set  }
       end
 
-
       @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(20)
+
+
       respond_to :js, :html
     else
       redirect_to root_url

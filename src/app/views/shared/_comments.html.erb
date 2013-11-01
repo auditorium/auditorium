@@ -10,7 +10,7 @@
 
   <% if commentable.instance_of?(Question) or commentable.instance_of?(Answer) %>
     <li class="link">
-      <%= link_to t('comments.actions.new'), '#', 'data-commentable_id' => commentable.id, 'data-commentable_type' => commentable.class.name, class: 'toggle-comment-form' %>
+      <%= link_to t('comments.actions.new'), '#', 'data-commentable_id' => commentable.id, 'data-commentable_type' => commentable.class.name, 'data-id' => 'toggle-comment-form', class: 'button new-comment' %>
     </li>
   <% end %>
 

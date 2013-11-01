@@ -14,6 +14,8 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find(params[:id])
+
+    @topic.increment_views(current_user)
   end
 
   def new

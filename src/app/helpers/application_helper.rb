@@ -26,20 +26,15 @@ module ApplicationHelper
   end
 
   def nav_link(title, path, options={}) 
-    if params[:controller].eql? options[:class]
+    if current_page?(path)
       link_to title, path, class: "active #{color_scheme}" 
     else
       link_to title, path, class: color_scheme
     end
   end
 
-  def color_scheme
-    if params[:controller].eql? 'groups' and params[:action].eql? 'show'
-      group = Group.find(params[:id]) if params[:id].presence
-      "#{group.group_type}-group" if group.presence
-    else
-      params[:controller]
-    end
+  def color_scheme 
+    params[:controller]
   end
 
   def markdown(text)
@@ -77,8 +72,12 @@ module ApplicationHelper
     %w{questions announcements topics groups home}.include? params[:controller]
   end
 
-  def tag_list_delimited(tag_array)
-    tag_array.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ').html_safe
+  def tag_list(tag_array, options = { delimiter: '' }) 
+    if tag_array.size > 0
+      tag_array.map(&:name).map { |t| link_to t, tag_path(t), class: "tag #{options[:additional_class]}" }.join(options[:delimiter]).html_safe
+    else 
+      content_tag('span', t('tags.no_tags'), class: "no-tags").html_safe
+    end
   end
 
   def followers_list_delimited(followers_array)
@@ -97,6 +96,17 @@ module ApplicationHelper
 
   def title(page_title)
     content_for :title, page_title.to_s
+  end
+
+  def named_date(date)
+    case date
+    when Date.today
+      t('dates.today')
+    when Date.yesterday
+      t('dates.yesterday')
+    else
+      l(date, format: :long)
+    end
   end
 
   #==========

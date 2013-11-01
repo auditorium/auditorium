@@ -21,7 +21,7 @@ $.filterPosts = (item) ->
       console.log errorThrown
 
 $('#group_tag_tokens, #question_tag_tokens, #answer_tag_tokens, #announcement_tag_tokens, #topic_tag_tokens').tokenInput '/tags.json',  
-  prePopulate: $('#group_tag_tokens, #question_tag_tokens, #answer_tag_tokens, #topic_tag_tokens').data('load') 
+  prePopulate: $('#group_tag_tokens, #question_tag_tokens, #announcement_tag_tokens,#answer_tag_tokens, #topic_tag_tokens').data('load') 
   crossDomain: false
   hintText: i18n_tokeninput_hint_text
   noResultsText: i18n_tokeninput_no_results_text
@@ -30,7 +30,7 @@ $('#group_tag_tokens, #question_tag_tokens, #answer_tag_tokens, #announcement_ta
   preventDuplicates: true
 
 $('#group_filter_tag_tokens').tokenInput '/tags.json',  
-  prePopulate: $('#group_filter_tag_tokens').data('load') 
+  prePopulate: $('#group_filter_tag_tokens').data('load')
   crossDomain: false
   hintText: i18n_tokeninput_hint_text
   noResultsText: i18n_tokeninput_no_results_text

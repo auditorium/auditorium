@@ -17,7 +17,7 @@
   </div>
 
   <div class="post-footer">
-    <%= "#{t('posts.general.group')}:" %> 
+    <%= t('posts.general.group') %> 
     <%= link_to @video.group.title, group_path(@video.group) %>
 
     <% if can? :manage, @video %> 

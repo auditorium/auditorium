@@ -46,7 +46,9 @@ en:
       show_topics: 'Show topics'
       show_announcements: 'Show announcements'
       show_questions: 'Show questions'
-
+  dates:
+    today: "Today’s activity"
+    yesterday: "Yesterday’s activity"
   groups:
     link_label: 'Group:'
     creator: 'Created by %{name}'
@@ -100,13 +102,14 @@ en:
       topics:
         header: 'Topics'
         new: 'Create a new topic'
+      recordings:
+        header: 'Recordings'
+        new: 'Create a new recording'
       links: 
         delete: 'Delete'
         edit: 'Edit'
     index:
-      header: 'Groups overview'
-
-
+      title: 'Groups overview'
     group-basic-information:
       placeholder: 'Choose a type for your new group...'
     choose-type:
@@ -142,6 +145,7 @@ en:
       failure: 'There was a problem creating this group. Please try again.'
 
   tags:
+    no_tags: 'no tags'
     label: 'Tags:'
     new_entry: 'Create the new tag: %{name}'
   tokeninput:
@@ -221,7 +225,7 @@ en:
   posts:
     label: '%{type}'
     general:
-      group: 'Group'
+      group: 'Group:'
       comments: 'Comments'
       answers: 'Answers'
       upvote:
@@ -232,3 +236,11 @@ en:
         title: 'Click if the post is not helpful.'
         alt_text: 'downvote'
         notice: 'Post has been down voted.'
+
+  views:
+    pagination:
+      first: "&laquo; First"
+      last: "Last &raquo;"
+      previous: "&lsaquo; Prev"
+      next: "Next &rsaquo;"
+      truncate: "..."

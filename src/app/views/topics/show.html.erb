@@ -12,7 +12,7 @@
   </div>
 
   <div class="post-footer">
-    <%= "#{t('posts.general.group')}:" %> 
+    <%= t('posts.general.group') %> 
     <%= link_to @topic.group.title, group_path(@topic.group) %>
 
     <% if can? :manage, @topic %> 

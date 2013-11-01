@@ -13,7 +13,7 @@ class Tag < ActiveRecord::Base
 
   def self.tokens(options = {})
     tags = where("name LIKE ?", "%#{options[:query]}%")
-    if tags.empty? and options[:filter]
+    if tags.empty? and !options[:filter]
       [{ id: "<<<#{options[:query]}>>>", name: I18n.translate('tags.new_entry', name: options[:query])}]
     else
       tags

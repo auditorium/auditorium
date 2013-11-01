@@ -12,7 +12,7 @@
   
     <div class="group-information">
       <%= markdown @group.description %>
-      <p class="hint"><%= t('groups.tags.label') %> <%= tag_list_delimited(@group.tags) %></p>
+      <p class="hint"><%= t('groups.tags.label') %> <%= tag_list(@group.tags) %></p>
     </div>
   </div>
 

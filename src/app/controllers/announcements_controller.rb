@@ -13,6 +13,7 @@ class AnnouncementsController < ApplicationController
 
   def show
     @announcement = Announcement.find(params[:id])
+    @announcement.increment_views(current_user)
   end
 
   def new

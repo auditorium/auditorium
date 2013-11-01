@@ -76,6 +76,14 @@ class User < ActiveRecord::Base
     end
   end
 
+  def groups_as(role)
+    if role.eql? 'creator'
+      groups = Group.where(creator_id: self.id)
+    else
+      groups = Group.where(id: self.followings.where(role: role).map(&:followerable_id))
+    end
+  end
+
   # A callback method used to deliver confirmation
   # instructions on creation. This can be overriden
   # in models to map to a nice sign up e-mail.

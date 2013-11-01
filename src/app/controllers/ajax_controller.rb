@@ -107,7 +107,10 @@ class AjaxController < ApplicationController
   end
 
   def tab_content 
+    puts "USER ID: #{params[:user_id]}"
+    @user = User.find(params[:user_id])
     @partial = params[:partial]
+    
 
     respond_to do |format|
       format.js

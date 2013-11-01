@@ -1,13 +1,13 @@
 <% if params[:action].eql? 'index' %>
   <header>
     <h2>
-      <%= t('groups.show.videos.header') %>
+      <%= t('groups.show.recordings.header') %>
       <small><%= link_to @group.title, group_path(@group) %></small>
     </h2>
   </header>
 <% else %>
   <header>
-  <h2><%= t('groups.show.videos.header') %></h2>
+  <h2><%= t('groups.show.recordings.header') %></h2>
 </header>
 <% end %>
 <ul class="video-strip block">

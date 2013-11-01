@@ -3,45 +3,49 @@ class GroupsController < ApplicationController
 
   
 	def index
-		if params[:tag]
-			@groups = Group.tagged_with(params[:tag]).order(:title)
-    else
-      cookies[:show_topic_groups] = params[:show_topic_groups] if params[:show_topic_groups].present?
-      cookies[:show_learning_groups] = params[:show_learning_groups] if params[:show_learning_groups].present?
-      cookies[:show_lecture_groups] = params[:show_lecture_groups] if params[:show_lecture_groups].present?
-      cookies[:show_only_subscribed_groups] = params[:show_only_subscribed_groups] if params[:show_only_subscribed_groups].present?
 
-      group_types = Array.new
-			group_types << ['topic'] unless cookies[:show_topic_groups] == 'no'
-      group_types << ['learning'] unless cookies[:show_learning_groups] == 'no'
-      group_types << ['lecture'] unless cookies[:show_lecture_groups] == 'no'
-      @groups = Group.where(group_type: group_types).order(:title)
-      @groups = @groups.keep_if{ |g| g.followers.include? current_user } if cookies[:show_only_subscribed_groups] == 'yes'
-      if params[:tags]
-        cookies[:group_filter_tag_ids] = params[:tags]
-        tag_ids = params[:tags].split(',').collect { |i| i.to_i }.to_set
-        @groups = @groups.keep_if { |g| tag_ids.subset? g.tags.map(&:id).to_set  }
-      elsif cookies[:group_filter_tag_ids]
-        tag_ids = cookies[:group_filter_tag_ids].split(',').collect { |i| i.to_i }.to_set
-        @groups = @groups.keep_if { |g| tag_ids.subset? g.tags.map(&:id).to_set  }
-      end
-		end
+    cookies[:show_topic_groups] = params[:show_topic_groups] if params[:show_topic_groups].present?
+    cookies[:show_learning_groups] = params[:show_learning_groups] if params[:show_learning_groups].present?
+    cookies[:show_lecture_groups] = params[:show_lecture_groups] if params[:show_lecture_groups].present?
+    cookies[:show_only_subscribed_groups] = params[:show_only_subscribed_groups] if params[:show_only_subscribed_groups].present?
+
+    group_types = Array.new
+		group_types << ['topic'] unless cookies[:show_topic_groups] == 'no'
+    group_types << ['learning'] unless cookies[:show_learning_groups] == 'no'
+    group_types << ['lecture'] unless cookies[:show_lecture_groups] == 'no'
+    
+    @groups = Group.where(group_type: group_types).order(:title)
+    @groups = @groups.keep_if{ |g| g.followers.include? current_user } if cookies[:show_only_subscribed_groups] == 'yes'
+    @groups = filter_by_tags(@groups, params[:tags])
 
     @groups = Kaminari.paginate_array(@groups).page(params[:page]).per(20) 
 
     respond_to :js, :html
 	end
 
+  def tagged
+    @groups = Group.tagged_with(params[:tag]).order(:title)
+    @groups = Kaminari.paginate_array(@groups).page(params[:page]).per(20) 
+
+    render :index
+  end
+
   def my_groups
-    cookies[:show_my_topic_groups] = params[:show_my_topic_groups] if params[:show_my_topic_groups].present?
-    cookies[:show_my_learning_groups] = params[:show_my_learning_groups] if params[:show_my_learning_groups].present?
-    cookies[:show_my_lecture_groups] = params[:show_my_lecture_groups] if params[:show_my_lecture_groups].present?
+    cookies[:show_topic_groups] = params[:show_topic_groups] if params[:show_topic_groups].present?
+    cookies[:show_learning_groups] = params[:show_learning_groups] if params[:show_learning_groups].present?
+    cookies[:show_lecture_groups] = params[:show_lecture_groups] if params[:show_lecture_groups].present?
 
     group_types = Array.new
-    group_types << ['topic'] unless cookies[:show_my_topic_groups] == 'no'
-    group_types << ['learning'] unless cookies[:show_my_learning_groups] == 'no'
-    group_types << ['lecture'] unless cookies[:show_my_lecture_groups] == 'no'
+    group_types << ['topic'] unless cookies[:show_topic_groups] == 'no'
+    group_types << ['learning'] unless cookies[:show_learning_groups] == 'no'
+    group_types << ['lecture'] unless cookies[:show_lecture_groups] == 'no'
+    
     @groups = current_user.groups.where(group_type: group_types).order(:title)
+    @groups = filter_by_tags(@groups, params[:tags])
+
+    @groups = Kaminari.paginate_array(@groups).page(params[:page]).per(20) 
+
+    render :index
   end
 
 	def show
@@ -174,5 +178,17 @@ class GroupsController < ApplicationController
       end
     end
 	end
+
+  private
+  def filter_by_tags(groups, tags)
+    if tags
+      cookies[:group_filter_tag_ids] = tags
+      tag_ids = tags.split(',').collect { |i| i.to_i }.to_set
+      groups = groups.keep_if { |g| tag_ids.subset? g.tags.map(&:id).to_set  }
+    elsif cookies[:group_filter_tag_ids]
+      tag_ids = cookies[:group_filter_tag_ids].split(',').collect { |i| i.to_i }.to_set
+      groups = groups.keep_if { |g| tag_ids.subset? g.tags.map(&:id).to_set  }
+    end
+  end
 
 end

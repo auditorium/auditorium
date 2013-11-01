@@ -6,7 +6,7 @@ module Notifiable
 
 private
   def notify
-    Rails.logger.info "NOTIFY: #{current_user.inspect} - #{self.class.name} - #{self.content}"
+    #Rails.logger.info "NOTIFY: #{current_user.inspect} - #{self.class.name} - #{self.content}"
     if self.class.name.eql? 'Comment'
       AuditoriumMailer.new_comment(self).deliver
     end

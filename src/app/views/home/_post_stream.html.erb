@@ -1,7 +1,12 @@
 <ul class="posts">
-  <% @posts.each do |post| %>
-    <%= render 'shared/post', post: post %>
+  <% @posts.group_by { |p| p.created_at.to_date }.each do |date, posts| %>
+     <h3 class="group-of-posts">
+      <span><%= named_date(date) %></span>
+    </h3>
+    <% posts.each do |post| %>
+      <%= render 'shared/post', post: post %>
+    <% end %>
   <% end %>
 </ul>
 
-<span class="right"><%= paginate @posts %></span>
+<%= paginate @posts %>

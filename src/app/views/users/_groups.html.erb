@@ -1,1 +1,11 @@
-<h1>users#groups</h1>
+<section id="users-groups">
+  <header>
+    <h2>
+      <%= t('users.groups.header') %>
+    </h2>
+  </header>
+
+  <% @user.groups.each do |group| %>
+    <%= render 'users/group', group: group %>
+  <% end %>
+</section>

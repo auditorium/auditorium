@@ -75,8 +75,8 @@ $orange: #F4A478; // #FC9800;
 $primary-color: #64868f; //#3474B8;
 $secondary-color: #4d957a;//#FC9800;
 $alert-color: #DC7667; //#BF0404;
-$success-color: rgb(183, 209, 131);//#5ca259;//#7AC02D;
-$warning-color: rgb(254, 201, 86);//#ecbd4b; //#F2CB13;
+$success-color: rgb(183, 209, 131); //#5ca259;//#7AC02D;
+$warning-color: rgb(254, 201, 86); //#ecbd4b; //#F2CB13;
 $notice-color: #72B1E4;
 
 $home-color: $notice-color;
@@ -88,6 +88,9 @@ $topic-color: $success-color;
 $answer-color: darken($gray, 10%);
 $comment-color: darken($gray, 20%);
 $recording-color: $orange;
+$user-color: darken($success-color, 10%);
+$search-color: $alert-color;
+
 
 
 $topic-group-color: $topic-color;
@@ -1303,13 +1306,14 @@ $topbar-link-font-size: emCalc(14);
 
 // Top menu fa styles
 
-// $topbar-menu-link-transform: uppercase;
-$topbar-menu-link-font-size: emCalc(14);
-$topbar-menu-link-weight: normal;
-$topbar-menu-link-color: #888;
-$topbar-menu-fa-color: #888;
+/* Top menu icon styles */
+$topbar-menu-link-transform: uppercase;
+$topbar-menu-link-font-size: em-calc(13);
+$topbar-menu-link-weight: bold;
+$topbar-menu-link-color: #fff;
+$topbar-menu-icon-color: #333;
 $topbar-menu-link-color-toggled: #333;
-$topbar-menu-icon-color-toggled: #333;
+$topbar-menu-icon-color-toggled: $alert-color;
 
 // Transitions and breakpoint styles
 
@@ -1337,6 +1341,7 @@ $topbar-menu-icon-color-toggled: #333;
 [role='main'] {
   padding:5px 10px;
   margin:10px 0 50px 0;
+  min-height:600px;
 }
 
 form {
@@ -1473,6 +1478,43 @@ a.disabled {
   margin: 5px;
 }
 
+#footer {
+  background-color: #333;
+  min-height:250px;
+  color: #fff;
+  width:100%;
+  margin:0;
+  padding:30px;
+  border-top: $dark-gray;
+}
+
+/* ================ ribbon style ================ */
+@mixin ribbon {
+  position: relative;
+  font-size: 0.8em;
+  font-weight: normal;
+  padding: 3px 10px 3px 10px;
+  color: #fff;
+  text-shadow: 0 1px 1px #666666;
+  -webkit-box-shadow: 1px 1px 2px #333;
+  -moz-box-shadow: 1px 1px 2px #333;
+  box-shadow: 1px 1px 2px #333;
+
+   &:after
+  {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 0px;
+    top: 100%;
+    border-width: 5px 5px;
+    border-style: solid;
+    border-color: #666 #666 transparent transparent;
+  }
+}
+
+
 /* ================= custom button styles ===================== */
 
 .button {
@@ -1483,6 +1525,14 @@ a.disabled {
   font-family: Verdana, sans-serif;
   font-weight: normal;
   padding: 5px 10px;
+
+
+  &.new-comment {
+    background-color: $alert-color;
+    &:hover {
+      background-color: darken($alert-color, 10%);
+    }
+  }
 
   &.warning {
     background-color: $warning-color;
@@ -1567,7 +1617,7 @@ a.disabled {
     border-left: 3px solid $question-color;
 
     &:hover {
-      background-color: lighten($question-color, 40%);
+      background-color: lighten($question-color, 20%);
     }  
   }
 
@@ -1576,7 +1626,7 @@ a.disabled {
     border-left: 3px solid $announcement-color;
 
     &:hover {
-      background-color: lighten($announcement-color, 50%);
+      background-color: lighten($announcement-color, 20%);
     }  
   }
 
@@ -1585,7 +1635,7 @@ a.disabled {
     border-left: 3px solid $topic-color;
 
     &:hover {
-      background-color: lighten($topic-color, 30%);
+      background-color: lighten($topic-color, 20%);
     }  
   }
 
@@ -1662,6 +1712,37 @@ a.disabled {
   display: none;
 }
 
+/* ================= Tag style ================================ */
+
+@mixin tag {
+  transition: all 0.2s ease-in-out;
+  padding:2px 5px;
+  display:inline-block;
+  margin:2px;
+  color: #fff;
+  background-color: $alert-color;
+  border-radius:2px;
+  font-size:0.9em;
+
+  &:hover {
+    background-color: darken($alert-color, 10%);
+  }
+
+  &.invert {
+    background: none;
+    border: 1px solid $white;
+    &:hover {
+      background-color: $white;
+      color: #333;
+    }
+  }
+}
+
+a.tag {
+  @include tag;
+  text-decoration:none;
+}
+
 /* ================= Token input field style ================== */
 ul.token-input-list {
   padding:0;
@@ -1672,16 +1753,13 @@ ul.token-input-list {
   vertical-align: middle;
 
   li.token-input-token {
-    background-color: $gray;
-    display:inline-block;
+    @include tag;
     margin:2px;
-    padding:2px 4px;
-    border-radius: 0;
-    font-size: 0.9em;
     float:left;
 
     span {
       margin-left:5px;
+      color: #fff;
     }
   }
 
@@ -1726,6 +1804,37 @@ div.token-input-dropdown {
 
 
 /* =================== Topbar Style ===================== */
+@mixin color_scheme {
+  &.home { color: $home-color; }
+  &.groups { color: $group-color; }
+  &.my_groups { color: $group-color; }
+  &.lecture-group { color: $lecture-group-color; }
+  &.learning-group { color: $learning-group-color; }
+  &.topic-group { color: $topic-color; }
+  &.events { color: $event-color; }
+  &.questions { color: $question-color; }
+  &.announcements { color: $announcement-color; }
+  &.topics { color: $topic-color; }
+  &.videos, &.recordings { color: $recording-color; }
+  &.users { color: $user-color; }
+  &.search { color: $search-color; }
+}
+
+@mixin border_color_scheme {
+  &.home { border-color: $home-color; }
+  &.groups { border-color: $group-color; }
+  &.my_groups { border-color: $group-color; }
+  &.lecture-group { border-color: $lecture-group-color; }
+  &.learning-group { border-color: $learning-group-color; }
+  &.topic-group { border-color: $topic-color; }
+  &.events { border-color: $event-color; }
+  &.questions { border-color: $question-color; }
+  &.announcements { border-color: $announcement-color; }
+  &.topics { border-color: $topic-color; }
+  &.videos, &.recordings { border-color: $recording-color; }
+  &.users { border-color: $user-color; }
+  &.search { border-color: $search-color; }
+}
 
 .top-bar {
   box-shadow: 0 2px 2px darken($gray, 20%);
@@ -1734,17 +1843,10 @@ div.token-input-dropdown {
   height: 55px;
   overflow: hidden;
 
-  &.home { border-color: $home-color; }
-  &.topics { border-color: $topic-color; }
-  &.groups { border-color: $group-color; }
-  &.lecture-group { border-color: $lecture-group-color; }
-  &.learning-group { border-color: $learning-group-color; }
-  &.topic-group { border-color: $topic-group-color; }
-  &.events { border-color: $event-color; }
-  &.questions { border-color: $question-color; }
-  &.announcements { border-color: $announcement-color; }
-  &.comments { border-color: $comment-color; }
+  @include border_color_scheme;
 }
+
+
 
 .top-bar-section ul {
 
@@ -1752,30 +1854,13 @@ div.token-input-dropdown {
     color: #333;
 
     &.active {
-      &.home { color: $home-color; }
-      &.groups { color: $group-color; }
-      &.lecture-group { color: $lecture-group-color; }
-      &.learning-group { color: $learning-group-color; }
-      &.topic-group { color: $topic-color; }
-      &.events { color: $event-color; }
-      &.questions { color: $question-color; }
-      &.announcements { color: $announcement-color; }
-      &.topics { color: $topic-color; }
+      @include color_scheme;
     }
-
     &:not(.button) { 
 
       &:hover {
         background-color: #fff;
-        &.home { color: $home-color; }
-        &.groups { color: $group-color; }
-        &.lecture-group { color: $lecture-group-color; }
-        &.learning-group { color: $learning-group-color; }
-        &.topic-group { color: $topic-color; }
-        &.events { color: $event-color; }
-        &.questions { color: $question-color; }
-        &.announcements { color: $announcement-color; }
-        &.topics { color: $topic-color; }
+        @include color_scheme;
       }
     }
   }
@@ -1874,6 +1959,7 @@ ul.search-results-list{
 .footer {
   vertical-align: middle;
   line-height: 1.2em;
+  padding: 2px 5px;
 }
 
 .footer span, .footer a {
@@ -1881,9 +1967,6 @@ ul.search-results-list{
   font-style: italic;
   font-size:0.8em;
   display:inline-block;
-  &:first-child {
-    margin-left:10px;
-  }
 }
 
 .footer a:hover { 
@@ -1895,10 +1978,10 @@ ul.search-results-list{
 ul.posts.condensed li {
   margin:2px 0;
 
-  &.announcement:nth-child(even) { background-color: lighten($announcement-color, 60%); }
-  &.question:nth-child(even) { background-color: lighten($question-color, 50%); }
-  &.topic:nth-child(even) { background-color: lighten($topic-color, 45%); }
-  &.recording:nth-child(even) { background-color: lighten($recording-color, 50%); }
+  &.announcement:nth-child(even) { background-color: lighten($announcement-color, 33%); }
+  &.question:nth-child(even) { background-color: lighten($question-color, 30%); }
+  &.topic:nth-child(even) { background-color: lighten($topic-color, 25%); }
+  &.recording:nth-child(even) { background-color: lighten($recording-color, 30%); }
 }
 
 ul.posts li,ul.groups li {
@@ -1924,30 +2007,9 @@ ul.groups, ul.posts {
 
     .ribbon
     {
-      position: relative;
-      font-size: 0.8em;
-      font-weight: normal;
-      padding: 3px 10px 3px 10px;
+      @include ribbon;
       margin: 15px 10px 10px -13px;
-      color: #fff;
-      text-shadow: 0 1px 1px #666666;
-      -webkit-box-shadow: 1px 1px 2px #333;
-      -moz-box-shadow: 1px 1px 2px #333;
-      box-shadow: 1px 1px 2px #333;
-
-       &:after
-      {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 0;
-        left: 0px;
-        top: 100%;
-        border-width: 5px 5px;
-        border-style: solid;
-        border-color: #666 #666 transparent transparent;
-      }
-
+      font-weight: bold;
     }
 
     &.lecture-group span.ribbon, 
@@ -1967,7 +2029,7 @@ ul.groups, ul.posts {
 
 
     .content {
-      padding:3px;
+      padding:5px;
     }
 
     &.lecture-group { border-color: $lecture-group-color; }
@@ -2087,13 +2149,22 @@ article.group {
 
 /* ======================== my group card style =============== */
 .group {
+  h2 {
+    font-weight: bold;
+    font-style: italic;
+  }
   box-shadow: 1px 1px 1px darken($gray, 20%);
   background-color: #fff;
+
+  p.tags {
+    display: block;
+    overflow-x: scroll;
+    max-height: 80px;
+  }
 }
 
-
-
 /* entire container, keeps perspective */
+
 
 .flip-container {
   margin: 10px 0;
@@ -2168,32 +2239,11 @@ article.group {
   &.learning-group, &.learning-group span.ribbon { border-color: $learning-group-color; }
   &.topic-group, &.topic-group span.ribbon { border-color: $topic-group-color; }
 
-  .ribbon
-  {
-    position: relative;
-    font-size: 0.8em;
-    font-weight: normal;
-    padding: 3px 10px 3px 10px;
+
+  .ribbon { 
+    @include ribbon; 
     margin: 15px 10px 10px -25px;
-    color: #fff;
-    text-shadow: 0 1px 1px #666666;
-    -webkit-box-shadow: 1px 1px 2px #333;
-    -moz-box-shadow: 1px 1px 2px #333;
-    box-shadow: 1px 1px 2px #333;
-
-     &:after
-    {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 0;
-      left: 0px;
-      top: 100%;
-      border-width: 5px 5px;
-      border-style: solid;
-      border-color: #666 #666 transparent transparent;
-    }
-
+    font-weight:bold;
   }
 
   &.lecture-group span.ribbon{ 
@@ -2458,6 +2508,38 @@ ul.no-style {
 
 /* ============ Post styles =========== */
 
+h3.group-of-posts {
+  line-height: 0.5;
+  text-align: center;
+  margin:20px 0 20px 0;
+  color: $dark-gray;
+  font-style: italic;
+}
+h3.group-of-posts span {
+  display: inline-block;
+  position: relative;  
+}
+h3.group-of-posts span:before,
+h3.group-of-posts span:after {
+  content: "";
+  position: absolute;
+  border-top: 2px solid $dark-gray;
+  top: 50%;
+  width:45px;
+}
+h3.group-of-posts span:before {
+  right: 100%;
+  margin-right: 15px;
+}
+h3.group-of-posts span:after {
+  left: 100%;
+  margin-left: 15px;
+}
+
+.MathJax_Display {
+  text-align: left!important;
+}
+
 .preview {
   border: none!important;
   padding:3px 5px;
@@ -2477,8 +2559,24 @@ ul.no-style {
 }
 
 .post-content {
-  margin-top:10px;
+  margin:20px 10px;
+  text-align: left;
 }
+
+.code, code {
+  background-color: $light-gray;
+  border:1px dashed darken($light-gray,10%);  
+}
+
+.code {
+  overflow-x: scroll;
+  padding:10px;
+}
+
+code {
+  padding: 1px 5px;
+}
+
 
 .post-footer {
   font-style: italic;
@@ -2609,29 +2707,8 @@ ul.video-strip {
 
   .ribbon
   {
-    position: relative;
-    font-size: 0.8em;
-    font-weight: normal;
-    padding: 3px 10px 3px 10px;
-    margin: 5px 10px 10px -24px;
-    color: #fff;
-    text-shadow: 0 1px 1px #666666;
-    -webkit-box-shadow: 1px 1px 2px #333;
-    -moz-box-shadow: 1px 1px 2px #333;
-    box-shadow: 1px 1px 2px #333;
-
-     &:after
-    {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 0;
-      left: 0px;
-      top: 100%;
-      border-width: 5px 5px;
-      border-style: solid;
-      border-color: #666 #666 transparent transparent;
-    }
+    @include ribbon;
+    margin: 15px 10px 10px -24px;
 
     &.bigger {
       font-size: 1.1em;

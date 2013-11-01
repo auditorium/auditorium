@@ -1,4 +1,4 @@
-$('[data-id="my_group_<%= @group.id %>"]').html('<%= j render "groups/my_group", group: @group %>');
-$('li[data-id="group_<%= @group.id %>"]').html('<%= j render "groups/group", group: @group %>').toggleClass('following');
+$('#groups-grid [data-id="my_group_<%= @group.id %>"]').html('<%= j render "groups/group_card", group: @group %>');
+$('#groups-grid li[data-id="group_<%= @group.id %>"]').html('<%= j render "groups/group_card", group: @group %>').toggleClass('following');
 
 $('#follow_button').html('<%= j render "groups/follow_button" %>');

@@ -13,6 +13,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    @question.increment_views(current_user)
   end
 
   def new

@@ -17,9 +17,7 @@
   </div>
   <div class="footer hide-for-small">
     <span class="post-details">
-
-      
-      <%= link_to post.group.title, group_path(post.group), class: 'group-link' %> &middot;
+      <%= t('posts.general.group')%> <%= link_to post.group.title, group_path(post.group), class: 'group-link' %> &middot;
       <%= pluralize(post.views, 'view') %> &middot;
       <% if post.class.name.eql? 'Question' %><%= pluralize(post.answers.size, 'answer') %> &middot;<% end %>
       <%= pluralize(post.comments.size, 'comment') %>

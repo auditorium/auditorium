@@ -11,7 +11,7 @@ $ ->
 
 
   $('.hidden').hide()
-  $('.comments-section a.toggle-comment-form').on 'click', (e) ->
+  $('.comments-section').on 'click',  'a[data-id="toggle-comment-form"]', (e) ->
     e.preventDefault()
     $(this).hide()
     commentable_id = $(this).data('commentable_id')

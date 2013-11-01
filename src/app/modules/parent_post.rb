@@ -20,4 +20,11 @@
   def origin
     self
   end
+
+  def increment_views(current_user)
+    unless self.author == current_user
+      self.views.nil? ? self.views = 1 : self.views +=1 
+      self.save
+    end
+  end
 end

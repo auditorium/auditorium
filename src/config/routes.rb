@@ -10,13 +10,13 @@ Auditorium::Application.routes.draw do
   post ':type/:id/downvote', to: 'ajax#downvote', as: :downvote
   post 'ajax/tab_content', to: 'ajax#tab_content', as: :tab_content
 
-  get 'tags/:tag', to: 'groups#index', as: :tag
+  get 'groups/tagged/:tag', to: 'groups#tagged', as: :tag
   resources :tags, only: ['index']
   get 'search', to: 'search#index', as: :alternative_search
   get 'groups/change_group_type', to: 'groups#change_group_type'
   post 'groups/search_members', to: 'groups#search_members', as: :search_members
   post 'groups/manage_membership', to: 'groups#manage_membership', as: :manage_membership
-  get 'my_groups', to: 'groups#my_groups', as: :my_groups
+  get 'groups/my_groups', to: 'groups#my_groups', as: :my_groups
 
   shallow do 
     resources :groups do
@@ -43,8 +43,6 @@ Auditorium::Application.routes.draw do
           resources :comments
         end
       end
-
-      
     end
   end
   
