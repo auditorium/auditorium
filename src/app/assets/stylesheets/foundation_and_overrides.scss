@@ -1334,6 +1334,7 @@ $topbar-menu-icon-color-toggled: $alert-color;
 @import "font-awesome";
 
 /* ================== general styles ================= */
+
 [class*="column"] + [class*="column"]:last-child {
   float:left;
 }
@@ -1351,6 +1352,10 @@ form {
 input, textarea {
   -webkit-appearance: none;
   border-radius: 0;
+}
+
+input[type='checkbox'] {
+  -webkit-appearance: checkbox;
 }
 
 input[type='radio'] {
@@ -1994,7 +1999,7 @@ ul.groups, ul.posts {
   padding: 0;
 
   li {
-    padding:0;
+    padding:5px 10px;
 
     background-color: #fff;
     box-shadow: 1px 1px 1px darken($gray, 20%); 
@@ -2008,7 +2013,7 @@ ul.groups, ul.posts {
     .ribbon
     {
       @include ribbon;
-      margin: 15px 10px 10px -13px;
+      margin: 15px 10px 10px -24px;
       font-weight: bold;
     }
 
@@ -2027,11 +2032,6 @@ ul.groups, ul.posts {
       background-color: $topic-group-color; 
     }
 
-
-    .content {
-      padding:5px;
-    }
-
     &.lecture-group { border-color: $lecture-group-color; }
     &.learning-group { border-color: $learning-group-color; }
     &.topic-group { border-color: $topic-group-color; }
@@ -2042,20 +2042,13 @@ ul.groups, ul.posts {
     //&.following { background-color: $following-color; }
 
     span {
-      margin-left: 5px;
-      margin-right: 0;
-
-      &:last-child {
-        margin-right:5px;
-      }
-
       &.bookmark {
         margin-left:8px;
       }
 
       &.rating { 
         font-size:1.0em;
-        //margin-left: 10px; 
+        padding:0 5px;
         display:inline-block;
         vertical-align:middle;
       }

@@ -108,8 +108,14 @@ class AjaxController < ApplicationController
 
   def tab_content 
     puts "USER ID: #{params[:user_id]}"
+    view = params[:view]
     @user = User.find(params[:user_id])
-    @partial = params[:partial]
+
+    @partial = "users/#{view}"
+
+    if view.eql? 'settings'
+      @setting = @user.setting.nil? ? Setting.new(user_id: @user.id) : @user.setting
+    end
     
 
     respond_to do |format|

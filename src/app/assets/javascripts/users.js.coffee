@@ -2,7 +2,7 @@ $.renderTabContent = (tab_content, user_id) ->
   $.ajax
     type: 'post'
     url: '/ajax/tab_content'
-    data: { user_id: user_id, partial: "users/#{tab_content}" }
+    data: { user_id: user_id, view: tab_content }
     error: (jqXHR, textStatus, errorThrown) ->
       console.log errorThrown
 

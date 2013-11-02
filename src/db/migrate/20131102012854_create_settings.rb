@@ -1,11 +1,9 @@
 class CreateSettings < ActiveRecord::Migration
   def change
     create_table :settings do |t|
-      t.boolean :receive_email, default: true
-      t.references :user
-
+      t.boolean :receive_emails_when_author, default: true
+      t.boolean :receive_email_notifications, default: true
       t.timestamps
     end
-    add_index :settings, :user_id
   end
 end

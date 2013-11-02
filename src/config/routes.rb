@@ -1,7 +1,17 @@
 Auditorium::Application.routes.draw do
+  get "settings/create"
+
+  get "settings/update"
+
   scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do 
 
   devise_for :users, :controllers => { :confirmations => "users/confirmations", :sessions => "users/sessions", :registrations => "users/registrations" }
+
+   shallow do
+    resources :users do 
+      resources :settings
+    end
+  end
 
   post "ajax/preview", to: 'ajax#preview'
   post "ajax/load_form", to: 'ajax#load_form'
@@ -45,7 +55,7 @@ Auditorium::Application.routes.draw do
       end
     end
   end
-  
+
 
 # old routes - need to be altered!
   resources :membership_requests, :only => [:index, :create, :destroy]

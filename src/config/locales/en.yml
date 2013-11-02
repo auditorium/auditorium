@@ -244,3 +244,23 @@ en:
       previous: "&lsaquo; Prev"
       next: "Next &rsaquo;"
       truncate: "..."
+
+  users:
+    profile:
+      about:
+        title: 'About me'
+      groups:
+        title: "Groups I'm following"
+      questions:
+        title: 'Questions I asked'
+      announcements:
+        title: 'Announcements I gave'
+      topics:
+        title: "Topics I opened"
+
+      settings:
+        title: 'Settings'
+        submit: 'Save settings'
+        receive_email_notifications: 'Receive email notifications.'
+        receive_email_notifications_when_author: 'Receive email notifications when I am an author.'
+        uniqueness_error: 'This user already chose his preferences.'

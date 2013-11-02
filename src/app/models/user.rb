@@ -13,17 +13,15 @@ class User < ActiveRecord::Base
   cattr_accessor :current
   
   # attr_accessible :title, :body
-  
+  has_one :setting, dependent: :destroy
+
   has_many :votings
 
-  has_many :events, foreign_key: :tutor_id # as tutor
-  has_many :lecture_memberships, :dependent => :destroy
-  has_many :course_memberships, :dependent => :destroy
-  has_many :faculty_memberships, :dependent => :destroy
-  has_many :lectures, :through => :lecture_memberships  # lecture maintainers
-  has_many :courses,    :through => :course_memberships  # as student or course-editor (tutor,  professor,  etc.)
-  has_many :faculties,  :through => :faculty_memberships
-  has_many :posts, :foreign_key => :author_id
+  has_many :recordings, :foreign_key => :author_id
+  has_many :announcements, :foreign_key => :author_id
+  has_many :questions, :foreign_key => :author_id
+  has_many :topics, :foreign_key => :author_id
+  has_many :answers, :foreign_key => :author_id
   has_many :comments, :foreign_key => :author_id
   has_many :notifications, :foreign_key => :receiver_id
   has_one :email_setting, :dependent => :destroy
@@ -33,6 +31,19 @@ class User < ActiveRecord::Base
   with_options through: :followings, source: :followerable do |tag|
     tag.has_many :groups, source_type: 'Group'
   end
+
+  # ---- OLD ------
+
+  has_many :events, foreign_key: :tutor_id # as tutor
+  has_many :lecture_memberships, :dependent => :destroy
+  has_many :course_memberships, :dependent => :destroy
+  has_many :faculty_memberships, :dependent => :destroy
+  has_many :lectures, :through => :lecture_memberships  # lecture maintainers
+  has_many :courses,    :through => :course_memberships  # as student or course-editor (tutor,  professor,  etc.)
+  has_many :faculties,  :through => :faculty_memberships
+  has_many :posts, :foreign_key => :author_id
+
+  # ----- end of old ----
   
   validates_uniqueness_of :email
   #validates :username, :presence => true, :format => { :with => /^[A-Za-z0-9_\-\.]+$/, :message => "contains unsupported signs. Plese only use those signs: [A-Za-z0-9_-.]." }
