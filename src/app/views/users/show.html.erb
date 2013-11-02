@@ -1,6 +1,11 @@
 <section class="row">
 <header class="large-10 columns">
-  <h2><%= @user %></h2>
+  <h2>
+    <%= @user %>
+  </h2>
+  <% if @user.admin? %>
+    <span class="label admin"><%= t('users.role.is_admin') %></span>
+  <% end %>
 </header>
 
 <div class="large-2 columns">
@@ -17,7 +22,7 @@
     <li data-tab-content="announcements" data-user-id="<%= @user.id %>" ><%= link_to t('users.tabs.announcements'), '#' %></li>
     <li data-tab-content="topics" data-user-id="<%= @user.id %>" ><%= link_to t('users.tabs.topics'), '#' %></li>
     <% if can? :update, @user %>
-    <li data-tab-content="settings" data-user-id="<%= @user.id %>" ><%= link_to t('users.tabs.settings'), '#' %></li>
+    <li data-tab-content="settings" data-user-id="<%= @user.id %>" class="alert" ><%= link_to t('users.tabs.settings'), edit_user_registration_path %></li>
     <% end %>
   </ul>
 

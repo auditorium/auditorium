@@ -1,23 +1,5 @@
-<h2><%= t('users.profile.settings.title') %></h2>
+<header>
+  <h2><%= t('users.profile.settings.title') %></h2>
+</header>
 
-
-<%= form_for((@user.setting.nil? ? [@user, Setting.new] : @user.setting), remote: true) do |f| %>
-  <ul class="no-style">
-    <li class="input-fields">
-      <%= f.label :receive_email_notifications do %>
-      <%= f.check_box :receive_email_notifications %>
-      <%= t('users.profile.settings.receive_email_notifications') %>
-      <% end %>
-    </li>
-    <li class="input-fields">
-      <%= f.label :receive_emails_when_author do %>
-        <%= f.check_box :receive_emails_when_author, class: 'checkbox custom' %>
-        <%= t('users.profile.settings.receive_email_notifications_when_author') %>
-      <% end %>
-    </li>
-
-    <li class="input-fields">
-      <%= f.submit t('users.profile.settings.submit'),id: 'submit-user-settings', class: 'tiny button users' %>
-    </li>
-  </ul>
-<% end %>
+<%= render 'users/email_notifications' %>

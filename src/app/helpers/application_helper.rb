@@ -1,4 +1,5 @@
 module ApplicationHelper
+  # devise helper methods
   class CodeRayify < Redcarpet::Render::HTML
     def block_code(code, language='ruby')
       if language.nil? or not language.match /^\w+$/

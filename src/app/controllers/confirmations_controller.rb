@@ -1,4 +1,4 @@
-class Users::ConfirmationsController < Devise::ConfirmationsController
+class ConfirmationsController < Devise::ConfirmationsController
 
 	def create
 		if resource_params[:email].match /tu-dresden.de$/

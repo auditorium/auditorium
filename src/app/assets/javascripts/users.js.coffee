@@ -8,9 +8,10 @@ $.renderTabContent = (tab_content, user_id) ->
 
 $ ->
   $('.tabs li').on 'click', (e) ->
+    tab_content = $(this).data('tab-content')
+
     e.preventDefault()
     console.log(window.location)
-    tab_content = $(this).data('tab-content')
     user_id = $(this).data('user-id')
     $.renderTabContent(tab_content, user_id)
     $('.tabs li.active').removeClass('active')

@@ -1,4 +1,4 @@
-class Users::SessionsController < Devise::SessionsController
+class SessionsController < Devise::SessionsController
   respond_to :json, :html
   
   def create

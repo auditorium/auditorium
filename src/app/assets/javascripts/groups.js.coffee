@@ -9,7 +9,6 @@ $.searchMembers = (group_id, query) ->
     error: (jqXHR, textStatus, errorThrown) ->
       console.log errorThrown
 
-$(document).foundation('joyride', 'start');
 
 $('.choosable').on 'click', (event) ->
   selected_group = $(this)

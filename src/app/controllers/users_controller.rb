@@ -79,4 +79,8 @@ class UsersController < ApplicationController
       format.js
     end
   end
+
+  def following_settings
+    respond_to :js
+  end
 end

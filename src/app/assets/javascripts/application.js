@@ -17,9 +17,34 @@
 //= require jquery.tokeninput
 //= require foundation
 //= require translations
+//= require behave
 //= require_tree .
 $(function(){ 
-  $(document).foundation(); 
+  $(document).foundation();
   $(document).foundation('joyride', 'start');
+  new Behave({
+    textarea: document.getElementById('announcement_content'),
+    tabSize: 2
+  });
+  new Behave({
+    textarea: document.getElementById('question_content'),
+    tabSize: 2
+  });
+  new Behave({
+    textarea: document.getElementById('topic_content'),
+    tabSize: 2
+  });
+  new Behave({
+    textarea: document.getElementById('answer_content'),
+    tabSize: 2
+  });
+  new Behave({
+    textarea: document.getElementById('comment_content'),
+    tabSize: 2
+  });
+  new Behave({
+    textarea: document.getElementById('recording_content'),
+    tabSize: 2
+  });
 });
 

@@ -1,8 +1,7 @@
-<header>
-  <h2><%= t('users.profile.personal_data.title') %></h2>
-</header>
-<section class="block">
-  <%= form_for(@user) do |f|%>
+<div class="row">
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|%>
+    
+    <div class="large-6 columns">
     <ul class="no-style">
       <li class="input-fields">
         <%= f.label :title %>
@@ -30,10 +29,29 @@
         <p class="hint"><%= t('users.pending_email_confirmation', email: resource.unconfirmed_email) %></p>
         <% end %>
       </li>
-      <li class="input-fields">
+      </ul>
+      </div>
+
+      <div class="large-6 columns">
+        <ul class="no-style">
+          <li class="input-fields">
+            <%= f.label :password %>
+            <%= f.password_field :password, :autocomplete => 'off' %>
+          </li>
+
+          <li class="input-fields">
+            <%= f.label :password_confirmation %>
+            <%= f.password_field :password_confirmation, :autocomplete => 'off' %>
+          </li>
+          <li class="input-fields">
+            <%= f.label :current_password %>
+            <%= f.password_field :current_password, :autocomplete => 'off' %>
+          </li>
+
+          <li class="input-fields">
             <%= f.submit t('users.profile.update_profile.submit'), class: 'tiny button users' %>
           </li>
-      </ul>
-      
+        </ul>
+      </div>
   <% end %>
-</section>
+</div>

@@ -1,4 +1,5 @@
 class AjaxController < ApplicationController
+
   def preview
     @preview = { subject: params[:subject], content: params[:content], type: params[:post_type]}
 
@@ -107,7 +108,6 @@ class AjaxController < ApplicationController
   end
 
   def tab_content 
-    puts "USER ID: #{params[:user_id]}"
     view = params[:view]
     @user = User.find(params[:user_id])
 

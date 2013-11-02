@@ -90,7 +90,8 @@ en:
       title: 'Learning Groups'
     topics:
       title: 'Topic Groups'
-    no_groups_available: 'There is no group available yet.'
+    no_groups_available: 'No groups found.'
+    no_subscribed_groups: 'You did not subscribed to groups yet.'
     most_active: 'Most active groups'
     show:
       questions:
@@ -154,11 +155,15 @@ en:
     searching_text: "Searching for available tags..."
 
   videos:
-    page_title: "Videos from %{group}"
+    page_title: "Recordings from %{group}"
     titles:
       new: 'Add a new recording to the group'
     new:
       link_title: 'Add a new recording to the group.'
+    edit:
+      header: 'Update the recordings content'
+      submit: 'Save recording' 
+
 
   questions:
     page_title: "Questions from %{group}"
@@ -171,6 +176,9 @@ en:
       submit: 'Ask question'
     placeholder:
       content: 'Click here to insert the content of your question...'
+    edit:
+      header: 'Update the questions content'
+      submit: 'Save question'
 
   announcements:
     page_title: "Announcements from %{group}"
@@ -183,6 +191,9 @@ en:
       submit: 'Submit announcement'
     placeholder:
       content: 'Click here to insert the content of your announcement...'
+    edit:
+      header: 'Update the announcements content'
+      submit: 'Save announcement'
 
   topics:
     page_title: "Topics from %{group}"
@@ -193,6 +204,9 @@ en:
       subject: 'What is the content of your topic?'
     new:
       submit: 'Submit topic'
+    edit:
+      header: 'Update the topics content'
+      submit: 'Save topic'
     placeholder:
       content: 'Click here to insert the content of your topic...'
 
@@ -204,6 +218,9 @@ en:
       content: 'Content of your comment:'
     placeholder:
       content: 'Write a comment...'
+    edit:
+      header: 'Update the comments content'
+      submit: 'Save comment'
 
   answers:
     actions:
@@ -211,6 +228,9 @@ en:
       submit: 'Submit your answer'
     placeholder:
       content: 'Click here and begin writing your answer...'
+    edit:
+      header: 'Update the answers content'
+      submit: 'Save answer'
 
   links:
     goto:
@@ -246,9 +266,20 @@ en:
       truncate: "..."
 
   users:
+    pending_email_confirmation: 'An email confirmation for %{email} is pending.'
+    role:
+      is_admin: 'Administrator'
     profile:
+      link: 'Profile'
+      personal_data:
+        title: 'Personal information'
+      update_profile:
+        title: 'Edit profile'
+        link: 'Edit profile'
+        user_title: 'You can provide your title, so users can see your academic title.'
+        submit: 'Update personal information'
       about:
-        title: 'About me'
+        title: 'About'
       groups:
         title: "Groups I'm following"
       questions:
@@ -257,10 +288,16 @@ en:
         title: 'Announcements I gave'
       topics:
         title: "Topics I opened"
-
       settings:
         title: 'Settings'
-        submit: 'Save settings'
+        general_settings: 
+          header: 'General settings'
+          hint: 'You can choose if you want to receive email notifications with updates in your subscribed groups.'
+          submit: 'Save settings' 
+        subscribed_groups: 
+          header: 'Email notifications for subscribed groups'
+          hint: 'You can choose for which subscribed group you will receive email notifications.'
+          submit: 'Save group settings' 
         receive_email_notifications: 'Receive email notifications.'
         receive_email_notifications_when_author: 'Receive email notifications when I am an author.'
         uniqueness_error: 'This user already chose his preferences.'

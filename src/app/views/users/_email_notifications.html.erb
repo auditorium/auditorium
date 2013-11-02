@@ -1,0 +1,56 @@
+<%= form_for((@user.setting.nil? ? [@user, Setting.new] : @user.setting), remote: true) do |f| %>
+  <header>
+    <h3 class="subheader"><%= t('users.profile.settings.general_settings.header') %></h3>
+    <p class="hint"><%= t('users.profile.settings.general_settings.hint') %></p>
+  </header>
+  <ul class="no-style">
+    <li class="input-fields">
+      <%= f.label :receive_email_notifications do %>
+      <%= f.check_box :receive_email_notifications %>
+      <%= t('users.profile.settings.receive_email_notifications') %>
+      <% end %>
+    </li>
+
+    <% if @user.setting.receive_email_notifications %>
+      <li class="input-fields">
+        <%= f.label :receive_emails_when_author do %>
+          <%= f.check_box :receive_emails_when_author %>
+          <%= t('users.profile.settings.receive_email_notifications_when_author') %>
+        <% end %>
+      </li>
+    <% end %>
+
+    <li class="input-fields">
+      <%= f.submit t('users.profile.settings.general_settings.submit'), class: 'tiny button users' %>
+    </li>
+  </ul>
+<% end %>
+
+<% if @user.setting.receive_email_notifications %>
+  <header>
+    <h3 class="subheader"><%= t('users.profile.settings.subscribed_groups.header') %></h3>
+    <p class="hint"><%= t('users.profile.settings.subscribed_groups.hint') %></p>
+  </header>
+  <% if @user.followings.size > 0 %>
+    <%= form_tag following_settings_path, method: 'post', remote: true do %>
+      <ul class="no-style">
+        
+        <% @user.followings.each do |following| %>
+          <% group = Group.find(following.followerable_id) %>
+          <li class="input-fields">
+            <%= label_tag "receive_notifications[#{dom_id(group)}]".to_sym do %>
+              <%= check_box_tag "receive_notifications[#{dom_id(group)}]".to_sym, 1, following.receive_notifications %>
+              <%= group.title %>
+            <% end %>
+          </li>
+        <% end %>
+      
+        <li class="input-fields">
+          <%= submit_tag t('users.profile.settings.subscribed_groups.submit'), class: 'tiny button users' %>
+        </li>
+      </ul>
+    <% end %>
+  <% else %>
+    <h4 class="subheader"><%= t('groups.no_subscribed_groups') %></h4>
+  <% end %>
+<% end %>

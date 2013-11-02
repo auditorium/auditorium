@@ -5,9 +5,11 @@ Auditorium::Application.routes.draw do
 
   scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do 
 
-  devise_for :users, :controllers => { :confirmations => "users/confirmations", :sessions => "users/sessions", :registrations => "users/registrations" }
+  devise_for :users, :controllers => { :confirmations => "confirmations", 
+                                       :sessions => "sessions", 
+                                       :registrations => "registrations" }
 
-   shallow do
+  shallow do
     resources :users do 
       resources :settings
     end
@@ -27,7 +29,7 @@ Auditorium::Application.routes.draw do
   post 'groups/search_members', to: 'groups#search_members', as: :search_members
   post 'groups/manage_membership', to: 'groups#manage_membership', as: :manage_membership
   get 'groups/my_groups', to: 'groups#my_groups', as: :my_groups
-
+  post 'users/following_settings', to: 'users#following_settings', as: :following_settings
   shallow do 
     resources :groups do
       member do
