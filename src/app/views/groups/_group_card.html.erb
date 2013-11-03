@@ -31,9 +31,11 @@
           </ul>
         </div>
 
+        <![if !IE]>
         <div class="bottom">
-          <%= link_to fa_icon('arrow-circle-right'), '#', class: 'flip-to-back', 'data-id' => dom_id(group) %>
+          <%= link_to fa_icon('arrow-circle-right'), '#', class: 'no-ie flip-to-back', 'data-id' => dom_id(group) %>
         </div>
+        <![endif]>
       </div>
     </div>
 

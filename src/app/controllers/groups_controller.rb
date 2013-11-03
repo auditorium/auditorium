@@ -19,7 +19,7 @@ class GroupsController < ApplicationController
     @groups = filter_by_tags(@groups)
 
     @groups = Kaminari.paginate_array(@groups).page(params[:page]).per(20)
-    @tag_ids = Tag.where(id: cookies[:group_filter_tag_ids].split(','))
+    @tag_ids = cookies[:group_filter_tag_ids].present? ? Tag.where(id: cookies[:group_filter_tag_ids].split(',')) : []
     respond_to :js, :html
 	end
 
@@ -44,7 +44,7 @@ class GroupsController < ApplicationController
     @groups = filter_by_tags(@groups)
 
     @groups = Kaminari.paginate_array(@groups).page(params[:page]).per(20)
-    @tag_ids = Tag.where(id: cookies[:group_filter_tag_ids].split(','))
+    @tag_ids = cookies[:group_filter_tag_ids].present? ? Tag.where(id: cookies[:group_filter_tag_ids].split(',')) : []
     render :index
   end
 

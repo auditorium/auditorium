@@ -1498,11 +1498,22 @@ a.disabled {
 #footer {
   background-color: #333;
   min-height:250px;
-  color: #fff;
+  color: $white;
   width:100%;
   margin:0;
   padding:30px;
   border-top: $dark-gray;
+
+  h1,h2,h3 { color: $white;}
+
+  a {
+    color: $white;
+    &:hover { text-decoration: underline; }
+  }
+  ul.no-style {
+    border:none;
+    li { border:none;}
+  }
 }
 
 /* ================ ribbon style ================ */
@@ -2195,6 +2206,8 @@ article.group {
   -moz-transform-style: preserve-3d;
   -o-transition: 0.6s;
   -o-transform-style: preserve-3d;
+  -ms-transition: 0.6s;
+  -ms-transform-style: preserve-3d;
   transition: 0.6s;
   transform-style: preserve-3d;
 
@@ -2206,7 +2219,9 @@ article.group {
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
   -o-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
   backface-visibility: hidden;
+  transform: rotateX(0deg);
 
   position: absolute;
   width:100%;
@@ -2278,6 +2293,7 @@ article.group {
   color: #fff;
   -webkit-transform: rotateY(-180deg);
   -moz-transform: rotateY(-180deg);
+  -ms-transform: rotateY(-180deg);
   -o-transform: rotateY(-180deg);
   transform: rotateY(-180deg);
 
