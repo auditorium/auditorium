@@ -1,16 +1,15 @@
-<div class="row">
-  <% if @groups.size > 0 %>
-  <% @groups.each do |group| %>
-    <div class="small-12 medium-6 large-4 columns" data-id="my_<%= dom_id(group)%>">
-      <%= render 'groups/group_card', group: group %>
-    </div>
-  <% end %>
-
-  <% else %>
-    <div class="block">
-      <%= t('my_groups.no_groups_subscribed') %>
-    </div>
-  <% end %>
-</div>
+<% if @groups.size > 0 %>
+  <div class="row">
+    <% @groups.each do |group| %>
+      <div class="small-12 medium-6 large-4 columns" data-id="<%= dom_id(group)%>">
+        <%= render 'groups/group_card', group: group %>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p class="hint bigger">
+    <%= t('my_groups.no_groups_subscribed') %>
+  </p>
+<% end %>
 
 <span class="right"><%= paginate @groups %></span>

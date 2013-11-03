@@ -8,9 +8,11 @@
       <%= render 'shared/group_filter' %>
     </div>
 
-    <div class="tag-filter">
+    <div class="tag-filter <%= (params[:action].eql? 'my_groups') ? 'my-groups-filter' : 'groups-filter' %>">
       <%= form_tag groups_path, method: 'get' do %>
-        <%= text_field_tag :tag_tokens, nil, data: {load: Tag.where(id: cookies[:group_filter_tag_ids].split(','))}, id: 'group_filter_tag_tokens' %>
+
+        <%= text_field_tag :tag_tokens, nil, data: {load: @tag_ids}, id: 'group_filter_tag_tokens' %>
+        
         <%= label_tag :tag_tokens, t('groups.tags.filter'), class: 'hint' %> 
       <% end %>
     </div>
