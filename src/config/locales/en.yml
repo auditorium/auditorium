@@ -241,6 +241,7 @@ en:
       lecture-groups: 'Lectures'
       learning-groups: 'Learning Groups'
       topic-groups: 'Topic Groups'
+      groups_for_subscribing: 'Go to groups for subscribing groups.'
 
   posts:
     label: '%{type}'

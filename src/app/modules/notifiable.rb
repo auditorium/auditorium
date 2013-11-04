@@ -7,8 +7,25 @@ module Notifiable
 private
   def notify
     #Rails.logger.info "NOTIFY: #{current_user.inspect} - #{self.class.name} - #{self.content}"
-    if self.class.name.eql? 'Comment'
-      AuditoriumMailer.new_comment(self).deliver
-    end
+    # case self.class.name
+    # when 'comment':
+    #   # calculate who will receive the notification
+    #   # every group subscriber
+    #   # every author
+    #   group = self.group
+
+    #   # follower: user object
+    #   group.followers.each do |follower|
+    #     # todo
+    #   end
+
+    #   AuditoriumMailer.new_comment(self).deliver
+    # when 'answer':
+    # when 'question':
+    # when 'announcement':
+    # when 'topic':
+    # when 'group':
+
+    # end
   end
 end
