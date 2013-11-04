@@ -7,6 +7,7 @@ module Notifiable
 private
   def notify
     #Rails.logger.info "NOTIFY: #{current_user.inspect} - #{self.class.name} - #{self.content}"
+
     # case self.class.name
     # when 'comment':
     #   # calculate who will receive the notification
@@ -27,5 +28,6 @@ private
     # when 'group':
 
     # end
+
   end
 end
