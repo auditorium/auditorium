@@ -1424,11 +1424,26 @@ small {
 
 .alert-box {
   margin:10px;
+
+  a {
+    color: $white;
+    text-decoration: underline;
+    &:hover { color: $gray; }
+  }
 }
 
-.notice, .error {
+.light, .warning, .notice, .error {
   @include alert-base;
   .close { @include alert-close; }
+}
+
+.light {
+  color: $dark-gray;
+  a {
+    color: $dark-gray;
+    text-decoration: underline;
+    &:hover { color: darken($dark-gray, 10%); }
+  }
 }
 
 .error {

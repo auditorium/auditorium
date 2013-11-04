@@ -1,4 +1,4 @@
-<%= form_for((@user.setting.nil? ? [@user, Setting.new] : @user.setting), remote: true) do |f| %>
+<%= form_for((@user.setting.nil? ? [@user, Setting.new] : [@user, @user.setting]), remote: true) do |f| %>
   <header>
     <h3 class="subheader"><%= t('users.profile.settings.general_settings.header') %></h3>
     <p class="hint"><%= t('users.profile.settings.general_settings.hint') %></p>
@@ -11,7 +11,7 @@
       <% end %>
     </li>
 
-    <% if @user.setting.receive_email_notifications %>
+    <% if @setting.receive_email_notifications %>
       <li class="input-fields">
         <%= f.label :receive_emails_when_author do %>
           <%= f.check_box :receive_emails_when_author %>
@@ -26,7 +26,7 @@
   </ul>
 <% end %>
 
-<% if @user.setting.receive_email_notifications %>
+<% if @setting.receive_email_notifications %>
   <header>
     <h3 class="subheader"><%= t('users.profile.settings.subscribed_groups.header') %></h3>
     <p class="hint"><%= t('users.profile.settings.subscribed_groups.hint') %></p>
@@ -51,6 +51,6 @@
       </ul>
     <% end %>
   <% else %>
-    <h4 class="subheader"><%= t('groups.no_subscribed_groups') %></h4>
+    <p class="alert-box warning"><%= t('groups.no_subscribed_groups') %> <%= link_to t('links.goto.groups_for_subscribing'), groups_path %></p>
   <% end %>
 <% end %>
