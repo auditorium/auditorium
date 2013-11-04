@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: ratings
+#
+#  id              :integer          not null, primary key
+#  user_id         :integer
+#  post_id         :integer
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  points          :integer          default(0)
+#  notifyable_id   :integer
+#  notifyable_type :string(255)
+#
+
 class Rating < ActiveRecord::Base
   belongs_to :user
   belongs_to :post

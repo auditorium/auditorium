@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: chairs
+#
+#  id           :integer          not null, primary key
+#  name         :string(255)
+#  institute_id :integer
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  url          :string(255)
+#  jexam_id     :integer
+#
+
 class Chair < ActiveRecord::Base
   has_many :lectures, :dependent => :destroy
   belongs_to :institute

@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: groups
+#
+#  id            :integer          not null, primary key
+#  title         :string(255)
+#  description   :text
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  group_type    :string(255)
+#  creator_id    :integer          default(1)
+#  private_posts :boolean
+#  url           :string(255)
+#
+
 class Group < ActiveRecord::Base
   
   has_many :tags, through: :taggings

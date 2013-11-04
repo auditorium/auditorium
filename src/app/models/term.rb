@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: terms
+#
+#  id         :integer          not null, primary key
+#  term_type  :string(255)
+#  beginDate  :date
+#  endDate    :date
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  jexam_id   :integer          default(0)
+#
+
 class Term < ActiveRecord::Base
   has_many :courses
   attr_accessible :term_type, :beginDate, :endDate, :jexam_id

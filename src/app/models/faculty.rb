@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: faculties
+#
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  url        :string(255)
+#
+
 class Faculty < ActiveRecord::Base
   has_many :institutes, :dependent => :destroy
   attr_accessible :name

@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: lectures
+#
+#  id           :integer          not null, primary key
+#  name         :string(255)
+#  chair_id     :integer
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  url          :string(255)      default("")
+#  sws          :integer          default(0)
+#  creditpoints :integer          default(0)
+#  description  :text
+#  jexam_id     :integer
+#
+
 class Lecture < ActiveRecord::Base
 
   has_many :courses, :dependent => :destroy

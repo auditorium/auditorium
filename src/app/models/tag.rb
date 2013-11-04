@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: tags
+#
+#  id          :integer          not null, primary key
+#  name        :string(255)
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  description :text
+#
+
 class Tag < ActiveRecord::Base
 	
   has_many :taggings
@@ -9,6 +20,7 @@ class Tag < ActiveRecord::Base
   attr_accessible :name, :description
 
   validates :name,  presence: true
+  validates_uniqueness_of :name
   # validates :description, presence: true
 
   def self.tokens(options = {})

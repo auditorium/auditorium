@@ -8,26 +8,41 @@ private
   def notify
     #Rails.logger.info "NOTIFY: #{current_user.inspect} - #{self.class.name} - #{self.content}"
 
-    # case self.class.name
-    # when 'comment':
-    #   # calculate who will receive the notification
-    #   # every group subscriber
-    #   # every author
-    #   group = self.group
+    case self.class.name
+    when 'comment'
+      # calculate who will receive the notification
+      # every group subscriber
+      # every author
+      group = self.group
 
-    #   # follower: user object
-    #   group.followers.each do |follower|
-    #     # todo
-    #   end
+      
+      receivers(group)
 
-    #   AuditoriumMailer.new_comment(self).deliver
-    # when 'answer':
-    # when 'question':
-    # when 'announcement':
-    # when 'topic':
-    # when 'group':
+      AuditoriumMailer.new_comment(self).deliver
+    when 'answer'
+      Rails.logger.info "NOTIFICATION: #{self.class.name}"
+    when 'question'
+      Rails.logger.info "NOTIFICATION: #{self.class.name}"
+    when 'announcement'
+      Rails.logger.info "NOTIFICATION: #{self.class.name}"
+    when 'topic'
+      Rails.logger.info "NOTIFICATION: #{self.class.name}"
+    when 'group'
+      Rails.logger.info "NOTIFICATION: #{self.class.name}"
+    else
+      Rails.logger.info "NOTIFICATION: #{self.class.name}"
+    end
 
-    # end
+  end
 
+  def receivers(group)
+    # follower: user object
+    group.followers.each do |follower|
+      if follower.setting.present?
+
+      else
+        receivers << follower
+      end
+    end
   end
 end

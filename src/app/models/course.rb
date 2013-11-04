@@ -1,3 +1,21 @@
+# == Schema Information
+#
+# Table name: courses
+#
+#  id          :integer          not null, primary key
+#  name        :string(255)
+#  term_id     :integer
+#  lecture_id  :integer
+#  description :text
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  sws         :integer          default(0)
+#  url         :string(255)      default("")
+#  approved    :boolean          default(TRUE)
+#  creator_id  :integer
+#  jexam_id    :integer
+#
+
 class Course < ActiveRecord::Base
 
   belongs_to :lecture

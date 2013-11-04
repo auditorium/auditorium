@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: periods
+#
+#  id            :integer          not null, primary key
+#  weekday       :string(255)
+#  duration      :integer
+#  place         :string(255)
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  event_id      :integer
+#  minute_of_day :integer
+#
+
 class Period < ActiveRecord::Base
   belongs_to :event
   attr_accessible :duration, :place, :weekday, :minute_of_day, :event_id

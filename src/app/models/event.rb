@@ -1,3 +1,22 @@
+# == Schema Information
+#
+# Table name: events
+#
+#  id         :integer          not null, primary key
+#  event_type :string(255)
+#  course_id  :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  tutor_id   :integer
+#  weekday    :integer
+#  beginDate  :date
+#  endDate    :date
+#  week       :integer
+#  url        :string(255)      default("")
+#  building   :string(255)      default("")
+#  room       :string(255)      default("")
+#
+
 class Event < ActiveRecord::Base
   has_many :periods # raum und zeit
 

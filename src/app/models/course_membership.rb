@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: course_memberships
+#
+#  id              :integer          not null, primary key
+#  user_id         :integer
+#  course_id       :integer
+#  membership_type :string(255)      default("member")
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  notifyable_id   :integer
+#  notifyable_type :string(255)
+#  receive_emails  :boolean          default(TRUE)
+#
+
 class CourseMembership < ActiveRecord::Base
   belongs_to :user
   belongs_to :course

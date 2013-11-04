@@ -1,3 +1,21 @@
+# == Schema Information
+#
+# Table name: videos
+#
+#  id         :integer          not null, primary key
+#  content    :text
+#  subject    :string(255)
+#  url        :string(255)
+#  views      :integer
+#  is_private :boolean
+#  author_id  :integer
+#  group_id   :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  code       :string(255)
+#  rating     :integer          default(0)
+#
+
 class Video < ActiveRecord::Base
   before_save :set_code
   

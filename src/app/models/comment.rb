@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: comments
+#
+#  id               :integer          not null, primary key
+#  author_id        :integer
+#  content          :text
+#  rating           :integer          default(0)
+#  commentable_id   :integer
+#  commentable_type :string(255)
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#
+
 class Comment < ActiveRecord::Base
   include Votable
   include Notifiable

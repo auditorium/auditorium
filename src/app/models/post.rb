@@ -1,3 +1,28 @@
+# == Schema Information
+#
+# Table name: posts
+#
+#  id              :integer          not null, primary key
+#  subject         :string(255)
+#  body            :text
+#  post_type       :string(255)
+#  parent_id       :integer
+#  answer_to_id    :integer
+#  course_id       :integer
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  author_id       :integer
+#  rating          :integer          default(0)
+#  notifyable_id   :integer
+#  notifyable_type :string(255)
+#  needs_review    :boolean          default(FALSE)
+#  is_private      :boolean          default(FALSE)
+#  last_activity   :datetime
+#  views           :integer          default(0)
+#  url             :string(255)
+#  group_id        :integer
+#
+
 class Post < ActiveRecord::Base
   scope :not_answered, where(:answer_to_id => nil, :post_type => 'question')
   attr_accessible :body, :subject, :parent_id, :course_id, :author_id, :answer_to_id, :is_private, :tag_tokens, :post_type

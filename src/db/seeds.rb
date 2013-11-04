@@ -6,9 +6,38 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first) 
 # x = [1,2,3,4,5]
+
+def self.add_random_tags 
+  a = (0..Tag.all.size).to_a
+  a.select {|_| rand(2).zero? }
+  Tag.where(id: a)
+end
+
+x = (1..5).to_a
+
+admin = User.where(email: 'admin@tu-dresden.de').first_or_initialize(username: 'admin', password: 'test1234', password_confirmation: 'test1234')
+admin.admin = true 
+admin.confirmed_at = Time.now
+puts admin.inspect
+admin.save!
+
+(1..10).each do |i| 
+
+  user = User.where(email: "user#{i}@tu-dresden.de").first_or_initialize(username: "user #{i}", password: 'test1234', password_confirmation: 'test1234')
+  user.confirmed_at = Time.now
+  puts user.inspect
+  user.save!
+end
+
+(1..20).each do |i|
+  tag =Tag.create(name: Faker::Name.name, description: Faker::Lorem.words(20).join(' '))
+  puts tag.inspect
+end
+
 (1..5).each do |i|
   group = Group.new(title: Faker::Company.name, description: Faker::Lorem.words.join(' '), url: "http://#{Faker::Internet.domain_name}", group_type: ['lecture', 'topic', 'learning'].sample)
   group.creator = User.first
+  group.tags << add_random_tags
   group.save!
   puts group.inspect
 end
@@ -17,16 +46,19 @@ Group.all.each do |group|
   (1..x.sample).each do |i|
     question = group.questions.new(subject: Faker::Lorem.words(10).join(' ').capitalize, content: Faker::Lorem.words(100).join(' '))
     question.author_id = User.all.sample.id
+    question.tags << add_random_tags
     question.save!
     puts question.inspect
     
     announcement = group.announcements.new(subject: Faker::Lorem.words(10).join(' ').capitalize, content: Faker::Lorem.words(100).join(' '))
     announcement.author_id = User.all.sample.id
+    announcement.tags << add_random_tags
     announcement.save!
     puts announcement.inspect
 
     topic = group.topics.new(subject: Faker::Lorem.words(10).join(' ').capitalize, content: Faker::Lorem.words(100).join(' '))
     topic.author_id = User.all.sample.id
+    topic.tags << add_random_tags
     topic.save!
     puts topic.inspect
   end
@@ -74,9 +106,4 @@ Topic.all.each do |topic|
     comment.save!
     puts comment.inspect
   end
-end
-
-(1..20).each do |i|
-  tag =Tag.create(name: Faker::Name.name, description: Faker::Lorem.words(20).join(' '))
-  puts tag.inspect
 end
