@@ -49,6 +49,7 @@ group :test do
   gem 'sqlite3'
   gem 'selenium-webdriver'
   gem 'capybara-webkit'
+  gem 'email_spec'
   #gem 'poltergeist'
 end
 

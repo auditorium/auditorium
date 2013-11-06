@@ -51,7 +51,7 @@ $em-base: 16 !default;
 
 $default-float: left;
 
-$body-bg: #f4f2ea;
+$body-bg: #EDE9DF;
 // $body-font-color: #222;
 // $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 // $body-font-weight: normal;
@@ -70,7 +70,7 @@ $beige: #f4f2ea;
 $white: #fff;
 $light-gray: #efefef;
 $gray: #e9e9e9;
-$anthracite: #333;
+$anthracite: #384047;
 $dark-gray: darken($gray, 20%);
 $cyan: #66bfa9;
 $orange: #F4A478; // #FC9800;
@@ -350,7 +350,7 @@ $input-box-shadow: none;
 // $input-prefix-border-size: 1px;
 // $input-prefix-border-type: solid;
 // $input-prefix-overflow: hidden;
-// $input-prefix-font-color: #333;
+// $input-prefix-font-color: $anthracite;
 // $input-prefix-font-color-alt: #fff;
 
 // We use these to style the error states for inputs and labels
@@ -360,7 +360,7 @@ $input-box-shadow: none;
 // $input-error-message-font-size: emCalc(12);
 // $input-error-message-font-weight: bold;
 // $input-error-message-font-color: #fff;
-// $input-error-message-font-color-alt: #333;
+// $input-error-message-font-color-alt: $anthracite;
 
 // We use this to style the glowing effect of inputs when focused
 
@@ -387,7 +387,7 @@ $button-margin-bottom: emCalc(5);
 
 // $button-font-family: inherit;
 // $button-font-color: #fff;
-// $button-font-color-alt: #333;
+// $button-font-color-alt: $anthracite;
 // $button-font-med: emCalc(16);
 // $button-font-tny: emCalc(11);
 // $button-font-sml: emCalc(13);
@@ -428,7 +428,7 @@ $button-radius: $global-radius;
 // We use these to set the color of the pip in dropdown buttons
 
 // $dropdown-button-pip-color: #fff;
-// $dropdown-button-pip-color-alt: #333;
+// $dropdown-button-pip-color-alt: $anthracite;
 
 // We use these to style tiny dropdown buttons
 
@@ -466,7 +466,7 @@ $button-radius: $global-radius;
 
 // $split-button-function-factor: 15%;
 // $split-button-pip-color: #fff;
-// $split-button-pip-color-alt: #333;
+// $split-button-pip-color-alt: $anthracite;
 // $split-button-active-bg-tint: rgba(0,0,0,0.1);
 
 // We use these to control tiny split buttons
@@ -532,7 +532,7 @@ $button-radius: $global-radius;
 
 // We use these to style the close buttons
 
-// $alert-close-color: #333;
+// $alert-close-color: $anthracite;
 // $alert-close-position: emCalc(5);
 // $alert-close-font-size: emCalc(22);
 // $alert-close-opacity: 0.3;
@@ -569,7 +569,7 @@ $button-radius: $global-radius;
 
 // $crumb-font-size: emCalc(11);
 // $crumb-font-color: $primary-color;
-// $crumb-font-color-current: #333;
+// $crumb-font-color-current: $anthracite;
 // $crumb-font-color-unavailable: #999;
 // $crumb-font-transform: uppercase;
 // $crumb-link-decor: underline;
@@ -923,7 +923,7 @@ $label-font-color-alt: #fff;
 
 // We use these to set default font colors
 
-// $panel-font-color: #333;
+// $panel-font-color: $anthracite;
 // $panel-font-color-alt: #fff;
 
 // $panel-header-adjust: true;
@@ -945,7 +945,7 @@ $label-font-color-alt: #fff;
 // $price-title-bg: #ddd;
 // $price-title-padding: emCalc(15, 20);
 // $price-title-align: center;
-// $price-title-color: #333;
+// $price-title-color: $anthracite;
 // $price-title-weight: bold;
 // $price-title-size: emCalc(16);
 
@@ -954,7 +954,7 @@ $label-font-color-alt: #fff;
 // $price-money-bg: #eee;
 // $price-money-padding: emCalc(15, 20);
 // $price-money-align: center;
-// $price-money-color: #333;
+// $price-money-color: $anthracite;
 // $price-money-weight: normal;
 // $price-money-size: emCalc(20);
 
@@ -971,7 +971,7 @@ $label-font-color-alt: #fff;
 
 // We use these to control the list item styles
 
-// $price-item-color: #333;
+// $price-item-color: $anthracite;
 // $price-item-padding: emCalc(15);
 // $price-item-align: center;
 // $price-item-font-size: emCalc(14);
@@ -1058,8 +1058,8 @@ $label-font-color-alt: #fff;
 
 // These style the titles
 
-// $section-title-color: #333;
-// $section-title-color-active: #333;
+// $section-title-color: $anthracite;
+// $section-title-color-active: $anthracite;
 // $section-title-bg: #efefef;
 // $section-title-bg-active: darken($section-title-bg, $section-function-factor);
 // $section-title-bg-active-tabs: #fff;
@@ -1239,7 +1239,7 @@ $label-font-color-alt: #fff;
 
 // $has-tip-border-bottom: dotted 1px #ccc;
 // $has-tip-font-weight: bold;
-// $has-tip-font-color: #333;
+// $has-tip-font-color: $anthracite;
 // $has-tip-border-bottom-hover: dotted 1px darken($primary-color, 20%);
 // $has-tip-font-color-hover: $primary-color;
 // $has-tip-cursor-type: help;
@@ -1285,12 +1285,12 @@ $topbar-dropdown-bg: rgba(#fff, 0.95);
 // $topbar-dropdown-link-color: #fff;
 // $topbar-dropdown-link-bg: lighten($topbar-bg, 5%);
 // $topbar-dropdown-toggle-size: 5px;
-$topbar-dropdown-toggle-color: #333;
+$topbar-dropdown-toggle-color: $anthracite;
 // $topbar-dropdown-toggle-alpha: 0.5;
 
 // Set the link colors and styles for top-level nav
 
-$topbar-link-color: #333;
+$topbar-link-color: $anthracite;
 // $topbar-link-color-hover: #fff;
 // $topbar-link-color-active: #fff;
 $topbar-link-weight: normal;
@@ -1311,8 +1311,8 @@ $topbar-menu-link-transform: uppercase;
 $topbar-menu-link-font-size: em-calc(13);
 $topbar-menu-link-weight: bold;
 $topbar-menu-link-color: #fff;
-$topbar-menu-icon-color: #333;
-$topbar-menu-link-color-toggled: #333;
+$topbar-menu-icon-color: $anthracite;
+$topbar-menu-link-color-toggled: $anthracite;
 $topbar-menu-icon-color-toggled: $alert-color;
 
 // Transitions and breakpoint styles
@@ -1386,7 +1386,7 @@ input[type='text'], input[type='email'], input[type='text'], input[type='url'], 
 label.hint {
   font-style: italic;
   font-size: 0.8em;
-  font-color: #333;
+  font-color: $anthracite;
   margin:2px 5px 5px;
 }
 
@@ -1511,7 +1511,7 @@ a.disabled {
 }
 
 #footer {
-  background-color: #333;
+  background-color: $anthracite;
   min-height:250px;
   color: $white;
   width:100%;
@@ -1539,9 +1539,9 @@ a.disabled {
   padding: 3px 10px 3px 10px;
   color: #fff;
   text-shadow: 0 1px 1px #666666;
-  -webkit-box-shadow: 1px 1px 2px #333;
-  -moz-box-shadow: 1px 1px 2px #333;
-  box-shadow: 1px 1px 2px #333;
+  -webkit-box-shadow: 1px 1px 2px $anthracite;
+  -moz-box-shadow: 1px 1px 2px $anthracite;
+  box-shadow: 1px 1px 2px $anthracite;
 
    &:after
   {
@@ -1723,7 +1723,7 @@ a.disabled {
   &.selected {
     background-color: $primary-color;
     color: white;
-    box-shadow: inset 0 0 4px #333;
+    box-shadow: inset 0 0 4px $anthracite;
     border: none;
     text-shadow: none;
 
@@ -1758,7 +1758,7 @@ a.disabled {
     border: 1px solid $white;
     &:hover {
       background-color: $white;
-      color: #333;
+      color: $anthracite;
     }
   }
 }
@@ -1876,7 +1876,7 @@ div.token-input-dropdown {
 .top-bar-section ul {
 
   li a {
-    color: #333;
+    color: $anthracite;
 
     &.active {
       @include color_scheme;
@@ -1962,7 +1962,7 @@ ul.search-results-list{
   list-style:none;
   li {
     display: inline-block;
-    color: #333;
+    color: $anthracite;
 
     &:after {
       content: ', ';
@@ -2462,20 +2462,20 @@ ul.filter-list {
     color: darken($dark-gray, 20%);
 
     &:hover {
-      color: #333;
+      color: $anthracite;
     }
 
     &.filter:before {
       padding-right: 5px;
       font-family: FontAwesome;
       content: "\f096"; // fa-check-empty
-      color: #333;
+      color: $anthracite;
     }
     &.filter.selected:before {
       padding-right: 5px;
       font-family: FontAwesome;
       content: "\f14a";  // fa-check-sign
-      color: #333;
+      color: $anthracite;
     }
   }
 }
@@ -2688,7 +2688,7 @@ ul.video-strip {
     width: 100%;
     background: rgba(30, 30, 30, 0.85);
     position:absolute;
-    box-shadow: 0 -2px 2px #333;
+    box-shadow: 0 -2px 2px $anthracite;
   }
 
 

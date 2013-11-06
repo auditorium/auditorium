@@ -11,11 +11,6 @@
 </header>
 <% end %>
 <ul class="video-strip block">
-  <li>
-    <div class="video-thumbnail new">
-      <%= link_to fa_icon('plus'), new_group_video_path(@group), title: t('videos.new.link_title') %>
-    </div>
-  </li>
   <% @group.videos.each do |video| %>
     <li>
       <div class="video-thumbnail">
@@ -27,4 +22,9 @@
       </div>
     </li> 
   <% end %>
+  <li>
+    <div class="video-thumbnail new">
+      <%= link_to fa_icon('plus'), new_group_video_path(@group), title: t('videos.new.link_title') %>
+    </div>
+  </li>
 </ul>

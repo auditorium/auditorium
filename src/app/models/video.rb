@@ -37,6 +37,13 @@ class Video < ActiveRecord::Base
     Tag.find_by_name!(name).video
   end
 
+  def authors
+    authors = Array.new
+    authors << self.author
+    authors += self.comments.map(&:author)
+    authors.uniq
+  end
+
 private
   def set_code
     self.code = Rack::Utils.parse_query(URI(self.url).query)['v']

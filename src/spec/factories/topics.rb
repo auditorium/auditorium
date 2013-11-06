@@ -18,10 +18,8 @@
 
 FactoryGirl.define do
   factory :topic do
-    subject "MyString"
-    content "MyString"
-    rating 1
-    views 1
-    private false
+    subject { Faker::Lorem.words.join(" ").titleize }
+    content { Faker::Lorem.sentences.join(" ") }
+    author { create(:user) }
   end
 end

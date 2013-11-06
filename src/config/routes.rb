@@ -6,11 +6,9 @@ Auditorium::Application.routes.draw do
                                          :sessions => "sessions", 
                                          :registrations => "registrations" }
 
-    shallow do
       resources :users do 
         resources :settings
       end
-    end
 
     post "ajax/preview", to: 'ajax#preview'
     post "ajax/load_form", to: 'ajax#load_form'

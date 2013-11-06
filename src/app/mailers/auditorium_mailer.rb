@@ -6,10 +6,18 @@ class AuditoriumMailer < ActionMailer::Base
 
   # ------ new --------
 
-  def new_comment(comment)
-    @user = comment.author
-    @comment = comment
-    mail(to: @user.email, subject: 'New comment.')
+  def new_comment(options = {})
+    @author = options[:author]
+    @comment = options[:comment]
+    @receiver = options[:receiver]
+    mail(to: @receiver.email, subject: 'New comment.')
+  end
+
+  def new_parent_post(options = {})
+    @author = options[:author]
+    @parent_post = options[:parent_post]
+    @receiver = options[:receiver]
+    mail(to: @receiver.email, subject: t('email.new_parent_post.subject', type: @parent_post.class.name))
   end
 
 

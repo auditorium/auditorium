@@ -14,5 +14,7 @@
 
 FactoryGirl.define do
   factory :setting do
+    receive_email_notifications true
+    receive_emails_when_author true
   end
 end

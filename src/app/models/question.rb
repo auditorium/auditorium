@@ -25,4 +25,14 @@ class Question < ActiveRecord::Base
   def self.tagged_with(name)
     Tag.find_by_name!(name).question
   end
+
+  def authors
+    authors = Array.new
+    authors << self.author
+    self.answers.each do |answer|
+      authors << answer.author
+      authors += answer.comments.map(&:author)
+    end
+    authors.uniq
+  end
 end

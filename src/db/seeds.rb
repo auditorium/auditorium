@@ -30,7 +30,7 @@ admin.save!
 end
 
 (1..20).each do |i|
-  tag =Tag.create(name: Faker::Name.name, description: Faker::Lorem.words(20).join(' '))
+  tag =Tag.create(name: Faker::Lorem.word, description: Faker::Lorem.words(20).join(' '))
   puts tag.inspect
 end
 

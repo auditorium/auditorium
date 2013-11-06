@@ -18,14 +18,14 @@ class GroupsController < ApplicationController
     @groups = @groups.keep_if{ |g| g.followers.include? current_user } if cookies[:show_only_subscribed_groups] == 'yes'
     @groups = filter_by_tags(@groups)
 
-    @groups = Kaminari.paginate_array(@groups).page(params[:page]).per(20)
+    @groups = Kaminari.paginate_array(@groups).page(params[:page]).per(12)
     @tag_ids = cookies[:group_filter_tag_ids].present? ? Tag.where(id: cookies[:group_filter_tag_ids].split(',')) : []
     respond_to :js, :html
 	end
 
   def tagged
     @groups = Group.tagged_with(params[:tag]).order(:title)
-    @groups = Kaminari.paginate_array(@groups).page(params[:page]).per(20) 
+    @groups = Kaminari.paginate_array(@groups).page(params[:page]).per(12) 
 
     render :index
   end

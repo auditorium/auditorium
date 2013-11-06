@@ -123,6 +123,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def will_receive_email_notifications(group)
+    self.followings.find_by_followerable_id(group.id).receive_notifications
+  end
+
   # A callback method used to deliver confirmation
   # instructions on creation. This can be overriden
   # in models to map to a nice sign up e-mail.

@@ -42,5 +42,24 @@ FactoryGirl.define do
     factory :admin do
       admin true
     end
+
+    factory :user_will_receive_email_notifications do 
+      after(:create) do |user|
+        user.setting = create(:setting)
+      end
+    end
+
+    factory :user_will_not_receive_email_notifications do 
+      after(:create) do |user|
+        user.setting = create(:setting, receive_email_notifications: false)
+      end
+      
+    end
+
+    factory :user_will_not_receive_email_notifications_when_author do 
+      after(:create) do |user|
+        user.setting = create(:setting, receive_emails_when_author: false)
+      end
+    end
   end
 end

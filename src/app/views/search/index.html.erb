@@ -2,13 +2,15 @@
 <h1><%= t('general.search.header')%></h1>
 
 <section id='alternative-search-form' class="block">
-  <div class="row">
+  <div class="container">
     <%= form_tag search_path, method: 'get', remote: true do %>
-      <div class="large-10 columns">
-        <%= text_field_tag :query, params[:query], { id: 'alternative-query', placeholder: t('general.search.placeholder.long')} %>
-      </div>
-      <div class="hide-for-small large-2 columns">
-        <%= submit_tag t('general.search.submit'), class: "button expand small #{color_scheme}" %>
+      <div class="row collapse">
+        <div class="large-10 columns">
+          <%= text_field_tag :query, params[:query], { id: 'alternative-query', placeholder: t('general.search.placeholder.long')} %>
+        </div>
+        <div class="large-2 columns hide-for-small ">
+          <%= submit_tag t('general.search.submit'), class: "button expand small #{color_scheme}" %>
+        </div>
       </div>
     <% end %>
   </div>

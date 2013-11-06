@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'spork'
+
 #uncomment the following line to use spork with the debugger
 #require 'spork/ext/ruby-debug'
 
@@ -9,13 +10,33 @@ Spork.prefork do
   require 'rspec/rails'
   require 'rspec/autorun'
   require 'capybara/rspec'
+  require "email_spec"
   
-  Capybara.register_driver :selenium_with_long_timeout do |app|
-    client = Selenium::WebDriver::Remote::Http::Default.new
-    client.timeout = 120
-    Capybara::Driver::Selenium.new(app, :browser => :firefox, :http_client => client)
+  # Capybara.register_driver :selenium_with_long_timeout do |app|
+  #   client = Selenium::WebDriver::Remote::Http::Default.new
+  #   client.timeout = 120
+  #   Capybara::Driver::Selenium.new(app, :browser => :firefox, :http_client => client)
+  # end
+  
+  Capybara.register_driver :quiet_webkit do |app|
+    Capybara::Webkit::Driver.new(app, stderr: HushLittleWebkit.new)
   end
-  
+
+  Capybara.javascript_driver = :quiet_webkit
+
+  class HushLittleWebkit
+    IGNOREABLE = /CoreText performance|userSpaceScaleFactor/
+
+    def write(message)
+      if message =~ IGNOREABLE
+        0
+      else
+        puts(message) 
+        1
+      end
+    end
+  end
+
   Capybara.configure do |config|
     config.match = :prefer_exact
     config.ignore_hidden_elements = false
@@ -31,6 +52,9 @@ Spork.prefork do
     # Include Factory Girl syntax to simplify calls to factories 
     config.include FactoryGirl::Syntax::Methods
     config.include UserMacros
+
+    config.include(EmailSpec::Helpers)
+    config.include(EmailSpec::Matchers)
 
     # ## Mock Framework
     #

@@ -16,6 +16,10 @@
 require 'spec_helper'
 
 describe Group do 
+  it "has 3 followers" do
+    group = create(:group_with_three_followers)
+    group.followers.count.should eq(3)
+  end
 
   it "is valid with a title, description and group type and a user as creator" do
     group = build(:lecture_group)

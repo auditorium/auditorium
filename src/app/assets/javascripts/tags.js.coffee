@@ -4,7 +4,6 @@
 
 $.filterGroups = (item, url) ->
   tags = $('#group_filter_tag_tokens').val()
-  alert(tags)
   $.ajax
     url: url
     type: 'get'

@@ -38,7 +38,7 @@ en:
       more: 'more ...'
     filter:
       group-types: 'Select or deselect to filter groups:'
-      learning-group: 'Learning groups'
+      learning-group: 'Learning/Studies groups' 
       lecture-group: 'Lecture groups'
       topic-group: 'Topic groups'
       posts: 'Filter posts'

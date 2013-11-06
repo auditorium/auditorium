@@ -37,5 +37,16 @@ FactoryGirl.define do
     factory :invalid_group do
       group_type nil
     end
+
+    factory :group_with_three_followers do
+      group_type { ['topic', 'learning', 'lecture'].sample }
+      after(:create) do |group|
+        f = Array.new
+        (1..3).each do |i|
+          group.followers << create(:user)
+          #puts group.followers.inspect
+        end
+      end
+    end
   end
 end

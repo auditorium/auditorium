@@ -18,6 +18,7 @@ class Topic < ActiveRecord::Base
   include Votable
   include Taggable
   include ParentPost
+  include Notifiable
 
   define_index do
     indexes subject
@@ -30,4 +31,10 @@ class Topic < ActiveRecord::Base
     Tag.find_by_name!(name).topic
   end
 
+  def authors
+    authors = Array.new
+    authors << self.author
+    authors += self.comments.map(&:author)
+    authors.uniq
+  end
 end
