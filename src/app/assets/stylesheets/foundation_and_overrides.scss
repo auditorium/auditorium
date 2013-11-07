@@ -1345,6 +1345,18 @@ $topbar-menu-icon-color-toggled: $alert-color;
   min-height:600px;
 }
 
+.logo {
+  margin: 8px 4px 15px 10px;
+  width: 76px;
+}
+
+.logo-name {
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  font-size: 1.3em;
+  vertical-align: middle;
+}
+
 h1, {
   font-style: italic;
 }
@@ -1571,6 +1583,13 @@ a.disabled {
   color: $white;
   a {color: $white;}
 
+  &.submit {
+    background-color: $alert-color;
+    &:hover {
+      background-color: darken($alert-color, 10%);
+    }
+  }
+
   &.new-comment {
     background-color: $alert-color;
     &:hover {
@@ -1715,6 +1734,7 @@ a.disabled {
   height:150px;
   cursor: pointer;
   text-align: center;
+  float:left;
 
   dt {
     font-size:1.4em;
@@ -1745,12 +1765,12 @@ a.disabled {
   display:inline-block;
   margin:2px;
   color: #fff;
-  background-color: $alert-color;
+  background-color: $primary-color;
   border-radius:2px;
   font-size:0.9em;
 
   &:hover {
-    background-color: darken($alert-color, 10%);
+    background-color: darken($primary-color, 10%);
   }
 
   &.invert {
@@ -1872,7 +1892,6 @@ div.token-input-dropdown {
 }
 
 
-
 .top-bar-section ul {
 
   li a {
@@ -1886,6 +1905,13 @@ div.token-input-dropdown {
       &:hover {
         background-color: #fff;
         @include color_scheme;
+      }
+    }
+    &.notifications {
+      color: $white;
+      background-color: $alert-color;
+      &:hover {
+        background-color: darken($alert-color, 10%);
       }
     }
   }
@@ -2096,7 +2122,7 @@ ul.groups, ul.posts {
 section#announcements, 
 section#questions, 
 section#topics, 
-section#recordings {
+section#recordings, section#videos {
   margin-top:20px;
 }
 
@@ -2431,6 +2457,11 @@ i.fa-star, i.fa-star-o  {
       }
     }
   }
+
+  ul.token-input-list {
+    border-color: $dark-gray;
+    background: $body-bg;
+  }
 }
 
 .filter-block {
@@ -2580,7 +2611,8 @@ h3.group-of-posts span:after {
 #announcement-preview, 
 #question-preview, 
 #topic-preview, 
-#answer-preview {
+#answer-preview, 
+#group-preview {
   display:none;
 }
 

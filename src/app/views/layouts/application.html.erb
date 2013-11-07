@@ -17,7 +17,7 @@
 
   	<%= stylesheet_link_tag    "application" %>
   	<%= javascript_include_tag "vendor/custom.modernizr" %>
-    
+
     <% if mathjax_should_load %>
       <script type="text/x-mathjax-config">
         MathJax.Hub.Config({
@@ -38,7 +38,10 @@
       <nav class="top-bar <%= color_scheme %>"  data-options="is_hover:false">
         <ul class="title-area">
           <!--Title area -->
-          <li class="name"><h1><%= link_to 'auditorium', root_path %></h1></li>
+          <li class="name">
+            <%= image_tag('auditorium_logo@2x.png',  { class: 'logo'}) %>
+            <span class="logo-name"><%= 'auditorium' %></span>
+          </li>
           <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
         </ul>
 
@@ -52,9 +55,11 @@
 
           <ul class="right">
             <li ><%= nav_link fa_icon('search', text: t('navigation.search')), alternative_search_path %></li>
+            
             <% if current_user.present? %>
               <li><%= nav_link current_user, user_path(current_user) %></li>
               <li><%= nav_link t('users.tabs.update_profile'), edit_user_registration_path %></li>
+              <li ><%= link_to current_user.notifications.size, notifications_path, class: 'notifications' %></li>
               <li><%= link_to t('users.sign_out'), destroy_user_session_path, class: color_scheme, method: :delete %></li>
             <% else %>
               <li><%= nav_link t('users.sign_in'), new_user_session_path %></li>

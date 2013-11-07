@@ -10,7 +10,7 @@
 
   <section id="group-type">
     <header>
-      <h4><%= t('groups.choose-type.title') %></h4>
+      <h4><%= t('groups.choose_type.title') %></h4>
     </header>
 
     <% group_types.each do |group_type| %>
@@ -29,7 +29,7 @@
 
   <section id="group-details">
     <header>
-      <h4><%= t('groups.choose-type.title') %></h4>
+      <h4><%= t('groups.basic_information.title') %></h4>
     </header>
 
     <ul class="no-style">
@@ -39,18 +39,30 @@
       </li>
       
       <li class="input-fields">
+        
         <%= f.label :description %>
+        
         <%= f.text_area :description %>
       </li>
+
+      <li class="preview">
+        <div id="group-preview"><p class="hint"><%= t('preview.placeholder') %></p></div>
+
+      </li>
+
+      
       
       <li class="input-fields">
         <%= f.label :tag_tokens %>
         <%= f.text_field :tag_tokens, data: {load: @group.tags} %>
         <p class="tags_hint hint"><%= t('groups.group_types.general.tags_hint')%></p>
       </li>
+
       
-      <li class="input-fields">
-        <%= f.submit t('groups.new.submit'), id: 'submit', class: 'small button' %>
+      <li class="input-fields"> 
+        <%= f.submit t('groups.new.submit'), class: 'tiny button submit right' %>
+        <%= link_to t('general.links.show_preview'), '#', class: 'toggle-preview tiny button review-button right', 'data-id' => 'group' %>
+        <div class="clearfix"></div>
       </li>
     </ul>
   </section>

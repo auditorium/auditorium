@@ -4,8 +4,8 @@ $.renderPreview = (id) ->
     type: 'POST'
     data: { 
       post_type: id
-      subject: $('#'+id+'_subject').val() if id != 'answer'
-      content: $('#'+id+'_content').val()
+      subject: if id == 'group' then $('#'+id+'_title').val() else $('#'+id+'_subject').val()
+      content: if id == 'group' then $('#'+id+'_description').val() else $('#'+id+'_content').val()
     }
     error: (jqXHR, textStatus, errorThrown) ->
       console.log errorThrown
@@ -16,11 +16,11 @@ $('a.toggle-preview').on 'click', (e) ->
   data_id = $(this).data('id')
   
   if $(this).text() == i18n_hide_preview
-    $('#'+data_id+'-preview').hide()
+    $('#'+data_id+'-preview').fadeOut()
     $(this).text(i18n_show_preview)
   else
     $.renderPreview(data_id)
-    $('#'+data_id+'-preview').show()
+    $('#'+data_id+'-preview').fadeIn()
     $(this).text(i18n_hide_preview)
 
 $('#announcement_subject, #announcement_content').on 'input', (e) ->
@@ -34,3 +34,6 @@ $('#topic_subject, #topic_content').on 'input', (e) ->
 
 $('#answer_content').on 'input', (e) ->
   $.renderPreview('answer') if $('#answer-preview').is(":visible")
+
+$('#group_title, #group_description').on 'input', (e) ->
+  $.renderPreview('group') if $('#group-preview').is(":visible")

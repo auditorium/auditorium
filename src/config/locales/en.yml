@@ -17,6 +17,8 @@ en:
   home:
     titles:
       recent-posts: 'Stream with recent acitivities'
+  preview:
+    placeholder: 'While you type this field will show a real time preview.'
   general:
     search: 
       label: 'Search'
@@ -113,11 +115,13 @@ en:
       title: 'Groups overview'
     group-basic-information:
       placeholder: 'Choose a type for your new group...'
-    choose-type:
+    choose_type:
       title: 'Please choose the type of your group'
+    basic_information:
+      title: 'Type in basic information about the group'
     group_types:
       general:
-        tags_hint: 'Please enter tags to describe your group and improve the groups search ranking.'
+        tags_hint: 'Please enter tags to describe your group to improve the groups search ranking.'
       lecture:
         title: 'Lecture Group'
         description: 'Choose this group type for lectures.'
