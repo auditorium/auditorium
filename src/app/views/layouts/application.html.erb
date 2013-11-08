@@ -39,8 +39,10 @@
         <ul class="title-area">
           <!--Title area -->
           <li class="name">
-            <%= image_tag('auditorium_logo_basic.png',  { class: 'logo'}) %>
-            <span class="logo-name"><%= 'auditorium' %></span>
+            <%= link_to home_path do %>
+              <%= image_tag('auditorium_logo_basic.png',  { class: 'logo'}) %>
+              <%= content_tag('span', 'auditorium', class: 'hide-for-small logo-name') %>
+            <% end %>
           </li>
           <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
         </ul>
