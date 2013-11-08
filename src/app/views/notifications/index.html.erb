@@ -1,32 +1,9 @@
 <header>
-  <h2 class="subheader"><%= t('groups.show.announcements.header') %></h2>
+  <h2 class="subheader"><%= t('notifications.index.title') %></h2>
 </header>
-
-<%= form_for([@group, @announcement = Announcement.new]) do |f| %>
-  <ul class="no-style announcement">
-    <li class="input-fields" class="input-fields">
-      <noscript><%= f.label :subject %></noscript>
-      <%= f.text_field :subject, placeholder: t('announcements.input.new') %>
-    </li>
-    <div id='new-announcement-fields' data-id='new-announcement-fields'><%= render 'new_announcement_fields', f: f %></div>  
-  </ul>
+ 
+<% @notifications.each do |notification| %>
+  <%= debug notification %>
 <% end %>
 
-<ul class="no-style announcement">
-  
-<% @group.announcements.each_with_index do |announcement| %>
-  <li>
-    <span class="rating"><%= announcement.rating %></span>
-    <span class="subject"><%= link_to announcement.subject, announcement %></span>
-    <span class="right">
-      <small><%= l(announcement.created_at, format: :short) %></small>
-      <% if can? :manage, announcement %>
-      <span class="actions">
-        <%= link_to fa_icon('pencil'), edit_announcement_path(announcement), alt: "#{t('announcements.actions.edit')}", title: "#{t('announcements.actions.edit')}" %>
-        <%= link_to fa_icon('times'), announcement, alt: "#{t('announcements.actions.delete')}", title: "#{t('announcements.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this announcement?' %>
-        </span>
-      <% end %>
-    </span>
-  </li>
-<% end %>
-</ul>  
+<%= paginate @notifications %>

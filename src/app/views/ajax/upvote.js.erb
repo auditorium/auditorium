@@ -1,1 +1,4 @@
+<% if @post.class.name.eql? 'Answer' and @post.answer_to_id.nil? and current_user == @post.question.author %>
+  alert('<%= j t("answers.helpful.hint") %>')
+<% end %>
 $('.rating[data-id="<%= j dom_id(@post) %>"]').html('<%= j render "shared/rating", post: @post %>');

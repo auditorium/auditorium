@@ -1,9 +1,12 @@
 <section id="groups">
   <header class="subheader topic-group">
-    <h2><%= t('groups.index.title')%></h2>
+    <h2>
+      <%= t('groups.index.title')%>
+      <span class="right"><small><%= link_to t('general.filter.show'), '#', 'data-id' => 'toggle-group-filter', class: 'button filter tiny' %></small></span>
+    </h2>
   </header>
 
-  <div class="filter-block">
+  <div class="filter-block" data-id="group-filter">
     <div class="group-filter">
       <%= render 'shared/group_filter' %>
     </div>
@@ -13,7 +16,7 @@
 
         <%= text_field_tag :tag_tokens, nil, data: {load: @tag_ids}, id: 'group_filter_tag_tokens' %>
         
-        <%= label_tag :tag_tokens, t('groups.tags.filter'), class: 'hint' %> 
+        <%= label_tag :tag_tokens, t('general.filter.tag_filter.groups_filter'), class: 'hint' %> 
       <% end %>
     </div>
   </div>

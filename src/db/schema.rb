@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131102104913) do
+ActiveRecord::Schema.define(:version => 20131107231057) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -62,13 +62,15 @@ ActiveRecord::Schema.define(:version => 20131102104913) do
 
   create_table "answers", :force => true do |t|
     t.text     "content"
-    t.integer  "rating",      :default => 0
+    t.integer  "rating",       :default => 0
     t.integer  "question_id"
     t.integer  "author_id"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+    t.integer  "answer_to_id"
   end
 
+  add_index "answers", ["answer_to_id"], :name => "index_answers_on_answer_to_id"
   add_index "answers", ["author_id", "question_id"], :name => "index_answers_on_author_id_and_question_id"
 
   create_table "chairs", :force => true do |t|

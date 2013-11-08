@@ -21,6 +21,7 @@ class Question < ActiveRecord::Base
   include Notifiable
 
   has_many :answers, :dependent => :destroy
+ # has_one :correct_answer, class_name: 'Answer', as: :answer_to_id
 
   def self.tagged_with(name)
     Tag.find_by_name!(name).question
@@ -34,5 +35,9 @@ class Question < ActiveRecord::Base
       authors += answer.comments.map(&:author)
     end
     authors.uniq
+  end
+
+  def helpful_answer
+    self.answers.where(answer_to_id: self.id)
   end
 end

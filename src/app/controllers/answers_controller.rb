@@ -39,4 +39,19 @@ class AnswersController < ApplicationController
     @answer = Answer.find(params[:id])
   end
 
+  def toggle_as_helpful
+    @answer = Answer.find(params[:id])
+    if @answer.answer_to_id.nil?
+      @answer.answer_to_id = @answer.question.id
+    else
+      @answer.answer_to_id = nil
+    end
+    @answer.save!
+
+    respond_to do |format|
+      format.js
+      format.html {redirect_to question_path(@answer.question, anchor: dom_id(@answer)) }
+    end
+  end
+
 end

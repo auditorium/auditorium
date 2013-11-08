@@ -15,6 +15,7 @@ en:
       index: 'Recordings overview'
       new: 'Add a recording'
   home:
+    greeting: "Welcome back home, %{user}!"
     titles:
       recent-posts: 'Stream with recent acitivities'
   preview:
@@ -39,6 +40,11 @@ en:
       hide_preview: 'hide preivew'
       more: 'more ...'
     filter:
+      hide: 'hide filter'
+      show: 'show filter'
+      tag_filter:
+        groups_filter: 'You can add tags to filter displayed groups'
+        posts_filter: 'You can add tags to filter displayed posts'
       group-types: 'Select or deselect to filter groups:'
       learning-group: 'Learning/Studies groups' 
       lecture-group: 'Lecture groups'
@@ -227,6 +233,10 @@ en:
       submit: 'Save comment'
 
   answers:
+    helpful: 
+      unchecked: 'mark as helpful answer'
+      checked: 'helpful answer'
+      hint: 'You can also mark this answer as helpful answer.'
     actions:
       new: 'Write an answer'
       submit: 'Submit your answer'

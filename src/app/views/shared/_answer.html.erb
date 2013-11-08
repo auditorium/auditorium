@@ -1,0 +1,23 @@
+<span class="ribbon bigger">
+  <%= t('posts.types.answer') %>
+  <span data-id="<%= dom_id(answer) %>" class="rating bright"><%= render 'shared/rating', post: answer %></span>
+</span>
+<div class="post-content">
+  <%= markdown answer.content %>
+</div>
+
+<div class="post-footer">
+  <span class='checkmark'>
+    <%= render 'answers/checkmark', answer: answer %>
+  </span>
+  <span class="right">
+    <%= answer.author.full_name %> &middot;
+    <%= l(answer.created_at, format: :short) %>
+    <% if can? :manage, answer %>
+    <span class="actions">
+      <%= link_to fa_icon('pencil'), edit_answer_path(answer) %>
+      <%= link_to fa_icon('times'), answer, alt: "#{t('answers.actions.delete')}", title: "#{t('answers.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this answer?' %>
+      </span>
+    <% end %>
+  </span>
+</div>

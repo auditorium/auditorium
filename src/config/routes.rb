@@ -48,6 +48,9 @@ Auditorium::Application.routes.draw do
         resources :questions do
           resources :comments
           resources :answers do
+            member do 
+              post 'helpful', to: 'answers#toggle_as_helpful'
+            end
             resources :comments
           end
         end

@@ -80,7 +80,7 @@ $alert-color: #DC7667; //#BF0404;
 $success-color: rgb(183, 209, 131); //#5ca259;//#7AC02D;
 $warning-color: rgb(254, 201, 86); //#ecbd4b; //#F2CB13;
 $notice-color: #72B1E4;
-
+$filter-color: $secondary-color;
 $home-color: $notice-color;
 $group-color: $warning-color;
 $question-color: $notice-color;
@@ -1346,15 +1346,26 @@ $topbar-menu-icon-color-toggled: $alert-color;
 }
 
 .logo {
-  margin: 8px 4px 15px 10px;
-  width: 76px;
+  margin: 8px 4px 8px 10px;
+  width: 92px;
+  display: inline-block;
+  background-color: #fff;
 }
 
 .logo-name {
   font-family: 'Georgia', serif;
   font-style: italic;
   font-size: 1.3em;
+  color: lighten($anthracite, 20%);
   vertical-align: middle;
+}
+
+#welcome {
+  text-align: center;
+  margin:20px 0;
+  &.logo {
+    width:150px;
+  }
 }
 
 h1, {
@@ -1363,6 +1374,10 @@ h1, {
 
 h2 {
   color: $anthracite;
+
+  small {
+    font-size:60%;
+  }
 }
 
 form {
@@ -1404,10 +1419,6 @@ label.hint {
 
 textarea {
   height:100px;
-}
-
-small {
-  font-size:0.8em;
 }
 
 .hint {
@@ -1582,6 +1593,16 @@ a.disabled {
   padding: 5px 10px;
   color: $white;
   a {color: $white;}
+
+  &.filter {
+    color: $white;
+    background-color: $filter-color;
+    &:hover {
+      color: $white;
+      background-color: darken($filter-color, 10%);
+    }
+  }
+
 
   &.submit {
     background-color: $alert-color;
@@ -1863,6 +1884,7 @@ div.token-input-dropdown {
   &.videos, &.recordings { color: $recording-color; }
   &.users, &.registrations, &.sessions { color: $user-color; }
   &.search { color: $search-color; }
+  &.notifications { color: $alert-color; }
 }
 
 @mixin border_color_scheme {
@@ -1879,6 +1901,7 @@ div.token-input-dropdown {
   &.videos, &.recordings { border-color: $recording-color; }
   &.users, &.registrations, &.sessions { border-color: $user-color; }
   &.search { border-color: $search-color; }
+  &.notifications { border-color: $alert-color; }
 }
 
 .top-bar {
@@ -1907,7 +1930,7 @@ div.token-input-dropdown {
         @include color_scheme;
       }
     }
-    &.notifications {
+    &.notification-button {
       color: $white;
       background-color: $alert-color;
       &:hover {
@@ -2563,7 +2586,19 @@ ul.no-style {
   }
 }
 
-/* ============ Post styles =========== */
+/* ============ post styles =========== */
+
+.answer-checkmark {
+  &.is-helpful {
+    color: #fff;
+    background-color: $success-color;
+    padding: 5px 10px;
+
+    &:hover {
+      background-color: darken($success-color, 10%);
+    }
+  }
+}
 
 h3.group-of-posts {
   line-height: 0.5;
@@ -2750,12 +2785,11 @@ ul.video-strip {
 
 #announcement, 
 #question, 
-#answer, 
+#answer,
 #recording, 
 #video, 
 #topic, 
 #comment, 
-#answer, 
 #learning-group, 
 #lecture-group, 
 #topic-group {
