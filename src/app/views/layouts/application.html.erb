@@ -60,11 +60,11 @@
             
             <% if current_user.present? %>
               <li><%= nav_link current_user, user_path(current_user) %></li>
-              <li><%= nav_link t('users.tabs.update_profile'), edit_user_registration_path %></li>
-              <li ><%= link_to current_user.notifications.size, notifications_path, class: 'notification-button' %></li>
-              <li><%= link_to t('users.sign_out'), destroy_user_session_path, class: color_scheme, method: :delete %></li>
+              <li><%= nav_link t('navigation.update_profile'), edit_user_registration_path %></li>
+              <li><%= link_to current_user.notifications.size, notifications_path, class: 'notification-button', title: t('navigation.notifications', size: current_user.notifications.size) %></li>
+              <li><%= link_to t('navigation.sign_out'), destroy_user_session_path, class: color_scheme, method: :delete %></li>
             <% else %>
-              <li><%= nav_link t('users.sign_in'), new_user_session_path %></li>
+              <li><%= nav_link t('navigation.sign_in'), new_user_session_path %></li>
             <% end %>
           </ul>
         </section>

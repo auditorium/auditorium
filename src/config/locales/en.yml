@@ -2,7 +2,15 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  sidebar: 'Sidebar'
+  navigation:
+    home: 'Home'
+    groups: 'Groups'
+    my_groups: 'My groups'
+    update_profile: 'Profile settings'
+    sign_in: 'Sign in'
+    sign_out: 'Sign out'
+    search: 'Search'
+    notifications: '%{size} unread notifications waiting for you.'
   recordings:
     action:
       add: 'Add a new recording'
