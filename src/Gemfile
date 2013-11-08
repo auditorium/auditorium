@@ -14,12 +14,12 @@ gem 'cancan'
 gem 'gravatar_image_tag'
 gem 'kaminari'
 gem 'whenever'
-gem 'mathjax-rails'
+#gem 'mathjax-rails'
 
 
 # for markdown rich text
-gem 'redcarpet', '~> 2.1.1'
-gem 'coderay', '~> 1.0.7'
+gem 'redcarpet', '~> 3.0.0'
+gem 'coderay', '~> 1.1.0'
 
 group :production do
   gem 'memcache-client'

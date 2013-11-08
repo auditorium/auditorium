@@ -1,3 +1,26 @@
+<section id="welcome">
+  <header id="welcome-header">
+    <center>
+	    <h1><%= t('home.greeting') %></h1>
+	    <%= image_tag('auditorium_logo_colors_with_text.png',  { class: 'full-logo centered'}) %>
+    </center>
+  </header>
+</section>
+
+<section id="registration">
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), class: "form-inline") do |f| %>
+      <%= f.label :email, 'Email address', :class => 'accessibility'%>
+      <%= f.text_field :email, :placeholder => 'Email address', class: 'input-small' %>
+      <%= f.label :password, 'Password', :class => 'accessibility'%>
+      <%= f.password_field :password, :placeholder => 'Password', class: 'input-small' %>
+      <%= f.submit "Sign in", :class => 'btn btn-primary', 'data-disable-with' => 'Signing in...' %>
+    <% end %>
+</section>
+
+<section id="features">
+	
+</section>
+<!-- 
 <div class="container center span8 well">
 <h2>Welcome to auditorium</h2>
 <h3>A way to change communication on your campus!</h3>
@@ -28,4 +51,4 @@
 	
 	<li><b>Questions or problems?</b> You can <a href="mailto:auditorium@inftex.net">send us an email (german or english)</a> or a tweet to <a href="http://twitter.com/_auditorium">@_auditorium</a></li>
 </ul>
-</div>
+</div> -->

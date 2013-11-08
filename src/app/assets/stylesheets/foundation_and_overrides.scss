@@ -1603,6 +1603,16 @@ a.disabled {
     }
   }
 
+  &.sign_in, &.sign_up {
+    background-color: $alert-color;
+    margin: 10px 0;
+    width:100%;
+    font-size: 1.2em;
+
+    &:hover {
+      background-color: darken($alert-color, 10%);
+    }
+  }
 
   &.submit {
     background-color: $alert-color;
@@ -2923,4 +2933,17 @@ ul.video-strip {
 
 .hidden {
   display: none;
+}
+
+/* ---------------- landing page --------------- */
+
+ul.links {
+  list-style: none;
+  margin:0;
+  padding:0;
+
+  li {
+    padding: 0;
+    margin: 2px 10px;
+  }
 }

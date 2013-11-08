@@ -69,10 +69,6 @@ module ApplicationHelper
     markdown_to_html.render(text).html_safe
   end
 
-  def mathjax_should_load
-    %w{questions announcements topics groups home}.include? params[:controller]
-  end
-
   def tag_list(tag_array, options = { delimiter: '' }) 
     if tag_array.size > 0
       tag_array.map(&:name).map { |t| link_to t, tag_path(t), class: "tag #{options[:additional_class]}" }.join(options[:delimiter]).html_safe

@@ -1,17 +1,42 @@
-<h2>Sign in</h2>
+<section id="welcome">
+  <header id="welcome-header">
+    <center>
+      <h1><%= t('landing_page.headers.welcome_back') %></h1>
+      <%= image_tag('auditorium_logo_colors.png',  { class: 'full-logo centered'}) %>
+    </center>
+  </header>
+</section>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+<section id="sign_in" class="block large-5 large-centered columns">  
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+   <ul class="no-style"> 
+    <li class="input-fields">
+      <%= f.label :email, t('forms.label.email') %>
+      <%= f.email_field :email, autofocus: true %>
+    </li> 
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+    <li class="input-fields">
+      <%= f.label :password, t('forms.label.password') %>
+      <%= f.password_field :password %>
+    </li>   
 
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
+    <% if devise_mapping.rememberable? -%>
+      <li class="input-fields">
+      <%= f.label :remember_me do %>
+        <%= f.check_box :remember_me %>
+        <%= t('forms.label.remember_me') %>
+      <% end %> 
+      </li>
+    <% end -%>
+    <li class="input-fields">
+      <%= f.submit t('forms.label.sign_in'), class: 'button sign_in' %>
+    </li>
+    </ul>
+  <% end %>
+  <div class="registration_links">
+    <%= render "devise/shared/links" %>
+  </div>
+</section>
 
-  <div><%= f.submit "Sign in" %></div>
-<% end %>
 
-<%= render "devise/shared/links" %>
+

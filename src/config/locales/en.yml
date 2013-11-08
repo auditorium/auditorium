@@ -2,6 +2,26 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  devise:
+    links: 
+      sign_in: 'I have an account. Let me in!'
+      sign_up: 'I don’t have an account. Let me register first.'
+      forgot_password: 'I forgot my password.'
+      reconfirm_email: 'I want to confirm my email address.'
+      unlock_account: 'My account is locked.'
+  forms:
+    label:
+      first_name: 'Your username:'
+      email: 'Your email address:'
+      password: 'Your password:'
+      password_confirmation: 'The same password again:'
+      remember_me: 'Keep me signed in for 14 days.'
+      sign_up: 'Register me.'
+      sign_in: 'Log in!'
+  landing_page:
+    headers:
+      welcome_back: 'Welcome to auditorium!'
+    
   navigation:
     home: 'Home'
     groups: 'Groups'
@@ -23,9 +43,9 @@ en:
       index: 'Recordings overview'
       new: 'Add a recording'
   home:
-    greeting: "Welcome back home, %{user}!"
-    titles:
-      recent-posts: 'Stream with recent acitivities'
+    headers: 
+      welcome_back: "Welcome to auditorium, %{user}!"
+      recent_activity: 'Check out what happend since you logged out:'
   preview:
     placeholder: 'While you type this field will show a real time preview.'
   general:

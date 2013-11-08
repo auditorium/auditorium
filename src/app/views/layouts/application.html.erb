@@ -18,17 +18,10 @@
   	<%= stylesheet_link_tag    "application" %>
   	<%= javascript_include_tag "vendor/custom.modernizr" %>
 
-    <% if mathjax_should_load %>
-      <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({
-         tex2jax: {
-           inlineMath: [ ['$','$'] ],
-           processEscapes: true
-         }
-        });
-      </script>
-      <%= mathjax_tag config: 'TeX-AMS_HTML.js' %>
-    <% end %>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'] ], processEscapes: true }});
+    </script>
+    <script type="text/javascript" src="/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <%= csrf_meta_tags %>
   </head>
 
@@ -40,7 +33,7 @@
           <!--Title area -->
           <li class="name">
             <%= link_to home_path do %>
-              <%= image_tag('auditorium_logo_basic.png',  { class: 'logo'}) %>
+              <%= image_tag('auditorium_logo_colors.png',  { class: 'logo'}) %>
               <%= content_tag('span', 'auditorium', class: 'hide-for-small logo-name') %>
             <% end %>
           </li>

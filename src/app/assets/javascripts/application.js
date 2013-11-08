@@ -17,34 +17,54 @@
 //= require jquery.tokeninput
 //= require foundation
 //= require translations
+//= require mathjax/MathJax
 //= require behave
-//= require_tree .
+//= require_tree 
+
 $(function(){ 
   $(document).foundation();
   $(document).foundation('joyride', 'start');
-  new Behave({
-    textarea: document.getElementById('announcement_content'),
-    tabSize: 2
-  });
-  new Behave({
-    textarea: document.getElementById('question_content'),
-    tabSize: 2
-  });
-  new Behave({
-    textarea: document.getElementById('topic_content'),
-    tabSize: 2
-  });
-  new Behave({
-    textarea: document.getElementById('answer_content'),
-    tabSize: 2
-  });
-  new Behave({
-    textarea: document.getElementById('comment_content'),
-    tabSize: 2
-  });
-  new Behave({
-    textarea: document.getElementById('recording_content'),
-    tabSize: 2
-  });
+
+  if($('#announcement_content').is(':visible')) {
+    new Behave({
+      textarea: document.getElementById('announcement_content'),
+      tabSize: 2
+    });
+  }
+
+  if($('#question_content').is(':visible')) {
+    new Behave({
+      textarea: document.getElementById('question_content'),
+      tabSize: 2
+    });
+  }
+  
+  if($('#topic_content').is(':visible')) {
+    new Behave({
+      textarea: document.getElementById('topic_content'),
+      tabSize: 2
+    });
+  }
+
+  if($('#answer_content').is(':visible')) {
+    new Behave({
+      textarea: document.getElementById('answer_content'),
+      tabSize: 2
+    });
+  }
+
+  if($('#comment_content').is(':visible')) {
+    new Behave({
+      textarea: document.getElementById('comment_content'),
+      tabSize: 2
+    });
+  }
+
+  if($('#recording_content').is(':visible')) {
+    new Behave({
+      textarea: document.getElementById('recording_content'),
+      tabSize: 2
+    });
+  }
 });
 

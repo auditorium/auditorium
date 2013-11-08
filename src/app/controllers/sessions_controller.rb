@@ -1,4 +1,5 @@
 class SessionsController < Devise::SessionsController
+  layout "landing_page"
   respond_to :json, :html
   
   def create
