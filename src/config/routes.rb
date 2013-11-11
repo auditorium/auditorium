@@ -2,7 +2,8 @@ Auditorium::Application.routes.draw do
 
   scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do 
 
-    devise_for :users, :controllers => { :confirmations => "confirmations", 
+    devise_for :users, :controllers => { :passwords => "passwords",
+                                         :confirmations => "confirmations", 
                                          :sessions => "sessions", 
                                          :registrations => "registrations" }
 

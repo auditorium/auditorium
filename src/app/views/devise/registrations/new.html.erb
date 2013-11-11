@@ -1,37 +1,40 @@
 <section id="welcome">
   <header id="welcome-header">
     <center>
-      <h1><%= t('landing_page.headers.welcome_back') %></h1>
+      <h1><%= t('landing_page.headers.welcome') %></h1>
       <%= image_tag('auditorium_logo_colors.png',  { class: 'full-logo centered'}) %>
     </center>
   </header>
 </section>
 
 <section id="sign_up" class="block large-5 large-centered columns">  
+  <header>
+    <h3 class="subheader"><%= t('landing_page.headers.register') %></h3>
+  </header>
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
    <ul class="no-style"> 
     <li class="input-fields">
-      <%= f.label :email, t('forms.label.email') %>
-      <%= f.email_field :email, autofocus: true %>
+      <%= f.label :email, t('forms.label.email'), class: 'accessibility' %>
+      <%= f.email_field :email, placeholder: t('forms.placeholder.email'), autofocus: true %>
     </li> 
 
     <li class="input-fields">
-      <%= f.label :password, t('forms.label.password') %>
-      <%= f.password_field :password %>
+      <%= f.label :password, t('forms.label.password'), class: 'accessibility' %>
+      <%= f.password_field :password, placeholder: t('forms.placeholder.password') %>
     </li>  
 
     <li class="input-fields">
-      <%= f.label :password, t('forms.label.password_confirmation') %>
-      <%= f.password_field :password %>
+      <%= f.label :password, t('forms.label.password_confirmation'), class: 'accessibility' %>
+      <%= f.password_field :password, placeholder: t('forms.placeholder.password_confirmation') %>
     </li>   
 
     <li class="input-fields">
-      <%= f.label :username, t('forms.label.username') %>
-      <%= f.text_field :username %>
+      <%= f.label :username, t('forms.label.username'), class: 'accessibility' %>
+      <%= f.text_field :username, placeholder: t('forms.placeholder.username') %>
     </li> 
 
     <li class="input-fields">
-      <%= f.submit t('forms.label.sign_up'), class: 'button sign_up' %>
+      <%= f.submit t('forms.label.sign_up'), class: 'button submit wide' %>
     </li>
     </ul>
   <% end %>

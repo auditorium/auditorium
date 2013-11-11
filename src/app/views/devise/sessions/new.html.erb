@@ -8,16 +8,19 @@
 </section>
 
 <section id="sign_in" class="block large-5 large-centered columns">  
+  <header>
+    <h3 class="subheader"><%= t('landing_page.headers.sign_in') %></h3>
+  </header>
   <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
    <ul class="no-style"> 
     <li class="input-fields">
-      <%= f.label :email, t('forms.label.email') %>
-      <%= f.email_field :email, autofocus: true %>
+      <%= f.label :email, t('forms.label.email'), class: 'accessibility' %>
+      <%= f.email_field :email, placeholder: t('forms.placeholder.email'), autofocus: true %>
     </li> 
 
     <li class="input-fields">
-      <%= f.label :password, t('forms.label.password') %>
-      <%= f.password_field :password %>
+      <%= f.label :password, t('forms.label.password'), class: 'accessibility' %>
+      <%= f.password_field :password, placeholder: t('forms.placeholder.password') %>
     </li>   
 
     <% if devise_mapping.rememberable? -%>
@@ -29,7 +32,7 @@
       </li>
     <% end -%>
     <li class="input-fields">
-      <%= f.submit t('forms.label.sign_in'), class: 'button sign_in' %>
+      <%= f.submit t('forms.label.sign_in'), class: 'button submit wide' %>
     </li>
     </ul>
   <% end %>

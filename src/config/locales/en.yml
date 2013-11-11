@@ -2,6 +2,36 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  notifications:
+    notification_title: 
+      question: '%{author} asked a question in %{group}.'
+      announcement: '%{author} made an announcement in %{group}.'
+      topic: '%{author} opened a new topic in %{group}.'
+      answer: '%{author} answered a question in %{group}.'
+      comment: '%{author} commented on '
+  emails:
+    subjects: 
+      new_question: '[auditorium] %{author} asked a question in %{group}'
+      new_answer: '[auditorium] %{author} wrote an answer to the question %{question} in %{group}'
+      new_announcement: '[auditorum] %{author} made an announcement in %{group}'
+      new_comment: '[auditorium] %{author} commented on the %{parent_post_type} of %{parent_post_author} in %{group}'
+      new_topic: '[auditorium] %{author} opened a new topic in %{group}'
+    content:
+      goto: 'View the %{post_type} in your browser'
+      subjects: 
+        new_question: '%{author} asked a question in %{group}:'
+        new_answer: '%{author} wrote an answer to the question %{question} in %{group}:'
+        new_announcement: '[auditorum] %{author} made an announcement in %{group}:'
+        new_comment: '%{author} commented on the %{parent_post_type} of %{parent_post_author} in %{group}:'
+        new_topic: '%{author} opened a new topic in %{group}:'
+
+    greetings:
+      hello: 'Hello %{user},'
+      regards: "Kind regards,\nauditorium Team"
+    footer:
+      text: 'You received this email because you are following the group %{group}.'
+      link: 'You can change which email notifications auditorium sends you in your profile settings.'
+
   devise:
     links: 
       sign_in: 'I have an account. Let me in!'
@@ -11,16 +41,36 @@ en:
       unlock_account: 'My account is locked.'
   forms:
     label:
-      first_name: 'Your username:'
+      username: 'Your username:'
       email: 'Your email address:'
       password: 'Your password:'
       password_confirmation: 'The same password again:'
       remember_me: 'Keep me signed in for 14 days.'
       sign_up: 'Register me.'
       sign_in: 'Log in!'
+      reset_password: 'Send me instructions'
+      change_password: 'Change my password'
+      reconfirm_email: 'Send me instructions'
+    placeholder: 
+      label:
+      username: 'Username'
+      email: 'TU Dresden email address'
+      password: 'Password'
+      password_confirmation: 'The same password again'
+      remember_me: 'Keep me signed in for 14 days.'
+      sign_up: 'Register me.'
+      sign_in: 'Log in!'
+      reset_password: 'Send me instructions'
+      change_password: 'Change my password'
+      reconfirm_email: 'Send me instructions'
   landing_page:
     headers:
-      welcome_back: 'Welcome to auditorium!'
+      welcome: 'Welcome to auditorium!'
+      welcome_back: 'Welcome back to auditorium!'
+      sign_in: 'Sign in to auditorium.'
+      reconfirm_email: 'Confirm my email address.'
+      register: 'Sign up to auditorium.'
+      forgot_password: 'I forgot my password.'
     
   navigation:
     home: 'Home'

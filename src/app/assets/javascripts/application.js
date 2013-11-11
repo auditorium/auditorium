@@ -17,7 +17,6 @@
 //= require jquery.tokeninput
 //= require foundation
 //= require translations
-//= require mathjax/MathJax
 //= require behave
 //= require_tree 
 

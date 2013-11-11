@@ -1,75 +1,89 @@
 module Notifiable
 
   def self.included(base)
-    base.after_create :notify
-  end
+    base.after_create :send_notification
+  end   
 
 private
-  def notify
-
+  def send_notification
     case self.class.name
-    when 'Question','Announcement', 'Topic', 'Video'
-      receivers = receivers_for_new_post_in(self.group)
-      receivers.each do |receiver|
-        AuditoriumMailer.new_parent_post(author: self.author, receiver: receiver, parent_post: self).deliver
-      end
     when 'Comment'
-      receivers = receivers_for_new_post_in(self.commentable.group)
-
+      receivers = receivers_for_posts
       receivers.each do |receiver|
-        AuditoriumMailer.new_comment(author: self.author, receiver: receiver, comment: self).deliver
+        Notification.create!(sender: self.author, receiver: receiver, notifyable_id: self.id, notifyable_type: self.class.name)
+        AuditoriumMailer.new_comment(author: self.author, receiver: receiver, comment: self).deliver if deliver_email_notification(self, receiver)
       end
-    when 'Answer'
-      receivers = receivers_for_new_post_in(self.question.group)
+    when 'Question'
+      receivers = receivers_for_posts
       receivers.each do |receiver|
-        AuditoriumMailer.new_answer(author: self.author, receiver: receiver, answer: self).deliver
+        Notification.create!(sender: self.author, receiver: receiver, notifyable_id: self.id, notifyable_type: self.class.name)
+        AuditoriumMailer.new_question(author: self.author, receiver: receiver, question: self).deliver if deliver_email_notification(self, receiver)
+      end
+    
+    when 'Announcement'
+      receivers = receivers_for_posts
+      receivers.each do |receiver|
+        Notification.create!(sender: self.author, receiver: receiver, notifyable_id: self.id, notifyable_type: self.class.name)
+        AuditoriumMailer.new_announcement(author: self.author, receiver: receiver, announcement: self).deliver if deliver_email_notification(self, receiver)
+      end
+
+    when 'Topic'
+      receivers = receivers_for_posts
+      receivers.each do |receiver|
+        Notification.create!(sender: self.author, receiver: receiver, notifyable_id: self.id, notifyable_type: self.class.name)
+        AuditoriumMailer.new_topic(author: self.author, receiver: receiver, topic: self).deliver if deliver_email_notification(self, receiver)
+      end
+
+    when 'Answer'
+      receivers = receivers_for_posts
+      receivers.each do |receiver|
+        Notification.create!(sender: self.author, receiver: receiver, notifyable_id: self.id, notifyable_type: self.class.name)
+        AuditoriumMailer.new_answer(author: self.author, receiver: receiver, answer: self).deliver if deliver_email_notification(self, receiver)
       end
     when 'Group'
-      Rails.logger.info "NOTIFICATION: #{self.class.name}"
-    else
-      Rails.logger.info "NOTIFICATION: #{self.class.name}"
-    end
+      receivers = User.where(admin: true)
+      receivers.each do |receiver|
+        Notification.create!(sender: self.author, receiver: receiver, notifyable_id: self.id, notifyable_type: self.class.name)
+        AuditoriumMailer.group_to_approve(creator: self.creator, receiver: receiver, group: self).deliver if deliver_email_notification(self, receiver)
+      end
+    
 
+    
+    when 'MembershipRequest'
+      # membership requests
+    end 
   end
 
-  def receivers_for_new_post_in(group)
-    receivers = Array.new
-    # follower: user object
-    group.followers.each do |follower|
-      unless self.author == follower 
-        if follower.setting.present?
-          if follower.setting.receive_email_notifications and follower.will_receive_email_notifications(group)
-            receivers << follower 
-          end
-        else
-          receivers << follower
-        end
-      end
+  def receivers_for_posts
+    #self.origin.last_activity = DateTime.now
+    #self.origin.save!
+    if self.origin.is_private?
+      receivers = self.origin.group.moderators
+      receivers << self.origin.author
+      receivers = receivers.uniq
+    else
+      receivers = self.origin.group.followers
+      receivers += self.origin.authors
+      receivers = receivers.uniq
     end
 
-    # add authorship notifications for non members if setting
-    if self.class.name.eql? 'Comment'
-      authors = Array.new
-      case self.commentable_type
-      when 'Answer' 
-        answer = Answer.find(self.commentable_id)
-        authors = answer.question.authors
-      when 'Question'
-        question = Question.find(self.commentable_id)
-        authors = question.authors
-      when 'Announcement'
-        announcement = Announcement.find(self.commentable_id)
-        authors = announcement.authors
-      when 'Topic'
-        topic = Topic.find(self.commentable_id)
-        authors = topic.authors
-      when 'Video'
-        video = Video.find(self.commentable_id)
-        authors = video.authors
-      end
-      receivers += authors.keep_if { |a| a.setting.nil? or a.setting.receive_emails_when_author }
-    end
+    receivers.delete_if {|receiver| receiver.id == self.author_id}
+  end
 
-    receivers.uniq
+  def deliver_email_notification(post, user)
+    setting = Setting.find_by_user_id(user.id)
+    following = post.origin.group.followings.where(follower_id: user)
+
+    # if new user who does not changed settings receives emails (opt-out)
+    return true if setting.nil?
+
+    # if user wants emails for this post thread when user is author of comment, answer or origin post
+    return true if setting.receive_emails_when_author and post.origin.authors.include? user
+    
+    # if user has subscribed to course and wants emails for this subscription
+    return true if following.present? and setting.receive_email_notifications
+
+    # otherwise
+    return false
   end
 end

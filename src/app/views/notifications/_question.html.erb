@@ -1,0 +1,3 @@
+<li class="question">
+  <%= link_to t("notifications.notification_title.question", author: notification.sender, group: notification.group.title), Question.find(notification.notifyable_id) %><span class="right"><%= l(notification.created_at, format: :short) %></span>
+</li>

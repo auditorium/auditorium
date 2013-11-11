@@ -11,11 +11,12 @@
     </div>
 
     <div id="email-content">
-      <%= t('emails.content.subjects.new_comment', author: @author, group: @group.title) %> 
+      <%= t('emails.content.subjects.new_announcement', author: @author, group: @group.title) %> 
       <div id="email-markdown" class="markdown">
-        <%= markdown @comment.content %>
+        <h3><%= @announcement.subject %></h3>
+        <%= markdown @announcement.content %>
       </div>     
-      <%= link_to t('emails.content.goto', post_type: 'comment'), comment_url(@comment, locale: I18n.locale, anchor: dom_id(@comment)), class: 'button alert' %> 
+      <%= link_to t('emails.content.goto', post_type: 'announcement'), announcement_url(@announcement, locale: I18n.locale), class: 'button alert' %> 
     </div>
 
     <p class="email-greetings">
@@ -28,3 +29,5 @@
     </div>
   </body>
 </html>
+
+

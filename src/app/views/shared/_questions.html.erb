@@ -14,7 +14,7 @@
 <%= form_for([@group, @question = Question.new]) do |f| %>
   <ul class="no-style question">
     <li class="input-fields" class="input-fields">
-      <noscript><%= f.label :subject %></noscript>
+      <%= f.label :subject, t('forms.label.subject'), class: 'accessibility' %>
       <%= f.text_field :subject, placeholder: t('questions.input.new') %>
     </li>
     <div id='new-question-fields' data-id='new-question-fields'><%= render 'shared/new_question_fields', f: f %></div>  

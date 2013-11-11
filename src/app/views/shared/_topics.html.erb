@@ -14,7 +14,7 @@
 <%= form_for([@group, @topic = Topic.new]) do |f| %>
   <ul class="no-style topic">
     <li class="input-fields" class="input-fields">
-      <noscript><%= f.label :subject %></noscript>
+      <%= f.label :subject, t('forms.label.subject'), class: 'accessibility' %>
       <%= f.text_field :subject, placeholder: t('topics.input.new') %>
     </li>
     <div id='new-topic-fields' data-id='new-topic-fields'><%= render 'shared/new_topic_fields', f: f %></div>  

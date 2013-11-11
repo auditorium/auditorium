@@ -1,7 +1,6 @@
-if $(window).width() > 500
-  $('[data-id="post-filter"]').slideDown()
-  $('[data-id="group-filter"]').slideDown()
-else
+if $(window).width() < 500
+  $('[data-id="post-filter"]').hide()
+  $('[data-id="group-filter"]').hide()
   $('[data-id="toggle-group-filter"]').text(i18n_general_filter_show)
   $('[data-id="toggle-post-filter"]').text(i18n_general_filter_show)
 

@@ -1,16 +1,38 @@
-<h2>Change your password</h2>
+<section id="welcome">
+  <header id="welcome-header">
+    <center>
+      <h1><%= t('landing_page.headers.welcome') %></h1>
+      <%= image_tag('auditorium_logo_colors.png',  { class: 'full-logo centered'}) %>
+    </center>
+  </header>
+</section>
 
-<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :reset_password_token %>
+<section id="sign_in" class="block large-5 large-centered columns">  
+  <header>
+    <h3 class="subheader"><%= t('landing_page.headers.change_password') %></h3>
+  </header>
+  <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
+    <%= devise_error_messages! %>
+    <%= f.hidden_field :reset_password_token %>
+    <ul class="no-style"> 
+      <li class="input-fields">
+        <%= f.label :password, t('forms.label.new_password'), class: 'accessibility' %>
+        <%= f.password_field :password, placeholder: t('forms.placeholder.new_password'), autofocus: true %>
+      </li> 
+      <li class="input-fields">
+        <%= f.label :password_confirmation, t('forms.label.confirm_new_password'), class: 'accessibility' %>
+        <%= f.password_field :password_confirmation, placeholder: t('forms.placeholder.password_confirmation') %>
+      </li> 
+      <li class="input-fields">
+        <%= f.submit t('forms.label.change_password'), class: 'button submit wide' %>
+      </li>
+    </ul>
+  <% end %>
+  <div class="registration_links">
+    <%= render "devise/shared/links" %>
+  </div>
+</section>
 
-  <div><%= f.label :password, "New password" %><br />
-  <%= f.password_field :password, :autofocus => true %></div>
 
-  <div><%= f.label :password_confirmation, "Confirm new password" %><br />
-  <%= f.password_field :password_confirmation %></div>
 
-  <div><%= f.submit "Change my password" %></div>
-<% end %>
 
-<%= render "devise/shared/links" %>

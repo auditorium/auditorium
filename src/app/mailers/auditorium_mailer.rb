@@ -5,19 +5,64 @@ class AuditoriumMailer < ActionMailer::Base
           'message-id' => "<notification@auditorium.inf.tu-dresden.de>"
 
   # ------ new --------
+  def new_question(options = {})
+    @author = options[:author]
+    @question = options[:question]
+    @receiver = options[:receiver]
+    @group = @question.group
+    mail(to: @receiver.email, 
+        subject: t("emails.subjects.new_@question", 
+        author: @author, 
+        group: @group.title),
+        'message-id' => message_id(@question))
+  end
+
+  def new_announcement(options = {})
+    @author = options[:author]
+    @announcement = options[:announcement]
+    @receiver = options[:receiver]
+    @group = @announcement.group
+    mail(to: @receiver.email, 
+        subject: t("emails.subjects.new_@announcement", 
+        author: @author, 
+        group: @group.title),
+        'message-id' => message_id(@announcement))
+  end
+
+  def new_topic(options = {})
+    @author = options[:author]
+    @topic = options[:topic]
+    @receiver = options[:receiver]
+    @group = @topic.group
+    mail(to: @receiver.email, 
+        subject: t("emails.subjects.new_@topic", 
+        author: @author, 
+        group: @group.title),
+        'message-id' => message_id(@topic))
+  end
+
+  def new_answer(options = {})
+    @author = options[:author]
+    @answer = options[:answer]
+    @receiver = options[:receiver]
+    @group = @answer.origin.group
+    mail(to: @receiver.email, 
+        subject: t("emails.subjects.new_@answer", 
+        author: @author, 
+        group: @group.title),
+        'message-id' => message_id(@answer))
+  end
 
   def new_comment(options = {})
     @author = options[:author]
     @comment = options[:comment]
     @receiver = options[:receiver]
-    mail(to: @receiver.email, subject: 'New comment.')
-  end
-
-  def new_parent_post(options = {})
-    @author = options[:author]
-    @parent_post = options[:parent_post]
-    @receiver = options[:receiver]
-    mail(to: @receiver.email, subject: t('email.new_parent_post.subject', type: @parent_post.class.name))
+    @group = @comment.origin.group
+    mail(to: @receiver.email, 
+        subject: t("emails.subjects.new_@comment", 
+        author: @author, 
+        group: @group.title),
+        'message-id' => message_id(@comment))
   end
 
 
@@ -143,5 +188,14 @@ class AuditoriumMailer < ActionMailer::Base
       subject: "You're now a member of #{@membership_request.course.name_with_term}.", 
       template_path: "auditorium_mailer",
       template_name: "member_membership")  
+  end
+
+  private
+  def message_id(element)
+    if element.present? 
+      "<notification_#{element.class.name.downcase}_#{element.id}@auditorium.inf.tu-dresden.de>"
+    else
+      "<notification@auditorium.inf.tu-dresden.de>"
+    end
   end
 end

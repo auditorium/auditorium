@@ -4,17 +4,12 @@ class NotificationsController < ApplicationController
   # GET /notifications
   # GET /notifications.json
   def index
-    unless current_user and params[:course_id]
-      @notifications = current_user.notifications.page(params[:page]).per(10)
-    else
-      course = Course.find(params[:course_id])
-      @notifications = current_user.notifications.keep_if{|n| !n.read? and course.posts.map(&:id).include? n.notifyable_id if n.notifyable_type.eql? 'Post'}
-      @notifications = Kaminari.paginate_array(@notifications).page(params[:page]).per(10)
-    end 
 
+    @notifications = current_user.notifications.reverse
+
+    @notifications = Kaminari.paginate_array(@notifications).page(params[:page]).per(10)
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @notifications }
+      format.html
     end
   end
 

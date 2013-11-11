@@ -1335,6 +1335,14 @@ $topbar-menu-icon-color-toggled: $alert-color;
 
 /* ================== general styles ================= */
 
+.accessibility {
+  position: absolute !important;
+  height: 1px; width: 1px; 
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
 [class*="column"] + [class*="column"]:last-child {
   float:left;
 }
@@ -1603,19 +1611,14 @@ a.disabled {
     }
   }
 
-  &.sign_in, &.sign_up {
-    background-color: $alert-color;
-    margin: 10px 0;
-    width:100%;
-    font-size: 1.2em;
-
-    &:hover {
-      background-color: darken($alert-color, 10%);
-    }
-  }
-
   &.submit {
     background-color: $alert-color;
+
+    &.wide {
+      margin: 10px 0;
+      width:100%;
+      font-size: 1.2em;
+    }
     &:hover {
       background-color: darken($alert-color, 10%);
     }
@@ -2073,6 +2076,10 @@ ul.posts li,ul.groups li {
 }
 
 ul.groups, ul.posts {
+  @extend .list;
+}
+
+.list{ 
   list-style: none;
   margin: 0;
   padding: 0;
@@ -2468,8 +2475,6 @@ i.fa-star, i.fa-star-o  {
   }
 
 }
-
-.filter-block { display: none; }
 
 .post-filter, .group-filter, .tag-filter {
   // margin: 0 0 20px 0;
@@ -2946,4 +2951,10 @@ ul.links {
     padding: 0;
     margin: 2px 10px;
   }
+}
+
+/* --------------- notification style ------------ */
+
+ul.notifications {
+  @extend .list;
 }

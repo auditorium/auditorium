@@ -27,4 +27,8 @@
       self.save
     end
   end
+
+  def origin
+    self
+  end
 end

@@ -9,12 +9,20 @@
 
 <section id="registration">
   <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), class: "form-inline") do |f| %>
+   <ul class="no-style"> 
+    <li class="input-fields"> 
       <%= f.label :email, 'Email address', :class => 'accessibility'%>
-      <%= f.text_field :email, :placeholder => 'Email address', class: 'input-small' %>
+      <%= f.text_field :email, :placeholder => 'Email address' %>
+    </li>
+    <li class="input-fields">
       <%= f.label :password, 'Password', :class => 'accessibility'%>
-      <%= f.password_field :password, :placeholder => 'Password', class: 'input-small' %>
-      <%= f.submit "Sign in", :class => 'btn btn-primary', 'data-disable-with' => 'Signing in...' %>
-    <% end %>
+      <%= f.password_field :password, :placeholder => 'Password' %>
+    </li>
+    <li class="input-fields">
+    <%= f.submit "Sign in", :class => 'btn btn-primary', 'data-disable-with' => 'Signing in...' %>
+    </li>
+    </ul>
+  <% end %>
 </section>
 
 <section id="features">

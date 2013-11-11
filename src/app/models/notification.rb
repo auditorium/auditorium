@@ -60,4 +60,23 @@ class Notification < ActiveRecord::Base
   def body
     self.title
   end
+
+  def group
+    case self.notifyable_type
+    when 'Question'
+      group = Question.find(self.notifyable_id).group
+    when 'Announcement'
+      group = Announcement.find(self.notifyable_id).group
+    when 'Topic'
+      group = Topic.find(self.notifyable_id).group
+    when 'Answer'
+      group = Answer.find(notifyable_id).group
+    when 'Comment'
+      group = Comment.find(notifyable_id).group
+    else
+      group = nil
+    end
+
+    group
+  end
 end
