@@ -1,6 +1,10 @@
-<li class="<%= post.class.name.parameterize %>" data-id="<%= post.id %>" data-group-id="<%= dom_id(post.group) %>">
+<% if can? :read, post %>
+<li class="<%= 'private-' if post.class.name.eql? 'Question' and post.is_private%><%= post.class.name.parameterize %>" data-id="<%= post.id %>" data-group-id="<%= dom_id(post.group) %>">
   <span class="ribbon">
-    <%= t('posts.label', type: post.class.name) %>
+    <% if post.class.name.eql? 'Question' and post.is_private %>
+      <%= fa_icon('lock', title: t('questions.is_private.icon_hint'), class: 'private') %>
+    <% end %>
+    <%= t("posts.label.#{post.class.name.downcase}") %>
 
     <span class="bookmark">
       <% if current_user.is_follower?(post) %>
@@ -34,3 +38,4 @@
     </span>
   </div>
 </li>
+<% end %>

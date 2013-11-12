@@ -8,6 +8,14 @@
   <%= f.text_field :tag_tokens, data: {load: @question.tags} %>
 </li>
 
+<li class="input-fields">
+<%= f.label :is_private do %>
+  <%= f.check_box :is_private %>
+  <%= t('questions.is_private.label') %>
+<% end %>
+<p class="hint"><%= t('questions.is_private.hint') %></p>
+</li>
+
 <div class="preview">
   <div id="question-preview"></div>
 </div>

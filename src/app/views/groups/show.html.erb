@@ -1,3 +1,23 @@
+<% if @group.deactivated? %>
+  <div class="notice">
+    <% if current_user.admin? %>
+      <%= link_to fa_icon('unlock', text: t('groups.actions.unlock')), reactivate_group_path(@group), method: :post, class: 'button tiny alert' %>
+      <%= link_to fa_icon('times', text: t('groups.actions.delete')), @group, method: :delete, confirm: t('groups.actions.delete'), class: 'button tiny secondary' %>
+    <% end %>
+
+    <%= t('groups.hints.deactivated') %>
+  </div>
+<% elsif !@group.approved? %>
+  <div class="notice">
+    <% if current_user.admin? %>
+      <%= link_to fa_icon('check', text: t('groups.actions.approve')), approve_group_path(@group), method: :post, class: 'button tiny alert' %>
+      <%= link_to fa_icon('lock', text: t('groups.actions.decline')), decline_group_path(@group), method: :post, class: 'button tiny secondary' %>
+    <% end %>
+
+    <%= t('groups.hints.needs_approval') %>
+  </div>
+<% end %>
+
 <section>
   <div id="<%= @group.group_type %>-group" class="block">
     <header>
@@ -15,11 +35,12 @@
       <p class="hint"><%= t('groups.tags.label') %> <%= tag_list(@group.tags) %></p>
     </div>
   </div>
-
+  
+<% if can? :manage, @group %>
   <div class="group-management">
-    <%= link_to t('groups.actions.edit'), edit_group_path(@group), class: 'button secondary' %>
+    
+    <%= link_to t('groups.actions.edit_group'), edit_group_path(@group), class: 'button secondary' %>
     <%= link_to t('groups.actions.manage_users'), manage_members_group_path, class: 'button secondary', method: :post, remote: true %>
-    <%= link_to t('groups.actions.edit'), edit_group_path(@group), class: 'button secondary' %>
   </div>
   <div id="manage-members" class="block">
     <div id="searchbar">
@@ -30,7 +51,7 @@
     </div>
     <div id="members"></div>
   </div>
-
+  <% end %>
 </section>
 
 <section id="announcements">

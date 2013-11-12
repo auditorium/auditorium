@@ -36,6 +36,10 @@ class Group < ActiveRecord::Base
   validates :creator_id, presence: true
   validates :group_type, presence: true, inclusion: { in: %w{lecture topic learning} }
   
+  include Notifiable
+
+  after_create :add_creator_to_moderators
+
   def self.tagged_with(name)
   	Tag.find_by_name!(name).groups
   end
@@ -94,4 +98,12 @@ class Group < ActiveRecord::Base
     membership.role = 'member'
     membership.save
   end
+
+  private
+  def add_creator_to_moderators
+    following = self.followings.build(follower_id: self.creator.id)
+    following.role = 'moderator'
+    following.save!
+  end
+
 end

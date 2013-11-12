@@ -8,7 +8,8 @@ en:
       announcement: '%{author} made an announcement in %{group}.'
       topic: '%{author} opened a new topic in %{group}.'
       answer: '%{author} answered a question in %{group}.'
-      comment: '%{author} commented on '
+      comment: '%{author} commented on the %{post_type}.'
+      group: 'Pending approval for "%{group}", created by %{creator}.'
   emails:
     subjects: 
       new_question: '[auditorium] %{author} asked a question in %{group}'
@@ -16,14 +17,18 @@ en:
       new_announcement: '[auditorum] %{author} made an announcement in %{group}'
       new_comment: '[auditorium] %{author} commented on the %{parent_post_type} of %{parent_post_author} in %{group}'
       new_topic: '[auditorium] %{author} opened a new topic in %{group}'
+      group_to_approve: '[auditorium] Pending approval for "%{group}", created by %{creator}.'
     content:
-      goto: 'View the %{post_type} in your browser'
+      goto: 
+        post: 'View the %{post_type} in your browser'
+        group: 'View the group in your browser'
       subjects: 
         new_question: '%{author} asked a question in %{group}:'
         new_answer: '%{author} wrote an answer to the question %{question} in %{group}:'
         new_announcement: '[auditorum] %{author} made an announcement in %{group}:'
         new_comment: '%{author} commented on the %{parent_post_type} of %{parent_post_author} in %{group}:'
         new_topic: '%{author} opened a new topic in %{group}:'
+        group_to_approve: '%{creator} created the group "%{group}". The group needs an approval.'
 
     greetings:
       hello: 'Hello %{user},'
@@ -31,7 +36,7 @@ en:
     footer:
       text: 'You received this email because you are following the group %{group}.'
       link: 'You can change which email notifications auditorium sends you in your profile settings.'
-
+      admin: 'You receive this email, because you are an admin of auditorium. Only admins can approve groups for now.'
   devise:
     links: 
       sign_in: 'I have an account. Let me in!'
@@ -136,6 +141,20 @@ en:
     today: "Today’s activity"
     yesterday: "Yesterday’s activity"
   groups:
+    flash: 
+      approved: 'This group is now approved. An email was sent to the creator of this group.'
+      declined: 'You declined the group’s approval. The group has been deactivated.'
+      reactivated: 'The group is now reactivated and approved.'
+    hints: 
+      needs_approval: 'This group needs an approval. Although it’s not approved you can use it as normal.'
+      deactivated: 'This group is deactivated. Only you can see this group.'
+    actions:
+      edit_group: 'Edit group'
+      new_group: 'Add a new group'
+      approve: 'Approve group'
+      decline: 'Decline group'
+      delete: 'Delete group'
+      reactivate: 'Reactivate group'
     link_label: 'Group:'
     creator: 'Created by %{name}'
     tags: 
@@ -267,6 +286,11 @@ en:
     edit:
       header: 'Update the questions content'
       submit: 'Save question'
+    is_private:
+      icon_hint: 'This question is private. Only group moderators can see this question.'
+      icon_alt: '(private)'
+      hint: 'Only group moderators questcan see your private question.'
+      label: 'I will ask a private question'
 
   announcements:
     page_title: "Announcements from %{group}"
@@ -316,8 +340,10 @@ en:
       checked: 'helpful answer'
       hint: 'You can also mark this answer as helpful answer.'
     actions:
-      new: 'Write an answer'
-      submit: 'Submit your answer'
+      submit_answer: 'Submit your answer'
+    label:
+      content: 'Content:'
+      new_answer: 'Write an answer'
     placeholder:
       content: 'Click here and begin writing your answer...'
     edit:
@@ -336,7 +362,12 @@ en:
       groups_for_subscribing: 'Go to groups for subscribing groups.'
 
   posts:
-    label: '%{type}'
+    label: 
+      question: 'Question'
+      announcement: 'Announcement'
+      topic: 'Topic'
+      answer: 'Answer'
+      comment: 'Comment'
     general:
       group: 'Group:'
       comments: 'Comments'

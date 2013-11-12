@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131111235930) do
+ActiveRecord::Schema.define(:version => 20131112212723) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -203,12 +203,14 @@ ActiveRecord::Schema.define(:version => 20131111235930) do
   create_table "groups", :force => true do |t|
     t.string   "title"
     t.text     "description"
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
     t.string   "group_type"
     t.integer  "creator_id",    :default => 1
     t.boolean  "private_posts"
     t.string   "url"
+    t.boolean  "approved"
+    t.boolean  "deactivated",   :default => false
   end
 
   add_index "groups", ["creator_id"], :name => "index_groups_on_creator_id"

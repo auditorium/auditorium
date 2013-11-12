@@ -21,6 +21,14 @@
           <%= f.text_field :tag_tokens, data: {load: @question.tags} %>
           <p class="tags_hint hint"><%= t('groups.group_types.general.tags_hint')%></p>
         </li>
+
+        <li class="input-fields">
+        <%= f.label :is_private do %>
+          <%= f.check_box :is_private %>
+          <%= t('questions.is_private.label') %>
+        <% end %>
+        <p class="hint"><%= t('questions.is_private.hint') %></p>
+        </li>
         
         <li class="input-fields">
           <%= f.submit t('groups.new.submit'), id: 'submit', class: 'small button submit' %>

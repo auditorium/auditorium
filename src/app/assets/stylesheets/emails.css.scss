@@ -36,14 +36,10 @@ h1, h2, h3 {
   }
 }
 
-.block {
+.markdown {
+  padding:5px 10px;
   border: 1px solid darken($gray, 20%);
   background-color: $gray;
   margin:10px 0;
   padding:5px;
-}
-
-.markdown {
-  @extend .block;
-  padding:5px 10px;
 }

@@ -14,17 +14,18 @@
 
 
 <header>
-  <h3><%= t('answers.actions.new') %></h3>
+  <h3><%= t('answers.headers.new_answer') %></h3>
 </header>
 <%= form_for([@question, @answer = Answer.new]) do |f| %>
-  <%= f.label :content, t('forms.label.content'), class: 'accessibility' %>
-  <%= f.text_area :content, placeholder: t('forms.placeholder.content'), required: true %>
+  <%= f.label :content, t('answers.label.content'), class: 'accessibility' %>
+  <%= f.text_area :content, required: true %>
   
   <div class="preview">
     <div id="answer-preview"></div>
   </div>
-
-  <%= f.submit t('forms.submit.new_answer'), id: 'submit-answer', class: 'tiny button right answer' %>
-  <%= link_to t('general.links.show_preview'), '#', class: 'toggle-preview tiny button review-button right', 'data-id' => 'answer' %>
+  <span class="right">
+    <%= link_to t('general.links.show_preview'), '#', class: 'toggle-preview tiny button review-button', 'data-id' => 'answer' %>
+    <%= f.submit t('answers.actions.submit_answer'), id: 'submit-answer', class: 'tiny button answer' %>
+  </span>
   <div class="clearfix"></div>
 <% end %>

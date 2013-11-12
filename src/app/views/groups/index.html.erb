@@ -1,9 +1,9 @@
 <section id="groups">
   <header class="subheader topic-group">
-    <h2>
+    <h3>
       <%= t('groups.index.title')%>
       <span class="right"><small><%= link_to t('general.filter.hide'), '#', 'data-id' => 'toggle-group-filter', class: 'button filter tiny' %></small></span>
-    </h2>
+    </h3>
   </header>
 
   <div class="filter-block" data-id="group-filter">
@@ -14,7 +14,7 @@
     <div class="tag-filter <%= (params[:action].eql? 'my_groups') ? 'my-groups-filter' : 'groups-filter' %>">
       <%= form_tag groups_path, method: 'get' do %>
 
-        <%= text_field_tag :tag_tokens, nil, data: {load: @tag_ids}, id: 'group_filter_tag_tokens' %>
+        <%= text_field_tag :tag_tokens, nil, data: {load: @tag_ids}, id: 'group_filter_tag_tokens', class: 'token-input-field' %>
         
         <%= label_tag :tag_tokens, t('general.filter.tag_filter.groups_filter'), class: 'hint' %> 
       <% end %>
@@ -23,4 +23,6 @@
   <div id="groups-grid">
     <%= render 'groups/groups_grid' %>
   </div>
+
+  <%= link_to t('groups.actions.new_group'), new_group_path, class: 'button alert' %>
 </section>

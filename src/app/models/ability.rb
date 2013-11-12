@@ -10,12 +10,33 @@ class Ability
     if user.id? # registrierte Benutzer
       can :read, :all
       can :create, Question
+      can :create, Group
+      can :manage, Question do |question|
+        question.group.is_moderator? user or user == question.author
+      end
+
+      cannot :read, Question do |question|
+        question.is_private and !(question.group.is_moderator? user) and user != question.author
+      end
       #cannot :manage, :all
 
       # user is group moderator
       can :manage, Group do |group|
-        group.is_moderator? user
+        group.is_moderator? user or group.creator == user
       end
+
+      can :read, Group do |group|
+        group.deactivated == false or user == group.creator
+      end
+
+      cannot :approve, Group 
+      cannot :decline, Group
+      cannot :delete, Group do |group|
+        user != group.creator
+      end
+      # cannot :read, Group do |group|
+      #   group.deactivated == true and user != group.creator
+      # end
 
       can :manage, User do |visited_user|
         (visited_user.id == user.id)

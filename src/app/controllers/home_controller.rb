@@ -14,7 +14,7 @@ class HomeController < ApplicationController
       topics = Topic.all unless cookies[:show_topics] == 'no'
 
       @posts += announcements if announcements.present?
-      @posts += questions if questions.present?
+      @posts += questions.delete_if { |q| cannot? :read, q } if questions.present?
       @posts += topics if topics.present?
       @posts = @posts.sort { |x,y| y.created_at <=> x.created_at }
 

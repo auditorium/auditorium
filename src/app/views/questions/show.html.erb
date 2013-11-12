@@ -1,6 +1,9 @@
 <article id="question">
   <header class="post-header">
     <span class="ribbon bigger">
+      <% if @question.is_private? %>
+        <%= fa_icon('lock', title: t('questions.is_private.icon_hint'), class: 'private') %>
+      <% end %>
       <%= t('posts.types.question') %>
       <span data-id="<%= dom_id(@question) %>" class="rating bright"><%= render 'shared/rating', post: @question %></span>
     </span>

@@ -1,11 +1,17 @@
 <% if notification.for_post? %>
 <li>
   <%= link_to t("notifications.notification_title.#{notification.notifiable_type.downcase}", author: notification.sender, group: notification.notifiable.group.title), notification.notifiable %>
-  <span class="right"><%= l(notification.created_at, format: :short) %></span>
+  <span class="right">
+    <%= l(notification.created_at, format: :short) %>
+    <%= link_to fa_icon('times'), notification, method: :delete %>
+  </span>
 </li>
 <% else %>
 <li>
-  <%= link_to 'DEPRICATED', notification.notifiable %>
-  <span class="right"><%= l(notification.created_at, format: :short) %></span>
+  <%= link_to "DEPRICATED #{truncate notification.title, length: 80}", notification.notifiable %>
+  <span class="right">
+    <%= l(notification.created_at, format: :short) %>
+    <%= link_to fa_icon('times'), notification, method: :delete %>
+  </span>
 </li>
 <% end %>

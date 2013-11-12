@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <%= stylesheet_link_tag 'emails' %>
+  </head>
+
+  <body>
+    <div id="email-header">
+      <h2><%= t('emails.greetings.hello', user: @receiver) %></h2>
+    </div>
+
+    <div id="email-content">
+      <%= t('emails.content.subjects.group_to_approve', creator: @creator, group: @group.title) %> 
+      <div id="email-markdown" class="markdown">
+        <h3><%= @group.title %></h3>
+        <%= markdown @group.description %>
+      </div>     
+      <%= link_to t('emails.content.goto.group'), group_url(@group, locale: I18n.locale), class: 'button alert' %> 
+    </div>
+
+    <p class="email-greetings">
+      <%= t('emails.greetings.regards') %>
+    </p>
+
+    <div id="email-footer">
+      <%= t('emails.footer.admin') %>
+    </div>
+  </body>
+</html>
+
+

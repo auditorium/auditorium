@@ -32,6 +32,9 @@ Auditorium::Application.routes.draw do
         member do
           post 'following'
           post 'manage_members'
+          post 'approve'
+          post 'decline'
+          post 'reactivate'
         end
 
         resources :videos do 

@@ -1,7 +1,6 @@
 class GroupsController < ApplicationController
-	authorize_resource
+	load_and_authorize_resource
 
-  
 	def index
 
     cookies[:show_topic_groups] = params[:show_topic_groups] if params[:show_topic_groups].present?
@@ -14,7 +13,7 @@ class GroupsController < ApplicationController
     group_types << ['learning'] unless cookies[:show_learning_groups] == 'no'
     group_types << ['lecture'] unless cookies[:show_lecture_groups] == 'no'
     
-    @groups = Group.where(group_type: group_types).order(:title)
+    @groups = Group.where(group_type: group_types).order(:title).delete_if { |g| g.deactivated == true and (current_user != g.creator and !current_user.admin?)}
     @groups = @groups.keep_if{ |g| g.followers.include? current_user } if cookies[:show_only_subscribed_groups] == 'yes'
     @groups = filter_by_tags(@groups)
 
@@ -68,6 +67,8 @@ class GroupsController < ApplicationController
 	def create
 		@group = Group.new(params[:group])
 		@group.creator = current_user
+
+    @group.approved = true if current_user.admin?
 		
 		respond_to do |format|
 			if @group.save
@@ -168,16 +169,46 @@ class GroupsController < ApplicationController
       if method.eql? 'follow'
         @group.followers << current_user unless @group.followers.include? current_user
 
-        format.html { redirect_to groups_path, flash: { success:  'You now follow the group.' } }
+        format.html { redirect_to groups_path, flash: { success:  t('groups.flash.following') } }
         format.js
       elsif method.eql? 'unfollow' 
         @group.followers.delete current_user if @group.followers.include? current_user
 
-        format.html { redirect_to groups_path, flash: { success:  'You are not follow this group anymore' } }
+        format.html { redirect_to groups_path, flash: { success:  t('groups.flash.unfollowing') } }
         format.js
       end
     end
 	end
+
+  def approve
+    @group = Group.find(params[:id])
+
+    @group.approved = true
+    @group.save
+
+    respond_to do |format|
+      format.html { redirect_to @group, notice: t('groups.flash.approved') }
+    end
+  end
+
+  def decline
+    @group = Group.find(params[:id])
+    @group.deactivated = true
+    @group.approved = true
+    @group.save
+    respond_to do |format|
+      format.html { redirect_to @group, notice: t('groups.flash.declined') }
+    end
+  end
+
+  def reactivate
+    @group = Group.find(params[:id])
+    @group.deactivated = false
+    @group.save
+    respond_to do |format|
+      format.html { redirect_to @group, notice: t('groups.flash.reactivated') }
+    end
+  end
 
   private
   def filter_by_tags(groups)

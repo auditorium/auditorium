@@ -41,12 +41,14 @@ private
         AuditoriumMailer.new_answer(author: self.author, receiver: receiver, answer: self).deliver if deliver_email_notification(self, receiver)
       end
     when 'Group'
-      receivers = User.where(admin: true)
-      receivers.each do |receiver|
-        Notification.create!(sender: self.author, receiver: receiver, notifiable_id: self.id, notifiable_type: self.class.name)
-        AuditoriumMailer.group_to_approve(creator: self.creator, receiver: receiver, group: self).deliver if deliver_email_notification(self, receiver)
+      unless self.creator.admin?
+        receivers = User.where(admin: true)
+        receivers.each do |receiver|
+          Notification.create!(sender: self.creator, receiver: receiver, notifiable_id: self.id, notifiable_type: self.class.name)
+          AuditoriumMailer.group_to_approve(creator: self.creator, receiver: receiver, group: self).deliver
+        end
       end
-    
+      
 
     
     when 'MembershipRequest'

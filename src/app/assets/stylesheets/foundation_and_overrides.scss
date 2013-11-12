@@ -1454,18 +1454,30 @@ textarea {
 }
 
 .alert-box {
-  margin:10px;
-
+  font-style: normal;
   a {
     color: $white;
     text-decoration: underline;
     &:hover { color: $gray; }
+    &.close, &.button {
+      margin:0;
+      text-decoration: none;
+      vertical-align: bottom;
+      color: $white;
+    }
   }
 }
 
 .light, .warning, .notice, .error {
   @include alert-base;
+  font-weight: normal;
+  color: $white;
+  padding: 5px;
+  
   .close { @include alert-close; }
+  .button {
+    margin: 0;
+  }
 }
 
 .light {
@@ -1823,6 +1835,14 @@ a.tag {
 }
 
 /* ================= Token input field style ================== */
+
+input.token-input-field {
+  background: none;
+  border: 1px solid $dark-gray;
+  height:29px;
+  margin-bottom:5px;
+}
+
 ul.token-input-list {
   padding:0;
   margin:0;
@@ -2113,6 +2133,8 @@ ul.groups, ul.posts {
       background-color: $learning-group-color; 
     }
 
+    &.private-question span.ribbon { background-color: lighten($question-color, 5%); }
+
     &.topic-group span.ribbon,
     &.topic span.ribbon {
       background-color: $topic-group-color; 
@@ -2122,6 +2144,7 @@ ul.groups, ul.posts {
     &.learning-group { border-color: $learning-group-color; }
     &.topic-group { border-color: $topic-group-color; }
     &.question { border-color: $question-color; }
+    &.private-question { border-color: lighten($question-color, 20%); }
     &.announcement { border-color: $announcement-color; }
     &.topic { border-color: $topic-color; }
 
@@ -2551,6 +2574,10 @@ ul.filter-list {
   }
 }
 
+ul.form {
+  list-style:none;
+  @extend .block;
+}
 
 ul.no-style {
   list-style: none;
@@ -2820,7 +2847,7 @@ ul.video-strip {
     margin: 15px 10px 10px -24px;
 
     &.bigger {
-      font-size: 1.1em;
+      font-size: 1.05em;
       padding: 3px 20px;
     }
   }
@@ -2957,4 +2984,7 @@ ul.links {
 
 ul.notifications {
   @extend .list;
+  li {
+    margin: 3px 0;
+  }
 }

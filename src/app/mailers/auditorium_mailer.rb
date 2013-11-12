@@ -11,7 +11,7 @@ class AuditoriumMailer < ActionMailer::Base
     @receiver = options[:receiver]
     @group = @question.group
     mail(to: @receiver.email, 
-        subject: t("emails.subjects.new_@question", 
+        subject: t("emails.subjects.new_question", 
         author: @author, 
         group: @group.title),
         'message-id' => message_id(@question))
@@ -23,7 +23,7 @@ class AuditoriumMailer < ActionMailer::Base
     @receiver = options[:receiver]
     @group = @announcement.group
     mail(to: @receiver.email, 
-        subject: t("emails.subjects.new_@announcement", 
+        subject: t("emails.subjects.new_announcement", 
         author: @author, 
         group: @group.title),
         'message-id' => message_id(@announcement))
@@ -35,7 +35,7 @@ class AuditoriumMailer < ActionMailer::Base
     @receiver = options[:receiver]
     @group = @topic.group
     mail(to: @receiver.email, 
-        subject: t("emails.subjects.new_@topic", 
+        subject: t("emails.subjects.new_topic", 
         author: @author, 
         group: @group.title),
         'message-id' => message_id(@topic))
@@ -47,7 +47,7 @@ class AuditoriumMailer < ActionMailer::Base
     @receiver = options[:receiver]
     @group = @answer.origin.group
     mail(to: @receiver.email, 
-        subject: t("emails.subjects.new_@answer", 
+        subject: t("emails.subjects.new_answer", 
         author: @author, 
         group: @group.title),
         'message-id' => message_id(@answer))
@@ -59,10 +59,31 @@ class AuditoriumMailer < ActionMailer::Base
     @receiver = options[:receiver]
     @group = @comment.origin.group
     mail(to: @receiver.email, 
-        subject: t("emails.subjects.new_@comment", 
+        subject: t("emails.subjects.new_comment", 
         author: @author, 
         group: @group.title),
         'message-id' => message_id(@comment))
+  end
+
+  def group_to_approve(options = {})
+    @creator = options[:creator]
+    @group = options[:group]
+    @receiver = options[:receiver]
+    mail(to: @receiver.email, 
+        subject: t("emails.subjects.group_to_approve", 
+        creator: @creator, 
+        group: @group.title),
+        'message-id' => message_id(@group))
+  end
+
+  def group_declined(options = {})
+    @receiver = options[:receiver] # == creator of group
+    @group = options[:group]
+    mail(to: @receiver.email, 
+        subject: t("emails.subjects.group_declined", 
+        receiver: @receiver, 
+        group: @group.title),
+        'message-id' => message_id(@group))
   end
 
 

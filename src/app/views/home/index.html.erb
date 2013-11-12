@@ -11,14 +11,14 @@
 
   <!-- new posts -->
   <header id="recent-posts">
-    <h2>
+    <h3>
       <%= t('home.headers.recent_activity') %>
       <span class="right">
         <small>
         <%= link_to t('general.filter.hide'), '#', 'data-id' => 'toggle-post-filter', class: 'button filter tiny' %>
         </small>
       </span>
-    </h2>
+    </h3>
   </header>
 
   <div class="filter-block" data-id="post-filter">
@@ -28,7 +28,7 @@
 
     <div class="tag-filter">
       <%= form_tag home_path, method: 'get' do %>
-        <%= text_field_tag :tag_tokens, nil, data: {load: Tag.where(id: cookies[:post_filter_tag_ids])}, id: 'post_filter_tag_tokens' %>
+        <%= text_field_tag :tag_tokens, nil, data: {load: Tag.where(id: cookies[:post_filter_tag_ids])}, id: 'post_filter_tag_tokens', class: 'token-input-field' %>
         <%= label_tag :tag_tokens, t('general.filter.tag_filter.posts_filter'), class: 'hint' %> 
       <% end %>
     </div>
