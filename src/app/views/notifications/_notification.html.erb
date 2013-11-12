@@ -1,0 +1,11 @@
+<% if notification.for_post? %>
+<li>
+  <%= link_to t("notifications.notification_title.#{notification.notifiable_type.downcase}", author: notification.sender, group: notification.notifiable.group.title), notification.notifiable %>
+  <span class="right"><%= l(notification.created_at, format: :short) %></span>
+</li>
+<% else %>
+<li>
+  <%= link_to 'DEPRICATED', notification.notifiable %>
+  <span class="right"><%= l(notification.created_at, format: :short) %></span>
+</li>
+<% end %>

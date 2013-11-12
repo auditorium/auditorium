@@ -8,8 +8,8 @@
 #  membership_type :string(255)      default("student")
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  notifyable_id   :integer
-#  notifyable_type :string(255)
+#  notifiable_id   :integer
+#  notifiable_type :string(255)
 #
 
 class FacultyMembership < ActiveRecord::Base

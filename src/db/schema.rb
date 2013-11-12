@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131107231057) do
+ActiveRecord::Schema.define(:version => 20131111235930) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -281,11 +281,11 @@ ActiveRecord::Schema.define(:version => 20131107231057) do
     t.string   "title"
     t.text     "body"
     t.boolean  "read",            :default => false
-    t.integer  "notifyable_id"
-    t.string   "notifyable_type"
+    t.integer  "notifiable_id"
+    t.string   "notifiable_type"
   end
 
-  add_index "notifications", ["notifyable_id"], :name => "index_notifications_on_notifyable_id"
+  add_index "notifications", ["notifiable_id"], :name => "index_notifications_on_notifyable_id"
   add_index "notifications", ["receiver_id"], :name => "index_notifications_on_receivers_id"
   add_index "notifications", ["sender_id"], :name => "index_notifications_on_sender_id"
 

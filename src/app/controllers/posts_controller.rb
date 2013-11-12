@@ -136,7 +136,7 @@ class PostsController < ApplicationController
     reports = Report.find_all_by_post_id(@post.id)
     Report.destroy(reports)
 
-    notifications = Notification.where(:notifyable_id => @post.id, :notifyable_type => 'Post')
+    notifications = Notification.where(:notifiable_id => @post.id, :notifiable_type => 'Post')
     notifications.each do |n|
       n.destroy
     end
@@ -309,9 +309,9 @@ class PostsController < ApplicationController
 
     unless current_user.unread_notifications.count == 0
       current_user.unread_notifications.each do |notification|
-        p = Post.find_by_id(notification.notifyable_id)
+        p = Post.find_by_id(notification.notifiable_id)
         
-        if !p.nil? and notification.notifyable_type.eql? 'Post' and p.origin.id == post.id
+        if !p.nil? and notification.notifiable_type.eql? 'Post' and p.origin.id == post.id
           notification.read = true 
           notification.save!
         end

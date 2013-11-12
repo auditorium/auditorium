@@ -13,8 +13,8 @@
 #  updated_at      :datetime         not null
 #  author_id       :integer
 #  rating          :integer          default(0)
-#  notifyable_id   :integer
-#  notifyable_type :string(255)
+#  notifiable_id   :integer
+#  notifiable_type :string(255)
 #  needs_review    :boolean          default(FALSE)
 #  is_private      :boolean          default(FALSE)
 #  last_activity   :datetime

@@ -4,7 +4,7 @@
  
 <ul class="notifications">
 <% @notifications.each do |notification| %>
-  <%= render "notifications/#{notification.notifyable_type.downcase}", notification: notification %>
+  <%= render "notifications/notification", notification: notification %>
 <% end %>
 </ul>
 

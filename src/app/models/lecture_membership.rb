@@ -7,8 +7,8 @@
 #  lecture_id      :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  notifyable_id   :integer
-#  notifyable_type :string(255)
+#  notifiable_id   :integer
+#  notifiable_type :string(255)
 #
 
 class LectureMembership < ActiveRecord::Base

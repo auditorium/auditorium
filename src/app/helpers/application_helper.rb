@@ -257,7 +257,7 @@ module ApplicationHelper
   end
 
   def notifications_for_user_in(course)
-    current_user.notifications.keep_if{|n| !n.read? and course.posts.map(&:id).include? n.notifyable_id if n.notifyable_type.eql? 'Post'}
+    current_user.notifications.keep_if{|n| !n.read? and course.posts.map(&:id).include? n.notifiable_id if n.notifiable_type.eql? 'Post'}
   end
 
   

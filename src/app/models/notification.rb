@@ -10,42 +10,46 @@
 #  title           :string(255)
 #  body            :text
 #  read            :boolean          default(FALSE)
-#  notifyable_id   :integer
-#  notifyable_type :string(255)
+#  notifiable_id   :integer
+#  notifiable_type :string(255)
 #
 
 class Notification < ActiveRecord::Base
   belongs_to :receiver, :class_name => 'User'
   belongs_to :sender, :class_name => 'User'
-  belongs_to :notifyable, :polymorphic => true
+  belongs_to :notifiable, :polymorphic => true
   
-  attr_accessible :title, :body, :read, :receiver, :sender, :notifyable_id, :notifyable_type
+  attr_accessible :title, :body, :read, :receiver, :sender, :notifiable_id, :notifiable_type
   
   validate :title, :presence => true
   validate :body, :presence => true
   validate :sender, :presence => true
   validate :receiver, :presence => true
-  validate :notifyable_type, :presence => true, inclusion: { in: %w{Post Rating CourseMembership LectureMembership} }
-  validate :notifyable_id, :presence => true
+  validate :notifiable_type, :presence => true, inclusion: { in: %w{Post Rating CourseMembership LectureMembership} }
+  validate :notifiable_id, :presence => true
+
+  def for_post?
+    %{Question Announcement Topic Answer Comment Video}.include? self.notifiable_type
+  end
 
   def path
-    if self.notifyable_type.eql? 'Post' or self.notifyable_type.eql? 'Rating'
-      post = Post.find self.notifyable_id
+    if self.notifiable_type.eql? 'Post' or self.notifiable_type.eql? 'Rating'
+      post = Post.find self.notifiable_id
       post
     end
   end
 
-  def notifyable_object
-    if self.notifyable_type.eql? 'Post' 
-      post = Post.find(self.notifyable_id) if Post.exists?(self.notifyable_id)
+  def notifiable_object
+    if self.notifiable_type.eql? 'Post' 
+      post = Post.find(self.notifiable_id) if Post.exists?(self.notifiable_id)
     else
       return nil
     end
   end
 
   def title 
-    if self.notifyable_type.eql?'Post'
-      post = self.notifyable_object
+    if self.notifiable_type.eql?'Post'
+      post = self.notifiable_object
       if post.nil?
         "Something went wrong..."
       else
@@ -62,17 +66,17 @@ class Notification < ActiveRecord::Base
   end
 
   def group
-    case self.notifyable_type
+    case self.notifiable_type
     when 'Question'
-      group = Question.find(self.notifyable_id).group
+      group = Question.find(self.notifiable_id).group
     when 'Announcement'
-      group = Announcement.find(self.notifyable_id).group
+      group = Announcement.find(self.notifiable_id).group
     when 'Topic'
-      group = Topic.find(self.notifyable_id).group
+      group = Topic.find(self.notifiable_id).group
     when 'Answer'
-      group = Answer.find(notifyable_id).group
+      group = Answer.find(notifiable_id).group
     when 'Comment'
-      group = Comment.find(notifyable_id).group
+      group = Comment.find(notifiable_id).group
     else
       group = nil
     end

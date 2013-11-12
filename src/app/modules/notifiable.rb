@@ -10,40 +10,40 @@ private
     when 'Comment'
       receivers = receivers_for_posts
       receivers.each do |receiver|
-        Notification.create!(sender: self.author, receiver: receiver, notifyable_id: self.id, notifyable_type: self.class.name)
+        Notification.create!(sender: self.author, receiver: receiver, notifiable_id: self.id, notifiable_type: self.class.name)
         AuditoriumMailer.new_comment(author: self.author, receiver: receiver, comment: self).deliver if deliver_email_notification(self, receiver)
       end
     when 'Question'
       receivers = receivers_for_posts
       receivers.each do |receiver|
-        Notification.create!(sender: self.author, receiver: receiver, notifyable_id: self.id, notifyable_type: self.class.name)
+        Notification.create!(sender: self.author, receiver: receiver, notifiable_id: self.id, notifiable_type: self.class.name)
         AuditoriumMailer.new_question(author: self.author, receiver: receiver, question: self).deliver if deliver_email_notification(self, receiver)
       end
     
     when 'Announcement'
       receivers = receivers_for_posts
       receivers.each do |receiver|
-        Notification.create!(sender: self.author, receiver: receiver, notifyable_id: self.id, notifyable_type: self.class.name)
+        Notification.create!(sender: self.author, receiver: receiver, notifiable_id: self.id, notifiable_type: self.class.name)
         AuditoriumMailer.new_announcement(author: self.author, receiver: receiver, announcement: self).deliver if deliver_email_notification(self, receiver)
       end
 
     when 'Topic'
       receivers = receivers_for_posts
       receivers.each do |receiver|
-        Notification.create!(sender: self.author, receiver: receiver, notifyable_id: self.id, notifyable_type: self.class.name)
+        Notification.create!(sender: self.author, receiver: receiver, notifiable_id: self.id, notifiable_type: self.class.name)
         AuditoriumMailer.new_topic(author: self.author, receiver: receiver, topic: self).deliver if deliver_email_notification(self, receiver)
       end
 
     when 'Answer'
       receivers = receivers_for_posts
       receivers.each do |receiver|
-        Notification.create!(sender: self.author, receiver: receiver, notifyable_id: self.id, notifyable_type: self.class.name)
+        Notification.create!(sender: self.author, receiver: receiver, notifiable_id: self.id, notifiable_type: self.class.name)
         AuditoriumMailer.new_answer(author: self.author, receiver: receiver, answer: self).deliver if deliver_email_notification(self, receiver)
       end
     when 'Group'
       receivers = User.where(admin: true)
       receivers.each do |receiver|
-        Notification.create!(sender: self.author, receiver: receiver, notifyable_id: self.id, notifyable_type: self.class.name)
+        Notification.create!(sender: self.author, receiver: receiver, notifiable_id: self.id, notifiable_type: self.class.name)
         AuditoriumMailer.group_to_approve(creator: self.creator, receiver: receiver, group: self).deliver if deliver_email_notification(self, receiver)
       end
     
