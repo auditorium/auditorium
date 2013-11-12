@@ -22,7 +22,7 @@
 
     <% if can? :manage, @video %> 
       <span class="right">
-        <span class="created_at"><%= l(@video.created_at, format: :short) %></span>
+        <span class="last_activity"><%= @video.last_activity.present? ? l(@video.last_activity, format: :short) : l(@video.updated_at, format: :short) %></span>
         <span class="actions">
           &middot;
           <%= link_to fa_icon('pencil', text: 'edit'), edit_video_path(@video), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %> &middot;

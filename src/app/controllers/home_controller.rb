@@ -18,7 +18,7 @@ class HomeController < ApplicationController
       @posts += topics if topics.present?
 
       @posts.keep_if { |p| p.subscribed?(current_user) } if cookies[:only_subscribed] == 'yes'
-      @posts = @posts.sort{ |x,y| y.last_activity <=> x.last_activity }
+      @posts = @posts.sort{ |x,y| (x.last_activity.present? and y.last_activity.present?) ? y.last_activity <=> x.last_activity : y.updated_at <=> x.updated_at }
       if params[:tags]
         cookies[:post_filter_tag_ids] = params[:tags]
         tag_ids = params[:tags].split(',').collect { |i| i.to_i }.to_set

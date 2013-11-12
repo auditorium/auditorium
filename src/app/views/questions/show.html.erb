@@ -19,7 +19,7 @@
     <%= link_to @question.group.title, group_path(@question.group) %>
     <% if can? :manage, @question %> 
       <span class="right">
-        <span class="created_at"><%= l(@question.created_at, format: :short) %></span>
+        <span class="last_activity"><%= @question.last_activity.present? ? l(@question.last_activity, format: :short) : l(@question.updated_at, format: :short) %></span>
         <span class="actions">
           &middot;
           <%= link_to fa_icon('pencil', text: 'edit'), edit_question_path(@question), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %> &middot;

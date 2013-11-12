@@ -44,7 +44,7 @@
       <%= pluralize(announcement.comments.size, 'comment') %>
     </span>
     <span class="right">
-      <span class="created_at"><%= l(announcement.created_at, format: :short) %></span>
+      <span class="last_activity"><%= announcement.last_activity.present? ? l(announcement.last_activity, format: :short) : l(announcement.updated_at, format: :short) %></span>
       <% if can? :manage, announcement %> 
         <span class="actions">
           &middot;

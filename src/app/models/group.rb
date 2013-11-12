@@ -98,23 +98,6 @@ class Group < ActiveRecord::Base
     membership.save
   end
 
-  # def questions
-  #   self.questions.order(last_activity: :desc, updated_at: :desc)
-  # end
-
-  # def announcements
-  #   self.announcements.order(last_activity: :desc, updated_at: :desc)
-  # end
-
-  # def topics
-  #   self.topics.order(last_activity: :desc, updated_at: :desc)
-  # end
-
-  # def videos
-  #   self.videos.order(last_activity: :desc, updated_at: :desc)
-  # end
-
-
   private
   def add_creator_to_moderators
     following = self.followings.build(follower_id: self.creator.id)

@@ -17,7 +17,7 @@
 
     <% if can? :manage, @announcement %> 
       <span class="right">
-        <span class="created_at"><%= l(@announcement.created_at, format: :short) %></span>
+        <span class="last_activity"><%= @announcement.last_activity.present? ? l(@announcement.last_activity, format: :short) : l(@announcement.updated_at, format: :short) %></span>
         <span class="actions">
           &middot;
           <%= link_to fa_icon('pencil', text: 'edit'), edit_announcement_path(@announcement), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %> &middot;
