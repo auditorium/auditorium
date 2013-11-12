@@ -25,6 +25,7 @@ class TopicsController < ApplicationController
   def create
     @topic = @group.topics.new(params[:topic])
     @topic.author = current_user
+    @topic.last_activity = DateTime.now
 
     respond_to do |format|
       if @topic.save!
@@ -43,6 +44,7 @@ class TopicsController < ApplicationController
 
   def update
     @topic = Topic.find(params[:id])
+    @topic.last_activity = DateTime.now
 
     respond_to do |format|
       if @topic.update_attributes(params[:topic])

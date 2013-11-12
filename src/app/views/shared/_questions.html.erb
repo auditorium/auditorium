@@ -23,7 +23,7 @@
 
 <ul class="posts condensed">
 <% limit ||= nil %>
-  <% @group.questions.delete_if{ |q| cannot? :read, q }.each_with_index do |question| %>
+  <% @group.questions.order(last_activity: :desc, updated_at: :desc).delete_if{ |q| cannot? :read, q }.each_with_index do |question| %>
     <li class="question">
       <div class="content"> 
       <span class="rating"><%= question.rating %></span>

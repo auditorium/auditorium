@@ -9,19 +9,16 @@ class HomeController < ApplicationController
       cookies[:show_topics] = params[:show_topics] if params[:show_topics].present?
       cookies[:only_subscribed] = params[:only_subscribed] if params[:only_subscribed].present?
 
-      announcements = Announcement.all unless cookies[:show_announcements] == 'no'
-      questions = Question.all unless cookies[:show_questions] == 'no'
-      topics = Topic.all unless cookies[:show_topics] == 'no'
+      announcements = Announcement.order(last_activity: :desc, updated_at: :desc) unless cookies[:show_announcements] == 'no'
+      questions = Question.order(last_activity: :desc, updated_at: :desc) unless cookies[:show_questions] == 'no'
+      topics = Topic.order(last_activity: :desc, updated_at: :desc) unless cookies[:show_topics] == 'no'
 
       @posts += announcements if announcements.present?
       @posts += questions.delete_if { |q| cannot? :read, q } if questions.present?
       @posts += topics if topics.present?
-      @posts = @posts.sort { |x,y| y.created_at <=> x.created_at }
-
-      
 
       @posts.keep_if { |p| p.subscribed?(current_user) } if cookies[:only_subscribed] == 'yes'
-
+      @posts = @posts.sort{ |x,y| y.last_activity <=> x.last_activity }
       if params[:tags]
         cookies[:post_filter_tag_ids] = params[:tags]
         tag_ids = params[:tags].split(',').collect { |i| i.to_i }.to_set

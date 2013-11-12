@@ -27,7 +27,7 @@
       <%= pluralize(post.comments.size, 'comment') %>
     </span>
     <span class="right">
-      <span class="created_at"><%= l(post.created_at, format: :short) %></span>
+      <span class="last_activity"><%= l(post.last_activity, format: :short) %></span>
       <% if can? :manage, post %> 
         <span class="actions">
           &middot;

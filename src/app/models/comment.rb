@@ -15,7 +15,7 @@
 class Comment < ActiveRecord::Base
   include Votable
   include Notifiable
-
+  
   belongs_to :commentable, polymorphic: true
   belongs_to :author, class_name: 'User'
   

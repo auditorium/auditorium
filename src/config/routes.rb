@@ -46,16 +46,16 @@ Auditorium::Application.routes.draw do
         end
         
         resources :topics do
-          resources :comments
+          resources :comments, except: [:show, :index, :new]
         end
         
         resources :questions do
           resources :comments
-          resources :answers do
+          resources :answers, except: [:show, :index, :new] do
             member do 
               post 'helpful', to: 'answers#toggle_as_helpful'
             end
-            resources :comments
+            resources :comments, except: [:show, :index, :new]
           end
         end
       end

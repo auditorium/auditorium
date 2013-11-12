@@ -14,7 +14,6 @@
 #
 
 class Group < ActiveRecord::Base
-  
   has_many :tags, through: :taggings
   has_many :taggings, as: :taggable
   
@@ -98,6 +97,23 @@ class Group < ActiveRecord::Base
     membership.role = 'member'
     membership.save
   end
+
+  # def questions
+  #   self.questions.order(last_activity: :desc, updated_at: :desc)
+  # end
+
+  # def announcements
+  #   self.announcements.order(last_activity: :desc, updated_at: :desc)
+  # end
+
+  # def topics
+  #   self.topics.order(last_activity: :desc, updated_at: :desc)
+  # end
+
+  # def videos
+  #   self.videos.order(last_activity: :desc, updated_at: :desc)
+  # end
+
 
   private
   def add_creator_to_moderators

@@ -23,6 +23,10 @@ class AnswersController < ApplicationController
   def create
     @answer = @question.answers.new(params[:answer])
     @answer.author = current_user
+    now = DateTime.now
+    @answer.origin.last_activity = now
+    @answer.origin.save!
+    @answer.last_activity = now
 
     respond_to do |format|
       if @answer.save!
@@ -37,6 +41,25 @@ class AnswersController < ApplicationController
 
   def edit 
     @answer = Answer.find(params[:id])
+  end
+
+  def update
+    @answer = Answer.find(params[:id])
+    
+    now = DateTime.now
+    @answer.last_activity = now
+    @answer.origin.last_activity = now
+    @answer.origin.save!
+
+    respond_to do |format|
+      if @answer.update_attributes(params[:answer])
+        format.html { redirect_to answer_path(@answer), flash: { success:  'answer was successfully updated.' } }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit", flash: { error: "answer couldn't be updated!" } }
+        format.json { render json: @answer.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def toggle_as_helpful

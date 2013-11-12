@@ -19,7 +19,7 @@ class Topic < ActiveRecord::Base
   include Taggable
   include ParentPost
   include Notifiable
-
+  
   define_index do
     indexes subject
     indexes content

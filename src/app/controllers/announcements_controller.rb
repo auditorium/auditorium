@@ -23,6 +23,7 @@ class AnnouncementsController < ApplicationController
   def create
     @announcement = @group.announcements.new(params[:announcement])
     @announcement.author = current_user
+    @announcement.last_activity = DateTime.now
 
     respond_to do |format|
       if @announcement.save!
@@ -41,6 +42,7 @@ class AnnouncementsController < ApplicationController
 
   def update
     @announcement = Announcement.find(params[:id])
+    @announcement.last_activity = DateTime.now
 
     respond_to do |format|
       if @announcement.update_attributes(params[:announcement])

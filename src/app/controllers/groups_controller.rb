@@ -72,7 +72,7 @@ class GroupsController < ApplicationController
 		
 		respond_to do |format|
 			if @group.save
-				format.html { redirect_to group_path(@group), notice: t('groups.create.success') }
+				format.html { redirect_to group_path(@group), success: t('groups.create.success') }
 			else
 				format.html { render action: :new, error: t('groups.create.failure') }
 			end

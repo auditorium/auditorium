@@ -23,7 +23,7 @@
 
 <ul class="posts condensed">
 <% limit ||= nil %>
-  <% @group.topics.limit(limit).each_with_index do |topic| %>
+  <% @group.topics.order(last_activity: :desc, updated_at: :desc).limit(limit).each_with_index do |topic| %>
     <li class="topic">
       <div class="content"> 
         <span class="rating"><%= topic.rating %></span>

@@ -24,6 +24,7 @@ class QuestionsController < ApplicationController
   def create
     @question = @group.questions.new(params[:question])
     @question.author = current_user
+    @question.last_activity = DateTime.now
 
     respond_to do |format|
       if @question.save!
@@ -42,6 +43,7 @@ class QuestionsController < ApplicationController
 
   def update
     @question = Question.find(params[:id])
+    @question.last_activity = DateTime.now
 
     respond_to do |format|
       if @question.update_attributes(params[:question])

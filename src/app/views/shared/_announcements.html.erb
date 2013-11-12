@@ -29,7 +29,7 @@
   
 <% limit ||= nil%>
 
-<% @group.announcements.limit(limit).each_with_index do |announcement| %>
+<% @group.announcements.order(last_activity: :desc, updated_at: :desc).limit(limit).each_with_index do |announcement| %>
   <li class="announcement">
     <div class="content"> 
     <span class="rating"><%= announcement.rating %></span>

@@ -8,24 +8,20 @@ class CommentsController < ApplicationController
     @comments = @commentable.comments.order(:created_at)
   end
 
-  def show
-    @comment = Comment.find(params[:id])
-  end
-
-  def new
-    @comment = @commentable.comments.build
-  end
-
   def create
     @comment = @commentable.comments.build(params[:comment])
     @comment.author = current_user
+    now = DateTime.now
+    @comment.last_activity = now
+    @comment.origin.last_activity = now
+    @comment.origin.save!
 
     respond_to do |format|
       if @comment.save!
         format.html { redirect_to  "#{url_for @comment.origin}##{dom_id(@comment)}", notice: t('comment.action.created') }
         format.json { render json: @comment, status: :created, location: [@commentable, @comment] }
       else
-        format.html { render action: 'new' }
+        format.html { redirect_to @comment.origin }
         format.json { render json: @comment.errors, status: :unprecessable_entity }
       end
     end
@@ -37,10 +33,14 @@ class CommentsController < ApplicationController
 
   def update
     @comment = Comment.find(params[:id])
+    now = DateTime.now
+    @comment.last_activity = now
+    @comment.origin.last_activity = now
+    @comment.origin.save!
 
     respond_to do |format|
-      if @commentable.update_attributes(params[:comment])
-        format.html { redirect_to @comment, flash: { success:  'Comment was successfully updated.' } }
+      if @comment.update_attributes(params[:comment])
+        format.html { redirect_to @comment.origin, flash: { success:  'Comment was successfully updated.' } }
         format.json { head :no_content }
       else
         format.html { render action: "edit", flash: { error: "Comment couldn't be updated!" } }
