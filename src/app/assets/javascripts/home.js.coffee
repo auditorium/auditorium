@@ -16,6 +16,10 @@ $.requestSearchResults = (query) ->
     error: (jqXHR, textStatus, errorThrown) ->
       console.log errorThrown
 
+$(document).foundation 'joyride', 'start',
+  template:
+    button: '<a href="#" class="small button alert joyride-next-tip"></a>'
+
 $('a#new-announcement, a#new-topic, a#new-question').on 'click', (e) ->
   e.preventDefault()
   switch($(this).attr('id'))

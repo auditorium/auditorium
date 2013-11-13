@@ -49,5 +49,39 @@ $('#member_query').on 'input', (e) ->
   group_id = $('#group_id').val()
   $.searchMembers(group_id, member_query)
 
+if $('#announcement_content').is(':visible')
+  new Behave
+    textarea: document.getElementById('announcement_content')
+    tabSize: 2
+
+if $('#question_content').is(':visible')
+  new Behave
+    textarea: document.getElementById('question_content')
+    tabSize: 2
+
+if $('#topic_content').is(':visible')
+  new Behave
+    textarea: document.getElementById('topic_content')
+    tabSize: 2
+
+
+if $('#answer_content').is(':visible')
+  new Behave
+    textarea: document.getElementById('answer_content')
+    tabSize: 2
+
+
+if $('#comment_content').is(':visible')
+  new Behave
+    textarea: document.getElementById('comment_content')
+    tabSize: 2
+
+
+if $('#recording_content').is(':visible')
+  new Behave
+    textarea: document.getElementById('recording_content')
+    tabSize: 2
+
+
 
 

@@ -747,10 +747,10 @@ $button-radius: $global-radius;
 
 // Controlling default Joyride styles
 
-$joyride-tip-bg: $alert-color;
+$joyride-tip-bg: $anthracite;
 // $joyride-tip-default-width: 300px;
 // $joyride-tip-padding: emCalc(18, 20, 24);
-// $joyride-tip-border: solid 1px #555;
+// $joyride-tip-border: solid 1px $white;
 // $joyride-tip-radius: 4px;
 // $joyride-tip-position-offset: 22px;
 
@@ -773,7 +773,7 @@ $joyride-tip-bg: $alert-color;
 // This changes up the styles for the close button
 
 // $joyride-tip-close-color: #777;
-// $joyride-tip-close-size: 30px;
+$joyride-tip-close-size: 20px;
 // $joyride-tip-close-weight: normal;
 
 // When Joyride is filling the screen, we use this style for the bg
@@ -2987,4 +2987,9 @@ ul.notifications {
   li {
     margin: 3px 0;
   }
+}
+
+.joyride-tip-guide {
+  box-shadow: 0 0 5px $anthracite;
+  border: 1px solid $white;
 }
