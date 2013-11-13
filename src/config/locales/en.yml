@@ -10,6 +10,7 @@ en:
       answer: '%{author} answered a question in %{group}.'
       comment: '%{author} commented on the %{post_type}.'
       group: 'Pending approval for "%{group}", created by %{creator}.'
+      new_membership_request: 'Pending membership request in "%{group}" from %{user}.'
   emails:
     subjects: 
       new_question: '[auditorium] %{author} asked a question in %{group}'
@@ -18,10 +19,12 @@ en:
       new_comment: '[auditorium] %{author} commented on the %{parent_post_type} of %{parent_post_author} in %{group}'
       new_topic: '[auditorium] %{author} opened a new topic in %{group}'
       group_to_approve: '[auditorium] Pending approval for "%{group}", created by %{creator}.'
+      new_membership_request: '[auditorium] Pending membership request in "%{group}" from %{user}.'
     content:
       goto: 
         post: 'View the %{post_type} in your browser'
         group: 'View the group in your browser'
+        notifications: 'View the membership request'
       subjects: 
         new_question: '%{author} asked a question in %{group}:'
         new_answer: '%{author} wrote an answer to the question %{question} in %{group}:'
@@ -29,6 +32,7 @@ en:
         new_comment: '%{author} commented on the %{parent_post_type} of %{parent_post_author} in %{group}:'
         new_topic: '%{author} opened a new topic in %{group}:'
         group_to_approve: '%{creator} created the group "%{group}". The group needs an approval.'
+        new_membership_request: 'Pending membership request in "%{group}" from %{user}.'
 
     greetings:
       hello: 'Hello %{user},'
@@ -123,8 +127,7 @@ en:
       hide_preview: 'hide preivew'
       more: 'more ...'
     filter:
-      hide: 'hide filter'
-      show: 'show filter'
+      link: 'filter'
       tag_filter:
         groups_filter: 'You can add tags to filter displayed groups'
         posts_filter: 'You can add tags to filter displayed posts'
@@ -146,6 +149,7 @@ en:
       declined: 'You declined the group’s approval. The group has been deactivated.'
       reactivated: 'The group is now reactivated and approved.'
     hints: 
+      no_members: 'At the moment there are no members in this group. You can add moderators or members by typing in the name or email address.'
       needs_approval: 'This group needs an approval. Although it’s not approved you can use it as normal.'
       deactivated: 'This group is deactivated. Only you can see this group.'
     actions:
@@ -155,6 +159,8 @@ en:
       decline: 'Decline group'
       delete: 'Delete group'
       reactivate: 'Reactivate group'
+      become_moderator: 'Become a moderator'
+      cancel_membership_request: 'Cancel membership request'
     link_label: 'Group:'
     creator: 'Created by %{name}'
     tags: 

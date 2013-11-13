@@ -31,10 +31,12 @@ Auditorium::Application.routes.draw do
       resources :groups do
         member do
           post 'following'
-          post 'manage_members'
+          post 'show_members_list'
           post 'approve'
           post 'decline'
           post 'reactivate'
+          post 'membership_request'
+          post 'cancel_membership_request'
         end
 
         resources :videos do 

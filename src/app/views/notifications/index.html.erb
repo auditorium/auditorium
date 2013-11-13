@@ -2,10 +2,15 @@
   <h2 class="subheader"><%= t('notifications.index.title') %></h2>
 </header>
  
-<ul class="notifications">
-<% @notifications.each do |notification| %>
-  <%= render "notifications/notification", notification: notification %>
-<% end %>
+
+<% @notifications.group_by { |n| n.notifiable_type }.each do |model, notifications| %>
+<h3><%= model.pluralize %></h3>
+<ul class="notifications" id="<%= model.pluralize.downcase %>">
+  <% notifications.each do |notification| %>
+    <%= render "notifications/notification", notification: notification %>
+  <% end %>
 </ul>
+<% end %>
+
 
 <%= paginate @notifications %>

@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <%= stylesheet_link_tag 'emails' %>
+  </head>
+
+  <body>
+    <div id="email-header">
+      <h2><%= t('emails.greetings.hello', user: @receiver) %></h2>
+    </div>
+
+    <div id="email-content">
+      <p><%= t('emails.content.subjects.new_membership_request', user: @user, group: @group.title) %></p>
+      <p><%= link_to t('emails.content.goto.notifications'), notifications_url, class: 'button alert' %></p>
+    </div>
+
+    <p class="email-greetings">
+      <%= t('emails.greetings.regards') %>
+    </p>
+
+    <div id="email-footer">
+      <%= t('emails.footer.text.moderator', group: @group.title) %>
+      <%= link_to t('emails.footer.link'), user_url(@receiver, locale: I18n.locale) %>
+    </div>
+  </body>
+</html>
+
+

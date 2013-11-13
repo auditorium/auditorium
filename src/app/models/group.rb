@@ -24,6 +24,7 @@ class Group < ActiveRecord::Base
 
   has_many :followers, through: :followings
   has_many :followings, as: :followerable
+  has_many :membership_requests
 
   belongs_to :creator, class_name: 'User'
 
@@ -96,6 +97,10 @@ class Group < ActiveRecord::Base
 
     membership.role = 'member'
     membership.save
+  end
+
+  def has_pending_membership_request?(user)
+    self.membership_requests.find_by_user_id(user.id).present?
   end
 
   private

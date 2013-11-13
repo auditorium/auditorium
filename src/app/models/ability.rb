@@ -9,6 +9,9 @@ class Ability
 
     if user.id? # registrierte Benutzer
       can :read, :all
+      can :manage, Notification do |notification|
+        user.notifications.include? notification
+      end
       can :create, Question
       can :create, Group
       can :manage, Question do |question|
@@ -33,6 +36,10 @@ class Ability
       cannot :decline, Group
       cannot :delete, Group do |group|
         user != group.creator
+      end
+
+      can :manage, MembershipRequest do |mr|
+        mr.group.creator == user or mr.group.is_moderator? user
       end
       # cannot :read, Group do |group|
       #   group.deactivated == true and user != group.creator

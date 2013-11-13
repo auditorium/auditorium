@@ -41,6 +41,18 @@ class AuditoriumMailer < ActionMailer::Base
         'message-id' => message_id(@topic))
   end
 
+  def new_video(options = {})
+    @author = options[:author]
+    @video = options[:video]
+    @receiver = options[:receiver]
+    @group = @video.group
+    mail(to: @receiver.email, 
+        subject: t("emails.subjects.new_video", 
+        author: @author, 
+        group: @group.title),
+        'message-id' => message_id(@video))
+  end
+
   def new_answer(options = {})
     @author = options[:author]
     @answer = options[:answer]
@@ -64,6 +76,19 @@ class AuditoriumMailer < ActionMailer::Base
         group: @group.title),
         'message-id' => message_id(@comment))
   end
+
+  def new_membership_request(options = {})
+    @user = options[:user]
+    @membership_request = options[:membership_request]
+    @receiver = options[:receiver]
+    @group = @membership_request.group
+    mail(to: @receiver.email, 
+        subject: t("emails.subjects.new_membership_request", 
+        user: @user, 
+        group: @group.title),
+        'message-id' => message_id(@membership_request))
+  end
+
 
   def group_to_approve(options = {})
     @creator = options[:creator]

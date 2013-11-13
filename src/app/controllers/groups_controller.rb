@@ -115,7 +115,7 @@ class GroupsController < ApplicationController
 		end
 	end
 
-  def manage_members 
+  def show_members_list 
     @group = Group.find(params[:id])
     @members = @group.followers
     respond_to :js
@@ -208,6 +208,23 @@ class GroupsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to @group, notice: t('groups.flash.reactivated') }
     end
+  end
+
+  def membership_request
+    @group = Group.find(params[:id])
+    
+    unless @group.has_pending_membership_request?(current_user)
+      @membership_request = @group.membership_requests.where(user_id: current_user.id, membership_type:'moderator').first_or_create!
+    end
+    respond_to :js
+  end
+
+  def cancel_membership_request
+    @membership_request = MembershipRequest.find_by_user_id_and_group_id(current_user.id, @group.id)
+    @notifications = Notification.where(notifiable_id: @membership_request.id, notifiable_type: MembershipRequest, sender_id: current_user.id)
+    Notification.destroy(@notifications)
+    @membership_request.destroy
+    respond_to :js
   end
 
   private

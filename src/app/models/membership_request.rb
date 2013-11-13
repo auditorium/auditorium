@@ -13,7 +13,15 @@
 #
 
 class MembershipRequest < ActiveRecord::Base
+
+  include Notifiable
+
   belongs_to :user
   belongs_to :course
-  attr_accessible :user_id, :course_id, :membership_type
+  belongs_to :group
+  attr_accessible :user_id, :membership_type
+
+  validates :user_id, presence: true
+  validates :group_id, presence: true
+  validates :membership_type, presence: true, inclusion: { in: %w{moderator} }
 end

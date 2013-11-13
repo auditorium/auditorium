@@ -1,5 +1,11 @@
-<% @members.each do |member| %>
-  <tr id="<%= dom_id(member) %>">
-    <%= render 'groups/member', member: member %>
-  </tr>
+<% if @members.empty? %>
+  <p class="hint"><%= t('groups.hints.no_members') %></p>
+<% else %>
+  <table class="table">
+  <% @members.each do |member| %>
+    <tr id="<%= dom_id(member) %>">
+      <%= render 'groups/member', member: member %>
+    </tr>
+  <% end %>
+  </table>
 <% end %>

@@ -15,7 +15,7 @@
       <%= t('home.headers.recent_activity') %>
       <span class="right">
         <small>
-        <%= link_to t('general.filter.hide'), '#', 'data-id' => 'toggle-post-filter', class: 'button filter tiny' %>
+        <%= link_to fa_icon('chevron-up', text: t('general.filter.link')), '#', 'data-id' => 'toggle-post-filter' %>
         </small>
       </span>
     </h3>
@@ -48,11 +48,11 @@
     <h4>Stop #1</h4>
     <p>You can control all the details for you tour stop. Any valid HTML will work inside of Joyride.</p>
   </li>
-  <li data-class="tag-filter" data-button="Next" data-options="tipLocation:top;tipAnimation:fade">
+  <li data-class="tag-filter" data-button="Next">
     <h4>Stop #2</h4>
     <p>Get the details right by styling Joyride with a custom stylesheet!</p>
   </li>
-  <li data-id="footer" data-button="End">
+  <li data-button="End">
     <h4>Stop #3</h4>
     <p>It works as a modal too!</p>
   </li>

@@ -33,6 +33,12 @@ private
         Notification.create!(sender: self.author, receiver: receiver, notifiable_id: self.id, notifiable_type: self.class.name)
         AuditoriumMailer.new_topic(author: self.author, receiver: receiver, topic: self).deliver if deliver_email_notification(self, receiver)
       end
+    when 'Video'
+      receivers = receivers_for_posts
+      receivers.each do |receiver|
+        Notification.create!(sender: self.author, receiver: receiver, notifiable_id: self.id, notifiable_type: self.class.name)
+        AuditoriumMailer.new_video(author: self.author, receiver: receiver, video: self).deliver if deliver_email_notification(self, receiver)
+      end
 
     when 'Answer'
       receivers = receivers_for_posts
@@ -48,9 +54,16 @@ private
           AuditoriumMailer.group_to_approve(creator: self.creator, receiver: receiver, group: self).deliver
         end
       end
-      
+    when 'MembershipRequest'
+      receivers = Array.new
+      receivers << self.group.creator
+      receivers += self.group.moderators
 
-    
+      receivers.uniq.each do |receiver|
+        Notification.create!(sender: self.user, receiver: receiver, notifiable_id: self.id, notifiable_type: self.class.name)
+        AuditoriumMailer.new_membership_request(user: self.user, receiver: receiver, membership_request: self).deliver
+      end
+
     when 'MembershipRequest'
       # membership requests
     end 
