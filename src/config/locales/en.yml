@@ -10,9 +10,14 @@ en:
       answer: '%{author} answered a question in %{group}.'
       comment: '%{author} commented on the %{post_type}.'
       group: 'Pending approval for "%{group}", created by %{creator}.'
-      new_membership_request: 'Pending membership request in "%{group}" from %{user}.'
+      membership_request: '%{user} wants to become a moderator of the group %{group}'
+    actions:
+      membership_requests:
+        confirm: 'confirm'
+        reject: 'reject'
   emails:
     subjects: 
+      welcome: '[auditorium] Welcome to auditorium, %{user}'
       new_question: '[auditorium] %{author} asked a question in %{group}'
       new_answer: '[auditorium] %{author} wrote an answer to the question %{question} in %{group}'
       new_announcement: '[auditorum] %{author} made an announcement in %{group}'
@@ -20,11 +25,14 @@ en:
       new_topic: '[auditorium] %{author} opened a new topic in %{group}'
       group_to_approve: '[auditorium] Pending approval for "%{group}", created by %{creator}.'
       new_membership_request: '[auditorium] Pending membership request in "%{group}" from %{user}.'
+      confirmed_membership_request: '[auditorium] You are now a moderator of the group "%{group}".'
+      rejected_membership_request: '[auditorium] Your membership request to become a moderator of the group "%{group}" has been rejected.'
     content:
       goto: 
         post: 'View the %{post_type} in your browser'
         group: 'View the group in your browser'
         notifications: 'View the membership request'
+        login: 'Log in to auditorium'
       subjects: 
         new_question: '%{author} asked a question in %{group}:'
         new_answer: '%{author} wrote an answer to the question %{question} in %{group}:'
@@ -33,10 +41,13 @@ en:
         new_topic: '%{author} opened a new topic in %{group}:'
         group_to_approve: '%{creator} created the group "%{group}". The group needs an approval.'
         new_membership_request: 'Pending membership request in "%{group}" from %{user}.'
+        confirmed_membership_request: 'congratulations, you are now a moderator of the group "%{group}".'
+        rejected_membership_request: 'we are sorry to tell you, that your membership request to become an moderator of the group "%{group}" has been rejected.'
 
     greetings:
       hello: 'Hello %{user},'
       regards: "Kind regards,\nauditorium Team"
+      welcome: 'Welcome to auditorium, %{user}!'
     footer:
       text: 'You received this email because you are following the group %{group}.'
       link: 'You can change which email notifications auditorium sends you in your profile settings.'

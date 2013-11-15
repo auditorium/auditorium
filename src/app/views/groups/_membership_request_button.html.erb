@@ -1,5 +1,5 @@
 <% if @group.has_pending_membership_request?(current_user) %>
-  <%= link_to t('groups.actions.cancel_membership_request'), cancel_membership_request_group_path, class: 'button tiny notice', 'data-id' => 'cancel-membership-request', method: :post, remote: true %>
+  <%= link_to t('groups.actions.cancel_membership_request'), cancel_group_membership_request_path(@group), class: 'button tiny notice', 'data-id' => 'cancel-membership-request', method: :post, remote: true %>
 <% else %>
-  <%= link_to t('groups.actions.become_moderator'), membership_request_group_path, class: 'button tiny secondary', 'data-id' => 'membership-request', method: :post, remote: true %>
+  <%= link_to t('groups.actions.become_moderator'), make_group_membership_request_path(@group), class: 'button tiny secondary', 'data-id' => 'membership-request', method: :post, remote: true %>
 <% end %>

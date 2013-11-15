@@ -27,6 +27,11 @@ Auditorium::Application.routes.draw do
     get 'groups/my_groups', to: 'groups#my_groups', as: :my_groups
     post 'users/following_settings', to: 'users#following_settings', as: :following_settings
     
+    post 'groups/:group_id/membership_requests/cancel', to: 'membership_requests#cancel', as: :cancel_group_membership_request
+    post 'groups/:group_id/membership_requests/make', to: 'membership_requests#make', as: :make_group_membership_request
+    post 'groups/:group_id/membership_requests/:id/reject', to: 'membership_requests#reject', as: :reject_group_membership_request
+    post 'groups/:group_id/membership_requests/:id/confirm', to: 'membership_requests#confirm', as: :confirm_group_membership_request
+
     shallow do 
       resources :groups do
         member do
@@ -35,8 +40,6 @@ Auditorium::Application.routes.draw do
           post 'approve'
           post 'decline'
           post 'reactivate'
-          post 'membership_request'
-          post 'cancel_membership_request'
         end
 
         resources :videos do 
@@ -65,7 +68,7 @@ Auditorium::Application.routes.draw do
 
 
   # old routes - need to be altered!
-    resources :membership_requests, :only => [:index, :create, :destroy]
+    # resources :membership_requests, :only => [:index, :create, :destroy]
 
     post "membership_requests/create", :to => 'membership_requests#create', :as => :create_membership_request
     match "membership_requests/:id/confirm", :to => 'membership_requests#confirm', :as => :confirm_membership_request

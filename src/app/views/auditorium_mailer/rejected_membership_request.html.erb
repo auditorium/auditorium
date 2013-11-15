@@ -7,12 +7,12 @@
 
   <body>
     <div id="email-header">
-      <h2><%= t('emails.greetings.welcome', user: @receiver) %></h2>
+      <h2><%= t('emails.greetings.hello', user: @user) %></h2>
     </div>
 
     <div id="email-content">
-      <%= t('emails.content.subjects.welcome') %>     
-      <%= link_to t('emails.content.goto.login'), new_user_session_url(locale: I18n.locale), class: 'button alert' %> 
+      <p><%= t('emails.content.subjects.rejected_membership_request', group: @group.title) %></p>
+      <p><%= link_to t('emails.content.goto.group'), group_url(@group, locale: I18n.locale), class: 'button alert' %></p>
     </div>
 
     <p class="email-greetings">

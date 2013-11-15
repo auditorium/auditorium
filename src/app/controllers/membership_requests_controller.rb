@@ -6,32 +6,40 @@ class MembershipRequestsController < ApplicationController
     @membership_request = MembershipRequest.find(params[:id])
     @membership_request.read = true
     @membership_request.confirmed = false
+    @membership_request.save!
+    @group.remove_moderator @membership_request.user
 
-    AuditoriumMailer.confirm_membership_request(@membership_request).deliver
+    AuditoriumMailer.rejected_membership_request({membership_request: @membership_request, group: @group }).deliver
 
-    respond_to do |format|
-      if @membership_request.save!
-        format.html { redirect_to membership_requests_path, :flash => { :success => "The membership request has been rejected." } }
-      else
-        format.html { redirect_to membership_requests_path, :flash => { :error => "Something went wrong." } }
-      end
-    end
+    respond_to :js
   end
-
-  def add_as_member
-    
 
   def confirm
-    
+    @membership_request = MembershipRequest.find(params[:id])
+    @membership_request.read = true
+    @membership_request.confirmed = true
+    @membership_request.save!
 
+    @group.add_moderator @membership_request.user
+
+    AuditoriumMailer.confirmed_membership_request({membership_request: @membership_request, group: @group }).deliver
+
+    respond_to :js
   end
 
-  def destroy
-    @membership_request = MembershipRequest.find(params[:id])
-    @membership_request.destroy
-
-    respond_to do |format|
-      format.html{redirect_to notifications_path, flash: { success: 'The membership request has been removed.' } }  
+  def make  
+    unless @group.has_pending_membership_request?(current_user)
+      @membership_request = @group.membership_requests.where(user_id: current_user.id, membership_type:'moderator').first_or_create!
     end
+    respond_to :js
+  end
+
+  def cancel
+    @membership_request = @group.membership_requests.where(user_id: current_user.id).first
+    @notifications = Notification.where(notifiable_id: @membership_request.id, notifiable_type: MembershipRequest, sender_id: current_user.id)
+    @notifications.delete_all
+
+    @membership_request.destroy
+    respond_to :js
   end
 end

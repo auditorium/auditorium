@@ -1472,7 +1472,7 @@ textarea {
   @include alert-base;
   font-weight: normal;
   color: $white;
-  padding: 5px;
+  padding: 10px;
   
   .close { @include alert-close; }
   .button {
@@ -2986,6 +2986,14 @@ ul.notifications {
   @extend .list;
   li {
     margin: 3px 0;
+
+    .button {
+      margin: 0 2px;
+    }
+
+    span.right {
+      font-size:0.9em;
+    }
   }
 }
 

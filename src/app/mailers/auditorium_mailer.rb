@@ -89,6 +89,30 @@ class AuditoriumMailer < ActionMailer::Base
         'message-id' => message_id(@membership_request))
   end
 
+  def confirmed_membership_request(options = {})
+    @membership_request = options[:membership_request]
+    @user =  @membership_request.user
+    @group = @membership_request.group
+
+    mail(to: @user.email, 
+        subject: t("emails.subjects.confirmed_membership_request", 
+        user: @user, 
+        group: @group.title),
+        'message-id' => message_id(@membership_request))
+  end
+
+  def rejected_membership_request(options = {})
+    @membership_request = options[:membership_request]
+    @user =  @membership_request.user
+    @group = @membership_request.group
+
+    mail(to: @user.email, 
+        subject: t("emails.subjects.rejected_membership_request", 
+        user: @user, 
+        group: @group.title),
+        'message-id' => message_id(@membership_request))
+  end
+
 
   def group_to_approve(options = {})
     @creator = options[:creator]
@@ -110,6 +134,12 @@ class AuditoriumMailer < ActionMailer::Base
         group: @group.title),
         'message-id' => message_id(@group))
   end
+
+  def welcome_email(user)
+    @user = user
+    mail(to: @user.email, subject: t("emails.subjects.group_declined"))
+  end 
+
 
 
   # ------ old --------

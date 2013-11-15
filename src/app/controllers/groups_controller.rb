@@ -210,24 +210,6 @@ class GroupsController < ApplicationController
     end
   end
 
-  def membership_request
-    @group = Group.find(params[:id])
-    
-    unless @group.has_pending_membership_request?(current_user)
-      @membership_request = @group.membership_requests.where(user_id: current_user.id, membership_type:'moderator').first_or_create!
-    end
-    respond_to :js
-  end
-
-  def cancel_membership_request
-    @membership_request = MembershipRequest.find_by_user_id_and_group_id(current_user.id, @group.id)
-    @notifications = Notification.where(notifiable_id: @membership_request.id, notifiable_type: MembershipRequest, sender_id: current_user.id)
-    @notifications.delete_all
-    
-    @membership_request.destroy
-    respond_to :js
-  end
-
   private
   def filter_by_tags(groups)
     if params[:tags]

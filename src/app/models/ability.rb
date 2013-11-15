@@ -4,7 +4,6 @@ class Ability
   def initialize(user)
     # Define abilities for the passed in user here. For example:
 
-
     user ||= User.new # guest user (not logged in)
 
     if user.id? # registrierte Benutzer
@@ -40,6 +39,18 @@ class Ability
 
       can :manage, MembershipRequest do |mr|
         mr.group.creator == user or mr.group.is_moderator? user
+      end
+
+      can :confirm, MembershipRequest do |mr|
+        mr.group.creator == user or mr.group.is_moderator? user
+      end
+
+      can :reject, MembershipRequest do |mr|
+        mr.group.creator == user or mr.group.is_moderator? user
+      end
+
+      can :make, MembershipRequest do |mr|
+        !(mr.group.creator == user or mr.group.is_moderator? user)
       end
       # cannot :read, Group do |group|
       #   group.deactivated == true and user != group.creator

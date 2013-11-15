@@ -1,13 +1,28 @@
 <% if notification.for_post? %>
-<li>
+<li class="notification">
   <%= link_to t("notifications.notification_title.#{notification.notifiable_type.downcase}", author: notification.sender, group: notification.notifiable.group.title), notification.notifiable %>
   <span class="right">
     <%= l(notification.created_at, format: :short) %>
     <%= link_to fa_icon('times'), notification, method: :delete %>
   </span>
 </li>
+
+<% elsif notification.notifiable_type.eql? 'MembershipRequest' %>
+<li class="notification">
+  <small><%= l(notification.created_at, format: :short) %></small>
+  <%= t("notifications.notification_title.membership_request", user: notification.sender, group: notification.notifiable.group.title) %>
+  <span class="right">
+    <span id="<%= dom_id(notification.notifiable) %>">
+      <%= render 'notifications/membership_request_confirmation', membership_request: notification.notifiable %>
+    </span>
+
+    <%= link_to fa_icon('times'), notification, method: :delete %>
+  </span>
+  <div class="clearfix"></div>
+</li>
+
 <% else %>
-<li>
+<li class="notification">
   <%= link_to "DEPRICATED #{truncate notification.title, length: 80}", notification.notifiable %>
   <span class="right">
     <%= l(notification.created_at, format: :short) %>
@@ -15,3 +30,5 @@
   </span>
 </li>
 <% end %>
+
+<%= debug notification %>
