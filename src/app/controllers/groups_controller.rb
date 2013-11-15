@@ -4,13 +4,13 @@ class GroupsController < ApplicationController
 	def index
 
     cookies[:show_topic_groups] = params[:show_topic_groups] if params[:show_topic_groups].present?
-    cookies[:show_learning_groups] = params[:show_learning_groups] if params[:show_learning_groups].present?
+    cookies[:show_study_groups] = params[:show_study_groups] if params[:show_study_groups].present?
     cookies[:show_lecture_groups] = params[:show_lecture_groups] if params[:show_lecture_groups].present?
     cookies[:show_only_subscribed_groups] = params[:show_only_subscribed_groups] if params[:show_only_subscribed_groups].present?
 
     group_types = Array.new
 		group_types << ['topic'] unless cookies[:show_topic_groups] == 'no'
-    group_types << ['learning'] unless cookies[:show_learning_groups] == 'no'
+    group_types << ['study'] unless cookies[:show_study_groups] == 'no'
     group_types << ['lecture'] unless cookies[:show_lecture_groups] == 'no'
     
     @groups = Group.where(group_type: group_types).order(:title).delete_if { |g| g.deactivated == true and (current_user != g.creator and !current_user.admin?)}
@@ -31,12 +31,12 @@ class GroupsController < ApplicationController
 
   def my_groups
     cookies[:show_topic_groups] = params[:show_topic_groups] if params[:show_topic_groups].present?
-    cookies[:show_learning_groups] = params[:show_learning_groups] if params[:show_learning_groups].present?
+    cookies[:show_study_groups] = params[:show_study_groups] if params[:show_study_groups].present?
     cookies[:show_lecture_groups] = params[:show_lecture_groups] if params[:show_lecture_groups].present?
 
     group_types = Array.new
     group_types << ['topic'] unless cookies[:show_topic_groups] == 'no'
-    group_types << ['learning'] unless cookies[:show_learning_groups] == 'no'
+    group_types << ['study'] unless cookies[:show_study_groups] == 'no'
     group_types << ['lecture'] unless cookies[:show_lecture_groups] == 'no'
     
     @groups = current_user.groups.where(group_type: group_types).order(:title)
@@ -222,7 +222,8 @@ class GroupsController < ApplicationController
   def cancel_membership_request
     @membership_request = MembershipRequest.find_by_user_id_and_group_id(current_user.id, @group.id)
     @notifications = Notification.where(notifiable_id: @membership_request.id, notifiable_type: MembershipRequest, sender_id: current_user.id)
-    Notification.destroy(@notifications)
+    @notifications.delete_all
+    
     @membership_request.destroy
     respond_to :js
   end

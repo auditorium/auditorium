@@ -27,7 +27,7 @@ describe GroupsController do
 
     describe 'GET #edit' do
       it 'redirects to the login page' do
-        group = create(:learning_group)
+        group = create(:study_group)
         get :edit, id: group
         expect(response).to redirect_to new_user_session_path(locale: nil)
       end
@@ -101,7 +101,7 @@ describe GroupsController do
 
     describe 'GET #edit' do
       it 'denies access' do
-        group = create(:learning_group)
+        group = create(:study_group)
         get :edit, id: group
         expect(response).to redirect_to home_url
       end
@@ -152,13 +152,13 @@ describe GroupsController do
 
     describe 'GET #edit' do
       it 'assigns the requested group to @group' do
-        group = create(:learning_group)
+        group = create(:study_group)
         get :edit, id: group
         expect(assigns(:group)).to eq group
       end 
 
       it 'renders the :edit template' do
-        group = create(:learning_group)
+        group = create(:study_group)
         get :edit, id: group
         expect(response).to render_template :edit
       end
@@ -231,7 +231,7 @@ describe GroupsController do
 
     describe 'DELETE #destroy' do
       before(:each) do
-        @group = create(:learning_group)
+        @group = create(:study_group)
       end
 
       it 'deletes the group from the database' do

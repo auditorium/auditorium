@@ -34,7 +34,7 @@ class Group < ActiveRecord::Base
   validates :title, presence: true
   validates :description, presence: true
   validates :creator_id, presence: true
-  validates :group_type, presence: true, inclusion: { in: %w{lecture topic learning} }
+  validates :group_type, presence: true, inclusion: { in: %w{lecture topic study} }
   
   include Notifiable
 

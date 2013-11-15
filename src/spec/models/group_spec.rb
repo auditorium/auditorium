@@ -32,7 +32,7 @@ describe Group do
   end
   
   it "is invalid without a description" do
-    group = build(:learning_group, description: nil)
+    group = build(:study_group, description: nil)
     expect(group).to have(1).errors_on(:description)
   end
 
@@ -47,7 +47,7 @@ describe Group do
     expect(group).to have(1).errors_on(:creator_id)
   end
 
-  it "is invalid with group_type other than 'learning', 'lecture', 'topic'" do
+  it "is invalid with group_type other than 'study', 'lecture', 'topic'" do
     group = build(:group, group_type: 'invalid_type')
     expect(group).to have(1).errors_on(:group_type)
   end

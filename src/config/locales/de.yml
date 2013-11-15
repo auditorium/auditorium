@@ -19,11 +19,11 @@ de:
       lecture:
         title: 'Lehrveranstaltung'
         description: 'Choose this group type for lectures.'
-      learning:
-        title: 'Lerngruppe'
-        description: 'Choose this group type to create a learning group for you and your fellows.'
+      study:
+        title: 'Studiengruppe'
+        description: 'Choose this group type to create a study group for you and your fellows.'
       topic:
-        title: 'Themengebiet'
+        title: 'Themengruppe'
         description: 'Choose this group type for discussions and general questions and events.'
     menu_item: 'Gruppen'
     new: 

@@ -132,7 +132,7 @@ en:
         groups_filter: 'You can add tags to filter displayed groups'
         posts_filter: 'You can add tags to filter displayed posts'
       group-types: 'Select or deselect to filter groups:'
-      learning-group: 'Learning/Studies groups' 
+      study-group: 'Study groups' 
       lecture-group: 'Lecture groups'
       topic-group: 'Topic groups'
       posts: 'Filter posts'
@@ -197,8 +197,8 @@ en:
     label: '%{type} Group'
     lectures: 
       title: 'Lectures'
-    learnings: 
-      title: 'Learning Groups'
+    studys: 
+      title: 'Study Groups'
     topics:
       title: 'Topic Groups'
     no_groups_available: 'No groups found.'
@@ -235,10 +235,10 @@ en:
         title: 'Lecture Group'
         description: 'Choose this group type for lectures.'
         tags_hint: 'Please enter tags for faculty, institute, chair and semester so that users can find your lecture group more easily.'
-      learning:
-        title: 'Learning Group'
-        description: 'Choose this group type to create a learning group for you and your fellows.'
-        tags_hint: 'Please enter tags to describe your learning group.'
+      study:
+        title: 'Study Group'
+        description: 'Choose this group type to create a study group for you and your fellows.'
+        tags_hint: 'Please enter tags to describe your study group.'
       topic:
         title: 'Topic Group'
         description: 'Choose this group type for discussions and general questions and events.'
@@ -363,7 +363,7 @@ en:
       announcements: 'Announcements'
       topics: 'Topics'
       lecture-groups: 'Lectures'
-      learning-groups: 'Learning Groups'
+      study-groups: 'Study Groups'
       topic-groups: 'Topic Groups'
       groups_for_subscribing: 'Go to groups for subscribing groups.'
 

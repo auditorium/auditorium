@@ -26,8 +26,8 @@ FactoryGirl.define do
       group_type 'lecture'
     end
 
-    factory :learning_group do
-      group_type 'learning'
+    factory :study_group do
+      group_type 'study'
     end
 
     factory :topic_group do
@@ -39,7 +39,7 @@ FactoryGirl.define do
     end
 
     factory :group_with_three_followers do
-      group_type { ['topic', 'learning', 'lecture'].sample }
+      group_type { ['topic', 'study', 'lecture'].sample }
       after(:create) do |group|
         f = Array.new
         (1..3).each do |i|

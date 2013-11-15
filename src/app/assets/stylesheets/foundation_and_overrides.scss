@@ -94,7 +94,7 @@ $user-color: darken($success-color, 10%);
 $search-color: $alert-color;
 
 $topic-group-color: $topic-color;
-$learning-group-color: $question-color;
+$study-group-color: $question-color;
 $lecture-group-color: $announcement-color;
 
 $filter-button-color: darken($gray, 20%);
@@ -1701,7 +1701,7 @@ a.disabled {
     }    
   }
 
-  &.question, &.questions,&.learning-group {
+  &.question, &.questions,&.study-group {
     //border:1px solid $question-color;
     background-color:$question-color;
 
@@ -1794,7 +1794,7 @@ a.disabled {
     text-shadow: none;
 
     &.lecture-group { background-color: $lecture-group-color; }
-    &.learning-group { background-color: $learning-group-color; }
+    &.study-group { background-color: $study-group-color; }
     &.topic-group { background-color: $topic-group-color; }
   }
 }
@@ -1908,7 +1908,7 @@ div.token-input-dropdown {
   &.groups { color: $group-color; }
   &.my_groups { color: $group-color; }
   &.lecture-group { color: $lecture-group-color; }
-  &.learning-group { color: $learning-group-color; }
+  &.study-group { color: $study-group-color; }
   &.topic-group { color: $topic-color; }
   &.events { color: $event-color; }
   &.questions { color: $question-color; }
@@ -1925,7 +1925,7 @@ div.token-input-dropdown {
   &.groups { border-color: $group-color; }
   &.my_groups { border-color: $group-color; }
   &.lecture-group { border-color: $lecture-group-color; }
-  &.learning-group { border-color: $learning-group-color; }
+  &.study-group { border-color: $study-group-color; }
   &.topic-group { border-color: $topic-color; }
   &.events { border-color: $event-color; }
   &.questions { border-color: $question-color; }
@@ -2128,9 +2128,9 @@ ul.groups, ul.posts {
       background-color: $lecture-group-color; 
     }
 
-    &.learning-group span.ribbon,
+    &.study-group span.ribbon,
     &.question span.ribbon { 
-      background-color: $learning-group-color; 
+      background-color: $study-group-color; 
     }
 
     &.private-question span.ribbon { background-color: lighten($question-color, 5%); }
@@ -2141,7 +2141,7 @@ ul.groups, ul.posts {
     }
 
     &.lecture-group { border-color: $lecture-group-color; }
-    &.learning-group { border-color: $learning-group-color; }
+    &.study-group { border-color: $study-group-color; }
     &.topic-group { border-color: $topic-group-color; }
     &.question { border-color: $question-color; }
     &.private-question { border-color: lighten($question-color, 20%); }
@@ -2342,7 +2342,7 @@ article.group {
   border-left: 5px solid $lecture-group-color;
 
   &.lecture-group, &.lecture-group span.ribbon { border-color: $lecture-group-color; }
-  &.learning-group, &.learning-group span.ribbon { border-color: $learning-group-color; }
+  &.study-group, &.study-group span.ribbon { border-color: $study-group-color; }
   &.topic-group, &.topic-group span.ribbon { border-color: $topic-group-color; }
 
 
@@ -2356,8 +2356,8 @@ article.group {
     background-color: $lecture-group-color; 
   }
 
-  &.learning-group span.ribbon { 
-    background-color: $learning-group-color; 
+  &.study-group span.ribbon { 
+    background-color: $study-group-color; 
   }
 
   &.topic-group span.ribbon {
@@ -2391,7 +2391,7 @@ article.group {
     }
   }
   &.lecture-group { background-color: $lecture-group-color; }
-  &.learning-group { background-color: $learning-group-color; }
+  &.study-group { background-color: $study-group-color; }
   &.topic-group { background-color: $topic-group-color; }
 
   .content .bottom {
@@ -2834,7 +2834,7 @@ ul.video-strip {
 #video, 
 #topic, 
 #comment, 
-#learning-group, 
+#study-group, 
 #lecture-group, 
 #topic-group {
   background-color: #fff;
@@ -2891,10 +2891,10 @@ ul.video-strip {
   .ribbon { background-color: $recording-color; }
 }
 
-#learning-group {
-  border-left: 4px solid $learning-group-color;
+#study-group {
+  border-left: 4px solid $study-group-color;
 
-  .ribbon { background-color: $learning-group-color; }
+  .ribbon { background-color: $study-group-color; }
 }
 
 #lecture-group {

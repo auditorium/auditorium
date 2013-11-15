@@ -122,7 +122,7 @@ module ApplicationHelper
   end
 
   def group_types
-    ['lecture', 'learning', 'topic']
+    ['lecture', 'study', 'topic']
   end
   
   def term_types

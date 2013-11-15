@@ -35,7 +35,7 @@ end
 end
 
 (1..5).each do |i|
-  group = Group.new(title: Faker::Company.name, description: Faker::Lorem.words.join(' '), url: "http://#{Faker::Internet.domain_name}", group_type: ['lecture', 'topic', 'learning'].sample)
+  group = Group.new(title: Faker::Company.name, description: Faker::Lorem.words.join(' '), url: "http://#{Faker::Internet.domain_name}", group_type: ['lecture', 'topic', 'study'].sample)
   group.creator = User.first
   group.tags << add_random_tags
   group.save!
