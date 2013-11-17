@@ -25,6 +25,8 @@ describe Announcement do
     let(:group) { create(:lecture_group) }
 
     before(:each) do
+      group
+      group.followers = []
       group.followers << member
     end
 
@@ -33,6 +35,7 @@ describe Announcement do
     end     
       
     it "should send a email notification to the group member with default email settings" do
+      ActionMailer::Base.deliveries.clear
       announcement = create(:announcement, group_id: group.id, author: author)
       ActionMailer::Base.deliveries.count.should eq(1)
       email = ActionMailer::Base.deliveries.first
@@ -40,6 +43,7 @@ describe Announcement do
     end
 
     it "should  not send an email notification to the group member with the setting receive email notifications set to false" do
+      ActionMailer::Base.deliveries.clear
       member.setting = create(:setting, receive_email_notifications: false)
       announcement = create(:announcement, group_id: group.id, author: author)
       ActionMailer::Base.deliveries.count.should eq(0)
@@ -47,6 +51,7 @@ describe Announcement do
 
     it "should send no email notification to the author" do
       group.followers << author
+      ActionMailer::Base.deliveries.clear
       announcement = create(:announcement, group_id: group.id, author: author)
       ActionMailer::Base.deliveries.count.should eq(1)
     end

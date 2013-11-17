@@ -5,32 +5,31 @@ feature 'Manage groups' do
     login_with(create(:admin))
   end
 
-  scenario "change group type", js: true do
+  scenario "change group type" do
     tag = create(:tag)
 
-    visit new_group_path
+    visit new_group_path(locale: 'en')
     expect(page).to have_content('Create a new group')
 
-    find('#group_group_type', visible: false).value.should eq ''
-    find('#lecture-group').click
-    find('#group_group_type', visible: false).value.should eq 'lecture'
+    choose('group_group_type_lecture')
+    find("//input[@id='group_group_type_lecture'][@checked]")
 
     find('#group_title').set 'Group title'
     find('#group_description').set 'Group description'
-    find('#group_group_type', visible: false).set 'lecture'
     find('input#group_tag_tokens', visible: false).set tag.id
 
-    click_button('submit')
+    find('[name="commit"]').click
 
     expect(page).to have_content 'Group title'
     expect(page).to have_content 'Group description'
+    expect(page).to have_content 'Lecture Group'
     expect(page).to have_content tag.name
   end
 
   scenario 'new group with invalid data' do
-    visit new_group_path
+    visit new_group_path(locale: 'en')
 
-    click_button('submit')
+    find('[name="commit"]').click
 
     expect(page).to have_content("Title can't be blank")
     expect(page).to have_content("Description can't be blank")
@@ -43,13 +42,12 @@ feature 'Manage groups' do
 
     find('#group_title').value.should eq group.title
     find('#group_description').value.should eq group.description
-    find('#group_group_type').value.should eq 'topic'
+    find("//input[@id='group_group_type_topic'][@checked]")
 
     find('#group_title').set 'Another title'
     find('#group_description').set 'Another description'
-    find('#group_group_type').set 'lecture'
 
-    click_button('submit')
+    find('[name="commit"]').click
 
     expect(page).to have_content('Another title')
     expect(page).to have_content('Another description')
@@ -61,19 +59,16 @@ feature 'Manage groups' do
 
     find('#group_title').value.should eq group.title
     find('#group_description').value.should eq group.description
-    find('#group_group_type').value.should eq 'topic'
+    find("//input[@id='group_group_type_topic'][@checked]")
 
     find('#group_title').set ''
     find('#group_description').set ''
-    find('#group_group_type').set ''
 
-    click_button('submit')
+    find('[name="commit"]').click
 
     expect(page).to have_content("Title can't be blank")
     expect(page).to have_content("Description can't be blank")
-    expect(page).to have_content("Group type can't be blank")
   end
-
 end
 
 feature 'Interact with group' do 

@@ -93,9 +93,14 @@ describe GroupsController do
     it_behaves_like "member access to groups"
 
     describe 'GET #new' do
-      it 'denies access' do
+      it 'assigns a new Group to @group' do
         get :new
-        expect(response).to redirect_to home_url
+        expect(assigns(:group)).to be_a_new(Group)
+      end
+
+      it 'renders the :new template' do
+        get :new
+        expect(response).to render_template :new
       end
     end
 
@@ -108,9 +113,30 @@ describe GroupsController do
     end
 
     describe 'POST #create' do
-      it 'denies access' do
-        post :create, group: attributes_for(:topic_group)
-        expect(response).to redirect_to home_url
+      context 'with valid attributes' do
+        it 'saves the new group in the database' do
+          expect {
+            post :create, group: attributes_for(:topic_group)
+          }.to change(Group, :count).by(1)
+        end
+
+        it 'redirects to the group page' do
+          post :create, group: attributes_for(:topic_group)
+
+          expect(response).to redirect_to group_path(assigns(:group))
+        end
+      end
+
+      context 'with invalid attributes' do
+        it 'does not save the new group in the database' do
+          expect {
+            post :create, group: attributes_for(:invalid_group)
+          }.to_not change(Group, :count)
+        end
+        it 're-redirects to the :new template' do
+          post :create, group: attributes_for(:invalid_group)
+          expect(response).to render_template :new
+        end
       end
     end
 

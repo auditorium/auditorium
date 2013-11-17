@@ -24,6 +24,8 @@ describe Topic do
     let(:group) { create(:lecture_group) }
 
     before(:each) do
+      group
+      group.followers = []
       group.followers << member
     end
 

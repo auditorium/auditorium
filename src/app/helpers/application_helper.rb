@@ -55,10 +55,7 @@ module ApplicationHelper
     markdown_to_html = Redcarpet::Markdown.new(coderayified, options)
     markdown = markdown_to_html.render(text)
 
-    sanitize_options = {
-      :elements => %w(a strong em code pre br sub sup strike small)
-    }
-    html = Sanitize.clean(markdown, sanitize_options).html_safe
+    html = sanitize(markdown, :attributes => %w(id class style))
   end
 
   def comment_markdown(text)
@@ -72,8 +69,7 @@ module ApplicationHelper
       :no_styles => true
     }
 
-    markdown_to_html = Redcarpet::Markdown.new(coderayified, options)
-    markdown_to_html.render(text).html_safe
+    html = sanitize(markdown, :attributes => %w(id class style))
   end
 
   def tag_list(tag_array, options = { delimiter: '' }) 

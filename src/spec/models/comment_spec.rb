@@ -51,8 +51,6 @@ describe Comment do
       group.followers.should include(member)
       
       comment = create(:comment, commentable_id: question.id, commentable_type: 'Question', author: author_of_comment)
-      puts "MEMBER: #{member.email}"
-      puts "Email: #{ActionMailer::Base.deliveries.inspect.first.to}"
       ActionMailer::Base.deliveries.count.should eq(0)
     end
 

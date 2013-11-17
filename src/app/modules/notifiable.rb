@@ -92,13 +92,11 @@ private
     # if new user who does not changed settings receives emails (opt-out)
     return true if setting.nil?
 
-    
-
     # if user wants emails for this post thread when user is author of comment, answer or origin post
-    return true if setting.receive_emails_when_author and post.origin.authors.include? user
+    return true if setting.receive_email_notifications? and setting.receive_emails_when_author and post.origin.authors.include? user
     
     # if user has subscribed to course and wants emails for this subscription
-    return true if following.present? and following.receive_notifications?
+    return true if setting.receive_email_notifications? and following.present? and following.receive_notifications?
     
     # otherwise
     return false
