@@ -11,6 +11,8 @@
 #  creator_id    :integer          default(1)
 #  private_posts :boolean
 #  url           :string(255)
+#  approved      :boolean
+#  deactivated   :boolean          default(FALSE)
 #
 
 FactoryGirl.define do
@@ -42,7 +44,8 @@ FactoryGirl.define do
       group_type { ['topic', 'study', 'lecture'].sample }
       after(:create) do |group|
         f = Array.new
-        (1..3).each do |i|
+        # creator is automatically added as follower!
+        (1..2).each do |i|
           group.followers << create(:user)
           #puts group.followers.inspect
         end

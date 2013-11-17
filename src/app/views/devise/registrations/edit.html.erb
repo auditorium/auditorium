@@ -1,6 +1,12 @@
 <header>
-  <h2><%= t('users.profile.personal_data.title') %></h2>
+  <h2><%= t('users.profile.settings.title') %></h2>
 </header>
-<section class="block">
+<div class="row block">
+  <div class="large-6 columns" data-id="email-notifications">
+    <%= render 'users/email_notifications' %>
+  </div>
+  <div class="large-6 column" data-id="personal-information">
   <%= render 'users/form' %>
-</section>
+  </div>
+</div>
+

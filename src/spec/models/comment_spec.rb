@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: comments
+#
+#  id               :integer          not null, primary key
+#  author_id        :integer
+#  content          :text
+#  rating           :integer          default(0)
+#  commentable_id   :integer
+#  commentable_type :string(255)
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  last_activity    :datetime
+#
+
 require 'spec_helper'
 
 describe Comment do 
@@ -10,11 +25,11 @@ describe Comment do
     #let(:question) { create(:question, group_id: group.id, author: author_of_parent_post) }
 
     before(:each) do
-      
+      group
+      group.followers = []
     end
 
     it "should send email notification to group member with default email settings" do
-      
       member.setting = create(:setting)
       author_of_parent_post.setting = create(:setting, receive_emails_when_author: false)
       group.followers << member
@@ -36,10 +51,13 @@ describe Comment do
       group.followers.should include(member)
       
       comment = create(:comment, commentable_id: question.id, commentable_type: 'Question', author: author_of_comment)
+      puts "MEMBER: #{member.email}"
+      puts "Email: #{ActionMailer::Base.deliveries.inspect.first.to}"
       ActionMailer::Base.deliveries.count.should eq(0)
     end
 
     it "should send notifications to non members but authors of a post in the thread with default email settings" do
+      group.followers.count.should eq(0)
       group.followers.should_not include(author_of_parent_post)
       author_of_parent_post.setting = create(:setting)
       question = create(:question, group_id: group.id, author: author_of_parent_post)

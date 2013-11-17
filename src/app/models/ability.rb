@@ -13,9 +13,9 @@ class Ability
       end
       can :create, Question
       can :create, Group
-      can :manage, Question do |question|
-        question.group.is_moderator? user or user == question.author
-      end
+      # can :manage, Question do |question|
+      #   question.group.is_moderator? user or user == question.author
+      # end
 
       cannot :read, Question do |question|
         question.is_private and !(question.group.is_moderator? user) and user != question.author
@@ -23,8 +23,8 @@ class Ability
       #cannot :manage, :all
 
       # user is group moderator
-      can :manage, Group do |group|
-        group.is_moderator? user or group.creator == user
+      cannot :manage, Group do |group|
+        !(group.is_moderator? user or group.creator == user)
       end
 
       can :read, Group do |group|

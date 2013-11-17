@@ -13,51 +13,56 @@
 </header>
 <% end %>
 
-<%= form_for([@group, @announcement = Announcement.new]) do |f| %>
-  <ul class="no-style announcement">
-    <li class="input-fields" class="input-fields">
-      <%= f.label :subject, t('forms.label.subject'), class: 'accessibility' %>
-      <%= f.text_field :subject, placeholder: t('announcements.input.new') %>
+<% if can? :manage, @group %>
+  <%= form_for([@group, @announcement = Announcement.new]) do |f| %>
+    <ul class="no-style announcement">
+      <li class="input-fields" class="input-fields">
+        <%= f.label :subject, t('forms.label.subject'), class: 'accessibility' %>
+        <%= f.text_field :subject, placeholder: t('announcements.input.new') %>
+      </li>
+      <div id='new-announcement-fields' data-id='new-announcement-fields'>
+        <%= render 'shared/new_announcement_fields', f: f %>
+      </div>  
+    </ul>
+  <% end %>
+<% end %>
+
+<% if @group.announcements.size > 0 %>
+  <ul class="posts condensed">  
+  <% limit ||= nil%>
+  <% @group.announcements.order(last_activity: :desc, updated_at: :desc).limit(limit).each_with_index do |announcement| %>
+    <li class="announcement">
+      <div class="content"> 
+      <span class="rating"><%= announcement.rating %></span>
+      <span class="title"><h2><%= link_to truncate(announcement.subject, length: 150), announcement %></h2></span>
+
+    </div>
+    <div class="footer hide-for-small">
+      <span class="post-details">
+        <%= link_to announcement.group.title, group_path(announcement.group), class: 'group-link' %> &middot;
+        <%= pluralize(announcement.views, 'view') %> &middot;
+        <% if announcement.class.name.eql? 'Question' %><%= pluralize(announcement.answers.size, 'answer') %> &middot;<% end %>
+        <%= pluralize(announcement.comments.size, 'comment') %>
+      </span>
+      <span class="right">
+        <span class="last_activity"><%= announcement.last_activity.present? ? l(announcement.last_activity, format: :short) : l(announcement.updated_at, format: :short) %></span>
+        <% if can? :manage, announcement %> 
+          <span class="actions">
+            &middot;
+            <%= link_to fa_icon('pencil', text: 'edit'), edit_announcement_path(announcement), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %> &middot;
+            <%= link_to fa_icon('times', text: 'remove'), announcement, alt: "#{t('announcements.actions.delete')}", title: "#{t('posts.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this post?' %>
+          </span>
+        <% end %>
+      </span>
+    </div>
     </li>
-    <div id='new-announcement-fields' data-id='new-announcement-fields'>
-      <%= render 'shared/new_announcement_fields', f: f %>
-    </div>  
-  </ul>
-<% end %>
+  <% end %>
+  </ul>  
 
-<ul class="posts condensed">
-  
-<% limit ||= nil%>
+  <% unless limit.nil? or @group.announcements.size < limit %>
+    <span class="right"><small><%= link_to t('announcements.show_all'), group_announcements_path(@group) %></small></span>
+  <% end %>
 
-<% @group.announcements.order(last_activity: :desc, updated_at: :desc).limit(limit).each_with_index do |announcement| %>
-  <li class="announcement">
-    <div class="content"> 
-    <span class="rating"><%= announcement.rating %></span>
-    <span class="title"><h2><%= link_to truncate(announcement.subject, length: 150), announcement %></h2></span>
-
-  </div>
-  <div class="footer hide-for-small">
-    <span class="post-details">
-      <%= link_to announcement.group.title, group_path(announcement.group), class: 'group-link' %> &middot;
-      <%= pluralize(announcement.views, 'view') %> &middot;
-      <% if announcement.class.name.eql? 'Question' %><%= pluralize(announcement.answers.size, 'answer') %> &middot;<% end %>
-      <%= pluralize(announcement.comments.size, 'comment') %>
-    </span>
-    <span class="right">
-      <span class="last_activity"><%= announcement.last_activity.present? ? l(announcement.last_activity, format: :short) : l(announcement.updated_at, format: :short) %></span>
-      <% if can? :manage, announcement %> 
-        <span class="actions">
-          &middot;
-          <%= link_to fa_icon('pencil', text: 'edit'), edit_announcement_path(announcement), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %> &middot;
-          <%= link_to fa_icon('times', text: 'remove'), announcement, alt: "#{t('announcements.actions.delete')}", title: "#{t('posts.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this post?' %>
-        </span>
-      <% end %>
-    </span>
-  </div>
-  </li>
-<% end %>
-</ul>  
-
-<% unless limit.nil? %>
-  <span class="right"><small><%= link_to t('announcements.show_all'), group_announcements_path(@group) %></small></span>
+<% else %>
+  <p class="hint"><%= can?(:manage, @group) ? t('announcements.hints.no_entries.moderator') : t('announcements.hints.no_entries.member') %></p>
 <% end %>

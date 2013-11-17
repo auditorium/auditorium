@@ -11,11 +11,11 @@
     </div>
 
     <div id="email-content">
-      <%= t('emails.content.subjects.new_comment', author: @author, group: @group.title) %> 
+      <%= t('emails.content.subjects.new_comment', parent_post_author: @comment.commentable.author, parent_post_type: @comment.commentable_type, author: @author, group: @group.title) %> 
       <div id="email-markdown" class="markdown">
         <%= markdown @comment.content %>
       </div>     
-      <%= link_to t('emails.content.goto', post_type: 'comment'), comment_url(@comment, locale: I18n.locale, anchor: dom_id(@comment)), class: 'button alert' %> 
+      <%= link_to t('emails.content.goto.post', post_type: 'comment'), comment_url(@comment, locale: I18n.locale, anchor: dom_id(@comment)), class: 'button alert' %> 
     </div>
 
     <p class="email-greetings">

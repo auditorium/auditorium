@@ -21,37 +21,41 @@
   </ul>
 <% end %>
 
-<ul class="posts condensed">
-<% limit ||= nil %>
-  <% @group.questions.order(last_activity: :desc, updated_at: :desc).delete_if{ |q| cannot? :read, q }.each_with_index do |question| %>
-    <li class="question">
-      <div class="content"> 
-      <span class="rating"><%= question.rating %></span>
-      <span class="title"><h2><%= link_to truncate(question.subject, length: 150), question %></h2></span>
+<% if @group.questions.size > 0 %>
+  <ul class="posts condensed">
+  <% limit ||= nil %>
+    <% @group.questions.order(last_activity: :desc, updated_at: :desc).delete_if{ |q| cannot? :read, q }.each_with_index do |question| %>
+      <li class="question">
+        <div class="content"> 
+        <span class="rating"><%= question.rating %></span>
+        <span class="title"><h2><%= link_to truncate(question.subject, length: 150), question %></h2></span>
 
-    </div>
-    <div class="footer hide-for-small">
-      <span class="post-details">
-        <%= link_to question.group.title, group_path(question.group), class: 'group-link' %> &middot;
-        <%= pluralize(question.views, 'view') %> &middot;
-        <% if question.class.name.eql? 'Question' %><%= pluralize(question.answers.size, 'answer') %> &middot;<% end %>
-        <%= pluralize(question.comments.size, 'comment') %>
-      </span>
-      <span class="right">
-        <span class="last_activity"><%= question.last_activity.present? ? l(question.last_activity, format: :short) : l(question.updated_at, format: :short) %></span>
-        <% if can? :manage, question %> 
-          <span class="actions">
-            &middot;
-            <%= link_to fa_icon('pencil', text: 'edit'), edit_question_path(question), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %> &middot;
-            <%= link_to fa_icon('times', text: 'remove'), question, alt: "#{t('questions.actions.delete')}", title: "#{t('posts.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this post?' %>
-          </span>
-        <% end %>
-      </span>
-    </div>
-  </li>
+      </div>
+      <div class="footer hide-for-small">
+        <span class="post-details">
+          <%= link_to question.group.title, group_path(question.group), class: 'group-link' %> &middot;
+          <%= pluralize(question.views, 'view') %> &middot;
+          <% if question.class.name.eql? 'Question' %><%= pluralize(question.answers.size, 'answer') %> &middot;<% end %>
+          <%= pluralize(question.comments.size, 'comment') %>
+        </span>
+        <span class="right">
+          <span class="last_activity"><%= question.last_activity.present? ? l(question.last_activity, format: :short) : l(question.updated_at, format: :short) %></span>
+          <% if can? :manage, question %> 
+            <span class="actions">
+              &middot;
+              <%= link_to fa_icon('pencil', text: 'edit'), edit_question_path(question), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %> &middot;
+              <%= link_to fa_icon('times', text: 'remove'), question, alt: "#{t('questions.actions.delete')}", title: "#{t('posts.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this post?' %>
+            </span>
+          <% end %>
+        </span>
+      </div>
+    </li>
+    <% end %>
+  </ul> 
+
+  <% unless limit.nil? or @group.questions.size < limit %>
+    <span class="right"><small><%= link_to t('questions.show_all'), group_questions_path(@group) %></small></span>
   <% end %>
-</ul> 
-
-<% unless limit.nil? %>
-  <span class="right"><small><%= link_to t('questions.show_all'), group_questions_path(@group) %></small></span>
+<% else %>
+  <p class="hint"><%= t('questions.hints.no_entries') %></p>
 <% end %>

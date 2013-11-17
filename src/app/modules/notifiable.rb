@@ -86,18 +86,20 @@ private
   end
 
   def deliver_email_notification(post, user)
-    setting = Setting.find_by_user_id(user.id)
-    following = post.origin.group.followings.where(follower_id: user)
+    setting = user.setting
+    following = post.origin.group.followings.find_by_follower_id(user.id)
 
     # if new user who does not changed settings receives emails (opt-out)
     return true if setting.nil?
+
+    
 
     # if user wants emails for this post thread when user is author of comment, answer or origin post
     return true if setting.receive_emails_when_author and post.origin.authors.include? user
     
     # if user has subscribed to course and wants emails for this subscription
-    return true if following.present? and setting.receive_email_notifications
-
+    return true if following.present? and following.receive_notifications?
+    
     # otherwise
     return false
   end

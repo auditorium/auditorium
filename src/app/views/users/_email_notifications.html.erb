@@ -32,7 +32,7 @@
     <p class="hint"><%= t('users.profile.settings.subscribed_groups.hint') %></p>
   </header>
   <% if @user.followings.size > 0 %>
-    <%= form_tag following_settings_path, method: 'post', remote: true do %>
+    <%= form_tag user_setting_groups_path(user_id: @user.id, setting_id: @user.setting.id), method: :post, remote: true do %>
       <ul class="no-style">
         
         <% @user.followings.each do |following| %>

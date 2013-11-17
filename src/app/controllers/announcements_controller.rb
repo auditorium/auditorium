@@ -27,11 +27,9 @@ class AnnouncementsController < ApplicationController
 
     respond_to do |format|
       if @announcement.save!
-        format.html { redirect_to @announcement, notice: t('announcement.action.created') }
-        format.json { render json: @announcement, status: :created, location: [@group, @announcement] }
+        format.html { redirect_to @announcement, notice: t('announcements.flash.created') }
       else
         format.html { render action: 'new' }
-        format.json { render json: @announcement.errors, status: :unprecessable_entity }
       end
     end
   end
@@ -46,11 +44,9 @@ class AnnouncementsController < ApplicationController
 
     respond_to do |format|
       if @announcement.update_attributes(params[:announcement])
-        format.html { redirect_to announcement_path(@announcement), flash: { success:  'announcement was successfully updated.' } }
-        format.json { head :no_content }
+        format.html { redirect_to announcement_path(@announcement), success:  t('announcements.flash.updated') }
       else
-        format.html { render action: "edit", flash: { error: "announcement couldn't be updated!" } }
-        format.json { render json: @announcement.errors, status: :unprocessable_entity }
+        format.html { render action: "edit", flash: { error: t('announcements.error.update') } }
       end
     end
   end

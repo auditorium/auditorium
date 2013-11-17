@@ -1,0 +1,11 @@
+<header>
+  <h2 class="subheader"><%= t('membership_requests.headers.index') %></h2>
+  <h3><%= link_to t('membership_requests.links.group', group: @group.title), @group %></h3>
+</header>
+ 
+<ul class="membership_requests" id="<%= dom_id(@group)%>">
+  <%= render @membership_requests %>
+</ul>
+
+
+<%= paginate @membership_requests %>

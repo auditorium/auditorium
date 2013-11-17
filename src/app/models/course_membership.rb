@@ -8,8 +8,8 @@
 #  membership_type :string(255)      default("member")
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  notifiable_id   :integer
-#  notifiable_type :string(255)
+#  notifyable_id   :integer
+#  notifyable_type :string(255)
 #  receive_emails  :boolean          default(TRUE)
 #
 

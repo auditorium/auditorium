@@ -16,13 +16,13 @@
 
 <section class="tabs-wrapper">
   <ul class="tabs">
-    <li data-tab-content="about" data-user-id="<%= @user.id %>" class="active"><%= link_to t('users.tabs.about'), '#' %></li>
+    <li data-tab-content="about" data-user-id="<%= @user.id %>" data-role="remote" class="active"><%= link_to t('users.tabs.about'), '#' %></li>
     <!-- <li data-tab-content="groups" data-user-id="<%= @user.id %>" ><%= link_to t('users.tabs.groups'), '#' %></li>
     <li data-tab-content="questions" data-user-id="<%= @user.id %>" ><%= link_to t('users.tabs.questions'), '#' %></li>
     <li data-tab-content="announcements" data-user-id="<%= @user.id %>" ><%= link_to t('users.tabs.announcements'), '#' %></li>
     <li data-tab-content="topics" data-user-id="<%= @user.id %>" ><%= link_to t('users.tabs.topics'), '#' %></li>-->
     <% if can? :update, @user %>
-    <li data-tab-content="settings" data-user-id="<%= @user.id %>" class="alert" ><%= link_to t('users.tabs.settings'), edit_user_registration_path %></li>
+      <li data-tab-content="settings" data-user-id="<%= @user.id %>" class="alert" ><%= link_to t('users.tabs.settings'), edit_user_registration_path %></li>
     <% end %>
   </ul>
 

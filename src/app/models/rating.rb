@@ -8,8 +8,8 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  points          :integer          default(0)
-#  notifiable_id   :integer
-#  notifiable_type :string(255)
+#  notifyable_id   :integer
+#  notifyable_type :string(255)
 #
 
 class Rating < ActiveRecord::Base

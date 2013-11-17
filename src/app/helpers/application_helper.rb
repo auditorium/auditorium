@@ -42,16 +42,23 @@ module ApplicationHelper
     coderayified = CodeRayify.new()
 
     options = {
-      :fenced_code_blocks => true,
-      :no_intra_emphasis => true,
-      :autolink => true,
-      :strikethrough => true,
+      fenced_code_blocks: true,
+      no_intra_emphasis: true,
+      autolink: true,
+      strikethrough: true,
       #:lax_html_blocks => true,
       #:superscript => true
+      filter_html: true,
+      no_styles: true
     }
 
     markdown_to_html = Redcarpet::Markdown.new(coderayified, options)
-    markdown_to_html.render(text).html_safe
+    markdown = markdown_to_html.render(text)
+
+    sanitize_options = {
+      :elements => %w(a strong em code pre br sub sup strike small)
+    }
+    html = Sanitize.clean(markdown, sanitize_options).html_safe
   end
 
   def comment_markdown(text)

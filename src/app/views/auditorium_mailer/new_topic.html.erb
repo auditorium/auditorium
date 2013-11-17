@@ -16,7 +16,7 @@
         <h3><%= @topic.subject %></h3>
         <%= markdown @topic.content %>
       </div>     
-      <%= link_to t('emails.content.goto', post_type: 'topic'), topic_url(@topic, locale: I18n.locale), class: 'button alert' %> 
+      <%= link_to t('emails.content.goto.post', post_type: 'topic'), topic_url(@topic, locale: I18n.locale), class: 'button alert' %> 
     </div>
 
     <p class="email-greetings">

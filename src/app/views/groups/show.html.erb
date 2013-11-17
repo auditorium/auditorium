@@ -33,23 +33,21 @@
     <div class="group-information">
       <%= markdown @group.description %>
       <p class="hint"><%= t('groups.tags.label') %> <%= tag_list(@group.tags) %></p>
-
-      
     </div>
   </div>
-  
+
+<% if !(@group.is_moderator? current_user) %>
+  <span class="right" id="membership-request-button">
+    <%= render 'groups/membership_request_button' %>
+  </span>
+<% end %>
+
+<% if can? :manage, @group %>  
 <div class="block">
-  <% if can? :manage, @group %>
+  
     <%= link_to t('groups.actions.edit_group'), edit_group_path(@group), class: 'button tiny secondary' %>
     <%= link_to fa_icon('chevron-down', text: t('groups.actions.manage_users')), show_members_list_group_path, class: 'button tiny secondary', id: 'toggle-members-list', method: :post, remote: true %>
-  <% end %>
-  <% if !(@group.is_moderator? current_user) %>
-    <span class="right" id="membership-request-button">
-      <%= render 'groups/membership_request_button' %>
-    </span>
-  <% end %>
 
-  <% if can? :manage, @group %>
   <div id="manage-members">
     <div id="searchbar">
       <%= form_tag search_members_path, method: :post, remote: true do %> 
@@ -59,15 +57,16 @@
     </div>
     <div id="members"></div>
   </div>
-  <% end %>
+  
 </div>
+<% end %>
 
 
 </section>
-
 <section id="announcements">
   <%= render 'shared/announcements', limit: 10 %>
 </section>
+
 
 <section id="questions">
   <%= render 'shared/questions', limit: 10 %>
@@ -77,6 +76,8 @@
   <%= render 'shared/topics', limit: 10 %>
 </section>
 
+<% if @group.videos.size > 0 or can? :manage, @group %>
 <section id="videos">
   <%= render 'shared/videos' %>
 </section>
+<% end %>

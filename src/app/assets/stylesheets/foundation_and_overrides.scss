@@ -2982,7 +2982,7 @@ ul.links {
 
 /* --------------- notification style ------------ */
 
-ul.notifications {
+ul.notifications, ul.membership_requests {
   @extend .list;
   li {
     margin: 3px 0;

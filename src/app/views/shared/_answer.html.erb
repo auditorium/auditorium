@@ -3,7 +3,7 @@
   <span data-id="<%= dom_id(answer) %>" class="rating bright"><%= render 'shared/rating', post: answer %></span>
 </span>
 <div class="post-content">
-  <%= markdown answer.content %>
+  <%= markdown(answer.content) %>
 </div>
 
 <div class="post-footer">

@@ -2,6 +2,12 @@ class MembershipRequestsController < ApplicationController
   load_and_authorize_resource :group
   load_and_authorize_resource :membership_request, :through => :group
 
+  def index
+    @membership_requests = @group.membership_requests.page(params[:page]).per(12) 
+
+    respond_to :html
+  end
+
   def reject
     @membership_request = MembershipRequest.find(params[:id])
     @membership_request.read = true

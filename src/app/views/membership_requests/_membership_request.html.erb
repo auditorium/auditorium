@@ -1,0 +1,12 @@
+<li class="membership_request">
+  
+  <%= t("membership_requests.description", user: membership_request.user, group: @group.title) %>
+  <span class="right">
+    <span id="<%= dom_id(membership_request) %>">
+      <%= render 'notifications/membership_request_confirmation', membership_request: membership_request %>
+    </span>
+    <small><%= l(membership_request.created_at, format: :short) %></small>
+    <%= link_to fa_icon('times'), membership_request, method: :delete %>
+  </span>
+  <div class="clearfix"></div>
+</li>

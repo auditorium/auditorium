@@ -1,3 +1,4 @@
+<% if @group.videos.size > 0 or can? :manage, @group %>
 <% if params[:action].eql? 'index' %>
   <header>
     <h2>
@@ -10,6 +11,8 @@
   <h2><%= t('groups.show.recordings.header') %></h2>
 </header>
 <% end %>
+
+
 <ul class="video-strip block">
   <% @group.videos.each do |video| %>
     <li>
@@ -22,9 +25,13 @@
       </div>
     </li> 
   <% end %>
+
+  <% if can? :manage, @group %>
   <li>
     <div class="video-thumbnail new">
       <%= link_to fa_icon('plus'), new_group_video_path(@group), title: t('videos.new.link_title') %>
     </div>
   </li>
+  <% end %>
 </ul>
+<% end %>

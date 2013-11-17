@@ -2,15 +2,30 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  votes:
+    flash:
+      not_saved: 'Your vote could not been saved.'
+      successfully_upvoted: 'Your vote has been saved.'
+      already_upvoted: 'You only can upvote once.'
+      problem_voting: 'There is a problem. Please try again.'
+      already_downvoted: 'You only can downvote once.'
+
+  membership_requests:
+    headers:
+      index: 'Membership requests'
+    links:
+      group: '%{group}'
   notifications:
+    headers:
+      index: 'Your notifications'
     notification_title: 
-      question: '%{author} asked a question in %{group}.'
-      announcement: '%{author} made an announcement in %{group}.'
-      topic: '%{author} opened a new topic in %{group}.'
-      answer: '%{author} answered a question in %{group}.'
+      question: '%{author} asked a question in "%{group}".'
+      announcement: '%{author} made an announcement in "%{group}".'
+      topic: '%{author} opened a new topic in "%{group}".'
+      answer: '%{author} answered a question in "%{group}".'
       comment: '%{author} commented on the %{post_type}.'
       group: 'Pending approval for "%{group}", created by %{creator}.'
-      membership_request: '%{user} wants to become a moderator of the group %{group}'
+      membership_request: '%{user} wants to become a moderator of the group "%{group}"'
     actions:
       membership_requests:
         confirm: 'confirm'
@@ -18,11 +33,11 @@ en:
   emails:
     subjects: 
       welcome: '[auditorium] Welcome to auditorium, %{user}'
-      new_question: '[auditorium] %{author} asked a question in %{group}'
-      new_answer: '[auditorium] %{author} wrote an answer to the question %{question} in %{group}'
-      new_announcement: '[auditorum] %{author} made an announcement in %{group}'
-      new_comment: '[auditorium] %{author} commented on the %{parent_post_type} of %{parent_post_author} in %{group}'
-      new_topic: '[auditorium] %{author} opened a new topic in %{group}'
+      new_question: '[auditorium] %{author} asked a question in "%{group}"'
+      new_answer: '[auditorium] %{author} wrote an answer to the question %{question} in "%{group}"'
+      new_announcement: '[auditorum] %{author} made an announcement in "%{group}"'
+      new_comment: '[auditorium] %{author} commented on the %{parent_post_type} of %{parent_post_author} in "%{group}"'
+      new_topic: '[auditorium] %{author} opened a new topic in "%{group}"'
       group_to_approve: '[auditorium] Pending approval for "%{group}", created by %{creator}.'
       new_membership_request: '[auditorium] Pending membership request in "%{group}" from %{user}.'
       confirmed_membership_request: '[auditorium] You are now a moderator of the group "%{group}".'
@@ -34,11 +49,11 @@ en:
         notifications: 'View the membership request'
         login: 'Log in to auditorium'
       subjects: 
-        new_question: '%{author} asked a question in %{group}:'
-        new_answer: '%{author} wrote an answer to the question %{question} in %{group}:'
-        new_announcement: '[auditorum] %{author} made an announcement in %{group}:'
-        new_comment: '%{author} commented on the %{parent_post_type} of %{parent_post_author} in %{group}:'
-        new_topic: '%{author} opened a new topic in %{group}:'
+        new_question: '%{author} asked a question in "%{group}":'
+        new_answer: '%{author} wrote an answer to the question %{question} in "%{group}":'
+        new_announcement: '[auditorum] %{author} made an announcement in "%{group}":'
+        new_comment: '%{author} commented on the %{parent_post_type} of %{parent_post_author} in "%{group}":'
+        new_topic: '%{author} opened a new topic in "%{group}":'
         group_to_approve: '%{creator} created the group "%{group}". The group needs an approval.'
         new_membership_request: 'Pending membership request in "%{group}" from %{user}.'
         confirmed_membership_request: 'congratulations, you are now a moderator of the group "%{group}".'
@@ -290,6 +305,8 @@ en:
 
 
   questions:
+    hints:
+      no_entries: 'There are no questions asked. Click into the text field for asking your question.'
     page_title: "Questions from %{group}"
     links:
       to_content: 'Questions'
@@ -310,6 +327,10 @@ en:
       label: 'I will ask a private question'
 
   announcements:
+    hints:
+      no_entries: 
+        member: 'There are no announcements, yet.'
+        moderator: 'There are no announcements. Click into the text field to make an announcement.'
     page_title: "Announcements from %{group}"
     links:
       to_content: 'Announcements'
@@ -323,8 +344,15 @@ en:
     edit:
       header: 'Update the announcements content'
       submit: 'Save announcement'
+    flash:
+      created: 'The announcement has been created.'
+      updated: 'The announcement has been updated.'
+    error:
+      updated: 'Something went wrong when updating the announcment. Please try again.'
 
   topics:
+    hints:
+      no_entries: 'There are no topics. Click into the text field to create a topic.'
     page_title: "Topics from %{group}"
     links:
       to_content: 'Topics'
@@ -414,8 +442,8 @@ en:
       link: 'Profile'
       personal_data:
         title: 'Personal information'
-      update_profile:
-        title: 'Edit profile'
+      personal_information:
+        title: 'Personal information'
         link: 'Edit profile'
         user_title: 'You can provide your title, so users can see your academic title.'
         submit: 'Update personal information'

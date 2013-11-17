@@ -38,8 +38,9 @@ group :test, :development do
   gem 'spork-rails', github: 'sporkrb/spork-rails'
   gem 'guard-spork'
   gem 'childprocess'
-  gem "faker", "~> 1.1.2"
+  gem 'faker', "~> 1.1.2"
   gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
+  gem 'translate-rails3', require: 'translate'
 end
 
 group :test do
@@ -68,6 +69,7 @@ group :assets do
   gem 'font-awesome-rails'
   gem 'mathjax-rails'
   gem 'premailer-rails'
+  gem 'sanitize'
 end
 
 gem 'jquery-rails'

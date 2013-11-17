@@ -11,6 +11,8 @@
 #  creator_id    :integer          default(1)
 #  private_posts :boolean
 #  url           :string(255)
+#  approved      :boolean
+#  deactivated   :boolean          default(FALSE)
 #
 
 class Group < ActiveRecord::Base

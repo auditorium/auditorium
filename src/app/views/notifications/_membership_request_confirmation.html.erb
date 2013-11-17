@@ -5,6 +5,6 @@
    <span class="label alert"><%= t('membership_requests.label.rejected') %></span>
    <% end %>
 <% else %>
-<%= link_to t('notifications.actions.membership_requests.confirm'), confirm_group_membership_request_path(group_id: membership_request.group.id, id: membership_request.id), method: :post, remote: true, class: 'button alert tiny' %>
-<%= link_to t('notifications.actions.membership_requests.reject'), reject_group_membership_request_path(group_id: membership_request.group.id, id: membership_request.id), method: :post, remote: true, class: 'button secondary tiny' %>
+<%= link_to t('notifications.actions.membership_requests.confirm'), confirm_membership_request_path(group_id: membership_request.group.id, id: membership_request.id), method: :post, remote: true, class: 'button alert tiny' %>
+<%= link_to t('notifications.actions.membership_requests.reject'), reject_membership_request_path(group_id: membership_request.group.id, id: membership_request.id), method: :post, remote: true, class: 'button secondary tiny' %>
 <% end %>

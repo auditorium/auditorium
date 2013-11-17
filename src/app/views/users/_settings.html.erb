@@ -1,5 +1,59 @@
 <header>
   <h2><%= t('users.profile.settings.title') %></h2>
 </header>
-
+<div class="row">
+  <div class="large-6 columns">
 <%= render 'users/email_notifications' %>
+</div>
+<div class="large-6 column">
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|%>
+    <ul class="no-style">
+      <li class="input-fields">
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+        <p class="hint"><%= t('users.profile.update_profile.user_title') %></p>
+      </li>
+      <li class="input-fields">
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name %>
+      </li>
+      <li class="input-fields">
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name %>
+      </li>
+
+      <li class="input-fields">
+        <%= f.label :username %>
+        <%= f.text_field :username, :autocomplete => 'off' %>
+      </li>
+
+      <li class="input-fields">
+        <%= f.label :email %>
+        <%= f.email_field :email, :autocomplete => 'off' %>
+        <% if resource.unconfirmed_email.present? %>
+        <p class="hint"><%= t('users.pending_email_confirmation', email: resource.unconfirmed_email) %></p>
+        <% end %>
+      </li>
+      <li class="input-fields">
+        <%= f.label :password %>
+        <%= f.password_field :password, :autocomplete => 'off' %>
+      </li>
+
+      <li class="input-fields">
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, :autocomplete => 'off' %>
+      </li>
+      <li class="input-fields">
+        <%= f.label :current_password %>
+        <%= f.password_field :current_password, :autocomplete => 'off' %>
+      </li>
+
+      <li class="input-fields">
+        <%= f.submit t('users.profile.update_profile.submit'), class: 'tiny button users' %>
+      </li>
+    </ul>
+  <% end %>
+</div>
+
+<%= debug resource %>
+

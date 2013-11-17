@@ -7,7 +7,7 @@ $.renderTabContent = (tab_content, user_id) ->
       console.log errorThrown
 
 $ ->
-  $('.tabs li').on 'click', (e) ->
+  $('.tabs li[data-role="remote"]').on 'click', (e) ->
     tab_content = $(this).data('tab-content')
 
     e.preventDefault()
