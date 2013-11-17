@@ -36,9 +36,13 @@ module ApplicationHelper
       :lax_html_blocks => true,
       #:superscript => true
     }
-
     markdown_to_html = Redcarpet::Markdown.new(coderayified, options)
-    markdown_to_html.render(text).html_safe
+    markdown = markdown_to_html.render(text)
+
+    sanitize_options = {
+      :elements => %w(ul ol li p div a strong em code pre br sub sup strike small)
+    }
+    html = Sanitize.clean(markdown, sanitize_options).html_safe
   end
 
   def comment_markdown(text)
@@ -53,7 +57,12 @@ module ApplicationHelper
     }
 
     markdown_to_html = Redcarpet::Markdown.new(coderayified, options)
-    markdown_to_html.render(text).html_safe
+    markdown = markdown_to_html.render(text)
+
+    sanitize_options = {
+      :elements => %w(ul li p div a strong em code pre br sub sup strike small)
+    }
+    html = Sanitize.clean(markdown, sanitize_options).html_safe
   end
 
   def weekdays

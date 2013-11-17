@@ -62,6 +62,7 @@ group :assets do
 
   gem 'jquery-ui-rails'
   gem 'jquery-ui-themes'
+  gem 'sanitize'
 end
 
 gem "jquery-rails", "2.3.0"
