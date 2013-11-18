@@ -39,7 +39,7 @@ module ApplicationHelper
     markdown_to_html = Redcarpet::Markdown.new(coderayified, options)
     markdown = markdown_to_html.render(text)
 
-    html = sanitize(markdown,:attributes => %w(id class style))
+    html = sanitize(markdown,:attributes => %w(id class style href title alt src width height))
     
   end
 
@@ -57,7 +57,7 @@ module ApplicationHelper
     markdown_to_html = Redcarpet::Markdown.new(coderayified, options)
     markdown = markdown_to_html.render(text)
 
-    html = sanitize(markdown, :attributes => %w(id class style))
+    html = sanitize(markdown, :attributes => %w(id class style href title alt src width height))
   end
 
   def weekdays
