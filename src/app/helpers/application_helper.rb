@@ -13,13 +13,13 @@ module ApplicationHelper
       if link.match /^https?:\/\/auditorium.inf.tu-dresden.de/
         "<a href=\"#{link}\">#{alt_text}</a>"
       else
-        "<a target=\"_blank\" href=\"#{link}\"  title='external link to #{link}'> <i class='fa fa-external-link'></i> #{alt_text}</a>"
+        "<a target=\"_blank\" href=\"#{link}\"  title='external link to #{link}'> <i class='fa fa-external-link' /> #{alt_text}</a>"
       end
     end
 
     def autolink(link, link_type)
       if link.match /^https?:\/\/auditorium.inf.tu-dresden.de/
-        "<a href=\"#{link}\">#{link}</i></a>"
+        "<a href=\"#{link}\">#{link}</a>"
       else
         "<a target=\"_blank\" href=\"#{link}\" title='external link to #{link}'><i class='fa fa-external-link'></i> #{link}</a>"
       end
@@ -55,7 +55,7 @@ module ApplicationHelper
     markdown_to_html = Redcarpet::Markdown.new(coderayified, options)
     markdown = markdown_to_html.render(text)
 
-    html = sanitize(markdown, :attributes => %w(id class style))
+    html = sanitize(markdown, :attributes => %w(id class style href title alt src width height))
   end
 
   def comment_markdown(text)
@@ -69,7 +69,7 @@ module ApplicationHelper
       :no_styles => true
     }
 
-    html = sanitize(markdown, :attributes => %w(id class style))
+    html = sanitize(markdown, :attributes => %w(id class style href title alt src width height))
   end
 
   def tag_list(tag_array, options = { delimiter: '' }) 
