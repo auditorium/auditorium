@@ -12,19 +12,7 @@
   </div>
 
   <div class="post-footer">
-    <%= t('posts.general.group') %> 
-    <%= link_to @topic.group.title, group_path(@topic.group) %>
-
-    <% if can? :manage, @topic %> 
-      <span class="right">
-        <span class="last_activity"><%= @topic.last_activity.present? ? l(@topic.last_activity, format: :short) : l(@topic.updated_at, format: :short) %></span>
-        <span class="actions">
-          &middot;
-          <%= link_to fa_icon('pencil', text: 'edit'), edit_topic_path(@topic), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %> &middot;
-          <%= link_to fa_icon('times', text: 'remove'), @topic, alt: "#{t('posts.actions.delete')}", title: "#{t('posts.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this topic?' %>
-        </span>
-      </span>
-    <% end %>
+    <%= render 'shared/post_footer', post: @topic %>
   </div>
 </article>
 

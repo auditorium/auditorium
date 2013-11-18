@@ -2,9 +2,6 @@
   <h2>
     <%= t('users.profile.about.title') %>
   </h2>
-  <% if can? :manage, @user %>
-    <%= link_to t('users.profile.update_profile.link'), edit_user_path(@user), class: 'tiny button alert' %>
-  <% end %>
 </header>
 
 

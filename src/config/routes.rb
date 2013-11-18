@@ -91,11 +91,15 @@ Auditorium::Application.routes.draw do
     match 'notifications' => 'notifications#index', :as => :notifications_for_course
 
     resources :events
+    get "imprint", to: 'static_pages#imprint', as: :imprint
+    get "privacy", to: 'static_pages#privacy', as: :privacy
+    get "story", to: 'static_pages#story', as: :story
 
     root to: "landing_page#index"
-    end
-    # match '*path', to: redirect {|params| "/#{I18n.default_locale}/#{CGI::unescape(params[:path])}" }, constraints: lambda { |req| !req.path.starts_with? "/#{I18n.default_locale}/" }
-    # match '', to: redirect("/#{I18n.default_locale}")   
-    match '*path', to: redirect("/#{I18n.default_locale}/%{path}")
-    match '', to: redirect("/#{I18n.default_locale}")
+  end
+  
+  # match '*path', to: redirect {|params| "/#{I18n.default_locale}/#{CGI::unescape(params[:path])}" }, constraints: lambda { |req| !req.path.starts_with? "/#{I18n.default_locale}/" }
+  # match '', to: redirect("/#{I18n.default_locale}")   
+  match '*path', to: redirect("/#{I18n.default_locale}/%{path}")
+  match '', to: redirect("/#{I18n.default_locale}")
 end

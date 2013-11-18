@@ -1,7 +1,7 @@
 <% if answer.answer_to_id  %>
-  <%= link_to fa_icon('check', text: t('answers.helpful.checked')), helpful_answer_path(answer), class: "answer-checkmark is-helpful", remote: true, method: :post %>
+  <%= link_to fa_icon('check', text: t('answers.helpful.checked')), helpful_answer_path(answer), class: "button tiny answer-checkmark is-helpful", remote: true, method: :post %>
 <% else %>
   <% if !answer.question.helpful_answer.present? %>
-  <%= link_to fa_icon('check', text: t('answers.helpful.unchecked')), helpful_answer_path(answer), class: "answer-checkmark", remote: true, method: :post %>
+  <%= link_to fa_icon('check', text: t('answers.helpful.unchecked')), helpful_answer_path(answer), class: "button tiny answer-checkmark", remote: true, method: :post %>
   <% end %>
 <% end %>

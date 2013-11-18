@@ -23,7 +23,7 @@ en:
       announcement: '%{author} made an announcement in "%{group}".'
       topic: '%{author} opened a new topic in "%{group}".'
       answer: '%{author} answered a question in "%{group}".'
-      comment: '%{author} commented on the %{post_type}.'
+      comment: '%{author} commented on the %{origin}.'
       group: 'Pending approval for "%{group}", created by %{creator}.'
       membership_request: '%{user} wants to become a moderator of the group "%{group}"'
     actions:
@@ -111,7 +111,7 @@ en:
     home: 'Home'
     groups: 'Groups'
     my_groups: 'My groups'
-    update_profile: 'Profile settings'
+    update_profile: 'Settings'
     sign_in: 'Sign in'
     sign_out: 'Sign out'
     search: 'Search'
@@ -134,6 +134,17 @@ en:
   preview:
     placeholder: 'While you type this field will show a real time preview.'
   general:
+    footer:
+      headers: 
+        about: 'About'
+        support: 'Support'
+      links:
+        imprint: 'Imprint'
+        privacy: 'Privacy'
+        story: 'Story behind auditorium'
+        email_us: 'Write us an email'
+        github: 'Find us on github'
+        support_group: 'Visit our support group'
     search: 
       label: 'Search'
       press_enter: 'After typing in your search, click on the search button.'
@@ -414,7 +425,9 @@ en:
       answer: 'Answer'
       comment: 'Comment'
     general:
-      group: 'Group:'
+      authored: 'By'
+      group: 'in group'
+      time: 'at %{time}'
       comments: 'Comments'
       answers: 'Answers'
       upvote:
@@ -435,6 +448,13 @@ en:
       truncate: "..."
 
   users:
+    tabs:
+      about: 'About'
+      settings: 'Settings'
+      groups: 'Groups'
+      questions: 'Questions'
+      topics: 'Topics'
+      announcements: 'Announcements'
     pending_email_confirmation: 'An email confirmation for %{email} is pending.'
     role:
       is_admin: 'Administrator'

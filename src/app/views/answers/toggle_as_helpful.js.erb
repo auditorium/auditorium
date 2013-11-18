@@ -1,4 +1,3 @@
-
 <% @answer.question.answers.each do |answer| %>
   $('[data-id="<%= dom_id(answer) %>"]').html('<%= j render "shared/answer", answer: answer %>');
 <% end %>

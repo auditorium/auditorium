@@ -1614,6 +1614,19 @@ a.disabled {
   color: $white;
   a {color: $white;}
 
+  &.answer-checkmark {
+    background-color: $primary-color;
+    padding: 5px 10px;
+    color: $white;
+
+    &.is-helpful {
+      background-color: $success-color;
+      &:hover {
+        background-color: darken($success-color, 10%);
+      }
+    }
+  }
+
   &.filter {
     color: $white;
     background-color: $filter-color;
@@ -1952,7 +1965,9 @@ div.token-input-dropdown {
 
   li a {
     color: $anthracite;
-
+    i.fa-star {
+      color: inherit;
+    }
     &.active {
       @include color_scheme;
     }
@@ -2632,18 +2647,6 @@ ul.no-style {
 
 /* ============ post styles =========== */
 
-.answer-checkmark {
-  &.is-helpful {
-    color: #fff;
-    background-color: $success-color;
-    padding: 5px 10px;
-
-    &:hover {
-      background-color: darken($success-color, 10%);
-    }
-  }
-}
-
 h3.group-of-posts {
   line-height: 0.5;
   text-align: center;
@@ -2716,8 +2719,8 @@ code {
 
 
 .post-footer {
+  @extend small;
   font-style: italic;
-  font-size: 0.9em;
 }
 
 .rating {

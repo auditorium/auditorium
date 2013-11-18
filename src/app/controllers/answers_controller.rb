@@ -14,6 +14,7 @@ class AnswersController < ApplicationController
 
   def show
     @answer = Answer.find(params[:id])
+    redirect_to @answer.origin
   end
 
   def new

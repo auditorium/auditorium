@@ -17,19 +17,7 @@
   </div>
 
   <div class="post-footer">
-    <%= t('posts.general.group') %> 
-    <%= link_to @video.group.title, group_path(@video.group) %>
-
-    <% if can? :manage, @video %> 
-      <span class="right">
-        <span class="last_activity"><%= @video.last_activity.present? ? l(@video.last_activity, format: :short) : l(@video.updated_at, format: :short) %></span>
-        <span class="actions">
-          &middot;
-          <%= link_to fa_icon('pencil', text: 'edit'), edit_video_path(@video), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %> &middot;
-          <%= link_to fa_icon('times', text: 'remove'), @video, alt: "#{t('posts.actions.delete')}", title: "#{t('posts.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this video?' %>
-        </span>
-      </span>
-    <% end %>
+    <%= render 'shared/post_footer', post: @video %>
   </div>
 </article>
 

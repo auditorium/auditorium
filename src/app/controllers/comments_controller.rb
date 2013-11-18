@@ -8,6 +8,11 @@ class CommentsController < ApplicationController
     @comments = @commentable.comments.order(:created_at)
   end
 
+  def show
+    @comment = Comment.find(params[:id])
+    redirect_to @comment.origin
+  end
+
   def create
     @comment = @commentable.comments.build(params[:comment])
     @comment.author = current_user

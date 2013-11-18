@@ -41,19 +41,19 @@
       <section class="top-bar-section">
         <!-- left nav section -->
         <ul class="left">
-          <li><%= nav_link t('navigation.home'), home_path %></li>
-          <li><%= nav_link t('navigation.groups'), groups_path %></li>
-          <li><%= nav_link t('navigation.my_groups'), my_groups_path %></li>
+          <li><%= nav_link fa_icon('home', text: t('navigation.home')), home_path %></li>
+          <li><%= nav_link fa_icon('group', text: t('navigation.groups')), groups_path %></li>
+          <li><%= nav_link fa_icon('star', text: t('navigation.my_groups')), my_groups_path %></li>
         </ul>
 
         <ul class="right">
           <li ><%= nav_link fa_icon('search', text: t('navigation.search')), alternative_search_path %></li>
           
           <% if current_user.present? %>
-            <li><%= nav_link current_user, user_path(current_user) %></li>
-            <li><%= nav_link t('navigation.update_profile'), edit_user_registration_path %></li>
+            <li><%= nav_link fa_icon('user', text: current_user), user_path(current_user) %></li>
+            <li><%= nav_link fa_icon('gear', text: t('navigation.update_profile')), edit_user_registration_path %></li>
             <li><%= link_to current_user.notifications.size, notifications_path, class: 'notification-button', title: t('navigation.notifications', size: current_user.notifications.size) %></li>
-            <li><%= link_to t('navigation.sign_out'), destroy_user_session_path, class: color_scheme, method: :delete %></li>
+            <li><%= link_to fa_icon('sign-out', text: t('navigation.sign_out')), destroy_user_session_path, class: color_scheme, method: :delete %></li>
           <% else %>
             <li><%= nav_link t('navigation.sign_in'), new_user_session_path %></li>
           <% end %>

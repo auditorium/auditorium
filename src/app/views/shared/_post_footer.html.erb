@@ -1,0 +1,14 @@
+<%= t('posts.general.authored') %>
+<%= link_to post.author, user_path(post.author) %>
+<%= t('posts.general.group') %> 
+<%= link_to post.group.title, group_path(post.group) %>
+<%= t('posts.general.time', time: post.last_activity.present? ? l(post.last_activity, format: :short) : l(post.updated_at, format: :short)) %>
+
+<% if can? :manage, post %> 
+  <span class="right clearing">
+    <span class="actions">
+      <%= link_to fa_icon('pencil', text: 'edit'), url_for(controller: post.class.name.pluralize.downcase, action: 'edit'), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %> &middot;
+      <%= link_to fa_icon('times', text: 'remove'), post, alt: "#{t('posts.actions.delete')}", title: "#{t('posts.actions.edit')}", method: :delete, confirm: "Are you sure to delete this #{post.class.name.downcase}?" %>
+    </span>
+  </span>
+<% end %>

@@ -12,19 +12,7 @@
   </div>
 
   <div class="post-footer">
-    <%= t('posts.general.group') %> 
-    <%= link_to @announcement.group.title, group_path(@announcement.group) %>
-
-    <% if can? :manage, @announcement %> 
-      <span class="right">
-        <span class="last_activity"><%= @announcement.last_activity.present? ? l(@announcement.last_activity, format: :short) : l(@announcement.updated_at, format: :short) %></span>
-        <span class="actions">
-          &middot;
-          <%= link_to fa_icon('pencil', text: 'edit'), edit_announcement_path(@announcement), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %> &middot;
-          <%= link_to fa_icon('times', text: 'remove'), @announcement, alt: "#{t('posts.actions.delete')}", title: "#{t('posts.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this announcement?' %>
-        </span>
-      </span>
-    <% end %>
+    <%= render 'shared/post_footer', post: @announcement %>
   </div>
 </article>
 

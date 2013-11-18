@@ -6,18 +6,27 @@
   <%= markdown(answer.content) %>
 </div>
 
+<div class='checkmark'>
+  <%= render 'answers/checkmark', answer: answer %>
+</div>
+
 <div class="post-footer">
-  <span class='checkmark'>
-    <%= render 'answers/checkmark', answer: answer %>
+  <span class="answer-information">
+      <%= t('posts.general.authored') %>
+      <%= link_to answer.author, user_path(answer.author) %>
+      <%= t('posts.general.time', time: answer.last_activity.present? ? l(answer.last_activity, format: :short) : l(answer.updated_at, format: :short)) %>
   </span>
+
   <span class="right">
-    <%= answer.author.full_name %> &middot;
-    <%= l(answer.created_at, format: :short) %>
-    <% if can? :manage, answer %>
-    <span class="actions">
-      <%= link_to fa_icon('pencil'), edit_answer_path(answer) %>
-      <%= link_to fa_icon('times'), answer, alt: "#{t('answers.actions.delete')}", title: "#{t('answers.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this answer?' %>
+    <% if can? :manage, answer %> 
+      <span class="right clearing">
+        <span class="actions">
+          <%= link_to fa_icon('pencil', text: 'edit'), edit_answer_path(answer), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %> &middot;
+          <%= link_to fa_icon('times', text: 'remove'), answer, alt: "#{t('posts.actions.delete')}", title: "#{t('posts.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this answer?' %>
+        </span>
       </span>
     <% end %>
   </span>
+  <div class="clearfix"></div>
+
 </div>
