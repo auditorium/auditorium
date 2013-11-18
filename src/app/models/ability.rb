@@ -23,8 +23,8 @@ class Ability
       #cannot :manage, :all
 
       # user is group moderator
-      cannot :manage, Group do |group|
-        !(group.is_moderator? user or group.creator == user)
+      can :manage, Group do |group|
+        group.is_moderator? user or group.creator == user
       end
 
       can :read, Group do |group|

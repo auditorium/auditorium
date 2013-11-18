@@ -1,9 +1,7 @@
-<% if membership_request.read? %>
-  <% if membership_request.confirmed? %>
+<% if membership_request.status.eql? 'confirmed' %>
     <span class="label success"><%= t('membership_requests.label.confirmed') %></span>
-  <% else %>
+<% elsif membership_request.status.eql? 'rejected' %>
    <span class="label alert"><%= t('membership_requests.label.rejected') %></span>
-   <% end %>
 <% else %>
 <%= link_to t('notifications.actions.membership_requests.confirm'), confirm_membership_request_path(group_id: membership_request.group.id, id: membership_request.id), method: :post, remote: true, class: 'button alert tiny' %>
 <%= link_to t('notifications.actions.membership_requests.reject'), reject_membership_request_path(group_id: membership_request.group.id, id: membership_request.id), method: :post, remote: true, class: 'button secondary tiny' %>

@@ -99,10 +99,20 @@ class Group < ActiveRecord::Base
 
     membership.role = 'member'
     membership.save
+    membership_request = self.membership_requests.find_by_user_id(user.id)
+    notifications = Notification.where(notifiable_id: membership_request.id, notifiable_type: MembershipRequest, sender_id: user.id)
+    notifications.delete_all
+    membership_request.destroy
   end
 
-  def has_pending_membership_request?(user)
-    self.membership_requests.find_by_user_id(user.id).present?
+  def membership_request_status?(user)
+    request = self.membership_requests.find_by_user_id(user.id)
+    # status == confirmed
+    if request.present? 
+      request.status
+    else
+      nil
+    end
   end
 
   private

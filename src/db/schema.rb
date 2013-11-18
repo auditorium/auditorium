@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131113121008) do
+ActiveRecord::Schema.define(:version => 20131118122535) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -260,9 +260,10 @@ ActiveRecord::Schema.define(:version => 20131113121008) do
     t.string   "membership_type"
     t.boolean  "read",            :default => false
     t.boolean  "confirmed",       :default => false
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
     t.integer  "group_id"
+    t.string   "status",          :default => "pending"
   end
 
   add_index "membership_requests", ["course_id"], :name => "index_membership_requests_on_course_id"

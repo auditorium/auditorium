@@ -10,8 +10,7 @@ class MembershipRequestsController < ApplicationController
 
   def reject
     @membership_request = MembershipRequest.find(params[:id])
-    @membership_request.read = true
-    @membership_request.confirmed = false
+    @membership_request.status = 'rejected'
     @membership_request.save!
     @group.remove_moderator @membership_request.user
 
@@ -22,8 +21,7 @@ class MembershipRequestsController < ApplicationController
 
   def confirm
     @membership_request = MembershipRequest.find(params[:id])
-    @membership_request.read = true
-    @membership_request.confirmed = true
+    @membership_request.status = 'confirmed'
     @membership_request.save!
 
     @group.add_moderator @membership_request.user
@@ -34,7 +32,7 @@ class MembershipRequestsController < ApplicationController
   end
 
   def make  
-    unless @group.has_pending_membership_request?(current_user)
+    unless @group.membership_request_status?(current_user) == 'pending'
       @membership_request = @group.membership_requests.where(user_id: current_user.id, membership_type:'moderator').first_or_create!
     end
     respond_to :js
