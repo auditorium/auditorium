@@ -28,6 +28,7 @@ $('#group_tag_tokens, #question_tag_tokens, #answer_tag_tokens, #announcement_ta
   searchingText: i18n_tokeninput_searching_text
   animateDropdown: false
   preventDuplicates: true
+  resultsLimit: 20
 
 $('.groups-filter #group_filter_tag_tokens').tokenInput '/tags.json',  
   prePopulate: $('.groups-filter #group_filter_tag_tokens').data('load')
@@ -37,6 +38,7 @@ $('.groups-filter #group_filter_tag_tokens').tokenInput '/tags.json',
   searchingText: i18n_tokeninput_searching_text
   animateDropdown: false
   preventDuplicates: true
+  resultsLimit: 20
   onAdd: (item) -> $.filterGroups(item, '/groups')
   onDelete: (item) -> $.filterGroups(item, '/groups')
 
@@ -49,6 +51,7 @@ $('.my-groups-filter #group_filter_tag_tokens').tokenInput '/tags.json',
   searchingText: i18n_tokeninput_searching_text
   animateDropdown: false
   preventDuplicates: true
+  resultsLimit: 20
   onAdd: (item) -> $.filterGroups(item, '/groups/my_groups')
   onDelete: (item) -> $.filterGroups(item, '/groups/my_groups')
 
@@ -60,5 +63,6 @@ $('#post_filter_tag_tokens').tokenInput '/tags.json',
   searchingText: i18n_tokeninput_searching_text
   animateDropdown: false
   preventDuplicates: true
+  resultsLimit: 20
   onAdd: (item) -> $.filterPosts(item)
   onDelete: (item) -> $.filterPosts(item)

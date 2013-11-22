@@ -23,14 +23,14 @@ class Term < ActiveRecord::Base
   scope :current, -> {where("beginDate < ?", Date.today).where("endDate > ?", Date.today)}
 
   def code 
-      return "#{term_type.upcase} #{short_year}"
+    return "#{term_type.upcase} #{short_year}"
   end
-
+  
   def year
     if endDate.year == beginDate.year
       return "#{endDate.year.to_s}"
     else
-      return "#{beginDate.year.to_s}/#{endDate.year.to_s}"
+      return "#{beginDate.year.to_s}"
     end
   end
 

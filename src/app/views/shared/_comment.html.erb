@@ -1,11 +1,11 @@
 <li id="<%= dom_id(comment) %>">
-  <div class="content"><%= comment.content %></div>
-  <div class="comment-footer">
+  <div class="post-content"><%= markdown comment.content %></div>
+  <div class="post-footer">
     <span data-id='<%= dom_id(comment) %>' class="rating dark">
       <%= render 'shared/rating', post: comment %>
     </span>
     &middot;
-    <span class="comment-information">
+    <span class="post-information">
       <%= t('posts.general.authored') %>
       <%= link_to comment.author, user_path(comment.author) %>
       <%= t('posts.general.time', time: comment.last_activity.present? ? l(comment.last_activity, format: :short) : l(comment.updated_at, format: :short)) %>

@@ -13,7 +13,7 @@ module ApplicationHelper
       if link.match /^https?:\/\/auditorium.inf.tu-dresden.de/
         "<a href=\"#{link}\">#{alt_text}</a>"
       else
-        "<a target=\"_blank\" href=\"#{link}\"  title='external link to #{link}'> <i class='fa fa-external-link' /> #{alt_text}</a>"
+        "<a target=\"_blank\" href=\"#{link}\"  title='external link to #{link}'><i class='fa fa-external-link'></i> #{alt_text}</a>"
       end
     end
 
@@ -53,9 +53,10 @@ module ApplicationHelper
     }
 
     markdown_to_html = Redcarpet::Markdown.new(coderayified, options)
-    markdown = markdown_to_html.render(text)
-
-    html = sanitize(markdown, :attributes => %w(id class style href title alt src width height))
+    markdown = markdown_to_html.render(text) 
+    html = content_tag('div', class: 'markdown') do 
+      sanitize(markdown, :attributes => %w(id class style href title alt src width height))
+    end
   end
 
   def comment_markdown(text)
@@ -74,7 +75,7 @@ module ApplicationHelper
 
   def tag_list(tag_array, options = { delimiter: '' }) 
     if tag_array.size > 0
-      tag_array.map(&:name).map { |t| link_to t, tag_path(t), class: "tag #{options[:additional_class]}" }.join(options[:delimiter]).html_safe
+      tag_array.map(&:name).map { |t| link_to t, tag_path(CGI.escape t), class: "tag #{options[:additional_class]}" }.join(options[:delimiter]).html_safe
     else 
       content_tag('span', t('tags.no_tags'), class: "no-tags").html_safe
     end

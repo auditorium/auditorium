@@ -25,32 +25,34 @@
     </li>
   </ul>
 <% end %>
-
-<% if @setting.receive_email_notifications %>
+<% if @setting.persisted? and @setting.receive_email_notifications %>
   <header>
     <h3 class="subheader"><%= t('users.profile.settings.subscribed_groups.header') %></h3>
     <p class="hint"><%= t('users.profile.settings.subscribed_groups.hint') %></p>
   </header>
-  <% if @user.followings.size > 0 %>
-    <%= form_tag user_setting_groups_path(user_id: @user.id, setting_id: @user.setting.id), method: :post, remote: true do %>
-      <ul class="no-style">
-        
-        <% @user.followings.each do |following| %>
-          <% group = Group.find(following.followerable_id) %>
+  
+    <% if @user.followings.size > 0 %>
+      <%= form_tag user_setting_groups_path(user_id: @user, setting_id: @user.setting.id), method: :post, remote: true do %>
+
+        <ul class="no-style">
+          <div id="subscribed-groups">
+          <% @user.followings.sort { |x,y| x.followerable.title <=> y.followerable.title}.each do |following| %>
+            <% group = Group.find(following.followerable_id) %>
+            <li class="input-fields">
+              <%= label_tag "receive_notifications[#{dom_id(group)}]".to_sym do %>
+                <%= check_box_tag "receive_notifications[#{dom_id(group)}]".to_sym, 1, following.receive_notifications %>
+                <%= group.title %>
+              <% end %>
+            </li>
+          <% end %>
+          </div>
           <li class="input-fields">
-            <%= label_tag "receive_notifications[#{dom_id(group)}]".to_sym do %>
-              <%= check_box_tag "receive_notifications[#{dom_id(group)}]".to_sym, 1, following.receive_notifications %>
-              <%= group.title %>
-            <% end %>
+            <%= submit_tag t('users.profile.settings.subscribed_groups.submit'), class: 'tiny button users' %>
           </li>
-        <% end %>
-      
-        <li class="input-fields">
-          <%= submit_tag t('users.profile.settings.subscribed_groups.submit'), class: 'tiny button users' %>
-        </li>
-      </ul>
+        </ul>
+      <% end %>
+    <% else %>
+      <p class="alert-box warning"><%= t('groups.no_subscribed_groups') %> <%= link_to t('links.goto.groups_for_subscribing'), groups_path %></p>
     <% end %>
-  <% else %>
-    <p class="alert-box warning"><%= t('groups.no_subscribed_groups') %> <%= link_to t('links.goto.groups_for_subscribing'), groups_path %></p>
-  <% end %>
+
 <% end %>

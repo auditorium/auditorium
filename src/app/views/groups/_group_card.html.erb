@@ -22,7 +22,7 @@
         </div>
 
         <div class="body">
-          <h2><%= link_to group.title, group_path(group) %></h2>
+          <h2 class="subheader"><%= link_to truncate(group.title, length: 50), group_path(group), title: group.title %></h2>
 
           <ul class="group-details">
             <li><%= t('groups.announcement_count', count: group.announcements.size) %></li>
@@ -43,7 +43,7 @@
       <!-- back content -->
       <div class="content">
         <div class="body">
-          <h2><%= link_to group.title, group_path(group) %></h2>
+          <h2 class="subheader"><%= link_to truncate(group.title, length: 50), group_path(group), title: group.title %></h2>
           <p class="hint inverted"><%= t('groups.follower_count', count: group.followers.size) %></p>
           <p class="hint inverted tags"><%= t('groups.tags.label') %> <%= tag_list(group.tags.order(:name), {additional_class: 'invert'}) %></p>
         </div>

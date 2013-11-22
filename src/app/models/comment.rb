@@ -22,9 +22,9 @@ class Comment < ActiveRecord::Base
   
   attr_accessible :author_id, :content, :rating
 
-  validates :commentable, presence: true
+  #validates :commentable, presence: true
   validates :content, presence: true
-  validates :author, presence: true
+  validates :author_id, presence: true
 
   define_index do
     indexes content

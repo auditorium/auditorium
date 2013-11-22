@@ -85,8 +85,16 @@ class Course < ActiveRecord::Base
     self.events
   end
 
+  def chair
+    self.lecture.chair if self.lecture.present?
+  end
+
+  def institute
+    self.chair.institute if self.chair.present?
+  end
+
   def faculty
-    nil
+    self.institute.faculty if self.institute.present?
   end
 
   def questions

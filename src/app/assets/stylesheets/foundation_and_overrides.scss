@@ -1263,7 +1263,7 @@ $label-font-color-alt: #fff;
 
 // Background color for the top bar
 
-$topbar-bg: rgba(#fff, 0.95) !default;
+$topbar-bg: #fff !default;
 
 // Height and margin
 
@@ -1334,7 +1334,6 @@ $topbar-menu-icon-color-toggled: $alert-color;
 @import "font-awesome";
 
 /* ================== general styles ================= */
-
 .accessibility {
   position: absolute !important;
   height: 1px; width: 1px; 
@@ -1574,6 +1573,24 @@ a.disabled {
   }
 }
 
+.markdown {  
+  ul {
+    margin: 5px 20px;
+  }
+
+  p {
+    margin: 2px 5px;
+  }
+}
+
+#subscribed-groups {
+  max-height: 500px;
+  overflow-y: scroll;
+  margin: 10px 0;
+
+  li:nth-child(even) { background-color: lighten($primary-color, 50%); }  
+}
+
 /* ================ ribbon style ================ */
 @mixin ribbon {
   position: relative;
@@ -1599,7 +1616,6 @@ a.disabled {
     border-color: #666 #666 transparent transparent;
   }
 }
-
 
 /* ================= custom button styles ===================== */
 
@@ -1974,7 +1990,7 @@ div.token-input-dropdown {
     &:not(.button) { 
 
       &:hover {
-        background-color: #fff;
+        background-color: transparent;
         @include color_scheme;
       }
     }
@@ -2079,12 +2095,13 @@ ul.search-results-list{
 /* ======================== group and post list style ===================== */
 
 .footer {
+  @extend small;
   vertical-align: middle;
   line-height: 1.2em;
   padding: 2px 5px;
 }
 
-.footer span, .footer a {
+.footer span {
   color: #666;
   font-style: italic;
   font-size:0.8em;
@@ -2699,7 +2716,7 @@ h3.group-of-posts span:after {
 }
 
 .post-content {
-  margin:20px 10px;
+  margin:10px 0;
   text-align: left;
 }
 
@@ -2719,7 +2736,7 @@ code {
 
 
 .post-footer {
-  @extend small;
+  font-size: 0.8em;
   font-style: italic;
 }
 
@@ -2847,7 +2864,7 @@ ul.video-strip {
   .ribbon
   {
     @include ribbon;
-    margin: 15px 10px 10px -24px;
+    margin: 15px 10px 10px -23px;
 
     &.bigger {
       font-size: 1.05em;

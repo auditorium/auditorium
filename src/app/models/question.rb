@@ -22,8 +22,6 @@ class Question < ActiveRecord::Base
   include Notifiable
 
   has_many :answers, :dependent => :destroy
- # has_one :correct_answer, class_name: 'Answer', as: :answer_to_id
-
   attr_accessible :is_private
 
 

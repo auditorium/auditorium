@@ -15,17 +15,18 @@
 
 class Answer < ActiveRecord::Base 
   include Votable
+  include Notifiable
   
   belongs_to :question
   belongs_to :author, class_name: 'User'
   has_many :comments, as: :commentable, dependent: :destroy
 
 
-  attr_accessible :content, :question, :author
+  attr_accessible :content, :question_id, :author_id
 
-  validates :question, presence: true
+  validates :question_id, presence: true
   validates :content, presence: true
-  validates :author, presence: true
+  validates :author_id, presence: true
 
   define_index do
     indexes content

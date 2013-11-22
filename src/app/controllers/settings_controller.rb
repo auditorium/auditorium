@@ -3,13 +3,13 @@ class SettingsController < ApplicationController
   
   def create
     puts "USER_ID: #{params[:user_id]}"
-    user = User.find(params[:user_id])
+    @user = User.find(params[:user_id])
     @setting = Setting.new(params[:setting])
-    @setting.user = user
-
-    if @setting.save!
-      respond_to :js
+    unless @setting.persisted?
+      @setting.user_id = @user.id
+      @setting.save!
     end
+    respond_to :js
   end
 
   def update

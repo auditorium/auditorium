@@ -130,7 +130,7 @@ en:
   home:
     headers: 
       welcome_back: "Welcome to auditorium, %{user}!"
-      recent_activity: 'Check out what happend since you logged out:'
+      recent_activity: 'Check out what’s happening!'
   preview:
     placeholder: 'While you type this field will show a real time preview.'
   general:
@@ -392,7 +392,7 @@ en:
 
   answers:
     helpful: 
-      unchecked: 'mark as helpful answer'
+      unchecked: 'mark as helpful'
       checked: 'helpful answer'
       hint: 'You can also mark this answer as helpful answer.'
     actions:

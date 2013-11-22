@@ -16,6 +16,8 @@
 #
 
 class Group < ActiveRecord::Base
+  include Notifiable
+
   has_many :tags, through: :taggings
   has_many :taggings, as: :taggable
   
@@ -34,16 +36,14 @@ class Group < ActiveRecord::Base
   attr_reader :tag_tokens
 
   validates :title, presence: true
-  validates :description, presence: true
+  #validates :description, presence: true
   validates :creator_id, presence: true
   validates :group_type, presence: true, inclusion: { in: %w{lecture topic study} }
   
-  include Notifiable
-
   after_create :add_creator_to_moderators
 
   def self.tagged_with(name)
-  	Tag.find_by_name!(name).groups
+  	Tag.find_by_name!(CGI.unescape name).groups
   end
 
   def tag_list
@@ -120,6 +120,8 @@ class Group < ActiveRecord::Base
     following = self.followings.build(follower_id: self.creator.id)
     following.role = 'moderator'
     following.save!
+
+    puts "MAINTAINER: #{following.inspect}"
   end
 
 end

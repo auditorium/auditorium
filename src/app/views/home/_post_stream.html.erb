@@ -1,5 +1,5 @@
 <ul class="posts">
-  <% @posts.group_by { |p| p.updated_at.to_date }.each do |date, posts| %>
+  <% @posts.group_by { |p| p.last_activity.present? ? p.last_activity.to_date : p.created_at.to_date }.each do |date, posts| %>
      <h3 class="group-of-posts">
       <span><%= named_date(date) %></span>
     </h3>

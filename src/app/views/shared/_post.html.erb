@@ -19,18 +19,15 @@
     <span class="title"><h2><%= link_to truncate(post.subject, length: 150), post %></h2></span>
 
   </div>
-  <div class="footer hide-for-small">
-    <span class="post-details">
-      <%= t('posts.general.group')%> <%= link_to post.group.title, group_path(post.group), class: 'group-link' %> &middot;
-      <%= pluralize(post.views, 'view') %> &middot;
-      <% if post.class.name.eql? 'Question' %><%= pluralize(post.answers.size, 'answer') %> &middot;<% end %>
-      <%= pluralize(post.comments.size, 'comment') %>
-    </span>
+  <div class="post-footer hide-for-small">
+    <%= t('posts.general.authored') %>
+    <%= link_to post.author, user_path(post.author) %>
+    <%= t('posts.general.group') %> 
+    <%= link_to post.group.title, group_path(post.group) %>
+    <%= t('posts.general.time', time: post.last_activity.present? ? l(post.last_activity, format: :short) : l(post.updated_at, format: :short)) %>
     <span class="right">
-      <span class="last_activity"><%= post.last_activity.present? ? l(post.last_activity, format: :short) : l(post.updated_at, format: :short) %></span>
       <% if can? :manage, post %> 
         <span class="actions">
-          &middot;
           <%= link_to fa_icon('pencil', text: 'edit'), url_for(action: 'edit', controller: post.class.name.pluralize.downcase, id: post.id), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %> &middot;
           <%= link_to fa_icon('times', text: 'remove'), post, alt: "#{t('posts.actions.delete')}", title: "#{t('posts.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this post?' %>
         </span>
