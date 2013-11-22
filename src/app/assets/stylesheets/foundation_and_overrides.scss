@@ -1591,6 +1591,10 @@ a.disabled {
   li:nth-child(even) { background-color: lighten($primary-color, 50%); }  
 }
 
+#sign-in-form {
+  display:none;
+}
+
 /* ================ ribbon style ================ */
 @mixin ribbon {
   position: relative;
@@ -1630,6 +1634,24 @@ a.disabled {
   color: $white;
   a {color: $white;}
 
+  &.large {
+    padding: 1em;
+  }
+  &.wide {
+    margin: 10px 0;
+    width:100%;
+    font-size: 1.2em;
+  }
+
+  &.inverted {
+    background-color: $white;
+    color: $primary-color;
+    &:hover {
+      background-color: $primary-color;
+      color: $white;
+    }
+  }
+
   &.answer-checkmark {
     background-color: $primary-color;
     padding: 5px 10px;
@@ -1654,12 +1676,6 @@ a.disabled {
 
   &.submit {
     background-color: $alert-color;
-
-    &.wide {
-      margin: 10px 0;
-      width:100%;
-      font-size: 1.2em;
-    }
     &:hover {
       background-color: darken($alert-color, 10%);
     }

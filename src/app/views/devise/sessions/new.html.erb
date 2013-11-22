@@ -11,31 +11,7 @@
   <header>
     <h3 class="subheader"><%= t('landing_page.headers.sign_in') %></h3>
   </header>
-  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-   <ul class="no-style"> 
-    <li class="input-fields">
-      <%= f.label :email, t('forms.label.email'), class: 'accessibility' %>
-      <%= f.email_field :email, placeholder: t('forms.placeholder.email'), autofocus: true %>
-    </li> 
-
-    <li class="input-fields">
-      <%= f.label :password, t('forms.label.password'), class: 'accessibility' %>
-      <%= f.password_field :password, placeholder: t('forms.placeholder.password') %>
-    </li>   
-
-    <% if devise_mapping.rememberable? -%>
-      <li class="input-fields">
-      <%= f.label :remember_me do %>
-        <%= f.check_box :remember_me %>
-        <%= t('forms.label.remember_me') %>
-      <% end %> 
-      </li>
-    <% end -%>
-    <li class="input-fields">
-      <%= f.submit t('forms.label.sign_in'), class: 'button submit wide' %>
-    </li>
-    </ul>
-  <% end %>
+    <%= render 'devise/shared/sign_in_form' %>
   <div class="registration_links">
     <%= render "devise/shared/links" %>
   </div>

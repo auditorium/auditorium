@@ -89,7 +89,7 @@ en:
     placeholder: 
       label:
       username: 'Username'
-      email: 'TU Dresden email address'
+      email: 'Email address'
       password: 'Password'
       password_confirmation: 'The same password again'
       remember_me: 'Keep me signed in for 14 days.'
@@ -99,13 +99,24 @@ en:
       change_password: 'Change my password'
       reconfirm_email: 'Send me instructions'
   landing_page:
+    links: 
+      sign_in: 'Login to auditorium'
+    buttons: 
+      sign_in: 'Already have an account?'
+      sign_up: 'Sign up, it’s free!'
     headers:
+      slogan: 'Change the way how communication works.'
+      subslogan: 'Become part of it, sign up right now!'
       welcome: 'Welcome to auditorium!'
       welcome_back: 'Welcome back to auditorium!'
       sign_in: 'Sign in to auditorium.'
       reconfirm_email: 'Confirm my email address.'
       register: 'Sign up to auditorium.'
       forgot_password: 'I forgot my password.'
+    hints:
+      sign_up: 
+        text: 'At the moment you do need an email address from TU Dresden. If you do not have such an email address, feel free to'
+        link: 'write us an email.'
     
   navigation:
     home: 'Home'

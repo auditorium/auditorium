@@ -21,6 +21,13 @@
   </head>
 
   <body>
+    <nav>
+      <span class="right">
+        <%= link_to t('landing_page.links.sign_in'), new_user_session_path, class: 'button inverted' %>
+        
+      </span>
+    </nav>
+
     <section role="main">
       <noscript><div class="alert-box">Please enable javascript.</div></noscript>
       <!-- flash messages -->
@@ -36,6 +43,17 @@
         <%= yield %>
       </div>
     </section>
+
+    <footer>
+      <hr />
+      <span class="right">
+        <%= link_to t('general.footer.links.github'), 'http://github.com/auditorium/auditorium', class: 'button inverted' %>
+        <%= link_to t('general.footer.links.email_us'), 'mailto:inf-auditorium@groups.tu-dresden.de', class: 'button inverted' %>
+        <%= link_to t('general.footer.links.story'), story_path, class: 'button inverted' %>
+        <%= link_to t('general.footer.links.imprint'), imprint_path, class: 'button inverted' %>
+        <%= link_to t('general.footer.links.privacy'), privacy_path, class: 'button inverted' %>
+      </span>
+    </footer>
 
 
     <%= javascript_include_tag "application" %>

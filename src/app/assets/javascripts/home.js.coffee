@@ -63,4 +63,8 @@ $('#alternative-query').on 'submit', (e) ->
     $('#alternative-search-results').slideUp('slow');
   else
     $.requestSearchResults(query) 
+
+$('a[data-id="show_login_form"]').on 'click', (e) ->
+  e.preventDefault()
+  $('#sign-in-form').show()
       
