@@ -10,15 +10,15 @@
 <section id="sign_up" class="block large-5 large-centered columns">  
   <header>
     <h3 class="subheader"><%= t('landing_page.headers.register') %></h3>
-    <p class="hint">
-      <%= t('landing_page.hints.sign_up.text')%> <%= link_to t('landing_page.hints.sign_up.link'), 'mailto:inf-auditorium@groups.tu-dresden.de' %>
-    </p>
   </header>
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
    <ul class="no-style"> 
     <li class="input-fields">
       <%= f.label :email, t('forms.label.email'), class: 'accessibility' %>
       <%= f.email_field :email, placeholder: t('forms.placeholder.email'), autofocus: true %>
+      <p class="hint">
+      <%= t('landing_page.hints.sign_up.text')%> <%= link_to t('landing_page.hints.sign_up.link'), 'mailto:inf-auditorium@groups.tu-dresden.de' %>
+    </p>
     </li> 
 
     <li class="input-fields">

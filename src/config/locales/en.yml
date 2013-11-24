@@ -105,8 +105,8 @@ en:
       sign_in: 'Already have an account?'
       sign_up: 'Sign up, it’s free!'
     headers:
-      slogan: 'Change the way how communication works.'
-      subslogan: 'Become part of it, sign up right now!'
+      slogan: 'Ask, discuss and share knowledge.'#'Frage, diskutiere und teile Dein Wissen!'
+      subslogan: 'Help to make your university a better place!' #'Helfe dabei Deine Universität zu einem besseren Ort!'
       welcome: 'Welcome to auditorium!'
       welcome_back: 'Welcome back to auditorium!'
       sign_in: 'Sign in to auditorium.'
@@ -115,7 +115,7 @@ en:
       forgot_password: 'I forgot my password.'
     hints:
       sign_up: 
-        text: 'At the moment you do need an email address from TU Dresden. If you do not have such an email address, feel free to'
+        text: 'You do need an email address from TU Dresden. If you do not have such an address,'
         link: 'write us an email.'
     
   navigation:
@@ -345,7 +345,7 @@ en:
     is_private:
       icon_hint: 'This question is private. Only group moderators can see this question.'
       icon_alt: '(private)'
-      hint: 'Only group moderators questcan see your private question.'
+      hint: 'Only group moderators can see your private question.'
       label: 'I will ask a private question'
 
   announcements:
@@ -501,3 +501,34 @@ en:
         receive_email_notifications: 'Receive email notifications.'
         receive_email_notifications_when_author: 'Receive email notifications when I am an author.'
         uniqueness_error: 'This user already chose his preferences.'
+
+  markdown:
+    buttons:
+      markdown: 'Text formatting'
+    titles:
+      result: 'Result'
+      code: 'Code'
+    text_formatting: '**bold**, *italic*'
+    code_inline: '`var coordinates = { x: 5, y: 7}`'
+    code_block: |
+      ```ruby
+      def print 
+        puts "Hello world!"
+      end
+      ```
+    latex_inline: '$\sin A \cos B = \frac{1}{2}\[\sin(A-B)+\sin(A+B)\]$'
+    latex_block: |
+      $$\sin A \cos B = \frac{1}{2}\[\sin(A-B)+\sin(A+B)\]$$
+    headlines: |
+      # h1
+      ## h2
+      ### h3
+      #### h4
+      ##### h5
+      ###### h6
+    list: |
+      * Project #1
+        * Task #1
+        * Taks #2
+      * Project #2
+        * no tasks

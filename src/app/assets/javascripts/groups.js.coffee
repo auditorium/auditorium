@@ -52,6 +52,7 @@ $('#member_query').on 'input', (e) ->
 if $('#announcement_content').is(':visible')
   new Behave
     textarea: document.getElementById('announcement_content')
+    fence: '```'
     tabSize: 2
 
 if $('#question_content').is(':visible')
@@ -62,24 +63,28 @@ if $('#question_content').is(':visible')
 if $('#topic_content').is(':visible')
   new Behave
     textarea: document.getElementById('topic_content')
+    fence: '```'
     tabSize: 2
 
 
 if $('#answer_content').is(':visible')
   new Behave
     textarea: document.getElementById('answer_content')
+    fence: '```'
     tabSize: 2
 
 
 if $('#comment_content').is(':visible')
   new Behave
     textarea: document.getElementById('comment_content')
+    fence: '```'
     tabSize: 2
 
 
 if $('#recording_content').is(':visible')
   new Behave
     textarea: document.getElementById('recording_content')
+    fence: '```'
     tabSize: 2
 
 

@@ -1,6 +1,10 @@
 <li class="input-fields" class="input-fields">
-  <noscript><%= f.label :content %></noscript>
+  <%= render 'shared/text_editor_buttons' %><%= link_to t('general.links.show_preview'), '#', class: 'toggle-preview tiny button review-button', 'data-id' => 'topic' %>
+  <%= f.label :content, class: 'accessibility' %>
   <%= f.text_area :content, placeholder: t('topics.placeholder.content') %>
+  <div class="preview">
+    <div id="topic-preview"></div>
+  </div>
 </li>
 
 <li class="input-fields">
@@ -8,12 +12,7 @@
   <%= f.text_field :tag_tokens, data: {load: @topic.tags} %>
 </li>
 
-<div class="preview">
-  <div id="topic-preview"></div>
-</div>
-
 <li class="input-fields">
   <%= f.submit t('topics.new.submit'), id: 'submit-topic', class: 'tiny button right submit' %>
-  <%= link_to t('general.links.show_preview'), '#', class: 'toggle-preview tiny button review-button right', 'data-id' => 'topic' %>
   <div class="clearfix"></div>
 </li>

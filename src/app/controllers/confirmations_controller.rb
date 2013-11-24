@@ -1,5 +1,5 @@
 class ConfirmationsController < Devise::ConfirmationsController
-
+	layout "landing_page"
 	def create
 		if resource_params[:email].match /tu-dresden.de$/
 			self.resource = resource_class.send_confirmation_instructions(resource_params)

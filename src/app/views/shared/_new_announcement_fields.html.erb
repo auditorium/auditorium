@@ -1,20 +1,21 @@
 <li class="input-fields" class="input-fields">
-  <noscript><%= f.label :content %></noscript>
+  <%= render 'shared/text_editor_buttons' %>
+  <%= link_to t('general.links.show_preview'), '#', class: 'toggle-preview tiny button review-button', 'data-id' => 'announcement' %>
+  <%= f.label :content, class: 'accessibility' %>
   <%= f.text_area :content, placeholder: t('announcements.placeholder.content') %>
+  <div class="preview">
+    <div id="announcement-preview"></div>
+  </div>
 </li>
+
+
 
 <li class="input-fields">
   <%= f.label :tag_tokens, t('tags.label') %>
   <%= f.text_field :tag_tokens, data: {load: @announcement.tags} %>
 </li>
 
-<div class="preview">
-  <div id="announcement-preview"></div>
-</div>
-
 <li class="input-fields">
-    <%= f.submit t('announcements.new.submit'),id: 'submit-announcement', class: 'tiny button right submit' %>
-    <%= link_to t('general.links.show_preview'), '#', class: 'toggle-preview tiny button review-button right', 'data-id' => 'announcement' %>
-
+  <%= f.submit t('announcements.new.submit'),id: 'submit-announcement', class: 'tiny button right submit' %>
   <div class="clearfix"></div>
 </li>

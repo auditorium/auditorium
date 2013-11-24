@@ -18,7 +18,9 @@
 </header>
 <%= form_for([@question, @answer = Answer.new]) do |f| %>
   <%= f.label :content, t('answers.label.content'), class: 'accessibility' %>
-  <%= f.text_area :content, required: true %>
+
+  <%= render 'shared/text_editor_buttons' %>
+  <%= f.text_area :content, required: true, 'data-post-type' => 'answer' %>
   
   <div class="preview">
     <div id="answer-preview"></div>

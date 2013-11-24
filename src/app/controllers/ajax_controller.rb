@@ -123,4 +123,8 @@ class AjaxController < ApplicationController
     end
   end
 
+  def load_markdown_sheet
+    respond_to :js
+  end
+
 end

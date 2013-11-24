@@ -1,9 +1,9 @@
 module ApplicationHelper
   # devise helper methods
   class CodeRayify < Redcarpet::Render::HTML
-    def block_code(code, language='ruby')
+    def block_code(code, language='plain')
       if language.nil? or not language.match /^\w+$/
-        language = "ruby" 
+        language = "plain" 
       end
       
       CodeRay.scan(code, language).div

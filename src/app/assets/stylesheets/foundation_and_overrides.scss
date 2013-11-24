@@ -1333,6 +1333,20 @@ $topbar-menu-icon-color-toggled: $alert-color;
 @import 'foundation';
 @import "font-awesome";
 
+/* ================== mixins ========================= */
+@mixin default-box-shadow {
+  -moz-box-shadow: 0px 2px 2px $dark-gray;
+  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.12);
+  -webkit-box-shadow: 0px 2px 2px $dark-gray;
+  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.12);
+  -ms-box-shadow: 0px 2px 2px $dark-gray;
+  -ms-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.12);
+  -o-box-shadow: 0px 2px 2px $dark-gray;
+  -o-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 2px 2px $dark-gray;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.12);
+}
+
 /* ================== general styles ================= */
 .accessibility {
   position: absolute !important;
@@ -1500,7 +1514,7 @@ textarea {
 
 .block {
   background-color: #fff;
-  box-shadow: 1px 1px 1px darken($gray, 20%);
+  @include default-box-shadow;
   margin-top:10px;
   padding:5px;
 }
@@ -1539,7 +1553,7 @@ a.disabled {
     display: inline-block;
     border: 1px solid $gray;
     padding:2px 10px;
-    box-shadow: 1px 1px 1px darken($gray, 20%);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.12);
 
     &:hover, &.active {
       background-color: $gray;
@@ -1574,13 +1588,35 @@ a.disabled {
 }
 
 .markdown {  
-  ul {
-    margin: 5px 20px;
+  ul, ol {
+    padding:0;
+    margin: 5px 30px;
+    font-weight: normal;
+
+    li {
+      line-height:1.1;
+    }
   }
 
   p {
     margin: 2px 5px;
   }
+}
+
+#markdown-sheet {
+  display:none;
+
+  .markdown-table {
+    overflow-y: scroll;
+    width: 100%;
+    height: 300px;
+  }
+
+  .table { vertical-align: top; }
+}
+
+math {
+  text-align: left!important;
 }
 
 #subscribed-groups {
@@ -1595,6 +1631,9 @@ a.disabled {
   display:none;
 }
 
+.table {
+  text-align:left;
+}
 /* ================ ribbon style ================ */
 @mixin ribbon {
   position: relative;
@@ -1603,9 +1642,7 @@ a.disabled {
   padding: 3px 10px 3px 10px;
   color: #fff;
   text-shadow: 0 1px 1px #666666;
-  -webkit-box-shadow: 1px 1px 2px $anthracite;
-  -moz-box-shadow: 1px 1px 2px $anthracite;
-  box-shadow: 1px 1px 2px $anthracite;
+  @include default-box-shadow;
 
    &:after
   {
@@ -1797,6 +1834,15 @@ a.disabled {
 
     &:hover {
       background-color: darken($comment-color, 20%);
+    }  
+  }
+
+  &.gray {
+    //border:1px solid $gray-color;
+    background-color:$dark-gray;
+
+    &:hover {
+      background-color: darken($dark-gray, 20%);
     }  
   }
 
@@ -2034,7 +2080,7 @@ div.token-input-dropdown {
   z-index: 100;
   background-color: $alert-color;
   color: #fff;
-  box-shadow: 1px 1px 1px darken($gray, 20%); 
+  @include default-box-shadow; 
   padding: 3px 10px; 
   position: fixed;
   bottom:0;
@@ -2156,7 +2202,7 @@ ul.groups, ul.posts {
     padding:5px 10px;
 
     background-color: #fff;
-    box-shadow: 1px 1px 1px darken($gray, 20%); 
+    @include default-box-shadow; 
 
     position: relative;
 
@@ -2262,7 +2308,7 @@ section#recordings, section#videos {
 
 article.group {
   background-color: #fff;
-  box-shadow: 1px 1px 1px darken($gray, 20%);
+  @include default-box-shadow;
   padding:10px;
   margin:5px 0;
   height:140px;
@@ -2303,7 +2349,7 @@ article.group {
     font-weight: bold;
     font-style: italic;
   }
-  box-shadow: 1px 1px 1px darken($gray, 20%);
+  @include default-box-shadow;
   background-color: #fff;
 
   p.tags {
@@ -2539,7 +2585,7 @@ i.fa-star, i.fa-star-o  {
 
 #group-form {
   #group-type, #group-details {
-    box-shadow: 1px 1px 1px darken($gray, 20%);
+    @include default-box-shadow;
     background-color: #fff;
     padding:10px;
     margin: 0 0 20px 0;
@@ -2551,7 +2597,7 @@ i.fa-star, i.fa-star-o  {
   // margin: 0 0 20px 0;
   padding: 0 10px;
   // background-color: #fff;
-  // box-shadow: 1px 1px 1px darken($gray, 20%);
+  // @include default-box-shadow;
   
   ul {
     list-style: none;
@@ -2634,7 +2680,7 @@ ul.no-style {
 
   &.question, &.announcement, &.topic, &.group {
     background-color: #fff;
-    box-shadow: 1px 1px 1px darken($gray, 20%);
+    @include default-box-shadow;
   }
 
   &.question {
@@ -2734,6 +2780,11 @@ h3.group-of-posts span:after {
 .post-content {
   margin:10px 0;
   text-align: left;
+}
+
+pre {
+  font-size:1.1em;
+  line-height: 1.2;
 }
 
 .code, code {
@@ -2874,7 +2925,7 @@ ul.video-strip {
 #lecture-group, 
 #topic-group {
   background-color: #fff;
-  box-shadow: 1px 1px 1px darken($gray, 20%);
+  @include default-box-shadow;
   padding:10px;
 
   .ribbon
@@ -2945,7 +2996,7 @@ ul.video-strip {
 
   & > form {
     background-color: #fff;
-    box-shadow: 1px 1px 1px darken($gray, 20%);
+    @include default-box-shadow;
     padding: 5px 10px;
     margin: 2px 0;
 
@@ -2975,7 +3026,7 @@ ul.video-strip {
 
     li {
       background-color: #fff;
-      box-shadow: 1px 1px 1px darken($gray, 20%);
+      box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.12);
       padding:5px 10px;
       margin:2px 0;
 

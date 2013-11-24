@@ -19,6 +19,7 @@ Auditorium::Application.routes.draw do
     post ':type/:id/upvote', to: 'ajax#upvote', as: :upvote
     post ':type/:id/downvote', to: 'ajax#downvote', as: :downvote
     post 'ajax/tab_content', to: 'ajax#tab_content', as: :tab_content
+    post 'ajax/markdown_sheet', to: 'ajax#load_markdown_sheet'
 
     get 'groups/tagged/:tag', to: 'groups#tagged', as: :tag
     resources :tags, only: ['index']
