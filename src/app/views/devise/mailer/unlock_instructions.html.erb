@@ -1,7 +1,26 @@
-<p>Hello <%= @resource.email %>!</p>
+<!doctype html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <%= stylesheet_link_tag 'emails' %>
+  </head>
 
-<p>Your account has been locked due to an excessive number of unsuccessful sign in attempts.</p>
+  <body>
+    <div id="email-header">
+      <h2><%= t('emails.greetings.hello', user: @resource) %></h2>
+    </div>
 
-<p>Click the link below to unlock your account:</p>
+    <div id="email-content">
+      <p><%= t('emails.content.subjects.change_password') %></p>
+      <p><%= link_to t('emails.content.goto.change_password'), unlock_url(@resource, :unlock_token => @token, locale: I18n.locale), class: 'button alert' %></p>
+    </div>
 
-<p><%= link_to 'Unlock my account', unlock_url(@resource, :unlock_token => @token) %></p>
+    <p><%= t('emails.footer.not_requested') %></p>
+    <p><%= t('emails.footer.password_will_not_change')%></p>
+
+
+    <p class="email-greetings">
+      <%= t('emails.greetings.regards') %>
+    </p>
+  </body>
+</html>

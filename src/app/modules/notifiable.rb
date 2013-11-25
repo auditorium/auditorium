@@ -1,7 +1,7 @@
 module Notifiable
 
   def self.included(base)
-    # base.after_create :send_notification
+    base.after_create :send_notification
   end   
 
 private

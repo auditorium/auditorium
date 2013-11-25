@@ -1,4 +1,5 @@
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), class: "form-inline") do |f| %>
+  <%= devise_error_messages! %>
   <ul class="no-style"> 
     <li class="input-fields">
       <%= f.label :email, t('forms.labels.email'), class: 'accessibility' %>

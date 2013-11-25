@@ -36,41 +36,69 @@ en:
         reject: 'reject'
   emails:
     subjects: 
+      
       welcome: '[auditorium] Welcome to auditorium, %{user}'
       new_question: '[auditorium] %{author} asked a question in "%{group}"'
       new_answer: '[auditorium] %{author} wrote an answer to the question %{question} in "%{group}"'
       new_announcement: '[auditorum] %{author} made an announcement in "%{group}"'
       new_comment: '[auditorium] %{author} commented on the %{parent_post_type} of %{parent_post_author} in "%{group}"'
+      new_comment: 
+        question: '[auditorium] %{author} commented on the comment of %{parent_post_author} in "%{group}"'
+        announcement: '[auditorium] %{author} commented on the announcement of %{parent_post_author} in "%{group}"'
+        topic: '[auditorium] %{author} commented on the topic of %{parent_post_author} in "%{group}"'
+        recording: '[auditorium] %{author} commented on the recording of %{parent_post_author} in "%{group}"'
+        video: '[auditorium] %{author} commented on the recording of %{parent_post_author} in "%{group}"'
       new_topic: '[auditorium] %{author} opened a new topic in "%{group}"'
       group_to_approve: '[auditorium] Pending approval for "%{group}", created by %{creator}.'
       new_membership_request: '[auditorium] Pending membership request in "%{group}" from %{user}.'
       confirmed_membership_request: '[auditorium] You are now a moderator of the group "%{group}".'
       rejected_membership_request: '[auditorium] Your membership request to become a moderator of the group "%{group}" has been rejected.'
+      confirm_account: '[auditorium] Confirm your email address.'
+      change_password: '[auditorium] Change password request'
+      locked_account: '[auditorium] Your account has been locked due to an excessive number of unsuccessful sign in attempts.'
     content:
       goto: 
         post: 'View the %{post_type} in your browser'
+        comment: 'View the comment in your browser'
+        question: 'View the question in your browser'
+        announcement: 'View the announcement in your browser'
+        topic: 'View the topic in your browser'
+        video: 'View the recording in your browser'
+        recording: 'View the recording in your browser'
         group: 'View the group in your browser'
         notifications: 'View the membership request'
         login: 'Log in to auditorium'
+        confirm_account: 'Confirm your email address'
+        change_password: 'Change your password'
+        unlock_account: 'Unlock your account'
       subjects: 
         welcome: 'Welcome to auditorium, %{user}.'
         new_video: '%{author} uploaded a recording in %{group}:'
         new_question: '%{author} asked a question in "%{group}":'
         new_answer: '%{author} wrote an answer to the question %{question} in "%{group}":'
         new_announcement: '[auditorum] %{author} made an announcement in "%{group}":'
-        new_comment: '%{author} commented on the %{parent_post_type} of %{parent_post_author} in "%{group}":'
+        new_comment: 
+          question: '%{author} commented on the comment of %{parent_post_author} in "%{group}"'
+          announcement: '%{author} commented on the announcement of %{parent_post_author} in "%{group}"'
+          topic: '%{author} commented on the topic of %{parent_post_author} in "%{group}"'
+          recording: '%{author} commented on the recording of %{parent_post_author} in "%{group}"'
+          video: '%{author} commented on the recording of %{parent_post_author} in "%{group}"'
         new_topic: '%{author} opened a new topic in "%{group}":'
         group_to_approve: '%{creator} created the group "%{group}". The group needs an approval.'
         new_membership_request: 'Pending membership request in "%{group}" from %{user}.'
         confirmed_membership_request: 'congratulations, you are now a moderator of the group "%{group}".'
         rejected_membership_request: 'we are sorry to tell you, that your membership request to become an moderator of the group "%{group}" has been rejected.'
         group_declined: 'The group "%{group}" has been declined.'
-
+        confirm_account: 'You can confirm your account email through the link below:'
+        change_password: 'Someone has requested a link to change your password. You can do this through the link below.'
+        locked_account: 'Your account has been locked due to an excessive number of unsuccessful sign in attempts.'
     greetings:
       hello: 'Hello %{user},'
       regards: "Kind regards,\nauditorium Team"
       welcome: 'Welcome to auditorium, %{user}!'
     footer:
+      not_requested: 'If you did not request this, please ignore this email.'
+      password_will_not_change: 'Your password will not change until you access the link above and create a new one.'
       moderator: 'You received this email because you are moderator of the group %{group}.'
       text: 'You received this email because you are following the group %{group}.'
       link: 'You can change which email notifications auditorium sends you in your profile settings.'
@@ -148,6 +176,9 @@ en:
   general:
     slogan: 'Ask, discuss and share knowledge.'#'Frage, diskutiere und teile Dein Wissen!'
     subslogan: 'Help to make your university a better place!' #'Hilf dabei Deine Universität zu einem besseren Ort zu machen!'
+    flash:
+      confirmation_sent: 'An email with confirmation informations was sent to you.'
+      moderation_needed: 'You registered with a non-TU-Dresden email address. Your confirmation is on hold. Please write us an email for further information.'
     actions:
       edit: 'edit'
       remove: 'remove'

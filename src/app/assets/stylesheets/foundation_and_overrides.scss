@@ -2361,7 +2361,6 @@ article.group {
 
   p.tags {
     display: block;
-    overflow-x: scroll;
     max-height: 80px;
   }
 }
@@ -2495,6 +2494,9 @@ article.group {
   &.study-group { background-color: $study-group-color; }
   &.topic-group { background-color: $topic-group-color; }
 
+  .content {
+    overflow-y: scroll;
+  }
   .content .bottom {
     position: absolute;
     right: 0;

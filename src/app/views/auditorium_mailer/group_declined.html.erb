@@ -12,7 +12,7 @@
 
     <div id="email-content">
       <%= t('emails.content.subjects.group_declined', creator: @creator, group: @group.title) %> 
-      <div id="email-markdown" class="markdown">
+      <div id="email-markdown">
         <h3><%= @group.title %></h3>
         <%= markdown @group.description %>
       </div>     

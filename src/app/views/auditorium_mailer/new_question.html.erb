@@ -12,11 +12,11 @@
 
     <div id="email-content">
       <%= t('emails.content.subjects.new_question', author: @author, group: @group.title) %> 
-      <div id="email-markdown" class="markdown">
+      <div id="email-markdown">
         <h3><%= @question.subject %></h3>
         <%= markdown @question.content %>
       </div>     
-      <%= link_to t('emails.content.goto.post', post_type: 'question'), question_url(@question, locale: I18n.locale), class: 'button alert' %> 
+      <%= link_to t('emails.content.goto.question'), question_url(@question, locale: I18n.locale), class: 'button alert' %> 
     </div>
 
     <p class="email-greetings">

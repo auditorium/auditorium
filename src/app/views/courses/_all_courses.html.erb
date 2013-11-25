@@ -1,5 +1,0 @@
-<% if current_user.nil? %>
-  <p class="hint">Please <%= link_to 'Sign in', '/users/sign_in' %> or <%= link_to 'Sign up', '/users/sign_up' %> to follow courses.</p>
-<% end %>
-
-<%= render :partial => 'shared/courses_accordion', :locals => {:courses_by_faculty => courses_by_faculty, :user_or_all => 'all' } %>

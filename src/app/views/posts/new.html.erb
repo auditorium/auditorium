@@ -1,8 +1,0 @@
-<div class="container center span8">
-  <% if params[:post_type].eql? 'info' %>
-  <h2><%= "What's your announcement about?" %></h2>
-  <% elsif params[:post_type].eql? 'question' or params[:post][:post_type].eql? 'question' %>
-  <h2><%= "What's your question about?" %></h2>
-  <% end %>
-  <%= render :partial => 'posts/form', :locals => { :post => @post }%>
-</div>

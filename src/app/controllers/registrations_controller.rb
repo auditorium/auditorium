@@ -24,9 +24,9 @@ class RegistrationsController < Devise::RegistrationsController
       # end
 
       if resource.email.match /tu-dresden.de$/
-        redirect_to root_url, :flash => { :info => "An email with confirmation informations was sent to you."}
+        redirect_to root_url, :flash => { :info => t('general.flash.confirmation_sent')}
       else
-        redirect_to root_url, :flash => { :notice => "Your account needs to be approved by the moderator. If it is approved, you'll be notified."}
+        redirect_to root_url, :flash => { :notice => t('general.flash.moderation_needed')}
       end
     else
       clean_up_passwords resource

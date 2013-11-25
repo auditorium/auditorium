@@ -8,7 +8,7 @@
     base.validates :subject, presence: true
     base.validates :group, presence: true
     base.validates :content, presence: true
-    #base.validates :author, presence: true
+    base.validates :author, presence: true
 
     base.attr_accessible :subject, :content, :group
   end

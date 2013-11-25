@@ -40,15 +40,29 @@ de:
       new_question: '[auditorium] %{author} hat eine neue Frage in der Gruppe "%{group}" gestellt.'
       new_answer: '[auditorium] %{author} hat eine neue Antwort zur Frage %{question} in der Gruppe "%{group}" abgegeben.'
       new_announcement: '[auditorum] %{author} hat eine Ankündigung in der Gruppe "%{group}" gemacht.'
-      new_comment: '[auditorium] %{author} hat einen neuen Kommentar zu %{parent_post_type} von %{parent_post_author} in "%{group}" abgegeben.'
+      new_comment: 
+        question: '[auditorium] %{author} hat einen neuen Kommentar zur Frage von %{parent_post_author} in "%{group}" abgegeben.'
+        announcement: '[auditorium] %{author} hat einen neuen Kommentar zur Ankündigung von %{parent_post_author} in "%{group}" abgegeben.'
+        topic: '[auditorium] %{author} hat einen neuen Kommentar zum Thema von %{parent_post_author} in "%{group}" abgegeben.'
+        recording: '[auditorium] %{author} hat einen neuen Kommentar zur Aufzeichnung von %{parent_post_author} in "%{group}" abgegeben.'
+        video: '[auditorium] %{author} hat einen neuen Kommentar zur Aufzeichnung von %{parent_post_author} in "%{group}" abgegeben.'
       new_topic: '[auditorium] %{author} hat ein neues Thema in der Gruppe "%{group}" eröffnet.'
       group_to_approve: '[auditorium] Pending approval for "%{group}", created by %{creator}.'
       new_membership_request: '[auditorium] %{user} hat die Gruppe "%{group}" erstellt und wartet auf Freigabe.'
       confirmed_membership_request: '[auditorium] Du wurdest zum Moderator in der Gruppe "%{group}" befördert.'
       rejected_membership_request: '[auditorium] Deine Anfrage ein Moderator zu werden in der Gruppe "%{group}", wurde abgelehnt.'
+      confirm_account: '[auditorium] Bestätige deine Email Adresse'
+      change_password: '[auditorium] Anforderung eines neues Passworts'
+      locked_account: '[auditorium] Dein auditorium Konto wurde gesperrt aufgrund von gescheiterten Anmeldeversuchen.'
     content:
       goto: 
         post: 'Öffne %{post_type} in deinem Browser'
+        comment: 'Öffne den Kommentar im Browser'
+        question: 'Öffne die Frage im Browser'
+        announcement: 'Öffne die Ankündigung im Browser'
+        topic: 'Öffne das Thema im Browser'
+        video: 'Öffne die Ankündigung im Browser'
+        recording: 'Öffne die Ankündigung im Browser'
         group: 'Öffne die Gruppe in deinem Browser'
         notifications: 'Schaue dir die Mitgliedschaftsanfrage an.'
         login: 'Melde dich in auditorium an'
@@ -58,19 +72,28 @@ de:
         new_question: '%{author} hat eine Frage in der Gruppe "%{group}" gestellt:'
         new_answer: '%{author} hat eine Antwort zur Frage %{question} in der Gruppe "%{group}" geschrieben:'
         new_announcement: '[auditorum] %{author} machte eine Ankündigung in der Gruppe "%{group}" gemacht:'
-        new_comment: '%{author} hat einen neuen Kommentar zu %{parent_post_type} von %{parent_post_author} in "%{group}" abgegeben.'
+        new_comment: 
+          question: '%{author} hat einen neuen Kommentar zur Frage von %{parent_post_author} in "%{group}" abgegeben.'
+          announcement: '%{author} hat einen neuen Kommentar zur Ankündigung von %{parent_post_author} in "%{group}" abgegeben.'
+          topic: '%{author} hat einen neuen Kommentar zum Thema von %{parent_post_author} in "%{group}" abgegeben.'
+          recording: '%{author} hat einen neuen Kommentar zur Aufzeichnung von %{parent_post_author} in "%{group}" abgegeben.'
+          video: '%{author} hat einen neuen Kommentar zur Aufzeichnung von %{parent_post_author} in "%{group}" abgegeben.'
         new_topic: '%{author} eröffnete ein neues Thema in der Gruppe "%{group}":'
         group_to_approve: '%{creator} hat die Gruppe "%{group}" erstellt. Die Gruppe wartet auf eine Freigabe.'
         new_membership_request: '%{user} möchte ein Moderator in der Gruppe "%{group}" werden.'
         confirmed_membership_request: 'herzlichen Glückwunsch, du bist nun Moderator in der Gruppe "%{group}".'
         rejected_membership_request: 'es tut uns leid, dir mitteilen zu müssen, dass deine Moderatoren-Anfrage in der Gruppe "%{group}" abgelehnt wurde.'
         group_declined: 'Die Gruppe "%{group}" wurde abgelehnt und ist nun geschlossen.'
-
+        confirm_account: 'Um deine Email Adresse zu bestätigen, folge bitte diesem Link:'
+        change_password: 'Irgendjemand hat ein neues Passwort angefordert. Folge dem Link, um dein Passwort zu ändern:'
+        locked_account: 'Dein auditorium Konto wurde gesperrt aufgrund von gescheiterten Anmeldeversuchen.'
     greetings:
       hello: 'Hallo %{user},'
-      regards: "Viele Grüé,\nauditorium Team"
+      regards: "Viele Grüße,\nauditorium Team"
       welcome: 'Willkommen auf auditorium, %{user}!'
     footer:
+      not_requested: 'Falls du diese Email nicht angefordert hast, ignoriere sie einfach!'
+      password_will_not_change: 'Dein Passwort wird erst geändert, sobald du auf den roten Knopf gedrückt hast.'
       moderator: 'Du hast diese Email erhalten, da du Moderator in der Gruppe "%{group}"" bist.'
       text: 'Du hast diese Email erhalten, da du der Gruppe "%{group}" folgst..'
       link: 'In deinem Profil kannst du einstellen, welche Emails du erhalten möchtest.'
@@ -148,6 +171,9 @@ de:
   general:
     slogan: 'Frage, diskutiere und teile Dein Wissen!'
     subslogan: 'Hilf dabei Deine Universität zu einem besseren Ort zu machen!'
+    flash: 
+      confirmation_sent: 'Du erhälst in wenigen Minuten eine Email mit Informationen zum Freischalten deines Accounts.'
+      moderation_needed: 'Du hast dich mit einer nicht-TU-Dresden Email Adresse versucht zu registrieren. Die Bestätigungsemail wird zurückgehalten. Bitte schreib uns eine Email, für weitere Informationen.'
     actions:
       edit: 'bearbeiten'
       remove: 'entfernen'
