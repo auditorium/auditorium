@@ -16,7 +16,7 @@
 
   <%= form_for([commentable, @comment = Comment.new], html: { class: ("hidden #{commentable.id} #{commentable.class.name}" if commentable.instance_of?(Question) or commentable.instance_of?(Answer)) }) do |f| %>
     <li>
-      <%= f.label :content, t('comments.label.content'), class: 'accessibility' %>
+      <%= f.label :content, t('forms.labels.content'), class: 'accessibility' %>
       <%= f.text_area :content, placeholder: t('comments.placeholder.content'), required: true, autofocus: true %>
       <%= f.submit t('comments.actions.submit'), id: 'submit-comment', class: 'tiny button right comment' %>
       <div class="clearfix"></div>

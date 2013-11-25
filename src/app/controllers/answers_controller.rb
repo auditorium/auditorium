@@ -31,7 +31,7 @@ class AnswersController < ApplicationController
 
     respond_to do |format|
       if @answer.save!
-        format.html { redirect_to question_path(@answer.question), notice: t('answer.action.created') }
+        format.html { redirect_to question_path(@answer.question), notice: t('answers.flash.created') }
         format.json { render json: @answer, status: :created, location: [@question, @answer] }
       else
         format.html { render action: 'new' }

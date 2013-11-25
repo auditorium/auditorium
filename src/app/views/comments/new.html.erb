@@ -1,6 +1,6 @@
 <section class="row">
   <header id="first-stop">
-    <h2><%= t('comments.new.title') %></h2>
+    <h2><%= t('comments.headers.new') %></h2>
   </header>
   <%= form_for([@commentable, @comment]) do |f| %>
 
@@ -11,7 +11,7 @@
 
   <div class="row">
     <% if params[:action].eql? 'new' %>
-      <%= f.submit t('comments.new.submit'), class: 'small button' %>
+      <%= f.submit t('comments.actions.new'), class: 'small button' %>
     <% elsif params[:action].eql? 'edit' %>
       <%= f.submit t('comments.edit.submit'), class: 'small button' %>
     <% end %>

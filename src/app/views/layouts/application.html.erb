@@ -13,7 +13,7 @@
   	
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
 
-  	<title><%= "auditorium next | #{yield(:title)}" %></title>
+  	<title><%= "auditorium next | #{yield(:title).present? ? yield(:title) : t('general.slogan')}" %></title>
 
   	<%= stylesheet_link_tag    "application" %>
   	<%= javascript_include_tag "vendor/custom.modernizr" %>

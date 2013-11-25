@@ -1,7 +1,0 @@
-<% if @form_type.eql? 'new_topic' %>
-  $('#post-form').html('<%= j render "shared/topics/form" %>');
-<% elsif @form_type.eql? 'new_announcement' %>
-  $('#post-form').html('<%= j render "shared/announcements/form" %>');
-<% elsif @form_type.eql? 'new_question' %>
-  $('#post-form').html('<%= j render "shared/questions/form" %>');
-<% end %> 

@@ -13,7 +13,7 @@
   <% if @groups.size > 0 %>
     <article id='groups'>
       <header class='sub-header'>
-        <h4><%= t('search.titles.groups') %></h4>
+        <h4><%= t('search.headers.groups') %></h4>
       </header>
         <ul class="groups">
           <% @groups.limit(5).each do |group| %>
@@ -28,7 +28,7 @@
   <% if @questions.size > 0 %>
     <article id='questions'>
       <header class='sub-header'>
-        <h4><%= t('search.titles.questions') %></h4>
+        <h4><%= t('search.headers.questions') %></h4>
       </header>
 
       
@@ -44,7 +44,7 @@
   <% if @announcements.size > 0 %>
     <article id='announcements'>
       <header class='sub-header'>
-        <h4><%= t('search.titles.announcements') %></h4>
+        <h4><%= t('search.headers.announcements') %></h4>
       </header>
       
         <ul class="posts">
@@ -58,7 +58,7 @@
   <% if @topics.size > 0 %>
     <article id='topics'>
       <header class='sub-header'>
-        <h4><%= t('search.titles.topics') %></h4>
+        <h4><%= t('search.headers.topics') %></h4>
       </header>
       
         <ul class="posts">

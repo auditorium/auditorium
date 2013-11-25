@@ -7,11 +7,15 @@ Auditorium::Application.routes.draw do
                                          :sessions => "sessions", 
                                          :registrations => "registrations" }
 
-      resources :users do 
-        resources :settings do 
-          post 'groups'
-        end
+    get 'users/moderation', to: 'users#moderation', as: :users_moderation
+    get 'users/moderation/search', to: 'users#search', as: :search_users
+    post 'users/:id/confirm', to: 'users#confirm', :as => :confirm_user
+    
+    resources :users do 
+      resources :settings do 
+        post 'groups'
       end
+    end
 
     post "ajax/preview", to: 'ajax#preview'
     post "ajax/load_form", to: 'ajax#load_form'
@@ -78,15 +82,7 @@ Auditorium::Application.routes.draw do
     get 'intro', :to => 'landing_page#index'
     get 'home', :to => 'home#index'
     get 'permission_denied', :to => 'applications#permission_denied', :as => :permission_denied
-
-
     
-    get 'users/moderation' => 'users#moderation', :as => :users_moderation
-    get 'users/moderation/search', to: 'users#search', as: :search_users
-    resources :users
-    get 'users/:id/questions' => 'users#questions', :as => :users_questions
-    get 'users/:id/answers' => 'users#answers', :as => :users_answers
-    match 'users/:id/confirm' => 'users#confirm', :as => :confirm_user
     post 'notifications/mark_all_as_read' => 'notifications#mark_all_as_read', :as => :mark_all_as_read
     post 'notifications/delete_all_notifications' => 'notifications#delete_all_notifications', :as => :delete_all_notifications
     match 'notifications' => 'notifications#index', :as => :notifications_for_course

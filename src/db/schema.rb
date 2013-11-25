@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131118122535) do
+ActiveRecord::Schema.define(:version => 20131125104012) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -296,18 +296,6 @@ ActiveRecord::Schema.define(:version => 20131118122535) do
   add_index "notifications", ["notifiable_id"], :name => "index_notifications_on_notifyable_id"
   add_index "notifications", ["receiver_id"], :name => "index_notifications_on_receivers_id"
   add_index "notifications", ["sender_id"], :name => "index_notifications_on_sender_id"
-
-  create_table "periods", :force => true do |t|
-    t.string   "weekday"
-    t.integer  "duration"
-    t.string   "place"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-    t.integer  "event_id"
-    t.integer  "minute_of_day"
-  end
-
-  add_index "periods", ["event_id"], :name => "index_periods_on_event_id"
 
   create_table "posts", :force => true do |t|
     t.string   "subject"

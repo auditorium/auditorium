@@ -6,11 +6,6 @@ class AjaxController < ApplicationController
     respond_to :js
   end
 
-  def load_post_form 
-    @form_type = params[:form_type]
-    respond_to :js
-  end
-
   def search
     unless params[:query].empty?
       query = "%#{params[:query]}%" 
@@ -35,7 +30,7 @@ class AjaxController < ApplicationController
     end
 
     
-    @message = t('votes.not_saved')
+    @message = t('votes.flash.not_saved')
 
     ActiveRecord::Base.transaction do 
       vote_attributes = { votable_id: @post.id, votable_type: @post.class.name }
@@ -46,10 +41,10 @@ class AjaxController < ApplicationController
       when -1, 0, nil
         @vote.value = 0 if @vote.value.nil?
         @vote.value += 1
-        @message = t('votes.successfully_upvoted')
+        @message = t('votes.flash.successfully_upvoted')
         @vote.save
       else
-        @message = t('votes.already_upvoted')
+        @message = t('votes.flash.already_upvoted')
       end
 
       respond_to do |format|
@@ -58,7 +53,7 @@ class AjaxController < ApplicationController
           format.html { redirect_to "#{url_for @post.origin}##{dom_id(@post)}", notice: @message }
         else 
           format.js
-          format.html { redirect_to "#{url_for @post.origin}##{dom_id(@post)}", notice: t('votes.problem_voting') }
+          format.html { redirect_to "#{url_for @post.origin}##{dom_id(@post)}", notice: t('votes.flash.problem_voting') }
         end
       end
     end
@@ -75,7 +70,7 @@ class AjaxController < ApplicationController
       else @post = nil
     end
     
-    @message = t('votes.not_saved')
+    @message = t('votes.flash.not_saved')
     
     ActiveRecord::Base.transaction do 
       vote_attributes = { votable_id: @post.id, votable_type: @post.class.name }
@@ -86,10 +81,10 @@ class AjaxController < ApplicationController
       when 0, 1, nil
         @vote.value = 0 if @vote.value.nil? 
         @vote.value -= 1
-        @message = t('votes.successfully_downvoted')
+        @message = t('votes.flash.successfully_downvoted')
         @vote.save!
       else
-        @message = t('votes.already_downvoted')
+        @message = t('votes.flash.already_downvoted')
       end    
 
     
@@ -100,7 +95,7 @@ class AjaxController < ApplicationController
           format.html { redirect_to "#{url_for @post.origin}##{dom_id(@post)}", notice: @message }
         else 
           format.js
-          format.html { redirect_to "#{url_for @post.origin}##{dom_id(@post)}", notice: t('votes.problem_voting') }
+          format.html { redirect_to "#{url_for @post.origin}##{dom_id(@post)}", notice: t('votes.flash.problem_voting') }
         end
       end
 
@@ -124,6 +119,7 @@ class AjaxController < ApplicationController
   end
 
   def load_markdown_sheet
+    @element_id = params[:element_id]
     respond_to :js
   end
 

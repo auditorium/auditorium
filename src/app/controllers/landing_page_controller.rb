@@ -3,7 +3,7 @@ class LandingPageController < ApplicationController
   def index
   	if current_user
   		respond_to do |format|
-  			format.html { redirect_to home_path, :warning => t('flash.permission_denied')}
+  			format.html { redirect_to home_path, :warning => t('general.flash.permission_denied')}
   		end
   	end
   end

@@ -14,20 +14,19 @@
 
 
 <header>
-  <h3><%= t('answers.headers.new_answer') %></h3>
+  <h3><%= t('answers.headers.new') %></h3>
 </header>
 <%= form_for([@question, @answer = Answer.new]) do |f| %>
-  <%= f.label :content, t('answers.label.content'), class: 'accessibility' %>
+  <%= f.label :content, t('answers.labels.content'), class: 'accessibility' %>
 
-  <%= render 'shared/text_editor_buttons' %>
+  <%= render 'shared/text_editor_buttons', element_id: dom_id(@answer), element_name: @answer.class.name.downcase %>
   <%= f.text_area :content, required: true, 'data-post-type' => 'answer' %>
   
   <div class="preview">
     <div id="answer-preview"></div>
   </div>
   <span class="right">
-    <%= link_to t('general.links.show_preview'), '#', class: 'toggle-preview tiny button review-button', 'data-id' => 'answer' %>
-    <%= f.submit t('answers.actions.submit_answer'), id: 'submit-answer', class: 'tiny button answer' %>
+    <%= f.submit t('answers.actions.submit'), id: 'submit-answer', class: 'tiny button answer' %>
   </span>
   <div class="clearfix"></div>
 <% end %>

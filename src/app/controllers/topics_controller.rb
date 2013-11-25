@@ -29,7 +29,7 @@ class TopicsController < ApplicationController
 
     respond_to do |format|
       if @topic.save!
-        format.html { redirect_to @topic, notice: t('topic.action.created') }
+        format.html { redirect_to @topic, notice: t('topics.flash.created') }
         format.json { render json: @topic, status: :created, location: [@group, @topic] }
       else
         format.html { render action: 'new' }

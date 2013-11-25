@@ -174,6 +174,8 @@ namespace :db do
         following.save!
         puts "---- FOLLOWING SAVED #{following.inspect} ----- "
       end
+
+      Notification.delete_all
     end
   end
 end

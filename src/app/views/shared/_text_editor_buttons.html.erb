@@ -1,2 +1,3 @@
-<%= link_to fa_icon('chevron-down', text: t('markdown.buttons.markdown')), '#', 'data-id' => 'markdown', class: 'button gray tiny' %>
-<div id="markdown-sheet"></div>
+<%= link_to fa_icon('chevron-down', text: t('markdown.buttons.markdown')), '#', 'data-id' => element_id, class: 'markdown-reference button gray tiny' %>
+<%= link_to t('general.links.show_preview'), '#', class: 'toggle-preview tiny button review-button', 'data-id' => element_name %>
+<div class="markdown-sheet" data-id="<%= element_id %>"></div>

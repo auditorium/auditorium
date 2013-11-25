@@ -17,7 +17,7 @@
   <%= form_for([@group, @announcement = Announcement.new]) do |f| %>
     <ul class="no-style announcement">
       <li class="input-fields" class="input-fields">
-        <%= f.label :subject, t('forms.label.subject'), class: 'accessibility' %>
+        <%= f.label :subject, t('forms.labels.subject'), class: 'accessibility' %>
         <%= f.text_field :subject, placeholder: t('announcements.input.new') %>
       </li>
       <div id='new-announcement-fields' data-id='new-announcement-fields'>
@@ -60,7 +60,7 @@
   </ul>  
 
   <% unless limit.nil? or @group.announcements.size < limit %>
-    <span class="right"><small><%= link_to t('announcements.show_all'), group_announcements_path(@group) %></small></span>
+    <span class="right"><small><%= link_to t('announcements.actions.view_all'), group_announcements_path(@group) %></small></span>
   <% end %>
 
 <% else %>

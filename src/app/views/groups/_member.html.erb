@@ -5,13 +5,13 @@
   <% unless @group.is_member?(member) %>
     <%= link_to t('groups.member.add_to_members'), manage_membership_path(role: 'member', method: 'add', group_id: @group.id, member_id: member.id),remote: true, method: :post %>
   <% else %>
-    <%= link_to t('groups.member.remove_from_members'), manage_membership_path(role: 'member', method: 'remove',group_id: @group.id, member_id: member.id),remote: true, method: :post %>
+    <%= link_to t('groups.actions.remove_from_members'), manage_membership_path(role: 'member', method: 'remove',group_id: @group.id, member_id: member.id),remote: true, method: :post %>
   <% end %> 
 </td>
 <td>
   <% unless @group.is_moderator?(member) %>
     <%= link_to t('groups.member.add_to_moderators'), manage_membership_path(role: 'moderator', method: 'add', group_id: @group.id, member_id: member.id),remote: true, method: :post %>
   <% else %>
-    <%= link_to t('groups.member.remove_from_moderators'), manage_membership_path(role: 'moderator', method: 'remove', group_id: @group.id, member_id: member.id),remote: true, method: :post %>
+    <%= link_to t('groups.actions.remove_from_moderators'), manage_membership_path(role: 'moderator', method: 'remove', group_id: @group.id, member_id: member.id),remote: true, method: :post %>
   <% end %>
 </td>

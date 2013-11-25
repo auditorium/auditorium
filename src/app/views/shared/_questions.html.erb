@@ -14,7 +14,7 @@
 <%= form_for([@group, @question = Question.new]) do |f| %>
   <ul class="no-style question">
     <li class="input-fields" class="input-fields">
-      <%= f.label :subject, t('forms.label.subject'), class: 'accessibility' %>
+      <%= f.label :subject, t('forms.labels.subject'), class: 'accessibility' %>
       <%= f.text_field :subject, placeholder: t('questions.input.new') %>
     </li>
     <div id='new-question-fields' data-id='new-question-fields'><%= render 'shared/new_question_fields', f: f %></div>  
@@ -54,7 +54,7 @@
   </ul> 
 
   <% unless limit.nil? or @group.questions.size < limit %>
-    <span class="right"><small><%= link_to t('questions.show_all'), group_questions_path(@group) %></small></span>
+    <span class="right"><small><%= link_to t('questions.actions.view_all'), group_questions_path(@group) %></small></span>
   <% end %>
 <% else %>
   <p class="hint"><%= t('questions.hints.no_entries') %></p>

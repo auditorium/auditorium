@@ -20,7 +20,7 @@
     </p>
 
     <div id="email-footer">
-      <%= t('emails.footer.text.moderator', group: @group.title) %>
+      <%= t('emails.footer.moderator', group: @group.title) %>
       <%= link_to t('emails.footer.link'), user_url(@receiver, locale: I18n.locale) %>
     </div>
   </body>

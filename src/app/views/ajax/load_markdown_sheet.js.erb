@@ -1,2 +1,2 @@
-$('#markdown-sheet').html('<%= j render "shared/markdown_sheet" %>');
+$('.markdown-sheet[data-id="<%= @element_id %>"]').html('<%= j render "shared/markdown_sheet" %>');
 MathJax.Hub.Queue(["Typeset",MathJax.Hub]);

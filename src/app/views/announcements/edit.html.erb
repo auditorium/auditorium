@@ -1,31 +1,7 @@
 <article>
   <header>
-    <h2><%= t('announcements.edit.title') %></h2>    
+    <h2><%= t('announcements.headers.edit') %></h2>    
   </header>
 
-  <div  id="announcement">
-    <%= form_for(@announcement) do |f| %>
-      <ul class="no-style">
-        <li class="input-fields">
-          <%= f.label :subject %>
-          <%= f.text_field :subject %>
-        </li>
-        
-        <li class="input-fields">
-          <%= f.label :content %>
-          <%= f.text_area :content %>
-        </li>
-        
-        <li class="input-fields">
-          <%= f.label :tag_tokens %>
-          <%= f.text_field :tag_tokens, data: {load: @announcement.tags} %>
-          <p class="tags_hint hint"><%= t('groups.group_types.general.tags_hint')%></p>
-        </li>
-        
-        <li class="input-fields">
-          <%= f.submit t('groups.new.submit'), id: 'submit', class: 'small button submit' %>
-        </li>
-      </ul>
-    <% end %>
-  </div>
+  <%= render 'announcements/form' %>
 </article>

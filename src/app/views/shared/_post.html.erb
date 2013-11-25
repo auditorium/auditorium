@@ -4,7 +4,7 @@
     <% if post.class.name.eql? 'Question' and post.is_private %>
       <%= fa_icon('lock', title: t('questions.is_private.icon_hint'), class: 'private') %>
     <% end %>
-    <%= t("posts.label.#{post.class.name.downcase}") %>
+    <%= t("posts.labels.#{post.class.name.downcase}") %>
 
     <span class="bookmark">
       <% if current_user.is_follower?(post) %>

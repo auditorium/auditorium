@@ -24,7 +24,7 @@ class RecordingsController < ApplicationController
 		@recording.author = current_user
 		respond_to do |format|
 			if @recording.save
-				format.html { redirect_to [@course, @recording], notice: t('recording.action.created') }
+				format.html { redirect_to [@course, @recording], notice: t('recordings.flash.created') }
 				format.json { render json: [@course, @recording], status: :created, location: [@course, @recording] }
 			else
 				format.html { render action: 'new' }
@@ -68,7 +68,7 @@ class RecordingsController < ApplicationController
 
 		respond_to do |format|
 			if @comment.save!
-				format.html { redirect_to [@course, @recording], notice: t('recording.action.commented') }
+				format.html { redirect_to [@course, @recording], notice: t('recordings.flash.commented') }
 				format.json { render json: [@course, @recording], status: :created, location: [@course, @recording] }
 			else
 				format.html { render 'show' }

@@ -16,15 +16,15 @@
     <%= f.hidden_field :reset_password_token %>
     <ul class="no-style"> 
       <li class="input-fields">
-        <%= f.label :password, t('forms.label.new_password'), class: 'accessibility' %>
+        <%= f.label :password, t('forms.labels.new_password'), class: 'accessibility' %>
         <%= f.password_field :password, placeholder: t('forms.placeholder.new_password'), autofocus: true %>
       </li> 
       <li class="input-fields">
-        <%= f.label :password_confirmation, t('forms.label.confirm_new_password'), class: 'accessibility' %>
+        <%= f.label :password_confirmation, t('forms.labels.confirm_new_password'), class: 'accessibility' %>
         <%= f.password_field :password_confirmation, placeholder: t('forms.placeholder.password_confirmation') %>
       </li> 
       <li class="input-fields">
-        <%= f.submit t('forms.label.change_password'), class: 'button submit wide' %>
+        <%= f.submit t('forms.labels.change_password'), class: 'button submit wide' %>
       </li>
     </ul>
   <% end %>

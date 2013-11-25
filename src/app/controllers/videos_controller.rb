@@ -21,7 +21,7 @@ class VideosController < ApplicationController
 
     respond_to do |format|
       if @video.save!
-        format.html { redirect_to @video, notice: t('video.action.created') }
+        format.html { redirect_to @video, notice: t('videos.flash.created') }
         format.json { render json: @video, status: :created, location: [@group, @video] }
       else
         format.html { render action: 'new' }

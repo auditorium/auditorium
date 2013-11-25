@@ -88,7 +88,7 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       if @group.update_attributes(params[:group])
-        format.html { redirect_to @group, notice: t('groups.update.success') }
+        format.html { redirect_to @group, notice: t('groups.flash.updated') }
         format.json { head :no_content }
       else
         format.html { render action: "edit", error: t('groups.update.failure') }
@@ -102,7 +102,7 @@ class GroupsController < ApplicationController
 		@group.destroy
 
 		respond_to do |format|
-			format.html { redirect_to groups_path, notice: t('groups.destroy.success') }
+			format.html { redirect_to groups_path, notice: t('groups.flash.destroyed') }
 			format.json { head :no_content }
 		end
 	end
@@ -169,12 +169,12 @@ class GroupsController < ApplicationController
       if method.eql? 'follow'
         @group.followers << current_user unless @group.followers.include? current_user
 
-        format.html { redirect_to groups_path, flash: { success:  t('groups.flash.following') } }
+        format.html { redirect_to groups_path, flash: { success:  t('groups.flash.following', group: @group) } }
         format.js
       elsif method.eql? 'unfollow' 
         @group.followers.delete current_user if @group.followers.include? current_user
 
-        format.html { redirect_to groups_path, flash: { success:  t('groups.flash.unfollowing') } }
+        format.html { redirect_to groups_path, flash: { success:  t('groups.flash.unfollowing', group: @group) } }
         format.js
       end
     end

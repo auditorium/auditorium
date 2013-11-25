@@ -46,7 +46,7 @@ class AnnouncementsController < ApplicationController
       if @announcement.update_attributes(params[:announcement])
         format.html { redirect_to announcement_path(@announcement), success:  t('announcements.flash.updated') }
       else
-        format.html { render action: "edit", flash: { error: t('announcements.error.update') } }
+        format.html { render action: "edit", flash: { error: t('announcements.error.updated') } }
       end
     end
   end

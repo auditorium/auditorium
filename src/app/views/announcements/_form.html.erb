@@ -1,0 +1,32 @@
+<article class="block" id="announcement">
+<%= form_for([@group, @announcement]) do |f| %>
+  <ul class="form">
+    <li class="input-fields">
+      <%= f.label :subject, class: 'accessibility' %>
+      <%= f.text_field :subject, class: 'large-12 columns' %>
+    </li>
+
+    <li class="input-fields">
+      <%= render 'shared/text_editor_buttons', element_id: dom_id(@announcement), element_name: @announcement.class.name.downcase %>
+      <%= f.label :content, class: 'accessibility' %>
+      <%= f.text_area :content, class: 'large-12 columns' %>
+      <div class="preview">
+        <div id="announcement-preview"></div>
+      </div>
+    </li>
+
+    <li class="input-fields">
+      <%= f.label :tag_tokens, class: 'accessibility' %>
+      <%= f.text_field :tag_tokens, data: {load: @announcement.tags}, class: 'large-12 columns' %>
+    </li>
+
+    <li class="input-fields">
+      <% if params[:action] == 'new' %>
+        <%= f.submit t('announcements.actions.submit'),id: 'submit', class: 'submit small button' %>
+      <% elsif params[:action] == 'edit' %>
+        <%= f.submit t('announcements.actions.edit'), class: 'submit small button' %>
+      <% end %>
+    </li>
+  </ul>
+<% end %>
+</article>

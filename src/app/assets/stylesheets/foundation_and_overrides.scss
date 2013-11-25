@@ -1603,7 +1603,7 @@ a.disabled {
   }
 }
 
-#markdown-sheet {
+.markdown-sheet {
   display:none;
 
   .markdown-table {
@@ -2668,16 +2668,7 @@ ul.filter-list {
   }
 }
 
-ul.form {
-  list-style:none;
-  @extend .block;
-}
-
-ul.no-style {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-
+@mixin form-list {
   &.question, &.announcement, &.topic, &.group {
     background-color: #fff;
     @include default-box-shadow;
@@ -2694,6 +2685,26 @@ ul.no-style {
   &.topic {
     border-left: 4px solid $topic-color;
   }
+}
+
+ul.form {
+  list-style:none;
+  margin: 5px;
+  @include form-list;
+
+  li {
+    input, textarea {
+      margin:5px 0;
+    }
+  }
+}
+
+ul.no-style {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  @include form-list;
 
   li {
     border-bottom: 1px solid $gray;
@@ -2704,14 +2715,6 @@ ul.no-style {
       border:none;
       margin:0;
       padding:3px 4px;
-
-      // a {
-      //   color: darken($gray, 20%);
-      //   display:block;
-      //   &:hover {
-      //     color: darken($gray, 50%);
-      //   }
-      // }
 
       &:nth-child(even) {
         background-color: #fff;

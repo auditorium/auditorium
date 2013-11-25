@@ -1,6 +1,4 @@
 <% if current_user %>
-  
-
   <div class="answer-form">
     <h3>Can you answer the question? <small class="hint">If not, add a comment.</small></h3>
     <%= form_tag "#{post_path(post)}/answering", :method => "post" do %> 

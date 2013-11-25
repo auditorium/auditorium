@@ -1,5 +1,5 @@
 <li class="input-fields" class="input-fields">
-  <%= render 'shared/text_editor_buttons' %><%= link_to t('general.links.show_preview'), '#', class: 'toggle-preview tiny button review-button', 'data-id' => 'topic' %>
+  <%= render 'shared/text_editor_buttons', element_id: dom_id(@topic), element_name: @topic.class.name.downcase %>
   <%= f.label :content, class: 'accessibility' %>
   <%= f.text_area :content, placeholder: t('topics.placeholder.content') %>
   <div class="preview">
@@ -13,6 +13,6 @@
 </li>
 
 <li class="input-fields">
-  <%= f.submit t('topics.new.submit'), id: 'submit-topic', class: 'tiny button right submit' %>
+  <%= f.submit t('topics.actions.submit'), id: 'submit-topic', class: 'tiny button right submit' %>
   <div class="clearfix"></div>
 </li>

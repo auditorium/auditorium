@@ -1,14 +1,11 @@
 <li class="input-fields" class="input-fields">
-  <%= render 'shared/text_editor_buttons' %>
-  <%= link_to t('general.links.show_preview'), '#', class: 'toggle-preview tiny button review-button', 'data-id' => 'announcement' %>
+  <%= render 'shared/text_editor_buttons', element_id: dom_id(@announcement), element_name: @announcement.class.name.downcase %>
   <%= f.label :content, class: 'accessibility' %>
   <%= f.text_area :content, placeholder: t('announcements.placeholder.content') %>
   <div class="preview">
     <div id="announcement-preview"></div>
   </div>
 </li>
-
-
 
 <li class="input-fields">
   <%= f.label :tag_tokens, t('tags.label') %>

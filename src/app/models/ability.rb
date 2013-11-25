@@ -3,6 +3,7 @@ class Ability
 
   def initialize(user)
     # Define abilities for the passed in user here. For example:
+    alias_action :moderation, :to => :moderate
 
     user ||= User.new # guest user (not logged in)
 
@@ -60,12 +61,17 @@ class Ability
         (visited_user.id == user.id)
       end
 
+      cannot :confirm, User
+      cannot :moderate, User
+
     else # Gäste
       cannot :read, :all
     end
 
     if user.admin?  # admin
       can :manage, :all
+      can :moderate, User
+      can :confirm, User
     end
 
 

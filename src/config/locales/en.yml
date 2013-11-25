@@ -6,11 +6,15 @@ en:
     flash:
       not_saved: 'Your vote could not been saved.'
       successfully_upvoted: 'Your vote has been saved.'
+      successfully_downvoted: 'Your vote has been saved.'
       already_upvoted: 'You only can upvote once.'
       problem_voting: 'There is a problem. Please try again.'
       already_downvoted: 'You only can downvote once.'
 
   membership_requests:
+    labels:
+      confirmed: 'confirmed'
+      rejected: 'rejected'
     headers:
       index: 'Membership requests'
     links:
@@ -49,6 +53,8 @@ en:
         notifications: 'View the membership request'
         login: 'Log in to auditorium'
       subjects: 
+        welcome: 'Welcome to auditorium, %{user}.'
+        new_video: '%{author} uploaded a recording in %{group}:'
         new_question: '%{author} asked a question in "%{group}":'
         new_answer: '%{author} wrote an answer to the question %{question} in "%{group}":'
         new_announcement: '[auditorum] %{author} made an announcement in "%{group}":'
@@ -58,12 +64,14 @@ en:
         new_membership_request: 'Pending membership request in "%{group}" from %{user}.'
         confirmed_membership_request: 'congratulations, you are now a moderator of the group "%{group}".'
         rejected_membership_request: 'we are sorry to tell you, that your membership request to become an moderator of the group "%{group}" has been rejected.'
+        group_declined: 'The group "%{group}" has been declined.'
 
     greetings:
       hello: 'Hello %{user},'
       regards: "Kind regards,\nauditorium Team"
       welcome: 'Welcome to auditorium, %{user}!'
     footer:
+      moderator: 'You received this email because you are moderator of the group %{group}.'
       text: 'You received this email because you are following the group %{group}.'
       link: 'You can change which email notifications auditorium sends you in your profile settings.'
       admin: 'You receive this email, because you are an admin of auditorium. Only admins can approve groups for now.'
@@ -75,7 +83,7 @@ en:
       reconfirm_email: 'I want to confirm my email address.'
       unlock_account: 'My account is locked.'
   forms:
-    label:
+    labels:
       username: 'Your username:'
       email: 'Your email address:'
       password: 'Your password:'
@@ -86,8 +94,12 @@ en:
       reset_password: 'Send me instructions'
       change_password: 'Change my password'
       reconfirm_email: 'Send me instructions'
+      new_password: 'New password'
+      confirm_new_password: 'Confirm new password'
+      subject: 'Subject'
+      content: 'Content'
     placeholder: 
-      label:
+      labels:
       username: 'Username'
       email: 'Email address'
       password: 'Password'
@@ -98,6 +110,7 @@ en:
       reset_password: 'Send me instructions'
       change_password: 'Change my password'
       reconfirm_email: 'Send me instructions'
+      new_password: 'New password'
   landing_page:
     links: 
       sign_in: 'Login to auditorium'
@@ -105,14 +118,13 @@ en:
       sign_in: 'Already have an account?'
       sign_up: 'Sign up, it’s free!'
     headers:
-      slogan: 'Ask, discuss and share knowledge.'#'Frage, diskutiere und teile Dein Wissen!'
-      subslogan: 'Help to make your university a better place!' #'Helfe dabei Deine Universität zu einem besseren Ort!'
       welcome: 'Welcome to auditorium!'
       welcome_back: 'Welcome back to auditorium!'
-      sign_in: 'Sign in to auditorium.'
-      reconfirm_email: 'Confirm my email address.'
-      register: 'Sign up to auditorium.'
-      forgot_password: 'I forgot my password.'
+      sign_in: 'Sign in to auditorium'
+      reconfirm_email: 'Confirm my email address'
+      register: 'Sign up to auditorium'
+      forgot_password: 'I forgot my password'
+      change_password: 'Change your password'
     hints:
       sign_up: 
         text: 'You do need an email address from TU Dresden. If you do not have such an address,'
@@ -127,17 +139,6 @@ en:
     sign_out: 'Sign out'
     search: 'Search'
     notifications: '%{size} unread notifications waiting for you.'
-  recordings:
-    action:
-      add: 'Add a new recording'
-      submit: 'Submit recording'
-      update: 'Update recording'
-      comment: 'Add comment'
-      delete: 'Remove recording'
-      edit: 'Edit recording'
-    headline:
-      index: 'Recordings overview'
-      new: 'Add a recording'
   home:
     headers: 
       welcome_back: "Welcome to auditorium, %{user}!"
@@ -145,6 +146,8 @@ en:
   preview:
     placeholder: 'While you type this field will show a real time preview.'
   general:
+    slogan: 'Ask, discuss and share knowledge.'#'Frage, diskutiere und teile Dein Wissen!'
+    subslogan: 'Help to make your university a better place!' #'Hilf dabei Deine Universität zu einem besseren Ort zu machen!'
     footer:
       headers: 
         about: 'About'
@@ -157,7 +160,7 @@ en:
         github: 'Find us on github'
         support_group: 'Visit our support group'
     search: 
-      label: 'Search'
+      labels: 'Search'
       press_enter: 'After typing in your search, click on the search button.'
       header: 'Sidewide search'
       placeholder:
@@ -176,39 +179,60 @@ en:
       more: 'more ...'
     filter:
       link: 'filter'
+      show: 'Show filter'
+      hide: 'Hide filter'
       tag_filter:
-        groups_filter: 'You can add tags to filter displayed groups'
-        posts_filter: 'You can add tags to filter displayed posts'
+        groups_filter: 'Add tags to filter displayed groups.'
+        posts_filter: 'Add tags to filter displayed posts.'
       group-types: 'Select or deselect to filter groups:'
       study-group: 'Study groups' 
       lecture-group: 'Lecture groups'
       topic-group: 'Topic groups'
       posts: 'Filter posts'
-      only_subscribed: 'Show only posts from subscribed groups'
+      only_subscribed: 'Show only posts from groups I’m following'
       show_topics: 'Show topics'
       show_announcements: 'Show announcements'
       show_questions: 'Show questions'
+      show_lecture_groups: 'Show lecture groups'
+      show_study_groups: 'Show study groups'
+      show_topic_groups: 'Show topic groups'
+      show_only_subscribed_groups: 'Show only groups I’m following'
+    flash:
+      permission_denied: 'Sorry, nothing to see here. You do not have permission to enter this area.'
   dates:
     today: "Today’s activity"
     yesterday: "Yesterday’s activity"
   groups:
+    labels:
+      group_type: '%{type}-group'
     flash: 
       approved: 'This group is now approved. An email was sent to the creator of this group.'
       declined: 'You declined the group’s approval. The group has been deactivated.'
       reactivated: 'The group is now reactivated and approved.'
+      updated: 'The group content has been updated.'
+      destroyed: 'The group has been removed.'
+      following: 'You are now following the group "%{group}".'
+      unfollowing: 'You will not receive notifications with updates for the group "%{group}".'
     hints: 
       no_members: 'At the moment there are no members in this group. You can add moderators or members by typing in the name or email address.'
       needs_approval: 'This group needs an approval. Although it’s not approved you can use it as normal.'
       deactivated: 'This group is deactivated. Only you can see this group.'
+      no_groups_available: 'No groups found.'
+      no_groups_subscribed: 'You did not subscribed to groups yet.'
     actions:
-      edit_group: 'Edit group'
-      new_group: 'Add a new group'
+      edit: 'Edit group'
+      new: 'Add a new group'
       approve: 'Approve group'
       decline: 'Decline group'
       delete: 'Delete group'
       reactivate: 'Reactivate group'
       become_moderator: 'Become a moderator'
       cancel_membership_request: 'Cancel membership request'
+      remove_from_members: 'Cancel user’s group membership'
+      remove_from_moderators: 'Remove user from moderators'
+      reject_membership_request: 'reject'
+      unlock: 'Unlock the group'
+      manage_users: 'Manage users group membership'
     link_label: 'Group:'
     creator: 'Created by %{name}'
     tags: 
@@ -249,8 +273,6 @@ en:
       title: 'Study Groups'
     topics:
       title: 'Topic Groups'
-    no_groups_available: 'No groups found.'
-    no_subscribed_groups: 'You did not subscribed to groups yet.'
     most_active: 'Most active groups'
     show:
       questions:
@@ -324,9 +346,37 @@ en:
     edit:
       header: 'Update the recordings content'
       submit: 'Save recording' 
+    actions:
+      new: 'Add a new recording'
+      edit: 'Edit the recording'
+      update: 'Update recording'
+      submit: 'Submit recording'
+    flash:
+      created: 'The recording has been created.'
+      destroyed: 'The recording has been removed.'
+  recordings:
+    actions:
+      add: 'Add a new recording'
+      submit: 'Submit recording'
+      update: 'Update recording'
+      comment: 'Add comment'
+      delete: 'Remove recording'
+      edit: 'Edit recording'
+    headers:
+      index: 'Recordings overview'
+      new: 'Add a recording'
+      edit: 'Update recording'
+
+  recordings:
+    flash:
+      created: 'The recording has been created.'
+      destroyed: 'The recording has been removed.'
 
 
   questions:
+    headers:
+      new: 'Ask a questions'
+      edit: 'Update the question'
     hints:
       no_entries: 'There are no questions asked. Click into the text field for asking your question.'
     page_title: "Questions from %{group}"
@@ -335,8 +385,6 @@ en:
     input: 
       new: 'Ask a new question'
       subject: 'What is the subject of your question?'
-    new:
-      submit: 'Ask question'
     placeholder:
       content: 'Click here to insert the content of your question...'
     edit:
@@ -347,8 +395,19 @@ en:
       icon_alt: '(private)'
       hint: 'Only group moderators can see your private question.'
       label: 'I will ask a private question'
+    actions:
+      view_all: 'View all questions'
+      delete: 'remove'
+      submit: 'Submit questions'
+      edit: 'Update question'
+    flash:
+      created: 'Your question has been created.'
+      destroyed: 'The question has been deleted.'
 
   announcements:
+    headers:
+      edit: 'Update the announcement'
+      new: 'Make an announcement'
     hints:
       no_entries: 
         member: 'There are no announcements, yet.'
@@ -366,13 +425,22 @@ en:
     edit:
       header: 'Update the announcements content'
       submit: 'Save announcement'
+    actions: 
+      delete: 'delete'
+      edit: 'Update announcement'
+      submit: 'Submit announcement'
+      view_all: 'View all announcements'
     flash:
       created: 'The announcement has been created.'
       updated: 'The announcement has been updated.'
+      destroyed: 'The announcement has been removed.'
     error:
       updated: 'Something went wrong when updating the announcment. Please try again.'
 
   topics:
+    headers:
+      new: 'Create a new topic'
+      edit: 'Update topic'
     hints:
       no_entries: 'There are no topics. Click into the text field to create a topic.'
     page_title: "Topics from %{group}"
@@ -381,18 +449,26 @@ en:
     input: 
       new: 'Create a topic'
       subject: 'What is the content of your topic?'
-    new:
-      submit: 'Submit topic'
-    edit:
-      header: 'Update the topics content'
-      submit: 'Save topic'
     placeholder:
       content: 'Click here to insert the content of your topic...'
+    actions: 
+      view_all: 'View all topics'
+      delete: 'remove'
+      submit: 'Submit topic'
+      edit: 'Update topic'
+    flash:
+      created: 'Your topic has been created.'
+      destroyed: 'The topic has been removed.'
 
   comments: 
+    headers: 
+      new: 'Write a comment'
+      edit: 'Update the comment'
     actions:
       submit: 'Add your comment'
       new: 'Write a comment'
+      delete: 'Delete comment'
+      edit: 'Update comment'
     label:
       content: 'Content of your comment:'
     placeholder:
@@ -400,22 +476,26 @@ en:
     edit:
       header: 'Update the comments content'
       submit: 'Save comment'
+    flash:
+      created: 'Thank you for your comment.'
+      destroyed: 'Your comment has been removed.'
 
   answers:
+    headers:
+      edit: 'Update your answer'
+      new: 'Provide an answer'
     helpful: 
       unchecked: 'mark as helpful'
       checked: 'helpful answer'
       hint: 'You can also mark this answer as helpful answer.'
     actions:
-      submit_answer: 'Submit your answer'
-    label:
+      submit: 'Submit your answer'
+    labels:
       content: 'Content:'
-      new_answer: 'Write an answer'
     placeholder:
       content: 'Click here and begin writing your answer...'
-    edit:
-      header: 'Update the answers content'
-      submit: 'Save answer'
+    flash:
+      created: 'Thank you for the answer.'
 
   links:
     goto:
@@ -429,6 +509,15 @@ en:
       groups_for_subscribing: 'Go to groups for subscribing groups.'
 
   posts:
+    actions:
+      edit: 'edit'
+      delete: 'remove'
+    types: 
+      announcement: 'Announcement'
+      question: 'Question'
+      topic: 'Topic'
+      answer: 'Answer'
+      video: 'Recording'
     label: 
       question: 'Question'
       announcement: 'Announcement'
@@ -457,7 +546,16 @@ en:
       previous: "&lsaquo; Prev"
       next: "Next &rsaquo;"
       truncate: "..."
-
+  search:
+    headers:
+      groups: 'Groups'
+      questions: 'Questions'
+      announcements: 'Announcements'
+      topics: 'Topics'
+    labels: 
+      membership:
+        moderator: 'Moderator'
+        member: 'Member'
   users:
     tabs:
       about: 'About'
@@ -476,7 +574,7 @@ en:
       personal_information:
         title: 'Personal information'
         link: 'Edit profile'
-        user_title: 'You can provide your title, so users can see your academic title.'
+        user_title: 'Provide your academic title.'
         submit: 'Update personal information'
       about:
         title: 'About'
@@ -504,7 +602,7 @@ en:
 
   markdown:
     buttons:
-      markdown: 'Text formatting'
+      markdown: 'Markdown quick reference'
     titles:
       result: 'Result'
       code: 'Code'
