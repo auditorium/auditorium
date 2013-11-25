@@ -7,7 +7,7 @@
     <% end %>
 
     <% if can? :update, chair %>
-      <%= link_to 'edit', edit_chair_path(chair), { :class => 'btn btn-mini btn-warning' }  %>
+      <%= link_to t('general.actions.edit'), edit_chair_path(chair), { :class => 'btn btn-mini btn-warning' }  %>
     <% end %>
 
     <% if can? :destroy, chair %>

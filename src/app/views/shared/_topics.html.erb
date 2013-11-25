@@ -24,7 +24,7 @@
 <% if @group.topics.size > 0 %>
   <ul class="posts condensed">
   <% limit ||= nil %>
-    <% @group.topics.order(last_activity: :desc, updated_at: :desc).limit(limit).each_with_index do |topic| %>
+    <% @group.topics.order('last_activity desc, updated_at desc').limit(limit).each_with_index do |topic| %>
       <li class="topic">
         <div class="content"> 
           <span class="rating"><%= topic.rating %></span>
@@ -33,7 +33,7 @@
         <div class="footer hide-for-small">
           <span class="post-details">
             <%= link_to topic.group.title, group_path(topic.group), class: 'group-link' %> &middot;
-            <%= pluralize(topic.views, 'view') %> &middot;
+            <%= t('general.label.views', count: topic.views)%> &middot;
             <% if topic.class.name.eql? 'Question' %><%= pluralize(topic.answers.size, 'answer') %> &middot;<% end %>
             <%= pluralize(topic.comments.size, 'comment') %>
           </span>
@@ -42,8 +42,8 @@
             <% if can? :manage, topic %> 
               <span class="actions">
                 &middot;
-                <%= link_to fa_icon('pencil', text: 'edit'), edit_topic_path(topic), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %> &middot;
-                <%= link_to fa_icon('times', text: 'remove'), topic, alt: "#{t('topics.actions.delete')}", title: "#{t('posts.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this post?' %>
+                <%= link_to fa_icon('pencil', text: t('general.actions.edit')), edit_topic_path(topic), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %> &middot;
+                <%= link_to fa_icon('times', text: t('general.actions.remove')), topic, alt: "#{t('topics.actions.delete')}", title: "#{t('posts.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this post?' %>
               </span>
             <% end %>
           </span>

@@ -12,7 +12,7 @@
     </ul>
     <% if can? :manage, term %>
     <div class="controls">
-      <%= link_to 'edit', edit_term_path(term), class: 'btn btn-warning btn-mini' %>
+      <%= link_to t('general.actions.edit'), edit_term_path(term), class: 'btn btn-warning btn-mini' %>
       <%= link_to 'delete', term, confirm: 'Are you sure?', method: :delete, :class => "btn btn-mini btn-danger" %>
     </div>
     <% end %>

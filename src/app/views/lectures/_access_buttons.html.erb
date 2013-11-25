@@ -3,7 +3,7 @@
   <% if current_user %>
 
     <% if can? :update, lecture %>
-      <%= link_to 'edit', edit_lecture_path(lecture), { :class => 'btn btn-mini btn-warning' }  %>
+      <%= link_to t('general.actions.edit'), edit_lecture_path(lecture), { :class => 'btn btn-mini btn-warning' }  %>
     <% end %>
 
     <% if can? :destroy, lecture %>

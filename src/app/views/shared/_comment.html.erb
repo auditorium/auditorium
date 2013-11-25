@@ -15,8 +15,8 @@
       <% if can? :manage, comment %> 
         <span class="right clearing">
           <span class="actions">
-            <%= link_to fa_icon('pencil', text: 'edit'), edit_comment_path(comment), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %> &middot;
-            <%= link_to fa_icon('times', text: 'remove'), comment, alt: "#{t('posts.actions.delete')}", title: "#{t('posts.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this comment?' %>
+            <%= link_to fa_icon('pencil', text: t('general.actions.edit')), edit_comment_path(comment), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %> &middot;
+            <%= link_to fa_icon('times', text: t('general.actions.remove')), comment, alt: "#{t('posts.actions.delete')}", title: "#{t('posts.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this comment?' %>
           </span>
         </span>
       <% end %>

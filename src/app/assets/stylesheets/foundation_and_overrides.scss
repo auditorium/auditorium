@@ -1592,9 +1592,16 @@ a.disabled {
     padding:0;
     margin: 5px 30px;
     font-weight: normal;
+    border:none;
 
     li {
       line-height:1.1;
+      border: none!important;
+      text-indent: -1em;
+
+      ul, ol {
+        margin: 5px 0;
+      }
     }
   }
 

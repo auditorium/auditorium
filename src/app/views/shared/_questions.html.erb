@@ -24,7 +24,7 @@
 <% if @group.questions.size > 0 %>
   <ul class="posts condensed">
   <% limit ||= nil %>
-    <% @group.questions.order(last_activity: :desc, updated_at: :desc).delete_if{ |q| cannot? :read, q }.each_with_index do |question| %>
+    <% @group.questions.order('last_activity desc, updated_at desc').limit(limit).delete_if{ |q| cannot? :read, q }.each_with_index do |question| %>
       <li class="question">
         <div class="content"> 
         <span class="rating"><%= question.rating %></span>
@@ -34,7 +34,7 @@
       <div class="footer hide-for-small">
         <span class="post-details">
           <%= link_to question.group.title, group_path(question.group), class: 'group-link' %> &middot;
-          <%= pluralize(question.views, 'view') %> &middot;
+          <%= t('general.label.views', count: question.views) %> &middot;
           <% if question.class.name.eql? 'Question' %><%= pluralize(question.answers.size, 'answer') %> &middot;<% end %>
           <%= pluralize(question.comments.size, 'comment') %>
         </span>
@@ -43,8 +43,8 @@
           <% if can? :manage, question %> 
             <span class="actions">
               &middot;
-              <%= link_to fa_icon('pencil', text: 'edit'), edit_question_path(question), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %> &middot;
-              <%= link_to fa_icon('times', text: 'remove'), question, alt: "#{t('questions.actions.delete')}", title: "#{t('posts.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this post?' %>
+              <%= link_to fa_icon('pencil', text: t('general.actions.edit')), edit_question_path(question), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %> &middot;
+              <%= link_to fa_icon('times', text: t('general.actions.remove')), question, alt: "#{t('questions.actions.delete')}", title: "#{t('posts.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this post?' %>
             </span>
           <% end %>
         </span>

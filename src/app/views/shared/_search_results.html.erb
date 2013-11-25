@@ -4,10 +4,10 @@
 
   <ul class="search-results-list">
     <li><b><%= t('general.search.results.found') %></b></li>
-    <li><%= t('general.search.results', type: 'group', count: @groups.size) %></li>
-    <li><%= t('general.search.results', type: 'question', count: @questions.size) %></li>
-    <li><%= t('general.search.results', type: 'announcement', count: @announcements.size) %></li>
-    <li><%= t('general.search.results', type: 'topic', count: @topics.size) %></li>
+    <li><%= t("general.search.results.group", count: @groups.size) %></li>
+    <li><%= t("general.search.results.question", count: @questions.size) %></li>
+    <li><%= t("general.search.results.announcement", count: @announcements.size) %></li>
+    <li><%= t("general.search.results.topic", count: @topics.size) %></li>
   </ul>
 
   <% if @groups.size > 0 %>

@@ -142,476 +142,510 @@ de:
   home:
     headers: 
       welcome_back: "Willkommen auf auditorium, %{user}!"
-      recent_activity: 'Check out what’s happening!'
+      recent_activity: 'Hier kannst du aktuelle Beiträge sehen'
   preview:
-    placeholder: 'While you type this field will show a real time preview.'
+    placeholder: 'Hier wird eine Echtzeitvorschau dargestellt, sobald du anfängst mit tippen.'
   general:
-    slogan: 'Ask, discuss and share knowledge.'#'Frage, diskutiere und teile Dein Wissen!'
-    subslogan: 'Help to make your university a better place!' #'Hilf dabei Deine Universität zu einem besseren Ort zu machen!'
+    slogan: 'Frage, diskutiere und teile Dein Wissen!'
+    subslogan: 'Hilf dabei Deine Universität zu einem besseren Ort zu machen!'
+    actions:
+      edit: 'bearbeiten'
+      remove: 'entfernen'
+    label: 
+      views: 
+        zero: 'keine Aufrufe'
+        one: '1 Aufruf'
+        other: '%{count} Aufrufe'
+      comments:
+        zero: 'keine Kommentare'
+        one: '1 Kommentar'
+        other: '%{count} Kommentare'
+      answers:
+        zero: 'keine Antworten'
+        one: '1 Antwort'
+        other: '%{count} Antworten'
     footer:
       headers: 
-        about: 'About'
-        support: 'Support'
+        about: 'Über uns'
+        support: 'Hilfe'
       links:
-        imprint: 'Imprint'
-        privacy: 'Privacy'
-        story: 'Story behind auditorium'
-        email_us: 'Write us an email'
-        github: 'Find us on github'
-        support_group: 'Visit our support group'
+        imprint: 'Impressum'
+        privacy: 'Datenschutz'
+        story: 'Geschichte von auditorium'
+        email_us: 'Schreibe uns eine Email'
+        github: 'auditorium auf github'
+        support_group: 'Gruppe für Hilfe'
     search: 
-      labels: 'Search'
-      press_enter: 'After typing in your search, click on the search button.'
-      header: 'Sidewide search'
+      labels: 'Suche'
+      press_enter: 'Drücke auf suchen, nachdem du deine Suche eingegeben hast.'
+      header: 'Durchsuche auditorium'
       placeholder:
-        short: 'Search' 
-        long: 'Click here and start your search for posts or groups...'
-      submit: 'Search'
+        short: 'Suche' 
+        long: 'Fange an zu schreiben, um auditorium nach Gruppen und Beiträgen zu durchsuchen...'
+      submit: 'Suche'
       results:
-        header: 'Search results for "%{query}"'
-        found: 'I was able to find:'
-        zero: 'no %{type}s'
-        one: 'one %{type}'
-        other: '%{count} %{type}s'
+        header: 'Suchergebnise für "%{query}"'
+        found: 'Wir konnten folgendes finden:'
+        group: 
+          zero: 'keine Gruppen'
+          one: 'eine Gruppe'
+          other: '%{count} Gruppen'
+        question: 
+          zero: 'keine Fragen'
+          one: 'eine Frage'
+          other: '%{count} Fragen'
+        announcement: 
+          zero: 'keine Ankündigungen'
+          one: 'eine Ankündigung'
+          other: '%{count} Ankündigungen'
+        topic: 
+          zero: 'keine Themen'
+          one: 'ein Thema'
+          other: '%{count} Themen'
     links:
-      show_preview: 'show preview'
-      hide_preview: 'hide preivew'
-      more: 'more ...'
+      show_preview: 'Vorschau einblenden'
+      hide_preview: 'Vorschau ausblenden'
+      more: 'mehr ...'
     filter:
-      link: 'filter'
-      show: 'Show filter'
-      hide: 'Hide filter'
+      link: 'Filter'
+      show: 'Filter einblenden'
+      hide: 'Filter ausblenden'
       tag_filter:
-        groups_filter: 'Add tags to filter displayed groups.'
-        posts_filter: 'Add tags to filter displayed posts.'
-      group-types: 'Select or deselect to filter groups:'
-      study-group: 'Study groups' 
-      lecture-group: 'Lecture groups'
-      topic-group: 'Topic groups'
-      posts: 'Filter posts'
-      only_subscribed: 'Show only posts from groups I’m following'
-      show_topics: 'Show topics'
-      show_announcements: 'Show announcements'
-      show_questions: 'Show questions'
-      show_lecture_groups: 'Show lecture groups'
-      show_study_groups: 'Show study groups'
-      show_topic_groups: 'Show topic groups'
-      show_only_subscribed_groups: 'Show only groups I’m following'
+        groups_filter: 'Suche nach Tags, um Gruppen zu filtern.'
+        posts_filter: 'Suche nach Tags, um Beiträge zu filtern.'
+      study-group: 'Studiengruppen' 
+      lecture-group: 'Lehrveranstaltungen'
+      topic-group: 'Themengruppen'
+      posts: 'Beiträge filtern'
+      only_subscribed: 'Nur Beiträge von Gruppen, denen ich folge'
+      show_topics: 'Themen'
+      show_announcements: 'Ankündigungen'
+      show_questions: 'Fragen'
+      show_lecture_groups: 'Lehrveranstaltungen'
+      show_study_groups: 'Studiengruppen'
+      show_topic_groups: 'Themengruppen'
+      show_only_subscribed_groups: 'Zeige nur Gruppen, denen ich folge'
     flash:
-      permission_denied: 'Sorry, nothing to see here. You do not have permission to enter this area.'
+      permission_denied: 'Du hast nicht die erforderlichen Rechte, die Seite zu sehen.'
   dates:
-    today: "Today’s activity"
-    yesterday: "Yesterday’s activity"
+    today: "Heute"
+    yesterday: "Gestern"
   groups:
     labels:
-      group_type: '%{type}-group'
+      group_type: 
+        lecture: 'Lehrveranstaltung'
+        study: 'Studiengruppe'
+        topic: 'Themengruppe'
     flash: 
-      approved: 'This group is now approved. An email was sent to the creator of this group.'
-      declined: 'You declined the group’s approval. The group has been deactivated.'
-      reactivated: 'The group is now reactivated and approved.'
-      updated: 'The group content has been updated.'
-      destroyed: 'The group has been removed.'
-      following: 'You are now following the group "%{group}".'
-      unfollowing: 'You will not receive notifications with updates for the group "%{group}".'
+      approved: 'Die Gruppe wurde freigegeben. Der Ersteller wurde per Email darüber informiert.'
+      declined: 'Du hast die Gruppe nicht freigegeben, sie ist nun deaktiviert.'
+      reactivated: 'Du hast die Gruppe wieder aktiviert, sie ist nun wieder freigegeben.'
+      updated: 'Die Gruppe wurde erfolgreich aktualisiert.'
+      destroyed: 'Die Gruppe wurde gelöscht.'
+      following: 'Du folgst nun der Gruppe "%{group}". Du wirst über Aktivitäten der Gruppe informiert.'
+      unfollowing: 'Du folgst der Gruppe "%{group}" nun nicht mehr. Du wirst nun keine Mitteilungen über Aktivitäten innerhalb der Gruppe erhalten.'
     hints: 
-      no_members: 'At the moment there are no members in this group. You can add moderators or members by typing in the name or email address.'
-      needs_approval: 'This group needs an approval. Although it’s not approved you can use it as normal.'
-      deactivated: 'This group is deactivated. Only you can see this group.'
-      no_groups_available: 'No groups found.'
-      no_groups_subscribed: 'You did not subscribed to groups yet.'
+      no_members: 'Im Moment hat die Gruppe noch keine Mitglieder. Du kannst neue Mitglieder oder Moderatoren hinzufügen, indem du nach ihnen suchst.'
+      needs_approval: 'Diese Gruppe muss freigegeben werden. Jedoch kannst du sie bereits wie eine normale Gruppe nutzen.'
+      deactivated: 'Diese Gruppe wurde deaktiviert. Nur du kannst sie sehen.'
+      no_groups_available: 'Es wurden keine Gruppen gefunden.'
+      no_groups_subscribed: 'Du folgst noch keiner Gruppe.'
     actions:
-      edit: 'Edit group'
-      new: 'Add a new group'
-      approve: 'Approve group'
-      decline: 'Decline group'
-      delete: 'Delete group'
-      reactivate: 'Reactivate group'
-      become_moderator: 'Become a moderator'
-      cancel_membership_request: 'Cancel membership request'
-      remove_from_members: 'Cancel user’s group membership'
-      remove_from_moderators: 'Remove user from moderators'
-      reject_membership_request: 'reject'
-      unlock: 'Unlock the group'
-      manage_users: 'Manage users group membership'
-    link_label: 'Group:'
-    creator: 'Created by %{name}'
+      edit: 'Gruppe bearbeiten'
+      new: 'Eine neue Gruppe hinzufügen'
+      approve: 'Gruppe freigeben'
+      decline: 'Gruppe deaktivieren'
+      delete: 'Gruppe entfernen'
+      reactivate: 'Gruppe wieder aktivieren'
+      become_moderator: 'Ich möchte ein Moderator dieser Gruppe werden'
+      cancel_membership_request: 'Storniere meine Anfrage ein Moderator zu werden'
+      remove_from_members: 'Mitglied von der Gruppe entfernen'
+      remove_from_moderators: 'Mitglied von den Moderatoren entfernen'
+      reject_membership_request: 'ablehnen'
+      unlock: 'Gruppe entsperren'
+      manage_users: 'Gruppenmitglieder bearbeiten'
+    link_label: 'Gruppe:'
+    creator: 'Erstellt durch %{name}'
     tags: 
       label: 'Tags:'
-      filter: 'You can add tags to filter displayed groups'
-    followers: 'Followers:'
+      filter: 'Füge Tags hinzu, um die gezeigten Gruppen zu filtern'
+    followers: 'Mitglieder:'
     follower_count: 
-      zero: 'no followers'
-      one: 'one follower'
-      other: '%{count} followers'
+      zero: 'keine Mitglieder'
+      one: 'ein Mitglied'
+      other: '%{count} Mitglieder'
     question_count: 
-      zero: 'no question'
-      one: 'one question'
-      other: '%{count} questions'
+      zero: 'keine Fragen'
+      one: 'eine Frage'
+      other: '%{count} Fragen'
     announcement_count: 
-      zero: 'no announcements'
-      one: 'one announcement'
-      other: '%{count} announcements'
+      zero: 'keine Ankündigungen'
+      one: 'eine Ankündigung'
+      other: '%{count} Ankündigungen'
     topic_count: 
-      zero: 'no topics'
-      one: 'one topic'
-      other: '%{count} topics'
+      zero: 'keine Themen'
+      one: 'ein Thema'
+      other: '%{count} Themen'
 
     member:
-      member: 'Member'
+      member: 'Mitglied'
       moderator: 'Moderator'
-      no_member: 'Not a member'
-      add_to_members: 'Add to members'
-      add_to_moderators: 'Add to moderators'
-    follow: 'follow'
-    unfollow: 'following'
-    unfollow_link_text: "Click to unsubscribe group's activity." 
-    follow_link_text: "Click to subscribe group's activity."
-    label: '%{type} Group'
+      no_member: 'kein Mitglied'
+      add_to_members: 'Als Mitglied hinzufügen'
+      add_to_moderators: 'Zum Moderator befördern'
+    follow: 'Ich möchte der Gruppe folgen'
+    unfollow: 'Ich folge der Gruppe'
+    unfollow_link_text: "Hier klicken, um der Gruppe nicht mehr zu folgen." 
+    follow_link_text: "Hier klicken, um der Gruppe zu folgen"
+    label: 
+      lecture: 'Lehrveranstaltung'
+      study: 'Studiengruppe'
+      topic: 'Themengruppe'
     lectures: 
-      title: 'Lectures'
+      title: 'Lehrveranstaltungen'
     studys: 
-      title: 'Study Groups'
+      title: 'Studiengruppen'
     topics:
-      title: 'Topic Groups'
-    most_active: 'Most active groups'
+      title: 'Themengruppen'
+    most_active: 'Aktivste Gruppen'
     show:
       questions:
-        header: 'Questions'
-        new: 'Ask a question'
+        header: 'Fragen'
+        new: 'Stelle eine Frage'
       announcements:
-        header: 'Announcements'
-        new: 'Write an announcement'
+        header: 'Ankündigungen'
+        new: 'Mache eine Ankündigung'
       topics:
-        header: 'Topics'
-        new: 'Create a new topic'
+        header: 'Themen'
+        new: 'Öffne ein neues Thema'
       recordings:
-        header: 'Recordings'
-        new: 'Create a new recording'
+        header: 'Aufzeichnungen'
+        new: 'Füge eine neue Aufzeichnung hinzu'
       links: 
-        delete: 'Delete'
-        edit: 'Edit'
+        delete: 'löschen'
+        edit: 'bearbeiten'
     index:
-      title: 'Groups overview'
+      title: 'Gruppenübersicht'
     group-basic-information:
-      placeholder: 'Choose a type for your new group...'
+      placeholder: 'Wähle den Typ der neuen Gruppe'
     choose_type:
-      title: 'Please choose the type of your group'
+      title: 'Wähle den Typ der neuen Gruppe'
     basic_information:
-      title: 'Type in basic information about the group'
+      title: 'Informationen zur Gruppe'
     group_types:
       general:
-        tags_hint: 'Please enter tags to describe your group to improve the groups search ranking.'
+        tags_hint: 'Füge Tags ein, um die Gruppe später leichter wiederzufinden.'
       lecture:
-        title: 'Lecture Group'
-        description: 'Choose this group type for lectures.'
-        tags_hint: 'Please enter tags for faculty, institute, chair and semester so that users can find your lecture group more easily.'
+        title: 'Lehrveranstaltung'
+        description: 'Wähle diesen Gruppentypen für Lehrveranstaltungen.'
+        tags_hint: 'Füge Tags, wie Fakultät, Universität, Lehrstuhl, Institut und Semester hinzu, um die Gruppe später leichter wiederzufinden.'
       study:
-        title: 'Study Group'
-        description: 'Choose this group type to create a study group for you and your fellows.'
-        tags_hint: 'Please enter tags to describe your study group.'
+        title: 'Studiengruppe'
+        description: 'Wähle diesen Gruppentypen für eine Lehr- oder Lerngruppe.'
+        tags_hint: 'Füge Tags ein, um die Gruppe später leichter wiederzufinden.'
       topic:
-        title: 'Topic Group'
-        description: 'Choose this group type for discussions and general questions and events.'
-        tags_hint: 'Please enter tags to describe your topic group.'
+        title: 'Themengruppe'
+        description: 'Wähle diese Gruppe, um zu beliebigen Themen zu diskutieren.'
+        tags_hint: 'Füge Tags ein, um die Gruppe später leichter wiederzufinden.'
     new: 
-      title: 'Create a new group'
-      submit: 'Submit group'
-      link: 'Create a new group'
+      title: 'Erstelle eine neue Gruppe'
+      submit: 'Gruppe hinzufügen'
+      link: 'Füge eine neue Gruppe hinzu'
     edit:
-      link: 'Edit group'
-      title: 'Edit group'
-      submit: 'Update group'
+      link: 'Bearbeite die Gruppe'
+      title: 'Bearbeite die Gruppe'
+      submit: 'Änderungen speichern'
     update:
-      sucess: 'The group has been updated.'
-      failure: 'There was a problem while updating the groups data. Please try again.'
+      sucess: 'Die Gruppe wurde erfolgreich aktualisiert.'
+      failure: 'Beim Speichern der neuen Informationen trat ein Fehler auf. Bitte probiere es noch einmal.'
     create:
-      success: 'The group has been created successfully.'
-      failure: 'There was a problem creating this group. Please try again.'
+      success: 'Die Gruppe wurde erfolgreich hinzugefügt.'
+      failure: 'Beim Speichern der Gruppe trat ein Fehler auf. Bitte probiere es erneut.'
 
   tags:
-    no_tags: 'no tags'
+    no_tags: 'Es wurden keine Tags hinterlegt.'
     label: 'Tags:'
-    new_entry: 'Create the new tag: %{name}'
+    new_entry: 'Neuen Tag erstellen: %{name}'
   tokeninput:
-    hint_text: "Type in a search term"
-    no_results_text: "No tags found."
-    searching_text: "Searching for available tags..."
+    hint_text: "Fange an etwas einzugeben, um nach Tags zu suchen..."
+    no_results_text: "Es konnten keine Tags gefunden werden."
+    searching_text: "Es wird nach passenden Tags gesucht..."
 
   videos:
-    page_title: "Recordings from %{group}"
+    page_title: 'Aufzeichnungen in der Gruppe "%{group}"'
     titles:
-      new: 'Add a new recording to the group'
+      new: 'Füge eine neue Aufzeichnung zur Gruppe hinzu'
     new:
-      link_title: 'Add a new recording to the group.'
+      link_title: 'Neue Aufzeichnung hinzufügen'
     edit:
-      header: 'Update the recordings content'
-      submit: 'Save recording' 
+      header: 'Aktualisiere die Aufzeichnung'
+      submit: 'Änderungen speichern' 
     actions:
-      new: 'Add a new recording'
-      edit: 'Edit the recording'
-      update: 'Update recording'
-      submit: 'Submit recording'
+      new: 'Neue Aufzeichnung hinzufügen'
+      edit: 'Bearbeite diese Aufzeichnung'
+      update: 'Änderungen speichern'
+      submit: 'Aufzeichnung speichern'
     flash:
-      created: 'The recording has been created.'
-      destroyed: 'The recording has been removed.'
+      created: 'Die Aufzeichnung wurde erfolgreich zur Gruppe hinzugefügt.'
+      destroyed: 'Die Aufzeichnung wurde entfernt.'
   recordings:
     actions:
-      add: 'Add a new recording'
-      submit: 'Submit recording'
-      update: 'Update recording'
-      comment: 'Add comment'
-      delete: 'Remove recording'
-      edit: 'Edit recording'
+      add: 'Neue Aufzeichnung hinzufügen'
+      submit: 'Aufzeichnung speichern'
+      update: 'Änderungen speichern'
+      comment: 'Kommentieren'
+      delete: 'Aufzeichnung entfernen'
+      edit: 'Aufzeichnung bearbeiten'
     headers:
-      index: 'Recordings overview'
-      new: 'Add a recording'
-      edit: 'Update recording'
+      index: 'Übersicht der Aufzeichnungen'
+      new: 'Füge eine neue Aufzeichnung hinzu'
+      edit: 'Aufzeichnung bearbeiten'
 
   recordings:
     flash:
-      created: 'The recording has been created.'
-      destroyed: 'The recording has been removed.'
+      created: 'Die Aufzeichnung wurde erfolgreich hinzugefügt.'
+      destroyed: 'Die Aufzeichnung wurde entfernt.'
 
 
   questions:
     headers:
-      new: 'Ask a questions'
-      edit: 'Update the question'
+      new: 'Stelle eine Frage'
+      edit: 'Bearbeite die Frage'
     hints:
-      no_entries: 'There are no questions asked. Click into the text field for asking your question.'
-    page_title: "Questions from %{group}"
+      no_entries: 'Es wurden noch keine Fragen gestellt. Klicke in das Textfeld, um eine neue Frage zu stellen.'
+    page_title: 'Fragen der Gruppe "%{group}"'
     links:
-      to_content: 'Questions'
+      to_content: 'Fragen'
     input: 
-      new: 'Ask a new question'
-      subject: 'What is the subject of your question?'
+      new: 'Stelle eine neue Frage'
+      subject: 'Wie lautet der Betreff deiner Frage?'
     placeholder:
-      content: 'Click here to insert the content of your question...'
+      content: 'Füge den Inhalt deiner Frage hinzu.'
     edit:
-      header: 'Update the questions content'
-      submit: 'Save question'
+      header: 'Bearbeite deine Frage'
+      submit: 'Änderungen speichern'
     is_private:
-      icon_hint: 'This question is private. Only group moderators can see this question.'
-      icon_alt: '(private)'
-      hint: 'Only group moderators can see your private question.'
-      label: 'I will ask a private question'
+      icon_hint: 'Das ist eine private Frage. Nur der Autor und die Gruppenmoderatoren können sie sehen, kommentieren und beantworten.'
+      icon_alt: '(private Frage)'
+      hint: 'Nur Gruppenmoderatoren können deine Frage sehen.'
+      label: 'Ich möchte eine private Frage stellen'
     actions:
-      view_all: 'View all questions'
-      delete: 'remove'
-      submit: 'Submit questions'
-      edit: 'Update question'
+      view_all: 'Zeige alle Fragen der Gruppe'
+      delete: 'löschen'
+      submit: 'Frage hinzufügen'
+      edit: 'Änderungen speichern'
     flash:
-      created: 'Your question has been created.'
-      destroyed: 'The question has been deleted.'
+      created: 'Deine Frage wurde gespeichert.'
+      destroyed: 'Die Frage wurde entfernt.'
 
   announcements:
     headers:
-      edit: 'Update the announcement'
-      new: 'Make an announcement'
+      edit: 'Ankündigung bearbeiten'
+      new: 'Mache eine neue Ankündigung'
     hints:
       no_entries: 
-        member: 'There are no announcements, yet.'
-        moderator: 'There are no announcements. Click into the text field to make an announcement.'
-    page_title: "Announcements from %{group}"
+        member: 'Es wurden bisher keine Ankündigungen gemacht.'
+        moderator: 'Es wurden noch keine Ankündigungen gemacht. Klicke in das Textfeld, um eine neue Ankündigung zu erstellen.'
+    page_title: 'Ankündigungen der Gruppe "%{group}"'
     links:
-      to_content: 'Announcements'
+      to_content: 'Ankündigungen'
     input: 
-      new: 'Write an announcement'
-      subject: 'What is the content of your announcement?'
+      new: 'Mache eine Ankündigung'
+      subject: 'Wie lautet der Inhalt deiner Ankündigung?'
     new:
-      submit: 'Submit announcement'
+      submit: 'Ankündigung speicher'
     placeholder:
-      content: 'Click here to insert the content of your announcement...'
+      content: 'Füge den Inhalt deiner Ankündigung hinzu.'
     edit:
-      header: 'Update the announcements content'
-      submit: 'Save announcement'
+      header: 'Ankündigung bearbeiten'
+      submit: 'Änderungen speichern'
     actions: 
-      delete: 'delete'
-      edit: 'Update announcement'
-      submit: 'Submit announcement'
-      view_all: 'View all announcements'
+      delete: 'entfernen'
+      edit: 'Änderungen speichern'
+      submit: 'Ankündigung speichern'
+      view_all: 'Zeige alle Ankündigungen'
     flash:
-      created: 'The announcement has been created.'
-      updated: 'The announcement has been updated.'
-      destroyed: 'The announcement has been removed.'
+      created: 'Die Ankündigung wurde hinzugefügt.'
+      updated: 'Die Ankündigung wurde aktualisiert.'
+      destroyed: 'Die Ankündigung wurde entfernt.'
     error:
-      updated: 'Something went wrong when updating the announcment. Please try again.'
+      updated: 'Es ist ein Problem beim Aktualisieren der Ankündigung aufgetreten. Versuche es bitte noch einmal.'
 
   topics:
     headers:
-      new: 'Create a new topic'
-      edit: 'Update topic'
+      new: 'Eröffne ein neues Thema'
+      edit: 'Thema bearbeiten'
     hints:
-      no_entries: 'There are no topics. Click into the text field to create a topic.'
-    page_title: "Topics from %{group}"
+      no_entries: 'Es wurden noch keine Themen eröffnet. Klicke in das Textfeld, um ein neues Thema zu eröffnen.'
+    page_title: 'Themen der Gruppe "%{group}"'
     links:
-      to_content: 'Topics'
+      to_content: 'Themen'
     input: 
-      new: 'Create a topic'
-      subject: 'What is the content of your topic?'
+      new: 'Erstelle ein neues Thema'
+      subject: 'Wie lautet der Inhalt des Themas?'
     placeholder:
-      content: 'Click here to insert the content of your topic...'
+      content: 'Füge den Inhalt des Themas hier ein.'
     actions: 
-      view_all: 'View all topics'
-      delete: 'remove'
-      submit: 'Submit topic'
-      edit: 'Update topic'
+      view_all: 'Zeige alle Ankündigungen'
+      delete: 'entfernen'
+      submit: 'Thema estellen'
+      edit: 'bearbeiten'
     flash:
-      created: 'Your topic has been created.'
-      destroyed: 'The topic has been removed.'
+      created: 'Das Thema wurde erfolgreich erstellt.'
+      destroyed: 'Das Thema wurde entfernt.'
 
   comments: 
     headers: 
-      new: 'Write a comment'
-      edit: 'Update the comment'
+      new: 'Schreibe einen Kommentar'
+      edit: 'Kommentar bearbeiten'
     actions:
-      submit: 'Add your comment'
-      new: 'Write a comment'
-      delete: 'Delete comment'
-      edit: 'Update comment'
+      submit: 'Kommentar absenden'
+      new: 'Schreibe einen Kommentar'
+      delete: 'Kommentar entfernen'
+      edit: 'Kommentar bearbeiten'
     label:
-      content: 'Content of your comment:'
+      content: 'Inhalt des Kommentars'
     placeholder:
-      content: 'Write a comment...'
+      content: 'Wie lautet der Inhalt deines Kommentars?'
     edit:
-      header: 'Update the comments content'
-      submit: 'Save comment'
+      header: 'Bearbeite den Kommentar'
+      submit: 'Änderungen speichern'
     flash:
-      created: 'Thank you for your comment.'
-      destroyed: 'Your comment has been removed.'
+      created: 'Danke für deinen Kommentar!'
+      destroyed: 'Der Kommentar wurde entfernt.'
 
   answers:
     headers:
-      edit: 'Update your answer'
-      new: 'Provide an answer'
+      edit: 'Bearbeite die Antwort'
+      new: 'Schreibe eine Antwort'
     helpful: 
-      unchecked: 'mark as helpful'
-      checked: 'helpful answer'
-      hint: 'You can also mark this answer as helpful answer.'
+      unchecked: 'als hilfreich markieren'
+      checked: 'hilfreiche Antwort'
+      hint: 'Wenn dir die Antwort geholfen hat, markiere sie als hilfreich. Damit hilfst du anderen, die die gleiche Frage haben und nach einer Lösung suchen.'
     actions:
-      submit: 'Submit your answer'
+      submit: 'Antwort absenden'
     labels:
-      content: 'Content:'
+      content: 'Inhalt der Antwort:'
     placeholder:
-      content: 'Click here and begin writing your answer...'
+      content: 'Wie lautet der Inhalt deiner Antwort?'
     flash:
-      created: 'Thank you for the answer.'
+      created: 'Vielen Dank für deine Antwort!'
 
   links:
     goto:
-      title: 'Go to:'
-      questions: 'Questions'
-      announcements: 'Announcements'
-      topics: 'Topics'
-      lecture-groups: 'Lectures'
-      study-groups: 'Study Groups'
-      topic-groups: 'Topic Groups'
-      groups_for_subscribing: 'Go to groups for subscribing groups.'
+      title: 'Gehe zu:'
+      questions: 'Fragen'
+      announcements: 'Ankündigungen'
+      topics: 'Themen'
+      lecture-groups: 'Lehrveranstaltungen'
+      study-groups: 'Studiengruppen'
+      topic-groups: 'Themengruppen'
+      groups_for_subscribing: 'Auf der Gruppenseite kannst du Gruppen suchen und folgen.'
 
   posts:
     actions:
-      edit: 'edit'
-      delete: 'remove'
+      edit: 'bearbeiten'
+      delete: 'entfernen'
     types: 
-      announcement: 'Announcement'
-      question: 'Question'
-      topic: 'Topic'
-      answer: 'Answer'
-      video: 'Recording'
+      announcement: 'Ankündigung'
+      question: 'Frage'
+      topic: 'Thema'
+      answer: 'Antwort'
+      video: 'Aufzeichnung'
     label: 
-      question: 'Question'
-      announcement: 'Announcement'
-      topic: 'Topic'
-      answer: 'Answer'
-      comment: 'Comment'
+      question: 'Frage'
+      announcement: 'Ankündigung'
+      topic: 'Thema'
+      answer: 'Antwort'
+      comment: 'Kommentar'
     general:
-      authored: 'By'
-      group: 'in group'
-      time: 'at %{time}'
-      comments: 'Comments'
-      answers: 'Answers'
+      authored: 'Von'
+      group: 'in der Gruppe'
+      time: 'am %{time}'
+      comments: 'Kommentare'
+      answers: 'Antworten'
       upvote:
-        title: 'Click when you find this post helpful.'
-        alt_text: 'upvote'
-        notice: 'Post has been up voted.'
+        title: 'Ich finde den Beitrag hilfreich und sinnvoll!'
+        alt_text: 'positiv bewerten'
+        notice: 'Du hast den Beitrag positiv bewertet.'
       downvote:
-        title: 'Click if the post is not helpful.'
-        alt_text: 'downvote'
-        notice: 'Post has been down voted.'
+        title: 'Ich finde den Beitrag nicht hilfreich oder sinnvoll!'
+        alt_text: 'negativ bewerten'
+        notice: 'Du hast den Beitrag negativ bewertet.'
 
   views:
     pagination:
-      first: "&laquo; First"
-      last: "Last &raquo;"
-      previous: "&lsaquo; Prev"
-      next: "Next &rsaquo;"
+      first: "&laquo; Erste Seite"
+      last: "Letzte Seite &raquo;"
+      previous: "&lsaquo; Vorherige Seite"
+      next: "Nächste Seite &rsaquo;"
       truncate: "..."
   search:
     headers:
-      groups: 'Groups'
-      questions: 'Questions'
-      announcements: 'Announcements'
-      topics: 'Topics'
+      groups: 'Gruppen'
+      questions: 'Fragen'
+      announcements: 'Ankündigungen'
+      topics: 'Themen'
     labels: 
       membership:
         moderator: 'Moderator'
-        member: 'Member'
+        member: 'Mitglied'
   users:
     tabs:
-      about: 'About'
-      settings: 'Settings'
-      groups: 'Groups'
-      questions: 'Questions'
-      topics: 'Topics'
-      announcements: 'Announcements'
-    pending_email_confirmation: 'An email confirmation for %{email} is pending.'
+      about: 'Zur Person'
+      settings: 'Einstellungen'
+      groups: 'Gruppen'
+      questions: 'Fragen'
+      topics: 'Themen'
+      announcements: 'Ankündigungen'
+    pending_email_confirmation: 'Die %{email} wartet auf ihre Bestätigung.'
     role:
       is_admin: 'Administrator'
     profile:
-      link: 'Profile'
+      link: 'Profil'
       personal_data:
-        title: 'Personal information'
+        title: 'Persönliche Inforamtionen'
       personal_information:
-        title: 'Personal information'
-        link: 'Edit profile'
-        user_title: 'Provide your academic title.'
-        submit: 'Update personal information'
+        title: 'Persönliche Informationen'
+        link: 'Profil bearbeiten'
+        user_title: 'Füge deien akademischen Titel hinzu.'
+        submit: 'Persönliche Informationen bearbeiten'
       about:
-        title: 'About'
+        title: 'Zur Person'
       groups:
-        title: "Groups I'm following"
+        title: "Gruppen, denen ich Folge"
       questions:
-        title: 'Questions I asked'
+        title: 'Fragen, die ich gestellt habe'
       announcements:
-        title: 'Announcements I gave'
+        title: 'Ankündigungen, die ich gemacht habe'
       topics:
-        title: "Topics I opened"
+        title: "Themen, die ich eröffnet habe"
       settings:
-        title: 'Settings'
+        title: 'Einstellungen'
         general_settings: 
-          header: 'General settings'
-          hint: 'You can choose if you want to receive email notifications with updates in your subscribed groups.'
-          submit: 'Save settings' 
+          header: 'Allgemeine Einstellungen'
+          hint: 'Wähle aus, ob du Benachrichtigungen zu Aktivitäten in deinen abonnierten Gruppen per Email erhalten möchtest.'
+          submit: 'Einstellungen speichern' 
         subscribed_groups: 
-          header: 'Email notifications for subscribed groups'
-          hint: 'You can choose for which subscribed group you will receive email notifications.'
-          submit: 'Save group settings' 
-        receive_email_notifications: 'Receive email notifications.'
-        receive_email_notifications_when_author: 'Receive email notifications when I am an author.'
-        uniqueness_error: 'This user already chose his preferences.'
+          header: 'Email Benachrichtigungen für abonnierte Gruppen'
+          hint: 'Wähle aus, für welche Gruppen du Email Benachrichtigungen erhalten möchtest.'
+          submit: 'Gruppeneinstellungen speichern' 
+        receive_email_notifications: 'Ich möchte Email Benachrichtigungen zu meinen abonnierten Gruppen erhalten'
+        receive_email_notifications_when_author: 'Email Benachrichtigungen erhalten, falls ich Autor eines Beitrags bin'
+        uniqueness_error: 'Der Benutzer hat seine Einstellungen bereits gewählt.'
 
   markdown:
     buttons:
-      markdown: 'Markdown quick reference'
+      markdown: 'Markdown Schnellreferenz'
     titles:
-      result: 'Result'
-      code: 'Code'
-    text_formatting: '**bold**, *italic*'
+      result: 'Ergebnisse'
+      code: 'Quellcode'
+    text_formatting: '**fett**, *kursiv*'
     code_inline: '`var coordinates = { x: 5, y: 7}`'
     code_block: |
       ```ruby
       def print 
-        puts "Hello world!"
+        puts "Hallo Welt!"
       end
       ```
     latex_inline: '$\sin A \cos B = \frac{1}{2}\[\sin(A-B)+\sin(A+B)\]$'
@@ -625,8 +659,8 @@ de:
       ##### h5
       ###### h6
     list: |
-      * Project #1
-        * Task #1
-        * Taks #2
-      * Project #2
-        * no tasks
+      * Projekt #1
+        * Aufgabe #1
+        * Aufgabe #2
+      * Projekt #2
+        * keine weiteren Aufgaben!

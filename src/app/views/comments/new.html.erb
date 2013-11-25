@@ -12,7 +12,7 @@
   <div class="row">
     <% if params[:action].eql? 'new' %>
       <%= f.submit t('comments.actions.new'), class: 'small button' %>
-    <% elsif params[:action].eql? 'edit' %>
+    <% elsif params[:action].eql? t('general.actions.edit') %>
       <%= f.submit t('comments.edit.submit'), class: 'small button' %>
     <% end %>
   </div>

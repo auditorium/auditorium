@@ -9,7 +9,7 @@
   </span>
   <% end %>
   <span class="group-type label ">
-    <%= t('groups.labels.group_type', type: group.group_type.capitalize) %>
+    <%= t("groups.labels.group_type.#{group.group_type}") %>
   </span>
   <span class="group-title">
     <%= link_to truncate(group.title, length: 150), group_path(group) %>

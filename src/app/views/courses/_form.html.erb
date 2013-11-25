@@ -38,7 +38,7 @@
           <label for="term_id" class="accessibility"> term </label>
             <%= f.select :term_id, options_from_collection_for_select(Term.all, :id, :code, @course.term_id), :class => 'span8', :id => 'term_id' %>
         </div>
-          <% if params[:action].eql? 'edit' %>
+          <% if params[:action].eql? t('general.actions.edit') %>
             <%= f.submit "Update course", { :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Submitting...', :id => 'submit-button-label'}  %>
             <%= link_to "Cancel", course_path(@course), class: 'btn btn-large' %> 
           <% else %>

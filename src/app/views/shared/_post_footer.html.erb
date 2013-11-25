@@ -7,8 +7,8 @@
 <% if can? :manage, post %> 
   <span class="right clearing">
     <span class="actions">
-      <%= link_to fa_icon('pencil', text: 'edit'), url_for(controller: post.class.name.pluralize.downcase, action: 'edit'), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %> &middot;
-      <%= link_to fa_icon('times', text: 'remove'), post, alt: "#{t('posts.actions.delete')}", title: "#{t('posts.actions.edit')}", method: :delete, confirm: "Are you sure to delete this #{post.class.name.downcase}?" %>
+      <%= link_to fa_icon('pencil', text: t('general.actions.edit')), url_for(controller: post.class.name.pluralize.downcase, action: 'edit'), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %> &middot;
+      <%= link_to fa_icon('times', text: t('general.actions.remove')), post, alt: "#{t('posts.actions.delete')}", title: "#{t('posts.actions.edit')}", method: :delete, confirm: "Are you sure to delete this #{post.class.name.downcase}?" %>
     </span>
   </span>
 <% end %>

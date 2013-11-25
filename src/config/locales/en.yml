@@ -148,6 +148,22 @@ en:
   general:
     slogan: 'Ask, discuss and share knowledge.'#'Frage, diskutiere und teile Dein Wissen!'
     subslogan: 'Help to make your university a better place!' #'Hilf dabei Deine Universität zu einem besseren Ort zu machen!'
+    actions:
+      edit: 'edit'
+      remove: 'remove'
+    label: 
+      views: 
+        zero: 'no views'
+        one: '1 view'
+        other: '%{count} views'
+      comments:
+        zero: 'no comments'
+        one: '1 comment'
+        other: '%{count} comments'
+      answers:
+        zero: 'no answers'
+        one: '1 answer'
+        other: '%{count} answers'
     footer:
       headers: 
         about: 'About'
@@ -170,9 +186,22 @@ en:
       results:
         header: 'Search results for "%{query}"'
         found: 'I was able to find:'
-        zero: 'no %{type}s'
-        one: 'one %{type}'
-        other: '%{count} %{type}s'
+        group: 
+          zero: 'no groups'
+          one: 'one group'
+          other: '%{count} groups'
+        question: 
+          zero: 'no questions'
+          one: 'one question'
+          other: '%{count} questions'
+        announcement: 
+          zero: 'no announcements'
+          one: 'one announcement'
+          other: '%{count} announcements'
+        topic: 
+          zero: 'no topics'
+          one: 'one topic'
+          other: '%{count} topics'     
     links:
       show_preview: 'show preview'
       hide_preview: 'hide preivew'
@@ -186,7 +215,7 @@ en:
         posts_filter: 'Add tags to filter displayed posts.'
       group-types: 'Select or deselect to filter groups:'
       study-group: 'Study groups' 
-      lecture-group: 'Lecture groups'
+      group-group: 'Lecture groups'
       topic-group: 'Topic groups'
       posts: 'Filter posts'
       only_subscribed: 'Show only posts from groups I’m following'
@@ -204,7 +233,10 @@ en:
     yesterday: "Yesterday’s activity"
   groups:
     labels:
-      group_type: '%{type}-group'
+      group_type: 
+        lecture: 'Lecture Group'
+        study: 'Study Group'
+        topic: 'Topic Group'
     flash: 
       approved: 'This group is now approved. An email was sent to the creator of this group.'
       declined: 'You declined the group’s approval. The group has been deactivated.'
@@ -266,7 +298,10 @@ en:
     unfollow: 'following'
     unfollow_link_text: "Click to unsubscribe group's activity." 
     follow_link_text: "Click to subscribe group's activity."
-    label: '%{type} Group'
+    label: 
+      lecture: 'Lecture Group'
+      study: 'Study Group'
+      topic: 'Topic Group'
     lectures: 
       title: 'Lectures'
     studys: 

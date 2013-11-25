@@ -30,7 +30,7 @@
 <% if @group.announcements.size > 0 %>
   <ul class="posts condensed">  
   <% limit ||= nil%>
-  <% @group.announcements.order(last_activity: :desc, updated_at: :desc).limit(limit).each_with_index do |announcement| %>
+  <% @group.announcements.order('last_activity desc, updated_at desc').limit(limit).each_with_index do |announcement| %>
     <li class="announcement">
       <div class="content"> 
       <span class="rating"><%= announcement.rating %></span>
@@ -40,7 +40,7 @@
     <div class="footer hide-for-small">
       <span class="post-details">
         <%= link_to announcement.group.title, group_path(announcement.group), class: 'group-link' %> &middot;
-        <%= pluralize(announcement.views, 'view') %> &middot;
+        <%= t('general.label.views', count: announcement.views) %> &middot;
         <% if announcement.class.name.eql? 'Question' %><%= pluralize(announcement.answers.size, 'answer') %> &middot;<% end %>
         <%= pluralize(announcement.comments.size, 'comment') %>
       </span>
@@ -49,8 +49,8 @@
         <% if can? :manage, announcement %> 
           <span class="actions">
             &middot;
-            <%= link_to fa_icon('pencil', text: 'edit'), edit_announcement_path(announcement), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %> &middot;
-            <%= link_to fa_icon('times', text: 'remove'), announcement, alt: "#{t('announcements.actions.delete')}", title: "#{t('posts.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this post?' %>
+            <%= link_to fa_icon('pencil', text: t('general.actions.edit')), edit_announcement_path(announcement), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %> &middot;
+            <%= link_to fa_icon('times', text: t('general.actions.remove')), announcement, alt: "#{t('announcements.actions.delete')}", title: "#{t('posts.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this post?' %>
           </span>
         <% end %>
       </span>

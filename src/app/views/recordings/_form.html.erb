@@ -31,7 +31,7 @@
 
 	    <%= f.hidden_field :course_id, value: params[:course_id] %>
 	    <%= f.hidden_field :post_type, value: 'recording' %>
-	    <% if params[:action].eql? 'edit' %>
+	    <% if params[:action].eql? t('general.actions.edit') %>
 	    	<%= f.submit t('recordings.actions.update'), :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Submitting...' %>
 	    <% else %>
 	    	<%= f.submit t('recordings.actions.submit'), :class => 'btn btn-large btn-primary', 'data-disable-with' => 'Submitting...' %>

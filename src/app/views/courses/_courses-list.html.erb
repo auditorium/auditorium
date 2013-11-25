@@ -44,7 +44,7 @@
 					<%= render :partial => 'shared/follow_button', :locals => { :course => course } %>
 				</div></p>
 				<% if can? :manage, course %>
-					<%= link_to 'edit', edit_course_path(course), class: 'btn btn-warning btn-mini span1' %>
+					<%= link_to t('general.actions.edit'), edit_course_path(course), class: 'btn btn-warning btn-mini span1' %>
       		<%= link_to 'delete', course, confirm: "Are you sure that you want to delete this course?<br />#{course.name_with_term}", method: :delete, :class => "btn btn-mini btn-danger span1" %>
 				<% end %>
 			</td>

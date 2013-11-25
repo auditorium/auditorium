@@ -1,5 +1,5 @@
 <span class="ribbon">
-  <%= t('groups.label', type: group.group_type.capitalize) %>
+  <%= t("groups.label.#{group.group_type}") %>
 
   <span class="bookmark">
   <% if group.followers.include?(current_user) %>
@@ -27,8 +27,8 @@
   <span class="right">
   <% if can? :manage, group %>
     <span class="actions">
-      <%= link_to fa_icon('pencil', text: 'edit'), edit_group_path(group), alt: "#{t('groups.actions.edit')}", title: "#{t('groups.actions.edit')}" %> &middot;
-      <%= link_to fa_icon('times', text: 'remove'), group, alt: "#{t('groups.actions.delete')}", title: "#{t('groups.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this group?' %>
+      <%= link_to fa_icon('pencil', text: t('general.actions.edit')), edit_group_path(group), alt: "#{t('groups.actions.edit')}", title: "#{t('groups.actions.edit')}" %> &middot;
+      <%= link_to fa_icon('times', text: t('general.actions.remove')), group, alt: "#{t('groups.actions.delete')}", title: "#{t('groups.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this group?' %>
     </span>
   <% end %>
 </span>
