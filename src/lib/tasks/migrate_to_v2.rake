@@ -19,9 +19,7 @@ namespace :db do
           creator = course.maintainers.first
           puts "CREATOR: #{creator.inspect}"
 
-          if creator.nil? 
-            group.creator = User.find_by_email('lars.beier@tu-dresden.de')
-          elsif creator.class.name.eql? 'CourseMembership' 
+          if creator.class.name.eql? 'CourseMembership' 
             group.creator = User.find(creator.user_id)
           else
             group.creator = User.find_by_email('lars.beier@tu-dresden.de')

@@ -117,11 +117,11 @@ class Group < ActiveRecord::Base
 
   private
   def add_creator_to_moderators
-    following = self.followings.build(follower_id: self.creator.id)
-    following.role = 'moderator'
-    following.save!
-
-    puts "MAINTAINER: #{following.inspect}"
+    unless self.creator.email.eql? 'lars.beier@tu-dresden.de'
+      following = self.followings.build(follower_id: self.creator.id)
+      following.role = 'moderator'
+      following.save!
+    end
   end
 
 end

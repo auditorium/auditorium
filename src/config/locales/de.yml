@@ -68,6 +68,7 @@ de:
         post: 'Öffne %{post_type} in deinem Browser'
         comment: 'Öffne den Kommentar im Browser'
         question: 'Öffne die Frage im Browser'
+        answer: 'Öffne die Antwort im Browser'
         announcement: 'Öffne die Ankündigung im Browser'
         topic: 'Öffne das Thema im Browser'
         video: 'Öffne die Ankündigung im Browser'
@@ -75,6 +76,9 @@ de:
         group: 'Öffne die Gruppe in deinem Browser'
         notifications: 'Schaue dir die Mitgliedschaftsanfrage an.'
         login: 'Melde dich in auditorium an'
+        confirm_account: 'Bestätige deine Email Adresse'
+        change_password: 'Ändere dein Passwort'
+        unlock_account: 'Schalte deinen Account frei'
       subjects: 
         welcome: 'Willkommen auf auditorium, %{user}.'
         new_video: '%{author} hat eine neue Videoaufzeichnung in der Gruppe "%{group}" veröffentlicht:'
@@ -184,6 +188,7 @@ de:
     slogan: 'Frage, diskutiere und teile Dein Wissen!'
     subslogan: 'Hilf dabei Deine Universität zu einem besseren Ort zu machen!'
     flash: 
+      permission_denied: 'Du hast nicht die erforderlichen Rechte, die Seite zu sehen.'
       confirmation_sent: 'Du erhälst in wenigen Minuten eine Email mit Informationen zum Freischalten deines Accounts.'
       moderation_needed: 'Du hast dich mit einer nicht-TU-Dresden Email Adresse versucht zu registrieren. Die Bestätigungsemail wird zurückgehalten. Bitte schreib uns eine Email, für weitere Informationen.'
     actions:
@@ -263,8 +268,6 @@ de:
       show_study_groups: 'Studiengruppen'
       show_topic_groups: 'Themengruppen'
       show_only_subscribed_groups: 'Zeige nur Gruppen, denen ich folge'
-    flash:
-      permission_denied: 'Du hast nicht die erforderlichen Rechte, die Seite zu sehen.'
   dates:
     today: "Heute"
     yesterday: "Gestern"

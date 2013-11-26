@@ -1,10 +1,1 @@
-recordings.flash.commented in 	  ["app/controllers/recordings_controller.rb"] is missing
-recordings.actions.update in 	  ["app/views/recordings/_form.html.erb"] is missing
-recordings.actions.submit in 	  ["app/views/recordings/_form.html.erb"] is missing
-recordings.headers.edit in 	  ["app/views/recordings/edit.html.erb"] is missing
-recordings.headers.index in 	  ["app/views/recordings/index.html.erb"] is missing
-recordings.actions.add in 	  ["app/views/recordings/index.html.erb"] is missing
-recordings.actions.edit in 	  ["app/views/recordings/index.html.erb"] is missing
-recordings.actions.delete in 	  ["app/views/recordings/index.html.erb"] is missing
-recordings.actions.new in 	  ["app/views/recordings/index.html.erb"] is missing
-recordings.headers.new in 	  ["app/views/recordings/new.html.erb"] is missing
+No missing translations in the default locale file

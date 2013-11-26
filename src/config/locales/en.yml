@@ -61,6 +61,7 @@ en:
         post: 'View the %{post_type} in your browser'
         comment: 'View the comment in your browser'
         question: 'View the question in your browser'
+        answer: 'View the answer in your browser'
         announcement: 'View the announcement in your browser'
         topic: 'View the topic in your browser'
         video: 'View the recording in your browser'
@@ -177,9 +178,10 @@ en:
     languages:
       german: 'German'
       english: 'English'
-    slogan: 'Ask, discuss and share knowledge.'#'Frage, diskutiere und teile Dein Wissen!'
-    subslogan: 'Help to make your university a better place!' #'Hilf dabei Deine Universität zu einem besseren Ort zu machen!'
+    slogan: 'Ask, discuss and share knowledge.'
+    subslogan: 'Help to make your university a better place!'
     flash:
+      permission_denied: 'Sorry, nothing to see here. You do not have permission to enter this area.'
       confirmation_sent: 'An email with confirmation informations was sent to you.'
       moderation_needed: 'You registered with a non-TU-Dresden email address. Your confirmation is on hold. Please write us an email for further information.'
     actions:
@@ -260,8 +262,6 @@ en:
       show_study_groups: 'Show study groups'
       show_topic_groups: 'Show topic groups'
       show_only_subscribed_groups: 'Show only groups I’m following'
-    flash:
-      permission_denied: 'Sorry, nothing to see here. You do not have permission to enter this area.'
   dates:
     today: "Today’s activity"
     yesterday: "Yesterday’s activity"
