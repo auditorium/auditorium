@@ -47,7 +47,7 @@
         </ul>
 
         <ul class="right">
-          <li ><%= nav_link fa_icon('search', text: t('navigation.search')), alternative_search_path %></li>
+          <li><%= nav_link fa_icon('search', text: t('navigation.search')), alternative_search_path %></li>
           
           <% if current_user.present? %>
             <li><%= nav_link fa_icon('user', text: current_user), user_path(current_user) %></li>

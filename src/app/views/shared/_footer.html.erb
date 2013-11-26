@@ -13,5 +13,9 @@
     <li><%= link_to t('general.footer.links.support_group'), '/groups/110804009' %></li>
     <li><%= link_to t('general.footer.links.github'), 'http://github.com/auditorium/auditorium' %></li>
     <li><%= link_to t('general.footer.links.email_us'), 'mailto:inf-auditorium@groups.tu-dresden.de' %></li>
+    <li>
+      <%= link_to t('general.languages.german'), params.merge(locale: 'de') %> | 
+      <%= link_to t('general.languages.english'), params.merge(locale: 'en') %>
+    </li>
   </ul>
 </div> 

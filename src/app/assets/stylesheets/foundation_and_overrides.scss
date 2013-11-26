@@ -1905,16 +1905,16 @@ math {
 
 @mixin tag {
   transition: all 0.2s ease-in-out;
-  padding:2px 5px;
+  padding:2px 10px;
   display:inline-block;
   margin:2px;
   color: #fff;
-  background-color: $primary-color;
+  background-color: lighten($dark-gray, 10%);
   border-radius:2px;
   font-size:0.9em;
 
   &:hover {
-    background-color: darken($primary-color, 10%);
+    background-color: $dark-gray;
   }
 
   &.invert {
@@ -2047,7 +2047,6 @@ div.token-input-dropdown {
 
 
 .top-bar-section ul {
-
   li a {
     color: $anthracite;
     i.fa-star {
@@ -2063,6 +2062,8 @@ div.token-input-dropdown {
         @include color_scheme;
       }
     }
+
+
     &.notification-button {
       color: $white;
       background-color: $alert-color;

@@ -20,6 +20,15 @@ de:
     links:
       group: '%{group}'
   notifications:
+    grouped_by:
+      comment: 'Kommentare'
+      group: 'Gruppen'
+      membership_request: 'Mitgliedschaftsanfragen'
+      question: 'Fragen'
+      announcement: 'Ankündigungen'
+      topic: 'Themen'
+      video: 'Aufzeichnungen'
+      recording: 'Aufzeichnungen'
     headers:
       index: 'Mitteilungen'
     notification_title: 
@@ -27,7 +36,7 @@ de:
       announcement: '%{author} hat eine Ankündigung in der Gruppe "%{group}" gemacht.'
       topic: '%{author} hat ein neues Thema in der Gruppe "%{group}" eröffnet.'
       answer: '%{author} hat eine Frage in der Gruppe "%{group}" beantwortet.'
-      comment: '%{author} hat den Beitrag %{origin} kommentiert.'
+      comment: '%{author} hat den Beitrag "%{origin}" kommentiert.'
       group: '%{creator} hat die Gruppe "%{group}" erstellt und wartet auf Freigabe.'
       membership_request: '%{user} möchte ein Moderator in der Gruppe "%{group}" werden.'
     actions:
@@ -169,6 +178,9 @@ de:
   preview:
     placeholder: 'Hier wird eine Echtzeitvorschau dargestellt, sobald du anfängst mit tippen.'
   general:
+    languages:
+      german: 'Deutsch'
+      english: 'Englisch'
     slogan: 'Frage, diskutiere und teile Dein Wissen!'
     subslogan: 'Hilf dabei Deine Universität zu einem besseren Ort zu machen!'
     flash: 
@@ -657,7 +669,7 @@ de:
           hint: 'Wähle aus, für welche Gruppen du Email Benachrichtigungen erhalten möchtest.'
           submit: 'Gruppeneinstellungen speichern' 
         receive_email_notifications: 'Ich möchte Email Benachrichtigungen zu meinen abonnierten Gruppen erhalten'
-        receive_email_notifications_when_author: 'Email Benachrichtigungen erhalten, falls ich Autor eines Beitrags bin'
+        receive_email_notifications_when_author: 'Ich möchte Email Benachrichtigungen erhalten, falls ich Autor eines Beitrags bin'
         uniqueness_error: 'Der Benutzer hat seine Einstellungen bereits gewählt.'
 
   markdown:

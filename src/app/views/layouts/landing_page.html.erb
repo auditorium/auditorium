@@ -24,7 +24,8 @@
     <nav>
       <span class="right">
         <%= link_to t('landing_page.links.sign_in'), new_user_session_path, class: 'button inverted' %>
-        
+        <%= link_to t('general.languages.german'), params.merge(locale: 'de'), class: "button #{params[:locale] == 'de' ? 'primary' : 'inverted'}" %>
+        <%= link_to t('general.languages.english'), params.merge(locale: 'en'), class: "button #{params[:locale] == 'en' ? 'primary' : 'inverted'}" %>
       </span>
     </nav>
 
