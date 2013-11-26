@@ -2,6 +2,11 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  static_pages:
+    headers:
+      story: 'Story behind auditorium'
+      imprint: 'Imprint'
+      privacy: 'Privacy Policy' 
   votes:
     flash:
       not_saved: 'Your vote could not been saved.'
@@ -187,6 +192,9 @@ en:
     actions:
       edit: 'edit'
       remove: 'remove'
+      cancel: 'Cancel'
+    confirm: 
+      cancel: 'Do you really want to cancel?'
     label: 
       views: 
         zero: 'no views'
@@ -510,6 +518,7 @@ en:
     headers:
       new: 'Create a new topic'
       edit: 'Update topic'
+      index: 'Topics'
     hints:
       no_entries: 'There are no topics. Click into the text field to create a topic.'
     page_title: "Topics from %{group}"

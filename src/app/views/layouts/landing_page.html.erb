@@ -27,6 +27,7 @@
         <%= link_to t('general.languages.german'), params.merge(locale: 'de'), class: "button #{(params[:locale] == 'de' || params[:locale].nil?) ? 'primary' : 'inverted'}" %>
         <%= link_to t('general.languages.english'), params.merge(locale: 'en'), class: "button #{(params[:locale] == 'en') ? 'primary' : 'inverted'}" %>
       </span>
+      <div class="clearfix"></div>
     </nav>
 
     <section role="main">

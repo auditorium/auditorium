@@ -31,9 +31,10 @@
     <li class="input-fields">
       <% if params[:action] == 'new' %>
         <%= f.submit t('questions.actions.submit'),id: 'submit', class: 'submit small button' %>
-      <% elsif params[:action] == t('general.actions.edit') %>
+      <% elsif params[:action] == 'edit' %>
         <%= f.submit t('questions.actions.edit'), class: 'submit small button' %>
       <% end %>
+      <%= link_to t('general.actions.cancel'), :back, confirm: t('general.confirm.cancel'),class: 'button secondary small' %>
     </li>
   </ul>
 <% end %>

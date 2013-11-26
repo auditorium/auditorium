@@ -1,1 +1,2 @@
-No missing translations in the default locale file
+users.headers.index in 	  ["app/views/users/index.html.erb"] is missing
+users.subheader.index in 	  ["app/views/users/index.html.erb"] is missing

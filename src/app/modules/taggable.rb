@@ -1,4 +1,4 @@
-module Taggable 
+module Taggable
 
   def self.included(base)
     base.has_many :tags, through: :taggings

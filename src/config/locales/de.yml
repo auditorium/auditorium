@@ -47,7 +47,7 @@ de:
     subjects: 
       welcome: '[auditorium] Willkommen auf auditorium, %{user}'
       new_question: '[auditorium] %{author} hat eine neue Frage in der Gruppe "%{group}" gestellt.'
-      new_answer: '[auditorium] %{author} hat eine neue Antwort zur Frage %{question} in der Gruppe "%{group}" abgegeben.'
+      new_answer: '[auditorium] %{author} hat eine neue Antwort zur Frage "%{question}" in der Gruppe "%{group}" abgegeben.'
       new_announcement: '[auditorum] %{author} hat eine Ankündigung in der Gruppe "%{group}" gemacht.'
       new_comment: 
         question: '[auditorium] %{author} hat einen neuen Kommentar zur Frage von %{parent_post_author} in "%{group}" abgegeben.'
@@ -83,7 +83,7 @@ de:
         welcome: 'Willkommen auf auditorium, %{user}.'
         new_video: '%{author} hat eine neue Videoaufzeichnung in der Gruppe "%{group}" veröffentlicht:'
         new_question: '%{author} hat eine Frage in der Gruppe "%{group}" gestellt:'
-        new_answer: '%{author} hat eine Antwort zur Frage %{question} in der Gruppe "%{group}" geschrieben:'
+        new_answer: '%{author} hat eine Antwort zur Frage "%{question}" in der Gruppe "%{group}" geschrieben:'
         new_announcement: '[auditorum] %{author} machte eine Ankündigung in der Gruppe "%{group}" gemacht:'
         new_comment: 
           question: '%{author} hat einen neuen Kommentar zur Frage von %{parent_post_author} in "%{group}" abgegeben.'
@@ -107,7 +107,7 @@ de:
     footer:
       not_requested: 'Falls du diese Email nicht angefordert hast, ignoriere sie einfach!'
       password_will_not_change: 'Dein Passwort wird erst geändert, sobald du auf den roten Knopf gedrückt hast.'
-      moderator: 'Du hast diese Email erhalten, da du Moderator in der Gruppe "%{group}"" bist.'
+      moderator: 'Du hast diese Email erhalten, da du Moderator in der Gruppe "%{group}" bist.'
       text: 'Du hast diese Email erhalten, da du der Gruppe "%{group}" folgst..'
       link: 'In deinem Profil kannst du einstellen, welche Emails du erhalten möchtest.'
       admin: 'Du hast diese Email erhalten, weil du ein Administrator von auditorium bist.'
@@ -152,7 +152,7 @@ de:
       sign_in: 'In auditorium anmelden'
     buttons: 
       sign_in: 'Ich bin bereits dabei!'
-      sign_up: 'Ich will dabei sein!'
+      sign_up: 'Kostenlos registrieren!'
     headers:
       welcome: 'Willkommen auf auditorium!'
       welcome_back: 'Willkommen zurück auf auditorium!'
@@ -194,6 +194,9 @@ de:
     actions:
       edit: 'bearbeiten'
       remove: 'entfernen'
+      cancel: 'Abbrechen'
+    confirm: 
+      cancel: 'Willst du die Seite wirklich verlassen?'
     label: 
       views: 
         zero: 'keine Aufrufe'
@@ -516,6 +519,7 @@ de:
     headers:
       new: 'Eröffne ein neues Thema'
       edit: 'Thema bearbeiten'
+      index: 'Themen'
     hints:
       no_entries: 'Es wurden noch keine Themen eröffnet. Klicke in das Textfeld, um ein neues Thema zu eröffnen.'
     page_title: 'Themen der Gruppe "%{group}"'
@@ -593,7 +597,7 @@ de:
       topic: 'Thema'
       answer: 'Antwort'
       video: 'Aufzeichnung'
-    label: 
+    labels: 
       question: 'Frage'
       announcement: 'Ankündigung'
       topic: 'Thema'
@@ -674,7 +678,6 @@ de:
         receive_email_notifications: 'Ich möchte Email Benachrichtigungen zu meinen abonnierten Gruppen erhalten'
         receive_email_notifications_when_author: 'Ich möchte Email Benachrichtigungen erhalten, falls ich Autor eines Beitrags bin'
         uniqueness_error: 'Der Benutzer hat seine Einstellungen bereits gewählt.'
-
   markdown:
     buttons:
       markdown: 'Markdown Schnellreferenz'
@@ -705,3 +708,9 @@ de:
         * Aufgabe #2
       * Projekt #2
         * keine weiteren Aufgaben!
+  static_pages:
+    headers:
+      story: Geschichte hinter auditorium'
+      imprint: 'Impressum'
+    privacy:
+      header: 'Datenschutzerklärung'

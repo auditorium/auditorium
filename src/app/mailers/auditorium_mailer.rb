@@ -61,7 +61,8 @@ class AuditoriumMailer < ActionMailer::Base
     mail(to: @receiver.email, 
         subject: t("emails.subjects.new_answer", 
         author: @author, 
-        group: @group.title),
+        group: @group.title,
+        question: @answer.question.subject),
         'message-id' => message_id(@answer))
   end
 

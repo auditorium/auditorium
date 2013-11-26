@@ -11,7 +11,7 @@
     </div>
 
     <div id="email-content">
-      <%= t('emails.content.subjects.new_answer', author: @author, group: @group.title) %> 
+      <%= t('emails.content.subjects.new_answer', author: @author, group: @group.title, question: @answer.question.subject) %> 
       <div id="email-markdown">
         <%= markdown @answer.content %>
       </div>     

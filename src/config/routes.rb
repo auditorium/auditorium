@@ -26,7 +26,6 @@ Auditorium::Application.routes.draw do
     post 'ajax/markdown_sheet', to: 'ajax#load_markdown_sheet'
 
     get 'groups/tagged/:tag', to: 'groups#tagged', as: :tag
-    resources :tags, only: ['index']
     get 'search', to: 'search#index', as: :alternative_search
     get 'groups/change_group_type', to: 'groups#change_group_type'
     post 'groups/search_members', to: 'groups#search_members', as: :search_members
@@ -74,7 +73,7 @@ Auditorium::Application.routes.draw do
       end
     end
 
-    resources :notifications
+    resources :notifications, only: [:index]
 
     mathjax 'mathjax'
     

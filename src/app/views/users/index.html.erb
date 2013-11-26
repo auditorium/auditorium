@@ -1,6 +1,7 @@
-<div class="span8 center">
-<h2>Top-Users</h2>
-<p>Compare your ranking with other users. Later you can earn badges!</p>
+<header>
+  <h2><%= t('users.headers.index') %></h2>
+  <p><%= t('users.subheader.index') %></p>
+</header>
 
   <table class="table">
     <thead>
@@ -10,7 +11,7 @@
         <th>Score</th>
       </tr>
     </thead>
-    <tbody class="table-condensed table-striped">
+    <tbody>
 
       <% params[:page].nil? ? page = 0 : page = params[:page].to_i-1 %> 
       <% @users.each_with_index do |user, i| %>
