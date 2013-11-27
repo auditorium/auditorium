@@ -27,7 +27,7 @@
     <% @group.topics.order('last_activity desc, updated_at desc').limit(limit).each_with_index do |topic| %>
       <li class="topic">
         <div class="content"> 
-          <span class="rating"><%= topic.rating %></span>
+          <span class="rating"><%= topic.rating > 0 ? "+#{topic.rating}" : topic.rating %></span>
           <span class="title"><h2><%= link_to truncate(topic.subject, length: 150), topic %></h2></span>
         </div>
         <div class="footer hide-for-small">

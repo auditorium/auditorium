@@ -25,6 +25,8 @@ class TopicsController < ApplicationController
   def create
     @topic = @group.topics.new(params[:topic])
     @topic.author = current_user
+    @topic.tags << @group.tags
+    @topic.tags.uniq
     @topic.last_activity = DateTime.now
 
     respond_to do |format|

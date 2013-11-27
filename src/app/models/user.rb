@@ -27,12 +27,10 @@
 #
 
 class User < ActiveRecord::Base
+
   before_save :ensure_authentication_token
 
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable, :trackable
-  # TODO turn on confirmable in production
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :trackable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable, :token_authenticatable
 
   # Setup accessible (or protected) attributes for your model
@@ -145,6 +143,26 @@ class User < ActiveRecord::Base
       false
     end
   end
+
+  def self.required_fields(klass)
+      [:current_sign_in_at, :last_sign_in_at, :sign_in_count]
+    end
+
+    def update_tracked_fields!(request)
+      old_current, new_current = self.current_sign_in_at, Time.now.utc
+      self.last_sign_in_at = old_current || new_current
+      self.current_sign_in_at = new_current
+
+      #old_current, new_current = self.current_sign_in_ip, request.remote_ip
+      #self.last_sign_in_ip = old_current || new_current
+      #self.current_sign_in_ip = new_current
+
+      self.sign_in_count ||= 0
+      self.sign_in_count += 1
+
+      save(:validate => false) or raise "Devise trackable could not save #{inspect}." \
+        "Please make sure a model using trackable can be saved at sign in."
+    end
 
   
 end

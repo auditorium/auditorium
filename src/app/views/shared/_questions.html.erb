@@ -27,7 +27,7 @@
     <% @group.questions.order('last_activity desc, updated_at desc').limit(limit).delete_if{ |q| cannot? :read, q }.each_with_index do |question| %>
       <li class="question">
         <div class="content"> 
-        <span class="rating"><%= question.rating %></span>
+        <span class="rating"><%= question.rating > 0 ? "+#{question.rating}" : question.rating %></span>
         <span class="title"><h2><%= link_to truncate(question.subject, length: 150), question %></h2></span>
 
       </div>

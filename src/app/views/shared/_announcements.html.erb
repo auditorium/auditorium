@@ -33,7 +33,7 @@
   <% @group.announcements.order('last_activity desc, updated_at desc').limit(limit).each_with_index do |announcement| %>
     <li class="announcement">
       <div class="content"> 
-      <span class="rating"><%= announcement.rating %></span>
+      <span class="rating"><%= announcement.rating > 0 ? "+#{announcement.rating}" : announcement.rating %></span>
       <span class="title"><h2><%= link_to truncate(announcement.subject, length: 150), announcement %></h2></span>
 
     </div>

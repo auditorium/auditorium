@@ -10,12 +10,16 @@
 
   <div class="post-content">
     <%= markdown @announcement.content %>
+
   </div>
 
   <div class="post-footer">
     <%= render 'shared/post_footer', post: @announcement %>
   </div>
+
 </article>
+
+<p class="hint"><%= t('tags.label') %> <%= tag_list(@announcement.tags) %></p>
 
 <section class="comments-section">
   <%= render 'shared/comments', commentable: @announcement %>
