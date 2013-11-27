@@ -32,13 +32,13 @@
 
     <ul class="form">
       <li class="input-fields">
-        <%= f.label :title %>
+        <%= f.label :title, class: 'accessibility' %>
         <%= f.text_field :title %>
       </li>
       
       <li class="input-fields">
         <%= render 'shared/text_editor_buttons', element_id: dom_id(@group), element_name: @group.class.name.downcase %>
-        <%= f.label :description %>
+        <%= f.label :description, class: 'accessibility' %>
         <%= f.text_area :description %>
       </li>
 
@@ -47,7 +47,7 @@
       </li>
 
       <li class="input-fields">
-        <%= f.label :tag_tokens %>
+        <%= f.label :tag_tokens, class: 'accessibility' %>
         <%= f.text_field :tag_tokens, data: {load: @group.tags} %>
         <p class="tags_hint hint"><%= t('groups.group_types.general.tags_hint')%></p>
       </li>

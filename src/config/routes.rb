@@ -17,6 +17,7 @@ Auditorium::Application.routes.draw do
       end
     end
 
+    resources :tags, only: [:index]
     post "ajax/preview", to: 'ajax#preview'
     post "ajax/load_form", to: 'ajax#load_form'
     get 'ajax/search', to: 'ajax#search', as: :search

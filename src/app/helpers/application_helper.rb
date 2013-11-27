@@ -48,8 +48,7 @@ module ApplicationHelper
       strikethrough: true,
       #:lax_html_blocks => true,
       #:superscript => true
-      filter_html: true,
-      no_styles: true
+      filter_html: true
     }
 
     markdown_to_html = Redcarpet::Markdown.new(coderayified, options)
@@ -108,6 +107,10 @@ module ApplicationHelper
     else
       l(date, format: :long)
     end
+  end
+
+  def group_types
+    ['lecture', 'study', 'topic']
   end
 
   def available_title
