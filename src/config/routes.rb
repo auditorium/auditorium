@@ -11,7 +11,7 @@ Auditorium::Application.routes.draw do
     get 'users/moderation/search', to: 'users#search', as: :search_users
     post 'users/:id/confirm', to: 'users#confirm', :as => :confirm_user
     
-    resources :users do 
+    resources :users, except: [:index, :show] do 
       resources :settings do 
         post 'groups'
       end

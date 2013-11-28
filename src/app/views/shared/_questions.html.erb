@@ -11,7 +11,7 @@
   </header>
 <% end %>
 
-<%= form_for([@group, @question = Question.new]) do |f| %>
+<%= form_for([@group, @question]) do |f| %>
   <ul class="no-style question">
     <li class="input-fields" class="input-fields">
       <%= f.label :subject, t('forms.labels.subject'), class: 'accessibility' %>

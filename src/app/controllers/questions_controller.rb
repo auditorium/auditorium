@@ -24,8 +24,6 @@ class QuestionsController < ApplicationController
   def create
     @question = @group.questions.new(params[:question])
     @question.author = current_user
-    @question.tags << @group.tags
-    @question.tags.uniq
     @question.last_activity = DateTime.now
 
     respond_to do |format|

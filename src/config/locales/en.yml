@@ -470,7 +470,7 @@ en:
     is_private:
       icon_hint: 'This question is private. Only group moderators can see this question.'
       icon_alt: '(private)'
-      hint: 'Only group moderators can see your private question.'
+      hint: 'Private questions only can be seen and answered by group moderators.'
       label: 'I will ask a private question'
     actions:
       view_all: 'View all questions'

@@ -23,8 +23,6 @@ class AnnouncementsController < ApplicationController
   def create
     @announcement = @group.announcements.new(params[:announcement])
     @announcement.author = current_user
-    @announcement.tags << @group.tags
-    @announcement.tags.uniq
     @announcement.last_activity = DateTime.now
 
     respond_to do |format|

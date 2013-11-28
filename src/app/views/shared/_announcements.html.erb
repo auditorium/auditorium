@@ -14,7 +14,7 @@
 <% end %>
 
 <% if can? :manage, @group %>
-  <%= form_for([@group, @announcement = Announcement.new]) do |f| %>
+  <%= form_for([@group, @announcement]) do |f| %>
     <ul class="no-style announcement">
       <li class="input-fields" class="input-fields">
         <%= f.label :subject, t('forms.labels.subject'), class: 'accessibility' %>

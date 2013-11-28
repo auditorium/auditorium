@@ -49,6 +49,16 @@ class GroupsController < ApplicationController
 
 	def show
 		@group = Group.find(params[:id])
+
+    @question = @group.questions.build
+    @question.tags = @group.tags
+
+    @announcement = @group.announcements.build
+    @announcement.tags = @group.tags
+
+    @topic = @group.topics.build
+    @topic.tags = @group.tags
+
 		respond_to do |format|
 			format.html
 			format.json { render json: @group }

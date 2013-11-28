@@ -471,7 +471,7 @@ de:
     is_private:
       icon_hint: 'Das ist eine private Frage. Nur der Autor und die Gruppenmoderatoren können sie sehen, kommentieren und beantworten.'
       icon_alt: '(private Frage)'
-      hint: 'Nur Gruppenmoderatoren können deine Frage sehen.'
+      hint: 'Private Fragen können von Gruppenmoderatoren gesehen und beantwortet werden!'
       label: 'Ich möchte eine private Frage stellen'
     actions:
       view_all: 'Zeige alle Fragen der Gruppe'
