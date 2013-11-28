@@ -9,7 +9,7 @@ class AnnouncementsController < ApplicationController
 
   def index 
     @announcements = @group.announcements.order(:created_at)
-  end
+  end 
 
   def show
     @announcement = Announcement.find(params[:id])

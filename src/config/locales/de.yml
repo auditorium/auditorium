@@ -678,6 +678,24 @@ de:
         receive_email_notifications: 'Ich möchte Email Benachrichtigungen zu meinen abonnierten Gruppen erhalten'
         receive_email_notifications_when_author: 'Ich möchte Email Benachrichtigungen erhalten, falls ich Autor eines Beitrags bin'
         uniqueness_error: 'Der Benutzer hat seine Einstellungen bereits gewählt.'
+  privacy_policy:
+    accept: 'Ja, ich akzeptiere die Datenschutzbestimmungen'
+    decline: 'Nein, ich akzeptiere die Datenschutzbestimmungen nicht.'
+    modal:
+      header: 'Willkommen auf auditorium 2.0!'
+      text: |
+        Bevor es weitergeht, noch ein paar Informationen.
+        
+        Es hat sich einiges Verändert:
+        
+        * Kurse sind nun Gruppen
+        * Gruppen umfassen alle Semester eines Kurses
+        * Keine statischen Beziehungen zwischen Kursen, Lehrstühlen, Instituten und Fakuläten mehr
+        * Einsatz von Tags zur flexiblen Strukturierung
+        * Neben Fragen und Ankündigungen gibt es nun auch Themen zum diskutieren
+        * uvm.
+
+        **Um auditorium in seinem neuen Gewand erkunden zu können, musst du die <a target="_blank" href="/privacy" title="Datenschutzerklärung in einem neuen Fenster öffnen.">Datenschutzerklärung</a> akzeptieren.**
   markdown:
     buttons:
       markdown: 'Markdown Schnellreferenz'

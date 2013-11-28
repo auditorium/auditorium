@@ -54,7 +54,7 @@ module ApplicationHelper
     markdown_to_html = Redcarpet::Markdown.new(coderayified, options)
     markdown = markdown_to_html.render(text) 
     html = content_tag('div', class: 'markdown') do 
-      sanitize(markdown, :attributes => %w(id class style href title alt src width height))
+      sanitize(markdown, :attributes => %w(target id class style href title alt src width height))
     end
   end
 
@@ -69,7 +69,7 @@ module ApplicationHelper
       :no_styles => true
     }
 
-    html = sanitize(markdown, :attributes => %w(id class style href title alt src width height))
+    html = sanitize(markdown, :attributes => %w(target id class style href title alt src width height))
   end
 
   def tag_list(tag_array, options = { delimiter: '' }) 

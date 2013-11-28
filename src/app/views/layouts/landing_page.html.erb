@@ -23,7 +23,12 @@
   <body>
     <nav>
       <span class="right">
-        <%= link_to t('landing_page.links.sign_in'), new_user_session_path, class: 'button inverted' %>
+        <% if current_user.present? %>
+          <%= link_to t('navigation.home'), root_path, class: 'button inverted' %>
+          <%= link_to t('navigation.sign_out'), destroy_user_session_path, class: 'button inverted', method: :delete %>
+        <% else %>
+          <%= link_to t('landing_page.links.sign_in'), new_user_session_path, class: 'button inverted' %>
+        <% end %>
         <%= link_to t('general.languages.german'), params.merge(locale: 'de'), class: "button #{(params[:locale] == 'de' || params[:locale].nil?) ? 'primary' : 'inverted'}" %>
         <%= link_to t('general.languages.english'), params.merge(locale: 'en'), class: "button #{(params[:locale] == 'en') ? 'primary' : 'inverted'}" %>
       </span>
@@ -51,7 +56,6 @@
       <span class="right">
         <%= link_to t('general.footer.links.github'), 'http://github.com/auditorium/auditorium', class: 'button inverted' %>
         <%= link_to t('general.footer.links.email_us'), 'mailto:inf-auditorium@groups.tu-dresden.de', class: 'button inverted' %>
-        <%= link_to t('general.footer.links.story'), story_path, class: 'button inverted' %>
         <%= link_to t('general.footer.links.imprint'), imprint_path, class: 'button inverted' %>
         <%= link_to t('general.footer.links.privacy'), privacy_path, class: 'button inverted' %>
       </span>

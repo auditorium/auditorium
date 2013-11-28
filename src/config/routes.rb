@@ -12,6 +12,9 @@ Auditorium::Application.routes.draw do
     post 'users/:id/confirm', to: 'users#confirm', :as => :confirm_user
     
     resources :users, except: [:index, :show] do 
+      member do
+        post 'accept_privacy_policy'
+      end
       resources :settings do 
         post 'groups'
       end

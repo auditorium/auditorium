@@ -39,6 +39,14 @@
     </li> 
 
     <li class="input-fields">
+      <%= f.label :privacy_policy do %>
+        <%= f.check_box :privacy_policy %>
+        <%= t('forms.labels.accepting') %>
+        <%= link_to t('forms.labels.privacy_policy') %>
+      <% end %>
+    </li> 
+
+    <li class="input-fields">
       <%= f.submit t('forms.labels.sign_up'), class: 'button submit wide' %>
     </li>
     </ul>

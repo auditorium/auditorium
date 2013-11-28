@@ -132,6 +132,8 @@ en:
       confirm_new_password: 'Confirm new password'
       subject: 'Subject'
       content: 'Content'
+      accepting: 'I accept the '
+      privacy_policy: 'privacy policy'
     placeholder: 
       labels:
       username: 'Username'
@@ -145,6 +147,7 @@ en:
       change_password: 'Change my password'
       reconfirm_email: 'Send me instructions'
       new_password: 'New password'
+     
   landing_page:
     links: 
       sign_in: 'Login to auditorium'
@@ -677,7 +680,24 @@ en:
         receive_email_notifications: 'Receive email notifications.'
         receive_email_notifications_when_author: 'Receive email notifications when I am an author.'
         uniqueness_error: 'This user already chose his preferences.'
+  privacy_policy:
+    accept: 'Yes, I accept the privacy policies.'
+    decline: 'No, I do not accpet the privacy policies.'
+    modal:
+      header: 'Welcome to auditorium 2.0'
+      text: |
+        Before you can continue some important information.
+        
+        A lot has changed:
+        
+        * Courses are now groups
+        * Groups contain a specific course for all semesters
+        * No static binding between courses, chairs, institutes and faculties anymore
+        * Tags for a flexible structure
+        * Next to questions and announcements there is now the post type topic for discussions
+        * And a lot more...
 
+        **To continue you need to accept the <a target="_blank" href="/privacy" title="Open privacy policies in a new window.">privacy policies</a> of auditorium.**
   markdown:
     buttons:
       markdown: 'Markdown quick reference'

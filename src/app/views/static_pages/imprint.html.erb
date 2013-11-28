@@ -1,17 +1,25 @@
-<% title t('static_pages.imprint.header') %>
-<section id="imprint">
+<% title t('static_pages.headers.imprint') %>
+<section id="imprint-policty">
 <header>
-  <h1><%= t('static_pages.imprint.header') %></h1>
+  <h1><%= t('static_pages.headers.imprint') %></h1>
 </header>
   <article>
-    <h2 class="subheader">Verantwortlicher</h2>
-
-    <ul class="no-style">
-    Lars Beier<br />
-    Technische Universität Dresden<br />
-    Fakultät Informatik<br />
-    01062 Dresden<br />
-    Email: lars.beier@tu-dresden.de
+    <h3 class="subheader">Ansprechpartner</h3>
+    <ul class="plain-list">
+      <li>Lars Beier</li>
+      <li><%= link_to 'Email für Fragen und Support', 'inf-auditorium@groups.tu-dresden.de' %></li>
     </ul>
+
+    <h3 class="subheader">Unterstützung</h3>
+    <ul class="plain-list">
+      <li>Technische Universität Dresden</li>
+      <li>Fakultät Informatik</li>
+      <li>Institut für Systemarchitektur</li>
+      <li>Professur Rechnernetze</li>
+      <li>D-01062 Dresden</li>
+    </ul>
+
+    <p><%= link_to 'Zur Datenschutzerklärung', privacy_path %></p>
   </article>
 </section>
+

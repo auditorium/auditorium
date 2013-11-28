@@ -1,0 +1,12 @@
+<div class="expose">
+  <div class="overlay">
+    <h1><%= t('privacy_policy.modal.header')%></h1>
+    
+    <div class="markdown">
+      <%= markdown t('privacy_policy.modal.text') %>
+    </div>
+
+    <p><%= link_to t('privacy_policy.accept'), accept_privacy_policy_user_path(current_user), method: :post, class: 'button tiny alert'  %>
+    <%= link_to t('privacy_policy.decline'), destroy_user_session_path, class: color_scheme, method: :delete,class: 'button tiny secondary' %></p>
+  </div>
+</div>

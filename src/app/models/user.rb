@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :remember_me, :email, :alternative_email, :password, :password_confirmation, :current_password
-  attr_accessible :username, :title, :first_name, :last_name, :website
+  attr_accessible :username, :title, :first_name, :last_name, :website, :privacy_policy
   cattr_accessor :current
   
   # attr_accessible :title, :body
@@ -72,16 +72,10 @@ class User < ActiveRecord::Base
   # ----- end of old ----
   
   validates_uniqueness_of :email
-  #validates :username, :presence => true, :format => { :with => /^[A-Za-z0-9_\-\.]+$/, :message => "contains unsupported signs. Plese only use those signs: [A-Za-z0-9_-.]." }
-  #validates_uniqueness_of :username
+  validates :privacy_policy, acceptance: { accept: true }
+  validates :username, :presence => true, :format => { :with => /^[A-Za-z0-9_\-\.]+$/, :message => "contains unsupported signs. Plese only use those signs: [A-Za-z0-9_-.]." }
+  validates_uniqueness_of :username
   
-
-  define_index do
-    indexes email
-    indexes title
-    indexes username
-  end
-
   # returns the full user name if first and last name was specified in the user's profile...
   def full_name
     

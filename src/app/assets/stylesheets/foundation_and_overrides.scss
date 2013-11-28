@@ -1486,6 +1486,15 @@ textarea {
   font-weight: normal;
   color: $white;
   padding: 10px;
+
+  a {
+    text-decoration: underline;
+    color: $white; 
+
+    &.button {
+      text-decoration: none;
+    }
+  }
   
   .close { @include alert-close; }
   .button {
@@ -1597,7 +1606,7 @@ a.disabled {
     li {
       line-height:1.1;
       border: none!important;
-      text-indent: -1em;
+      
 
       ul, ol {
         margin: 5px 0;
@@ -1641,6 +1650,10 @@ math {
 
 .table {
   text-align:left;
+}
+
+ul.plain-list {
+  list-style: none;
 }
 /* ================ ribbon style ================ */
 @mixin ribbon {
@@ -1902,6 +1915,35 @@ math {
   display: none;
 }
 
+.expose {
+  width:100%;
+  height:100%;
+  background-color: rgba(10, 10, 10, 0.95);
+  position: fixed;
+  left:0;
+  top:0;
+  z-index: 80;
+}
+.overlay {
+  @media (max-width: 1000px) { 
+    top:20%;
+    left:5%;
+    width:90%;
+    padding: 20px 10px;
+  }
+
+  @media (min-width: 1001px) { 
+    top:20%;
+    left:20%;
+    width:60%;
+    padding: 40px 20px;
+  }
+
+  z-index: 100;
+  position:fixed;
+  
+  @extend .block;
+}
 /* ================= Tag style ================================ */
 
 @mixin tag {
@@ -2086,7 +2128,7 @@ div.token-input-dropdown {
   transistion: height 0.5s ease-in-out;
   width:50px;
   height:50px;
-  z-index: 100;
+  z-index: 50;
   background-color: $alert-color;
   color: #fff;
   @include default-box-shadow; 
@@ -2708,6 +2750,10 @@ ul.form {
       margin:5px 0;
     }
   }
+}
+
+.field_with_errors {
+  display: inline;
 }
 
 ul.no-style {

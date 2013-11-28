@@ -62,6 +62,10 @@
     </nav>
 
     <section role="main">
+      <% unless current_user.privacy_policy? %>
+        <%= render 'shared/privacy_policy_modal' %>
+      <% end %>
+
       <noscript><div class="alert-box">Please enable javascript.</div></noscript>
       <!-- flash messages -->
       <% [:error, :success, :notice, :alert].each do |key| %>
