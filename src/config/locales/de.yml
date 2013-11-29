@@ -60,7 +60,7 @@ de:
       new_membership_request: '[auditorium] %{user} hat die Gruppe "%{group}" erstellt und wartet auf Freigabe.'
       confirmed_membership_request: '[auditorium] Du wurdest zum Moderator in der Gruppe "%{group}" befördert.'
       rejected_membership_request: '[auditorium] Deine Anfrage ein Moderator zu werden in der Gruppe "%{group}", wurde abgelehnt.'
-      confirm_account: '[auditorium] Bestätige deine Email Adresse'
+      confirm_account: '[auditorium] Bestätige deine E-Mail-Adresse'
       change_password: '[auditorium] Anforderung eines neues Passworts'
       locked_account: '[auditorium] Dein auditorium Konto wurde gesperrt aufgrund von gescheiterten Anmeldeversuchen.'
     content:
@@ -76,7 +76,7 @@ de:
         group: 'Öffne die Gruppe in deinem Browser'
         notifications: 'Schaue dir die Mitgliedschaftsanfrage an.'
         login: 'Melde dich in auditorium an'
-        confirm_account: 'Bestätige deine Email Adresse'
+        confirm_account: 'Bestätige deine E-Mail-Adresse'
         change_password: 'Ändere dein Passwort'
         unlock_account: 'Schalte deinen Account frei'
       subjects: 
@@ -97,7 +97,7 @@ de:
         confirmed_membership_request: 'herzlichen Glückwunsch, du bist nun Moderator in der Gruppe "%{group}".'
         rejected_membership_request: 'es tut uns leid, dir mitteilen zu müssen, dass deine Moderatoren-Anfrage in der Gruppe "%{group}" abgelehnt wurde.'
         group_declined: 'Die Gruppe "%{group}" wurde abgelehnt und ist nun geschlossen.'
-        confirm_account: 'Um deine Email Adresse zu bestätigen, folge bitte diesem Link:'
+        confirm_account: 'Um deine E-Mail-Adresse zu bestätigen, folge bitte diesem Link:'
         change_password: 'Irgendjemand hat ein neues Passwort angefordert. Folge dem Link, um dein Passwort zu ändern:'
         locked_account: 'Dein auditorium Konto wurde gesperrt aufgrund von gescheiterten Anmeldeversuchen.'
     greetings:
@@ -105,12 +105,12 @@ de:
       regards: "Viele Grüße,\nauditorium Team"
       welcome: 'Willkommen auf auditorium, %{user}!'
     footer:
-      not_requested: 'Falls du diese Email nicht angefordert hast, ignoriere sie einfach!'
+      not_requested: 'Falls du diese E-Mail nicht angefordert hast, ignoriere sie einfach!'
       password_will_not_change: 'Dein Passwort wird erst geändert, sobald du auf den roten Knopf gedrückt hast.'
-      moderator: 'Du hast diese Email erhalten, da du Moderator in der Gruppe "%{group}" bist.'
-      text: 'Du hast diese Email erhalten, da du der Gruppe "%{group}" folgst..'
-      link: 'In deinem Profil kannst du einstellen, welche Emails du erhalten möchtest.'
-      admin: 'Du hast diese Email erhalten, weil du ein Administrator von auditorium bist.'
+      moderator: 'Du hast diese E-Mail erhalten, da du Moderator in der Gruppe "%{group}" bist.'
+      text: 'Du hast diese E-Mail erhalten, da du der Gruppe "%{group}" folgst..'
+      link: 'In deinem Profil kannst du einstellen, welche E-Mails du erhalten möchtest.'
+      admin: 'Du hast diese E-Mail erhalten, weil du ein Administrator von auditorium bist.'
   devise:
     links: 
       sign_in: 'Ich habe mich bereits registrierst, ich möchte mich anmelden.'
@@ -121,7 +121,7 @@ de:
   forms:
     labels:
       username: 'Dein Benutzername:'
-      email: 'Deine Email Adresse:'
+      email: 'Deine E-Mail-Adresse:'
       password: 'Dein Passwort:'
       password_confirmation: 'Das gleiche Passwort noch einmal:'
       remember_me: 'Ich möchte für die nächsten 14 Tage in auditorium angemeldet bleiben.'
@@ -137,7 +137,7 @@ de:
     placeholder: 
       labels:
       username: 'Benutzername'
-      email: 'Email Adresse'
+      email: 'E-Mail-Adresse'
       password: 'Passwort'
       password_confirmation: 'Das gleiche Passwort noch einmal'
       remember_me: 'Ich möchte für die nächsten 14 Tage in auditorium angemeldet bleiben'
@@ -157,14 +157,14 @@ de:
       welcome: 'Willkommen auf auditorium!'
       welcome_back: 'Willkommen zurück auf auditorium!'
       sign_in: 'In auditorium anmelden'
-      reconfirm_email: 'Email Adresse bestätigen'
+      reconfirm_email: 'E-Mail-Adresse bestätigen'
       register: 'Für auditorium registrieren'
       forgot_password: 'Ich habe mein Passwort vergessen'
       change_password: 'Ein neues Passwort setzen'
     hints:
       sign_up: 
-        text: 'Du benötigst eine Email Adresse der TU Dresden. Falls du keine hast,'
-        link: 'schreibe uns eine Email.'
+        text: 'Du benötigst eine E-Mail-Adresse der TU Dresden. Falls du keine hast,'
+        link: 'schreibe uns eine E-Mail.'
     
   navigation:
     home: 'Home'
@@ -189,8 +189,8 @@ de:
     subslogan: 'Hilf dabei Deine Universität zu einem besseren Ort zu machen!'
     flash: 
       permission_denied: 'Du hast nicht die erforderlichen Rechte, die Seite zu sehen.'
-      confirmation_sent: 'Du erhälst in wenigen Minuten eine Email mit Informationen zum Freischalten deines Accounts.'
-      moderation_needed: 'Du hast dich mit einer nicht-TU-Dresden Email Adresse versucht zu registrieren. Die Bestätigungsemail wird zurückgehalten. Bitte schreib uns eine Email, für weitere Informationen.'
+      confirmation_sent: 'Du erhälst in wenigen Minuten eine E-Mail mit Informationen zum Freischalten deines Accounts.'
+      moderation_needed: 'Du hast dich mit einer nicht-TU-Dresden E-Mail-Adresse versucht zu registrieren. Die Bestätigungsemail wird zurückgehalten. Bitte schreib uns eine E-Mail, für weitere Informationen.'
     actions:
       edit: 'bearbeiten'
       remove: 'entfernen'
@@ -218,7 +218,7 @@ de:
         imprint: 'Impressum'
         privacy: 'Datenschutz'
         story: 'Geschichte von auditorium'
-        email_us: 'Schreibe uns eine Email'
+        email_us: 'Schreibe uns eine E-Mail'
         github: 'auditorium auf github'
         support_group: 'Gruppe für Hilfe'
     search: 
@@ -281,7 +281,7 @@ de:
         study: 'Studiengruppe'
         topic: 'Themengruppe'
     flash: 
-      approved: 'Die Gruppe wurde freigegeben. Der Ersteller wurde per Email darüber informiert.'
+      approved: 'Die Gruppe wurde freigegeben. Der Ersteller wurde per E-Mail darüber informiert.'
       declined: 'Du hast die Gruppe nicht freigegeben, sie ist nun deaktiviert.'
       reactivated: 'Du hast die Gruppe wieder aktiviert, sie ist nun wieder freigegeben.'
       updated: 'Die Gruppe wurde erfolgreich aktualisiert.'
@@ -669,16 +669,17 @@ de:
         title: 'Einstellungen'
         general_settings: 
           header: 'Allgemeine Einstellungen'
-          hint: 'Wähle aus, ob du Benachrichtigungen zu Aktivitäten in deinen abonnierten Gruppen per Email erhalten möchtest.'
+          hint: 'Wähle aus, ob du Benachrichtigungen zu Aktivitäten in deinen abonnierten Gruppen per E-Mail erhalten möchtest.'
           submit: 'Einstellungen speichern' 
         subscribed_groups: 
-          header: 'Email Benachrichtigungen für abonnierte Gruppen'
-          hint: 'Wähle aus, für welche Gruppen du Email Benachrichtigungen erhalten möchtest.'
+          header: 'E-Mail Benachrichtigungen für abonnierte Gruppen'
+          hint: 'Wähle aus, für welche Gruppen du E-Mail Benachrichtigungen erhalten möchtest.'
           submit: 'Gruppeneinstellungen speichern' 
-        receive_email_notifications: 'Ich möchte Email Benachrichtigungen zu meinen abonnierten Gruppen erhalten'
-        receive_email_notifications_when_author: 'Ich möchte Email Benachrichtigungen erhalten, falls ich Autor eines Beitrags bin'
+        receive_email_notifications: 'Ich möchte E-Mail Benachrichtigungen zu meinen abonnierten Gruppen erhalten'
+        receive_email_notifications_when_author: 'Ich möchte E-Mail Benachrichtigungen erhalten, falls ich Autor eines Beitrags bin'
         uniqueness_error: 'Der Benutzer hat seine Einstellungen bereits gewählt.'
   privacy_policy:
+    accepting_privacy_policy: 'Ich akzeptiere die <a href="/privacy" target="_blank" title="Datenschutzerklärung in einem neuen Fenster öffnen.">Datenschutzerklärung</a>.'
     accept: 'Ja, ich akzeptiere die Datenschutzbestimmungen'
     decline: 'Nein, ich akzeptiere die Datenschutzbestimmungen nicht.'
     modal:
@@ -686,16 +687,17 @@ de:
       text: |
         Bevor es weitergeht, noch ein paar Informationen.
         
-        Es hat sich einiges Verändert:
+        In auditorium 2.0 hat sich einiges geändert. Hier eine kleine Auswahl von neuen Funktionen:
         
-        * Kurse sind nun Gruppen
-        * Gruppen umfassen alle Semester eines Kurses
-        * Keine statischen Beziehungen zwischen Kursen, Lehrstühlen, Instituten und Fakuläten mehr
-        * Einsatz von Tags zur flexiblen Strukturierung
-        * Neben Fragen und Ankündigungen gibt es nun auch Themen zum diskutieren
-        * uvm.
+        * Einzelne Kurse werden nun als Gruppen repräsentiert. Es stehen Lehrveranstaltungen, Studiengruppen und Themengruppen zur Auswahl.
+        * Falls ein Kurs in mehreren Semestern existierte, so werden die Kurse in einer Gruppe zusammengefasst.
+        * Die starre Struktur zwischen Kursen, Lehrstühlen, Instituten und Fakultäten wurde aufgelöst. Diese Beziehungen werden nun durch Tags abgebildet. Tags sind z.B. SS 13, Fakultät Informatik, Forschungskolleg, Allgemeine Kompetenz, etc.
+        * Zusätzlich zu Fragen und Ankündigungen, können nun beliebige Themen eröffnet und diskutiert werden.
+        * u.v.m.
 
-        **Um auditorium in seinem neuen Gewand erkunden zu können, musst du die <a target="_blank" href="/privacy" title="Datenschutzerklärung in einem neuen Fenster öffnen.">Datenschutzerklärung</a> akzeptieren.**
+        **Um auditorium in seinem neuen Gewand benutzen zu können, musst du die <a target="_blank" href="/privacy" title="Datenschutzerklärung in einem neuen Fenster öffnen.">Datenschutzerklärung</a> akzeptieren.**
+  validation:
+    unsupported_signs: 'enthält unerlaubte Symbole: %{signs}.'
   markdown:
     buttons:
       markdown: 'Markdown Schnellreferenz'

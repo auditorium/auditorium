@@ -21,10 +21,10 @@ class UsersController < ApplicationController
     
     respond_to do |format|
       if @user.update_without_password(params[:user])
-        format.html { redirect_to @user, :flash => { :success =>  'User was successfully updated.' } }
+        format.html { redirect_to @user, :flash => { :success =>  t('users.flash.updated') } }
         format.json { head :no_content }
       else
-        format.html { render action: "edit", :flash => { :error => "User couldn't be updated!" } }
+        format.html { render action: "edit", :flash => { :error => t('users.error.updated') } }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
@@ -61,15 +61,15 @@ class UsersController < ApplicationController
   	end
 
   	respond_to do |format|
-  		format.html { redirect_to redirect_url, :flash => { :success => 'The user was successfully confirmed.'}}
+  		format.html { redirect_to redirect_url, :flash => { :success => t('users.flash.confirmed')}}
   	end
   end
 
   def destroy
     @user = User.find(params[:id])        
     @user.destroy
-    redirect_to users_moderation_path, :flash => { :success => "You successfully deleted the user #{@user.full_name}!" }
-    authorize! :destroy, User, :message => "You don't have authorisation to delete this user."          
+    redirect_to users_moderation_path, :flash => { :success => t('users.flash.deleted') }
+    authorize! :destroy, User, :message => t('users.error.permission.delete')        
   end
 
   def search

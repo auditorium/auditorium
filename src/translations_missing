@@ -1,2 +1,10 @@
+users.flash.updated in 	  ["app/controllers/users_controller.rb"] is missing
+users.error.updated in 	  ["app/controllers/users_controller.rb"] is missing
+users.flash.confirmed in 	  ["app/controllers/users_controller.rb"] is missing
+users.flash.deleted in 	  ["app/controllers/users_controller.rb"] is missing
+users.error.permission.delete in 	  ["app/controllers/users_controller.rb"] is missing
+forms.labels.accepting in 	  ["app/views/devise/registrations/new.html.erb"] is missing
+forms.labels.privacy_policy in 	  ["app/views/devise/registrations/new.html.erb"] is missing
+static_pages.headers.privacy in 	  ["app/views/static_pages/privacy.html.erb"] is missing
 users.headers.index in 	  ["app/views/users/index.html.erb"] is missing
 users.subheader.index in 	  ["app/views/users/index.html.erb"] is missing

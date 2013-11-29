@@ -132,8 +132,7 @@ en:
       confirm_new_password: 'Confirm new password'
       subject: 'Subject'
       content: 'Content'
-      accepting: 'I accept the '
-      privacy_policy: 'privacy policy'
+      
     placeholder: 
       labels:
       username: 'Username'
@@ -681,6 +680,7 @@ en:
         receive_email_notifications_when_author: 'Receive email notifications when I am an author.'
         uniqueness_error: 'This user already chose his preferences.'
   privacy_policy:
+    accepting_privacy_policy: 'I accept the <a href="/privacy" target="_blank" title="View the privacy policy in a new window.">privacy policy</a>.'
     accept: 'Yes, I accept the privacy policies.'
     decline: 'No, I do not accpet the privacy policies.'
     modal:
@@ -688,16 +688,17 @@ en:
       text: |
         Before you can continue some important information.
         
-        A lot has changed:
+        In auditorium 2.0 a lot has changed. Here is a list of a few changes:
         
-        * Courses are now groups
-        * Groups contain a specific course for all semesters
-        * No static binding between courses, chairs, institutes and faculties anymore
-        * Tags for a flexible structure
-        * Next to questions and announcements there is now the post type topic for discussions
-        * And a lot more...
+        * Courses are now represented as groups. There are three group types available: Lecture, Study and Topic Groups.
+        * In case a course was availabe in more than one semester, those courses will be summarized in one group.
+        * The static structure between courses, chairs, institutes and faculties has been removed. Those relationships are now represented via tags. Tags are i.e., ’SS 13’, ’Fakultät Informatik’, etc.
+        * Additionally to questions and announcements there is a new type called ’topic’ for discussions.
+        * And more...
 
         **To continue you need to accept the <a target="_blank" href="/privacy" title="Open privacy policies in a new window.">privacy policies</a> of auditorium.**
+  validation:
+    unsupported_signs: 'contains unsupported signs. Plese only use those signs: %{signs}.'
   markdown:
     buttons:
       markdown: 'Markdown quick reference'

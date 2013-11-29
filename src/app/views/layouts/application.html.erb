@@ -62,7 +62,7 @@
     </nav>
 
     <section role="main">
-      <% unless current_user.privacy_policy? %>
+      <% unless current_user.privacy_policy %>
         <%= render 'shared/privacy_policy_modal' %>
       <% end %>
 
@@ -79,6 +79,8 @@
       <div class="row">
         <%= yield %>
       </div>
+
+      <%= debug current_user.sign_in_count %>
     </section>
     
     <footer id="footer" class="container">

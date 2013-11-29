@@ -38,7 +38,6 @@ class User < ActiveRecord::Base
   attr_accessible :username, :title, :first_name, :last_name, :website, :privacy_policy
   cattr_accessor :current
   
-  # attr_accessible :title, :body
   has_one :setting, dependent: :destroy
 
   has_many :votings
@@ -73,7 +72,7 @@ class User < ActiveRecord::Base
   
   validates_uniqueness_of :email
   validates :privacy_policy, acceptance: { accept: true }
-  validates :username, :presence => true, :format => { :with => /^[A-Za-z0-9_\-\.]+$/, :message => "contains unsupported signs. Plese only use those signs: [A-Za-z0-9_-.]." }
+  validates :username, :presence => true, :format => { :with => /^[A-Za-z0-9_\-\.]+$/, :message => I18n.t('validation.unsupported_signs', signs: '[A-Za-z0-9_-.]') }
   validates_uniqueness_of :username
   
   # returns the full user name if first and last name was specified in the user's profile...
@@ -139,24 +138,24 @@ class User < ActiveRecord::Base
   end
 
   def self.required_fields(klass)
-      [:current_sign_in_at, :last_sign_in_at, :sign_in_count]
-    end
+    [:current_sign_in_at, :last_sign_in_at, :sign_in_count]
+  end
 
-    def update_tracked_fields!(request)
-      old_current, new_current = self.current_sign_in_at, Time.now.utc
-      self.last_sign_in_at = old_current || new_current
-      self.current_sign_in_at = new_current
+  def update_tracked_fields!(request)
+    old_current, new_current = self.current_sign_in_at, Time.now.utc
+    self.last_sign_in_at = old_current || new_current
+    self.current_sign_in_at = new_current
 
-      #old_current, new_current = self.current_sign_in_ip, request.remote_ip
-      #self.last_sign_in_ip = old_current || new_current
-      #self.current_sign_in_ip = new_current
+    #old_current, new_current = self.current_sign_in_ip, request.remote_ip
+    #self.last_sign_in_ip = old_current || new_current
+    #self.current_sign_in_ip = new_current
 
-      self.sign_in_count ||= 0
-      self.sign_in_count += 1
+    self.sign_in_count ||= 0
+    self.sign_in_count += 1
 
-      save(:validate => false) or raise "Devise trackable could not save #{inspect}." \
-        "Please make sure a model using trackable can be saved at sign in."
-    end
+    save(:validate => false) or raise "Devise trackable could not save #{inspect}." \
+      "Please make sure a model using trackable can be saved at sign in."
+  end
 
   
 end
