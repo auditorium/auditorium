@@ -27,7 +27,7 @@
   <% end %>
 <% end %>
 
-<% if @group.announcements.size > 0 %>
+<% if @group.announcements.size > 1 %>
   <ul class="posts condensed">  
   <% limit ||= nil%>
   <% @group.announcements.order('last_activity desc, updated_at desc').limit(limit).each_with_index do |announcement| %>
@@ -39,10 +39,10 @@
     </div>
     <div class="footer hide-for-small">
       <span class="post-details">
-        <%= link_to announcement.group.title, group_path(announcement.group), class: 'group-link' %> &middot;
-        <%= t('general.label.views', count: announcement.views) %> &middot;
-        <% if announcement.class.name.eql? 'Question' %><%= pluralize(announcement.answers.size, 'answer') %> &middot;<% end %>
-        <%= pluralize(announcement.comments.size, 'comment') %>
+        <%= t('posts.general.authored') %>
+        <%= link_to announcement.author, user_path(announcement.author) %> &middot;
+        <%= t('general.label.views', count: announcement.views.to_i) %> &middot;
+        <%= t('general.label.comments', count: announcement.comments.size) %>
       </span>
       <span class="right">
         <span class="last_activity"><%= announcement.last_activity.present? ? l(announcement.last_activity, format: :short) : l(announcement.updated_at, format: :short) %></span>

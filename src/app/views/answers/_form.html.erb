@@ -1,0 +1,25 @@
+<article class="block" id="answer">
+<%= form_for([@question, @answer]) do |f| %>
+  <ul class="form">
+    
+
+    <li class="input-fields">
+      <%= render 'shared/text_editor_buttons', element_id: dom_id(@answer), element_name: @answer.class.name.downcase %>
+      <%= f.label :content, class: 'accessibility' %>
+      <%= f.text_area :content, class: 'large-12 columns' %>
+      <div class="preview">
+        <div id="answer-preview"></div>
+      </div>
+    </li>
+
+    <li class="input-fields">
+      <% if params[:action] == 'new' %>
+        <%= f.submit t('answers.actions.submit'),id: 'submit', class: 'submit small button' %>
+      <% elsif params[:action] == 'edit' %>
+        <%= f.submit t('answers.actions.edit'), class: 'submit small button' %>
+      <% end %>
+      <%= link_to t('general.actions.cancel'), :back, confirm: t('general.confirm.cancel'),class: 'button secondary small' %>
+    </li>
+  </ul>
+<% end %>
+</article>

@@ -12,11 +12,6 @@ class Ability
       can :manage, Notification do |notification|
         user.notifications.include? notification
       end
-      can :create, Question
-      can :create, Group
-      # can :manage, Question do |question|
-      #   question.group.is_moderator? user or user == question.author
-      # end
 
       cannot :read, Question do |question|
         question.is_private and !(question.group.is_moderator? user) and user != question.author
@@ -63,6 +58,24 @@ class Ability
 
       cannot :confirm, User
       cannot :moderate, User
+
+      can [:create, :read], [Group, Topic, Question, Announcement]
+
+      can :manage, Question do |question| 
+        question.author_id == user.id or (question.persisted? and question.group.is_moderator? user)
+      end
+      can :manage, Announcement do |announcement| 
+        announcement.author_id == user.id or (announcement.persisted? and announcement.group.is_moderator? user)
+      end
+      can :manage, Topic do |topic| 
+        topic.author_id == user.id or (topic.persisted? and topic.group.is_moderator? user)
+      end
+      can :manage, Answer do |answer| 
+        answer.author_id == user.id or (answer.persisted? and answer.question.group.is_moderator? user)
+      end
+      can :manage, Comment do |comment| 
+        comment.author_id == user.id or (comment.persisted? and comment.origin.group.is_moderator? user)
+      end
 
     else # Gäste
       cannot :read, :all

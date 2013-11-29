@@ -34,6 +34,7 @@ describe Topic do
     end     
       
     it "should send a email notification to the group member with default email settings" do
+      ActionMailer::Base.deliveries.clear
       topic = create(:topic, group_id: group.id, author: author)
       ActionMailer::Base.deliveries.count.should eq(1)
       email = ActionMailer::Base.deliveries.first

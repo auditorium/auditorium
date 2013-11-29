@@ -45,10 +45,10 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.update_attributes(params[:comment])
-        format.html { redirect_to @comment.origin, flash: { success:  'Comment was successfully updated.' } }
+        format.html { redirect_to @comment.origin, flash: { success:  t('comments.flash.updated') } }
         format.json { head :no_content }
       else
-        format.html { render action: "edit", flash: { error: "Comment couldn't be updated!" } }
+        format.html { render action: "edit", flash: { error: t('comments.error.updated') } }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end

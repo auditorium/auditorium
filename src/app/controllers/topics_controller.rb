@@ -1,7 +1,8 @@
 class TopicsController < ApplicationController
 
-  # load_and_authorize_resource :group
-  # load_and_authorize_resource :announcement, :through => :group
+  #load_and_authorize_resource :group
+  load_and_authorize_resource :topic
+
   before_filter :get_group, only: ['new', 'create', 'index']
 
   def get_group

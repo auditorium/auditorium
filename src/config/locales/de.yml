@@ -547,7 +547,7 @@ de:
       submit: 'Kommentar absenden'
       new: 'Schreibe einen Kommentar'
       delete: 'Kommentar entfernen'
-      edit: 'Kommentar bearbeiten'
+      edit: 'Änderungen speichern'
     label:
       content: 'Inhalt des Kommentars'
     placeholder:
@@ -558,6 +558,9 @@ de:
     flash:
       created: 'Danke für deinen Kommentar!'
       destroyed: 'Der Kommentar wurde entfernt.'
+      updated: 'Der Kommentar wurde aktualisiert.'
+    error:
+      updated: 'Beim Speichern der Änderungen trat ein Fehler auf. Bitte versuche es noch einmal.'
 
   answers:
     headers:
@@ -569,12 +572,17 @@ de:
       hint: 'Wenn dir die Antwort geholfen hat, markiere sie als hilfreich. Damit hilfst du anderen, die die gleiche Frage haben und nach einer Lösung suchen.'
     actions:
       submit: 'Antwort absenden'
+      edit: 'Änderungen speichern'
+      delete: 'Antwort entfernen'
     labels:
       content: 'Inhalt der Antwort:'
     placeholder:
       content: 'Wie lautet der Inhalt deiner Antwort?'
     flash:
       created: 'Vielen Dank für deine Antwort!'
+      updated: 'Die Antwort wurde aktualisiert.'
+    error:
+      updated: 'Beim Speichern der Änderungen trat ein Fehler auf. Bitte versuche es noch einmal.'
 
   links:
     goto:
@@ -636,6 +644,14 @@ de:
         moderator: 'Moderator'
         member: 'Mitglied'
   users:
+    flash:
+      updated: 'Änderungen wurden gespeichert.'
+      confirmed: 'Der Benutzer wurde freigegeben.'
+      deleted: 'Der Benutzer wurde gelöscht.'
+    error:
+      updated: 'Beim Speichern der Änderungen trat ein Fehler auf. Versuche es bitte erneut.'
+      permission:
+        delete: 'Du darfst den Nutzer nicht löschen!'
     tabs:
       about: 'Zur Person'
       settings: 'Einstellungen'
@@ -732,5 +748,6 @@ de:
     headers:
       story: Geschichte hinter auditorium'
       imprint: 'Impressum'
+      privacy_policy: 'Datenschutzerklärung'
     privacy:
       header: 'Datenschutzerklärung'

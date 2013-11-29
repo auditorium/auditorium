@@ -53,7 +53,14 @@
       </li>
       
       <li class="input-fields"> 
-        <%= f.submit t('groups.new.submit'), id: 'submit-group', class: 'tiny button submit right' %>
+        <span class="right">
+        <% if params[:action] == 'new' %>
+        <%= f.submit t('groups.new.submit'), id: 'submit-group', class: 'button small submit' %>
+        <% else %>
+        <%= f.submit t('groups.edit.submit'), id: 'submit-group', class: 'button small submit' %>
+        <% end %>
+        <%= link_to t('general.actions.cancel'), :back, confirm: t('general.confirm.cancel'), class: 'button secondary small' %>
+        </span>
         <div class="clearfix"></div>
       </li>
     </ul>

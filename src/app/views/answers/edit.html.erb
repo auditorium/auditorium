@@ -1,21 +1,8 @@
+<% title t('answers.headers.edit') %>
 <article>
   <header>
     <h2><%= t('answers.headers.edit') %></h2>    
   </header>
 
-  <div  id="answer">
-    <%= form_for(@answer) do |f| %>
-      <ul class="no-style">
-      
-        <li class="input-fields">
-          <%= f.label :content %>
-          <%= f.text_area :content %>
-        </li>
-        
-        <li class="input-fields">
-          <%= f.submit t('groups.new.submit'), id: 'submit', class: 'small button submit' %>
-        </li>
-      </ul>
-    <% end %>
-  </div>
+  <%= render 'answers/form' %>
 </article>

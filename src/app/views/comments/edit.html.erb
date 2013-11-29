@@ -4,18 +4,5 @@
     <h2><%= t('comments.headers.edit') %></h2>    
   </header>
 
-  <div  id="comment">
-    <%= form_for(@comment) do |f| %>
-      <ul class="no-style">
-        <li class="input-fields">
-          <%= f.label :content %>
-          <%= f.text_area :content %>
-        </li>
-        
-        <li class="input-fields">
-          <%= f.submit t('groups.new.submit'), id: 'submit', class: 'small button submit' %>
-        </li>
-      </ul>
-    <% end %>
-  </div>
+  <%= render 'comments/form' %>
 </article>

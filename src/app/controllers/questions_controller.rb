@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
   
 
-  load_and_authorize_resource
+  load_and_authorize_resource :question
   before_filter :get_group, only: ['new', 'create', 'index']
 
   def get_group

@@ -78,7 +78,7 @@
   <%= render 'shared/topics', limit: 10 %>
 </section>
 
-<% if @group.videos.size > 0 or can? :manage, @group %>
+<% if @group.group_type.eql? 'lecture' and (@group.videos.size > 0 or can? :manage, @group) %>
 <section id="videos">
   <%= render 'shared/videos' %>
 </section>

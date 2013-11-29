@@ -2059,6 +2059,8 @@ div.token-input-dropdown {
   &.users, &.registrations, &.sessions { color: $user-color; }
   &.search { color: $search-color; }
   &.notifications { color: $alert-color; }
+  &.answers { color: $answer-color; }
+  &.comments { color: $comment-color; }
 }
 
 @mixin border_color_scheme {
@@ -2076,6 +2078,8 @@ div.token-input-dropdown {
   &.users, &.registrations, &.sessions { border-color: $user-color; }
   &.search { border-color: $search-color; }
   &.notifications { border-color: $alert-color; }
+  &.answers { border-color: $answer-color; }
+  &.comments { border-color: $comment-color; }
 }
 
 .top-bar {
@@ -3051,8 +3055,6 @@ ul.video-strip {
 }
 
 .answers {
-
-  margin: 50px 0; 
 
   & > form {
     background-color: #fff;

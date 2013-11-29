@@ -23,10 +23,15 @@
     <%= t('posts.general.authored') %>
     <%= link_to post.author, user_path(post.author) %>
     <%= t('posts.general.group') %> 
-    <%= link_to post.group.title, group_path(post.group) %>
-    <%= t('posts.general.time', time: post.last_activity.present? ? l(post.last_activity, format: :short) : l(post.updated_at, format: :short)) %>
+    <%= link_to truncate(post.group.title), group_path(post.group) %>
+     &middot;
+    <%= t('general.label.views', count: post.views.to_i) %> &middot;
+          <% if post.class.name.eql? 'Question' %><%= t('general.label.answers', count: post.answers.size) %> &middot;<% end %>
+          <%= t('general.label.comments', count: post.comments.size) %>
     <span class="right">
-      <% if can? :manage, post %> 
+      <%= post.last_activity.present? ? l(post.last_activity, format: :short) : l(post.updated_at, format: :short) %>
+      <% if can? :manage, post %>
+        &middot; 
         <span class="actions">
           <%= link_to fa_icon('pencil', text: t('general.actions.edit')), url_for(action: 'edit', controller: post.class.name.pluralize.downcase, id: post.id), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %> &middot;
           <%= link_to fa_icon('times', text: t('general.actions.remove')), post, alt: "#{t('posts.actions.delete')}", title: "#{t('posts.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this post?' %>

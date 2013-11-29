@@ -21,7 +21,7 @@
   </ul>
 <% end %>
 
-<% if @group.topics.size > 0 %>
+<% if @group.topics.size > 1 %>
   <ul class="posts condensed">
   <% limit ||= nil %>
     <% @group.topics.order('last_activity desc, updated_at desc').limit(limit).each_with_index do |topic| %>
@@ -32,10 +32,10 @@
         </div>
         <div class="footer hide-for-small">
           <span class="post-details">
-            <%= link_to topic.group.title, group_path(topic.group), class: 'group-link' %> &middot;
-            <%= t('general.label.views', count: topic.views)%> &middot;
-            <% if topic.class.name.eql? 'Question' %><%= pluralize(topic.answers.size, 'answer') %> &middot;<% end %>
-            <%= pluralize(topic.comments.size, 'comment') %>
+            <%= t('posts.general.authored') %>
+            <%= link_to topic.author, user_path(topic.author) %> &middot;
+            <%= t('general.label.views', count: topic.views.to_i) %> &middot;
+            <%= t('general.label.comments', count: topic.comments.size) %>
           </span>
           <span class="right">
             <span class="last_activity"><%= topic.last_activity.present? ? l(topic.last_activity, format: :short) : l(topic.updated_at, format: :short) %></span>

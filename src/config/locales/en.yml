@@ -559,6 +559,9 @@ en:
     flash:
       created: 'Thank you for your comment.'
       destroyed: 'Your comment has been removed.'
+      updated: 'The comment has been updated.'
+    error:
+      updated: 'Something went wrong. Please try again.'
 
   answers:
     headers:
@@ -576,7 +579,9 @@ en:
       content: 'Click here and begin writing your answer...'
     flash:
       created: 'Thank you for the answer.'
-
+      updated: 'The answer has been updated.'
+    error:
+      updated: 'Something went wrong. Please try again.'
   links:
     goto:
       title: 'Go to:'
@@ -645,6 +650,15 @@ en:
       topics: 'Topics'
       announcements: 'Announcements'
     pending_email_confirmation: 'An email confirmation for %{email} is pending.'
+    flash:
+      updated: 'The user has been updated.'
+      confirmed: 'The user has been confirmed.'
+      deleted: 'The user has been deleted.'
+    error:
+      updated: 'Something went wrong. Please try again.'
+      permission:
+        delete: 'You do not have permissions to delete this user!'
+
     role:
       is_admin: 'Administrator'
     profile:
