@@ -24,6 +24,10 @@
 #  score                  :integer          default(0)
 #  authentication_token   :string(255)
 #  role                   :string(255)
+#  sign_in_count          :integer
+#  current_sign_in_at     :datetime
+#  last_sign_in_at        :datetime
+#  privacy_policy         :boolean          default(FALSE)
 #
 
 class User < ActiveRecord::Base

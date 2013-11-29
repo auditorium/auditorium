@@ -11,6 +11,7 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  group_id        :integer
+#  status          :string(255)      default("pending")
 #
 
 class MembershipRequest < ActiveRecord::Base

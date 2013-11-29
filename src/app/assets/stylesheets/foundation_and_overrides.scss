@@ -1604,9 +1604,9 @@ a.disabled {
     border:none;
 
     li {
+      box-shadow: none!important;
       line-height:1.1;
       border: none!important;
-      
 
       ul, ol {
         margin: 5px 0;
@@ -2981,6 +2981,7 @@ ul.video-strip {
 #announcement, 
 #question, 
 #answer,
+#helpful-answer,
 #recording, 
 #video, 
 #topic, 
@@ -3012,6 +3013,12 @@ ul.video-strip {
   border-left: 4px solid $answer-color;
 
   .ribbon { background-color: $answer-color; }
+}
+
+#helpful-answer {
+  border-left: 4px solid $success-color;
+
+  .ribbon { background-color: $success-color; }
 }
 
 #announcement {

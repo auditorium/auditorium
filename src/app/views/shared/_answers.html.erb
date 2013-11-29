@@ -2,8 +2,8 @@
   <h2 class="subheader"><%= "#{t('posts.general.answers')}" %></h2>
 </header>
 
-<% @question.answers.each do |answer| %>
-  <article id="answer" data-id="<%= dom_id(answer)%>">
+<% @question.answers.order('answer_to_id desc, rating desc').each do |answer| %>
+  <article id="<%= 'helpful-' if answer.answer_to_id %>answer" data-id="<%= dom_id(answer)%>">
      <%= render 'shared/answer', answer: answer %>
   </article>
 
@@ -16,7 +16,7 @@
 <header>
   <h3><%= t('answers.headers.new') %></h3>
 </header>
-<%= form_for([@question, @answer = Answer.new]) do |f| %>
+<%= form_for([@question, @answer = @question.answers.build]) do |f| %>
   <%= f.label :content, t('answers.labels.content'), class: 'accessibility' %>
 
   <%= render 'shared/text_editor_buttons', element_id: dom_id(@answer), element_name: @answer.class.name.downcase %>
