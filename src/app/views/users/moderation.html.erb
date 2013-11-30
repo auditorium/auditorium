@@ -14,16 +14,22 @@
 </div>
 
 
+<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(["trackPageView"]);
+  _paq.push(["enableLinkTracking"]);
 
-<!-- Piwik --> 
-<script type="text/javascript"> 
-var _paq = _paq || []; 
-(function(){ var u=(("https:" == document.location.protocol) ? "https://auditorium.inf.tu-dresden.de/piwik/" : "http://auditorium.inf.tu-dresden.de/piwik/"); 
-_paq.push(['setSiteId', {$IDSITE}]); 
-_paq.push(['setTrackerUrl', u+'piwik.php']); 
-_paq.push(['trackPageView']); 
-_paq.push(['enableLinkTracking']); 
-var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript'; g.defer=true; g.async=true; g.src=u+'piwik.js'; 
-s.parentNode.insertBefore(g,s); })();
- </script> 
+  (function() {
+    var u=(("https:" == document.location.protocol) ? "https" : "http") + "://auditorium.inf.tu-dresden.de/piwik/";
+    _paq.push(["setTrackerUrl", u+"piwik.php"]);
+    _paq.push(["setSiteId", "2"]);
+    var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
+    g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
+  })();
+</script>
 <!-- End Piwik Code -->
+
+<!-- Piwik Image Tracker -->
+<img src="https://auditorium.inf.tu-dresden.de/piwik/piwik.php?idsite=2&amp;rec=1" style="border:0" alt="" />
+<!-- End Piwik -->
