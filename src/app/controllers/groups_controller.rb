@@ -44,7 +44,10 @@ class GroupsController < ApplicationController
 
     @groups = Kaminari.paginate_array(@groups).page(params[:page]).per(21)
     @tag_ids = cookies[:group_filter_tag_ids].present? ? Tag.where(id: cookies[:group_filter_tag_ids].split(',')) : []
-    render :index
+    respond_to do |format|
+      format.js
+      format.html { render :index }
+    end
   end
 
 	def show
