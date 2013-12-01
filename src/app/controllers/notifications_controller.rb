@@ -17,7 +17,7 @@ class NotificationsController < ApplicationController
     @notification.read = true
     @notification.save
 
-    redirect_to url_for(@notification)
+    redirect_to notification.notifiable
   end
 
   # DELETE /notifications/1

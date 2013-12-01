@@ -11,7 +11,7 @@ Auditorium::Application.routes.draw do
     get 'users/moderation/search', to: 'users#search', as: :search_users
     post 'users/:id/confirm', to: 'users#confirm', :as => :confirm_user
     
-    resources :users, except: [:index, :show] do 
+    resources :users, except: [:show] do 
       member do
         post 'accept_privacy_policy'
       end
@@ -77,7 +77,7 @@ Auditorium::Application.routes.draw do
       end
     end
 
-    resources :notifications, only: [:index]
+    resources :notifications, only: [:index, :show]
 
     #match 'mathjax'
     

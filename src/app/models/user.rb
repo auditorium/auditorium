@@ -75,7 +75,7 @@ class User < ActiveRecord::Base
   # ----- end of old ----
   
   validates_uniqueness_of :email
-  validates :privacy_policy, acceptance: { accept: true }
+  validates :privacy_policy, acceptance: { accept: true }, :on => :create
   validates :username, :presence => true, :format => { :with => /^[A-Za-z0-9_\-\.]+$/, :message => I18n.t('validation.unsupported_signs', signs: '[A-Za-z0-9_-.]') }
   validates_uniqueness_of :username
   

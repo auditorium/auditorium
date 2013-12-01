@@ -24,6 +24,13 @@
         <%= f.label :password_confirmation, t('forms.labels.confirm_new_password'), class: 'accessibility' %>
         <%= f.password_field :password_confirmation, placeholder: t('forms.placeholder.password_confirmation') %>
       </li> 
+
+      <li class="input-fields">
+        <%= f.label :privacy_policy do %>
+          <%= f.check_box :privacy_policy %>
+          <%= t('privacy_policy.accepting_privacy_policy').html_safe %>
+        <% end %>
+      </li> 
       <li class="input-fields">
         <%= f.submit t('forms.labels.change_password'), class: 'button submit wide' %>
       </li>
