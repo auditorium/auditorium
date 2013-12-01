@@ -66,16 +66,16 @@
 
 </section>
 <section id="announcements">
-  <%= render 'shared/announcements', limit: 10 %>
+  <%= render 'shared/announcements', announcements: @group.announcements.limit(10), limit: 10 %>
 </section>
 
 
 <section id="questions">
-  <%= render 'shared/questions', limit: 10 %>
+  <%= render 'shared/questions', questions: @group.questions.limit(10), limit: 10 %>
 </section>
 
 <section id="topics">
-  <%= render 'shared/topics', limit: 10 %>
+  <%= render 'shared/topics', topics: @group.topics.limit(10), limit: 10 %>
 </section>
 
 <% if @group.group_type.eql? 'lecture' and (@group.videos.size > 0 or can? :manage, @group) %>

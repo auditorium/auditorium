@@ -10,7 +10,7 @@ class TopicsController < ApplicationController
   end
 
   def index 
-    @topics = @group.topics.order(:created_at)
+    @topics = @group.topics.order('last_activity desc, updated_at desc').page(params[:page]).per(20) 
   end
 
   def show

@@ -11,7 +11,7 @@
 </header>
 <% end %>
 
-<%= form_for([@group, @topic]) do |f| %>
+<%= form_for([@group, @topic ||= @group.topics.build]) do |f| %>
   <ul class="no-style topic">
     <li class="input-fields" class="input-fields">
       <%= f.label :subject, t('forms.labels.subject'), class: 'accessibility' %>
@@ -24,7 +24,7 @@
 <% if @group.topics.size > 1 %>
   <ul class="posts condensed">
   <% limit ||= nil %>
-    <% @group.topics.order('last_activity desc, updated_at desc').limit(limit).each_with_index do |topic| %>
+    <% topics.limit(limit).each_with_index do |topic| %>
       <li class="topic">
         <div class="content"> 
           <span class="rating"><%= topic.rating > 0 ? "+#{topic.rating}" : topic.rating %></span>
@@ -55,6 +55,8 @@
   <% unless limit.nil? or @group.topics.size < limit %>
     <span class="right"><small><%= link_to t('topics.actions.view_all'), group_topics_path(@group) %></small></span>
   <% end %>
+
+  <%= paginate topics if params[:action].eql? 'index' %>
 <% else %>
   <p class="hint"><%= t('topics.hints.no_entries') %></p>
 <% end %>

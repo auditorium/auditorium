@@ -1,4 +1,4 @@
 <% title t('announcements.page_title', group: @group.title) %>
 <section id="announcements">
-  <%= render 'shared/announcements'%>
+  <%= render 'shared/announcements', announcements: @announcements, limit: nil %>
 </section>

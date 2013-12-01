@@ -8,7 +8,7 @@ class AnnouncementsController < ApplicationController
   end
 
   def index 
-    @announcements = @group.announcements.order(:created_at)
+    @announcements = @group.announcements.order('last_activity desc, updated_at desc').page(params[:page]).per(20) 
   end 
 
   def show

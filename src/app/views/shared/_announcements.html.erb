@@ -14,7 +14,7 @@
 <% end %>
 
 <% if can? :manage, @group %>
-  <%= form_for([@group, @announcement]) do |f| %>
+  <%= form_for([@group, @announcement ||= @group.announcements.build]) do |f| %>
     <ul class="no-style announcement">
       <li class="input-fields" class="input-fields">
         <%= f.label :subject, t('forms.labels.subject'), class: 'accessibility' %>
@@ -27,10 +27,10 @@
   <% end %>
 <% end %>
 
-<% if @group.announcements.size > 1 %>
+<% if announcements.size > 1 %>
   <ul class="posts condensed">  
   <% limit ||= nil%>
-  <% @group.announcements.order('last_activity desc, updated_at desc').limit(limit).each_with_index do |announcement| %>
+  <% announcements.each_with_index do |announcement| %>
     <li class="announcement">
       <div class="content"> 
       <span class="rating"><%= announcement.rating > 0 ? "+#{announcement.rating}" : announcement.rating %></span>
@@ -59,10 +59,10 @@
   <% end %>
   </ul>  
 
-  <% unless limit.nil? or @group.announcements.size < limit %>
+  <% unless limit.nil? or announcements.size < limit %>
     <span class="right"><small><%= link_to t('announcements.actions.view_all'), group_announcements_path(@group) %></small></span>
   <% end %>
-
+  <%= paginate announcements if params[:action].eql? 'index' %>
 <% else %>
   <p class="hint"><%= can?(:manage, @group) ? t('announcements.hints.no_entries.moderator') : t('announcements.hints.no_entries.member') %></p>
 <% end %>

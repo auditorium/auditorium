@@ -9,7 +9,8 @@ class QuestionsController < ApplicationController
   end
 
   def index 
-    @questions = @group.questions.order(:created_at)
+    @questions = @group.questions.order('last_activity desc, updated_at desc').delete_if{ |q| cannot? :read, q }
+    @questions = Kaminari.paginate_array(@questions).page(params[:page]).per(20) 
   end
 
   def show
