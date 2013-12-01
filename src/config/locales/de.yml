@@ -663,7 +663,7 @@ de:
       personal_information:
         title: 'Persönliche Informationen'
         link: 'Profil bearbeiten'
-        user_title: 'Füge deien akademischen Titel hinzu.'
+        user_title: 'Füge deinen akademischen Titel hinzu.'
         submit: 'Persönliche Informationen bearbeiten'
       about:
         title: 'Zur Person'

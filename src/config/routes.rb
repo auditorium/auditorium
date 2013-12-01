@@ -77,7 +77,7 @@ Auditorium::Application.routes.draw do
       end
     end
 
-    resources :notifications, only: [:index, :show]
+    resources :notifications, only: [:index, :show, :destroy]
 
     #match 'mathjax'
     
