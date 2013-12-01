@@ -3147,6 +3147,10 @@ ul.notifications, ul.membership_requests {
       margin: 0 2px;
     }
 
+    &.read {
+      a { color: $dark-gray; }
+    }
+
     span.right {
       font-size:0.9em;
     }

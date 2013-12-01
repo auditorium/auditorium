@@ -26,12 +26,6 @@ class Comment < ActiveRecord::Base
   validates :content, presence: true
   validates :author_id, presence: true
 
-  define_index do
-    indexes content
-    set_property :enable_star => true
-    set_property :min_infix_len => 2
-  end
-
   def origin
     if self.commentable.instance_of?(Answer)
       self.commentable.question

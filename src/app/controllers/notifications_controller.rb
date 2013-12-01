@@ -12,6 +12,14 @@ class NotificationsController < ApplicationController
     end
   end
 
+  def show
+    @notification = Notification.find(params[:id])
+    @notification.read = true
+    @notification.save
+
+    redirect_to url_for(@notification)
+  end
+
   # DELETE /notifications/1
   # DELETE /notifications/1.json
   def destroy

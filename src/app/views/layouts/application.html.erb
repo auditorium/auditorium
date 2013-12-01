@@ -44,6 +44,7 @@
           <li><%= nav_link fa_icon('home', text: t('navigation.home')), home_path %></li>
           <li><%= nav_link fa_icon('group', text: t('navigation.groups')), groups_path %></li>
           <li><%= nav_link fa_icon('star', text: t('navigation.my_groups')), my_groups_path %></li>
+          <li><%= nav_link fa_icon('question-circle', text: t('navigation.support_group')), '/groups/110804009' %></li>
         </ul>
 
         <ul class="right">
@@ -89,5 +90,25 @@
     <%= render 'shared/search_bar' %>
 
     <%= javascript_include_tag "application" %>
+
+
+    <!-- Piwik -->
+    <script type="text/javascript">
+      var _paq = _paq || [];
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+
+      (function() {
+        var u=(("https:" == document.location.protocol) ? "https" : "http") + "://auditorium.inf.tu-dresden.de/piwik/";
+        _paq.push(["setTrackerUrl", u+"piwik.php"]);
+        _paq.push(["setSiteId", "2"]);
+        var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
+        g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
+      })();
+    </script>
+    <!-- End Piwik Code -->
+    <!-- Piwik Image Tracker -->
+    <noscript><p><img src="https://auditorium.inf.tu-dresden.de/piwik/piwik.php?idsite=2&amp;rec=1" style="border:0" alt="" /></p></noscript>
+    <!-- End Piwik -->
   </body>
 </html>

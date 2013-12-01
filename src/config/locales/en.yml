@@ -25,6 +25,8 @@ en:
     links:
       group: '%{group}'
   notifications:
+    hints: 
+      no_notifications: 'No unread notifications for you.'
     headers:
       index: 'Your notifications'
     notification_title: 
@@ -170,6 +172,7 @@ en:
     home: 'Home'
     groups: 'Groups'
     my_groups: 'My groups'
+    support_group: 'Help'
     update_profile: 'Settings'
     sign_in: 'Sign in'
     sign_out: 'Sign out'

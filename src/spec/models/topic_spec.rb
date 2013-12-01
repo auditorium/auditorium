@@ -42,6 +42,7 @@ describe Topic do
     end
 
     it "should  not send an email notification to the group member with the setting receive email notifications set to false" do
+      ActionMailer::Base.deliveries.clear
       member.setting = create(:setting, receive_email_notifications: false)
       topic = create(:topic, group_id: group.id, author: author)
       ActionMailer::Base.deliveries.count.should eq(0)

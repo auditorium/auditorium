@@ -3,11 +3,14 @@
   <h2 class="subheader"><%= t('notifications.headers.index') %></h2>
 </header>
  
+<% if @notifications.size > 0 %>
 <ul class="notifications">
 <% @notifications.each do |notification| %>
   <%= render "notifications/notification", notification: notification %>
 <% end %>
 </ul>
-
-
 <%= paginate @notifications %>
+
+<% else %>
+<p class="hint"><%= t('notifications.hints.no_notifications')%></p>
+<% end %>

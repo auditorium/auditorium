@@ -20,15 +20,8 @@ de:
     links:
       group: '%{group}'
   notifications:
-    grouped_by:
-      comment: 'Kommentare'
-      group: 'Gruppen'
-      membership_request: 'Mitgliedschaftsanfragen'
-      question: 'Fragen'
-      announcement: 'Ankündigungen'
-      topic: 'Themen'
-      video: 'Aufzeichnungen'
-      recording: 'Aufzeichnungen'
+    hints: 
+      no_notifications: 'Es gibt keine ungelesenen Mitteilungen für dich.'
     headers:
       index: 'Mitteilungen'
     notification_title: 
@@ -170,6 +163,7 @@ de:
     home: 'Home'
     groups: 'Gruppen'
     my_groups: 'Meine Gruppen'
+    support_group: 'Hilfe'
     update_profile: 'Einstellungen'
     sign_in: 'Anmelden'
     sign_out: 'Abmelden'

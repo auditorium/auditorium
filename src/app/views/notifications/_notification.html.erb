@@ -1,5 +1,5 @@
 <% if notification.for_post? %>
-<li class="notification">
+<li class="notification <%= 'read' if notification.read? %>">
   <% group = (['Comment', 'Answer'].include?(notification.notifiable_type) ? notification.notifiable.origin.group : notification.notifiable.group) %>
   <% if ['Comment', 'Answer'].include? notification.notifiable_type %>
     <%= link_to t("notifications.notification_title.#{notification.notifiable_type.downcase}", author: notification.sender, group: group.title, origin: notification.notifiable.origin.subject), notification.notifiable %>
@@ -8,13 +8,13 @@
   <% end %>
   <span class="right">
     <small><%= l(notification.created_at, format: :short) %></small>
-    <%= link_to fa_icon('times'), notification, method: :delete %>
+    <%= link_to fa_icon('times'), url_for(notification), method: :delete %>
   </span>
   <div class="clearfix"></div>
 </li>
 
 <% elsif notification.notifiable_type.eql? 'MembershipRequest' %>
-<li class="notification">
+<li class="notification <%= 'read' if notification.read? %>">
   
   <%= link_to t("notifications.notification_title.membership_request", user: notification.sender, group: notification.notifiable.group.title), group_membership_requests_path(notification.notifiable.group) %>
   <span class="right">
@@ -27,7 +27,7 @@
   <div class="clearfix"></div>
 </li>
 <% else %>
-<li class="notification">
+<li class="notification <%= 'read' if notification.read? %>">
   
   <%= link_to "DEPRICATED #{truncate notification.title, length: 80}", '#' %>
   <span class="right">

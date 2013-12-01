@@ -27,6 +27,7 @@ namespace :db do
 
           group.group_type = 'lecture'
           group.url = course.url
+          group.approved = course.approved
           group.save!
         else
           group.description = course.description if group.description.nil? and !course.description.nil?
@@ -52,7 +53,7 @@ namespace :db do
       end
 
       puts "----- START MIGRATING POSTS --------"
-      Post.all.each do |post|
+      Post.order('id ASC').each do |post|
         puts "----- Post no. #{post.id} --------"
         case post.post_type
         when 'question'
@@ -128,9 +129,22 @@ namespace :db do
             comment.rating = post.rating
             comment.created_at = post.created_at
             comment.last_activity = post.last_activity
-            comment.commentable_id = post.parent.id
-            comment.commentable_type = (post.parent.post_type.eql?('recording') ? Video : post.parent.post_type)
-            comment.save!
+            case post.parent.post_type
+            when 'question'
+              comment.commentable = Question.find(post.parent.id)
+            when 'announcement' 
+              comment.commentable = Announcement.find(post.parent.id)
+            when 'answer'
+              comment.commentable = Answer.find(post.parent.id)
+            when 'recording'
+              comment.commentable = Video.find(post.parent.id)
+            else 
+              puts "----------- MISMATCH -------- "
+              puts "#{post.parent.id} | #{post.parent.post_type} cannot be parent of #{post.id} --- #{post.post_type}"
+            end
+            # comment.commentable_id = post.parent.id
+            # comment.commentable_type = (post.parent.post_type.eql?('recording') ? 'video' : post.parent.post_type)
+            comment.save! unless comment.commentable.nil?
           end
           puts "COMMENT SAVED #{comment.inspect}"
         end
@@ -173,7 +187,7 @@ namespace :db do
         puts "---- FOLLOWING SAVED #{following.inspect} ----- "
       end
 
-      Notification.delete_all
+      #Notification.delete_all
     end
   end
 end
