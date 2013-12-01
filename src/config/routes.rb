@@ -79,9 +79,8 @@ Auditorium::Application.routes.draw do
 
     resources :notifications, only: [:index]
 
-    mathjax 'mathjax'
+    #match 'mathjax'
     
-
     get 'intro', :to => 'landing_page#index'
     get 'home', :to => 'home#index'
     get 'permission_denied', :to => 'applications#permission_denied', :as => :permission_denied
