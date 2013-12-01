@@ -4,11 +4,13 @@ class Ability
   def initialize(user)
     # Define abilities for the passed in user here. For example:
     alias_action :moderation, :to => :moderate
-
+    alias_action :my_groups, :to => :goto_my_groups
     user ||= User.new # guest user (not logged in)
 
     if user.id? # registrierte Benutzer
       can :read, :all
+
+      can :my_groups, Group 
       can :manage, Notification do |notification|
         user.notifications.include? notification
       end
@@ -19,8 +21,8 @@ class Ability
       #cannot :manage, :all
 
       # user is group moderator
-      cannot :manage, Group do |group|
-        !(group.is_moderator? user or group.creator == user)
+      can :manage, Group do |group|
+        group.is_moderator? user or group.creator == user
       end
 
       can :read, Group do |group|

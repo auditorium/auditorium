@@ -653,7 +653,7 @@ de:
       questions: 'Fragen'
       topics: 'Themen'
       announcements: 'Ankündigungen'
-    pending_email_confirmation: 'Die %{email} wartet auf ihre Bestätigung.'
+    pending_email_confirmation: 'Die E-Mail Adresse %{email} wartet auf ihre Bestätigung.'
     role:
       is_admin: 'Administrator'
     profile:

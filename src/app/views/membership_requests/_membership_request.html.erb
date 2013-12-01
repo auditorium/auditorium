@@ -1,6 +1,6 @@
 <li class="membership_request">
   
-  <%= t("membership_requests.description", user: membership_request.user, group: @group.title) %>
+<%= t("notifications.notification_title.membership_request", user: membership_request.user, group: membership_request.group.title) %>
   <span class="right">
     <span id="<%= dom_id(membership_request) %>">
       <%= render 'notifications/membership_request_confirmation', membership_request: membership_request %>
