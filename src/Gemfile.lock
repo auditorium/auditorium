@@ -109,6 +109,9 @@ GEM
       mail (~> 2.2)
     erubis (2.7.0)
     eventmachine (1.0.3)
+    exception_notification (4.0.1)
+      actionmailer (>= 3.0.4)
+      activesupport (>= 3.0.4)
     execjs (2.0.2)
     factory_girl (4.2.0)
       activesupport (>= 3.0.0)
@@ -349,6 +352,7 @@ DEPENDENCIES
   devise-encryptable
   devise-i18n
   email_spec
+  exception_notification
   execjs
   factory_girl_rails (~> 4.2.1)
   faker (~> 1.1.2)

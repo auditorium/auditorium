@@ -15,6 +15,7 @@ gem 'gravatar_image_tag'
 gem 'kaminari'
 gem 'whenever'
 #gem 'mathjax-rails'
+gem 'exception_notification'
 
 
 # for markdown rich text
