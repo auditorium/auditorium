@@ -67,12 +67,13 @@ group :assets do
 
   gem 'compass-rails'
   gem 'zurb-foundation', '~> 4.3.2'
-  gem 'font-awesome-rails'
+
   gem 'mathjax-rails'
   gem 'premailer-rails'
   gem 'sanitize'
 end
 
+gem 'font-awesome-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'savon', '~> 2.2.0'
