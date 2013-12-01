@@ -7,7 +7,7 @@
     &middot;
     <span class="post-information">
       <%= t('posts.general.authored') %>
-      <%= link_to comment.author, user_path(comment.author) %>
+      <%= comment.author %>
       <%= t('posts.general.time', time: comment.last_activity.present? ? l(comment.last_activity, format: :short) : l(comment.updated_at, format: :short)) %>
     </span>
 

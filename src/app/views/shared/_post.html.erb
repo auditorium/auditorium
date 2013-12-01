@@ -21,7 +21,7 @@
   </div>
   <div class="post-footer hide-for-small">
     <%= t('posts.general.authored') %>
-    <%= link_to post.author, user_path(post.author) %>
+    <%= post.author %>
     <%= t('posts.general.group') %> 
     <%= link_to truncate(post.group.title), group_path(post.group) %>
      &middot;

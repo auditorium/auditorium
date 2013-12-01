@@ -1,4 +1,3 @@
-<%= debug notification %>
 <% if notification.for_post? %>
 <li class="notification <%= 'read' if notification.read? %>">
   <% group = (['Comment', 'Answer'].include?(notification.notifiable_type) ? notification.notifiable.origin.group : notification.notifiable.group) %>

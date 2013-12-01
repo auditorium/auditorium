@@ -34,7 +34,7 @@
       <div class="footer hide-for-small">
         <span class="post-details">
           <%= t('posts.general.authored') %>
-          <%= link_to question.author, user_path(question.author) %> &middot;
+          <%= question.author %> &middot;
           <%= t('general.label.views', count: question.views.to_i) %> &middot;
           <% if question.class.name.eql? 'Question' %><%= t('general.label.answers', count: question.answers.size) %> &middot;<% end %>
           <%= t('general.label.comments', count: question.comments.size) %>

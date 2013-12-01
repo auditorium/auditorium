@@ -1,5 +1,5 @@
 <%= t('posts.general.authored') %>
-<%= link_to post.author, user_path(post.author) %>
+<%= post.author %>
 <%= t('posts.general.group') %> 
 <%= link_to post.group.title, group_path(post.group) %>
 <%= t('posts.general.time', time: post.last_activity.present? ? l(post.last_activity, format: :short) : l(post.updated_at, format: :short)) %>

@@ -40,7 +40,7 @@
     <div class="footer hide-for-small">
       <span class="post-details">
         <%= t('posts.general.authored') %>
-        <%= link_to announcement.author, user_path(announcement.author) %> &middot;
+        <%= announcement.author %> &middot;
         <%= t('general.label.views', count: announcement.views.to_i) %> &middot;
         <%= t('general.label.comments', count: announcement.comments.size) %>
       </span>

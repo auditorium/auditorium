@@ -491,7 +491,7 @@ de:
       new: 'Mache eine Ankündigung'
       subject: 'Wie lautet der Inhalt deiner Ankündigung?'
     new:
-      submit: 'Ankündigung speicher'
+      submit: 'Ankündigung speichern'
     placeholder:
       content: 'Füge den Inhalt deiner Ankündigung hinzu.'
     edit:

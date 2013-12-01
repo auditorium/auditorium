@@ -13,7 +13,7 @@
 <div class="post-footer">
   <span class="answer-information">
       <%= t('posts.general.authored') %>
-      <%= link_to answer.author, user_path(answer.author) %>
+      <%= answer.author %>
       <%= t('posts.general.time', time: answer.last_activity.present? ? l(answer.last_activity, format: :short) : l(answer.updated_at, format: :short)) %>
   </span>
 
