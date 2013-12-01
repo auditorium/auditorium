@@ -2854,6 +2854,7 @@ pre {
 .code, code {
   background-color: $light-gray;
   border:1px dashed darken($light-gray,10%);  
+  max-height: 500px;
 }
 
 .code {
