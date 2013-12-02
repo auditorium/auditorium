@@ -24,7 +24,7 @@
 <% if @group.topics.size > 1 %>
   <ul class="posts condensed">
   <% limit ||= nil %>
-    <% topics.limit(limit).each_with_index do |topic| %>
+    <% topics.each_with_index do |topic| %>
       <li class="topic">
         <div class="content"> 
           <span class="rating"><%= topic.rating > 0 ? "+#{topic.rating}" : topic.rating %></span>
