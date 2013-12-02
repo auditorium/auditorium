@@ -1,5 +1,7 @@
 Auditorium::Application.routes.draw do
 
+  get "courses/show"
+
   scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do 
 
     devise_for :users, :controllers => { :passwords => "passwords",
@@ -18,7 +20,9 @@ Auditorium::Application.routes.draw do
       resources :settings do 
         post 'groups'
       end
-    end
+    end 
+
+    resources :courses, only: [:show]
 
     resources :tags, only: [:index]
     post "ajax/preview", to: 'ajax#preview'
