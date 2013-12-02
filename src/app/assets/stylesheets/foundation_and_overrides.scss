@@ -3165,6 +3165,10 @@ ul.notifications, ul.membership_requests {
 
     &.read {
       a { color: $dark-gray; }
+
+      i {
+        color: $dark-gray;
+      }
     }
 
     span.right {

@@ -16,8 +16,14 @@ class NotificationsController < ApplicationController
     @notification = Notification.find(params[:id])
     @notification.read = true
     @notification.save
-
-    redirect_to notification.notifiable
+  
+    case @notification.notifiable_type
+    when 'MembershipRequest'
+      path = group_membership_requests_path(@notification.notifiable.group)
+    else 
+      path = @notification.notifiable
+    end
+    redirect_to path
   end
 
   # DELETE /notifications/1
