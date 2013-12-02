@@ -4,7 +4,9 @@
 
 <% @question.answers.order('answer_to_id desc, rating desc').each do |answer| %>
   <article id="<%= 'helpful-' if answer.answer_to_id %>answer" data-id="<%= dom_id(answer)%>">
+  <div  id="<%= dom_id(answer) %>">
      <%= render 'shared/answer', answer: answer %>
+     </div>
   </article>
 
   <section class="comments-section">

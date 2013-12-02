@@ -71,11 +71,11 @@ Auditorium::Application.routes.draw do
         
         resources :questions do
           resources :comments
-          resources :answers, except: [:show, :index, :new] do
+          resources :answers, except: [:index, :new] do
             member do 
               post 'helpful', to: 'answers#toggle_as_helpful'
             end
-            resources :comments, except: [:show, :index, :new]
+            resources :comments, except: [:index, :new]
           end
         end
       end

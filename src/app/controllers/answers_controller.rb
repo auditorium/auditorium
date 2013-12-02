@@ -15,7 +15,7 @@ class AnswersController < ApplicationController
 
   def show
     @answer = Answer.find(params[:id])
-    redirect_to @answer.origin
+    redirect_to question_path(@answer.origin, anchor: dom_id(@answer))
   end
 
   def new
