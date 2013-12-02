@@ -142,7 +142,7 @@ de:
       new_password: 'Neues Passwort'
   landing_page:
     links: 
-      sign_in: 'In auditorium anmelden'
+      sign_in: 'Anmelden'
     buttons: 
       sign_in: 'Ich bin bereits dabei!'
       sign_up: 'Kostenlos registrieren!'
@@ -193,17 +193,17 @@ de:
       cancel: 'Willst du die Seite wirklich verlassen?'
     label: 
       views: 
-        zero: 'keine Aufrufe'
-        one: '1 Aufruf'
-        other: '%{count} Aufrufe'
+        zero: 'keine&nbsp;Aufrufe'
+        one: '1&nbsp;Aufruf'
+        other: '%{count}&nbsp;Aufrufe'
       comments:
-        zero: 'keine Kommentare'
-        one: '1 Kommentar'
-        other: '%{count} Kommentare'
+        zero: 'keine&nbsp;Kommentare'
+        one: '1&nbsp;Kommentar'
+        other: '%{count}&nbsp;Kommentare'
       answers:
-        zero: 'keine Antworten'
-        one: '1 Antwort'
-        other: '%{count} Antworten'
+        zero: 'keine&nbsp;Antworten'
+        one: '1&nbsp;Antwort'
+        other: '%{count}&nbsp;Antworten'
     footer:
       headers: 
         about: 'Über uns'

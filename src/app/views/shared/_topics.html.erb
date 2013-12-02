@@ -34,8 +34,8 @@
           <span class="post-details">
             <%= t('posts.general.authored') %>
             <%= topic.author %> &middot;
-            <%= t('general.label.views', count: topic.views.to_i) %> &middot;
-            <%= t('general.label.comments', count: topic.comments.size) %>
+            <%= t('general.label.views', count: topic.views.to_i).html_safe %> &middot;
+            <%= t('general.label.comments', count: topic.comments.size).html_safe %>
           </span>
           <span class="right">
             <span class="last_activity"><%= topic.last_activity.present? ? l(topic.last_activity, format: :short) : l(topic.updated_at, format: :short) %></span>

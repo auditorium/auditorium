@@ -34,9 +34,9 @@
         <span class="post-details">
           <%= t('posts.general.authored') %>
           <%= question.author %> &middot;
-          <%= t('general.label.views', count: question.views.to_i) %> &middot;
-          <% if question.class.name.eql? 'Question' %><%= t('general.label.answers', count: question.answers.size) %> &middot;<% end %>
-          <%= t('general.label.comments', count: question.comments.size) %>
+          <%= t('general.label.views', count: question.views.to_i).html_safe %> &middot;
+          <% if question.class.name.eql? 'Question' %><%= t('general.label.answers', count: question.answers.size).html_safe %> &middot;<% end %>
+          <%= t('general.label.comments', count: question.comments.size).html_safe %>
         </span>
         <span class="right">
           <span class="last_activity"><%= question.last_activity.present? ? l(question.last_activity, format: :short) : l(question.updated_at, format: :short) %></span>

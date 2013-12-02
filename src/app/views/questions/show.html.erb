@@ -20,7 +20,7 @@
   </div>
 </article>
 
-<p class="hint"><%= t('tags.label') %> <%= tag_list(@question.tags) %></p>
+<p class="hint hide-for-small"><%= t('tags.label') %> <%= tag_list(@question.tags) %></p>
 
 <section class="comments-section">
   <%= render 'shared/comments', commentable: @question %>

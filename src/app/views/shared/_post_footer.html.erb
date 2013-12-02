@@ -5,10 +5,11 @@
 <%= t('posts.general.time', time: post.last_activity.present? ? l(post.last_activity, format: :short) : l(post.updated_at, format: :short)) %>
 
 <% if can? :manage, post %> 
-  <span class="right clearing">
+  <span class="right">
     <span class="actions">
       <%= link_to fa_icon('pencil', text: t('general.actions.edit')), url_for(controller: post.class.name.pluralize.downcase, action: 'edit'), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %> &middot;
       <%= link_to fa_icon('times', text: t('general.actions.remove')), post, alt: "#{t('posts.actions.delete')}", title: "#{t('posts.actions.edit')}", method: :delete, confirm: "Are you sure to delete this #{post.class.name.downcase}?" %>
     </span>
   </span>
+  <div class="clearfix"></div>
 <% end %>
