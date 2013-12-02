@@ -1,5 +1,5 @@
 <li id="<%= dom_id(comment) %>">
-  <div class="post-content"><%= markdown comment.content %></div>
+  <div class="post-content"><%= comment_markdown comment.content %></div>
   <div class="post-footer">
     <span data-id='<%= dom_id(comment) %>' class="rating dark">
       <%= render 'shared/rating', post: comment %>

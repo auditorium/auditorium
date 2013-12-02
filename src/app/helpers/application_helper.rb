@@ -60,16 +60,22 @@ module ApplicationHelper
 
   def comment_markdown(text)
     coderayified = CodeRayify.new()
+
     options = {
-      :fenced_code_blocks => true,
-      :no_intra_emphasis => true,
-      :autolink => true,
-      :strikethrough => true,
-      :lax_html_blocks => true,
-      :no_styles => true
+      fenced_code_blocks: true,
+      no_intra_emphasis: true,
+      autolink: true,
+      strikethrough: true,
+      #:lax_html_blocks => true,
+      #:superscript => true
+      filter_html: true
     }
 
-    html = sanitize(markdown, :attributes => %w(target id class style href title alt src width height))
+    markdown_to_html = Redcarpet::Markdown.new(coderayified, options)
+    markdown = markdown_to_html.render(text) 
+    html = content_tag('div', class: 'comment-markdown') do 
+      sanitize(markdown, :attributes => %w(target id class style href title alt src width height))
+    end
   end
 
   def tag_list(tag_array, options = { delimiter: '' }) 
