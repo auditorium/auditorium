@@ -1,4 +1,5 @@
 class TagsController < ApplicationController
+  load_and_authorize_resource
   def index
     @tags = Tag.order(:name)
     filter = (params[:controller].eql? 'groups' and params[:action].eql? 'index') or params[:my_groups]

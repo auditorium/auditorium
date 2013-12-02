@@ -2,6 +2,7 @@ class AnswersController < ApplicationController
 
   # load_and_authorize_resource :question
   # load_and_authorize_resource :answer, :through => :question
+  load_and_authorize_resource
   before_filter :get_question, only: ['new', 'create', 'index']
 
   def get_question

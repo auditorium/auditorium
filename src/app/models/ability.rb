@@ -58,26 +58,30 @@ class Ability
         (visited_user.id == user.id)
       end
 
+      can :manage, Setting, user_id: user.id
       cannot :confirm, User
       cannot :moderate, User
-
-      can [:create, :read], [Group, Topic, Question, Announcement]
 
       can :manage, Question do |question| 
         question.author_id == user.id or (question.persisted? and question.group.is_moderator? user)
       end
+
       can :manage, Announcement do |announcement| 
         announcement.author_id == user.id or (announcement.persisted? and announcement.group.is_moderator? user)
       end
+
       can :manage, Topic do |topic| 
         topic.author_id == user.id or (topic.persisted? and topic.group.is_moderator? user)
       end
       can :manage, Answer do |answer| 
         answer.author_id == user.id or (answer.persisted? and answer.question.group.is_moderator? user)
       end
+
       can :manage, Comment do |comment| 
         comment.author_id == user.id or (comment.persisted? and comment.origin.group.is_moderator? user)
       end
+
+      can [:create, :read], [Group, Comment, Answer, Topic, Question, Announcement]
 
     else # Gäste
       cannot :read, :all

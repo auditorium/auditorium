@@ -1,6 +1,7 @@
 class VideosController < ApplicationController
   # load_and_authorize_resource :group
   # load_and_authorize_resource :video, :through => :group
+  load_and_authorize_resource
   before_filter :get_group, only: ['new', 'create', 'index']
 
   # def index 

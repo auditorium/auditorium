@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
 
   # load_and_authorize_resource :question
   # load_and_authorize_resource :comment, :through => :commentable
+  load_and_authorize_resource
   before_filter :get_commentable, only: ['new', 'create', 'index']
 
   def index 
