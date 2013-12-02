@@ -45,10 +45,10 @@
         <div class="body">
           <h2 class="subheader"><%= link_to truncate(group.title, length: 50), group_path(group), title: group.title %></h2>
           <p class="hint inverted"><%= t('groups.follower_count', count: group.followers.size) %></p>
-          <p class="hint inverted tags"><%= t('groups.tags.label') %> <%= tag_list(group.tags.order(:name), {additional_class: 'invert'}) %></p>
+          <p class="hint inverted tags"><%= t('groups.tags.label') %> <%= tag_list(group.tags.order(:name), {additional_class: 'invert', delimiter: ', '}) %></p>
         </div>
         <div class="bottom">
-        <span class="hint inverted left"><%= t('groups.creator', name: group.creator) %></span>
+        <span class="hint inverted"><%= t('groups.creator', name: group.creator) %></span>
         <%= link_to fa_icon('arrow-circle-right'), '#', class: 'flip-to-front', 'data-id' => dom_id(group) %>
         </div>
       </div>

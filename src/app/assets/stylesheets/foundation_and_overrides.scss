@@ -75,7 +75,7 @@ $dark-gray: darken($gray, 20%);
 $cyan: #66bfa9;
 $orange: #F4A478; // #FC9800;
 $primary-color: #64868f; //#3474B8;
-$secondary-color: $dark-gray;//#4d957a;//#FC9800;
+$secondary-color: darken($dark-gray,10%);//#4d957a;//#FC9800;
 $alert-color: #DC7667; //#BF0404;
 $success-color: rgb(183, 209, 131); //#5ca259;//#7AC02D;
 $warning-color: rgb(254, 201, 86); //#ecbd4b; //#F2CB13;
@@ -1397,7 +1397,7 @@ h2 {
   color: $anthracite;
 
   small {
-    font-size:60%;
+    font-size:0.7em;
   }
 }
 
@@ -1433,8 +1433,7 @@ input[type='text'], input[type='email'], input[type='text'], input[type='url'], 
 
 label.hint {
   font-style: italic;
-  font-size: 0.8em;
-  font-color: $anthracite;
+  font-color: $primary-color;
   margin:2px 5px 5px;
 }
 
@@ -1443,7 +1442,7 @@ textarea {
 }
 
 .hint {
-  color: darken($gray, 20%);
+  color: $primary-color;
   font-size: 0.9em;
   font-style: italic;
   margin:5px;
@@ -1462,8 +1461,12 @@ textarea {
   }
 }
 
-.clearfix {
-  clear:both;
+.clearfix:after { 
+  content: "."; 
+  visibility: hidden; 
+  display: block; 
+  height: 0; 
+  clear: both;
 }
 
 .alert-box {
@@ -1673,7 +1676,7 @@ ul.plain-list {
 /* ================ ribbon style ================ */
 @mixin ribbon {
   position: relative;
-  font-size: 0.8em;
+  font-size: 0.9em;
   font-weight: normal;
   padding: 3px 10px 3px 10px;
   color: #fff;
@@ -1967,12 +1970,12 @@ ul.plain-list {
   display:inline-block;
   margin:2px;
   color: #fff;
-  background-color: $dark-gray;
+  background-color: $primary-color;
   border-radius:2px;
   font-size:0.9em;
 
   &:hover {
-    background-color: darken($dark-gray, 10%);
+    background-color: darken($primary-color, 10%);
   }
 
   &.invert {
@@ -1988,6 +1991,22 @@ ul.plain-list {
 a.tag {
   @include tag;
   text-decoration:none;
+}
+
+a.tag-item {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &.invert {
+    text-decoration: none;
+    color: $white;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 /* ================= Token input field style ================== */
@@ -2236,7 +2255,7 @@ ul.search-results-list{
 .footer span {
   color: #666;
   font-style: italic;
-  font-size:0.8em;
+  font-size:0.9em;
   display:inline-block;
 }
 
@@ -2320,7 +2339,6 @@ ul.groups, ul.posts {
       }
 
       &.rating { 
-        font-size:1.0em;
         padding:0 5px;
         display:inline-block;
         vertical-align:middle;
@@ -2329,7 +2347,6 @@ ul.groups, ul.posts {
 
     
     span.created_at {
-      font-size:0.8em;
       margin:0;
     }
 
@@ -2566,10 +2583,12 @@ article.group {
     bottom: 0;
   }
 
-  .content .body {
+  .body {
     overflow-y: scroll;
     height:160px;
   }
+
+  .content {overflow: hidden;}
 }
 
 /* ======================== user styles ====================== */
@@ -3131,7 +3150,7 @@ ul.video-strip {
   }
 
   .comment-footer {
-    font-size:0.8em;
+    font-size:0.9em;
   }
 }
 

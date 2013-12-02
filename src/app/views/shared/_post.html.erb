@@ -19,16 +19,16 @@
     <span class="title"><h2><%= link_to truncate(post.subject, length: 150), post %></h2></span>
 
   </div>
-  <div class="post-footer hide-for-small">
+  <div class="post-footer">
     <%= t('posts.general.authored') %>
     <%= post.author %>
     <%= t('posts.general.group') %> 
-    <%= link_to truncate(post.group.title), group_path(post.group) %>
-     &middot;
+    <%= link_to truncate(post.group.title), group_path(post.group) %> 
+    &middot;
     <%= t('general.label.views', count: post.views.to_i) %> &middot;
-          <% if post.class.name.eql? 'Question' %><%= t('general.label.answers', count: post.answers.size) %> &middot;<% end %>
-          <%= t('general.label.comments', count: post.comments.size) %>
-    <span class="right">
+    <% if post.class.name.eql? 'Question' %><%= t('general.label.answers', count: post.answers.size) %> &middot;<% end %>
+    <%= t('general.label.comments', count: post.comments.size) %>
+    <span class="right hide-for-small">
       <%= post.last_activity.present? ? l(post.last_activity, format: :short) : l(post.updated_at, format: :short) %>
       <% if can? :manage, post %>
         &middot; 
@@ -38,6 +38,7 @@
         </span>
       <% end %>
     </span>
+    <div class="clearfix"></div>
   </div>
 </li>
 <% end %>

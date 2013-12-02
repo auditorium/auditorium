@@ -78,9 +78,9 @@ module ApplicationHelper
     end
   end
 
-  def tag_list(tag_array, options = { delimiter: '' }) 
+  def tag_list(tag_array, options = { delimiter: ', ' }) 
     if tag_array.size > 0
-      tag_array.sort {|x,y| y.name <=> x.name }.map(&:name).map { |t| link_to t, tag_path(CGI.escape t), class: "tag #{options[:additional_class]}" }.join(options[:delimiter]).html_safe
+      tag_array.sort {|x,y| y.name <=> x.name }.map(&:name).map { |t| link_to t, tag_path(CGI.escape t), class: "tag-item #{options[:additional_class]}" }.join(options[:delimiter]).html_safe
     else 
       content_tag('span', t('tags.no_tags'), class: "no-tags").html_safe
     end
