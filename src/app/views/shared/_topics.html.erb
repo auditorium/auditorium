@@ -21,7 +21,7 @@
   </ul>
 <% end %>
 
-<% if @group.topics.size > 1 %>
+<% if topics.size > 0 %>
   <ul class="posts condensed">
   <% limit ||= nil %>
     <% topics.each_with_index do |topic| %>
