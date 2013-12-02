@@ -83,7 +83,7 @@ Auditorium::Application.routes.draw do
 
     resources :notifications, only: [:index, :show, :destroy]
 
-    #match 'mathjax'
+    mathjax 'mathjax'
     
     get 'intro', :to => 'landing_page#index'
     get 'home', :to => 'home#index'
