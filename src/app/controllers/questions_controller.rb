@@ -46,10 +46,10 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if @question.update_attributes(params[:question])
-        format.html { redirect_to question_path(@question), flash: { success:  'question was successfully updated.' } }
+        format.html { redirect_to question_path(@question), flash: { success:  t('questions.flash.updated') } }
         format.json { head :no_content }
       else
-        format.html { render action: "edit", flash: { error: "question couldn't be updated!" } }
+        format.html { render action: "edit", flash: { error: t('questions.error.updated') } }
         format.json { render json: @question.errors, status: :unprocessable_entity }
       end
     end
