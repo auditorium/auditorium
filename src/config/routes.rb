@@ -82,16 +82,15 @@ Auditorium::Application.routes.draw do
     end
 
     resources :notifications, only: [:index, :show, :destroy]
-
+    post 'notifications/mark_all_as_read', to: 'notifications#mark_all_as_read', as: :mark_all_notifications_as_read
+    post 'notifications/delete_all', to: 'notifications#delete_all', as: :delete_all_notifications
+    post 'notifications/:id/mark_as_read', to: 'notifications#mark_as_read', as: :mark_notification_as_read
     mathjax 'mathjax'
     
     get 'intro', :to => 'landing_page#index'
     get 'home', :to => 'home#index'
     get 'permission_denied', :to => 'applications#permission_denied', :as => :permission_denied
-    
-    post 'notifications/mark_all_as_read' => 'notifications#mark_all_as_read', :as => :mark_all_as_read
-    post 'notifications/delete_all_notifications' => 'notifications#delete_all_notifications', :as => :delete_all_notifications
-    match 'notifications' => 'notifications#index', :as => :notifications_for_course
+
 
     resources :events
     get "imprint", to: 'static_pages#imprint', as: :imprint

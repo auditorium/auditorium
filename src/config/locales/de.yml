@@ -32,7 +32,16 @@ de:
       comment: '%{author} hat den Beitrag "%{origin}" kommentiert.'
       group: '%{creator} hat die Gruppe "%{group}" erstellt und wartet auf Freigabe.'
       membership_request: '%{user} möchte ein Moderator in der Gruppe "%{group}" werden.'
+    flash: 
+      marked_all_as_read: 'Alle Mitteilungen wurden als gelesen markiert.'
+      deleted_all: 'Alle Mitteilungen wurden gelöscht.'
+    confirm:
+      delete_all: 'Bist du dir sicher, dass du alle Mitteilungen löschen möchtest?'
     actions:
+      mark_all_as_read: 'Alle als gelesen markieren'
+      delete_all: 'Lösche alle Mitteilungen'
+      mark_as_read: 'Als gelesen markieren'
+      
       membership_requests:
         confirm: 'bestätigen'
         reject: 'ablehnen'
@@ -413,6 +422,7 @@ de:
     page_title: 'Aufzeichnungen in der Gruppe "%{group}"'
     titles:
       new: 'Füge eine neue Aufzeichnung zur Gruppe hinzu'
+      edit: 'Bearbeite die Aufzeichnung'
     new:
       link_title: 'Neue Aufzeichnung hinzufügen'
     edit:
@@ -708,6 +718,13 @@ de:
         **Um auditorium in seinem neuen Gewand benutzen zu können, musst du die <a target="_blank" href="/privacy" title="Datenschutzerklärung in einem neuen Fenster öffnen.">Datenschutzerklärung</a> akzeptieren.**
   validation:
     unsupported_signs: 'enthält unerlaubte Symbole: %{signs}.'
+  errors:
+    descriptions:
+      error_404: 'Die Seite existiert nicht.'
+      error_422: 'Das kannst du nicht machen!'
+      error_500: 'auditorium hat einen Schluckauf. Wir versuchen den Server wieder zu beruhigen!'
+    links:
+      back: 'Gehe zurück zur letzten Seite.'
   markdown:
     buttons:
       markdown: 'Markdown Schnellreferenz'

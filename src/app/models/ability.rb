@@ -18,6 +18,7 @@ class Ability
       cannot :read, Question do |question|
         question.is_private and !(question.group.is_moderator? user) and user != question.author
       end
+      can :create, Question
       #cannot :manage, :all
 
       # user is group moderator
@@ -81,7 +82,7 @@ class Ability
         comment.author_id == user.id or (comment.persisted? and comment.origin.group.is_moderator? user)
       end
 
-      can [:create, :read], [Group, Comment, Answer, Topic, Question, Announcement]
+      can [:create, :read], [Group, Comment, Answer, Topic, Announcement]
 
     else # Gäste
       cannot :read, :all

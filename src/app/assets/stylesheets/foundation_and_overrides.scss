@@ -1348,6 +1348,25 @@ $topbar-menu-icon-color-toggled: $alert-color;
 }
 
 /* ================== general styles ================= */
+
+#error-page {
+  margin: 100px auto;
+  text-align: center;
+  h1 {
+    font-size: 5em;
+    font-style: normal;
+    font-weight: bold;
+  }
+  h3 {
+    color: $anthracite;
+    font-size: 2em;
+    font-style: italic;
+  }
+
+  a {
+    font-size: 1.2em;
+  }
+}
 .accessibility {
   position: absolute !important;
   height: 1px; width: 1px; 

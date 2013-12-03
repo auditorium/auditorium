@@ -72,7 +72,7 @@ class AuditoriumMailer < ActionMailer::Base
     @receiver = options[:receiver]
     @group = @comment.origin.group
     mail(to: @receiver.email, 
-        subject: t("emails.content.subjects.new_comment.#{@comment.commentable_type.downcase}", parent_post_author: @comment.commentable.author, author: @author, group: @group.title),
+        subject: t("emails.subjects.new_comment.#{@comment.commentable_type.downcase}", parent_post_author: @comment.commentable.author, author: @author, group: @group.title),
         'message-id' => message_id(@comment))
   end
 

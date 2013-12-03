@@ -43,9 +43,7 @@ class NotificationsController < ApplicationController
       notification.save
     end if not current_user.notifications.empty?
 
-    respond_to do |format|
-      format.html { redirect_to notifications_path, success: 'Marked all notifications as read.' }
-    end
+    redirect_to notifications_path, notice: t('notifications.flash.marked_all_as_read')
   end
 
   def mark_as_read
@@ -53,20 +51,13 @@ class NotificationsController < ApplicationController
 
     @notification.read = true
     
-    respond_to do |format|
-      if @notification.save
-        format.js
-      else
-        format.html{ redirect_to notifications_path, flash: { success: 'Something went wrong, try again in a little while.' } }  
-      end
-    end
+    @notification.save
+    redirect_to notifications_path
   end
 
-  def delete_all_notifications
+  def delete_all
     current_user.notifications.destroy_all
 
-    respond_to do |format|
-      format.html { redirect_to notifications_path, flash: { :success => 'Your notifications were deleted.'}}
-    end
+    redirect_to notifications_path, notice: t('notifications.flash.deleted_all')
   end
 end

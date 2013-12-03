@@ -2,8 +2,10 @@
 <header>
   <h2 class="subheader"><%= t('notifications.headers.index') %></h2>
 </header>
- 
+
 <% if @notifications.size > 0 %>
+<%= link_to t('notifications.actions.mark_all_as_read'), mark_all_notifications_as_read_path, method: :post, class: 'button tiny' %>
+<%= link_to t('notifications.actions.delete_all'), delete_all_notifications_path, method: :post, confirm: t('notifications.confirm.delete_all'), class: 'button tiny gray' %>
 <ul class="notifications">
 <% @notifications.each do |notification| %>
   <%= render "notifications/notification", notification: notification %>

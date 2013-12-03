@@ -37,7 +37,15 @@ en:
       comment: '%{author} commented on the %{origin}.'
       group: 'Pending approval for "%{group}", created by %{creator}.'
       membership_request: '%{user} wants to become a moderator of the group "%{group}"'
+    flash: 
+      marked_all_as_read: 'All notifications were marked as read.'
+      deleted_all: 'Notifications were deleted.'
+    confirm:
+      delete_all: 'Are you sure to delete all notifications?'
     actions:
+      mark_all_as_read: 'Mark all as read'
+      delete_all: 'Delete all notifications'
+      mark_as_read: 'Mark notification as read'
       membership_requests:
         confirm: 'confirm'
         reject: 'reject'
@@ -418,11 +426,11 @@ en:
     hint_text: "Type in a search term"
     no_results_text: "No tags found."
     searching_text: "Searching for available tags..."
-
   videos:
     page_title: "Recordings from %{group}"
     titles:
       new: 'Add a new recording to the group'
+      edit: 'Edit the recording'
     new:
       link_title: 'Add a new recording to the group.'
     edit:
@@ -716,6 +724,13 @@ en:
         **To continue you need to accept the <a target="_blank" href="/privacy" title="Open privacy policies in a new window.">privacy policies</a> of auditorium.**
   validation:
     unsupported_signs: 'contains unsupported signs. Plese only use those signs: %{signs}.'
+  errors:
+    descriptions:
+      error_404: 'The page does not exist.'
+      error_422: 'You cannot do that!'
+      error_500: 'auditorium had a hick up. We are working on it!'
+    links:
+      back: 'Go back to your previous site.'
   markdown:
     buttons:
       markdown: 'Markdown quick reference'
