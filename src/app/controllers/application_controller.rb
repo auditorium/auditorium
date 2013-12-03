@@ -83,6 +83,29 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  #continue to use rescue_from in the same way as before
+  unless Rails.application.config.consider_all_requests_local
+    unless Rails.application.config.consider_all_requests_local
+      rescue_from Exception, with: :render_error # make sure the generic Exception handler is at the top
+      rescue_from ActionController::RoutingError, with: :render_not_found
+      rescue_from ActionController::UnknownController, with: :render_not_found
+      rescue_from AbstractController::ActionNotFound, with: :render_not_found
+      rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
+    end
+  end
+   
+  def raise_not_found!
+    render_not_found
+  end
+  #render 500 error
+  def render_error
+    render layout: 'landing_page', :template => "errors/500", :status => 500
+  end
+  #render 404 error
+  def render_not_found
+    render layout: 'landing_page', :template => "errors/404", :status => 404
+  end
+
   private
   def set_current_user
     User.current = current_user
@@ -108,4 +131,6 @@ class ApplicationController < ActionController::Base
   def default_url_options(options = {})
     {locale: I18n.locale}
   end 
+
+
 end
