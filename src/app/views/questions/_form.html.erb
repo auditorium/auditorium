@@ -1,3 +1,4 @@
+<%= error_messages! @question %>
 <article class="block" id="question">
 <%= form_for([@group, @question]) do |f| %>
   <ul class="form">
@@ -29,9 +30,9 @@
     </li>
 
     <li class="input-fields">
-      <% if params[:action] == 'new' %>
+      <% if params[:action].eql? 'new' or params[:action].eql? 'create' %>
         <%= f.submit t('questions.actions.submit'),id: 'submit', class: 'submit small button' %>
-      <% elsif params[:action] == 'edit' %>
+      <% elsif params[:action].eql? 'edit' or params[:action].eql? 'update' %>
         <%= f.submit t('questions.actions.edit'), class: 'submit small button' %>
       <% end %>
       <%= link_to t('general.actions.cancel'), :back, confirm: t('general.confirm.cancel'),class: 'button secondary small' %>

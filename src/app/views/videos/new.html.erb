@@ -1,41 +1,8 @@
-<%= form_for([@group, @video]) do |f| %>
-  <% @video.errors.full_messages.each do |msg| %>
-    <div data-alert class="alert-box error" id="flash">
-      <%= msg %>
-      <a href="#" class="close">&times;</a>
-    </div>
-  <% end %>
-
-  <section id="video-details">
+<section id="video-details">
     <header>
       <h4><%= t('videos.titles.new') %></h4>
     </header>
     <div class="block">
-    <ul class="no-style">
-      <li class="input-fields">
-        <%= f.label :url %>
-        <%= f.text_field :url %>
-      </li>
-
-      <li class="input-fields">
-        <%= f.label :subject %>
-        <%= f.text_field :subject %>
-      </li>
-
-      <li class="input-fields">
-        <%= f.label :content %>
-        <%= f.text_area :content %>
-      </li>
-      
-      <li class="input-fields">
-        <%= f.label :tag_tokens %>
-        <%= f.text_field :tag_tokens, data: {load: @video.tags} %>
-      </li>
-      
-      <li class="input-fields">
-        <%= f.submit t('videos.actions.submit'), id: 'submit', class: 'small button submit' %>
-      </li>
-    </ul>
-    </div>
-  </section>
-<% end %>
+<%= render 'videos/form' %>
+</div>
+</section>

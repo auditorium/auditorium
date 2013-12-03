@@ -26,6 +26,15 @@ module ApplicationHelper
     end
   end
 
+  def error_messages!(resource) 
+    if resource.errors.empty?
+      return ""  
+    else
+      resource.errors.full_messages.map { |msg| flash[:error] = msg }.join 
+      ""
+    end
+  end 
+
   def nav_link(title, path, options={}) 
     if current_page?(path)
       link_to title, path, class: "active #{color_scheme}" 

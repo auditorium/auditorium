@@ -7,7 +7,7 @@ class SettingsController < ApplicationController
     @setting = Setting.new(params[:setting])
     unless @setting.persisted?
       @setting.user_id = @user.id
-      @setting.save!
+      @setting.save
     end
     respond_to :js
   end
@@ -27,14 +27,14 @@ class SettingsController < ApplicationController
     @user.followings.each do |following|
       if following.followerable_type.eql? 'Group'
         following.receive_notifications = params["receive_notifications"]["group_#{following.followerable_id}"].present? ? true : false
-        following.save!
+        following.save
       end
     end
     # params["receive_notifications"].each do |key, value|
     #   group_id = key.split('_')[1].to_i
     #   following = @user.followings.find_by_followerable_id_and_followerable_type(group_id, Group)
     #   following.receive_notifications = (value.to_i == 1 ? true : false)
-    #   following.save!
+    #   following.save
     # end
     respond_to :js
   end

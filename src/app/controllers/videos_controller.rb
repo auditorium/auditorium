@@ -21,12 +21,10 @@ class VideosController < ApplicationController
     @video.author = current_user
 
     respond_to do |format|
-      if @video.save!
+      if @video.save
         format.html { redirect_to @video, notice: t('videos.flash.created') }
-        format.json { render json: @video, status: :created, location: [@group, @video] }
       else
         format.html { render action: 'new' }
-        format.json { render json: @video.errors, status: :unprecessable_entity }
       end
     end
   end

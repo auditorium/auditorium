@@ -8,8 +8,7 @@ module Votable
     self..votings.each do |vote|
       self.rating += vote.value
     end
-    if self.save!
-      puts "RATING: #{self.rating}"
+    if self.save
       true
     else
       false

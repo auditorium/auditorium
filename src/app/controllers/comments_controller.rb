@@ -20,10 +20,10 @@ class CommentsController < ApplicationController
     now = DateTime.now
     @comment.last_activity = now
     @comment.origin.last_activity = now
-    @comment.origin.save!
+    @comment.origin.save
 
     respond_to do |format|
-      if @comment.save!
+      if @comment.save
         format.html { redirect_to  "#{url_for @comment.origin}##{dom_id(@comment)}", notice: t('comments.flash.created') }
         format.json { render json: @comment, status: :created, location: [@commentable, @comment] }
       else
@@ -42,7 +42,7 @@ class CommentsController < ApplicationController
     now = DateTime.now
     @comment.last_activity = now
     @comment.origin.last_activity = now
-    @comment.origin.save!
+    @comment.origin.save
 
     respond_to do |format|
       if @comment.update_attributes(params[:comment])

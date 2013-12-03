@@ -11,7 +11,7 @@ class MembershipRequestsController < ApplicationController
   def reject
     @membership_request = MembershipRequest.find(params[:id])
     @membership_request.status = 'rejected'
-    @membership_request.save!
+    @membership_request.save
     @group.remove_moderator @membership_request.user
 
     AuditoriumMailer.rejected_membership_request({membership_request: @membership_request, group: @group }).deliver
@@ -22,7 +22,7 @@ class MembershipRequestsController < ApplicationController
   def confirm
     @membership_request = MembershipRequest.find(params[:id])
     @membership_request.status = 'confirmed'
-    @membership_request.save!
+    @membership_request.save
 
     @group.add_moderator @membership_request.user
 

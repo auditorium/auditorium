@@ -2,9 +2,15 @@ module Notifiable
 
   def self.included(base)
     base.after_create :send_notification
+    base.after_destroy :delete_notifications
   end   
 
 private
+  def delete_notifications 
+    @notifications = Notification.where(notifiable_type: self.class.name, notifiable_id: self.id)
+    @notifications.delete_all
+  end
+
   def send_notification
     case self.class.name
     when 'Comment'
@@ -71,7 +77,7 @@ private
 
   def receivers_for_posts
     #self.origin.last_activity = DateTime.now
-    #self.origin.save!
+    #self.origin.save
     if self.origin.is_private?
       receivers = self.origin.group.moderators
       receivers << self.origin.author

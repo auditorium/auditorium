@@ -27,7 +27,7 @@ class AnnouncementsController < ApplicationController
     @announcement.last_activity = DateTime.now
 
     respond_to do |format|
-      if @announcement.save!
+      if @announcement.save
         format.html { redirect_to @announcement, notice: t('announcements.flash.created') }
       else
         format.html { render action: 'new' }

@@ -54,7 +54,7 @@
       
       <li class="input-fields"> 
         <span class="right">
-        <% if params[:action] == 'new' %>
+        <% if params[:action].eql? 'new' or params[:action].eql? 'create' %>
         <%= f.submit t('groups.new.submit'), id: 'submit-group', class: 'button small submit' %>
         <% else %>
         <%= f.submit t('groups.edit.submit'), id: 'submit-group', class: 'button small submit' %>

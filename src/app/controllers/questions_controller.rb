@@ -28,12 +28,10 @@ class QuestionsController < ApplicationController
     @question.last_activity = DateTime.now
 
     respond_to do |format|
-      if @question.save!
+      if @question.save
         format.html { redirect_to @question, notice: t('questions.flash.created') }
-        format.json { render json: @question, status: :created, location: [@group, @question] }
       else
         format.html { render action: 'new' }
-        format.json { render json: @question.errors, status: :unprecessable_entity }
       end
     end
   end

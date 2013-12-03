@@ -83,7 +83,7 @@ class UsersController < ApplicationController
   def accept_privacy_policy 
     @user = User.find(params[:id])
     @user.privacy_policy = true
-    @user.save!
+    @user.save
 
     redirect_to home_path
   end

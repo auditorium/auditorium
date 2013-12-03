@@ -1,40 +1,42 @@
-<% if ['Answer', 'Comment', 'Announcement', 'Question', 'Topic', 'Video', 'Recording'].include? notification.notifiable_type %>
-<li class="notification <%= 'read' if notification.read? %>">
-  <%= fa_icon('check') if notification.read? %>
-  <% group = (['Comment', 'Answer'].include?(notification.notifiable_type) ? notification.notifiable.origin.group : notification.notifiable.group) %>
-  <% if ['Comment', 'Answer'].include? notification.notifiable_type %>
-    <%= link_to t("notifications.notification_title.#{notification.notifiable_type.downcase}", author: notification.sender, group: group.title, origin: notification.notifiable.origin.subject), notification %>
-  <% else %>
-    <%= link_to t("notifications.notification_title.#{notification.notifiable_type.downcase}", author: notification.sender, group: group.title), notification  %>
-  <% end %>
-  <span class="right">
-    <small><%= l(notification.created_at, format: :short) %></small>
-    <%= link_to fa_icon('times'), notification, method: :delete %>
-  </span>
-  <div class="clearfix"></div>
-</li>
-
-<% elsif notification.notifiable_type.eql? 'Group' and notification.notifiable.present? %>
-  
+<% if notification.notifiable.present? %>
+  <% if ['Answer', 'Comment', 'Announcement', 'Question', 'Topic', 'Video', 'Recording'].include? notification.notifiable_type %>
   <li class="notification <%= 'read' if notification.read? %>">
-  <%= fa_icon('check') if notification.read? %>
-  <%= link_to t("notifications.notification_title.#{notification.notifiable_type.downcase}", creator: notification.sender, group: notification.notifiable.title), notification  %>
-  <span class="right">
-    <small><%= l(notification.created_at, format: :short) %></small>
-    <%= link_to fa_icon('times'), notification, method: :delete %>
-  </span>
-  </li>
-<% elsif notification.notifiable_type.eql? 'MembershipRequest' %>
-<li class="notification <%= 'read' if notification.read? %>">
-  <%= fa_icon('check') if notification.read? %>
-  <%= link_to t("notifications.notification_title.membership_request", user: notification.sender, group: notification.notifiable.group.title), notification %>
-  <span class="right">
-    <span id="<%= dom_id(notification.notifiable) %>">
-      <%= render 'notifications/membership_request_confirmation', membership_request: notification.notifiable %>
+    <%= fa_icon('check') if notification.read? %>
+    <% group = (['Comment', 'Answer'].include?(notification.notifiable_type) ? notification.notifiable.origin.group : notification.notifiable.group) %>
+    <% if ['Comment', 'Answer'].include? notification.notifiable_type %>
+      <%= link_to t("notifications.notification_title.#{notification.notifiable_type.downcase}", author: notification.sender, group: group.title, origin: notification.notifiable.origin.subject), notification %>
+    <% else %>
+      <%= link_to t("notifications.notification_title.#{notification.notifiable_type.downcase}", author: notification.sender, group: group.title), notification  %>
+    <% end %>
+    <span class="right">
+      <small><%= l(notification.created_at, format: :short) %></small>
+      <%= link_to fa_icon('times'), notification, method: :delete %>
     </span>
-    <small><%= l(notification.created_at, format: :short) %></small>
-    <%= link_to fa_icon('times'), notification, method: :delete %>
-  </span>
-  <div class="clearfix"></div>
-</li>
+    <div class="clearfix"></div>
+  </li>
+
+  <% elsif notification.notifiable_type.eql? 'Group' and notification.notifiable.present? %>
+    
+    <li class="notification <%= 'read' if notification.read? %>">
+    <%= fa_icon('check') if notification.read? %>
+    <%= link_to t("notifications.notification_title.#{notification.notifiable_type.downcase}", creator: notification.sender, group: notification.notifiable.title), notification  %>
+    <span class="right">
+      <small><%= l(notification.created_at, format: :short) %></small>
+      <%= link_to fa_icon('times'), notification, method: :delete %>
+    </span>
+    </li>
+  <% elsif notification.notifiable_type.eql? 'MembershipRequest' %>
+  <li class="notification <%= 'read' if notification.read? %>">
+    <%= fa_icon('check') if notification.read? %>
+    <%= link_to t("notifications.notification_title.membership_request", user: notification.sender, group: notification.notifiable.group.title), notification %>
+    <span class="right">
+      <span id="<%= dom_id(notification.notifiable) %>">
+        <%= render 'notifications/membership_request_confirmation', membership_request: notification.notifiable %>
+      </span>
+      <small><%= l(notification.created_at, format: :short) %></small>
+      <%= link_to fa_icon('times'), notification, method: :delete %>
+    </span>
+    <div class="clearfix"></div>
+  </li>
+  <% end %>
 <% end %>

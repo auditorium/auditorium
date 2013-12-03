@@ -79,7 +79,7 @@ class Group < ActiveRecord::Base
   def add_member(user)
     membership = self.followings.find_or_initialize_by_follower_id(user.id)
     membership.role = 'member'
-    membership.save!
+    membership.save
   end
 
   def add_moderator(user)
@@ -120,7 +120,7 @@ class Group < ActiveRecord::Base
     unless self.creator.email.eql? 'lars.beier@tu-dresden.de'
       following = self.followings.build(follower_id: self.creator.id)
       following.role = 'moderator'
-      following.save!
+      following.save
     end
   end
 

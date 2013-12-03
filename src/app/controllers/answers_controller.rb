@@ -27,16 +27,14 @@ class AnswersController < ApplicationController
     @answer.author = current_user
     now = DateTime.now
     @answer.origin.last_activity = now
-    @answer.origin.save!
+    @answer.origin.save
     @answer.last_activity = now
 
     respond_to do |format|
-      if @answer.save!
+      if @answer.save
         format.html { redirect_to question_path(@answer.question), notice: t('answers.flash.created') }
-        format.json { render json: @answer, status: :created, location: [@question, @answer] }
       else
         format.html { render action: 'new' }
-        format.json { render json: @answer.errors, status: :unprecessable_entity }
       end
     end
   end
@@ -51,15 +49,13 @@ class AnswersController < ApplicationController
     now = DateTime.now
     @answer.last_activity = now
     @answer.origin.last_activity = now
-    @answer.origin.save!
+    @answer.origin.save
 
     respond_to do |format|
       if @answer.update_attributes(params[:answer])
         format.html { redirect_to question_path(@answer.question), flash: { success:  t('answers.flash.updated') } }
-        format.json { head :no_content }
       else
         format.html { render action: "edit", flash: { error: t('answers.error.updated') } }
-        format.json { render json: @answer.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -71,7 +67,7 @@ class AnswersController < ApplicationController
     else
       @answer.answer_to_id = nil
     end
-    @answer.save!
+    @answer.save
 
     respond_to do |format|
       format.js

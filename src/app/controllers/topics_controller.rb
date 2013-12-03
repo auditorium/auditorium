@@ -29,7 +29,7 @@ class TopicsController < ApplicationController
     @topic.last_activity = DateTime.now
 
     respond_to do |format|
-      if @topic.save!
+      if @topic.save
         format.html { redirect_to @topic, notice: t('topics.flash.created') }
         format.json { render json: @topic, status: :created, location: [@group, @topic] }
       else

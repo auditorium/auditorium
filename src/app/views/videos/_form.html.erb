@@ -1,0 +1,33 @@
+<%= form_for([@group, @video]) do |f| %>
+  <%= error_messages! @video %>
+  <ul class="no-style">
+    <li class="input-fields">
+      <%= f.label :url %>
+      <%= f.text_field :url %>
+    </li>
+
+    <li class="input-fields">
+      <%= f.label :subject %>
+      <%= f.text_field :subject %>
+    </li>
+
+    <li class="input-fields">
+      <%= f.label :content %>
+      <%= f.text_area :content %>
+    </li>
+    
+    <li class="input-fields">
+      <%= f.label :tag_tokens %>
+      <%= f.text_field :tag_tokens, data: {load: @video.tags} %>
+    </li>
+    
+    <li class="input-fields">
+      <% if params[:action].eql? 'new' or params[:action].eql? 'create' %>
+      <%= f.submit t('videos.actions.submit'), id: 'submit', class: 'small button submit' %>
+      <% elsif params[:action].eql? 'edit' or params[:action].eql? 'update' %>
+      <%= f.submit t('videos.actions.edit'), id: 'submit', class: 'small button submit' %>
+      <% end %>
+      <%= link_to t('general.actions.cancel'), :back, confirm: t('general.confirm.cancel'),class: 'button secondary small' %>
+    </li>
+  </ul>  
+<% end %>

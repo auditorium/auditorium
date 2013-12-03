@@ -82,7 +82,7 @@ class AjaxController < ApplicationController
         @vote.value = 0 if @vote.value.nil? 
         @vote.value -= 1
         @message = t('votes.flash.successfully_downvoted')
-        @vote.save!
+        @vote.save
       else
         @message = t('votes.flash.already_downvoted')
       end    
