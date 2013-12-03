@@ -94,16 +94,16 @@ class ApplicationController < ActionController::Base
     end
   end
    
-  def raise_not_found!
-    render_not_found
-  end
   #render 500 error
   def render_error
-    render layout: 'landing_page', :template => "errors/500", :status => 500
+
+    render layout: 'landing_page', :template => "errors/500", :status => 500 unless request.fullpath.match /\/piwik\//
+    
   end
   #render 404 error
   def render_not_found
-    render layout: 'landing_page', :template => "errors/404", :status => 404
+    render layout: 'landing_page', :template => "errors/404", :status => 404 unless request.fullpath.match /\/piwik\//
+
   end
 
   private

@@ -12,7 +12,7 @@
 
     <div id="email-content">
       <p><%= t('emails.content.subjects.new_membership_request', user: @user, group: @group.title) %></p>
-      <p><%= link_to t('emails.content.goto.notifications'), notifications_url, class: 'button alert' %></p>
+      <p><%= link_to t('emails.content.goto.link'), notifications_url, class: 'button alert' %></p>
     </div>
 
     <p class="email-greetings">

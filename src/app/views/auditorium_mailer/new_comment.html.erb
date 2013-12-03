@@ -15,7 +15,7 @@
       <div id="email-markdown">
         <%= markdown @comment.content %>
       </div>     
-      <%= link_to t('emails.content.goto.comment'), comment_url(@comment, locale: I18n.locale, anchor: dom_id(@comment)), class: 'button alert' %> 
+      <%= link_to t('emails.content.goto.link'), comment_url(@comment, locale: I18n.locale, anchor: dom_id(@comment)), class: 'button alert' %> 
     </div>
 
     <p class="email-greetings">

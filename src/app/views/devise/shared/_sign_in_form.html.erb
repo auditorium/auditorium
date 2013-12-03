@@ -10,6 +10,16 @@
       <%= f.label :password, t('forms.labels.password'), class: 'accessibility' %>
       <%= f.password_field :password, placeholder: t('forms.placeholder.password') %>
     </li>   
+
+    <% if devise_mapping.rememberable? %>
+      <li class="input-fields">
+      <%= f.label :remember_me do %>
+        <%= f.check_box :remember_me %>
+        <%= t('forms.labels.remember_me') %>
+      <% end %> 
+    </li>
+
+    <% end %>
     
     <li class="input-fields">
       <%= f.submit t('forms.labels.sign_in'), class: 'button submit wide' %>

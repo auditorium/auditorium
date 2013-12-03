@@ -52,6 +52,7 @@ de:
       new_answer: '[auditorium] %{author} hat eine neue Antwort zur Frage "%{question}" in der Gruppe "%{group}" abgegeben.'
       new_announcement: '[auditorum] %{author} hat eine Ankündigung in der Gruppe "%{group}" gemacht.'
       new_comment: 
+        answer: '[auditorium] %{author} hat einen Kommentar zur Antwort von %{parent_post_author} in "%{group}" abgegeben'
         question: '[auditorium] %{author} hat einen neuen Kommentar zur Frage von %{parent_post_author} in "%{group}" abgegeben.'
         announcement: '[auditorium] %{author} hat einen neuen Kommentar zur Ankündigung von %{parent_post_author} in "%{group}" abgegeben.'
         topic: '[auditorium] %{author} hat einen neuen Kommentar zum Thema von %{parent_post_author} in "%{group}" abgegeben.'
@@ -67,6 +68,7 @@ de:
       locked_account: '[auditorium] Dein auditorium Konto wurde gesperrt aufgrund von gescheiterten Anmeldeversuchen.'
     content:
       goto: 
+        link: 'Auf auditorium ansehen'
         post: 'Öffne %{post_type} in deinem Browser'
         comment: 'Öffne den Kommentar im Browser'
         question: 'Öffne die Frage im Browser'
@@ -77,7 +79,7 @@ de:
         recording: 'Öffne die Ankündigung im Browser'
         group: 'Öffne die Gruppe in deinem Browser'
         notifications: 'Schaue dir die Mitgliedschaftsanfrage an.'
-        login: 'Melde dich in auditorium an'
+        login: 'Melde dich an'
         confirm_account: 'Bestätige deine E-Mail-Adresse'
         change_password: 'Ändere dein Passwort'
         unlock_account: 'Schalte deinen Account frei'
@@ -88,11 +90,12 @@ de:
         new_answer: '%{author} hat eine Antwort zur Frage "%{question}" in der Gruppe "%{group}" geschrieben:'
         new_announcement: '[auditorum] %{author} machte eine Ankündigung in der Gruppe "%{group}" gemacht:'
         new_comment: 
-          question: '%{author} hat einen neuen Kommentar zur Frage von %{parent_post_author} in "%{group}" abgegeben.'
-          announcement: '%{author} hat einen neuen Kommentar zur Ankündigung von %{parent_post_author} in "%{group}" abgegeben.'
-          topic: '%{author} hat einen neuen Kommentar zum Thema von %{parent_post_author} in "%{group}" abgegeben.'
-          recording: '%{author} hat einen neuen Kommentar zur Aufzeichnung von %{parent_post_author} in "%{group}" abgegeben.'
-          video: '%{author} hat einen neuen Kommentar zur Aufzeichnung von %{parent_post_author} in "%{group}" abgegeben.'
+          answer: '%{author} hat einen Kommentar zur Antwort von %{parent_post_author} in "%{group}" abgegeben:'
+          question: '%{author} hat einen neuen Kommentar zur Frage von %{parent_post_author} in "%{group}" abgegeben:'
+          announcement: '%{author} hat einen neuen Kommentar zur Ankündigung von %{parent_post_author} in "%{group}" abgegeben:'
+          topic: '%{author} hat einen neuen Kommentar zum Thema von %{parent_post_author} in "%{group}" abgegeben:'
+          recording: '%{author} hat einen neuen Kommentar zur Aufzeichnung von %{parent_post_author} in "%{group}" abgegeben:'
+          video: '%{author} hat einen neuen Kommentar zur Aufzeichnung von %{parent_post_author} in "%{group}" abgegeben:'
         new_topic: '%{author} eröffnete ein neues Thema in der Gruppe "%{group}":'
         group_to_approve: '%{creator} hat die Gruppe "%{group}" erstellt. Die Gruppe wartet auf eine Freigabe.'
         new_membership_request: '%{user} möchte ein Moderator in der Gruppe "%{group}" werden.'
@@ -485,6 +488,9 @@ de:
     flash:
       created: 'Deine Frage wurde gespeichert.'
       destroyed: 'Die Frage wurde entfernt.'
+      updated: 'Die Frage wurde aktualisiert.'
+    error:
+      updated: 'Die Frage konnte nicht aktualisiert werden. Versuche es noch einmal.'
 
   announcements:
     headers:

@@ -54,11 +54,12 @@ en:
       
       welcome: '[auditorium] Welcome to auditorium, %{user}'
       new_question: '[auditorium] %{author} asked a question in "%{group}"'
-      new_answer: '[auditorium] %{author} wrote an answer to the question %{question} in "%{group}"'
+      new_answer: '[auditorium] %{author} wrote an answer to the question "%{question}"" in "%{group}"'
       new_announcement: '[auditorum] %{author} made an announcement in "%{group}"'
       new_comment: '[auditorium] %{author} commented on the %{parent_post_type} of %{parent_post_author} in "%{group}"'
       new_comment: 
-        question: '[auditorium] %{author} commented on the comment of %{parent_post_author} in "%{group}"'
+        answer: '[auditorium] %{author} commented on the answer of %{parent_post_author} in "%{group}"'
+        question: '[auditorium] %{author} commented on the question of %{parent_post_author} in "%{group}"'
         announcement: '[auditorium] %{author} commented on the announcement of %{parent_post_author} in "%{group}"'
         topic: '[auditorium] %{author} commented on the topic of %{parent_post_author} in "%{group}"'
         recording: '[auditorium] %{author} commented on the recording of %{parent_post_author} in "%{group}"'
@@ -73,6 +74,7 @@ en:
       locked_account: '[auditorium] Your account has been locked due to an excessive number of unsuccessful sign in attempts.'
     content:
       goto: 
+        link: 'View in auditorium'
         post: 'View the %{post_type} in your browser'
         comment: 'View the comment in your browser'
         question: 'View the question in your browser'
@@ -94,7 +96,8 @@ en:
         new_answer: '%{author} wrote an answer to the question %{question} in "%{group}":'
         new_announcement: '[auditorum] %{author} made an announcement in "%{group}":'
         new_comment: 
-          question: '%{author} commented on the comment of %{parent_post_author} in "%{group}"'
+          answer: '%{author} commented on the answer of %{parent_post_author} in "%{group}"'
+          question: '%{author} commented on the question of %{parent_post_author} in "%{group}"'
           announcement: '%{author} commented on the announcement of %{parent_post_author} in "%{group}"'
           topic: '%{author} commented on the topic of %{parent_post_author} in "%{group}"'
           recording: '%{author} commented on the recording of %{parent_post_author} in "%{group}"'
@@ -493,6 +496,10 @@ en:
     flash:
       created: 'Your question has been created.'
       destroyed: 'The question has been deleted.'
+      updated: 'The question has been updated.'
+    error:
+      updated: 'Something went wrong when updating the question.'
+
 
   announcements:
     headers:
@@ -728,7 +735,7 @@ en:
     descriptions:
       error_404: 'The page does not exist.'
       error_422: 'You cannot do that!'
-      error_500: 'auditorium had a hick up. We are working on it!'
+      error_500: 'auditorium had a hiccup. We are working on it!'
     links:
       back: 'Go back to your previous site.'
   markdown:

@@ -16,7 +16,7 @@
         <h3><%= @group.title %></h3>
         <%= markdown @group.description %>
       </div>     
-      <%= link_to t('emails.content.goto.group'), group_url(@group, locale: I18n.locale), class: 'button alert' %> 
+      <%= link_to t('emails.content.goto.link'), group_url(@group, locale: I18n.locale), class: 'button alert' %> 
     </div>
 
     <p class="email-greetings">

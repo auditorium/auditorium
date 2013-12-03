@@ -12,7 +12,7 @@
 
     <div id="email-content">
       <p><%= t('emails.content.subjects.rejected_membership_request', group: @group.title) %></p>
-      <p><%= link_to t('emails.content.goto.group'), group_url(@group, locale: I18n.locale), class: 'button alert' %></p>
+      <p><%= link_to t('emails.content.goto.link'), group_url(@group, locale: I18n.locale), class: 'button alert' %></p>
     </div>
 
     <p class="email-greetings">

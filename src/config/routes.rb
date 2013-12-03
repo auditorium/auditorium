@@ -97,7 +97,7 @@ Auditorium::Application.routes.draw do
     get "privacy", to: 'static_pages#privacy', as: :privacy
     get "story", to: 'static_pages#story', as: :story
     root to: "landing_page#index"
-    match '*unmatched_route', :to => 'application#raise_not_found!'
+    match '*unmatched_route', :to => 'application#render_not_found'
   end
   
   # match '*path', to: redirect {|params| "/#{I18n.default_locale}/#{CGI::unescape(params[:path])}" }, constraints: lambda { |req| !req.path.starts_with? "/#{I18n.default_locale}/" }
