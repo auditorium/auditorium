@@ -5,11 +5,12 @@ class Ability
     # Define abilities for the passed in user here. For example:
     alias_action :moderation, :to => :moderate
     alias_action :my_groups, :to => :goto_my_groups
+    alias_action :following, :to => :follow
     user ||= User.new # guest user (not logged in)
 
     if user.id? # registrierte Benutzer
       can :read, :all
-
+      can :follow, Group
       can :my_groups, Group 
       can :manage, Notification do |notification|
         user.notifications.include? notification
