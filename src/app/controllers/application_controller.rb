@@ -13,68 +13,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # # redirect admin users
-  # def authenticate_admin_user! #use predefined method name
-  #   redirect_to '/' and return if user_signed_in? && !current_user.is_admin? 
-  #   authenticate_user! 
-  # end 
-  # def current_admin_user #use predefined method name
-  #   return nil if user_signed_in? && !current_user.is_admin? 
-  #   current_user 
-  # end 
-
-  # possible values for params: email, password, first_name, last_name, display_name, person_identifier
-  def create_user params, send_info_email = false
-    if params[:email] && !params[:email].empty?
-      email = params[:email].downcase
-    else
-      email = params[:person_identifier] + '@example.com' if params[:person_identifier]
-    end
-
-    if email && email =~ /\A[^@]+@[^@]+\z/
-      u = User.find_by_email(email)
-      email_correct = true
-    end
-    return u if u
-
-    # no existing user, create new
-    u = User.new
-    u.email = email
-
-    unless email_correct 
-      while User.find_by_email(u.email)
-        if params[:first_name] && !params[:first_name].empty? && params[:last_name] && !params[:last_name].empty?
-          identifier = params[:first_name] + '.' + params[:last_name] + SecureRandom.hex(5)
-        else
-          identifier = SecureRandom.hex(15)
-        end
-        u.email = identifier + '@example.com'
-      end
-    end
-
-    if params[:password] && !params[:password].empty?
-      pw = params[:password]
-    else
-      pw = SecureRandom.base64(5)
-    end
-    u.password = pw
-    u.password_confirmation = pw
-
-    u.first_name = params[:first_name]
-    u.last_name = params[:last_name]
-    if params[:display_name]
-      u.display_name = params
-    elsif u.first_name && u.last_name
-      u.display_name = u.first_name + ' ' + u.last_name
-    end
-
-    u.skip_confirmation! if User.respond_to? 'skip_confirmation!' # skip the confirmation email, that would be automatically sent by devise
-    AuditoriumMailer.automatically_generated_user(u.email, password).deliver if send_info_email unless u.email.include? '@example.com'
-
-    u.save
-    u
-  end
-
   def url_options
     super
     @_url_options.dup.tap do |options|
@@ -86,24 +24,25 @@ class ApplicationController < ActionController::Base
   #continue to use rescue_from in the same way as before
   unless Rails.application.config.consider_all_requests_local
     unless Rails.application.config.consider_all_requests_local
-      rescue_from Exception, with: :render_error # make sure the generic Exception handler is at the top
+      rescue_from Exception do |e|
+        render_error(e)
+      end
       rescue_from ActionController::RoutingError, with: :render_not_found
       rescue_from ActionController::UnknownController, with: :render_not_found
       rescue_from AbstractController::ActionNotFound, with: :render_not_found
       rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
     end
   end
-   
-  #render 500 error
-  def render_error
 
-    render layout: 'landing_page', :template => "errors/500", :status => 500 unless request.fullpath.match /\/piwik\//
-    
+  #render 500 error
+  def render_error(e)
+    ExceptionNotifier.notify_exception(e) if Rails.env.eql? 'production'
+    render layout: 'landing_page', :template => "errors/500", :status => 500
   end
+
   #render 404 error
   def render_not_found
-    render layout: 'landing_page', :template => "errors/404", :status => 404 unless request.fullpath.match /\/piwik\//
-
+    render layout: 'landing_page', :template => "errors/404", :status => 404
   end
 
   private
