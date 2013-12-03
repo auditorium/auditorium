@@ -5,14 +5,6 @@ class ApplicationController < ActionController::Base
   before_filter :set_current_user
   before_filter :set_locale
 
-  rescue_from CanCan::AccessDenied do |exception|
-    unless current_user
-      authenticate_user!
-    else
-      redirect_to home_path, {:exception => exception, :notice => "Sorry, you don't have permissions to access this page." }
-    end
-  end
-
   def url_options
     super
     @_url_options.dup.tap do |options|
@@ -23,15 +15,23 @@ class ApplicationController < ActionController::Base
 
   #continue to use rescue_from in the same way as before
   unless Rails.application.config.consider_all_requests_local
-    unless Rails.application.config.consider_all_requests_local
       rescue_from Exception do |e|
+        puts "ERROR #{e.inspect}"
         render_error(e)
+      end
+      rescue_from CanCan::AccessDenied do |exception|
+        unless current_user
+          authenticate_user!
+        else
+          redirect_to home_path, {:exception => exception, :notice => "Sorry, you don't have permissions to access this page." }
+        end
+        flash.now[:alert] = exception.message
       end
       rescue_from ActionController::RoutingError, with: :render_not_found
       rescue_from ActionController::UnknownController, with: :render_not_found
       rescue_from AbstractController::ActionNotFound, with: :render_not_found
       rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
-    end
+      
   end
 
   #render 500 error
