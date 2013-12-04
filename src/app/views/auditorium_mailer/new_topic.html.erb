@@ -25,7 +25,7 @@
 
     <div id="email-footer">
       <%= t('emails.footer.text', group: @group.title) %>
-      <%= link_to t('emails.footer.link'), user_url(@receiver, locale: I18n.locale) %>
+      <%= link_to t('emails.footer.link'), edit_user_registration_url %>
     </div>
   </body>
 </html>
