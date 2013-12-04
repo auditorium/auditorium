@@ -83,15 +83,22 @@ class User < ActiveRecord::Base
   # returns the full user name if first and last name was specified in the user's profile...
   def full_name
     
-    if (not self.first_name.nil? and not self.first_name.eql? "") or (not self.last_name.nil? and not self.last_name.eql? "")
+    if (self.first_name.present?) or (self.last_name.present?)
       "#{self.title} #{self.first_name} #{self.last_name}".strip
-    elsif self.username
+    elsif self.username.present?
       self.username 
     else
-      # wrapped email only prefix
+      self.email.split('@')
+    end
+  end
 
-      parsed_email = self.email.split('@')
-      parsed_email[0]
+  def greeting
+    if self.first_name.present?
+      self.first_name
+    elsif self.username.present? 
+      self.username
+    else
+      self.email.split('@')[0]
     end
   end
 

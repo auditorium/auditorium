@@ -1,7 +1,8 @@
 <section id="welcome">
   <header id="welcome-header">
     <center>
-      <h1><%= t('home.headers.welcome_back', user: current_user.first_name || current_user.username) %></h1>
+      <h1> 
+        <%= t('home.headers.welcome_back', user: current_user.greeting) %></h1>
       
     </center>
   </header>

@@ -681,7 +681,7 @@ de:
         title: 'Persönliche Informationen'
         link: 'Profil bearbeiten'
         user_title: 'Füge deinen akademischen Titel hinzu.'
-        submit: 'Persönliche Informationen bearbeiten'
+        submit: 'Persönliche Informationen speichern'
       about:
         title: 'Zur Person'
       groups:
