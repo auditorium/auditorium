@@ -220,6 +220,7 @@ de:
       headers: 
         about: 'Über uns'
         support: 'Hilfe'
+        navigation: 'Navigation'
       links:
         imprint: 'Impressum'
         privacy: 'Datenschutz'

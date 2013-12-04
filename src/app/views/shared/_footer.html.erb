@@ -1,4 +1,23 @@
-<div class="large-6 columns">
+<div class="large-4 columns">
+  <h2><%= t('general.footer.headers.navigation') %></h2>
+  <ul class="no-style">
+    <li><%= nav_link t('navigation.home'), home_path %></li>
+    <li><%= nav_link t('navigation.groups'), groups_path %></li>
+    <li><%= nav_link t('navigation.my_groups'), my_groups_path %></li>
+    <li><%= nav_link t('navigation.search'), alternative_search_path %></li>
+    
+    <% if current_user.present? %>
+      <!--<li><%= nav_link fa_icon('user', text: current_user), user_path(current_user) %></li> -->
+      <li><%= nav_link current_user, edit_user_registration_path %></li>
+      <li><%= link_to t('navigation.notifications', size: current_user.notifications.where(read: false).size), notifications_path, class: 'notification-button', title: t('navigation.notifications', size: current_user.notifications.where(read: false).size) %></li>
+      <li><%= link_to t('navigation.sign_out'), destroy_user_session_path, class: color_scheme, method: :delete %></li>
+    <% else %>
+      <li><%= nav_link t('navigation.sign_in'), new_user_session_path %></li>
+    <% end %>
+  </ul>
+
+</div>
+<div class="large-4 columns">
   <h2><%= t('general.footer.headers.support') %></h2>
   <ul class="no-style">
     <li><%= link_to t('general.footer.links.support_group'), '/groups/110804009' %></li>
@@ -10,7 +29,7 @@
     </li>
   </ul>
 </div> 
-<div class="large-6 columns">
+<div class="large-4 columns">
   <h2><%= t('general.footer.headers.about') %></h2>
   <ul class="no-style">
     <li><%= link_to t('general.footer.links.imprint'), imprint_path %></li>

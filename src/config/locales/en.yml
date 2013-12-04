@@ -228,6 +228,7 @@ en:
       headers: 
         about: 'About'
         support: 'Support'
+        navigation: 'Navigation'
       links:
         imprint: 'Imprint'
         privacy: 'Privacy'
