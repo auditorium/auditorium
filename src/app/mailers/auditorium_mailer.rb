@@ -58,6 +58,8 @@ class AuditoriumMailer < ActionMailer::Base
     @answer = options[:answer]
     @receiver = options[:receiver]
     @group = @answer.origin.group
+
+    headers['in-reply-to'] = message_id(@answer.question)
     mail(to: @receiver.email, 
         subject: t("emails.subjects.new_answer", 
         author: @author, 
@@ -71,6 +73,8 @@ class AuditoriumMailer < ActionMailer::Base
     @comment = options[:comment]
     @receiver = options[:receiver]
     @group = @comment.origin.group
+
+    headers['in-reply-to'] = message_id(@comment.commentable)
     mail(to: @receiver.email, 
         subject: t("emails.subjects.new_comment.#{@comment.commentable_type.downcase}", parent_post_author: @comment.commentable.author, author: @author, group: @group.title),
         'message-id' => message_id(@comment))
