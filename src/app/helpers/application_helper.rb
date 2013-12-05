@@ -26,6 +26,20 @@ module ApplicationHelper
     end
   end
 
+  def post_url(post)
+    case post.class.name 
+
+    when 'Question'
+      question_url(post)
+    when 'Announcement'
+      announcement_url(post)
+    when 'Topic'
+      topic_url(post)
+    when 'Video'
+      video_url(video)
+    end
+  end
+
   def error_messages!(resource) 
     if resource.errors.empty?
       return ""  

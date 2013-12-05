@@ -13,7 +13,7 @@
     </span>
 
     <span class="right actions">
-       <%= link_to fa_icon('link', text: t('prompts.permalink.text')), '#', title: t('prompts.permalink.title'), onclick: "javascript:window.prompt('#{t('prompts.permalink.description')}', '#{comment_url(comment.origin, anchor: dom_id(comment))}'); return false" %>
+       <%= link_to fa_icon('link', text: t('prompts.permalink.text')), '#', title: t('prompts.permalink.title'), onclick: "javascript:window.prompt('#{t('prompts.permalink.description')}', '#{(comment.origin.class.name.eql? 'Question') ? question_url(comment.origin, anchor: dom_id(comment)) : announcement_url(comment.origin, anchor: dom_id(comment))}'); return false" %>
       <% if can? :manage, comment %> 
         &middot;
         <%= link_to fa_icon('pencil', text: t('general.actions.edit')), edit_comment_path(comment), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %> &middot;

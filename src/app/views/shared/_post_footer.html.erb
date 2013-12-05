@@ -8,7 +8,7 @@
 </span>
 
 <span class="right actions">
-<%= link_to fa_icon('link', text: t('prompts.permalink.text')), '#', title: t('prompts.permalink.title'), onclick: "javascript:window.prompt('#{t('prompts.permalink.description')}', '#{url_for(post)}'); return false" %>
+<%= link_to fa_icon('link', text: t('prompts.permalink.text')), '#', title: t('prompts.permalink.title'), onclick: "javascript:window.prompt('#{t('prompts.permalink.description')}', '#{post_url(post)}'); return false" %>
   <% if can? :manage, post %> 
   &middot;
   <%= link_to fa_icon('pencil', text: t('general.actions.edit')), url_for(controller: post.class.name.pluralize.downcase, action: 'edit'), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %> &middot;

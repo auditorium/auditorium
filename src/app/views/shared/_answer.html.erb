@@ -20,7 +20,7 @@
   </span>
 
   <span class="right clearing actions">
-     <%= link_to fa_icon('link', text: t('prompts.permalink.text')), '#', title: t('prompts.permalink.title'), onclick: "javascript:window.prompt('#{t('prompts.permalink.description')}', '#{answer_url(answer.origin, anchor: dom_id(answer))}'); return false" %>
+     <%= link_to fa_icon('link', text: t('prompts.permalink.text')), '#', title: t('prompts.permalink.title'), onclick: "javascript:window.prompt('#{t('prompts.permalink.description')}', '#{question_url(answer.origin, anchor: dom_id(answer))}'); return false" %>
     <% if can? :manage, answer %> 
           &middot; 
           <%= link_to fa_icon('pencil', text: t('general.actions.edit')), edit_answer_path(answer), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %> &middot;
