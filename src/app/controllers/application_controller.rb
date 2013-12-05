@@ -6,13 +6,13 @@ class ApplicationController < ActionController::Base
   before_filter :set_locale
   before_filter :store_location
 
-  rescue_from CanCan::AccessDenied do |exception|
-    if current_user.present?
-      redirect_to root_url, alert: exception.message
-    else
-      redirect_to new_user_session_path, alert: exception.message
-    end
-  end
+  # rescue_from CanCan::AccessDenied do |exception|
+  #   if current_user.present?
+  #     redirect_to root_url, alert: exception.message
+  #   else
+  #     redirect_to new_user_session_path, alert: exception.message
+  #   end
+  # end
 
 
   def url_options
@@ -31,9 +31,9 @@ class ApplicationController < ActionController::Base
 
       rescue_from CanCan::AccessDenied do |e|
         if current_user.present?
-          redirect_to root_url, alert: e.message
+          redirect_to root_url
         else
-          redirect_to new_user_session_path, alert: e.message
+          redirect_to new_user_session_path
         end
       end
       rescue_from ActionController::RoutingError, with: :render_not_found
