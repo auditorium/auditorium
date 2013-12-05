@@ -28,6 +28,14 @@ class ApplicationController < ActionController::Base
       rescue_from Exception do |e|
         render_error(e)
       end
+
+      rescue_from CanCan::AccessDenied do |e|
+        if current_user.present?
+          redirect_to root_url, alert: e.message
+        else
+          redirect_to new_user_session_path, alert: e.message
+        end
+      end
       rescue_from ActionController::RoutingError, with: :render_not_found
       rescue_from ActionController::UnknownController, with: :render_not_found
       rescue_from AbstractController::ActionNotFound, with: :render_not_found
