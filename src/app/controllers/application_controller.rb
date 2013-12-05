@@ -15,23 +15,21 @@ class ApplicationController < ActionController::Base
 
   #continue to use rescue_from in the same way as before
   unless Rails.application.config.consider_all_requests_local
-      rescue_from Exception do |e|
-        puts "ERROR #{e.inspect}"
-        render_error(e)
+    rescue_from Exception do |e|
+      render_error(e)
+    end
+    rescue_from CanCan::AccessDenied do |exception|
+      unless current_user
+        authenticate_user!
+      else
+        redirect_to home_path, {:exception => exception, :notice => "Sorry, you don't have permissions to access this page." }
       end
-      rescue_from CanCan::AccessDenied do |exception|
-        unless current_user
-          authenticate_user!
-        else
-          redirect_to home_path, {:exception => exception, :notice => "Sorry, you don't have permissions to access this page." }
-        end
-        flash.now[:alert] = exception.message
-      end
-      rescue_from ActionController::RoutingError, with: :render_not_found
-      rescue_from ActionController::UnknownController, with: :render_not_found
-      rescue_from AbstractController::ActionNotFound, with: :render_not_found
-      rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
-      
+      flash.now[:alert] = exception.message
+    end
+    rescue_from ActionController::RoutingError, with: :render_not_found
+    rescue_from ActionController::UnknownController, with: :render_not_found
+    rescue_from AbstractController::ActionNotFound, with: :render_not_found
+    rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
   end
 
   #render 500 error
@@ -54,8 +52,6 @@ class ApplicationController < ActionController::Base
     scope = Devise::Mapping.find_scope!(resource_or_scope)
     
     url = session.delete("#{scope}_return_to")
-
-    "#{url}#{params[:url_hash] if params[:url_hash] and params[:url_hash].match /post-/}" 
   end
 
   def after_sign_in_path_for(resource_or_scope)

@@ -28,7 +28,6 @@ module ApplicationHelper
 
   def post_url(post)
     case post.class.name 
-
     when 'Question'
       question_url(post)
     when 'Announcement'
