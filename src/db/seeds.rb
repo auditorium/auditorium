@@ -17,14 +17,16 @@ x = (1..5).to_a
 
 admin = User.where(email: 'admin@tu-dresden.de').first_or_initialize(username: 'admin', password: 'test1234', password_confirmation: 'test1234')
 admin.admin = true 
+admin.privacy_policy = true
 admin.confirmed_at = Time.now
 puts admin.inspect
 admin.save!
 
 (1..10).each do |i| 
 
-  user = User.where(email: "user#{i}@tu-dresden.de").first_or_initialize(username: "user #{i}", password: 'test1234', password_confirmation: 'test1234')
+  user = User.where(email: "user#{i}@tu-dresden.de").first_or_initialize(username: "user#{i}", password: 'test1234', password_confirmation: 'test1234')
   user.confirmed_at = Time.now
+  user.privacy_policy = true
   puts user.inspect
   user.save!
 end
