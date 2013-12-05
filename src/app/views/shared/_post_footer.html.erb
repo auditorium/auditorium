@@ -3,7 +3,8 @@
 <%= post.author %>
 <%= t('posts.general.group') %> 
 <%= link_to post.group.title, group_path(post.group) %>
-<%= t('posts.general.time', time: post.last_activity.present? ? l(post.last_activity, format: :short) : l(post.updated_at, format: :short)) %>
+<%= t('posts.general.time', time: l(post.created_at, format: :short)) %>
+<%= t('posts.general.updated_at', time: distance_of_time_in_words(Time.now, post.updated_at)) unless post.updated_at == post.created_at %>
 </span>
 
 <span class="right actions">

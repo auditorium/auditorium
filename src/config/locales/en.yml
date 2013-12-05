@@ -632,6 +632,7 @@ en:
       authored: 'By'
       group: 'in group'
       time: 'at %{time}'
+      updated_at: '(last update %{time} ago)'
       comments: 'Comments'
       answers: 'Answers'
       upvote:
@@ -744,6 +745,9 @@ en:
       description: 'Copy link to clipboard: CTRL+C or CMD+C'
       title: 'Show permalink of this post.'
       text: 'Permalink'
+  time:
+    formats:
+      short: '%B %e %Y, %l:%M %P'
   markdown:
     buttons:
       markdown: 'Markdown quick reference'

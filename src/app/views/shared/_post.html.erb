@@ -29,7 +29,7 @@
     <% if post.class.name.eql? 'Question' %><%= t('general.label.answers', count: post.answers.size).html_safe %> &middot;<% end %>
     <%= t('general.label.comments', count: post.comments.size).html_safe %>
     <span class="right hide-for-small">
-      <%= post.last_activity.present? ? l(post.last_activity, format: :short) : l(post.updated_at, format: :short) %>
+      <%= t('posts.general.updated_at', time: distance_of_time_in_words(Time.now, post.updated_at)) %>
       <% if can? :manage, post %>
         &middot; 
         <span class="actions">

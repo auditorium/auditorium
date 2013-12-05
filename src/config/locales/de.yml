@@ -626,6 +626,7 @@ de:
       authored: 'Von'
       group: 'in der Gruppe'
       time: 'am %{time}'
+      updated_at: '(letzte Änderung ist %{time} her)'
       comments: 'Kommentare'
       answers: 'Antworten'
       upvote:
@@ -636,7 +637,6 @@ de:
         title: 'Ich finde den Beitrag nicht hilfreich oder sinnvoll!'
         alt_text: 'negativ bewerten'
         notice: 'Du hast den Beitrag negativ bewertet.'
-
   views:
     pagination:
       first: "&laquo; Erste Seite"
@@ -737,6 +737,9 @@ de:
       description: 'Kopiere den Link in die Zwischenablage: STRG+C or CMD+C'
       title: 'Zeige den Direkt-Link zum Beitrag.'
       text: 'Direktlink'
+  time:
+    formats:
+      short: '%e. %B %Y um %H:%M'
   markdown:
     buttons:
       markdown: 'Markdown Schnellreferenz'

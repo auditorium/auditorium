@@ -8,7 +8,8 @@
     <span class="post-information">
       <%= t('posts.general.authored') %>
       <%= comment.author %>
-      <%= t('posts.general.time', time: comment.last_activity.present? ? l(comment.last_activity, format: :short) : l(comment.updated_at, format: :short)) %>
+      <%= t('posts.general.time', time: l(comment.created_at, format: :short)) %>
+<%= t('posts.general.updated_at', time: distance_of_time_in_words(Time.now, comment.updated_at)) unless comment.updated_at == comment.created_at %>
     </span>
 
     <span class="right actions">

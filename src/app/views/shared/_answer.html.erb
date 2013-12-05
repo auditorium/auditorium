@@ -14,7 +14,8 @@
   <span class="answer-information">
       <%= t('posts.general.authored') %>
       <%= answer.author %>
-      <%= t('posts.general.time', time: answer.last_activity.present? ? l(answer.last_activity, format: :short) : l(answer.updated_at, format: :short)) %> 
+      <%= t('posts.general.time', time: l(answer.created_at, format: :short)) %>
+      <%= t('posts.general.updated_at', time: distance_of_time_in_words(Time.now, answer.updated_at)) unless answer.updated_at == answer.created_at %>
        
   </span>
 

@@ -19,7 +19,7 @@ class NotificationsController < ApplicationController
   
     case @notification.notifiable_type
     when 'MembershipRequest'
-      path = group_membership_requests_path(@notification.notifiable.group)
+      path = group_membership_requests_path(@notification.notifiable.group) 
     else 
       path = @notification.notifiable
     end
