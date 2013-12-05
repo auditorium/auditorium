@@ -4,6 +4,16 @@ class ApplicationController < ActionController::Base
   helper_method :create_user
   before_filter :set_current_user
   before_filter :set_locale
+  before_filter :store_location
+
+  rescue_from CanCan::AccessDenied do |exception|
+    if current_user.present?
+      redirect_to root_url, alert: exception.message
+    else
+      redirect_to new_user_session_path, alert: exception.message
+    end
+  end
+
 
   def url_options
     super
@@ -15,21 +25,14 @@ class ApplicationController < ActionController::Base
 
   #continue to use rescue_from in the same way as before
   unless Rails.application.config.consider_all_requests_local
-    rescue_from Exception do |e|
-      render_error(e)
-    end
-    rescue_from CanCan::AccessDenied do |exception|
-      unless current_user
-        authenticate_user!
-      else
-        redirect_to home_path, {:exception => exception, :notice => "Sorry, you don't have permissions to access this page." }
+      rescue_from Exception do |e|
+        render_error(e)
       end
-      flash.now[:alert] = exception.message
-    end
-    rescue_from ActionController::RoutingError, with: :render_not_found
-    rescue_from ActionController::UnknownController, with: :render_not_found
-    rescue_from AbstractController::ActionNotFound, with: :render_not_found
-    rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
+      rescue_from ActionController::RoutingError, with: :render_not_found
+      rescue_from ActionController::UnknownController, with: :render_not_found
+      rescue_from AbstractController::ActionNotFound, with: :render_not_found
+      rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
+      
   end
 
   #render 500 error
@@ -48,14 +51,13 @@ class ApplicationController < ActionController::Base
     User.current = current_user
   end
 
-  def stored_location_for(resource_or_scope)
-    scope = Devise::Mapping.find_scope!(resource_or_scope)
-    
-    url = session.delete("#{scope}_return_to")
+  def store_location
+    # store last url as long as it isn't a /users path
+    session[:previous_url] = request.fullpath unless request.fullpath =~ /\/users/
   end
 
-  def after_sign_in_path_for(resource_or_scope)
-    stored_location_for(resource_or_scope) || signed_in_root_path(resource_or_scope)
+  def after_sign_in_path_for(resource)
+    session[:previous_url] || root_path
   end
 
   # localization settings
