@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
 
   def show
     @comment = Comment.find(params[:id])
-    redirect_to comment_path(@comment.origin, anchor: dom_id(@comment))
+    redirect_to (@comment.origin.class.name.eql? 'Question') ? question_url(@comment.origin, anchor: dom_id(@comment)) : announcement_url(@comment.origin, anchor: dom_id(@comment))
   end
 
   def create
