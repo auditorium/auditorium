@@ -11,14 +11,12 @@
       <%= t('posts.general.time', time: comment.last_activity.present? ? l(comment.last_activity, format: :short) : l(comment.updated_at, format: :short)) %>
     </span>
 
-    <span class="right">
+    <span class="right actions">
+       <%= link_to fa_icon('link', text: t('prompts.permalink.text')), '#', title: t('prompts.permalink.title'), onclick: "javascript:window.prompt('#{t('prompts.permalink.description')}', '#{comment_url(comment.origin, anchor: dom_id(comment))}'); return false" %>
       <% if can? :manage, comment %> 
-        <span class="right clearing">
-          <span class="actions">
-            <%= link_to fa_icon('pencil', text: t('general.actions.edit')), edit_comment_path(comment), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %> &middot;
-            <%= link_to fa_icon('times', text: t('general.actions.remove')), comment, alt: "#{t('posts.actions.delete')}", title: "#{t('posts.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this comment?' %>
-          </span>
-        </span>
+        &middot;
+        <%= link_to fa_icon('pencil', text: t('general.actions.edit')), edit_comment_path(comment), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %> &middot;
+        <%= link_to fa_icon('times', text: t('general.actions.remove')), comment, alt: "#{t('posts.actions.delete')}", title: "#{t('posts.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this comment?' %>
       <% end %>
     </span>
     <div class="clearfix"></div>

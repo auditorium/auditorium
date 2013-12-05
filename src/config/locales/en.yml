@@ -739,6 +739,11 @@ en:
       error_500: 'auditorium had a hiccup. We are working on it!'
     links:
       back: 'Go back to your previous site.'
+  prompts:
+    permalink: 
+      description: 'Copy link to clipboard: CTRL+C or CMD+C'
+      title: 'Show permalink of this post.'
+      text: 'Permalink'
   markdown:
     buttons:
       markdown: 'Markdown quick reference'

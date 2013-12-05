@@ -14,17 +14,17 @@
   <span class="answer-information">
       <%= t('posts.general.authored') %>
       <%= answer.author %>
-      <%= t('posts.general.time', time: answer.last_activity.present? ? l(answer.last_activity, format: :short) : l(answer.updated_at, format: :short)) %>
+      <%= t('posts.general.time', time: answer.last_activity.present? ? l(answer.last_activity, format: :short) : l(answer.updated_at, format: :short)) %> 
+       
   </span>
 
-  <span class="right">
+  <span class="right clearing actions">
+     <%= link_to fa_icon('link', text: t('prompts.permalink.text')), '#', title: t('prompts.permalink.title'), onclick: "javascript:window.prompt('#{t('prompts.permalink.description')}', '#{answer_url(answer.origin, anchor: dom_id(answer))}'); return false" %>
     <% if can? :manage, answer %> 
-      <span class="right clearing">
-        <span class="actions">
+          &middot; 
           <%= link_to fa_icon('pencil', text: t('general.actions.edit')), edit_answer_path(answer), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %> &middot;
           <%= link_to fa_icon('times', text: t('general.actions.remove')), answer, alt: "#{t('posts.actions.delete')}", title: "#{t('posts.actions.edit')}", method: :delete, confirm: 'Are you sure to delete this answer?' %>
-        </span>
-      </span>
+        
     <% end %>
   </span>
   <div class="clearfix"></div>

@@ -1,15 +1,17 @@
+<span class="details">
 <%= t('posts.general.authored') %>
 <%= post.author %>
 <%= t('posts.general.group') %> 
 <%= link_to post.group.title, group_path(post.group) %>
 <%= t('posts.general.time', time: post.last_activity.present? ? l(post.last_activity, format: :short) : l(post.updated_at, format: :short)) %>
+</span>
 
-<% if can? :manage, post %> 
-  <span class="right">
-    <span class="actions">
-      <%= link_to fa_icon('pencil', text: t('general.actions.edit')), url_for(controller: post.class.name.pluralize.downcase, action: 'edit'), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %> &middot;
-      <%= link_to fa_icon('times', text: t('general.actions.remove')), post, alt: "#{t('posts.actions.delete')}", title: "#{t('posts.actions.edit')}", method: :delete, confirm: "Are you sure to delete this #{post.class.name.downcase}?" %>
-    </span>
-  </span>
-  <div class="clearfix"></div>
-<% end %>
+<span class="right actions">
+<%= link_to fa_icon('link', text: t('prompts.permalink.text')), '#', title: t('prompts.permalink.title'), onclick: "javascript:window.prompt('#{t('prompts.permalink.description')}', '#{url_for(post)}'); return false" %>
+  <% if can? :manage, post %> 
+  &middot;
+  <%= link_to fa_icon('pencil', text: t('general.actions.edit')), url_for(controller: post.class.name.pluralize.downcase, action: 'edit'), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %> &middot;
+  <%= link_to fa_icon('times', text: t('general.actions.remove')), post, alt: "#{t('posts.actions.delete')}", title: "#{t('posts.actions.edit')}", method: :delete, confirm: "Are you sure to delete this #{post.class.name.downcase}?" %>
+  <% end %>
+</span>
+<div class="clearfix"></div>

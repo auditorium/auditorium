@@ -732,6 +732,11 @@ de:
       error_500: 'auditorium hat einen Schluckauf. Wir versuchen den Server wieder zu beruhigen!'
     links:
       back: 'Gehe zurück zur letzten Seite.'
+  prompts:
+    permalink: 
+      description: 'Kopiere den Link in die Zwischenablage: STRG+C or CMD+C'
+      title: 'Zeige den Direkt-Link zum Beitrag.'
+      text: 'Direktlink'
   markdown:
     buttons:
       markdown: 'Markdown Schnellreferenz'
