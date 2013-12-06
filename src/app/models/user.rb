@@ -58,8 +58,8 @@ class User < ActiveRecord::Base
 
 
   has_many :followings, foreign_key: 'follower_id', dependent: :destroy
-  with_options through: :followings, source: :followerable do |tag|
-    tag.has_many :groups, source_type: 'Group'
+  with_options through: :followings, source: :followerable do |f|
+    f.has_many :groups, source_type: 'Group'
   end
 
   # ---- OLD ------
