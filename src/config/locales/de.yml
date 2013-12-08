@@ -678,7 +678,7 @@ de:
       delete:
         confirm: 'Willst du wirklich deinen Account löschen?'
         text: 'Unzufrieden?'
-        link: 'Drücke hier, um deinen Account zu löschen meinen Account.'
+        link: 'Drücke hier, um deinen Account zu löschen.'
       link: 'Profil'
       personal_data:
         title: 'Persönliche Inforamtionen'
