@@ -169,5 +169,9 @@ class User < ActiveRecord::Base
       "Please make sure a model using trackable can be saved at sign in."
   end
 
+  def unread_notifications
+    self.notifications.where(read: false)
+  end
+
   
 end
