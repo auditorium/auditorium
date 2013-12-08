@@ -599,6 +599,7 @@ en:
     flash:
       created: 'Thank you for the answer.'
       updated: 'The answer has been updated.'
+      destroyed: 'The answer and its comments have been removed.'
     error:
       updated: 'Something went wrong. Please try again.'
   links:

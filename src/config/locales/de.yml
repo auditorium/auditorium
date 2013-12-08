@@ -592,6 +592,7 @@ de:
     flash:
       created: 'Vielen Dank für deine Antwort!'
       updated: 'Die Antwort wurde aktualisiert.'
+      destroyed: 'Die Antwort und ihre Kommentare wurden gelöscht.'
     error:
       updated: 'Beim Speichern der Änderungen trat ein Fehler auf. Bitte versuche es noch einmal.'
 

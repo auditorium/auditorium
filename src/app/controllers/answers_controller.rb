@@ -60,6 +60,16 @@ class AnswersController < ApplicationController
     end
   end
 
+  def destroy
+    @answer = Answer.find(params[:id])
+    path = @answer.origin
+    @answer.destroy
+
+    respond_to do |format|
+      format.html { redirect_to path, notice: t('answers.flash.destroyed')}
+    end
+  end
+
   def toggle_as_helpful
     @answer = Answer.find(params[:id])
     if @answer.answer_to_id.nil?
