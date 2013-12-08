@@ -69,9 +69,6 @@ private
         Notification.create!(sender: self.user, receiver: receiver, notifiable_id: self.id, notifiable_type: self.class.name)
         AuditoriumMailer.new_membership_request(user: self.user, receiver: receiver, membership_request: self).deliver
       end
-
-    when 'MembershipRequest'
-      # membership requests
     end 
   end
 

@@ -675,6 +675,10 @@ de:
     role:
       is_admin: 'Administrator'
     profile:
+      delete:
+        confirm: 'Willst du wirklich deinen Account löschen?'
+        text: 'Unzufrieden?'
+        link: 'Drücke hier, um deinen Account zu löschen meinen Account.'
       link: 'Profil'
       personal_data:
         title: 'Persönliche Inforamtionen'

@@ -46,5 +46,9 @@
       <li class="input-fields">
         <%= f.submit t('users.profile.personal_information.submit'), class: 'submit tiny button users' %>
       </li>
+
+      <li class="input-fields">
+        <%= t('users.profile.delete.text') %> <%= link_to t('users.profile.delete.link'), registration_path(resource_name), :data => { :confirm => t('users.profile.delete.confirm') }, :method => :delete %>
+      </li>
     </ul>
   <% end %>

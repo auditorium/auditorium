@@ -683,6 +683,10 @@ en:
     role:
       is_admin: 'Administrator'
     profile:
+      delete:
+        confirm: 'Do you really want to delete your account?'
+        text: 'Unhappy?'
+        link: 'Click here to delete your account.'
       link: 'Profile'
       personal_data:
         title: 'Personal information'
