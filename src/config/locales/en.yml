@@ -623,7 +623,7 @@ en:
       topic: 'Topic'
       answer: 'Answer'
       video: 'Recording'
-    label: 
+    labels: 
       question: 'Question'
       announcement: 'Announcement'
       topic: 'Topic'

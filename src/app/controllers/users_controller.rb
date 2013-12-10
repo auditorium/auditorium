@@ -83,6 +83,7 @@ class UsersController < ApplicationController
   def accept_privacy_policy 
     @user = User.find(params[:id])
     @user.privacy_policy = true
+    @user.username = @user.email.split('@')[0] unless @user.username.present? 
     @user.save!
 
     redirect_to home_path
