@@ -30,4 +30,6 @@ config/jexam.wsdl
 config/initializers/devise.rb
 lib/tasks/jexam.rake
 lib/tasks/old_jexam.rake
+lib/tasks/anonymize.rake
 app/models/jexam.rb
+

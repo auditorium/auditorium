@@ -77,8 +77,8 @@ class User < ActiveRecord::Base
   
   validates_uniqueness_of :email
   validates :privacy_policy, acceptance: { accept: true }, :on => :create
-  validates :username, :presence => true, :format => { :with => /^[A-Za-zäöüÄÖÜß0-9_\-\.]+$/, :message => I18n.t('validation.unsupported_signs', signs: '[A-Za-zäöüÄÖÜß0-9_-.]') }
-  validates_uniqueness_of :username
+  #validates :username, :format => { :with => /^[A-Za-zäöüÄÖÜß0-9_\-\.]+$/, :message => I18n.t('validation.unsupported_signs', signs: '[A-Za-zäöüÄÖÜß0-9_-.]') }
+  #validates_uniqueness_of :username
   
   # returns the full user name if first and last name was specified in the user's profile...
   def full_name
@@ -88,7 +88,7 @@ class User < ActiveRecord::Base
     elsif self.username.present?
       self.username 
     else
-      self.email.split('@')
+      self.email.split('@')[0]
     end
   end
 
