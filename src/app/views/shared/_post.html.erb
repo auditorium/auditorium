@@ -1,5 +1,5 @@
 <% if can? :read, post %>
-<li class="<%= 'private-' if post.class.name.eql? 'Question' and post.is_private%><%= post.class.name.parameterize %>" data-id="<%= post.id %>" data-group-id="<%= dom_id(post.group) %>">
+<li id="post" class="<%= 'private-' if post.class.name.eql? 'Question' and post.is_private%><%= post.class.name.parameterize %>" data-id="<%= post.id %>" data-group-id="<%= dom_id(post.group) %>">
   <span class="ribbon">
     <% if post.class.name.eql? 'Question' and post.is_private %>
       <%= fa_icon('lock', title: t('questions.is_private.icon_hint'), class: 'private') %>
@@ -19,7 +19,7 @@
     <span class="title"><h2><%= link_to truncate(post.subject, length: 150), post %></h2></span>
 
   </div>
-  <div class="post-footer">
+  <div id="post-footer" class="post-footer">
     <%= t('posts.general.authored') %>
     <%= post.author %>
     <%= t('posts.general.group') %> 

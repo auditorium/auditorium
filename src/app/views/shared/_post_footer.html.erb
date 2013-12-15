@@ -4,14 +4,14 @@
 <%= t('posts.general.group') %> 
 <%= link_to post.group.title, group_path(post.group) %>
 <%= t('posts.general.time', time: l(post.created_at, format: :short)) %>
-<%= t('posts.general.updated_at', time: distance_of_time_in_words(Time.now, post.last_activity)) unless post.updated_at == post.created_at %>
+<%= t('posts.general.updated_at', time: distance_of_time_in_words(Time.now, post.last_activity)) unless post.last_activity.nil? or post.updated_at == post.created_at %>
 </span>
 
 <span class="right actions">
-<%= link_to fa_icon('link', text: t('prompts.permalink.text')), '#', title: t('prompts.permalink.title'), onclick: "javascript:window.prompt('#{t('prompts.permalink.description')}', '#{post_url(post)}'); return false" %>
+<%= link_to fa_icon('link', text: t('prompts.permalink.text')), '#', title: t('prompts.permalink.title'), onclick: "javascript:window.prompt('#{t('prompts.permalink.description')}', '#{post_url(post)}'); return false", id: 'permalink' %>
   <% if can? :manage, post %> 
   &middot;
-  <%= link_to fa_icon('pencil', text: t('general.actions.edit')), url_for(controller: post.class.name.pluralize.downcase, action: 'edit'), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}" %> &middot;
+  <%= link_to fa_icon('pencil', text: t('general.actions.edit')), url_for(controller: post.class.name.pluralize.downcase, action: 'edit'), alt: "#{t('posts.actions.edit')}", title: "#{t('posts.actions.edit')}", id: 'edit' %> &middot;
   <%= link_to fa_icon('times', text: t('general.actions.remove')), post, alt: "#{t('posts.actions.delete')}", title: "#{t('posts.actions.edit')}", method: :delete, confirm: "Are you sure to delete this #{post.class.name.downcase}?" %>
   <% end %>
 </span>

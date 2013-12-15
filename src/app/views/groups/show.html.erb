@@ -41,8 +41,6 @@
 
 <% if can? :manage, @group %>  
 <div class="block">
-  
-   
     <%= link_to fa_icon('chevron-down', text: t('groups.actions.manage_users')), show_members_list_group_path, class: 'button tiny secondary', id: 'toggle-members-list', method: :post, remote: true %>
      <%= link_to t('groups.actions.edit'), edit_group_path(@group), class: 'button tiny secondary' %>
   <div id="manage-members">
@@ -82,4 +80,7 @@
 <section id="videos">
   <%= render 'shared/videos' %>
 </section>
+<% end %>
+<% unless current_user.tutorial_progress.present? and current_user.tutorial_progress.group %>
+<%= render 'guides/single_group_guide' %>
 <% end %>

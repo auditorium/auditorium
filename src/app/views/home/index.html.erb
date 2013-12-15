@@ -1,9 +1,7 @@
 <section id="welcome">
   <header id="welcome-header">
     <center>
-      <h1> 
-        <%= t('home.headers.welcome_back', user: current_user.greeting) %></h1>
-      
+      <h1><%= t('home.headers.welcome_back', user: current_user.greeting) %></h1>
     </center>
   </header>
 </section>
@@ -23,11 +21,11 @@
   </header>
 
   <div class="filter-block" data-id="post-filter">
-    <div class="post-filter">
+    <div id="post-filter" class="post-filter">
       <%= render 'shared/post_filter' %>
     </div>
 
-    <div class="tag-filter">
+    <div id="tag-filter" class="tag-filter">
       <%= form_tag home_path, method: 'get' do %>
         <%= text_field_tag :tag_tokens, nil, data: {load: Tag.where(id: cookies[:post_filter_tag_ids])}, id: 'post_filter_tag_tokens', class: 'token-input-field' %>
         <%= label_tag :tag_tokens, t('general.filter.tag_filter.posts_filter'), class: 'hint' %> 
@@ -37,4 +35,7 @@
   <div id="post-stream">
     <%= render 'home/post_stream' %>
   </div>
+  <% unless current_user.tutorial_progress.present? and current_user.tutorial_progress.introduction %>
+  <%= render 'guides/home_guide' %>
+  <% end %>
 </section>

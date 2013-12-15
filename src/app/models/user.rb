@@ -44,6 +44,7 @@ class User < ActiveRecord::Base
   cattr_accessor :current
   
   has_one :setting, dependent: :destroy
+  has_one :tutorial_progress, dependent: :destroy
 
   has_many :votings
 

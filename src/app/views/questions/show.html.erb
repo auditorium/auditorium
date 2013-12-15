@@ -6,7 +6,7 @@
         <%= fa_icon('lock', title: t('questions.is_private.icon_hint'), class: 'private') %>
       <% end %>
       <%= t('posts.types.question') %>
-      <span data-id="<%= dom_id(@question) %>" class="rating bright"><%= render 'shared/rating', post: @question %></span>
+      <span data-id="<%= dom_id(@question) %>" class="rating bright" id="vote-for-question"><%= render 'shared/rating', post: @question %></span>
     </span>
     <h2><%= @question.subject %></h2>    
   </header>
@@ -22,10 +22,13 @@
 
 <p class="hint hide-for-small"><%= t('tags.label') %> <%= tag_list(@question.tags) %></p>
 
-<section class="comments-section">
+<section id='comments-for-question' class="comments-section">
   <%= render 'shared/comments', commentable: @question %>
 </section>
 
-<section class="answers">
+<section id='answers-for-question' class="answers">
   <%= render 'shared/answers' %>
 </section>
+<% unless current_user.tutorial_progress.present? and current_user.tutorial_progress.question %>
+<%= render 'guides/question_in_detail_guide' %>
+<% end %>

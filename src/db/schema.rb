@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131128202055) do
+ActiveRecord::Schema.define(:version => 20131215211318) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -431,6 +431,18 @@ ActiveRecord::Schema.define(:version => 20131128202055) do
 
   add_index "topics", ["author_id"], :name => "index_topics_on_author_id"
   add_index "topics", ["group_id"], :name => "index_topics_on_group_id"
+
+  create_table "tutorial_progresses", :force => true do |t|
+    t.boolean  "introduction", :default => false
+    t.boolean  "groups",       :default => false
+    t.boolean  "group",        :default => false
+    t.boolean  "question",     :default => false
+    t.integer  "user_id"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+  end
+
+  add_index "tutorial_progresses", ["user_id"], :name => "index_tutorial_progresses_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "username"

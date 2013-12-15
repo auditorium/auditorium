@@ -8,11 +8,11 @@
   </header>
 
   <div class="filter-block" data-id="group-filter">
-    <div class="group-filter">
+    <div id="group-filter" class="group-filter">
       <%= render 'shared/group_filter' %>
     </div>
 
-    <div class="tag-filter <%= (params[:action].eql? 'my_groups') ? 'my-groups-filter' : 'groups-filter' %>">
+    <div id="tag-filter" class="tag-filter <%= (params[:action].eql? 'my_groups') ? 'my-groups-filter' : 'groups-filter' %>">
       <%= form_tag groups_path, method: 'get' do %>
 
         <%= text_field_tag :tag_tokens, nil, data: {load: @tag_ids}, id: 'group_filter_tag_tokens', class: 'token-input-field' %>
@@ -26,4 +26,7 @@
   </div>
 
   <%= link_to t('groups.actions.new'), new_group_path, class: 'button alert' %>
+  <% unless current_user.tutorial_progress.present? and current_user.tutorial_progress.groups %>
+  <%= render 'guides/groups_guide' %>
+  <% end %>
 </section>

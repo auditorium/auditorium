@@ -1,17 +1,18 @@
 <td><b><%= member.full_name %></b><br /><%= member.username %></td>
 <td><span class="radius label <%= member.role_in_group(@group) %>"><%= t("groups.member.#{member.role_in_group(@group)}")  %></span></td>
 
-<td>
+<td id="add_as_member">
   <% unless @group.is_member?(member) %>
     <%= link_to t('groups.member.add_to_members'), manage_membership_path(role: 'member', method: 'add', group_id: @group.id, member_id: member.id),remote: true, method: :post %>
   <% else %>
     <%= link_to t('groups.actions.remove_from_members'), manage_membership_path(role: 'member', method: t('general.actions.remove'),group_id: @group.id, member_id: member.id),remote: true, method: :post %>
   <% end %> 
 </td>
-<td>
+<td id="add-as-moderator">
   <% unless @group.is_moderator?(member) %>
     <%= link_to t('groups.member.add_to_moderators'), manage_membership_path(role: 'moderator', method: 'add', group_id: @group.id, member_id: member.id),remote: true, method: :post %>
   <% else %>
     <%= link_to t('groups.actions.remove_from_moderators'), manage_membership_path(role: 'moderator', method: t('general.actions.remove'), group_id: @group.id, member_id: member.id),remote: true, method: :post %>
   <% end %>
 </td>
+

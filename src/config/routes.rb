@@ -32,6 +32,7 @@ Auditorium::Application.routes.draw do
     post ':type/:id/downvote', to: 'ajax#downvote', as: :downvote
     post 'ajax/tab_content', to: 'ajax#tab_content', as: :tab_content
     post 'ajax/markdown_sheet', to: 'ajax#load_markdown_sheet'
+    post 'ajax/save_tutorial_progress', to: 'ajax#save_tutorial_progress'
 
     get 'groups/tagged/:tag', to: 'groups#tagged', as: :tag
     get 'search', to: 'search#index', as: :alternative_search

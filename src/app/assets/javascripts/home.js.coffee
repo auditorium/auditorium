@@ -1,7 +1,16 @@
+$.saveTutorialProgress = () ->
+  tutorial_name = $('input[name="guide"]').val()
+  $.ajax
+    type: 'post'
+    url: '/ajax/save_tutorial_progress'
+    data: { tutorial_name: tutorial_name }
+    error: (jqXHR, textStatus, errorThrown) ->
+      console.log errorThrown
+
 $.loadForm = (form_type) ->
   $.ajax
     type: 'post'
-    url: 'ajax/load_post_form'
+    url: '/ajax/load_post_form'
     data: { form_type: form_type }
     error: (jqXHR, textStatus, errorThrown) ->
       console.log errorThrown
@@ -15,10 +24,6 @@ $.requestSearchResults = (query) ->
     data: { query: query }
     error: (jqXHR, textStatus, errorThrown) ->
       console.log errorThrown
-
-$(document).foundation 'joyride', 'start',
-  template:
-    button: '<a href="#" class="small button alert joyride-next-tip"></a>'
 
 $('a#new-announcement, a#new-topic, a#new-question').on 'click', (e) ->
   e.preventDefault()

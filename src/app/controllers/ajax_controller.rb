@@ -33,19 +33,7 @@ class AjaxController < ApplicationController
     @message = t('votes.flash.not_saved')
 
     ActiveRecord::Base.transaction do 
-      vote_attributes = { votable_id: @post.id, votable_type: @post.class.name }
-      @vote = current_user.votings.where(vote_attributes).first
-      @vote = current_user.votings.build(vote_attributes) unless @vote.presence
-
-      case @vote.value 
-      when -1, 0, nil
-        @vote.value = 0 if @vote.value.nil?
-        @vote.value += 1
-        @message = t('votes.flash.successfully_upvoted')
-        @vote.save
-      else
-        @message = t('votes.flash.already_upvoted')
-      end
+      @message = @post.upvote(current_user)
 
       respond_to do |format|
         if @post.update_rating
@@ -73,22 +61,7 @@ class AjaxController < ApplicationController
     @message = t('votes.flash.not_saved')
     
     ActiveRecord::Base.transaction do 
-      vote_attributes = { votable_id: @post.id, votable_type: @post.class.name }
-      @vote = current_user.votings.where(vote_attributes).first
-      @vote = current_user.votings.build(vote_attributes) unless @vote
-
-      case @vote.value 
-      when 0, 1, nil
-        @vote.value = 0 if @vote.value.nil? 
-        @vote.value -= 1
-        @message = t('votes.flash.successfully_downvoted')
-        @vote.save
-      else
-        @message = t('votes.flash.already_downvoted')
-      end    
-
-    
-
+      @message = @post.downvote(current_user)
       respond_to do |format|
         if @post.update_rating
           format.js
@@ -123,4 +96,21 @@ class AjaxController < ApplicationController
     respond_to :js
   end
 
+  def save_tutorial_progress
+    name = params[:tutorial_name]
+    tutorial_progress = TutorialProgress.find_or_initialize_by_user_id(current_user.id)
+    puts "PROGRESS: #{tutorial_progress}"
+    case name
+    when 'intro'
+      tutorial_progress.introduction = true  
+    when 'groups'
+      tutorial_progress.groups = true
+    when 'group'
+      tutorial_progress.group = true
+    when 'question'
+      tutorial_progress.question = true
+    end
+
+    tutorial_progress.save!
+  end
 end

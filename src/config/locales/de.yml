@@ -782,3 +782,113 @@ de:
       privacy_policy: 'Datenschutzerklärung'
     privacy:
       header: 'Datenschutzerklärung'
+
+  guides:
+    buttons: 
+      next: 'Weiter'
+      end: 'Einführung beenden'
+      lets_go: 'Lass’ uns anfangen!'
+    links:
+      next_guide: 'Weiter zum nächsten Tutorial.'
+    home:
+      welcome: 
+        header: 'Willkommen auf auditorium.'
+        text: 'Dieses kleine interaktive Tutorial zeigt dir die wichtigsten Funktionen. Drücke auf "Weiter", um fortzufahren.'
+      post_stream: 
+        header: 'Übersicht aktueller Beiträge'
+        text: 'Hier kannst du alle aktuellen Beiträge sehen, die von Mitgliedern verfasst worden. Sie werden nach Tagen eingeordnet, sodass Du immer den Überblick hast, welcher Beitrag wann aktiv war.'
+      post_footer:
+        header: 'Details des Beitrags' 
+        text: |
+          Hier kannst Du sehen, in welcher Gruppe der Beitrag veröffentlicht wurde; wer ihn geschrieben hat und wie oft er aufgerufen und kommentiert wurde.
+      post_filter:
+        header: 'Beiträge filtern'
+        text: 'Hier kannst du auswählen, welche Beiträge gezeigt werden sollen; wähle aus, ob Fragen, Ankündigungen und Themen angezeigt werden sollen und ob du nur Beiträge sehen willst, die von dir abonniert wurden.'
+      tag_filter:
+        header: 'Beiträge durch Tags filtern'
+        text: 'Hier kannst du nach Tags suchen und damit die Beiträge filtern. Zum Beispiel kannst du die Beiträge eines bestimmten Lehrstuhls filtern, indem zu z.B. den Tag "Rechnernetze" suchst.'
+      conclusion:
+        header: 'Das war der erste Teil'
+        text: 'Herzlichen Glückwunsch, du hast den ersten Teil des interaktiven Tutorials hinter dich gebracht. Du kannst über den folgenden Link direkt zum nächsten Tutorial gehen oder die Einfürhung beenden.'
+    groups:
+      welcome:
+        header: 'Gruppenübersicht'
+        text: 'Das ist der zweite Teil der Einführung. Hiermit soll dir die Gruppenübersichtsseite erklärt werden.'
+      group_filter:
+        header: 'Gruppen nach Typ filtern'
+        text: 'Wähle aus, welche Gruppentypen dir präsentiert werden sollen. Du kannst wählen, ob Lehrveranstaltungen, Studiengruppen und Themengruppen gezeigt werden sollen. Außerdem kannst du, wie bei den Beiträgen auch, nur die Gruppen auflisten, denen du folgst.'
+      tag_filter:
+        header: 'Tags zum filtern'
+        text: 'Mit der Hilfe von Tags können die Gruppen gefiltert werden. Sobald du mit dem Eingeben in das freie Feld beginnst, werden dir Vorschläge in Echtzeit dargestellt. Wähle einfach einen Vorschlag aus und die Gruppen werden sofort gefiltert.'
+      groups_grid:
+        header: 'Gruppen im Überblick'
+        text: 'Hier werden dir alle Gruppen aufgelistet. Jedes Gruppenfeld zeigt die Anzahl der Ankündigungen, Fragen und Themen an. In modernen Browsern, wie dem Firefox, Google Chrome oder Safari werden weitere nützliche Informationen durch den Klick auf den hervorgehobenen Pfeil präsentiert: Anzahl Mitglieder, Beschreibung und wer die Gruppe erstellt hat.'
+      following:
+        header: 'Einer Gruppe folgen'
+        text: 'Wenn du auf den Sternenumriss drückst kannst du der Gruppe folgen; du kannst an einem gelb-gefüllten Stern erkennen, dass du einer Gruppe folgst.'
+      conclusion:
+        header: 'Das war die Gruppenübersicht'
+        text: 'Herzlichen Glückwunsch, du hast den zweiten Teil des interaktiven Tutorials hinter dich gebracht. Du kannst über den folgenden Link direkt zum nächsten Tutorial gehen oder die Einfürhung beenden.'
+    single_group:
+      welcome:
+        header: 'Eine Gruppe im Detail'
+        text: 'Das ist schon der dritte Teil der kleinen Einführung. Nun wird dir gezeigt, was du in einer Gruppe alles machen kannst. Drücke auf "Weiter", um fortzufahren.'
+      following:
+        header: 'Einer Gruppe folgen'
+        text: 'In auditorium kann man ausgewählten Gruppen folgen. Wenn du auf "Ich möchte der Gruppe folgen" drückst, wirst du Mitglied der Gruppe und erhälst automatisch E-Mail-Benachrichtigungen, wenn jemand einen Beitrag geschrieben hat. Folgst du einer Gruppe findest du hier einen blauen Knopf vor mit der Aufschrift: "Ich folge der Gruppe"; wenn du auf diesen Knopf drückst, wird deine Mitgliedschaft gekündigt und du erhälst keine weiteren Benachrichtigungen mehr zu Aktionen (außer du bist Autor gewesen und hast das entsprechend eingesetellt).'
+      become_moderator:
+        header: 'Moderator werden'
+        text: 'Falls du eine Gruppe aktiv unterstützen möchtest, dann kannst du hier drücken, um eine Anfrage zu stellen, Moderator zu werden. Die Gruppenmoderatoren oder Administratoren von auditorium werden deine Anfrage anschauen und entscheiden, ob du als Moderator in Frage kommst. :)'
+      toggle_members_list:
+        header: 'Mitglieder bearbeiten'
+        text: 'Als Moderator einer Gruppe kannst Du Mitglieder einer Gruppe bearbeiten. Hierzu musst du nur auf diesen Knopf drücken. Dann öffnet sich eine Suchmaske und eine Tabelle.'
+      edit_membership:
+        header: 'Mitglieder hinzufügen und bearbeiten'
+        text: 'Suche nach Mitgliedern, indem du ihren Namen, Benutzernamen oder E-Mail-Adresse eingibst. In der Tabelle erscheinen daraufhin alle Mitglieder auf die die Anfrage passt.'
+      announcements:
+        header: 'Ankündigungen'
+        text: 'Als Moderator kann man Ankündigungen in Gruppen veröffentlichen, um den Gruppenmitgliedern etwas wichtiges mitzuteilen.'
+      questions:
+        header: 'Fragen'
+        text: 'Du hast Fragen zum Thema? Oder du suchst etwas? Dann kannst du das hier als Sprachrohr verwenden, um deine Fragen beantwortet zu bekommen.'
+      topics:
+        header: 'Themen'
+        text: 'Du möchtest zu einem Thema, was dich interessiert, diskutieren und Wissen austauschen? Dann kannst du hier ein neues Thema erstellen.'
+      add_as_member:
+        header: 'Als Mitglied hinzufügen'
+        text: 'Wenn du auf diesen Link drückst, kannst du den Nutzer als Mitglied der Gruppe hinzufügen.'
+      add_as_moderator:
+        header: 'Als Moderator hinzufügen'
+        text: 'Wenn du auf diesen Link drückst, wird der Nutzer als Moderator für diese Gruppe eingetragen und hat daraufhin volle Berechtigung, wie Mitglieder bearbeiten, Ankündigungen schreiben oder die Gruppe zu bearbeiten.'
+      conclusion:
+        header: 'Du kennst dich aus!'
+        text: 'Herzlichen Glückwunsch, das war der dritte Teil der Einführung. Nun hast du die Gruppenansicht kennengelernt.'
+    question_in_detail:
+      welcome: 
+        header: 'Eine Frage im Detail'
+        text: 'Diese kleine Einführung wird dir erklären, wie du mit einer Frage richtig umgehst, was du alles machen kannst und worauf du achten solltest.'
+      vote_for_question:
+        header: "Frage bewerten"
+        text: 'Jeder Beitrag auf auditorium kann durch jeden Nutzer jeweils einmal bewertet werden: positiv oder negativ. Diese Bewertung spiegelt sich in der Reputation des jeweiligen Autors wider. Sobald eine positive Bewertung erfolgt, bekommt der Autor 5 Punkte gutgeschrieben; wird der Beitrag als negativ bewertet, so bekommt der Autor 5 Punkte abgezogen - der Nutzer, der den Beitrag jedoch negativ bewertet hat, wird durch einen Minuspunkt "bestraft". Das soll den Missbrauch dieser Funktion vorbeugen.'
+      edit_question:
+        header: 'Frage bearbeiten'
+        text: 'Falls du einen Rechtschreibfehler gefunden hast oder du die Frage ergänzen willst, kannst du auf diesen Link drücken.'
+      comments_for_question:
+        header: 'Frage kommentieren'
+        text: 'Hast du Fragen zu einem Detail? Fehlt etwas in der Frage? Dann ist es sinnvoll einen Kommentar zu schreiben, anstatt eine Antwort zu schreiben.'
+      answer_for_question:
+        header: 'Antworten'
+        text: 'Es muss nicht immer nur eine korrekte Antwort geben. Auditorium bietet die Möglichkeit mehrere Antworten zu geben. Der Autor der Frage markiert für sich die hilfreichste Antwort, um anderen zu zeigen, was ihm geholfen hat.'
+      comments_for_answer:
+        header: 'Kommentare zu Antworten'
+        text: 'Neben Fragen können auch Kommentare zu Antworten abgegeben werden; diese helfen dabei, die Antwort richtig zu verstehen oder auf Details bzw. Probleme hinzuweisen und die Antwort damit qualitativ besser zu machen.'
+      new_answer:
+        header: 'Frage beantworten'
+        text: 'Falls du die Lösung zum Problem der Frage kennst, so kannst du gern eine Antwort abgeben. Hast du aber keine konkrete Antwort, sondern eher einen Hinweis oder einen Kommentar, ist es besser diesen als Kommentar zur Frage hinzuzufügen.'
+      conclusion:
+        header: 'Geschafft!'
+        text: 'Herzlichen Glückwunsch, du hast nun das vierte Tutorial hinter dich gebracht. Nun weißt du, wie du in auditorium mit Fragen umgehen kannst.'
+
+
+
+    

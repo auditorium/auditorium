@@ -9,13 +9,13 @@
      </div>
   </article>
 
-  <section class="comments-section">
+  <section id="comments-for-answer" class="comments-section">
     <%= render 'shared/comments', commentable: answer %>
   </section>
 <% end %>
 
 
-<header>
+<header id="new-answer">
   <h3><%= t('answers.headers.new') %></h3>
 </header>
 <%= form_for([@question, @answer = @question.answers.build]) do |f| %>

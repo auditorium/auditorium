@@ -1,7 +1,7 @@
 <span class="ribbon">
   <%= t("groups.label.#{group.group_type}") %>
 
-  <span class="bookmark">
+  <span id="following" class="bookmark">
   <% if group.followers.include?(current_user) %>
     <%= link_to fa_icon('star'), following_group_path(group, method: 'unfollow'), remote: true, method: :post, title: t('groups.unfollow_link_text') %>
   <% else %>
