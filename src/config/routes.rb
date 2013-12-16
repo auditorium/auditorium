@@ -13,7 +13,7 @@ Auditorium::Application.routes.draw do
     get 'users/moderation/search', to: 'users#search', as: :search_users
     post 'users/:id/confirm', to: 'users#confirm', :as => :confirm_user
     
-    resources :users, except: [:show] do 
+    resources :users do 
       member do
         post 'accept_privacy_policy'
       end

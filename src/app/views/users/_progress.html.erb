@@ -1,0 +1,11 @@
+<% title @user %>
+<header>
+  <h2>
+    <%= t('users.profile.progress.title') %>
+  </h2>
+</header>
+
+<section id="tutorial-progress">
+  <progress value="<%= current_user.tutorial_progress.progress %>" max="<%= current_user.tutorial_progress.max_value %>"></progress> 
+
+</section>

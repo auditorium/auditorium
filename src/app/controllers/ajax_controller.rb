@@ -112,5 +112,7 @@ class AjaxController < ApplicationController
     end
 
     tutorial_progress.save!
+
+    respond_to :js
   end
 end

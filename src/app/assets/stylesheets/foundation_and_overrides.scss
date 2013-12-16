@@ -3224,3 +3224,12 @@ ul.notifications, ul.membership_requests {
   box-shadow: 0 0 5px $anthracite;
   border: 1px solid $white;
 }
+
+/* gamification */
+
+progress {  
+    background-color: darken($gray, 5%);
+    color: $primary-color;  
+    border: 0;  
+    height: 10px;   
+}  
