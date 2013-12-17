@@ -45,6 +45,7 @@ class User < ActiveRecord::Base
   
   has_one :setting, dependent: :destroy
   has_one :tutorial_progress, dependent: :destroy
+  has_one :level
 
   has_many :votings
 
@@ -173,6 +174,18 @@ class User < ActiveRecord::Base
 
   def unread_notifications
     self.notifications.where(read: false)
+  end
+
+  def profile_progress
+    value = 0
+    value += 1 if self.first_name.present?
+    value += 1 if self.last_name.present?
+    value += 1 if self.username.present?
+    value
+  end
+
+  def profile_progress_percentage
+    self.profile_progress * 100.0 / 3
   end
 
   

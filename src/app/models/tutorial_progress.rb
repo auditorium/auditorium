@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: tutorial_progresses
+#
+#  id           :integer          not null, primary key
+#  introduction :boolean          default(FALSE)
+#  groups       :boolean          default(FALSE)
+#  group        :boolean          default(FALSE)
+#  question     :boolean          default(FALSE)
+#  user_id      :integer
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
 class TutorialProgress < ActiveRecord::Base
   belongs_to :tutorial_progress
   attr_accessible :group, :groups, :introduction, :question
@@ -15,5 +29,9 @@ class TutorialProgress < ActiveRecord::Base
 
   def max_value
     4
+  end
+
+  def percentage
+    self.progress * 100.0 / self.max_value 
   end
 end

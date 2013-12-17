@@ -21,6 +21,7 @@ gem 'exception_notification'
 # for markdown rich text
 gem 'redcarpet', '~> 3.0.0'
 gem 'coderay', '~> 1.1.0'
+gem 'merit'
 
 group :production do
   gem 'memcache-client'
@@ -40,7 +41,7 @@ group :test, :development do
   gem 'guard-spork'
   gem 'childprocess'
   gem 'faker', "~> 1.1.2"
-  #gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
+  gem 'annotate', ">=2.6.0"
   gem 'translate-rails3', require: 'translate'
 end
 

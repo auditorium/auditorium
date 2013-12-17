@@ -1,6 +1,18 @@
 Auditorium::Application.routes.draw do
 
-  get "courses/show"
+  get "badges/index"
+
+  get "badges/show"
+
+  get "badges/new"
+
+  get "badges/create"
+
+  get "badges/edit"
+
+  get "badges/update"
+
+  get "badges/destroy"
 
   scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do 
 
@@ -12,6 +24,9 @@ Auditorium::Application.routes.draw do
     get 'users/moderation', to: 'users#moderation', as: :users_moderation
     get 'users/moderation/search', to: 'users#search', as: :search_users
     post 'users/:id/confirm', to: 'users#confirm', :as => :confirm_user
+    
+    resources :levels
+    resources :badges 
     
     resources :users do 
       member do

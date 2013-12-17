@@ -50,7 +50,7 @@
           
           <% if current_user.present? %>
             <!--<li><%= nav_link fa_icon('user', text: current_user), user_path(current_user) %></li> -->
-            <li><%= nav_link fa_icon('user', text: current_user), edit_user_registration_path %></li>
+            <li><%= nav_link fa_icon('user', text: current_user), current_user %></li>
             <li><%= link_to current_user.unread_notifications.size, notifications_path, class: "notification-button #{'red' if current_user.unread_notifications.size > 0}", title: t('navigation.notifications', size: current_user.unread_notifications.size) %></li>
             <li><%= link_to fa_icon('sign-out', text: t('navigation.sign_out')), destroy_user_session_path, class: color_scheme, method: :delete %></li>
           <% else %>

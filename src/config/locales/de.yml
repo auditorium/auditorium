@@ -221,6 +221,7 @@ de:
         about: 'Über uns'
         support: 'Hilfe'
         navigation: 'Navigation'
+        gamification: 'Gamification'
       links:
         imprint: 'Impressum'
         privacy: 'Datenschutz'
@@ -228,6 +229,9 @@ de:
         email_us: 'Schreibe uns eine E-Mail'
         github: 'auditorium auf github'
         support_group: 'Gruppe für Hilfe'
+        badges: 'Erfolge und Auszeichnungen'
+        levels: 'Übersicht der Level'
+        progress: 'Dein Fortschritt'
     search: 
       labels: 'Suche'
       press_enter: 'Drücke auf suchen, nachdem du deine Suche eingegeben hast.'
@@ -666,6 +670,7 @@ de:
         delete: 'Du darfst den Nutzer nicht löschen!'
     tabs:
       about: 'Zur Person'
+      progress: 'Erfolge und Auszeichnungen'
       settings: 'Einstellungen'
       groups: 'Gruppen'
       questions: 'Fragen'
@@ -689,6 +694,8 @@ de:
         submit: 'Persönliche Informationen speichern'
       about:
         title: 'Zur Person'
+      progress:
+        title: 'Erfolge und Auszeichnungen'
       groups:
         title: "Gruppen, denen ich Folge"
       questions:
@@ -888,7 +895,57 @@ de:
       conclusion:
         header: 'Geschafft!'
         text: 'Herzlichen Glückwunsch, du hast nun das vierte Tutorial hinter dich gebracht. Nun weißt du, wie du in auditorium mit Fragen umgehen kannst.'
-
+  progress:
+    percentage: '%{value}%'
+    point_difference: '%{value} von %{max} Punkte'
+    reputation: 
+      long: '%{score} Punkte'
+      short: 'Rep. %{score}'
+    level:
+      header: 'Level %{level}'
+      next_level: 'Nur noch %{points} Punkte bis zum nächsten Level!'
+    tutorial_progress:
+      header: 'Einführung in auditorium'
+      introduction: 'Einführung'
+      groups: 'Gruppenübersicht'
+      group: 'Gruppe im Detail'
+      question: 'Frage im Detail'
+    profile_progress:
+      header: 'Angaben zur Person'
+      first_name: 'Vorname'
+      last_name: 'Nachname'
+      username: 'Benutzername'
+      role_at_university: 'Rolle an der Universität (Student, Mitarbeiter, Dozent, ...)'
+    badges: 
+      header: 'Auszeichnungen'
+  levels:
+    title: 'Level %{number}'
+    headers:
+      new: 'Neues Level hinzufügen'
+      edit: 'Level bearbeiten'
+      index: 'Level Übersicht'
+      show: 'Level %{number}'
+    content:
+      threshold: 'Der Nutzer steigt zu diesem Level auf, sobald er mindestens %{threshold} Punkte erreicht hat.'
+      empty_description: 'Es existiert noch keine Beschreibung für dieses Level.'
+    actions:
+      add: 'Neues Level hinzufügen'
+      update: 'Level aktualisieren'
+      submit: 'Level hinzufügen'
+      edit: 'bearbeiten'
+      remove: 'löschen'
+    labels:
+      number: 'Level-Nummer'
+      threshold: 'Schwellenpunktzahl'
+      description: 'Beschreibung'
+    confirm:
+      delete: 'Möchtest du das Level wirklich entfernen?'
+    flash:
+      updated: 'Das Level wurde aktualisiert.'
+      destroyed: 'Das Level wurde entfernt.'
+      created: 'Das Level wurde hinzugefügt.'
+    hints: 
+      index: 'Hier siehst du alle Level im Überblick'
 
 
     

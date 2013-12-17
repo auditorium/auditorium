@@ -1,0 +1,18 @@
+<section class="large-12 columns" id="level">
+  <header>
+    <h3><%= t('levels.headers.show', number: @level.number)%></h3>
+  </header>
+  <article class="block">
+  <p><%= t('levels.content.threshold', threshold: @level.threshold) %></p>
+
+  <% if @level.description.present? %> 
+    <p><%= @level.description %></p>
+  <% else %>
+    <p class="hint"><%= t('levels.content.empty_description') %></p>
+  <% end %>
+
+  <%= link_to fa_icon('pencil', text: t('levels.action.edit')), edit_level_path(@level), class: 'button tiny primary' %>
+  <%= link_to fa_icon('times', text: t('levels.action.remove')), @level, method: :delete, confirm: t('levels.confirm.delete'), class: 'button tiny secondary' %>
+  </article>
+  
+</section>

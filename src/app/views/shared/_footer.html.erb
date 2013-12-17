@@ -1,4 +1,4 @@
-<div class="large-4 columns">
+<div class="large-3 columns">
   <h2><%= t('general.footer.headers.navigation') %></h2>
   <ul class="no-style">
     <li><%= nav_link t('navigation.home'), home_path %></li>
@@ -17,7 +17,7 @@
   </ul>
 
 </div>
-<div class="large-4 columns">
+<div class="large-3 columns">
   <h2><%= t('general.footer.headers.support') %></h2>
   <ul class="no-style">
     <li><%= link_to t('general.footer.links.support_group'), '/groups/110804009' %></li>
@@ -29,7 +29,7 @@
     </li>
   </ul>
 </div> 
-<div class="large-4 columns">
+<div class="large-3 columns">
   <h2><%= t('general.footer.headers.about') %></h2>
   <ul class="no-style">
     <li><%= link_to t('general.footer.links.imprint'), imprint_path %></li>
@@ -37,6 +37,17 @@
   </ul>
 
 </div>
+
+<div class="large-3 columns">
+  <h2><%= t('general.footer.headers.gamification') %></h2>
+  <ul class="no-style">
+    <li><%= link_to t('general.footer.links.levels'), levels_path %></li>
+    <li><%= link_to t('general.footer.links.badges'), badges_path %></li>
+    <li><%= link_to t('general.footer.links.progress'), user_path(current_user) %></li>
+  </ul>
+
+</div>
+
 
 
 <div class="clearfix"></div>

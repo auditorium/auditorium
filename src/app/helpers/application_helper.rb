@@ -26,6 +26,10 @@ module ApplicationHelper
     end
   end
 
+  def is_done?(action)
+    action == true ? fa_icon('check-square') : fa_icon('square-o')
+  end
+
   def post_url(post)
     case post.class.name 
     when 'Question'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131215211318) do
+ActiveRecord::Schema.define(:version => 20131217144331) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -74,6 +74,16 @@ ActiveRecord::Schema.define(:version => 20131215211318) do
 
   add_index "answers", ["answer_to_id"], :name => "index_answers_on_answer_to_id"
   add_index "answers", ["author_id", "question_id"], :name => "index_answers_on_author_id_and_question_id"
+
+  create_table "badges", :force => true do |t|
+    t.text     "description"
+    t.string   "title"
+    t.integer  "user_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "badges", ["user_id"], :name => "index_badges_on_user_id"
 
   create_table "chairs", :force => true do |t|
     t.string   "name"
@@ -253,6 +263,17 @@ ActiveRecord::Schema.define(:version => 20131215211318) do
   end
 
   add_index "lectures", ["chair_id"], :name => "index_lectures_on_chair_id"
+
+  create_table "levels", :force => true do |t|
+    t.integer  "threshold"
+    t.integer  "number"
+    t.integer  "user_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.text     "description"
+  end
+
+  add_index "levels", ["user_id"], :name => "index_levels_on_user_id"
 
   create_table "membership_requests", :force => true do |t|
     t.integer  "user_id"

@@ -1,0 +1,24 @@
+<section id="levels">
+  <header>
+    <h2><%= t('levels.headers.index')%></h2>
+    <p class="hint"><%= t('levels.hints.index') %></p>
+  </header>
+
+  <article>
+
+    <ul class="level-list">
+      <% @levels.each do |level| %>
+        <li>
+          <span class="level-number"><%= link_to t('levels.title', number: level.number), level_path(level) %></span>
+          <span class="level-threshold"><%= t('levels.content.threshold', threshold: level.threshold) %></span>
+          <span class="right"><small>
+            <%= link_to fa_icon('pencil', text: t('levels.actions.edit')), edit_level_path(level) %> &middot;
+            <%= link_to fa_icon('times', text: t('levels.actions.remove')), level, method: :delete, confirm: t('levels.confirm.delete') %></small>
+          </span>
+          <div class="clearfix"></div>
+        </li>
+      <% end %>
+    </ul>
+    <%= link_to t('levels.actions.add'), new_level_path, class: 'button alert' %>
+  </article>
+</section>

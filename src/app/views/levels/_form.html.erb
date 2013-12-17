@@ -1,0 +1,31 @@
+<%= error_messages! @level %>
+<article class="block" id="level">
+
+<%= form_for(@level) do |f| %>
+  <ul class="form">
+    <li class="input-fields">
+      <%= f.label :number, t('levels.labels.number') %>
+      <%= f.number_field :number, class: 'large-12 columns' %>
+    </li>
+
+    <li class="input-fields">
+      <%= f.label :threshold, t('levels.labels.threshold') %>
+      <%= f.number_field :threshold, class: 'large-12 columns' %>
+    </li>
+
+    <li class="input-fields">
+      <%= f.label :description, t('levels.labels.description') %>
+      <%= f.text_area :description, class: 'large-12 columns' %>
+    </li>
+
+    <li class="input-fields">
+      <% if params[:action].eql? 'new' or params[:action].eql? 'create' %>
+        <%= f.submit t('levels.actions.submit'),id: 'submit', class: 'submit small button' %>
+      <% elsif params[:action].eql? 'edit' or params[:action].eql? 'update' %>
+        <%= f.submit t('levels.actions.update'), class: 'submit small button' %>
+      <% end %>
+      <%= link_to t('general.actions.cancel'), :back, confirm: t('general.confirm.cancel'),class: 'button secondary small' %>
+    </li>
+  </ul>
+<% end %>
+</article>

@@ -3,6 +3,7 @@
 <header class="large-10 columns">
   <h2>
     <%= @user %>
+    <small class="subheader">(<%= t('progress.reputation.long', score: @user.score) %>)</small>
   </h2>
   <% if @user.admin? %>
     <span class="label admin"><%= t('users.role.is_admin') %></span>
