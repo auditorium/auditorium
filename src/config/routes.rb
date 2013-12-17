@@ -1,19 +1,4 @@
 Auditorium::Application.routes.draw do
-
-  get "badges/index"
-
-  get "badges/show"
-
-  get "badges/new"
-
-  get "badges/create"
-
-  get "badges/edit"
-
-  get "badges/update"
-
-  get "badges/destroy"
-
   scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do 
 
     devise_for :users, :controllers => { :passwords => "passwords",
@@ -26,7 +11,6 @@ Auditorium::Application.routes.draw do
     post 'users/:id/confirm', to: 'users#confirm', :as => :confirm_user
     
     resources :levels
-    resources :badges 
     
     resources :users do 
       member do
