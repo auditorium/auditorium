@@ -46,6 +46,7 @@ class User < ActiveRecord::Base
   has_one :setting, dependent: :destroy
   has_one :tutorial_progress, dependent: :destroy
   has_one :level
+  has_many :badges
 
   has_many :votings
 

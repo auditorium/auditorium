@@ -11,7 +11,7 @@ Auditorium::Application.routes.draw do
     post 'users/:id/confirm', to: 'users#confirm', :as => :confirm_user
     
     resources :levels
-    
+    resources :badges
     resources :users do 
       member do
         post 'accept_privacy_policy'

@@ -1,21 +1,25 @@
 class GamificationObserver < ActiveRecord::Observer
   observe :group, :question, :announcement, :topic, :comment, :answer, :voting
 
-  def after_save(record)
-    case record
-    when Group
+  def after_create(record)
+    puts "=============== OBSERVING ==============="
+    case record.class.name
+    when 'Group'
       puts "GROUP"
-    when Question
-      puts "QUESTION"
-    when Announcement
+    when 'Question'
+      if record.author.questions.size >= 5
+        record.author.badges << Badge.find_by_title('asker') 
+      end
+      puts " ============= QUESTION ============== "
+    when 'Announcement'
       puts "ANNOUNCEMENT"
-    when Topic
+    when 'Topic'
       puts "TOPIC"
-    when Comment
+    when 'Comment'
       puts "COMMENT"
-    when Answer
+    when 'Answer'
       puts "ANSWER"
-    when Voting
+    when 'Voting'
       puts "VOTING"
 
     end

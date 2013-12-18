@@ -21,7 +21,7 @@ gem 'exception_notification'
 # for markdown rich text
 gem 'redcarpet', '~> 3.0.0'
 gem 'coderay', '~> 1.1.0'
-gem 'merit'
+gem 'browser'
 
 group :production do
   gem 'memcache-client'

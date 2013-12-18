@@ -60,6 +60,10 @@ module ApplicationHelper
     end
   end
 
+  def badge_categories
+    %w{bronze silver gold platinium}
+  end
+
   def color_scheme 
     params[:controller]
   end

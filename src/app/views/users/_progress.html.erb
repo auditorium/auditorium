@@ -8,8 +8,8 @@
 <div class="row">
   <div class="large-12 columns">
     <h3><%= t('progress.level.header', level: 5)%></h3>
-  <progress value="150" max="2250"></progress> <%= t('progress.point_difference', value: current_user.score, max: 2250) %>
-  <p class="hint"><%= t('progress.level.next_level', points: 2105) %></p>
+  <progress value="<%= @user.score %>" max="2250"></progress> <%= t('progress.point_difference', value: @user.score, max: 2250) %>
+  <p class="hint"><%= t('progress.level.next_level', points: (2250 - @user.score)) %></p>
   </div>
 </div>
 
@@ -18,21 +18,21 @@
     <h3><%= t('progress.tutorial_progress.header')%></h3>
     
     <ul class="plain-list">
-      <li><progress value="<%= current_user.tutorial_progress.progress %>" max="<%= current_user.tutorial_progress.max_value %>"></progress> <%= t('progress.percentage', value: current_user.tutorial_progress.percentage) %></li>
-      <li><%= is_done? current_user.tutorial_progress.introduction %>&nbsp;<%= t('progress.tutorial_progress.introduction') %></li>
-      <li><%= is_done? current_user.tutorial_progress.groups %>&nbsp;<%= t('progress.tutorial_progress.groups') %></li>
-      <li><%= is_done? current_user.tutorial_progress.group %>&nbsp;<%= t('progress.tutorial_progress.group') %></li>
-      <li><%= is_done? current_user.tutorial_progress.question %>&nbsp;<%= t('progress.tutorial_progress.question') %></li>
+      <li><progress value="<%= @user.tutorial_progress.progress %>" max="<%= @user.tutorial_progress.max_value %>"></progress> <%= t('progress.percentage', value: @user.tutorial_progress.percentage) %></li>
+      <li><%= is_done? @user.tutorial_progress.introduction %>&nbsp;<%= t('progress.tutorial_progress.introduction') %></li>
+      <li><%= is_done? @user.tutorial_progress.groups %>&nbsp;<%= t('progress.tutorial_progress.groups') %></li>
+      <li><%= is_done? @user.tutorial_progress.group %>&nbsp;<%= t('progress.tutorial_progress.group') %></li>
+      <li><%= is_done? @user.tutorial_progress.question %>&nbsp;<%= t('progress.tutorial_progress.question') %></li>
     </ul>
   </div>
   <div id="profile-progress" class="large-6 columns">
     <h3><%= t('progress.profile_progress.header')%></h3>
     
     <ul class="plain-list">
-      <li><progress value="<%= current_user.profile_progress %>" max="3"></progress> <%= t('progress.percentage', value: sprintf('%.2f', current_user.profile_progress_percentage)) %></li>
-      <li><%= is_done? current_user.first_name.present? %>&nbsp;<%= t('progress.profile_progress.first_name') %></li>
-      <li><%= is_done? current_user.last_name.present? %>&nbsp;<%= t('progress.profile_progress.last_name') %></li>
-      <li><%= is_done? current_user.username.present? %>&nbsp;<%= t('progress.profile_progress.username') %></li></li>
+      <li><progress value="<%= @user.profile_progress %>" max="3"></progress> <%= t('progress.percentage', value: sprintf('%.2f', @user.profile_progress_percentage)) %></li>
+      <li><%= is_done? @user.first_name.present? %>&nbsp;<%= t('progress.profile_progress.first_name') %></li>
+      <li><%= is_done? @user.last_name.present? %>&nbsp;<%= t('progress.profile_progress.last_name') %></li>
+      <li><%= is_done? @user.username.present? %>&nbsp;<%= t('progress.profile_progress.username') %></li></li>
     </ul>
   </div>
 </div>
@@ -40,5 +40,28 @@
 <div class="row">
   <div class="large-12 columns">
     <h3><%= t('progress.badges.header')%></h3>
+    <% if @user.badges.size > 0 %>
+      <ul class="badge-list">
+      <% @user.badges.each do |badge| %>
+        <li class="plain badge">
+         <%= content_tag('span', fa_icon('trophy', text: t('badges.content.title', title: badge.title)), class: "badge #{badge.category}") %>
+        </li>
+        <li class="plain badge">
+         <%= content_tag('span', fa_icon('trophy', text: t('badges.content.title', title: badge.title)), class: "badge #{badge.category}") %>
+        </li>
+        <li class="plain badge">
+         <%= content_tag('span', fa_icon('trophy', text: t('badges.content.title', title: badge.title)), class: "badge #{badge.category}") %>
+        </li>
+        <li class="plain badge">
+         <%= content_tag('span', fa_icon('trophy', text: t('badges.content.title', title: badge.title)), class: "badge #{badge.category}") %>
+        </li>
+        <li class="plain badge">
+         <%= content_tag('span', fa_icon('trophy', text: t('badges.content.title', title: badge.title)), class: "badge #{badge.category}") %>
+        </li>
+      <% end %>
+    </ul>
+    <% else %>
+      <p class="hint"><%= t('badges.hints.no_badges_earned') %></p>
+    <% end %>
   </div>
 </div>

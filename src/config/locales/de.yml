@@ -946,6 +946,34 @@ de:
       created: 'Das Level wurde hinzugefügt.'
     hints: 
       index: 'Hier siehst du alle Level im Überblick'
-
+  badges:
+    headers:
+      new: 'Neuen Badge hinzufügen'
+      edit: 'Badge bearbeiten'
+      index: 'Badge Übersicht'
+      show: 'Badge %{number}'
+    content:
+      empty_description: 'N/A'
+      title: '%{title}'
+    actions:
+      add: 'Neuen Badge hinzufügen'
+      update: 'Badge aktualisieren'
+      submit: 'Badge hinzufügen'
+      edit: 'bearbeiten'
+      remove: 'löschen'
+    labels:
+      title: 'Name des Badges'
+      description: 'Beschreibung'
+      score: 'Punkte des Badges'
+      category: 'Art des Badges'
+    confirm:
+      delete: 'Möchtest du das Badge wirklich entfernen?'
+    flash:
+      updated: 'Das Badge wurde aktualisiert.'
+      destroyed: 'Das Badge wurde entfernt.'
+      created: 'Das Badge wurde hinzugefügt.'
+    hints: 
+      index: 'Hier siehst du alle Badge im Überblick'
+      no_badges_earned: 'Du hast noch keine Auszeichnungen erhalten.'
 
     

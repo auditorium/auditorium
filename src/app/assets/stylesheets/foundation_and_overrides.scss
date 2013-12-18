@@ -3231,41 +3231,94 @@ progress {
     background-color: darken($gray, 5%);
     border: 0;  
     height: 10px; 
+    margin-right: 10px;
     vertical-align: middle;  
     &::-moz-progress-bar { background: $notice-color; }
     &::-webkit-progress-bar { background: darken($gray, 5%); }
     &::-webkit-progress-value { background: $notice-color; }
 }  
 
-ul.level-list {
+ul.level-list, ul.badge-list {
   list-style: none;
 
   li {
+    @include default-box-shadow;
+    &.plain {
+      box-shadow: none;
+    }
     vertical-align: bottom;
     background: $white;
-    @include default-box-shadow;
     margin:2px 0;
     padding: 5px 10px;
     border-left: 3px solid $notice-color;
+  }
+}
 
-    .level-number {
-      color: $white;
-      font-size:1em;
-      border: 1px solid $gray;
-      padding:0px 10px;
-      background-color: $notice-color;
-      &:hover {
-          background-color: darken($notice-color, 10%);
-        }
-      a { 
-        color: $white 
+ul.level-list li {
+  .level-number {
+    color: $white;
+    font-size:1em;
+    border: 1px solid $gray;
+    padding:0px 10px;
+    background-color: $notice-color;
+    &:hover {
+        background-color: darken($notice-color, 10%);
       }
-    }
-
-    .level-threshold {
-      font-style: italic;
-      font-size: 0.9em;
-      margin-left: 10px;
+    a { 
+      color: $white 
     }
   }
+
+  .level-threshold {
+    font-style: italic;
+    font-size: 0.9em;
+    margin-left: 10px;
+    color: darken($dark-gray, 30%);
+  }
+}
+
+ul.badge-list li {
+  border-left: none;
+
+  &.plain {
+    box-shadow: none;
+
+  }
+  .badge-title {
+    display:inline-block;
+    width:150px;
+  }
+  .badge-description {
+    font-size: 0.9em;
+    margin-left: 10px;
+    color: darken($dark-gray, 30%);
+  }
+}
+
+.badge {
+  @include default-box-shadow; 
+  padding:5px 20px;
+  font-size:1em;
+  color: $white;
+  border-radius: 4px;
+  text-align: center;
+  &.bronze { 
+    background-color: $orange;
+  }
+
+  &.silver { 
+    background-color: $secondary-color;
+  }
+
+  &.gold { 
+    background-color: $warning-color;
+  }
+
+  &.platinium { 
+    background-color: $anthracite;
+  }
+}
+
+li.badge {
+  display: inline;
 }

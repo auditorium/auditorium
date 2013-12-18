@@ -1,0 +1,36 @@
+<%= error_messages! @badge %>
+<article class="block" id="badge">
+
+<%= form_for(@badge) do |f| %>
+  <ul class="form">
+    <li class="input-fields">
+      <%= f.label :title, t('badges.labels.title') %>
+      <%= f.text_field :title, class: 'large-12 columns' %>
+    </li>
+
+    <li class="input-fields">
+      <%= f.label :description, t('badges.labels.description') %>
+      <%= f.text_area :description, class: 'large-12 columns' %>
+    </li>
+
+    <li class="input-fields">
+      <%= f.label :score, t('badges.labels.score') %>
+      <%= f.text_field :score, class: 'large-12 columns' %>
+    </li>
+
+    <li class="input-fields">
+      <%= f.label :category, t('badges.labels.category') %>
+      <%= f.select :category, options_for_select(badge_categories, @badge.category) %>
+    </li>
+
+    <li class="input-fields">
+      <% if params[:action].eql? 'new' or params[:action].eql? 'create' %>
+        <%= f.submit t('badges.actions.submit'),id: 'submit', class: 'submit small button' %>
+      <% elsif params[:action].eql? 'edit' or params[:action].eql? 'update' %>
+        <%= f.submit t('badges.actions.update'), class: 'submit small button' %>
+      <% end %>
+      <%= link_to t('general.actions.cancel'), :back, confirm: t('general.confirm.cancel'),class: 'button secondary small' %>
+    </li>
+  </ul>
+<% end %>
+</article>

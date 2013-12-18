@@ -1,0 +1,24 @@
+<section id="badges">
+  <header>
+    <h2><%= t('badges.headers.index')%></h2>
+    <p class="hint"><%= t('badges.hints.index') %></p>
+  </header>
+
+  <article>
+
+    <ul class="badge-list">
+      <% @badges.each do |badge| %>
+        <li>
+          <span class="badge-title"><%= content_tag('span', fa_icon('trophy', text: t('badges.content.title', title: badge.title)), class: "badge #{badge.category}") %></span>
+          <span class="badge-description"><%= badge.description %></span>
+          <span class="right"><small>
+            <%= link_to fa_icon('pencil', text: t('badges.actions.edit')), edit_badge_path(badge) %> &middot;
+            <%= link_to fa_icon('times', text: t('badges.actions.remove')), badge, method: :delete, confirm: t('badges.confirm.delete') %></small>
+          </span>
+          <div class="clearfix"></div>
+        </li>
+      <% end %>
+    </ul>
+    <%= link_to t('badges.actions.add'), new_badge_path, class: 'button alert tiny' %>
+  </article>
+</section>
