@@ -99,7 +99,6 @@ class AjaxController < ApplicationController
   def save_tutorial_progress
     name = params[:tutorial_name]
     tutorial_progress = TutorialProgress.find_or_initialize_by_user_id(current_user.id)
-    puts "PROGRESS: #{tutorial_progress}"
     case name
     when 'intro'
       tutorial_progress.introduction = true  

@@ -1,4 +1,13 @@
-questions.flash.updated in 	  ["app/controllers/questions_controller.rb"] is missing
-questions.error.updated in 	  ["app/controllers/questions_controller.rb"] is missing
+badges.error.destroyed in 	  ["app/controllers/badges_controller.rb"] is missing
+guides.manage_members.welcome.header in 	  ["app/views/guides/_manage_members_guide.html.erb"] is missing
+guides.manage_members.welcome.text in 	  ["app/views/guides/_manage_members_guide.html.erb"] is missing
+guides.add_as_member.header in 	  ["app/views/guides/_manage_members_guide.html.erb"] is missing
+guides.add_as_member.text in 	  ["app/views/guides/_manage_members_guide.html.erb"] is missing
+guides.manage_members.add_as_moderator.header in 	  ["app/views/guides/_manage_members_guide.html.erb"] is missing
+guides.manage_members.add_as_moderator.text in 	  ["app/views/guides/_manage_members_guide.html.erb"] is missing
+guides.manage_members.conclusion.header in 	  ["app/views/guides/_manage_members_guide.html.erb"] is missing
+guides.manage_members.conclusion.text in 	  ["app/views/guides/_manage_members_guide.html.erb"] is missing
+levels.action.edit in 	  ["app/views/levels/show.html.erb"] is missing
+levels.action.remove in 	  ["app/views/levels/show.html.erb"] is missing
 users.headers.index in 	  ["app/views/users/index.html.erb"] is missing
 users.subheader.index in 	  ["app/views/users/index.html.erb"] is missing

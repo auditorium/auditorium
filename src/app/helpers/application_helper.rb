@@ -30,6 +30,10 @@ module ApplicationHelper
     action == true ? fa_icon('check-square') : fa_icon('square-o')
   end
 
+  def badge_earned?(badge, user)
+    user.badges.include? badge
+  end
+
   def post_url(post)
     case post.class.name 
     when 'Question'

@@ -35,7 +35,7 @@
   <div id="post-stream">
     <%= render 'home/post_stream' %>
   </div>
-  <% unless current_user.tutorial_progress.present? and current_user.tutorial_progress.introduction %>
+  <% unless params[:show_guide] != 'yes' and current_user.tutorial_progress.present? and current_user.tutorial_progress.introduction %>
   <%= render 'guides/home_guide' %>
   <% end %>
 </section>

@@ -13,7 +13,7 @@
 #
 
 class TutorialProgress < ActiveRecord::Base
-  belongs_to :tutorial_progress
+  belongs_to :user
   attr_accessible :group, :groups, :introduction, :question
 
   def progress

@@ -32,7 +32,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    
+    @bronze_badges = Badge.where(category: 'bronze')
+    @silver_badges = Badge.where(category: 'silver')
+    @gold_badges = Badge.where(category: 'gold')
     respond_to do |format|
       format.html
       format.json

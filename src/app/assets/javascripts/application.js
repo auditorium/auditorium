@@ -22,9 +22,9 @@
 //= require_tree 
 $(document).foundation();
 $(document).foundation('joyride', 'start', {
-  postRideCallback: function() { $.saveTutorialProgress(); },
   template: { 
     button: '<a href="#" class="small button alert joyride-next-tip"></a>',
     link: '<a href=\"#close\" class=\"joyride-close-tip\" id="close-joyride">&times;</a>'
-  }
+  },
+  postRideCallback: function() { $.saveTutorialProgress(); }
 });

@@ -671,7 +671,7 @@ de:
     tabs:
       about: 'Zur Person'
       progress: 'Erfolge und Auszeichnungen'
-      settings: 'Einstellungen'
+      settings: 'Profil bearbeiten'
       groups: 'Gruppen'
       questions: 'Fragen'
       topics: 'Themen'
@@ -952,6 +952,9 @@ de:
       edit: 'Badge bearbeiten'
       index: 'Badge Übersicht'
       show: 'Badge %{number}'
+      bronze_badges: 'Bronze Auszeichnungen'
+      silver_badges: 'Silberne Auszeichnungen'
+      gold_badges: 'Goldene Auszeichnungen'
     content:
       empty_description: 'N/A'
       title: '%{title}'
@@ -975,5 +978,8 @@ de:
     hints: 
       index: 'Hier siehst du alle Badge im Überblick'
       no_badges_earned: 'Du hast noch keine Auszeichnungen erhalten.'
+      bronze_badges: 'Bronze Auszeichnungen sind mit wenig Aufwand zu erlangen. Jede Bronze-Auszeichnung belohnt dich mit jeweils 100 Reputationspunkten.'
+      silver_badges: 'Um es nicht zu einfach zu gestalten, kannst du neben den Bronze-Auszeichnungen auch silbernen Auszeichnungen erlangen. Diese erfordern mehr Kreativität und Aktivität. Aber mit jeder silbernen Auszeichnung wirst du mit 200 Reputationspunkten belohnt.'
+      gold_badges: 'Um besonders aktive Nutzer auszuzeichnen, gibt es diese goldenen Auszeichnungen. Nur wenige Nutzer erhalten goldene Auszeichnungen. Erlangst du eine, bekommst du 500 Reputationspunkte gutgeschrieben.'
 
     
