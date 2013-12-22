@@ -186,8 +186,59 @@ class User < ActiveRecord::Base
   end
 
   def profile_progress_percentage
-    self.profile_progress * 100.0 / 3
+    self.profile_progress * 100.0 / 3 if self.profile_progress > 0
   end
 
-  
+  def has_badge?(title, category)
+    !self.badges.find_by_title_and_category(title, category).nil?
+  end
+
+  def add_badge(title, category)
+    badge = Badge.find_by_title_and_category(title, category)
+    self.badges << badge
+    self.add_points(badge)
+  end
+
+  def remove_badge(title, category)
+    badge = Badge.find_by_title_and_category(title, category)
+    self.badges.delete badge
+    self.remove_points(badge)
+  end
+
+  def add_points(badge)
+    case badge.category
+    when 'bronze'
+      unless badge.title.eql? 'rewarding' or badge.title.eql? 'critical'
+        self.score += 25 
+      end
+    when 'silver'
+      self.score += 50 
+    when 'gold'
+      self.score += 100 
+    end
+
+    self.update_level
+  end
+
+  def remove_points(badge)
+    case badge.category
+    when 'bronze'
+      self.score -= 25 
+    when 'silver'
+      self.score -= 50 
+    when 'gold'
+      self.score -= 100 
+    end
+
+    self.update_level
+  end
+
+  def update_level
+    next_level = Level.where('threshold <= ?', self.score).order('threshold ASC').last
+    self.level = next_level
+  end
+
+  def next_level
+    Level.find_by_number(self.level.number + 1)
+  end
 end

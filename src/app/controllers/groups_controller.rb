@@ -156,6 +156,7 @@ class GroupsController < ApplicationController
       if role.eql? 'member'
         @group.add_member @member
       elsif role.eql? 'moderator'
+        @member.badges << Badge.find_by_title('moderator') unless @member.has_badge?('moderator', 'silver')
         @group.add_moderator @member
       end
     elsif method.eql? 'remove'

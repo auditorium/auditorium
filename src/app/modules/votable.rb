@@ -54,7 +54,6 @@ module Votable
 
   def update_rating
     self.rating = 0
-    puts "VOTINGS: #{self.votings.map(&:value)}"
     self.votings.each do |vote|
       self.rating += vote.value
     end

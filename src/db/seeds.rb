@@ -118,29 +118,30 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
+Badge.delete_all
 Badge.create(title: 'learning', description: 'first question with +1', category: 'bronze')
-Badge.create(title: 'nice_question', description: 'first question with +5', category: 'silver')
-Badge.create(title: 'great_question', description: 'first question with +10', category: 'gold')
+Badge.create(title: 'learning', description: 'first question with +5', category: 'silver')
+Badge.create(title: 'learning', description: 'first question with +10', category: 'gold')
 
 Badge.create(title: 'commenter', description: 'first comment with +1', category: 'bronze')
-Badge.create(title: 'nice_comment', description: 'first comment with +5', category: 'silver')
-Badge.create(title: 'great_comment', description: 'first comment with +10', category: 'gold')
+Badge.create(title: 'commenter', description: 'first comment with +5', category: 'silver')
+Badge.create(title: 'commenter', description: 'first comment with +10', category: 'gold')
 
 Badge.create(title: 'cooperative', description: 'first answer with +1', category: 'bronze')
-Badge.create(title: 'nice_answer', description: 'first answer with +5', category: 'silver')
-Badge.create(title: 'great_answer', description: 'first answer with +10', category: 'gold')
+Badge.create(title: 'cooperative', description: 'first answer with +5', category: 'silver')
+Badge.create(title: 'cooperative', description: 'first answer with +10', category: 'gold')
 
-Badge.create(title: 'you_are_welcome', description: 'first answer marked as helpful', category: 'bronze')
+Badge.create(title: 'helpful', description: 'first answer marked as helpful', category: 'bronze')
 Badge.create(title: 'helpful', description: 'five answers marked as helpful', category: 'silver')
-Badge.create(title: 'wise', description: 'ten answers marked as helpful', category: 'gold')
+Badge.create(title: 'helpful', description: 'ten answers marked as helpful', category: 'gold')
 
-Badge.create(title: 'attention', description: 'first announcement with +1', category: 'bronze')
-Badge.create(title: 'important', description: 'first announcement with +5', category: 'silver')
+Badge.create(title: 'significant', description: 'first announcement with +1', category: 'bronze')
+Badge.create(title: 'significant', description: 'first announcement with +5', category: 'silver')
 Badge.create(title: 'significant', description: 'first announcement with +10', category: 'gold')
 
 Badge.create(title: 'something_to_say', description: 'first topic with +1', category: 'bronze')
-Badge.create(title: 'interesting_topic', description: 'first topic with +5', category: 'silver')
-Badge.create(title: 'facinating_topic', description: 'first topic with +10', category: 'gold')
+Badge.create(title: 'something_to_say', description: 'first topic with +5', category: 'silver')
+Badge.create(title: 'something_to_say', description: 'first topic with +10', category: 'gold')
 
 Badge.create(title: 'moderator', description: 'become a moderator', category: 'silver')
 Badge.create(title: 'party', description: 'first group created and granted', category: 'silver')
@@ -150,13 +151,18 @@ Badge.create(title: 'biographer', description: 'filling out the profile', catego
 Badge.create(title: 'curious', description: 'absolved all guides within auditorium', category: 'silver')
 
 Badge.create(title: 'rewarding', description: 'first up vote', category: 'bronze')
-Badge.create(title: 'crtical', description: 'first down vote', category: 'bronze')
+Badge.create(title: 'rewarding', description: 'first 25 up votes', category: 'silver')
+Badge.create(title: 'rewarding', description: 'first 50 up votes', category: 'gold')
+
+Badge.create(title: 'critical', description: 'first down vote', category: 'bronze')
+Badge.create(title: 'critical', description: 'first 25 down votes', category: 'silver')
+Badge.create(title: 'critical', description: 'first 50 down votes', category: 'gold')
 
 Badge.create(title: 'editor', description: 'first time edit of a post', category: 'bronze')
 
 Badge.create(title: 'first_step', description: 'registered on auditorium and confirmed email address', category: 'bronze')
 
-Badge.create(title: 'welcome_back', description: 'two days in a row active', category: 'bronze')
-Badge.create(title: 'regular', description: 'one week in a row active', category: 'silver')
-Badge.create(title: 'habitue', description: 'two weeks in a row active', category: 'gold')
+# Badge.create(title: 'habitue', description: 'two days in a row active', category: 'bronze')
+# Badge.create(title: 'habitue', description: 'one week in a row active', category: 'silver')
+# Badge.create(title: 'habitue', description: 'two weeks in a row active', category: 'gold')
 

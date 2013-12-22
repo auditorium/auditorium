@@ -25,7 +25,7 @@ class MembershipRequestsController < ApplicationController
     @membership_request.save
 
     @group.add_moderator @membership_request.user
-
+    @membership_request.user.badges << Badge.find_by_title('moderator') unless @membership_request.user.has_badge?('moderator', 'silver')
     AuditoriumMailer.confirmed_membership_request({membership_request: @membership_request, group: @group }).deliver
 
     respond_to :js

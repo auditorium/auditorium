@@ -53,6 +53,9 @@ class AnswersController < ApplicationController
 
     respond_to do |format|
       if @answer.update_attributes(params[:answer])
+        if !@answer.author.has_badge?('editor', 'bronze')
+          @answer.author.add_badge('editor', 'bronze')
+        end
         format.html { redirect_to question_path(@answer.question), flash: { success:  t('answers.flash.updated') } }
       else
         format.html { render action: "edit", flash: { error: t('answers.error.updated') } }

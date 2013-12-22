@@ -34,7 +34,7 @@ class AjaxController < ApplicationController
 
     ActiveRecord::Base.transaction do 
       @message = @post.upvote(current_user)
-
+      achieve_rewarding_badge(current_user, 'bronze')
       respond_to do |format|
         if @post.update_rating
           format.js
@@ -62,6 +62,8 @@ class AjaxController < ApplicationController
     
     ActiveRecord::Base.transaction do 
       @message = @post.downvote(current_user)
+      achieve_critical_badge(current_user, 'bronze')
+
       respond_to do |format|
         if @post.update_rating
           format.js
@@ -113,5 +115,18 @@ class AjaxController < ApplicationController
     tutorial_progress.save!
 
     respond_to :js
+  end
+
+  private
+  def achieve_rewarding_badge(user, category)
+    if !user.has_badge?('rewarding', category)
+      user.add_badge('rewarding', category)
+    end
+  end
+
+  def achieve_critical_badge(user, category)
+    if !user.has_badge?('critical', category)
+      user.add_badge('critical', category)
+    end
   end
 end

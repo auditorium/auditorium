@@ -7,6 +7,8 @@ class SessionsController < Devise::SessionsController
     set_flash_message(:notice, :signed_in) if is_navigational_format?
     sign_in(resource_name, resource)
 
+    achieve_modern_browser_badge(resource)
+    achieve_first_step_badge(resource)
     respond_to do |format|
       format.html do
         respond_with resource, :location => session[:previous_url]
@@ -25,5 +27,19 @@ class SessionsController < Devise::SessionsController
   protected
   def verified_request?
     request.content_type == "application/json" || super
+  end
+
+  def achieve_modern_browser_badge(user)
+    if browser.modern? and !user.has_badge?('modern_browser', 'bronze')
+      user.add_badge('modern_browser', 'bronze')
+    elsif !browser.modern? and user.has_badge?('modern_browser', 'bronze')
+      user.remove_badge('modern_browser', 'bronze')
+    end
+  end
+
+  def achieve_first_step_badge(user)
+    if !user.has_badge?('first_step', 'bronze')
+      user.add_badge('first_step', 'bronze')
+    end
   end
 end

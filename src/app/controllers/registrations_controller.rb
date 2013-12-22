@@ -24,6 +24,8 @@ class RegistrationsController < Devise::RegistrationsController
       # end
 
       if resource.email.match /tu-dresden.de$/
+        achieve_first_step_badge(resource)
+
         redirect_to root_url, :flash => { :info => t('general.flash.confirmation_sent')}
       else
         redirect_to root_url, :flash => { :notice => t('general.flash.moderation_needed')}
@@ -149,6 +151,12 @@ class RegistrationsController < Devise::RegistrationsController
   def needs_password?(user, params)
     user.email != params[:user][:email] ||
       params[:user][:password].present?
+  end
+
+  def achieve_first_step_badge(user)
+    if !user.has_badge?('first_step', 'bronze')
+      user.add_badge('first_step', 'bronze')
+    end
   end
 end
 

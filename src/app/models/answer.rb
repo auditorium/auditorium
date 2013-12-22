@@ -31,4 +31,8 @@ class Answer < ActiveRecord::Base
   def origin
     self.question
   end
+
+  def is_helpful?
+    !self.answer_to_id.nil?
+  end
 end

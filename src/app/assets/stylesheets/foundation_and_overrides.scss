@@ -3324,22 +3324,25 @@ ul.badge-list li {
    &.bronze { 
       background-color: $orange;
       box-shadow: 0 0 0 3px $orange, 0px 2px 2px rgba(0, 0, 0, 0.12);
+      @include gradient($orange, darken($orange, 5%));
     }
 
     &.silver { 
       background-color: $secondary-color;
       box-shadow: 0 0 0 3px $secondary-color, 0px 2px 2px rgba(0, 0, 0, 0.12);
+      @include gradient($secondary-color, darken($secondary-color, 5%));
     }
 
     &.gold { 
       background-color: $warning-color;
       box-shadow: 0 0 0 3px $warning-color, 0px 2px 2px rgba(0, 0, 0, 0.12);
+      @include gradient($warning-color, darken($warning-color, 5%));
     }
 
     &.platinium { 
       background-color: $anthracite;
       box-shadow: 0 0 0 3px $anthracite, 0px 2px 2px rgba(0, 0, 0, 0.12);
-      @include gradient($anthracite, lighten($anthracite, 10%));
+      @include gradient($anthracite, darken($anthracite, 5%));
     }
   }
 }
@@ -3352,5 +3355,7 @@ li.badge {
     text-decoration: none;
     color: $white;
     border: 1px dashed #fff;
+    background-color: darken($gray, 10%);
+    box-shadow: 0 0 0 3px darken($gray, 10%), 0px 2px 2px rgba(0, 0, 0, 0.12);
   }
 }
