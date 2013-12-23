@@ -7,7 +7,7 @@
 <div class="row">
   <div class="large-12 columns">
     <h3><%= t('progress.level.header', level: @user.level.number)%></h3>
-  <progress value="<%= @user.score %>" max="<%= Level.find_by_number(@user.level.number + 1).threshold%>"></progress> <%= t('progress.point_difference', value: @user.score, max: @user.next_level.threshold) %>
+  <progress value="<%= @user.score %>" max="<%= @user.next_level.threshold%>"></progress> <%= t('progress.point_difference', value: @user.score, max: @user.next_level.threshold) %>
   <p class="hint"><%= t('progress.level.next_level', points: (@user.next_level.threshold - @user.score)) %></p>
   </div>
 </div>
@@ -17,7 +17,10 @@
     <h3><%= t('progress.tutorial_progress.header')%></h3>
     
     <ul class="plain-list">
-      <li><progress value="<%= @user.tutorial_progress.progress %>" max="<%= @user.tutorial_progress.max_value %>"></progress> <%= t('progress.percentage', value: sprintf('%.0f', @user.tutorial_progress.percentage)) %></li>
+      <li>
+        <progress value="<%= @user.tutorial_progress.progress %>" max="<%= @user.tutorial_progress.max_value %>"></progress> <%= t('progress.percentage', value: sprintf('%.0f', @user.tutorial_progress.percentage)) %>
+        <p class="hint"><%= t('progress.tutorial_progress.hint') %></p>
+      </li>
       <li><%= is_done? @user.tutorial_progress.introduction %>&nbsp;<%= link_to t('progress.tutorial_progress.introduction'), home_path(params: { show_guide: 'yes' }) %></li>
       <li><%= is_done? @user.tutorial_progress.groups %>&nbsp;<%= link_to t('progress.tutorial_progress.groups'), groups_path(params: { show_guide: 'yes' }) %></li>
       <li><%= is_done? @user.tutorial_progress.group %>&nbsp;<%= link_to t('progress.tutorial_progress.group'), group_path(id: 110804009, params: { show_guide: 'yes'}) %></li>
@@ -26,13 +29,17 @@
   </div>
   <div id="profile-progress" class="large-6 columns">
     <h3><%= t('progress.profile_progress.header')%></h3>
-    
     <ul class="plain-list">
-      <li><progress value="<%= @user.profile_progress %>" max="3"></progress> <%= t('progress.percentage', value: sprintf('%.0f', @user.profile_progress_percentage)) %></li>
-      <li><%= is_done? @user.first_name.present? %>&nbsp;<%= t('progress.profile_progress.first_name') %></li>
-      <li><%= is_done? @user.last_name.present? %>&nbsp;<%= t('progress.profile_progress.last_name') %></li>
-      <li><%= is_done? @user.username.present? %>&nbsp;<%= t('progress.profile_progress.username') %></li></li>
+      <li>
+        <progress value="<%= @user.profile_progress %>" max="4"></progress> <%= t('progress.percentage', value: sprintf('%.0f', @user.profile_progress_percentage)) %>
+        <p class="hint"><%= t('progress.profile_progress.hint') %></p>
+      </li>
+      <li><%= is_done? @user.first_name.present? %>&nbsp;<%= t('users.labels.first_name') %></li>
+      <li><%= is_done? @user.last_name.present? %>&nbsp;<%= t('users.labels.last_name') %></li>
+      <li><%= is_done? @user.username.present? %>&nbsp;<%= t('users.labels.username') %></li></li>
+      <li><%= is_done? @user.role.present? %>&nbsp;<%= t('users.labels.role') %></li></li>
     </ul>
+    <p><%= link_to t('users.tabs.settings'), edit_user_registration_path, class: 'button tiny' %></p>
   </div>
 </div>
 

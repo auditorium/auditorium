@@ -40,6 +40,7 @@ describe GamificationObserver do
     it "should remove 5 points from the users reputation and decrease the reputation of the current_user by 1" do
       author.score.should eq(0)
       current_user.score.should eq(0)
+      puts "====== #{current_user.badges}"
       question.downvote(current_user)
       author.score.should eq(-5)
       current_user.score.should eq(-1)

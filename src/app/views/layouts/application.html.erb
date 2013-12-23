@@ -65,8 +65,6 @@
         <%= render 'shared/privacy_policy_modal' %>
       <% end %>
 
-      <%= debug browser.inspect %>
-
       <noscript><div class="alert-box">Please enable javascript.</div></noscript>
       <!-- flash messages -->
       <% [:error, :success, :notice, :alert].each do |key| %>
@@ -77,6 +75,14 @@
         </div>
         <% end %>
       <% end %>  
+
+      <% if flash[:badge] %>
+        <div data-alert class="alert-box success" id="flash">
+          <%= fa_icon('trophy', text: flash[:badge]) %>
+          <a href="#" class="close">&times;</a>
+        </div>
+      <% end %>
+
       <div class="row">
         <%= yield %>
       </div>

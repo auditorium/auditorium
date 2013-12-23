@@ -29,10 +29,12 @@
 #  current_sign_in_at     :datetime
 #  last_sign_in_at        :datetime
 #  privacy_policy         :boolean          default(FALSE)
+#  sash_id                :integer
+#  level                  :integer          default(0)
 #
 
 class User < ActiveRecord::Base
-
+  ROLES = %w{student employee lecturer other}
   before_save :ensure_authentication_token
 
   devise :database_authenticatable, :trackable, :registerable,
@@ -40,7 +42,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :remember_me, :email, :alternative_email, :password, :password_confirmation, :current_password
-  attr_accessible :username, :title, :first_name, :last_name, :website, :privacy_policy
+  attr_accessible :username, :title, :first_name, :last_name, :website, :privacy_policy, :role
   cattr_accessor :current
   
   has_one :setting, dependent: :destroy
@@ -84,6 +86,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :username
 
   
+
   # returns the full user name if first and last name was specified in the user's profile...
   def full_name
     
@@ -182,11 +185,12 @@ class User < ActiveRecord::Base
     value += 1 if self.first_name.present?
     value += 1 if self.last_name.present?
     value += 1 if self.username.present?
+    value += 1 if self.role.present?
     value
   end
 
   def profile_progress_percentage
-    self.profile_progress * 100.0 / 3 if self.profile_progress > 0
+    self.profile_progress * 100.0 / 4 if self.profile_progress > 0
   end
 
   def has_badge?(title, category)
@@ -208,9 +212,7 @@ class User < ActiveRecord::Base
   def add_points(badge)
     case badge.category
     when 'bronze'
-      unless badge.title.eql? 'rewarding' or badge.title.eql? 'critical'
-        self.score += 25 
-      end
+      self.score += 25 
     when 'silver'
       self.score += 50 
     when 'gold'
@@ -218,12 +220,14 @@ class User < ActiveRecord::Base
     end
 
     self.update_level
+    self.save
   end
 
   def remove_points(badge)
     case badge.category
     when 'bronze'
-      self.score -= 25 
+      
+      self.score -= 25 unless badge.title.eql? 'rewarding' or badge.title.eql? 'critical'
     when 'silver'
       self.score -= 50 
     when 'gold'
@@ -231,6 +235,7 @@ class User < ActiveRecord::Base
     end
 
     self.update_level
+    self.save
   end
 
   def update_level

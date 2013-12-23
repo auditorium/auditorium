@@ -28,6 +28,8 @@
 #  current_sign_in_at     :datetime
 #  last_sign_in_at        :datetime
 #  privacy_policy         :boolean          default(FALSE)
+#  sash_id                :integer
+#  level                  :integer          default(0)
 #
 
 FactoryGirl.define do

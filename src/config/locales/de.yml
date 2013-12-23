@@ -660,6 +660,21 @@ de:
         moderator: 'Moderator'
         member: 'Mitglied'
   users:
+    labels:
+      first_name: 'Vorname'
+      last_name: 'Nachname'
+      username: 'Benutzername'
+      email: 'E-Mail-Adresse'
+      password: 'Neues Passwort'
+      password_confirmation: 'Neues Passwort bestätigen'
+      current_password: 'Aktuelles Passwort'
+      role: 'Rolle an der Universität'
+      title: 'Akademischer Titel'
+    roles:
+      student: 'Student'
+      lecturer: 'Dozent'
+      employee: 'Mitarbeiter'
+      other: 'Sonstiges'
     flash:
       updated: 'Änderungen wurden gespeichert.'
       confirmed: 'Der Benutzer wurde freigegeben.'
@@ -910,12 +925,14 @@ de:
       groups: 'Gruppenübersicht'
       group: 'Gruppe im Detail'
       question: 'Frage im Detail'
+      hint: 'Wenn du alle Einführungen gemacht hast, erhälst du die Auszeichnung "Neugierig".'
     profile_progress:
       header: 'Angaben zur Person'
       first_name: 'Vorname'
       last_name: 'Nachname'
       username: 'Benutzername'
       role_at_university: 'Rolle an der Universität (Student, Mitarbeiter, Dozent, ...)'
+      hint: 'Wenn du dein Profil vollständig ausgefüllt hast, erhälst du die Auszeichnung "Biograph".'
     badges: 
       header: 'Auszeichnungen'
   levels:

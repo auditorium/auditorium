@@ -55,6 +55,7 @@ class AnswersController < ApplicationController
       if @answer.update_attributes(params[:answer])
         if !@answer.author.has_badge?('editor', 'bronze')
           @answer.author.add_badge('editor', 'bronze')
+          flash[:badge] = t('badges.achieved.editor.bronze')
         end
         format.html { redirect_to question_path(@answer.question), flash: { success:  t('answers.flash.updated') } }
       else
@@ -77,6 +78,9 @@ class AnswersController < ApplicationController
     @answer = Answer.find(params[:id])
     if @answer.answer_to_id.nil?
       @answer.answer_to_id = @answer.question.id
+      achieve_helpful_badge(@answer, 'bronze', 1)
+      achieve_helpful_badge(@answer, 'silver', 5)
+      achieve_helpful_badge(@answer, 'gold', 10)
     else
       @answer.answer_to_id = nil
     end
@@ -88,4 +92,12 @@ class AnswersController < ApplicationController
     end
   end
 
+  private
+  def achieve_helpful_badge(answer, category, threshold)
+    if !answer.author.has_badge?('helpful', category) and answer.author.answers.keep_if { |a| !a.answer_to_id.nil? }.size >= threshold
+      answer.author.add_badge('helpful', category)
+      answer.author.save
+      flash[:badge] = t('badges.flash.achived_helpful.bronze')
+    end
+  end
 end

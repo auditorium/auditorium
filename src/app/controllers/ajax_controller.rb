@@ -35,8 +35,13 @@ class AjaxController < ApplicationController
     ActiveRecord::Base.transaction do 
       @message = @post.upvote(current_user)
       achieve_rewarding_badge(current_user, 'bronze')
+
       respond_to do |format|
         if @post.update_rating
+          achieve_post_badge(@post, 'bronze', 1)
+          achieve_post_badge(@post, 'silver', 5)
+          achieve_post_badge(@post, 'gold', 10)
+
           format.js
           format.html { redirect_to "#{url_for @post.origin}##{dom_id(@post)}", notice: @message }
         else 
@@ -112,8 +117,11 @@ class AjaxController < ApplicationController
       tutorial_progress.question = true
     end
 
-    tutorial_progress.save!
-
+    tutorial_progress.save
+    if tutorial_progress.percentage == 100 and !current_user.has_badge?('curious', 'silver')
+      current_user.add_badge('curious', 'silver')
+      flash[:badge] = t('badges.flash.achieve_curious.silver')
+    end
     respond_to :js
   end
 
@@ -121,12 +129,36 @@ class AjaxController < ApplicationController
   def achieve_rewarding_badge(user, category)
     if !user.has_badge?('rewarding', category)
       user.add_badge('rewarding', category)
+      flash[:badge] = "EARNED rewarding BADGE"
     end
   end
 
   def achieve_critical_badge(user, category)
     if !user.has_badge?('critical', category)
       user.add_badge('critical', category)
+    end
+  end
+
+  # ======== GAMIFICATION
+  def achieve_post_badge(post, category, threshold)
+    puts "======> CLASS: #{post.class.name}"
+    case post.class.name
+    when 'Question'
+      title = 'learning'
+    when 'Answer'
+      title = 'cooperative'
+    when 'Announcement'
+      title = 'significant'
+    when 'Topic'
+      title = 'something_to_say'
+    when 'Comment'
+      title = 'commenter'
+    end
+
+    if !post.author.has_badge?(title, category) and post.rating >= threshold  
+      post.author.add_badge(title, category)
+      post.author.save
+      flash[:badge] = t("badges.flash.achieve_#{title}.#{category}")
     end
   end
 end

@@ -47,6 +47,7 @@ class AnnouncementsController < ApplicationController
       if @announcement.update_attributes(params[:announcement])
         if !@announcement.author.has_badge?('editor', 'bronze')
           @announcement.author.add_badge('editor', 'bronze')
+          flash[:badge] = t('badges.achieved.editor.bronze')
         end
         format.html { redirect_to announcement_path(@announcement), success:  t('announcements.flash.updated') }
       else

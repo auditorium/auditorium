@@ -48,6 +48,7 @@ class CommentsController < ApplicationController
       if @comment.update_attributes(params[:comment])
         if !@comment.author.has_badge?('editor', 'bronze')
           @comment.author.add_badge('editor', 'bronze')
+          flash[:badge] = t('badges.achieved.editor.bronze')
         end
         format.html { redirect_to @comment.origin, flash: { success:  t('comments.flash.updated') } }
         format.json { head :no_content }

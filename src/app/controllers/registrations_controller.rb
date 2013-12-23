@@ -24,8 +24,6 @@ class RegistrationsController < Devise::RegistrationsController
       # end
 
       if resource.email.match /tu-dresden.de$/
-        achieve_first_step_badge(resource)
-
         redirect_to root_url, :flash => { :info => t('general.flash.confirmation_sent')}
       else
         redirect_to root_url, :flash => { :notice => t('general.flash.moderation_needed')}
@@ -54,6 +52,10 @@ class RegistrationsController < Devise::RegistrationsController
       # doesn't know how to ignore it
       params[:user].delete(:current_password)
       @user.update_without_password(params[:user])
+      if @user.profile_progress_percentage == 100 and !@user.has_badge?('biographer', 'silver')
+        @user.add_badge('biographer', 'silver')
+        flash[:badge] = t('badges.flash.achieve_curious.silver')
+      end
     end
 
     if successfully_updated
@@ -151,12 +153,6 @@ class RegistrationsController < Devise::RegistrationsController
   def needs_password?(user, params)
     user.email != params[:user][:email] ||
       params[:user][:password].present?
-  end
-
-  def achieve_first_step_badge(user)
-    if !user.has_badge?('first_step', 'bronze')
-      user.add_badge('first_step', 'bronze')
-    end
   end
 end
 

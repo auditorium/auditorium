@@ -162,6 +162,20 @@ Badge.create(title: 'editor', description: 'first time edit of a post', category
 
 Badge.create(title: 'first_step', description: 'registered on auditorium and confirmed email address', category: 'bronze')
 
+Level.delete_all
+Level.create(number: 0, threshold: 0, description: 'Basic Level')
+Level.create(number: 1, threshold: 100, description: 'First Level')
+Level.create(number: 2, threshold: 250, description: 'Second Level')
+Level.create(number: 3, threshold: 500, description: 'Third Level')
+Level.create(number: 4, threshold: 1000, description: 'Fourth Level')
+Level.create(number: 5, threshold: 2000, description: 'Fifth Level')
+Level.create(number: 6, threshold: 4000, description: 'Sixth Level')
+
+User.all.each do |user|
+  user.level_id = Level.find_by_number(0).id
+  user.save
+end
+
 # Badge.create(title: 'habitue', description: 'two days in a row active', category: 'bronze')
 # Badge.create(title: 'habitue', description: 'one week in a row active', category: 'silver')
 # Badge.create(title: 'habitue', description: 'two weeks in a row active', category: 'gold')
