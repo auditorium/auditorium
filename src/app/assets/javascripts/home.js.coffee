@@ -1,5 +1,5 @@
 $.saveTutorialProgress = () ->
-  if $('input[name="guide"]').is(":visible") 
+  if $('input[name="guide"]').val() != undefined
     tutorial_name = $('input[name="guide"]').val()
     $.ajax
       type: 'post'
