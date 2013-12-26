@@ -3,7 +3,8 @@ class HomeController < ApplicationController
 	
   def index
     if signed_in?
-      achieve_first_step_badge
+      achieve_first_step_badge(current_user)
+
       @posts = Array.new  
       cookies[:show_announcements] = params[:show_announcements] if params[:show_announcements].present?
       cookies[:show_questions] = params[:show_questions] if params[:show_questions].present?
@@ -35,14 +36,6 @@ class HomeController < ApplicationController
       respond_to :js, :html
     else
       redirect_to root_url
-    end
-  end
-
-  private
-  def achieve_first_step_badge
-    if !current_user.has_badge?('first_step', 'bronze')
-      current_user.add_badge('first_step', 'bronze')
-      flash[:badge] = t('badges.flash.achieved_first_step.bronze')
     end
   end
 end

@@ -35,24 +35,23 @@
 
 class User < ActiveRecord::Base
   ROLES = %w{student employee lecturer other}
-  before_save :ensure_authentication_token
-
+  before_save :ensure_authentication_token, :update_level
   devise :database_authenticatable, :trackable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable, :token_authenticatable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :remember_me, :email, :alternative_email, :password, :password_confirmation, :current_password
-  attr_accessible :username, :title, :first_name, :last_name, :website, :privacy_policy, :role
+  attr_accessible :username, :title, :first_name, :last_name, :website, :privacy_policy, :role, :list_in_leaderboard
   cattr_accessor :current
   
   has_one :setting, dependent: :destroy
   has_one :tutorial_progress, dependent: :destroy
-  has_one :level
-  has_many :badges
+  belongs_to :level
+  has_and_belongs_to_many :badges
 
   has_many :votings
 
-  has_many :recordings, :foreign_key => :author_id
+  has_many :videos, :foreign_key => :author_id
   has_many :announcements, :foreign_key => :author_id
   has_many :questions, :foreign_key => :author_id
   has_many :topics, :foreign_key => :author_id
@@ -88,10 +87,9 @@ class User < ActiveRecord::Base
   
 
   # returns the full user name if first and last name was specified in the user's profile...
-  def full_name
-    
+  def full_name(options = {})
     if (self.first_name.present?) or (self.last_name.present?)
-      "#{self.title} #{self.first_name} #{self.last_name}".strip
+      "#{self.title if options[format: :short]} #{self.first_name} #{self.last_name}".strip
     elsif self.username.present?
       self.username 
     else
@@ -201,12 +199,14 @@ class User < ActiveRecord::Base
     badge = Badge.find_by_title_and_category(title, category)
     self.badges << badge
     self.add_points(badge)
+    self.save
   end
 
   def remove_badge(title, category)
     badge = Badge.find_by_title_and_category(title, category)
     self.badges.delete badge
     self.remove_points(badge)
+    self.save
   end
 
   def add_points(badge)
@@ -219,22 +219,18 @@ class User < ActiveRecord::Base
       self.score += 100 
     end
 
-    self.update_level
     self.save
   end
 
   def remove_points(badge)
     case badge.category
     when 'bronze'
-      
-      self.score -= 25 unless badge.title.eql? 'rewarding' or badge.title.eql? 'critical'
+      self.score -= 25
     when 'silver'
       self.score -= 50 
     when 'gold'
       self.score -= 100 
     end
-
-    self.update_level
     self.save
   end
 
@@ -245,5 +241,9 @@ class User < ActiveRecord::Base
 
   def next_level
     Level.find_by_number(self.level.number + 1)
+  end
+
+  def activity_index
+    self.answers.size + self.questions.size + self.announcements.size + self.comments.size + self.videos.size + self.groups.size
   end
 end

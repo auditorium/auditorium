@@ -53,10 +53,7 @@ class AnswersController < ApplicationController
 
     respond_to do |format|
       if @answer.update_attributes(params[:answer])
-        if !@answer.author.has_badge?('editor', 'bronze')
-          @answer.author.add_badge('editor', 'bronze')
-          flash[:badge] = t('badges.achieved.editor.bronze')
-        end
+        achieve_editor_badge(current_user)
         format.html { redirect_to question_path(@answer.question), flash: { success:  t('answers.flash.updated') } }
       else
         format.html { render action: "edit", flash: { error: t('answers.error.updated') } }
@@ -78,9 +75,7 @@ class AnswersController < ApplicationController
     @answer = Answer.find(params[:id])
     if @answer.answer_to_id.nil?
       @answer.answer_to_id = @answer.question.id
-      achieve_helpful_badge(@answer, 'bronze', 1)
-      achieve_helpful_badge(@answer, 'silver', 5)
-      achieve_helpful_badge(@answer, 'gold', 10)
+      achieve_helpful_badge(@answer.author, current_user)
     else
       @answer.answer_to_id = nil
     end
@@ -89,15 +84,6 @@ class AnswersController < ApplicationController
     respond_to do |format|
       format.js
       format.html {redirect_to question_path(@answer.question, anchor: dom_id(@answer)) }
-    end
-  end
-
-  private
-  def achieve_helpful_badge(answer, category, threshold)
-    if !answer.author.has_badge?('helpful', category) and answer.author.answers.keep_if { |a| !a.answer_to_id.nil? }.size >= threshold
-      answer.author.add_badge('helpful', category)
-      answer.author.save
-      flash[:badge] = t('badges.flash.achived_helpful.bronze')
     end
   end
 end

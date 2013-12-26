@@ -52,10 +52,7 @@ class RegistrationsController < Devise::RegistrationsController
       # doesn't know how to ignore it
       params[:user].delete(:current_password)
       @user.update_without_password(params[:user])
-      if @user.profile_progress_percentage == 100 and !@user.has_badge?('biographer', 'silver')
-        @user.add_badge('biographer', 'silver')
-        flash[:badge] = t('badges.flash.achieve_curious.silver')
-      end
+      achieve_biographer_badge(@user)
     end
 
     if successfully_updated

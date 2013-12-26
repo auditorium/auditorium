@@ -1192,9 +1192,9 @@ $label-font-color-alt: #fff;
 
 // These control the table cell border style
 
-// $table-border-style: solid;
-// $table-border-size: 1px;
-// $table-border-color: #ddd;
+$table-border-style: none;
+$table-border-size: 1px;
+$table-border-color: #ddd;
 
 // These control the table head styles
 
@@ -1692,6 +1692,11 @@ math {
 ul.plain-list {
   list-style: none;
 }
+
+ul.numbered {
+  margin-left: 40px;
+  li:nth-child(even) { background-color: lighten($primary-color, 50%); }  
+}
 /* ================ ribbon style ================ */
 @mixin ribbon {
   position: relative;
@@ -2114,6 +2119,7 @@ div.token-input-dropdown {
   &.notifications { color: $alert-color; }
   &.answers { color: $answer-color; }
   &.comments { color: $comment-color; }
+  &.users { color: $success-color; }
 }
 
 @mixin border_color_scheme {
@@ -2133,6 +2139,7 @@ div.token-input-dropdown {
   &.notifications { border-color: $alert-color; }
   &.answers { border-color: $answer-color; }
   &.comments { border-color: $comment-color; }
+  &.users { border-color: $success-color; }
 }
 
 .top-bar {
@@ -3358,4 +3365,9 @@ li.badge {
     background-color: darken($gray, 10%);
     box-shadow: 0 0 0 3px darken($gray, 10%), 0px 2px 2px rgba(0, 0, 0, 0.12);
   }
+}
+
+td.rank {
+  width: 35px;
+  text-align: center;
 }

@@ -49,10 +49,8 @@ class TopicsController < ApplicationController
 
     respond_to do |format|
       if @topic.update_attributes(params[:topic])
-        if !@topic.author.has_badge?('editor', 'bronze')
-          @topic.author.add_badge('editor', 'bronze')
-          flash[:badge] = t('badges.achieved.editor.bronze')
-        end
+        achieve_editor_badge(current_user)
+        
         format.html { redirect_to topic_path(@topic), flash: { success:  'topic was successfully updated.' } }
         format.json { head :no_content }
       else

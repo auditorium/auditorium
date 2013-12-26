@@ -26,15 +26,28 @@
         <%= f.label :email, t('users.labels.email') %>
         <%= f.email_field :email, :autocomplete => 'off' %>
         <% if resource.unconfirmed_email.present? %>
-        <p class="hint"><%= t('users.pending_email_confirmation', email: resource.unconfirmed_email) %></p>
+        <p class="hint"><%= t('users.hints.pending_email_confirmation', email: resource.unconfirmed_email) %></p>
         <% end %>
       </li>
+
+      <li class="input-fields">
+        <%= f.label :alternative_email, t('users.labels.alternative_email') %>
+        <%= f.email_field :alternative_email, :autocomplete => 'off' %>
+        <p class="hint"><%= t('users.hints.alternative_email') %></p>
+      </li>
+
 
       <li class="input-fields">
         <%= f.label :role, t('users.labels.role') %>
         <%= f.select :role, User::ROLES.collect {|r| [I18n.t("users.roles.#{r}"), r]}, include_blank: true %>
       </li>
 
+      <li class="input-fields">
+        <%= f.label :list_in_leaderboard do %>
+          <%= f.check_box :list_in_leaderboard %>
+          <%= t('users.labels.list_in_leaderboard') %>
+        <% end %>
+      </li>
       <li class="input-fields">
         <%= f.label :password, t('users.labels.password') %>
         <%= f.password_field :password, :autocomplete => 'off' %>
@@ -50,7 +63,8 @@
       </li>
 
       <li class="input-fields">
-        <%= f.submit t('users.profile.personal_information.submit'), class: 'submit tiny button users' %>
+        <%= link_to t('general.actions.cancel'), user_path(@user), class: 'button secondary small' %>
+        <%= f.submit t('users.profile.personal_information.submit'), class: 'button submit small' %>
       </li>
 
       <li class="input-fields">

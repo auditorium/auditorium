@@ -2,7 +2,7 @@
 <section class="row">
 <header class="large-10 columns">
   <h2>
-    <%= @user %>
+    <small><%= @user.title %></small> <%= @user.full_name(format: :short) %>
     <small class="subheader">(<%= t('progress.reputation.long', score: @user.score) %>)</small>
   </h2>
   <% if @user.admin? %>

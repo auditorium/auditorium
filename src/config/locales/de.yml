@@ -660,16 +660,22 @@ de:
         moderator: 'Moderator'
         member: 'Mitglied'
   users:
+    headers:
+      index: 'Ranking der Benutzer'
     labels:
       first_name: 'Vorname'
       last_name: 'Nachname'
       username: 'Benutzername'
       email: 'E-Mail-Adresse'
+      alternative_email: 'Alternative E-Mail-Adresse'
       password: 'Neues Passwort'
       password_confirmation: 'Neues Passwort bestätigen'
       current_password: 'Aktuelles Passwort'
       role: 'Rolle an der Universität'
       title: 'Akademischer Titel'
+      list_in_leaderboard: 'Ich möchte im Ranking der Benutzer auftauchen'
+      score: 'Punkte'
+      name: 'Name'
     roles:
       student: 'Student'
       lecturer: 'Dozent'
@@ -691,7 +697,9 @@ de:
       questions: 'Fragen'
       topics: 'Themen'
       announcements: 'Ankündigungen'
-    pending_email_confirmation: 'Die E-Mail Adresse %{email} wartet auf ihre Bestätigung.'
+    hints:
+      pending_email_confirmation: 'Die E-Mail Adresse %{email} wartet auf ihre Bestätigung.'
+      alternative_email: 'Diese E-Mail-Adresse wird für Gravatar genutzt, um dein Profilfoto darzustellen.'
     role:
       is_admin: 'Administrator'
     profile:
@@ -988,15 +996,196 @@ de:
       category: 'Art des Badges'
     confirm:
       delete: 'Möchtest du das Badge wirklich entfernen?'
-    flash:
-      updated: 'Das Badge wurde aktualisiert.'
-      destroyed: 'Das Badge wurde entfernt.'
-      created: 'Das Badge wurde hinzugefügt.'
     hints: 
       index: 'Hier siehst du alle Badge im Überblick'
       no_badges_earned: 'Du hast noch keine Auszeichnungen erhalten.'
       bronze_badges: 'Bronze Auszeichnungen sind mit wenig Aufwand zu erlangen. Jede Bronze-Auszeichnung belohnt dich mit jeweils 25 Reputationspunkten.'
       silver_badges: 'Um es nicht zu einfach zu gestalten, kannst du neben den Bronze-Auszeichnungen auch silbernen Auszeichnungen erlangen. Diese erfordern mehr Kreativität und Aktivität. Aber mit jeder silbernen Auszeichnung wirst du mit 50 Reputationspunkten belohnt.'
       gold_badges: 'Um besonders aktive Nutzer auszuzeichnen, gibt es diese goldenen Auszeichnungen. Nur wenige Nutzer erhalten goldene Auszeichnungen. Erlangst du eine, bekommst du 100 Reputationspunkte gutgeschrieben.'
-
+    titles:
+      achieve_learning:
+        bronze: 'Lernen'
+        silver: 'Lernen'
+        gold: 'Lernen'
+      achieve_commenter:
+        bronze: 'Kommentator'
+        silver: 'Kommentator'
+        gold: 'Kommentator'
+      achieve_cooperative:
+        bronze: 'Kooperativ'
+        silver: 'Kooperativ'
+        gold: 'Kooperativ'
+      achieve_helpful:
+        bronze: 'Hilfsbereit'
+        silver: 'Hilfsbereit'
+        gold: 'Hilfsbereit'
+      achieve_significant:
+        bronze: 'Signifikant'
+        silver: 'Signifikant'
+        gold: 'Signifikant'
+      achieve_something_to_say:
+        bronze: 'Etwas zu sagen'
+        silver: 'Etwas zu sagen'
+        gold: 'Etwas zu sagen'
+      achieve_modern_browser:
+        bronze: 'Moderner Browser'
+        silver: 'Moderner Browser'
+        gold: 'Moderner Browser'
+      achieve_rewarding:
+        bronze: 'Belohnend'
+        silver: 'Belohnend'
+        gold: 'Belohnend'
+      achieve_critical:
+        bronze: 'Kritisch'
+        silver: 'Kritisch'
+        gold: 'Kritisch'
+      achieve_curious:
+        bronze: 'Neugierig'
+        silver: 'Neugierig'
+        gold: 'Neugierig'
+      achieve_editor:
+        bronze: 'Bearbeiter'
+        silver: 'Bearbeiter'
+        gold: 'Bearbeiter'
+      achieve_first_step:
+        bronze: 'Erster Schritt'
+        silver: 'Erster Schritt'
+        gold: 'Erster Schritt'
+      achieve_biographer:
+        bronze: 'Biograph'
+        silver: 'Biograph'
+        gold: 'Biograph'
+      achieve_party:
+        bronze: 'Party'
+        silver: 'Party'
+        gold: 'Party'
+      achieve_moderator:
+        bronze: 'Moderator'
+        silver: 'Moderator'
+        gold: 'Moderator'
+    descriptions:
+      achieve_learning:
+        bronze: 'Eine Frage von dir hat mindestens eine positive Bewertung erhalten.'
+        silver: 'Eine Frage von dir hat mindestens fünf positive Bewertung erhalten.'
+        gold: 'Eine Frage von dir hat mindestens zehn positive Bewertung erhalten.'
+      achieve_commenter:
+        bronze: 'Eine Ankündigung von dir hat mindestens eine positive Bewertung erhalten.'
+        silver: 'Eine Ankündigung von dir hat mindestens fünf positive Bewertung erhalten.'
+        gold: 'Eine Ankündigung von dir hat mindestens zehn positive Bewertung erhalten.'
+      achieve_cooperative:
+        bronze: 'Eine Antwort von dir hat mindestens eine positive Bewertung erhalten.'
+        silver: 'Eine Antwort von dir hat mindestens fünf positive Bewertung erhalten.'
+        gold: 'Eine Antwort von dir hat mindestens zehn positive Bewertung erhalten.'
+      achieve_helpful:
+        bronze: 'Eine Antwort von dir wurde als hilfreich markiert.'
+        silver: 'Fünf Antworten von dir wurden als hilfreich markiert.'
+        gold: 'Zehn Antworten von dir wurden als hilfreich markiert.'
+      achieve_significant:
+        bronze: 'Eine Ankündigung von dir hat mindestens eine positive Bewertung erhalten.'
+        silver: 'Eine Ankündigung von dir hat mindestens fünf positive Bewertung erhalten.'
+        gold: 'Eine Ankündigung von dir hat mindestens zehn positive Bewertung erhalten.'
+      achieve_something_to_say:
+        bronze: 'Ein Thema von dir hat mindestens eine positive Bewertung erhalten.'
+        silver: 'Ein Thema von dir hat mindestens fünf positive Bewertung erhalten.'
+        gold: 'Ein Thema von dir hat mindestens zehn positive Bewertung erhalten.'
+      achieve_modern_browser:
+        bronze: 'Du nutzt einen modernen Browser: Apple Safari, Mozilla Firefox, Google Chrome, Opera, Internet Explorer 11 oder aktueller.'
+        silver: 'Du nutzt einen modernen Browser: Apple Safari, Mozilla Firefox, Google Chrome, Opera, Internet Explorer 11 oder aktueller.'
+        gold: 'Du nutzt einen modernen Browser: Apple Safari, Mozilla Firefox, Google Chrome, Opera, Internet Explorer 11 oder aktueller.'
+      achieve_rewarding:
+        bronze: 'Du hast deine erste positive Bewertung abgegeben.'
+        silver: 'Du hast deine erste positive Bewertung abgegeben.'
+        gold: 'Du hast deine erste positive Bewertung abgegeben.'
+      achieve_critical:
+        bronze: 'Du hast deine erste negative Bewertung abgegeben.'
+        silver: 'Du hast deine erste negative Bewertung abgegeben.'
+        gold: 'Du hast deine erste negative Bewertung abgegeben.'
+      achieve_curious:
+        bronze: 'Du hast die Einführung absolviert.'
+        silver: 'Du hast die Einführung absolviert.'
+        gold: 'Du hast die Einführung absolviert.'
+      achieve_editor:
+        bronze: 'Du hast einen Beitrag bearbeitet.'
+        silver: 'Du hast einen Beitrag bearbeitet.'
+        gold: 'Du hast einen Beitrag bearbeitet.'
+      achieve_first_step:
+        bronze: 'Du hast dich bei auditorium angemeldet.'
+        silver: 'Du hast dich bei auditorium angemeldet.'
+        gold: 'Du hast dich bei auditorium angemeldet.'
+      achieve_biographer:
+        bronze: 'Du hast dein Benutzerprofil vollständig ausgefüllt.'
+        silver: 'Du hast dein Benutzerprofil vollständig ausgefüllt.'
+        gold: 'Du hast dein Benutzerprofil vollständig ausgefüllt.'
+      achieve_party:
+        bronze: 'Du hast deine erste Gruppe erstellt und sie wurde freigegeben.'
+        silver: 'Du hast deine erste Gruppe erstellt und sie wurde freigegeben.'
+        gold: 'Du hast deine erste Gruppe erstellt und sie wurde freigegeben.'
+      achieve_moderator:
+        bronze: 'Du bist zum Moderator in einer Gruppe befördert worden.'
+        silver: 'Du bist zum Moderator in einer Gruppe befördert worden.'
+        gold: 'Du bist zum Moderator in einer Gruppe befördert worden.'
     
+    flash:
+      updated: 'Das Badge wurde aktualisiert.'
+      destroyed: 'Das Badge wurde entfernt.'
+      created: 'Das Badge wurde hinzugefügt.'
+      achieved_learning:
+        bronze: 'Du hast die bronzene Auszeichnung "Lernen" erhalten.'
+        silver: 'Du hast die silberne Auszeichnung "Lernen" erhalten.'
+        gold: 'Du hast die goldene Auszeichnung "Lernen" erhalten.'
+      achieved_commenter:
+        bronze: 'Du hast die bronzene Auszeichnung "Kommentator" erhalten.'
+        silver: 'Du hast die silberne Auszeichnung "Kommentator" erhalten.'
+        gold: 'Du hast die goldene Auszeichnung "Kommentator" erhalten.'
+      achieved_cooperative:
+        bronze: 'Du hast die bronzene Auszeichnung "Kooperativ" erhalten.'
+        silver: 'Du hast die silberne Auszeichnung "Kooperativ" erhalten.'
+        gold: 'Du hast die goldene Auszeichnung "Kooperativ" erhalten.'
+      achieved_helpful:
+        bronze: 'Du hast die bronzene Auszeichnung "Hilfsbereit" erhalten.'
+        silver: 'Du hast die silberne Auszeichnung "Hilfsbereit" erhalten.'
+        gold: 'Du hast die goldene Auszeichnung "Hilfsbereit" erhalten.'
+      achieved_significant:
+        bronze: 'Du hast die bronzene Auszeichnung "Signifikant" erhalten.'
+        silver: 'Du hast die silberne Auszeichnung "Signifikant" erhalten.'
+        gold: 'Du hast die goldene Auszeichnung "Signifikant" erhalten.'
+      achieved_something_to_say:
+        bronze: 'Du hast die bronzene Auszeichnung "Etwas zu sagen" erhalten.'
+        silver: 'Du hast die silberne Auszeichnung "Etwas zu sagen" erhalten.'
+        gold: 'Du hast die goldene Auszeichnung "Etwas zu sagen" erhalten.'
+      achieved_modern_browser:
+        bronze: 'Du hast die bronzene Auszeichnung "Moderner Browser" erhalten.'
+        silver: 'Du hast die silberne Auszeichnung "Moderner Browser" erhalten.'
+        gold: 'Du hast die goldene Auszeichnung "Moderner Browser" erhalten.'
+      achieved_rewarding:
+        bronze: 'Du hast die bronzene Auszeichnung "Belohnend" erhalten.'
+        silver: 'Du hast die silberne Auszeichnung "Belohnend" erhalten.'
+        gold: 'Du hast die goldene Auszeichnung "Belohnend" erhalten.'
+      achieved_critical:
+        bronze: 'Du hast die bronzene Auszeichnung "Kritisch" erhalten.'
+        silver: 'Du hast die silberne Auszeichnung "Kritisch" erhalten.'
+        gold: 'Du hast die goldene Auszeichnung "Kritisch" erhalten.'
+      achieved_curious:
+        bronze: 'Du hast die bronzene Auszeichnung "Neugierig" erhalten.'
+        silver: 'Du hast die silberne Auszeichnung "Neugierig" erhalten.'
+        gold: 'Du hast die goldene Auszeichnung "Neugierig" erhalten.'
+      achieved_editor:
+        bronze: 'Du hast die bronzene Auszeichnung "Bearbeiter" erhalten.'
+        silver: 'Du hast die silberne Auszeichnung "Bearbeiter" erhalten.'
+        gold: 'Du hast die goldene Auszeichnung "Bearbeiter" erhalten.'
+      achieved_first_step:
+        bronze: 'Du hast die bronzene Auszeichnung "Erster Schritt" erhalten.'
+        silver: 'Du hast die silberne Auszeichnung "Erster Schritt" erhalten.'
+        gold: 'Du hast die goldene Auszeichnung "Erster Schritt" erhalten.'
+      achieved_biographer:
+        bronze: 'Du hast die bronzene Auszeichnung "Biograph" erhalten.'
+        silver: 'Du hast die silberne Auszeichnung "Biograph" erhalten.'
+        gold: 'Du hast die goldene Auszeichnung "Biograph" erhalten.'
+      achieved_party:
+        bronze: 'Du hast die bronzene Auszeichnung "Party" erhalten.'
+        silver: 'Du hast die silberne Auszeichnung "Party" erhalten.'
+        gold: 'Du hast die goldene Auszeichnung "Party" erhalten.'
+      achieved_moderator:
+        bronze: 'Du hast die bronzene Auszeichnung "Moderator" erhalten.'
+        silver: 'Du hast die silberne Auszeichnung "Moderator" erhalten.'
+        gold: 'Du hast die goldene Auszeichnung "Moderator" erhalten.'

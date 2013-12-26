@@ -663,14 +663,46 @@ en:
         moderator: 'Moderator'
         member: 'Member'
   users:
+    headers:
+      index: 'Leaderboard'
+    labels:
+      first_name: 'First name'
+      last_name: 'Surname'
+      username: 'Username'
+      email: 'Email address'
+      alternative_email: 'Alternative email address'
+      password: 'New password'
+      password_confirmation: 'Confirm the new password'
+      current_password: 'Current password'
+      role: 'Role at the university'
+      title: 'Academic title'
+      list_in_leaderboard: 'I will be listed in the leaderboard'
+      score: 'Punkte'
+      name: 'Name'
+    roles:
+      student: 'Student'
+      lecturer: 'Lecturer'
+      employee: 'Employee'
+      other: 'Other'
+    flash:
+      updated: 'Your profile has been updated.'
+      confirmed: 'The user has been confirmed.'
+      deleted: 'The user has been deleted.'
+    error:
+      updated: 'Your profile could not be saved. Try it again later.'
+      permission:
+        delete: 'You are not allowed to delete the user’s profile.'
     tabs:
       about: 'About'
+      progress: 'Achievements'
       settings: 'Settings'
       groups: 'Groups'
       questions: 'Questions'
       topics: 'Topics'
       announcements: 'Announcements'
-    pending_email_confirmation: 'An email confirmation for %{email} is pending.'
+    hints: 
+      alternative_email: 'The alternative email address is used for Gravatar to provide a profile picture.'
+      pending_email_confirmation: 'An email confirmation for %{email} is pending.'
     flash:
       updated: 'The user has been updated.'
       confirmed: 'The user has been confirmed.'
@@ -697,6 +729,8 @@ en:
         submit: 'Update personal information'
       about:
         title: 'About'
+      progress:
+        title: 'Achievements'
       groups:
         title: "Groups I'm following"
       questions:
@@ -783,3 +817,399 @@ en:
         * Taks #2
       * Project #2
         * no tasks
+  guides:
+    buttons: 
+      next: 'Next'
+      end: 'Finish'
+      lets_go: 'Let’s begin'
+    links:
+      next_guide: 'Go to the next Tutorial'
+    home:
+      welcome: 
+        header: 'Welcome to auditorium'
+        text: 'This guide will introduce you the most necessary features. Continue with a click on "Next"' 
+      post_stream: 
+        header: 'Overview about all posts'
+        text: 'Here you can see recent posts. This posts are sorted by their last activity.'
+      post_footer:
+        header: 'Details of a post' 
+        text: |
+          Here you can see in which group the post has been published, who wrotes it and how often it has been viewed.
+      post_filter:
+        header: 'Filter posts'
+        text: 'Here you can choose, which post types will be shown; choose whether Questions, Announcements or Topics should be filtered. You also can filter posts from groups you are currently subscribed to.'
+      tag_filter:
+        header: 'Filter posts through tags'
+        text: 'Search for tags to filter posts. You can add multiple tags; only posts which contain all tags will be shown.'
+      conclusion:
+        header: 'You finished the first part!'
+        text: 'Congratulations this was the first part, you can follow the link below to see the next guide.'
+    groups:
+      welcome:
+        header: 'Groups overview'
+        text: 'This is part two. It will introduce you the overview page for groups.'
+      group_filter:
+        header: 'Filter groups by type'
+        text: |
+          Choose group types you would like to show. You can choose between Lecture Groups, Study Groups and Topic Groups. Additionally you can only show subscribed groups; groups you are following.
+      tag_filter:
+        header: 'Filter posts through tags'
+        text: 'Search for tags to filter groups. You can add multiple tags; only groups which contain all tags will be shown.'
+      groups_grid:
+        header: 'Grid with groups'
+        text: |
+          In this grid you can see all available groups. Each group card shows the number of announcements, questions and topics. In a modern browser you can click on the lower right arrow to show additional information about the group. 
+      following:
+        header: 'Follow the group'
+        text: |
+          To follow the group click on the yellow star shape. After you clicked the star will be filled yellow. This shows you that you are currently following the group.
+        header: 'Das war die Gruppenübersicht'
+        text: |
+          Congratulations you finished the second part of the guide. Click on the link to see the next guide.
+    single_group:
+      welcome:
+        header: 'A group in detail'
+        text: |
+          This guide shows you a group in detail. Click on 'Next' to continue.
+      following:
+        header: 'Follow the group'
+        text: |
+          To follow the group click on the yellow star shape. After you clicked the star will be filled yellow. This shows you that you are currently following the group.
+      become_moderator:
+        header: 'Become a moderator'
+        text: | 
+          You can support the groups members as moderator. As moderator you can write announcements, add recordings and edit posts by other members. To become a moderator you need to send a membership request; just click on this button and the moderators of the group will receive an information about your request and will decide if you should become a moderator. 
+      toggle_members_list:
+        header: 'Manage group members'
+        text: |
+          As moderator you can manage group members. If you click this button a search field opens and you can search for members to add or remove them. You also will see a table with current members and moderators.
+      edit_membership:
+        header: 'Add and remove members'
+        text: |
+          You can search for members when searching for the name, username or email address. The table will show all members related to you search criteria. 
+      announcements:
+        header: 'Announcements'
+        text: |
+          As moderator you can wrtie announcements to tell something important.
+      questions:
+        header: 'Questions'
+        text: |
+           You can ask whatever is in your mind. When you ask your question you give others the chance to provide an answer and help you. 
+      topics:
+        header: 'Topics'
+        text: |
+          You are interested in specific topics? Or want to discuss something? This is the right place to do so. Just create a topic to start a discussion.
+      add_as_member:
+        header: 'Add as member'
+        text: 'Click on this link to add the user as group member.' 
+      add_as_moderator:
+        header: 'Add as moderator'
+        text: |
+          Click on this link to add the user as moderator. As moderator the user will gain privileges to create announcements, edit posts by others and edit the groups details.
+      conclusion:
+        header: 'You know a lot!'
+        text: |
+          Congratulations you finished the third part of the guide. Click on the link to go to the next guide.
+    question_in_detail:
+      welcome: 
+        header: 'A Question in Detail'
+        text: |
+          In this guide you will get to know the question in detail. 
+      vote_for_question:
+        header: "Vote for the question"
+        text: |
+          You can vote for every post once; either negative or positive. The author will gain or loose reputation points for each voting. If you make a positive vote the author gets five points. If you click on thumbs down the author losses five reputation points. And to prevent trolling you will loose one point as penalty.
+      edit_question:
+        header: 'Edit a question'
+        text: |
+          If there is a typo or you want to add some information or reformat the post, you can click on the edit link to open the edit view for the question. 
+      comments_for_question:
+        header: 'Comment on the question'
+        text: |
+          Comments exist for asking for details or directing the asker in the right direction. Unless you do not answer the question write a comment. 
+      answer_for_question:
+        header: 'Answers'
+        text: |
+           A question can have more than one correct or helpful answer. If an answer is helpful the akser can mark the answer as helpful by clicking on the button.
+      comments_for_answer:
+        header: 'Comments to answers'
+        text: |
+          If an answer provides helpful information but is not complete you can add a comment to instruct the user to add additional information for better quality. 
+      new_answer:
+        header: 'Answer the question'
+        text: 'You can provide an answer with information about how to solve the problem the asker has.'
+      conclusion:
+        header: 'Finished'
+        text: |
+          Congratulations you finished the fourth guide. Now you should know how to aks questions and also answer them.
+  progress:
+    percentage: '%{value}%'
+    point_difference: '%{value} of %{max} Points'
+    reputation: 
+      long: '%{score} Points'
+      short: 'Rep. %{score}'
+    level:
+      header: 'Level %{level}'
+      next_level: 'Only %{points} Points to level up!'
+    tutorial_progress:
+      header: 'Introduction to auditorium'
+      introduction: 'Introduction'
+      groups: 'Groups overview'
+      group: 'A Group in Detail'
+      question: 'A Question in Detail'
+      hint: 'If you accomplished every guide you will gain the achievement "Curious".'
+    profile_progress:
+      header: 'Information about you'
+      first_name: 'First name'
+      last_name: 'Last name'
+      username: 'Username'
+      role_at_university: 'You role at the university (Student, Employee, Lecturer, ...)'
+      hint: 'If you provide all information from above you will gain the achievement "Biographer".'
+    badges: 
+      header: 'Achievements'
+  levels:
+    title: 'Level %{number}'
+    headers:
+      new: 'Add new level'
+      edit: 'Edit level'
+      index: 'Levels overview'
+      show: 'Level %{number}'
+    content:
+      threshold: 'The user levels up if he gains at least %{threshold} Points.'
+      empty_description: 'No information available'
+    actions:
+      add: 'Add level'
+      update: 'Update the Levele'
+      submit: 'Create Level'
+      edit: 'edit'
+      remove: 'delete'
+    labels:
+      number: 'Level-Number'
+      threshold: 'Threshold'
+      description: 'Description'
+    confirm:
+      delete: 'Are you sure about deleting the level?'
+    flash:
+      updated: 'You updated the level.'
+      destroyed: 'The Level has been deleted.'
+      created: 'The Level has been created.'
+    hints: 
+      index: 'Here you can see all Level'
+  badges:
+    headers:
+      new: 'Add new badge'
+      edit: 'Edit badge'
+      index: 'Badge Overview'
+      show: 'Badge %{title}'
+      bronze_badges: 'Bronze Achievements'
+      silver_badges: 'Silver Achivements'
+      gold_badges: 'Gold Achievements'
+    content:
+      empty_description: 'N/A'
+      title: '%{title}'
+    actions:
+      add: 'Add new Badge'
+      update: 'Update Badge'
+      submit: 'Submit Badge'
+      edit: 'edit'
+      remove: 'delete'
+    labels:
+      title: 'Name of the Badge'
+      description: 'Description'
+      score: 'Points for the badge'
+      category: 'Type of the badge'
+    confirm:
+      delete: 'Are you sure you want to delete the badge?'
+    hints: 
+      index: 'Here you can see all badges'
+      no_badges_earned: 'You do not have achievements'
+      bronze_badges: 'Bronze Achievements are easy to get. Every Bronze Achievement adds 25 Points to your reputation.'
+      silver_badges: 'Silver Achievements are challenging. Every Silver Achievement adds 50 Points to your reputation.'
+      gold_badges: 'Gold Achievements are the most challenging. Every Gold Achievement adds 100 Points to your reputation.'
+    titles:
+      achieve_learning:
+        bronze: 'Learning'
+        silver: 'Learning'
+        gold: 'Learning'
+      achieve_commenter:
+        bronze: 'Commenter'
+        silver: 'Commenter'
+        gold: 'Commenter'
+      achieve_cooperative:
+        bronze: 'Cooperative'
+        silver: 'Cooperative'
+        gold: 'Cooperative'
+      achieve_helpful:
+        bronze: 'Helpful'
+        silver: 'Helpful'
+        gold: 'Helpful'
+      achieve_significant:
+        bronze: 'Significant'
+        silver: 'Significant'
+        gold: 'Significant'
+      achieve_something_to_say:
+        bronze: 'Something to Say'
+        silver: 'Something to Say'
+        gold: 'Something to Say'
+      achieve_modern_browser:
+        bronze: 'Modern Browser'
+        silver: 'Modern Browser'
+        gold: 'Modern Browser'
+      achieve_rewarding:
+        bronze: 'Rewarding'
+        silver: 'Rewarding'
+        gold: 'Rewarding'
+      achieve_critical:
+        bronze: 'Critical'
+        silver: 'Critical'
+        gold: 'Critical'
+      achieve_curious:
+        bronze: 'Curious'
+        silver: 'Curious'
+        gold: 'Curious'
+      achieve_editor:
+        bronze: 'Editor'
+        silver: 'Editor'
+        gold: 'Editor'
+      achieve_first_step:
+        bronze: 'First Step'
+        silver: 'First Step'
+        gold: 'First Step'
+      achieve_biographer:
+        bronze: 'Biographer'
+        silver: 'Biographer'
+        gold: 'Biographer'
+      achieve_party:
+        bronze: 'Party'
+        silver: 'Party'
+        gold: 'Party'
+      achieve_moderator:
+        bronze: 'Moderator'
+        silver: 'Moderator'
+        gold: 'Moderator'
+    descriptions:
+      achieved_learning:
+        bronze: 'You do need at least one question with one or more up votes.'
+        silver: 'You do need at least one question with five or more up votes.'
+        gold: 'You do need at least one question with ten or more up votes.'
+      achieved_commenter:
+        bronze: 'You do need at least one comment with one or more up votes.'
+        silver: 'You do need at least one comment with five or more up votes.'
+        gold: 'You do need at least one comment with ten or more up votes.'
+      achieved_cooperative:
+        bronze: 'You do need at least one answer with one or more up votes.'
+        silver: 'You do need at least one answer with five or more up votes.'
+        gold: 'You do need at least one answer with ten or more up votes.'
+      achieved_helpful:
+        bronze: 'You do need at least one answer which is marked as helpful.'
+        silver: 'You do need at least five answers which are marked as helpful.'
+        gold: 'You do need at least ten answers which are marked as helpful.'
+      achieved_significant:
+        bronze: 'You do need at least one announcement with one or more up votes.'
+        silver: 'You do need at least one announcement with five or more up votes.'
+        gold: 'You do need at least one announcement with ten or more up votes.'
+      achieved_something_to_say:
+        bronze: 'You do need at least one topic with one or more up votes.'
+        silver: 'You do need at least one topic with five or more up votes.'
+        gold: 'You do need at least one topic with ten or more up votes.'
+      achieved_modern_browser:
+        bronze: 'You should use a modern browser like Apple Safari, Mozilla Firefox, Google Chrome, Opera or Internet Explorer 11 or newer'
+        silver: 'You should use a modern browser like Apple Safari, Mozilla Firefox, Google Chrome, Opera or Internet Explorer 11 or newer'
+        gold: 'You should use a modern browser like Apple Safari, Mozilla Firefox, Google Chrome, Opera or Internet Explorer 11 or newer'
+      achieved_rewarding:
+        bronze: 'Your first up vote.'
+        silver: 'Your first up vote.'
+        gold: 'Your first up vote.'
+      achieved_critical:
+        bronze: 'Your first down vote.'
+        silver: 'Your first down vote.'
+        gold: 'Your first down vote.'
+      achieved_curious:
+        bronze: 'You accomplished all guides within auditorium.'
+        silver: 'You accomplished all guides within auditorium.'
+        gold: 'You accomplished all guides within auditorium.'
+      achieved_editor:
+        bronze: 'Your first edit.'
+        silver: 'Your first edit.'
+        gold: 'Your first edit.'
+      achieved_first_step:
+        bronze: 'You signed up for auditorium.'
+        silver: 'You signed up for auditorium.'
+        gold: 'You signed up for auditorium.'
+      achieved_biographer:
+        bronze: 'You do need to fill out your profile.'
+        silver: 'You do need to fill out your profile.'
+        gold: 'You do need to fill out your profile.'
+      achieved_party:
+        bronze: 'You do need to create a group which has been approved.'
+        silver: 'You do need to create a group which has been approved.'
+        gold: 'You do need to create a group which has been approved.'
+      achieved_moderator:
+        bronze: 'You need to become a moderator of a group of your choice.'
+        silver: 'You need to become a moderator of a group of your choice.'
+        gold: 'You need to become a moderator of a group of your choice.'
+    flash:
+      updated: 'The badge has been updated.'
+      destroyed: 'The badge has been deleted.'
+      created: 'The badge has been created.'
+      achieved_learning:
+        bronze: 'You unlocked the bronze achievement "Learning".'
+        silver: 'You unlocked the silver achievement "Learning".'
+        gold: 'You unlocked the golden achievement "Learning".'
+      achieved_commenter:
+        bronze: 'You unlocked the bronze achievement "Commenter".'
+        silver: 'You unlocked the silver achievement "Commenter".'
+        gold: 'You unlocked the golden achievement "Commenter".'
+      achieved_cooperative:
+        bronze: 'You unlocked the bronze achievement "Cooperative".'
+        silver: 'You unlocked the silver achievement "Cooperative".'
+        gold: 'You unlocked the golden achievement "Cooperative".'
+      achieved_helpful:
+        bronze: 'You unlocked the bronze achievement "Helpful".'
+        silver: 'You unlocked the silver achievement "Helpful".'
+        gold: 'You unlocked the golden achievement "Helpful".'
+      achieved_significant:
+        bronze: 'You unlocked the bronze achievement "Significant".'
+        silver: 'You unlocked the silver achievement "Significant".'
+        gold: 'You unlocked the golden achievement "Significant".'
+      achieved_something_to_say:
+        bronze: 'You unlocked the bronze achievement "Something to say".'
+        silver: 'You unlocked the silver achievement "Something to say".'
+        gold: 'You unlocked the golden achievement "Something to say".'
+      achieved_modern_browser:
+        bronze: 'You unlocked the bronze achievement "Modern Browser".'
+        silver: 'You unlocked the silver achievement "Modern Browser".'
+        gold: 'You unlocked the golden achievement "Modern Browser".'
+      achieved_rewarding:
+        bronze: 'You unlocked the bronze achievement "Rewarding".'
+        silver: 'You unlocked the silver achievement "Rewarding".'
+        gold: 'You unlocked the golden achievement "Rewarding".'
+      achieved_critical:
+        bronze: 'You unlocked the bronze achievement "Critical".'
+        silver: 'You unlocked the silver achievement "Critical".'
+        gold: 'You unlocked the golden achievement "Critical".'
+      achieved_curious:
+        bronze: 'You unlocked the bronze achievement "Curious".'
+        silver: 'You unlocked the silver achievement "Curious".'
+        gold: 'You unlocked the golden achievement "Curious".'
+      achieved_editor:
+        bronze: 'You unlocked the bronze achievement "Editor".'
+        silver: 'You unlocked the silver achievement "Editor".'
+        gold: 'You unlocked the golden achievement "Editor".'
+      achieved_first_step:
+        bronze: 'You unlocked the bronze achievement "First Step".'
+        silver: 'You unlocked the silver achievement "First Step".'
+        gold: 'You unlocked the golden achievement "First Step".'
+      achieved_biographer:
+        bronze: 'You unlocked the bronze achievement "Biographer".'
+        silver: 'You unlocked the silver achievement "Biographer".'
+        gold: 'You unlocked the golden achievement "Biographer".'
+      achieved_party:
+        bronze: 'You unlocked the bronze achievement "Party".'
+        silver: 'You unlocked the silver achievement "Party".'
+        gold: 'You unlocked the golden achievement "Party".'
+      achieved_moderator:
+        bronze: 'You unlocked the bronze achievement "Moderator".'
+        silver: 'You unlocked the silver achievement "Moderator".'
+        gold: 'You unlocked the golden achievement "Moderator".'
+    

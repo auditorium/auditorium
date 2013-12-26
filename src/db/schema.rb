@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131222210742) do
+ActiveRecord::Schema.define(:version => 20131225232858) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -84,6 +84,16 @@ ActiveRecord::Schema.define(:version => 20131222210742) do
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
   end
+
+  create_table "badges_users", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "badge_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "badges_users", ["badge_id"], :name => "index_badges_users_on_badge_id"
+  add_index "badges_users", ["user_id"], :name => "index_badges_users_on_user_id"
 
   create_table "chairs", :force => true do |t|
     t.string   "name"
@@ -493,6 +503,8 @@ ActiveRecord::Schema.define(:version => 20131222210742) do
     t.boolean  "privacy_policy",         :default => false
     t.integer  "sash_id"
     t.integer  "level_id"
+    t.boolean  "list_in_leaderboard",    :default => true
+    t.boolean  "experimental_group",     :default => true
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true

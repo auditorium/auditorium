@@ -9,5 +9,6 @@ guides.manage_members.conclusion.header in 	  ["app/views/guides/_manage_members
 guides.manage_members.conclusion.text in 	  ["app/views/guides/_manage_members_guide.html.erb"] is missing
 levels.action.edit in 	  ["app/views/levels/show.html.erb"] is missing
 levels.action.remove in 	  ["app/views/levels/show.html.erb"] is missing
+users.pending_email_confirmation in 	  ["app/views/users/_settings.html.erb", "app/views/users/edit.html.erb"] is missing
 users.headers.index in 	  ["app/views/users/index.html.erb"] is missing
 users.subheader.index in 	  ["app/views/users/index.html.erb"] is missing

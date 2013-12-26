@@ -1,28 +1,25 @@
 <header>
   <h2><%= t('users.headers.index') %></h2>
-  <p><%= t('users.subheader.index') %></p>
 </header>
-
-  <table class="table">
+<article>
+  <table class="block table leaderboard">
     <thead>
       <tr>
-        <td></td>
-        <th>Name</th>
-        <th>Score</th>
+        <th>#</th>
+        <th><%= t('users.labels.name')%></th>
+        <th><%= t('users.labels.score')%></th>
       </tr>
     </thead>
     <tbody>
-
       <% params[:page].nil? ? page = 0 : page = params[:page].to_i-1 %> 
       <% @users.each_with_index do |user, i| %>
         <tr>
-          <td width="35" style="border:0px; text-align:center;"><%= i + 1 + 10*page %></td>
-          <td><%= link_to user.full_name, user_path(user) %></td>
+          <td class="rank"><b><%= i + 1 + 10*page %></b></td>
+          <td><%= user.full_name %></td>
           <td><%= user.score %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
-
-  <%= paginate @users %>
-</div>
+  <span class="right"><%= paginate @users %></span>
+</article>

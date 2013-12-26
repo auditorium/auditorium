@@ -46,10 +46,8 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if @question.update_attributes(params[:question])
-        if !@question.author.has_badge?('editor', 'bronze')
-          @question.author.add_badge('editor', 'bronze')
-          flash[:badge] = t('badges.achieved.editor.bronze')
-        end
+        achieve_editor_badge(current_user)
+        
         format.html { redirect_to question_path(@question), flash: { success:  t('questions.flash.updated') } }
         format.json { head :no_content }
       else

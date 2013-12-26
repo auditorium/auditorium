@@ -1,4 +1,5 @@
 class BadgesController < ApplicationController
+  load_and_authorize_resource
   def index
     @badges = Badge.order('title DESC')
   end

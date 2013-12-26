@@ -200,6 +200,7 @@ class GroupsController < ApplicationController
     @group.save
 
     respond_to do |format|
+      achieve_party_badge(@group.creator)
       format.html { redirect_to @group, notice: t('groups.flash.approved') }
     end
   end
