@@ -89,6 +89,7 @@ class Ability
 
       can [:create, :read], [Group, Comment, Answer, Topic, Announcement]
       cannot [:read, :manage], [Level, Badge]
+      cannot :read, User
     else # Gäste
       cannot :read, :all
     end
