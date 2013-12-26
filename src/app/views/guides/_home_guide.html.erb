@@ -1,3 +1,4 @@
+<% if current_user.experimental_group? %>
 <!-- At the bottom of your page but inside of the body tag -->
 <ol class="joyride-list" data-joyride>
   <li data-text="<%= t('guides.buttons.next') %>" data-options="tipLocation:top;tipAnimation:fade">
@@ -28,3 +29,4 @@
   </li>
 </ol>
 <%= hidden_field_tag 'guide', 'intro' %>
+<% end %>

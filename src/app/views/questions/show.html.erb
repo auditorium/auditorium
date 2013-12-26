@@ -29,6 +29,7 @@
 <section id='answers-for-question' class="answers">
   <%= render 'shared/answers' %>
 </section>
-<% unless params[:show_guide] != 'yes' and current_user.tutorial_progress.present? and current_user.tutorial_progress.question %>
+
+<% unless (params[:show_guide] != 'yes' and current_user.tutorial_progress.present? and current_user.tutorial_progress.question) %>
 <%= render 'guides/question_in_detail_guide' %>
 <% end %>

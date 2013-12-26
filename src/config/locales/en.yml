@@ -676,7 +676,7 @@ en:
       current_password: 'Current password'
       role: 'Role at the university'
       title: 'Academic title'
-      list_in_leaderboard: 'I will be listed in the leaderboard'
+      list_in_leaderboard: 'I will be listed in the <a href="/en/users/" target="_blank">leaderboard</a>.'
       score: 'Punkte'
       name: 'Name'
     roles:
@@ -701,7 +701,7 @@ en:
       topics: 'Topics'
       announcements: 'Announcements'
     hints: 
-      alternative_email: 'The alternative email address is used for Gravatar to provide a profile picture.'
+      alternative_email: 'The alternative email address is used for <a href="https://en.gravatar.com" target="_blank">Gravatar</a> to provide a profile picture.'
       pending_email_confirmation: 'An email confirmation for %{email} is pending.'
     flash:
       updated: 'The user has been updated.'
@@ -824,6 +824,7 @@ en:
       lets_go: 'Let’s begin'
     links:
       next_guide: 'Go to the next Tutorial'
+      finished: 'Go to your profile to see what you have earned.'
     home:
       welcome: 
         header: 'Welcome to auditorium'

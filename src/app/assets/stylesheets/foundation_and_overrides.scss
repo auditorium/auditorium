@@ -3328,6 +3328,10 @@ ul.badge-list li {
  box-shadow: 0 0 0 3px $gray, 0px 2px 2px rgba(0, 0, 0, 0.12);
  &.earned {
    text-shadow: 0 -1px $anthracite;
+   background-color: $dark-gray;
+   box-shadow: 0 0 0 3px $dark-gray, 0px 2px 2px rgba(0, 0, 0, 0.12);
+   @include gradient($dark-gray, darken($dark-gray, 5%));
+
    &.bronze { 
       background-color: $orange;
       box-shadow: 0 0 0 3px $orange, 0px 2px 2px rgba(0, 0, 0, 0.12);
@@ -3370,4 +3374,8 @@ li.badge {
 td.rank {
   width: 35px;
   text-align: center;
+}
+
+.alert-badge {
+  @extend badge;
 }

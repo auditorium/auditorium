@@ -61,28 +61,28 @@ class ApplicationController < ActionController::Base
   def achieve_editor_badge(user)
     if !user.has_badge?('editor', 'bronze')
       user.add_badge('editor', 'bronze')
-      flash[:badge] = t('badges.flash.achieved_editor.bronze') if request
+      flash[:badge] = t('badges.flash.achieved_editor.bronze') if user.experimental_group? and request
     end
   end
 
   def achieve_party_badge(user)
     if !user.has_badge?('party', 'silver')
       user.add_badge('party', 'silver')
-      flash[:badge] = t('badges.flash.achieved_party.silver') if request
+      flash[:badge] = t('badges.flash.achieved_party.silver') if user.experimental_group? and request
     end
   end
 
   def achieve_rewarding_badge(user)
     if !user.has_badge?('rewarding', 'bronze')
       user.add_badge('rewarding', 'bronze')
-      flash[:badge] = t("badges.flash.achieved_rewarding.'bronze'") if request
+      flash[:badge] = t("badges.flash.achieved_rewarding.'bronze'") if user.experimental_group? and request
     end
   end
 
   def achieve_critical_badge(user)
     if !user.has_badge?('critical', 'bronze')
       user.add_badge('critical', 'bronze')
-      flash[:badge] = t("badges.flash.achieved_critical.bronze") if request
+      flash[:badge] = t("badges.flash.achieved_critical.bronze") if user.experimental_group? and request
     end
   end
 
@@ -114,79 +114,81 @@ class ApplicationController < ActionController::Base
   def achieve_learning_badge(user, category, threshold)
     if !user.has_badge?('learning', category) and user.questions.where('rating >= ?', threshold).size > 0
       user.add_badge('learning', category)
-      flash[:badge] = t("badges.flash.achieved_learning.#{category}") if request
+      flash[:badge] = t("badges.flash.achieved_learning.#{category}") if user.experimental_group? and request
     end
   end
 
   def achieve_cooperative_badge(user, category, threshold)
     if !user.has_badge?('cooperative', category) and user.answers.where('rating >= ?', threshold).size > 0
       user.add_badge('cooperative', category)
-      flash[:badge] = t("badges.flash.achieved_cooperative.#{category}") if request
+      flash[:badge] = t("badges.flash.achieved_cooperative.#{category}") if user.experimental_group? and request
     end
   end
 
   def achieve_something_to_say_badge(user, category, threshold)
     if !user.has_badge?('something_to_say', category) and user.topics.where('rating >= ?', threshold).size > 0
       user.add_badge('something_to_say', category)
-      flash[:badge] = t("badges.flash.achieved_something_to_say.#{category}") if request
+      flash[:badge] = t("badges.flash.achieved_something_to_say.#{category}") if user.experimental_group? and request
     end
   end
 
   def achieve_significant_badge(user, category, threshold)
     if !user.has_badge?('significant', category) and user.announcements.where('rating >= ?', threshold).size > 0
       user.add_badge('significant', category)
-      flash[:badge] = t("badges.flash.achieved_significant.#{category}") if request
+      flash[:badge] = t("badges.flash.achieved_significant.#{category}") if user.experimental_group? and request
     end
   end
 
   def achieve_commenter_badge(user, category, threshold)
     if !user.has_badge?('commenter', category) and user.comments.where('rating >= ?', threshold).size > 0
       user.add_badge('commenter', category)
-      flash[:badge] = t("badges.flash.achieved_commenter.#{category}") if request
+      flash[:badge] = t("badges.flash.achieved_commenter.#{category}") if user.experimental_group? and request
     end
   end
 
   def achieve_biographer_badge(user)
     if user.profile_progress_percentage == 100 and !user.has_badge?('biographer', 'silver')
       user.add_badge('biographer', 'silver')
-      flash[:badge] = t('badges.flash.achieved_biographer.silver') if request
+      flash[:badge] = t('badges.flash.achieved_biographer.silver') if user.experimental_group? and request
+    elsif user.profile_progress_percentage < 100 and user.has_badge?('biographer', 'silver')
+      user.remove_badge('biographer', 'silver')
     end
   end
 
   def achieve_curious_badge(user, tutorial_progress)
     if tutorial_progress.percentage == 100 and !user.has_badge?('curious', 'silver')
       user.add_badge('curious', 'silver')
-      flash[:badge] = t('badges.flash.achieved_curious.silver') if request
+      flash[:badge] = t('badges.flash.achieved_curious.silver') if user.experimental_group? and request
     end
   end
 
   def achieve_helpful_badge(user)
     if !user.has_badge?('helpful', 'bronze') and user.answers.keep_if { |a| !a.answer_to_id.nil? }.size >= 1
       user.add_badge('helpful', 'bronze')
-      flash[:badge] = t('badges.flash.achieved_helpful.bronze') if request
+      flash[:badge] = t('badges.flash.achieved_helpful.bronze') if user.experimental_group? and request
     end
 
     if !user.has_badge?('helpful', 'silver') and user.answers.keep_if { |a| !a.answer_to_id.nil? }.size >= 5
       user.add_badge('helpful', 'silver')
-      flash[:badge] = t('badges.flash.achieved_helpful.silver') if request
+      flash[:badge] = t('badges.flash.achieved_helpful.silver') if user.experimental_group? and request
     end
 
     if !user.has_badge?('helpful', 'gold') and user.answers.keep_if { |a| !a.answer_to_id.nil? }.size >= 10
       user.add_badge('helpful', 'gold')
-      flash[:badge] = t('badges.flash.achieved_helpful.gold') if request
+      flash[:badge] = t('badges.flash.achieved_helpful.gold') if user.experimental_group? and request
     end
   end
 
   def achieve_first_step_badge(user)
     if !user.has_badge?('first_step', 'bronze')
       user.add_badge('first_step', 'bronze')
-      flash[:badge] = t('badges.flash.achieved_first_step.bronze') if request
+      flash[:badge] = t('badges.flash.achieved_first_step.bronze') if user.experimental_group? and request
     end
   end
 
   def achieve_moderator_badge(user)
     unless user.has_badge?('moderator', 'silver')
-      user.add_badge('moderator', 'silver') if request
+      user.add_badge('moderator', 'silver') if user.experimental_group? and request
     end
   end
 

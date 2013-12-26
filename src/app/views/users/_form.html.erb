@@ -33,7 +33,7 @@
       <li class="input-fields">
         <%= f.label :alternative_email, t('users.labels.alternative_email') %>
         <%= f.email_field :alternative_email, :autocomplete => 'off' %>
-        <p class="hint"><%= t('users.hints.alternative_email') %></p>
+        <p class="hint"><%= t('users.hints.alternative_email').html_safe %></p>
       </li>
 
 
@@ -45,7 +45,7 @@
       <li class="input-fields">
         <%= f.label :list_in_leaderboard do %>
           <%= f.check_box :list_in_leaderboard %>
-          <%= t('users.labels.list_in_leaderboard') %>
+          <%= t('users.labels.list_in_leaderboard').html_safe %>
         <% end %>
       </li>
       <li class="input-fields">

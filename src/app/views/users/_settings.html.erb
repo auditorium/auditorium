@@ -32,7 +32,7 @@
         <%= f.label :email %>
         <%= f.email_field :email, :autocomplete => 'off' %>
         <% if resource.unconfirmed_email.present? %>
-        <p class="hint"><%= t('users.pending_email_confirmation', email: resource.unconfirmed_email) %></p>
+        <p class="hint"><%= t('users.hints.pending_email_confirmation', email: resource.unconfirmed_email) %></p>
         <% end %>
       </li>
       <li class="input-fields">

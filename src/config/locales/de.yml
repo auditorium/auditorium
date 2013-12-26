@@ -673,7 +673,7 @@ de:
       current_password: 'Aktuelles Passwort'
       role: 'Rolle an der Universität'
       title: 'Akademischer Titel'
-      list_in_leaderboard: 'Ich möchte im Ranking der Benutzer auftauchen'
+      list_in_leaderboard: 'Ich möchte im <a href="/de/users" target="_blank">Ranking der Benutzer</a> auftauchen.'
       score: 'Punkte'
       name: 'Name'
     roles:
@@ -699,7 +699,7 @@ de:
       announcements: 'Ankündigungen'
     hints:
       pending_email_confirmation: 'Die E-Mail Adresse %{email} wartet auf ihre Bestätigung.'
-      alternative_email: 'Diese E-Mail-Adresse wird für Gravatar genutzt, um dein Profilfoto darzustellen.'
+      alternative_email: 'Diese E-Mail-Adresse wird für <a href="https://de.gravatar.com" target="_blank">Gravatar</a> genutzt, um dein Profilfoto darzustellen.'
     role:
       is_admin: 'Administrator'
     profile:
@@ -820,6 +820,7 @@ de:
       lets_go: 'Lass’ uns anfangen!'
     links:
       next_guide: 'Weiter zum nächsten Tutorial.'
+      finished: 'Gehe zum Profil, um deine erhaltenen Badges zu sehen.'
     home:
       welcome: 
         header: 'Willkommen auf auditorium.'

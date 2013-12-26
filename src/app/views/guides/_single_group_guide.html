@@ -1,3 +1,4 @@
+<% if current_user.experimental_group? %>
 <!-- At the bottom of your page but inside of the body tag -->
 <ol class="joyride-list" data-joyride>
   <li data-text="<%= t('guides.buttons.next') %>" data-options="tipLocation:top;tipAnimation:fade">
@@ -41,7 +42,8 @@
     <h4><%= t('guides.single_group.conclusion.header') %></h4>
     <p><%= t('guides.single_group.conclusion.text') %></p>
 
-    <p><%= link_to t('guides.links.next_guide'), groups_path %></p>
+    <p><%= link_to t('guides.links.next_guide'), question_path(id: 3079) %></p>
   </li>
 </ol>
 <%= hidden_field_tag 'guide', 'group' %>
+<% end %>
