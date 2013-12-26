@@ -103,23 +103,26 @@ class AjaxController < ApplicationController
   end
 
   def save_tutorial_progress
-    name = params[:tutorial_name]
-    tutorial_progress = TutorialProgress.find_or_initialize_by_user_id(current_user.id)
-    case name
-    when 'intro'
-      tutorial_progress.introduction = true  
-    when 'groups'
-      tutorial_progress.groups = true
-    when 'group'
-      tutorial_progress.group = true
-    when 'question'
-      tutorial_progress.question = true
+    if current_user.present?
+      name = params[:tutorial_name]
+      tutorial_progress = TutorialProgress.find_or_initialize_by_user_id(current_user.id)
+      case name
+      when 'intro'
+        tutorial_progress.introduction = true  
+      when 'groups'
+        tutorial_progress.groups = true
+      when 'group'
+        tutorial_progress.group = true
+      when 'question'
+        tutorial_progress.question = true
+      end
+
+      tutorial_progress.save
+
+      achieve_curious_badge(current_user, tutorial_progress)
+
+      
     end
-
-    tutorial_progress.save
-
-    achieve_curious_badge(current_user, tutorial_progress)
-
     respond_to :js
   end
 

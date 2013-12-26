@@ -1,11 +1,12 @@
 $.saveTutorialProgress = () ->
-  tutorial_name = $('input[name="guide"]').val()
-  $.ajax
-    type: 'post'
-    url: '/ajax/save_tutorial_progress'
-    data: { tutorial_name: tutorial_name }
-    error: (jqXHR, textStatus, errorThrown) ->
-      console.log errorThrown
+  if $('input[name="guide"]').is(":visible") 
+    tutorial_name = $('input[name="guide"]').val()
+    $.ajax
+      type: 'post'
+      url: '/ajax/save_tutorial_progress'
+      data: { tutorial_name: tutorial_name }
+      error: (jqXHR, textStatus, errorThrown) ->
+        console.log errorThrown
 
 $.loadForm = (form_type) ->
   $.ajax

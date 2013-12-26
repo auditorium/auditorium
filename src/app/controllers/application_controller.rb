@@ -150,7 +150,7 @@ class ApplicationController < ActionController::Base
     if user.profile_progress_percentage == 100 and !user.has_badge?('biographer', 'silver')
       user.add_badge('biographer', 'silver')
       flash[:badge] = t('badges.flash.achieved_biographer.silver') if user.experimental_group? and request
-    elsif user.profile_progress_percentage < 100 and user.has_badge?('biographer', 'silver')
+    elsif user.has_badge?('biographer', 'silver') and user.profile_progress_percentage < 100 
       user.remove_badge('biographer', 'silver')
     end
   end
