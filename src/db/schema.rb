@@ -502,7 +502,7 @@ ActiveRecord::Schema.define(:version => 20131225232858) do
     t.datetime "last_sign_in_at"
     t.boolean  "privacy_policy",         :default => false
     t.integer  "sash_id"
-    t.integer  "level_id"
+    t.integer  "level_id",               :default => 0
     t.boolean  "list_in_leaderboard",    :default => true
     t.boolean  "experimental_group",     :default => true
   end
