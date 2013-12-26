@@ -42,7 +42,7 @@
     <h4><%= t('guides.question_in_detail.conclusion.header') %></h4>
     <p><%= t('guides.question_in_detail.conclusion.text') %></p>
 
-    <p><%= link_to t('guides.links.finished'), current_user %></p>
+    <p><%= link_to t('guides.links.finished'), current_user, onclick: '$.saveTutorialProgress();'  %></p>
   </li>
 </ol>
 <%= hidden_field_tag 'guide', 'question' %>

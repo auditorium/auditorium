@@ -27,7 +27,7 @@
     <h4><%= t('guides.groups.conclusion.header') %></h4>
     <p><%= t('guides.groups.conclusion.text') %></p>
 
-    <p><%= link_to t('guides.links.next_guide'), group_path(id: 110804009) %></p>
+    <p><%= link_to t('guides.links.next_guide'), group_path(id: 110804009), onclick: '$.saveTutorialProgress();'  %></p>
   </li>
 </ol>
 <%= hidden_field_tag 'guide', 'groups' %>
