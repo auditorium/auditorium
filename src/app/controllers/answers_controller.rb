@@ -75,7 +75,7 @@ class AnswersController < ApplicationController
     @answer = Answer.find(params[:id])
     if @answer.answer_to_id.nil?
       @answer.answer_to_id = @answer.question.id
-      achieve_helpful_badge(@answer.author, current_user)
+      achieve_helpful_badge(@answer.author)
     else
       @answer.answer_to_id = nil
     end

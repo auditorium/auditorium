@@ -55,8 +55,6 @@ class Ability
       # cannot :read, Group do |group|
       #   group.deactivated == true and user != group.creator
       # end
-
-      
       can :manage, User do |visited_user|
         (visited_user.id == user.id)
       end

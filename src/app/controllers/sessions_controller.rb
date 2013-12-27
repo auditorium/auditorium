@@ -28,18 +28,4 @@ class SessionsController < Devise::SessionsController
   def verified_request?
     request.content_type == "application/json" || super
   end
-
-  def achieve_modern_browser_badge(user)
-    if browser.modern? and !user.has_badge?('modern_browser', 'bronze')
-      user.add_badge('modern_browser', 'bronze')
-    elsif !browser.modern? and user.has_badge?('modern_browser', 'bronze')
-      user.remove_badge('modern_browser', 'bronze')
-    end
-  end
-
-  def achieve_first_step_badge(user)
-    if !user.has_badge?('first_step', 'bronze')
-      user.add_badge('first_step', 'bronze')
-    end
-  end
 end

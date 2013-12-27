@@ -14,7 +14,15 @@
     </span>
     <div class="clearfix"></div>
   </li>
-
+  <% elsif notification.notifiable_type.eql? 'Badge' and notification.notifiable.present? %>
+    <li class="notification <%= 'read' if notification.read? %>">
+      <%= link_to fa_icon('check'), mark_notification_as_read_path(notification), title: t('notifications.actions.mark_as_read'), method: :post %>
+      <%= link_to t("badges.flash.achieved_#{notification.notifiable.title}.#{notification.notifiable.category}"), notification  %>
+      <span class="right">
+        <small><%= l(notification.created_at, format: :short) %></small>
+        <%= link_to fa_icon('times'), notification, method: :delete %>
+      </span>
+    </li>
   <% elsif notification.notifiable_type.eql? 'Group' and notification.notifiable.present? %>
     
     <li class="notification <%= 'read' if notification.read? %>">

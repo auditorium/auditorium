@@ -37,7 +37,7 @@ class AjaxController < ApplicationController
     
       respond_to do |format|
         if @post.update_rating
-          achieve_post_badge(current_user, @post)
+          achieve_post_badge(@post.author, @post)
           achieve_rewarding_badge(current_user)
 
           format.js

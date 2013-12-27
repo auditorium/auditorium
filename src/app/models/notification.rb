@@ -19,13 +19,13 @@ class Notification < ActiveRecord::Base
   belongs_to :sender, :class_name => 'User'
   belongs_to :notifiable, :polymorphic => true
   
-  attr_accessible :title, :body, :read, :receiver, :sender, :notifiable_id, :notifiable_type
+  attr_accessible :title, :body, :read, :receiver, :sender, :notifiable_id, :notifiable_type, :notifiable
   
   validate :title, :presence => true
   validate :body, :presence => true
   validate :sender, :presence => true
   validate :receiver, :presence => true
-  validate :notifiable_type, :presence => true, inclusion: { in: %w{Post Rating CourseMembership LectureMembership} }
+  validate :notifiable_type, :presence => true
   validate :notifiable_id, :presence => true
 
   def for_post?
