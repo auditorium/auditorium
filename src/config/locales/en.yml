@@ -864,7 +864,8 @@ en:
         header: 'Follow the group'
         text: |
           To follow the group click on the yellow star shape. After you clicked the star will be filled yellow. This shows you that you are currently following the group.
-        header: 'Das war die Gruppenübersicht'
+      conclusion:  
+        header: 'That was the group overview'
         text: |
           Congratulations you finished the second part of the guide. Click on the link to see the next guide.
     single_group:
