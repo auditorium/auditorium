@@ -18,13 +18,17 @@
     
     <ul class="plain-list">
       <li>
+        <% if @user.tutorial_progress.present? %>
         <progress value="<%= @user.tutorial_progress.progress %>" max="<%= @user.tutorial_progress.max_value %>"></progress> <%= t('progress.percentage', value: sprintf('%.0f', @user.tutorial_progress.percentage)) %>
+        <% else %>
+          <progress value="0" max="4"></progress> <%= t('progress.percentage', value: 0) %>
+        <% end %>
         <p class="hint"><%= t('progress.tutorial_progress.hint') %></p>
       </li>
-      <li><%= is_done? @user.tutorial_progress.introduction %>&nbsp;<%= link_to t('progress.tutorial_progress.introduction'), home_path(params: { show_guide: 'yes' }) %></li>
-      <li><%= is_done? @user.tutorial_progress.groups %>&nbsp;<%= link_to t('progress.tutorial_progress.groups'), groups_path(params: { show_guide: 'yes' }) %></li>
-      <li><%= is_done? @user.tutorial_progress.group %>&nbsp;<%= link_to t('progress.tutorial_progress.group'), group_path(id: 110804009, params: { show_guide: 'yes'}) %></li>
-      <li><%= is_done? @user.tutorial_progress.question %>&nbsp;<%= link_to t('progress.tutorial_progress.question'), question_path(id: 3079, params: { show_guide: 'yes' }) %></li>
+      <li><%= (@user.tutorial_progress.present? and @user.tutorial_progress.introduction) ?  fa_icon('check-square') : fa_icon('square-o') %>&nbsp;<%= link_to t('progress.tutorial_progress.introduction'), home_path(params: { show_guide: 'yes' }) %></li>
+      <li><%= (@user.tutorial_progress.present? and @user.tutorial_progress.groups) ?  fa_icon('check-square') : fa_icon('square-o') %>&nbsp;<%= link_to t('progress.tutorial_progress.groups'), groups_path(params: { show_guide: 'yes' }) %></li>
+      <li><%= (@user.tutorial_progress.present? and @user.tutorial_progress.group) ?  fa_icon('check-square') : fa_icon('square-o') %>&nbsp;<%= link_to t('progress.tutorial_progress.group'), group_path(id: 110804009, params: { show_guide: 'yes'}) %></li>
+      <li><%= (@user.tutorial_progress.present? and @user.tutorial_progress.question) ?  fa_icon('check-square') : fa_icon('square-o') %>&nbsp;<%= link_to t('progress.tutorial_progress.question'), question_path(id: 3079, params: { show_guide: 'yes' }) %></li>
     </ul>
   </div>
   <div id="profile-progress" class="large-6 columns">
