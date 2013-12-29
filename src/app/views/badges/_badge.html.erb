@@ -1,5 +1,5 @@
 <li class="plain badge">
-  <span class="has-tip tip-top badge <%= badge.category %> <%= 'earned' if badge_earned?(badge, current_user) %>" data-tooltip data-options="disable-for-touch:true" title='<%= t("badges.descriptions.achieve_#{badge.title}.#{badge.category}") %>'>
+  <span class="has-tip tip-top badge <%= badge.category %> <%= 'earned' if badge_earned?(badge, @user) %>" data-tooltip data-options="disable-for-touch:true" title='<%= t("badges.descriptions.achieve_#{badge.title}.#{badge.category}") %>'>
     <%= fa_icon('trophy', text: t("badges.titles.achieve_#{badge.title}.#{badge.category}")) %>
   </span>
 </li>
