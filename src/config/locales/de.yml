@@ -181,6 +181,8 @@ de:
     sign_out: 'Abmelden'
     search: 'Suche'
     notifications: '%{size} ungelesene Mitteilungen.'
+    leaderboard: 'Rangliste'
+    profile: 'Profil'
   home:
     headers: 
       welcome_back: "Willkommen auf auditorium, %{user}!"
@@ -676,6 +678,7 @@ de:
       list_in_leaderboard: 'Ich möchte im <a href="/de/users" target="_blank">Ranking der Benutzer</a> auftauchen.'
       score: 'Punkte'
       name: 'Name'
+      level: 'Level'
     roles:
       student: 'Student'
       lecturer: 'Dozent'
@@ -922,6 +925,8 @@ de:
   progress:
     percentage: '%{value}%'
     point_difference: '%{value} von %{max} Punkte'
+    links:
+      leaderboard: 'Besuche die Rangliste'
     reputation: 
       long: '%{score} Punkte'
       short: 'Rep. %{score}'

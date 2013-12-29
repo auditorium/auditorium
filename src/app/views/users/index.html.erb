@@ -8,6 +8,7 @@
         <th>#</th>
         <th><%= t('users.labels.name')%></th>
         <th><%= t('users.labels.score')%></th>
+        <th><%= t('users.labels.level') %></th>
       </tr>
     </thead>
     <tbody>
@@ -17,6 +18,7 @@
           <td class="rank"><b><%= i + 1 + 10*page %></b></td>
           <td><%= user.full_name %></td>
           <td><%= user.score %></td>
+          <td><%= t('progress.level.header', level: user.level.number) %></td>
         </tr>
       <% end %>
     </tbody>

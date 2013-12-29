@@ -6,6 +6,7 @@ class Ability
     alias_action :moderation, :to => :moderate
     alias_action :my_groups, :to => :goto_my_groups
     alias_action :following, :to => :follow
+   
     user ||= User.new # guest user (not logged in)
 
     if user.id? # registrierte Benutzer

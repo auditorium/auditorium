@@ -9,7 +9,7 @@ Auditorium::Application.routes.draw do
     get 'users/moderation', to: 'users#moderation', as: :users_moderation
     get 'users/moderation/search', to: 'users#search', as: :search_users
     post 'users/:id/confirm', to: 'users#confirm', :as => :confirm_user
-    
+    get 'users', to: 'users#index', as: :leaderboard
     resources :levels
     resources :badges
     resources :users do 

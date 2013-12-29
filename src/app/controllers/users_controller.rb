@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
+  skip_authorize_resource only: [:index]
 
   def index
     @users = User.order('score DESC').keep_if{ |u| u.confirmed? and u.list_in_leaderboard? }

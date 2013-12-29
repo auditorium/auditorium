@@ -189,6 +189,8 @@ en:
     sign_out: 'Sign out'
     search: 'Search'
     notifications: '%{size} unread notifications waiting for you.'
+    leaderboard: 'Leaderboard'
+    profile: 'Profile'
   home:
     headers: 
       welcome_back: "Welcome to auditorium, %{user}!"
@@ -679,6 +681,7 @@ en:
       list_in_leaderboard: 'I will be listed in the <a href="/en/users/" target="_blank">leaderboard</a>.'
       score: 'Punkte'
       name: 'Name'
+      level: 'Level'
     roles:
       student: 'Student'
       lecturer: 'Lecturer'
@@ -947,6 +950,8 @@ en:
   progress:
     percentage: '%{value}%'
     point_difference: '%{value} of %{max} Points'
+    links:
+      leaderboard: 'Visit the leaderboard'
     reputation: 
       long: '%{score} Points'
       short: 'Rep. %{score}'
