@@ -18,7 +18,7 @@
           <td class="rank"><b><%= i + 1 + 10*page %></b></td>
           <td><%= user.full_name %></td>
           <td><%= user.score %></td>
-          <td><%= t('progress.level.header', level: user.level.number) %></td>
+          <td><%= t('progress.level.header', level: (user.level.present? ? user.level.number : 0)) %></td>
         </tr>
       <% end %>
     </tbody>
