@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   skip_authorize_resource only: [:index]
 
   def index
-    if current_user.experimental_group? 
+    if current_user.present? and current_user.experimental_group? 
       @users = User.order('score DESC').keep_if{ |u| u.confirmed? and u.list_in_leaderboard? }
       @users = Kaminari.paginate_array(@users).page(params[:page]).per(10)
 
