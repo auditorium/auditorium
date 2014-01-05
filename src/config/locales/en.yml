@@ -1097,63 +1097,63 @@ en:
         silver: 'Moderator'
         gold: 'Moderator'
     descriptions:
-      achieved_learning:
+      achieve_learning:
         bronze: 'You do need at least one question with one or more up votes.'
         silver: 'You do need at least one question with five or more up votes.'
         gold: 'You do need at least one question with ten or more up votes.'
-      achieved_commenter:
+      achieve_commenter:
         bronze: 'You do need at least one comment with one or more up votes.'
         silver: 'You do need at least one comment with five or more up votes.'
         gold: 'You do need at least one comment with ten or more up votes.'
-      achieved_cooperative:
+      achieve_cooperative:
         bronze: 'You do need at least one answer with one or more up votes.'
         silver: 'You do need at least one answer with five or more up votes.'
         gold: 'You do need at least one answer with ten or more up votes.'
-      achieved_helpful:
+      achieve_helpful:
         bronze: 'You do need at least one answer which is marked as helpful.'
         silver: 'You do need at least five answers which are marked as helpful.'
         gold: 'You do need at least ten answers which are marked as helpful.'
-      achieved_significant:
+      achieve_significant:
         bronze: 'You do need at least one announcement with one or more up votes.'
         silver: 'You do need at least one announcement with five or more up votes.'
         gold: 'You do need at least one announcement with ten or more up votes.'
-      achieved_something_to_say:
+      achieve_something_to_say:
         bronze: 'You do need at least one topic with one or more up votes.'
         silver: 'You do need at least one topic with five or more up votes.'
         gold: 'You do need at least one topic with ten or more up votes.'
-      achieved_modern_browser:
+      achieve_modern_browser:
         bronze: 'You should use a modern browser like Apple Safari, Mozilla Firefox, Google Chrome, Opera or Internet Explorer 11 or newer'
         silver: 'You should use a modern browser like Apple Safari, Mozilla Firefox, Google Chrome, Opera or Internet Explorer 11 or newer'
         gold: 'You should use a modern browser like Apple Safari, Mozilla Firefox, Google Chrome, Opera or Internet Explorer 11 or newer'
-      achieved_rewarding:
+      achieve_rewarding:
         bronze: 'Your first up vote.'
         silver: 'Your first up vote.'
         gold: 'Your first up vote.'
-      achieved_critical:
+      achieve_critical:
         bronze: 'Your first down vote.'
         silver: 'Your first down vote.'
         gold: 'Your first down vote.'
-      achieved_curious:
+      achieve_curious:
         bronze: 'You accomplished all guides within auditorium.'
         silver: 'You accomplished all guides within auditorium.'
         gold: 'You accomplished all guides within auditorium.'
-      achieved_editor:
+      achieve_editor:
         bronze: 'Your first edit.'
         silver: 'Your first edit.'
         gold: 'Your first edit.'
-      achieved_first_step:
+      achieve_first_step:
         bronze: 'You signed up for auditorium.'
         silver: 'You signed up for auditorium.'
         gold: 'You signed up for auditorium.'
-      achieved_biographer:
+      achieve_biographer:
         bronze: 'You do need to fill out your profile.'
         silver: 'You do need to fill out your profile.'
         gold: 'You do need to fill out your profile.'
-      achieved_party:
+      achieve_party:
         bronze: 'You do need to create a group which has been approved.'
         silver: 'You do need to create a group which has been approved.'
         gold: 'You do need to create a group which has been approved.'
-      achieved_moderator:
+      achieve_moderator:
         bronze: 'You need to become a moderator of a group of your choice.'
         silver: 'You need to become a moderator of a group of your choice.'
         gold: 'You need to become a moderator of a group of your choice.'
