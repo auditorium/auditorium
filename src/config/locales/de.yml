@@ -203,6 +203,7 @@ de:
       edit: 'bearbeiten'
       remove: 'entfernen'
       cancel: 'Abbrechen'
+      back: 'Zurück'
     confirm: 
       cancel: 'Willst du die Seite wirklich verlassen?'
     label: 
@@ -703,6 +704,7 @@ de:
     hints:
       pending_email_confirmation: 'Die E-Mail Adresse %{email} wartet auf ihre Bestätigung.'
       alternative_email: 'Diese E-Mail-Adresse wird für <a href="https://de.gravatar.com" target="_blank">Gravatar</a> genutzt, um dein Profilfoto darzustellen.'
+      gravatar: 'Profilbild ändern'
     role:
       is_admin: 'Administrator'
     profile:

@@ -43,6 +43,9 @@
           <li><%= nav_link fa_icon('group', text: t('navigation.groups')), groups_path %></li>
           <li><%= nav_link fa_icon('star', text: t('navigation.my_groups')), my_groups_path %></li>
           <li><%= nav_link fa_icon('question-circle', text: t('navigation.support_group')), '/groups/110804009' %></li>
+          <% if current_user.experimental_group? %>
+          <li><%= nav_link fa_icon('list-ol', text: t('navigation.leaderboard')), leaderboard_path %></li>
+          <% end %>
         </ul>
 
         <ul class="right">

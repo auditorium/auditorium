@@ -66,9 +66,12 @@ class ApplicationController < ActionController::Base
   end
 
   def achieve_party_badge(user)
-    if !user.has_badge?('party', 'silver')
+    if !user.has_badge?('party', 'silver') and user.groups.where(creator_id: user.id).size > 0
       user.add_badge('party', 'silver')
       Notification.create(receiver: user, sender: user, notifiable: Badge.find_by_title_and_category('party', 'silver')) if user.experimental_group?
+    elsif user.has_badge?('party', 'silver') and user.groups.where(creator_id: user.id).size == 0
+      user.remove_badge('party', 'silver')
+      puts "REMOVE BADGE"
     end
   end
 

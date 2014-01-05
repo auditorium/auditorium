@@ -211,6 +211,7 @@ en:
       edit: 'edit'
       remove: 'remove'
       cancel: 'Cancel'
+      back: 'Go back'
     confirm: 
       cancel: 'Do you really want to cancel?'
     label: 
@@ -705,6 +706,7 @@ en:
       announcements: 'Announcements'
     hints: 
       alternative_email: 'The alternative email address is used for <a href="https://en.gravatar.com" target="_blank">Gravatar</a> to provide a profile picture.'
+      gravatar: 'Change profile image'
       pending_email_confirmation: 'An email confirmation for %{email} is pending.'
     flash:
       updated: 'The user has been updated.'

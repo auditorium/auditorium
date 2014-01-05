@@ -60,7 +60,7 @@ class Ability
         (visited_user.id == user.id)
       end
       cannot :read, User do |visited_user|
-        !user.experimental_group? or user.id != visited_user.id
+        !user.experimental_group?# or user.id != visited_user.id
       end
 
       can :manage, Setting, user_id: user.id

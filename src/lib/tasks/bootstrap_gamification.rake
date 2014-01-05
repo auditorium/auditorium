@@ -63,7 +63,7 @@ namespace :bootstrap do
 
       # party badge
       puts "-- PARTY BADGE"
-      application.achieve_party_badge(user) if user.groups.size > 0
+      application.achieve_party_badge(user)
 
       puts "-- CALCULATE VOTINGS"
       user.votings.each do |vote|
