@@ -240,7 +240,8 @@ class User < ActiveRecord::Base
   end
 
   def next_level
-    Level.find_by_number(self.level.number + 1)
+    number = self.level.present? ? self.level.number : 0
+    Level.find_by_number(number + 1)
   end
 
   def activity_index

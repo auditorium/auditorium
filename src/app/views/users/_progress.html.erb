@@ -6,8 +6,8 @@
 
 <div class="row">
   <div class="large-12 columns">
-    <h3><%= t('progress.level.header', level: @user.level.number)%> <small><%= link_to t('progress.links.leaderboard'), leaderboard_path %></small></h3>
-  <progress value="<%= @user.score %>" max="<%= @user.next_level.threshold%>"></progress> <%= t('progress.point_difference', value: @user.score, max: @user.next_level.threshold) %>
+    <h3><%= t('progress.level.header', level: (@user.level.present? ? @user.level.number : 0))%> <small><%= link_to t('progress.links.leaderboard'), leaderboard_path %></small></h3>
+  <progress value="<%= @user.score %>" max="<%= @user.next_level.threshold %>"></progress> <%= t('progress.point_difference', value: @user.score, max: @user.next_level.threshold) %>
   <p class="hint"><%= t('progress.level.next_level', points: (@user.next_level.threshold - @user.score)) %></p>
   </div>
 </div>
