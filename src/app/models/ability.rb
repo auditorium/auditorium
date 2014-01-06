@@ -88,6 +88,10 @@ class Ability
 
       can [:create, :read], [Group, Comment, Answer, Topic, Announcement]
       cannot [:read, :manage], [Level, Badge]
+
+      can :toggle_as_helpful, Answer do |answer|
+        answer.question.author.id == user.id
+      end
     else # Gäste
       cannot :read, :all
     end
