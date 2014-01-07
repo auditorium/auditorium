@@ -81,6 +81,6 @@
   <%= render 'shared/videos' %>
 </section>
 <% end %>
-<% unless params[:show_guide] != 'yes' and current_user.tutorial_progress.present? and current_user.tutorial_progress.group %>
+<% unless current_user.privacy_policy and params[:show_guide] != 'yes' and current_user.tutorial_progress.present? and current_user.tutorial_progress.group %>
 <%= render 'guides/single_group_guide' %>
 <% end %>
