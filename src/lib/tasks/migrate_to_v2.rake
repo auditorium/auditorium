@@ -22,7 +22,7 @@ namespace :db do
           if creator.class.name.eql? 'CourseMembership' 
             group.creator = User.find(creator.user_id)
           else
-            group.creator = User.find_by_email('lars.beier@tu-dresden.de')
+            group.creator = User.find(3)
           end
 
           group.group_type = 'lecture'

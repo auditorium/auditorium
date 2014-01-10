@@ -117,7 +117,7 @@ class Group < ActiveRecord::Base
 
   private
   def add_creator_to_moderators
-    unless self.creator.email.eql? 'lars.beier@tu-dresden.de'
+    unless self.creator.id == 3
       following = self.followings.build(follower_id: self.creator.id)
       following.role = 'moderator'
       following.save
