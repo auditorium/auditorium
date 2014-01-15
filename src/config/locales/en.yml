@@ -9,12 +9,12 @@ en:
       privacy: 'Privacy Policy' 
   votes:
     flash:
-      not_saved: 'Your vote could not been saved.'
+      not_saved: 'Your vote could not be saved.'
       successfully_upvoted: 'Your vote has been saved.'
       successfully_downvoted: 'Your vote has been saved.'
-      already_upvoted: 'You only can upvote once.'
-      problem_voting: 'There is a problem. Please try again.'
-      already_downvoted: 'You only can downvote once.'
+      already_upvoted: 'You can only upvote once.'
+      problem_voting: 'There was a problem. Please try again.'
+      already_downvoted: 'You can only downvote once.'
 
   membership_requests:
     labels:
@@ -41,7 +41,7 @@ en:
       marked_all_as_read: 'All notifications were marked as read.'
       deleted_all: 'Notifications were deleted.'
     confirm:
-      delete_all: 'Are you sure to delete all notifications?'
+      delete_all: 'Are you sure you want to delete all notifications?'
     actions:
       mark_all_as_read: 'Mark all as read'
       delete_all: 'Delete all notifications'
@@ -121,7 +121,7 @@ en:
       moderator: 'You received this email because you are moderator of the group %{group}.'
       text: 'You received this email because you are following the group %{group}.'
       link: 'You can change which email notifications auditorium sends you in your profile settings.'
-      admin: 'You receive this email, because you are an admin of auditorium. Only admins can approve groups for now.'
+      admin: 'You received this email, because you are an admin of auditorium. Only admins can approve groups for now.'
   devise:
     links: 
       sign_in: 'I have an account. Let me in!'
@@ -176,7 +176,7 @@ en:
       change_password: 'Change your password'
     hints:
       sign_up: 
-        text: 'You do need an email address from TU Dresden. If you do not have such an address,'
+        text: 'You need an email address from TU Dresden. If you do not have such an address,'
         link: 'write us an email.'
     
   navigation:
@@ -312,7 +312,7 @@ en:
       needs_approval: 'This group needs an approval. Although it’s not approved you can use it as normal.'
       deactivated: 'This group is deactivated. Only you can see this group.'
       no_groups_available: 'No groups found.'
-      no_groups_subscribed: 'You did not subscribed to groups yet.'
+      no_groups_subscribed: 'You did not subscribe to any groups yet.'
     actions:
       edit: 'Edit group'
       new: 'Add a new group'
@@ -490,7 +490,7 @@ en:
     is_private:
       icon_hint: 'This question is private. Only group moderators can see this question.'
       icon_alt: '(private)'
-      hint: 'Private questions only can be seen and answered by group moderators.'
+      hint: 'Private questions can only be seen and answered by group moderators.'
       label: 'I will ask a private question'
     actions:
       view_all: 'View all questions'
@@ -511,7 +511,7 @@ en:
       new: 'Make an announcement'
     hints:
       no_entries: 
-        member: 'There are no announcements, yet.'
+        member: 'There are no announcements yet.'
         moderator: 'There are no announcements. Click into the text field to make an announcement.'
     page_title: "Announcements from %{group}"
     links:
@@ -614,7 +614,7 @@ en:
       lecture-groups: 'Lectures'
       study-groups: 'Study Groups'
       topic-groups: 'Topic Groups'
-      groups_for_subscribing: 'Go to groups for subscribing groups.'
+      groups_for_subscribing: 'Go to groups for subscribing to groups.'
 
   posts:
     actions:
@@ -640,13 +640,13 @@ en:
       comments: 'Comments'
       answers: 'Answers'
       upvote:
-        title: 'Click when you find this post helpful.'
+        title: 'Click if you find this post helpful.'
         alt_text: 'upvote'
-        notice: 'Post has been up voted.'
+        notice: 'Post has been upvoted.'
       downvote:
         title: 'Click if the post is not helpful.'
         alt_text: 'downvote'
-        notice: 'Post has been down voted.'
+        notice: 'Post has been downvoted.'
 
   views:
     pagination:
@@ -693,7 +693,7 @@ en:
       confirmed: 'The user has been confirmed.'
       deleted: 'The user has been deleted.'
     error:
-      updated: 'Your profile could not be saved. Try it again later.'
+      updated: 'Your profile could not be saved. Try again later.'
       permission:
         delete: 'You are not allowed to delete the user’s profile.'
     tabs:
@@ -1011,7 +1011,7 @@ en:
       index: 'Badge Overview'
       show: 'Badge %{title}'
       bronze_badges: 'Bronze Achievements'
-      silver_badges: 'Silver Achivements'
+      silver_badges: 'Silver Achievements'
       gold_badges: 'Gold Achievements'
     content:
       empty_description: 'N/A'
@@ -1098,45 +1098,45 @@ en:
         gold: 'Moderator'
     descriptions:
       achieve_learning:
-        bronze: 'You do need at least one question with one or more up votes.'
-        silver: 'You do need at least one question with five or more up votes.'
-        gold: 'You do need at least one question with ten or more up votes.'
+        bronze: 'You need at least one question with one or more upvotes.'
+        silver: 'You need at least one question with five or more upvotes.'
+        gold: 'You need at least one question with ten or more upvotes.'
       achieve_commenter:
-        bronze: 'You do need at least one comment with one or more up votes.'
-        silver: 'You do need at least one comment with five or more up votes.'
-        gold: 'You do need at least one comment with ten or more up votes.'
+        bronze: 'You need at least one comment with one or more upvotes.'
+        silver: 'You need at least one comment with five or more upvotes.'
+        gold: 'You need at least one comment with ten or more upvotes.'
       achieve_cooperative:
-        bronze: 'You do need at least one answer with one or more up votes.'
-        silver: 'You do need at least one answer with five or more up votes.'
-        gold: 'You do need at least one answer with ten or more up votes.'
+        bronze: 'You need at least one answer with one or more upvotes.'
+        silver: 'You need at least one answer with five or more upvotes.'
+        gold: 'You need at least one answer with ten or more upvotes.'
       achieve_helpful:
-        bronze: 'You do need at least one answer which is marked as helpful.'
-        silver: 'You do need at least five answers which are marked as helpful.'
-        gold: 'You do need at least ten answers which are marked as helpful.'
+        bronze: 'You need at least one answer which is marked as helpful.'
+        silver: 'You need at least five answers which are marked as helpful.'
+        gold: 'You need at least ten answers which are marked as helpful.'
       achieve_significant:
-        bronze: 'You do need at least one announcement with one or more up votes.'
-        silver: 'You do need at least one announcement with five or more up votes.'
-        gold: 'You do need at least one announcement with ten or more up votes.'
+        bronze: 'You need at least one announcement with one or more upvotes.'
+        silver: 'You need at least one announcement with five or more upvotes.'
+        gold: 'You need at least one announcement with ten or more upvotes.'
       achieve_something_to_say:
-        bronze: 'You do need at least one topic with one or more up votes.'
-        silver: 'You do need at least one topic with five or more up votes.'
-        gold: 'You do need at least one topic with ten or more up votes.'
+        bronze: 'You need at least one topic with one or more upvotes.'
+        silver: 'You need at least one topic with five or more upvotes.'
+        gold: 'You need at least one topic with ten or more upvotes.'
       achieve_modern_browser:
         bronze: 'You should use a modern browser like Apple Safari, Mozilla Firefox, Google Chrome, Opera or Internet Explorer 11 or newer'
         silver: 'You should use a modern browser like Apple Safari, Mozilla Firefox, Google Chrome, Opera or Internet Explorer 11 or newer'
         gold: 'You should use a modern browser like Apple Safari, Mozilla Firefox, Google Chrome, Opera or Internet Explorer 11 or newer'
       achieve_rewarding:
-        bronze: 'Your first up vote.'
-        silver: 'Your first up vote.'
-        gold: 'Your first up vote.'
+        bronze: 'Your first upvote.'
+        silver: 'Your first upvote.'
+        gold: 'Your first upvote.'
       achieve_critical:
-        bronze: 'Your first down vote.'
-        silver: 'Your first down vote.'
-        gold: 'Your first down vote.'
+        bronze: 'Your first downvote.'
+        silver: 'Your first downvote.'
+        gold: 'Your first downvote.'
       achieve_curious:
-        bronze: 'You accomplished all guides within auditorium.'
-        silver: 'You accomplished all guides within auditorium.'
-        gold: 'You accomplished all guides within auditorium.'
+        bronze: 'You completed all guides within auditorium.'
+        silver: 'You completed all guides within auditorium.'
+        gold: 'You completed all guides within auditorium.'
       achieve_editor:
         bronze: 'Your first edit.'
         silver: 'Your first edit.'
@@ -1146,13 +1146,13 @@ en:
         silver: 'You signed up for auditorium.'
         gold: 'You signed up for auditorium.'
       achieve_biographer:
-        bronze: 'You do need to fill out your profile.'
-        silver: 'You do need to fill out your profile.'
-        gold: 'You do need to fill out your profile.'
+        bronze: 'You need to fill out your profile.'
+        silver: 'You need to fill out your profile.'
+        gold: 'You need to fill out your profile.'
       achieve_party:
-        bronze: 'You do need to create a group which has been approved.'
-        silver: 'You do need to create a group which has been approved.'
-        gold: 'You do need to create a group which has been approved.'
+        bronze: 'You need to create a group which has been approved.'
+        silver: 'You need to create a group which has been approved.'
+        gold: 'You need to create a group which has been approved.'
       achieve_moderator:
         bronze: 'You need to become a moderator of a group of your choice.'
         silver: 'You need to become a moderator of a group of your choice.'
