@@ -1197,3 +1197,14 @@ de:
         bronze: 'Du hast die bronzene Auszeichnung "Moderator" erhalten.'
         silver: 'Du hast die silberne Auszeichnung "Moderator" erhalten.'
         gold: 'Du hast die goldene Auszeichnung "Moderator" erhalten.'
+  surveys:
+    header: 'Umfrage zum Belohnungssystem in auditorium'
+    text: |
+      Das Ziel dieser Umfrage ist es herauszufinden, welchen Einfluss das eingeführte Belohnungssystem auf das Verhalten der Benutzer hat. Ende Dezember 2013 wurde das Belohnungssystem innerhalb von auditorium für eine zufällig ausgewählte Gruppe von Benutzern freigeschaltet. Nun soll mit dieser Umfrage ermittelt werden, welche Auswirkungen ein solches Belohnungssystem auf die Aktivität und das Benutzerverhalten haben kann. Die Umfrage läuft bis zum Sonntag, den 2. Februar 2014.
+    actions:
+      goto: 'Ich möchte an der Umfrage teilnehmen'
+      close: 'Schließen und nicht wieder anzeigen!'
+    hints:
+      only_german: '(The Survey is only available in German. Sorry!)'
+      close: 'Beim Klick auf "Schließen und nicht wieder anzeigen" wird ein Cookie gesetzt, damit wird der Banner Ihnen erst wieder präsentiert, sobald Sie Ihre Cookies im Browser löschen.'
+      text: 'Es werden keine personenbezogenen Daten gespeichert. Es wird nicht gespeichert, wer an der Umfrage teilnimmt bzw. nicht teilnimmt. Die Umfrage wird durch Google Forms bereitgestellt.'

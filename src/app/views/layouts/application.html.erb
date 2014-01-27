@@ -87,14 +87,11 @@
         <% end %>
       <% end %>  
 
-      <% if flash[:badge] %>
-        <div data-alert class="alert-box earned badge" id="flash">
-          <%= fa_icon('trophy', text: flash[:badge]) %>
-          <a href="#" class="close">&times;</a>
-        </div>
+      <div class="row">
+      <% unless current_user.present? and cookies["hide_survey_banner_#{current_user.id}"] %>
+        <%= render 'shared/survey_banner' %>
       <% end %>
 
-      <div class="row">
         <%= yield %>
       </div>
     </section>

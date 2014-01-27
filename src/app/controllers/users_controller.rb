@@ -96,4 +96,9 @@ class UsersController < ApplicationController
 
     redirect_to home_path
   end
+
+  def hide_survey_banner
+    cookies["hide_survey_banner_#{current_user.id}"] = true
+    respond_to :js
+  end
 end

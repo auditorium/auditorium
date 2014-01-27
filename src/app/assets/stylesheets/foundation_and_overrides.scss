@@ -1541,6 +1541,14 @@ textarea {
 .notice {
   background-color: $notice-color;
   border-color: darken($notice-color, 10%);
+
+  .hint {
+    color: $white;
+  }
+
+  h3 {
+    color: #fff;
+  }
 }
 
 .block {

@@ -6,6 +6,8 @@ Auditorium::Application.routes.draw do
                                          :sessions => "sessions", 
                                          :registrations => "registrations" }
 
+    post 'surveys/hide', to: 'users#hide_survey_banner', as: :hide_survey_banner
+
     get 'users/moderation', to: 'users#moderation', as: :users_moderation
     get 'users/moderation/search', to: 'users#search', as: :search_users
     post 'users/:id/confirm', to: 'users#confirm', :as => :confirm_user

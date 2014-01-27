@@ -1,0 +1,16 @@
+<div class="notice" data-id="survey-banner">
+    <% if params[:locale].eql? 'en' %>
+    <p class="hint"><%= t('surveys.hints.only_german') %></p>
+    <% end %>
+
+    <h3><%= t('surveys.header') %></h3>
+    
+    <p><%= markdown t('surveys.text') %></p>
+    <%= link_to t('surveys.actions.goto'), 'https://docs.google.com/forms/d/1aSKol_6YI0pwXgUfpWtz4mgpZfQOjTZYosQeiMsu3Dc/viewform', target: '_blank', class: 'button alert' %>
+   <%= link_to fa_icon('times', text: t('surveys.actions.close')), hide_survey_banner_path, method: :post, remote: true, class: 'button tiny secondary' %>
+
+    <p class="hint">
+      <%= t('surveys.hints.text') %>
+      <%= t('surveys.hints.close') %>
+    </p>
+</div>
