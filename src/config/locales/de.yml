@@ -1200,6 +1200,8 @@ de:
   surveys:
     header: 'Umfrage zum Belohnungssystem in auditorium'
     text: |
+      **An dieser Umfrage sind alle Benutzer von auditorium eingeladen teilzunehmen; sowohl die, die das Belohnungssystem gesehen haben, als auch die, die es nicht gesehen haben.**
+      
       Das Ziel dieser Umfrage ist es herauszufinden, welchen Einfluss das eingeführte Belohnungssystem auf das Verhalten der Benutzer hat. Ende Dezember 2013 wurde das Belohnungssystem innerhalb von auditorium für eine zufällig ausgewählte Gruppe von Benutzern freigeschaltet. Nun soll mit dieser Umfrage ermittelt werden, welche Auswirkungen ein solches Belohnungssystem auf die Aktivität und das Benutzerverhalten haben kann. Die Umfrage läuft bis zum Sonntag, den 2. Februar 2014.
     actions:
       goto: 'Ich möchte an der Umfrage teilnehmen'
