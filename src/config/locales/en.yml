@@ -327,6 +327,8 @@ en:
       reject_membership_request: 'reject'
       unlock: 'Unlock the group'
       manage_users: 'Manage users group membership'
+    confirm:
+      delete: 'Are you sure about deleting the group?'
     link_label: 'Group:'
     creator: 'Created by %{name}'
     tags: 

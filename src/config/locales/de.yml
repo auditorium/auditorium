@@ -313,7 +313,7 @@ de:
       new: 'Eine neue Gruppe hinzufügen'
       approve: 'Gruppe freigeben'
       decline: 'Gruppe deaktivieren'
-      delete: 'Gruppe entfernen'
+      delete: 'Gruppe löschen'
       reactivate: 'Gruppe wieder aktivieren'
       become_moderator: 'Ich möchte ein Moderator dieser Gruppe werden'
       cancel_membership_request: 'Storniere meine Anfrage ein Moderator zu werden'
@@ -322,6 +322,8 @@ de:
       reject_membership_request: 'ablehnen'
       unlock: 'Gruppe entsperren'
       manage_users: 'Gruppenmitglieder bearbeiten'
+    confirm:
+      delete: 'Bist du dir sicher, dass du die Gruppe löschen willst?'
     link_label: 'Gruppe:'
     creator: 'Erstellt durch %{name}'
     tags: 

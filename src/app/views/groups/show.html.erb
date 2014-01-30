@@ -43,6 +43,7 @@
 <div class="block">
     <%= link_to fa_icon('chevron-down', text: t('groups.actions.manage_users')), show_members_list_group_path, class: 'button tiny secondary', id: 'toggle-members-list', method: :post, remote: true %>
      <%= link_to t('groups.actions.edit'), edit_group_path(@group), class: 'button tiny secondary' %>
+     <span class="right"><%= link_to t('groups.actions.delete'), @group, method: :delete, confirm: t('groups.confirm.delete'), class: 'button tiny alert' %></span>
   <div id="manage-members">
     <div id="searchbar">
       <%= form_tag search_members_path, method: :post, remote: true do %> 
