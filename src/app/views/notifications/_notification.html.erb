@@ -33,10 +33,14 @@
       <%= link_to fa_icon('times'), notification, method: :delete %>
     </span>
     </li>
-  <% elsif notification.notifiable_type.eql? 'MembershipRequest' and notification.notifiable.group.present? %>
+  <% elsif notification.notifiable_type.eql? 'MembershipRequest' %>
   <li class="notification <%= 'read' if notification.read? %>">
     <%= link_to fa_icon('check'), mark_notification_as_read_path(notification), title: t('notifications.actions.mark_as_read'), method: :post %>
-    <%= link_to t("notifications.notification_title.membership_request", user: notification.sender, group: group.title), notification %>
+    <% if notification.notifiable.group.present? %>
+      <%= link_to t("notifications.notification_title.membership_request", user: notification.sender, group: notification.notifiable.group.title), notification %>
+    <% else %>
+      <%= t('groups.hints.deleted') %>
+    <% end %>
     <span class="right">
       <span id="<%= dom_id(notification.notifiable) %>">
         <%= render 'notifications/membership_request_confirmation', membership_request: notification.notifiable %>

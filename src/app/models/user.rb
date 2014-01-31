@@ -175,7 +175,7 @@ class User < ActiveRecord::Base
   end
 
   def unread_notifications
-    self.notifications.where(read: false).delete_if{ |n| n.notifiable.group.nil? }
+    self.notifications.where(read: false)
   end
 
   def profile_progress

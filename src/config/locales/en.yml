@@ -308,6 +308,7 @@ en:
       following: 'You are now following the group "%{group}".'
       unfollowing: 'You will not receive notifications with updates for the group "%{group}".'
     hints: 
+      deleted: 'Delted Group'
       no_members: 'At the moment there are no members in this group. You can add moderators or members by typing in the name or email address.'
       needs_approval: 'This group needs an approval. Although it’s not approved you can use it as normal.'
       deactivated: 'This group is deactivated. Only you can see this group.'
