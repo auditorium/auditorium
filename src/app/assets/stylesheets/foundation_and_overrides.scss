@@ -3222,6 +3222,7 @@ ul.notifications, ul.membership_requests {
     }
 
     &.read {
+      color: $dark-gray;
       a { color: $dark-gray; }
 
       i {

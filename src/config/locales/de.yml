@@ -303,7 +303,7 @@ de:
       following: 'Du folgst nun der Gruppe "%{group}". Du wirst über Aktivitäten der Gruppe informiert.'
       unfollowing: 'Du folgst der Gruppe "%{group}" nun nicht mehr. Du wirst nun keine Mitteilungen über Aktivitäten innerhalb der Gruppe erhalten.'
     hints: 
-      deleted: 'Gelöschte Gruppe'
+      deleted: 'Die Gruppe wurde gelöscht.'
       no_members: 'Im Moment hat die Gruppe noch keine Mitglieder. Du kannst neue Mitglieder oder Moderatoren hinzufügen, indem du nach ihnen suchst.'
       needs_approval: 'Diese Gruppe muss freigegeben werden. Jedoch kannst du sie bereits wie eine normale Gruppe nutzen.'
       deactivated: 'Diese Gruppe wurde deaktiviert. Nur du kannst sie sehen.'
