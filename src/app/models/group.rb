@@ -28,10 +28,9 @@ class Group < ActiveRecord::Base
 
   has_many :followers, through: :followings
   has_many :followings, as: :followerable
-  has_many :membership_requests
+  has_many :membership_requests, dependent: :destroy
 
   belongs_to :creator, class_name: 'User'
-
   attr_accessible :description, :title, :group_type, :tag_tokens, :url
   attr_reader :tag_tokens
 
