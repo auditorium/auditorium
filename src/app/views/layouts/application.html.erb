@@ -81,9 +81,6 @@
       <% end %>  
 
       <div class="row">
-      <% unless current_user.present? and cookies["hide_survey_banner_#{current_user.id}"] %>
-        <%= render 'shared/survey_banner' %>
-      <% end %>
 
         <%= yield %>
       </div>
