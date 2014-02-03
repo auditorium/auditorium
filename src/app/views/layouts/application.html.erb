@@ -43,25 +43,18 @@
           <li><%= nav_link fa_icon('group', text: t('navigation.groups')), groups_path %></li>
           <li><%= nav_link fa_icon('star', text: t('navigation.my_groups')), my_groups_path %></li>
           <li><%= nav_link fa_icon('question-circle', text: t('navigation.support_group')), '/groups/110804009' %></li>
-          <% if current_user.experimental_group? %>
           <li><%= nav_link fa_icon('list-ol', text: t('navigation.leaderboard')), leaderboard_path %></li>
-          <% end %>
         </ul>
 
         <ul class="right">
           <li><%= nav_link fa_icon('search', text: t('navigation.search')), alternative_search_path %></li>
           
           <% if current_user.present? %>
-            <!--<li><%= nav_link fa_icon('user', text: current_user), user_path(current_user) %></li> -->
-            <% unless current_user.experimental_group? %>
-              <li><%= nav_link fa_icon('user', text: current_user), edit_user_registration_path %></li>
-            <% else %>
             <li>
               <%= link_to current_user, class: "#{color_scheme} #{'active' if current_page?(current_user)}" do %>
                 <%= fa_icon('user', text: current_user) %> &middot; <%= fa_icon('trophy', text: current_user.score) %> | <%= current_user.badges.size %>
               <% end %>
             </li>
-            <% end %>
             <li><%= link_to current_user.unread_notifications.size, notifications_path, class: "notification-button #{'red' if current_user.unread_notifications.size > 0}", title: t('navigation.notifications', size: current_user.unread_notifications.size) %></li>
             <li><%= link_to fa_icon('sign-out', text: t('navigation.sign_out')), destroy_user_session_path, class: color_scheme, method: :delete %></li>
           <% else %>

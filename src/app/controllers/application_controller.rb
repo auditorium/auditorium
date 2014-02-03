@@ -61,14 +61,14 @@ class ApplicationController < ActionController::Base
   def achieve_editor_badge(user)
     if !user.has_badge?('editor', 'bronze')
       user.add_badge('editor', 'bronze')
-      Notification.create(receiver: user, sender: user, notifiable: Badge.find_by_title_and_category('editor', 'bronze')) if user.experimental_group?
+      Notification.create(receiver: user, sender: user, notifiable: Badge.find_by_title_and_category('editor', 'bronze'))
     end
   end
 
   def achieve_party_badge(user)
     if !user.has_badge?('party', 'silver') and user.groups.where(creator_id: user.id).size > 0
       user.add_badge('party', 'silver')
-      Notification.create(receiver: user, sender: user, notifiable: Badge.find_by_title_and_category('party', 'silver')) if user.experimental_group?
+      Notification.create(receiver: user, sender: user, notifiable: Badge.find_by_title_and_category('party', 'silver'))
     elsif user.has_badge?('party', 'silver') and user.groups.where(creator_id: user.id).size == 0
       user.remove_badge('party', 'silver')
       puts "REMOVE BADGE"
@@ -78,14 +78,14 @@ class ApplicationController < ActionController::Base
   def achieve_rewarding_badge(user)
     if !user.has_badge?('rewarding', 'bronze')
       user.add_badge('rewarding', 'bronze')
-      Notification.create(receiver: user, sender: user, notifiable: Badge.find_by_title_and_category('rewarding', 'bronze')) if user.experimental_group?
+      Notification.create(receiver: user, sender: user, notifiable: Badge.find_by_title_and_category('rewarding', 'bronze'))
     end
   end
 
   def achieve_critical_badge(user)
     if !user.has_badge?('critical', 'bronze')
       user.add_badge('critical', 'bronze')
-      Notification.create(receiver: user, sender: user, notifiable: Badge.find_by_title_and_category('critical', 'bronze')) if user.experimental_group?
+      Notification.create(receiver: user, sender: user, notifiable: Badge.find_by_title_and_category('critical', 'bronze'))
     end
   end
 
@@ -118,42 +118,42 @@ class ApplicationController < ActionController::Base
   def achieve_learning_badge(user, category, threshold)
     if !user.has_badge?('learning', category) and user.questions.where('rating >= ?', threshold).size > 0
       user.add_badge('learning', category)
-      Notification.create(receiver: user, sender: user, notifiable: Badge.find_by_title_and_category('learning', category)) if user.experimental_group?
+      Notification.create(receiver: user, sender: user, notifiable: Badge.find_by_title_and_category('learning', category))
     end
   end
 
   def achieve_cooperative_badge(user, category, threshold)
     if !user.has_badge?('cooperative', category) and user.answers.where('rating >= ?', threshold).size > 0
       user.add_badge('cooperative', category)
-      Notification.create(receiver: user, sender: user, notifiable: Badge.find_by_title_and_category('cooperative', category)) if user.experimental_group?
+      Notification.create(receiver: user, sender: user, notifiable: Badge.find_by_title_and_category('cooperative', category))
     end
   end
 
   def achieve_something_to_say_badge(user, category, threshold)
     if !user.has_badge?('something_to_say', category) and user.topics.where('rating >= ?', threshold).size > 0
       user.add_badge('something_to_say', category)
-      Notification.create(receiver: user, sender: user, notifiable: Badge.find_by_title_and_category('something_to_say', category)) if user.experimental_group?
+      Notification.create(receiver: user, sender: user, notifiable: Badge.find_by_title_and_category('something_to_say', category))
     end
   end
 
   def achieve_significant_badge(user, category, threshold)
     if !user.has_badge?('significant', category) and user.announcements.where('rating >= ?', threshold).size > 0
       user.add_badge('significant', category)
-      Notification.create(receiver: user, sender: user, notifiable: Badge.find_by_title_and_category('significant', category)) if user.experimental_group?
+      Notification.create(receiver: user, sender: user, notifiable: Badge.find_by_title_and_category('significant', category))
     end
   end
 
   def achieve_commenter_badge(user, category, threshold)
     if !user.has_badge?('commenter', category) and user.comments.where('rating >= ?', threshold).size > 0
       user.add_badge('commenter', category)
-      Notification.create(receiver: user, sender: user, notifiable: Badge.find_by_title_and_category('commenter', category)) if user.experimental_group?
+      Notification.create(receiver: user, sender: user, notifiable: Badge.find_by_title_and_category('commenter', category))
     end
   end
 
   def achieve_biographer_badge(user)
     if user.profile_progress_percentage == 100 and !user.has_badge?('biographer', 'silver')
       user.add_badge('biographer', 'silver')
-      Notification.create(receiver: user, sender: user, notifiable: Badge.find_by_title_and_category('biographer', 'silver')) if user.experimental_group?
+      Notification.create(receiver: user, sender: user, notifiable: Badge.find_by_title_and_category('biographer', 'silver'))
     elsif user.has_badge?('biographer', 'silver') and user.profile_progress_percentage < 100 
       user.remove_badge('biographer', 'silver')
     end
@@ -162,45 +162,45 @@ class ApplicationController < ActionController::Base
   def achieve_curious_badge(user, tutorial_progress)
     if tutorial_progress.percentage == 100 and !user.has_badge?('curious', 'silver')
       user.add_badge('curious', 'silver')
-      Notification.create(receiver: user, sender: user, notifiable: Badge.find_by_title_and_category('curious', 'silver')) if user.experimental_group?
+      Notification.create(receiver: user, sender: user, notifiable: Badge.find_by_title_and_category('curious', 'silver'))
     end
   end
 
   def achieve_helpful_badge(user)
     if !user.has_badge?('helpful', 'bronze') and user.answers.keep_if { |a| !a.answer_to_id.nil? }.size >= 1
       user.add_badge('helpful', 'bronze')
-      Notification.create(receiver: user, sender: user, notifiable: Badge.find_by_title_and_category('helpful', 'bronze')) if user.experimental_group?
+      Notification.create(receiver: user, sender: user, notifiable: Badge.find_by_title_and_category('helpful', 'bronze'))
     end
 
     if !user.has_badge?('helpful', 'silver') and user.answers.keep_if { |a| !a.answer_to_id.nil? }.size >= 5
       user.add_badge('helpful', 'silver')
-      Notification.create(receiver: user, sender: user, notifiable: Badge.find_by_title_and_category('helpful', 'silver')) if user.experimental_group?
+      Notification.create(receiver: user, sender: user, notifiable: Badge.find_by_title_and_category('helpful', 'silver'))
     end
 
     if !user.has_badge?('helpful', 'gold') and user.answers.keep_if { |a| !a.answer_to_id.nil? }.size >= 10
       user.add_badge('helpful', 'gold')
-      Notification.create(receiver: user, sender: user, notifiable: Badge.find_by_title_and_category('helpful', 'gold')) if user.experimental_group?
+      Notification.create(receiver: user, sender: user, notifiable: Badge.find_by_title_and_category('helpful', 'gold'))
     end
   end
 
   def achieve_first_step_badge(user)
     if !user.has_badge?('first_step', 'bronze')
       user.add_badge('first_step', 'bronze')
-      Notification.create(receiver: user, sender: user, notifiable: Badge.find_by_title_and_category('first_step', 'bronze')) if user.experimental_group?
+      Notification.create(receiver: user, sender: user, notifiable: Badge.find_by_title_and_category('first_step', 'bronze'))
     end
   end
 
   def achieve_moderator_badge(user)
     unless user.has_badge?('moderator', 'silver')
-      user.add_badge('moderator', 'silver') if user.experimental_group? and user.id == current_user.id
-      Notification.create(receiver: user, sender: user, notifiable: Badge.find_by_title_and_category('moderator', 'silver')) if user.experimental_group?
+      user.add_badge('moderator', 'silver') and user.id == current_user.id
+      Notification.create(receiver: user, sender: user, notifiable: Badge.find_by_title_and_category('moderator', 'silver'))
     end
   end
 
   def achieve_modern_browser_badge(user)
     if browser.modern? and !user.has_badge?('modern_browser', 'bronze')
       user.add_badge('modern_browser', 'bronze')
-      Notification.create(receiver: user, sender: user, notifiable: Badge.find_by_title_and_category('modern_browser', 'bronze')) if user.experimental_group?
+      Notification.create(receiver: user, sender: user, notifiable: Badge.find_by_title_and_category('modern_browser', 'bronze'))
     elsif !browser.modern? and user.has_badge?('modern_browser', 'bronze')
       user.remove_badge('modern_browser', 'bronze')
     end
@@ -209,7 +209,7 @@ class ApplicationController < ActionController::Base
   def achieve_first_step_badge(user)
     if !user.has_badge?('first_step', 'bronze')
       user.add_badge('first_step', 'bronze')
-      Notification.create(receiver: user, sender: user, notifiable: Badge.find_by_title_and_category('first_step', 'bronze')) if user.experimental_group?
+      Notification.create(receiver: user, sender: user, notifiable: Badge.find_by_title_and_category('first_step', 'bronze'))
     end
   end
 

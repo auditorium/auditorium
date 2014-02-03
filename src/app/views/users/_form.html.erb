@@ -41,14 +41,12 @@
         <%= f.label :role, t('users.labels.role') %>
         <%= f.select :role, User::ROLES.collect {|r| [I18n.t("users.roles.#{r}"), r]}, include_blank: true %>
       </li>
-      <% if resource.experimental_group %>
       <li class="input-fields">
         <%= f.label :list_in_leaderboard do %>
           <%= f.check_box :list_in_leaderboard %>
           <%= t('users.labels.list_in_leaderboard').html_safe %>
         <% end %>
       </li>
-      <% end %>
       <li class="input-fields">
         <%= f.label :password, t('users.labels.password') %>
         <%= f.password_field :password, :autocomplete => 'off' %>
