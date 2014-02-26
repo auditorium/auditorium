@@ -836,23 +836,23 @@ en:
     home:
       welcome: 
         header: 'Welcome to auditorium'
-        text: 'This guide will introduce you the most necessary features. Continue with a click on "Next"' 
+        text: 'This guide will introduce you to the most necessary features. Continue with a click on "Next"' 
       post_stream: 
         header: 'Overview about all posts'
-        text: 'Here you can see recent posts. This posts are sorted by their last activity.'
+        text: 'Here you can see recent posts. These posts are sorted by their last activity.'
       post_footer:
         header: 'Details of a post' 
         text: |
-          Here you can see in which group the post has been published, who wrotes it and how often it has been viewed.
+          Here you can see in which group the post has been published, who wrote it and how often it has been viewed.
       post_filter:
         header: 'Filter posts'
-        text: 'Here you can choose, which post types will be shown; choose whether Questions, Announcements or Topics should be filtered. You also can filter posts from groups you are currently subscribed to.'
+        text: 'Here you can choose which post types will be shown; choose whether Questions, Announcements or Topics should be filtered. You also can filter posts from groups you are currently subscribed to.'
       tag_filter:
         header: 'Filter posts through tags'
         text: 'Search for tags to filter posts. You can add multiple tags; only posts which contain all tags will be shown.'
       conclusion:
         header: 'You finished the first part!'
-        text: 'Congratulations this was the first part, you can follow the link below to see the next guide.'
+        text: 'Congratulations, this was the first part. You can follow the link below to see the next guide.'
     groups:
       welcome:
         header: 'Groups overview'
@@ -875,7 +875,7 @@ en:
       conclusion:  
         header: 'That was the group overview'
         text: |
-          Congratulations you finished the second part of the guide. Click on the link to see the next guide.
+          Congratulations, you finished the second part of the guide. Click on the link to see the next guide.
     single_group:
       welcome:
         header: 'A group in detail'
@@ -919,7 +919,7 @@ en:
       conclusion:
         header: 'You know a lot!'
         text: |
-          Congratulations you finished the third part of the guide. Click on the link to go to the next guide.
+          Congratulations, you finished the third part of the guide. Click on the link to go to the next guide.
     question_in_detail:
       welcome: 
         header: 'A Question in Detail'
@@ -951,7 +951,7 @@ en:
       conclusion:
         header: 'Finished'
         text: |
-          Congratulations you finished the fourth guide. Now you should know how to aks questions and also answer them.
+          Congratulations, you finished the fourth guide. Now you should know how to aks questions and also answer them.
   progress:
     percentage: '%{value}%'
     point_difference: '%{value} of %{max} Points'
