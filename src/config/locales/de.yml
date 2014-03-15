@@ -118,10 +118,10 @@ de:
       admin: 'Du hast diese E-Mail erhalten, weil du ein Administrator von auditorium bist.'
   devise:
     links: 
-      sign_in: 'Ich habe mich bereits registrierst, ich möchte mich anmelden.'
-      sign_up: 'Ich habe noch kein Profil, ich möchte mich Registrieren.'
+      sign_in: 'Ich habe mich bereits registriert, ich möchte mich anmelden.'
+      sign_up: 'Ich habe noch kein Profil, ich möchte mich registrieren.'
       forgot_password: 'Ich habe mein Passwort vergessen.'
-      reconfirm_email: 'Ich habe noch keine Bestätigungsemail für meine Registrierung erhalten.'
+      reconfirm_email: 'Ich habe noch keine Bestätigungs-E-Mail für meine Registrierung erhalten.'
       unlock_account: 'Mein Profil ist gesperrt worden.'
   forms:
     labels:
