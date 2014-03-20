@@ -20,9 +20,6 @@ class Chair < ActiveRecord::Base
   validates :name, presence: true
   #validates :institute, presence: true
 
-  define_index do
-    indexes :name
-  end
 
   def to_s 
     self.name

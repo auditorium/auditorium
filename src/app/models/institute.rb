@@ -19,10 +19,6 @@ class Institute < ActiveRecord::Base
   validates :name, presence: true
   validates :faculty, presence: true
 
-  define_index do
-    indexes name
-  end
-
   def to_s 
     self.name
   end

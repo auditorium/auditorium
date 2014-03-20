@@ -1,0 +1,385 @@
+Searching 753 files for "define_index" (case sensitive)
+
+/Users/sn3ek/Developer/rails/auditorium/src/app/models/announcement.rb:
+   22    include Notifiable
+   23  
+   24:   define_index do
+   25      indexes subject
+   26      indexes content
+
+/Users/sn3ek/Developer/rails/auditorium/src/app/models/chair.rb:
+   21    #validates :institute, presence: true
+   22  
+   23:   define_index do
+   24      indexes :name
+   25    end
+
+/Users/sn3ek/Developer/rails/auditorium/src/app/models/course.rb:
+   37    validates :term,  presence: true
+   38  
+   39:   define_index do
+   40      indexes :name
+   41      indexes description
+
+/Users/sn3ek/Developer/rails/auditorium/src/app/models/faculty.rb:
+   17    validates :name, presence: true
+   18  
+   19:   define_index do
+   20      indexes name
+   21    end
+
+/Users/sn3ek/Developer/rails/auditorium/src/app/models/institute.rb:
+   20    validates :faculty, presence: true
+   21  
+   22:   define_index do
+   23      indexes name
+   24    end
+
+/Users/sn3ek/Developer/rails/auditorium/src/app/models/lecture.rb:
+   27    validates :chair,   presence: true
+   28  
+   29:   define_index do
+   30      indexes :name
+   31      indexes description
+
+/Users/sn3ek/Developer/rails/auditorium/src/app/models/post.rb:
+   48   
+   49  
+   50:   define_index do
+   51      indexes subject
+   52      indexes body
+
+/Users/sn3ek/Developer/rails/auditorium/src/app/models/topic.rb:
+   22    include Notifiable
+   23    
+   24:   define_index do
+   25      indexes subject
+   26      indexes content
+
+/Users/sn3ek/Developer/rails/auditorium/src/app/models/video.rb:
+   28    validates :url, presence: true
+   29  
+   30:   define_index do
+   31      indexes subject
+   32      indexes content
+
+~/Developer/rails/auditorium/src/log/development.log:
+    <binary>
+
+10 matches across 10 files
+
+
+Searching 753 files for "define_index" (case sensitive)
+
+/Users/sn3ek/Developer/rails/auditorium/src/app/models/chair.rb:
+   21    #validates :institute, presence: true
+   22  
+   23:   define_index do
+   24      indexes :name
+   25    end
+
+/Users/sn3ek/Developer/rails/auditorium/src/app/models/course.rb:
+   37    validates :term,  presence: true
+   38  
+   39:   define_index do
+   40      indexes :name
+   41      indexes description
+
+/Users/sn3ek/Developer/rails/auditorium/src/app/models/faculty.rb:
+   17    validates :name, presence: true
+   18  
+   19:   define_index do
+   20      indexes name
+   21    end
+
+/Users/sn3ek/Developer/rails/auditorium/src/app/models/institute.rb:
+   20    validates :faculty, presence: true
+   21  
+   22:   define_index do
+   23      indexes name
+   24    end
+
+/Users/sn3ek/Developer/rails/auditorium/src/app/models/lecture.rb:
+   27    validates :chair,   presence: true
+   28  
+   29:   define_index do
+   30      indexes :name
+   31      indexes description
+
+/Users/sn3ek/Developer/rails/auditorium/src/app/models/post.rb:
+   48   
+   49  
+   50:   define_index do
+   51      indexes subject
+   52      indexes body
+
+/Users/sn3ek/Developer/rails/auditorium/src/app/models/topic.rb:
+   22    include Notifiable
+   23    
+   24:   define_index do
+   25      indexes subject
+   26      indexes content
+
+/Users/sn3ek/Developer/rails/auditorium/src/app/models/video.rb:
+   28    validates :url, presence: true
+   29  
+   30:   define_index do
+   31      indexes subject
+   32      indexes content
+
+~/Developer/rails/auditorium/src/log/development.log:
+    <binary>
+
+9 matches across 9 files
+
+
+Searching 753 files for "define_index" (case sensitive)
+
+/Users/sn3ek/Developer/rails/auditorium/src/app/models/course.rb:
+   37    validates :term,  presence: true
+   38  
+   39:   define_index do
+   40      indexes :name
+   41      indexes description
+
+/Users/sn3ek/Developer/rails/auditorium/src/app/models/faculty.rb:
+   17    validates :name, presence: true
+   18  
+   19:   define_index do
+   20      indexes name
+   21    end
+
+/Users/sn3ek/Developer/rails/auditorium/src/app/models/institute.rb:
+   20    validates :faculty, presence: true
+   21  
+   22:   define_index do
+   23      indexes name
+   24    end
+
+/Users/sn3ek/Developer/rails/auditorium/src/app/models/lecture.rb:
+   27    validates :chair,   presence: true
+   28  
+   29:   define_index do
+   30      indexes :name
+   31      indexes description
+
+/Users/sn3ek/Developer/rails/auditorium/src/app/models/post.rb:
+   48   
+   49  
+   50:   define_index do
+   51      indexes subject
+   52      indexes body
+
+/Users/sn3ek/Developer/rails/auditorium/src/app/models/topic.rb:
+   22    include Notifiable
+   23    
+   24:   define_index do
+   25      indexes subject
+   26      indexes content
+
+/Users/sn3ek/Developer/rails/auditorium/src/app/models/video.rb:
+   28    validates :url, presence: true
+   29  
+   30:   define_index do
+   31      indexes subject
+   32      indexes content
+
+~/Developer/rails/auditorium/src/log/development.log:
+    <binary>
+
+8 matches across 8 files
+
+
+Searching 753 files for "define_index" (case sensitive)
+
+/Users/sn3ek/Developer/rails/auditorium/src/app/models/faculty.rb:
+   17    validates :name, presence: true
+   18  
+   19:   define_index do
+   20      indexes name
+   21    end
+
+/Users/sn3ek/Developer/rails/auditorium/src/app/models/institute.rb:
+   20    validates :faculty, presence: true
+   21  
+   22:   define_index do
+   23      indexes name
+   24    end
+
+/Users/sn3ek/Developer/rails/auditorium/src/app/models/lecture.rb:
+   27    validates :chair,   presence: true
+   28  
+   29:   define_index do
+   30      indexes :name
+   31      indexes description
+
+/Users/sn3ek/Developer/rails/auditorium/src/app/models/post.rb:
+   48   
+   49  
+   50:   define_index do
+   51      indexes subject
+   52      indexes body
+
+/Users/sn3ek/Developer/rails/auditorium/src/app/models/topic.rb:
+   22    include Notifiable
+   23    
+   24:   define_index do
+   25      indexes subject
+   26      indexes content
+
+/Users/sn3ek/Developer/rails/auditorium/src/app/models/video.rb:
+   28    validates :url, presence: true
+   29  
+   30:   define_index do
+   31      indexes subject
+   32      indexes content
+
+~/Developer/rails/auditorium/src/log/development.log:
+    <binary>
+
+7 matches across 7 files
+
+
+Searching 753 files for "define_index" (case sensitive)
+
+/Users/sn3ek/Developer/rails/auditorium/src/app/models/institute.rb:
+   20    validates :faculty, presence: true
+   21  
+   22:   define_index do
+   23      indexes name
+   24    end
+
+/Users/sn3ek/Developer/rails/auditorium/src/app/models/lecture.rb:
+   27    validates :chair,   presence: true
+   28  
+   29:   define_index do
+   30      indexes :name
+   31      indexes description
+
+/Users/sn3ek/Developer/rails/auditorium/src/app/models/post.rb:
+   48   
+   49  
+   50:   define_index do
+   51      indexes subject
+   52      indexes body
+
+/Users/sn3ek/Developer/rails/auditorium/src/app/models/topic.rb:
+   22    include Notifiable
+   23    
+   24:   define_index do
+   25      indexes subject
+   26      indexes content
+
+/Users/sn3ek/Developer/rails/auditorium/src/app/models/video.rb:
+   28    validates :url, presence: true
+   29  
+   30:   define_index do
+   31      indexes subject
+   32      indexes content
+
+~/Developer/rails/auditorium/src/log/development.log:
+    <binary>
+
+6 matches across 6 files
+
+
+Searching 753 files for "define_index" (case sensitive)
+
+/Users/sn3ek/Developer/rails/auditorium/src/app/models/lecture.rb:
+   27    validates :chair,   presence: true
+   28  
+   29:   define_index do
+   30      indexes :name
+   31      indexes description
+
+/Users/sn3ek/Developer/rails/auditorium/src/app/models/post.rb:
+   48   
+   49  
+   50:   define_index do
+   51      indexes subject
+   52      indexes body
+
+/Users/sn3ek/Developer/rails/auditorium/src/app/models/topic.rb:
+   22    include Notifiable
+   23    
+   24:   define_index do
+   25      indexes subject
+   26      indexes content
+
+/Users/sn3ek/Developer/rails/auditorium/src/app/models/video.rb:
+   28    validates :url, presence: true
+   29  
+   30:   define_index do
+   31      indexes subject
+   32      indexes content
+
+~/Developer/rails/auditorium/src/log/development.log:
+    <binary>
+
+5 matches across 5 files
+
+
+Searching 753 files for "define_index" (case sensitive)
+
+/Users/sn3ek/Developer/rails/auditorium/src/app/models/post.rb:
+   48   
+   49  
+   50:   define_index do
+   51      indexes subject
+   52      indexes body
+
+/Users/sn3ek/Developer/rails/auditorium/src/app/models/topic.rb:
+   22    include Notifiable
+   23    
+   24:   define_index do
+   25      indexes subject
+   26      indexes content
+
+/Users/sn3ek/Developer/rails/auditorium/src/app/models/video.rb:
+   28    validates :url, presence: true
+   29  
+   30:   define_index do
+   31      indexes subject
+   32      indexes content
+
+~/Developer/rails/auditorium/src/log/development.log:
+    <binary>
+
+4 matches across 4 files
+
+
+Searching 753 files for "define_index" (case sensitive)
+
+/Users/sn3ek/Developer/rails/auditorium/src/app/models/topic.rb:
+   22    include Notifiable
+   23    
+   24:   define_index do
+   25      indexes subject
+   26      indexes content
+
+/Users/sn3ek/Developer/rails/auditorium/src/app/models/video.rb:
+   28    validates :url, presence: true
+   29  
+   30:   define_index do
+   31      indexes subject
+   32      indexes content
+
+~/Developer/rails/auditorium/src/log/development.log:
+    <binary>
+
+3 matches across 3 files
+
+
+Searching 753 files for "define_index" (case sensitive)
+
+/Users/sn3ek/Developer/rails/auditorium/src/app/models/video.rb:
+   28    validates :url, presence: true
+   29  
+   30:   define_index do
+   31      indexes subject
+   32      indexes content
+
+~/Developer/rails/auditorium/src/log/development.log:
+    <binary>
+
+2 matches across 2 files

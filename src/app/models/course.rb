@@ -36,17 +36,6 @@ class Course < ActiveRecord::Base
   validates :lecture_id, presence: true
   validates :term,  presence: true
 
-  define_index do
-    indexes :name
-    indexes description
-    indexes semester
-    indexes url
-
-    has lecture_id
-    set_property :enable_star => true
-    set_property :min_infix_len => 2
-  end
-
   #scope :unmaintained,includes(:course_memberships).where(:course_memberships)
 
   scope :current, -> {joins(:term).where("beginDate < ?", Date.today).where("endDate > ?", Date.today)}

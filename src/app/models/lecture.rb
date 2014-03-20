@@ -26,20 +26,6 @@ class Lecture < ActiveRecord::Base
   validates :name,  presence: true, :uniqueness => { scope: :chair_id, message: "of the course has been already taken in the chair you've selected. Go to lectures and search for the name." }
   validates :chair,   presence: true
 
-  define_index do
-    indexes :name
-    indexes description
-    indexes url
-
-    indexes courses.name
-    indexes courses.description
-    indexes courses.semester
-    indexes courses.url
-    
-    set_property :enable_star => true
-    set_property :min_infix_len => 2
-  end
-
   def parent
     self.chair
   end

@@ -43,7 +43,7 @@ module ApplicationHelper
     when 'Topic'
       topic_url(post)
     when 'Video'
-      video_url(video)
+      video_url(post)
     end
   end
 

@@ -16,9 +16,6 @@ class Faculty < ActiveRecord::Base
   has_many :users, :through => :faculty_membership
   validates :name, presence: true
 
-  define_index do
-    indexes name
-  end
 
   def to_s 
     self.name

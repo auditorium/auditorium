@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.15'
+gem 'rails', '3.2.16'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -8,7 +8,6 @@ gem 'rails', '3.2.15'
 gem 'nokogiri'
 gem 'devise', "~> 3.1.0"
 gem 'devise-encryptable'
-gem "thinking-sphinx", "~> 2.0.12"
 gem 'mysql2'
 gem 'cancan'
 gem 'gravatar_image_tag'

@@ -45,15 +45,6 @@ class Post < ActiveRecord::Base
    
   has_many :tags, through: :taggings
   
- 
-
-  define_index do
-    indexes subject
-    indexes body
-    set_property :enable_star => true
-    set_property :min_infix_len => 2
-  end
-
   after_save do
     author.update_score if rating_changed?
   end
