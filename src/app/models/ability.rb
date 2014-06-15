@@ -87,7 +87,7 @@ class Ability
       cannot [:read, :manage], [Level, Badge]
 
       can :toggle_as_helpful, Answer do |answer|
-        answer.question.author.id == user.id
+        answer.question.author.id == user.id if answer.question.author.present?
       end
     else # Gäste
       cannot :read, :all
