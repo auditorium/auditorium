@@ -14,7 +14,7 @@
 
 //= require jquery
 //= require jquery_ujs
-//= require jquery.ui.all
+//= require jquery-ui
 //= require jquery.tokeninput
 //= require translations
 //= require behave
