@@ -370,6 +370,7 @@ DEPENDENCIES
   mathjax-rails
   memcache-client
   mysql2
+  nokogiri (~> 1.6.5)
   premailer-rails
   rails (= 3.2.18)
   rails-i18n
