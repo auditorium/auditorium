@@ -27,7 +27,7 @@ class Group < ActiveRecord::Base
   has_many :videos, dependent: :destroy
 
   has_many :followers, through: :followings
-  has_many :followings, as: :followerable
+  has_many :followings, as: :followerable, dependent: :destroy
   has_many :membership_requests, dependent: :destroy
 
   belongs_to :creator, class_name: 'User'

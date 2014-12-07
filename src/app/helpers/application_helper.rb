@@ -10,10 +10,12 @@ module ApplicationHelper
     end
 
     def link(link, title, alt_text)
-      if link.match /^https?:\/\/auditorium.inf.tu-dresden.de/
-        "<a href=\"#{link}\">#{alt_text}</a>"
-      else
-        "<a target=\"_blank\" href=\"#{link}\"  title='external link to #{link}'><i class='fa fa-external-link'></i> #{alt_text}</a>"
+      if link.present?
+        if link.match /^https?:\/\/auditorium.inf.tu-dresden.de/
+          "<a href=\"#{link}\">#{alt_text}</a>"
+        else
+          "<a target=\"_blank\" href=\"#{link}\"  title='external link to #{link}'><i class='fa fa-external-link'></i> #{alt_text}</a>"
+        end
       end
     end
 

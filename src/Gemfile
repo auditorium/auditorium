@@ -1,11 +1,10 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.16'
+gem 'rails', '3.2.18'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'nokogiri'
 gem 'devise', "~> 3.1.0"
 gem 'devise-encryptable'
 gem 'mysql2'
@@ -35,6 +34,7 @@ group :test, :development do
   gem 'debugger'
   gem 'rb-fsevent'
   gem 'guard-rspec'
+  gem 'capistrano', '~> 2.15.5'
 
   #gem 'spork-rails', github: 'sporkrb/spork-rails'
   gem 'guard-spork'
