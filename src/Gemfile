@@ -35,7 +35,9 @@ group :test, :development do
   gem 'debugger'
   gem 'rb-fsevent'
   gem 'guard-rspec'
-  gem 'capistrano', '~> 2.15.5'
+  gem 'capistrano', '~> 3.3.0'
+  gem 'capistrano-rvm'
+  gem 'capistrano-rails'
 
   #gem 'spork-rails', github: 'sporkrb/spork-rails'
   gem 'guard-spork'
