@@ -1105,12 +1105,12 @@ de:
         gold: 'Du nutzt einen modernen Browser: Apple Safari, Mozilla Firefox, Google Chrome, Opera, Internet Explorer 11 oder aktueller.'
       achieve_rewarding:
         bronze: 'Du hast deine erste positive Bewertung abgegeben.'
-        silver: 'Du hast deine erste positive Bewertung abgegeben.'
-        gold: 'Du hast deine erste positive Bewertung abgegeben.'
+        silver: 'Du hast mindestens 25 positive Bewertungen abgegeben.'
+        gold: 'Du hast mindestens 100 positive Bewertungen abgegeben.'
       achieve_critical:
         bronze: 'Du hast deine erste negative Bewertung abgegeben.'
-        silver: 'Du hast deine erste negative Bewertung abgegeben.'
-        gold: 'Du hast deine erste negative Bewertung abgegeben.'
+        silver: 'Du hast mindestens 25 negative Bewertungen abgegeben.'
+        gold: 'Du hast mindestens 100 negative Bewertungen abgegeben.'
       achieve_curious:
         bronze: 'Du hast die Einführung absolviert.'
         silver: 'Du hast die Einführung absolviert.'

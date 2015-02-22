@@ -1130,12 +1130,12 @@ en:
         gold: 'You should use a modern browser like Apple Safari, Mozilla Firefox, Google Chrome, Opera or Internet Explorer 11 or newer'
       achieve_rewarding:
         bronze: 'Your first upvote.'
-        silver: 'Your first upvote.'
-        gold: 'Your first upvote.'
+        silver: 'You have given at least 25 upvotes.'
+        gold: 'Your have given at least 100 upvotes.'
       achieve_critical:
         bronze: 'Your first downvote.'
-        silver: 'Your first downvote.'
-        gold: 'Your first downvote.'
+        silver: 'You have given at least 25 downvotes.'
+        gold: 'Your have given at least 100 downvotes.'
       achieve_curious:
         bronze: 'You completed all guides within auditorium.'
         silver: 'You completed all guides within auditorium.'
